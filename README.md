@@ -8,12 +8,10 @@ Click each heading below for a quick overview of what each directory contains:
   <summary>/docs</summary>
 
 - `api-reference` - Reference documentation generated from schemas
-
-  - `indexer-api` - Indexer API Reference
-  - `rewards-api` - Rewards API Reference
-  - `node-api` - Node API Reference
-  - `transaction-search-api` - Transaction Search API Reference
-
+- `indexer-api` - Indexer API Reference
+- `rewards-api` - Rewards API Reference
+- `node-api` - Node API Reference
+- `transaction-search-api` - Transaction Search API Reference
 - `guides` - Guides
 - `quickstart` - Quick Start articles
 - `terms-and-conditions` - Legal Documentation
