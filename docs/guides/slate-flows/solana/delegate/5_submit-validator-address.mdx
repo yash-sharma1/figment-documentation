@@ -1,0 +1,38 @@
+---
+title: Submit Validator Address
+---
+
+Now that the stake account is created, submit a delegation transaction to activate the stake. The previous response indicates one required input:
+
+- `validator_address` (**required**) — The vote address of the validator to which the SOL will be delegated.
+
+As in each step, we will `PUT /api/v1/flows/[:flow_id]/next` with the following `inputs`:
+
+```json
+{
+  "validator_address": "[:validator_address]"
+}
+```
+
+```text
+curl -X PUT https://solana-slate.datahub.figment.io/api/v1/flows/[:flow_id]/next \
+-H "Authorization: API-KEY" \
+-H "Content-Type: application/json" \
+-d '{
+  "name": "create_delegate_tx",
+  "inputs": {
+    "validator_address": "[:validator_address]"
+  }
+}'
+```
+
+As in Step 2, note that in this response you can find the unsigned, serialized transaction in `data[create_delegate_tx][raw]`.
+
+There are two possible `actions`:
+
+- `refresh_delegate_tx` — If you need to get a fresh version of the transaction Payload.
+- `sign_delegate_tx` — Submit a signed transaction Payload ready to be broadcast to the network.
+
+We will chose `sign_delegate_tx`, so note that it indicates one Input to collect:
+
+- `transaction_payload` (**required**) — The signed transaction payload ready to be broadcast to the network.

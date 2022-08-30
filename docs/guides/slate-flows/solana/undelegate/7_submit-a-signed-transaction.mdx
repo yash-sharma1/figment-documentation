@@ -1,0 +1,27 @@
+---
+title: Submit a Signed Withdrawl Transaction for Broadcast
+---
+
+After signing the transaction, you will `PUT /api/v1/flows/[:flow_id]/next` and Slate will manage broadcasting the transaction to the Solana network.
+
+At this step, the `inputs` JSON will be:
+
+```json
+{
+  "transaction_payload": "[:signed_transaction_payload]"
+}
+```
+
+And just as in Step 4, Slate will broadcast the transaction to the network.
+
+Once the transaction is confirmed on-chain, the SOL will be available in the recipient account and this flow will be complete!
+
+## Un-Delegation Flow Complete
+
+Congratulations, your stake is deactivated and withdrawn to your main wallet!
+
+:::info
+
+If you only withdrew a portion of the stake account balance and wish to reactivate the remaining portion, simply start a new staking flow on Solana and use the `assign_stake_account` action in the first step.
+
+:::

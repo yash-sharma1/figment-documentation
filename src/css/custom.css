@@ -1,0 +1,403 @@
+/**
+ * Any CSS included here will be global. The classic template
+ * bundles Infima by default. Infima is a CSS framework designed to
+ * work well for content-centric websites.
+ */
+
+@import url("https://fonts.googleapis.com/css?family=Lato&family=Spectral");
+
+html {
+  scroll-behavior: smooth;
+}
+
+[data-theme="light"] body {
+  font-family: "Lato";
+  color: #000;
+}
+
+[data-theme="dark"] body {
+  font-family: "Lato";
+  color: #fff;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: "Lato";
+}
+
+img.inline-image {
+  border-radius: 16px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  margin-left: 20px;
+}
+
+iframe.signup {
+  margin-left: 20px;
+  border: 2px solid #f9df3b;
+  border-radius: 20px;
+  margin-bottom: 25px;
+}
+
+.heroBanner {
+  padding: 4rem 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.hide-network-link {
+  display: none !important;
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+label {
+  padding-top: 10px;
+  display: flex;
+}
+
+/* Override the default Infima variables here. */
+:root {
+  --ifm-color-primary: #034d77;
+  --ifm-color-primary-dark: #03456b;
+  --ifm-color-primary-darker: #034165;
+  --ifm-color-primary-darkest: #023653;
+  --ifm-color-primary-light: #035583;
+  --ifm-color-primary-lighter: #035989;
+  --ifm-color-primary-lightest: #04649b;
+  --ifm-code-font-size: 95%;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+  --ifm-navbar-background-color: #0c3f5c;
+  --ifm-footer-background-color: #0c3f5c;
+}
+
+/* For readability concerns, you should choose a lighter palette in dark mode. */
+[data-theme="dark"] {
+  --ifm-color-primary: #034d77;
+  --ifm-color-primary-dark: #03456b;
+  --ifm-color-primary-darker: #034165;
+  --ifm-color-primary-darkest: #023653;
+  --ifm-color-primary-light: #035583;
+  --ifm-color-primary-lighter: #035989;
+  --ifm-color-primary-lightest: #04649b;
+  --ifm-code-font-size: 95%;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+  --ifm-navbar-background-color: #0c3f5c;
+  --ifm-footer-background-color: #0c3f5c;
+}
+
+/* 👇 Code block customizations */
+pre.prism-code {
+  max-height: 300px;
+}
+
+pre.prism-code [class^="codeLineNumber"] {
+  white-space: nowrap;
+}
+
+/* 👇 Feedback button in navbar */
+[data-theme="light"] .button {
+  background: #fff;
+  font-weight: normal;
+  color: #000;
+  border-color: #fff;
+}
+
+[data-theme="light"] .button--secondary {
+  color: #000;
+}
+
+[data-theme="dark"] .button {
+  background: #fff;
+  font-weight: normal;
+  color: #0c3f5c;
+  border-color: #fff;
+}
+
+[data-theme="dark"] .button--secondary {
+  color: #000;
+}
+
+[data-theme="dark"] a.feedback_button_link:hover {
+  color: #000 !important;
+}
+
+[data-theme="light"] a.feedback_button_link:hover {
+  color: #000 !important;
+}
+
+[data-theme="dark"] a.feedback_button_link {
+  color: #000;
+}
+
+[data-theme="light"] a.feedback_button_link {
+  color: #000;
+}
+
+/* 👇 Used for custom selectboxes */
+
+/* remove default arrow in IE */
+select::-ms-expand {
+  display: none;
+}
+
+[data-theme="light"] .custom-select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  height: 30px;
+  padding: 5px 38px 5px 16px;
+  margin-right: 16px;
+  background: #f6f8fb
+    url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="black" d="M224 416c-8.188 0-16.38-3.125-22.62-9.375l-192-192c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L224 338.8l169.4-169.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-192 192C240.4 412.9 232.2 416 224 416z"/></svg>')
+    no-repeat right 10px center;
+  background-size: 10px;
+  transition: border-color 0.1s ease-in-out, box-shadow 0.1s ease-in-out;
+  border: 1px solid #999;
+  border-radius: 3px;
+}
+[data-theme="light"] .custom-select:hover {
+  border: 1px solid var(--ifm-color-primary-lightest);
+}
+[data-theme="light"] .custom-select:focus {
+  border: 1px solid var(--ifm-color-primary-lightest);
+  box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.2);
+  outline: none;
+}
+
+[data-theme="dark"] .custom-select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  height: 30px;
+  padding: 5px 38px 5px 16px;
+  margin-right: 16px;
+  background: var(--ifm-color-primary-lightest)
+    url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="black" d="M224 416c-8.188 0-16.38-3.125-22.62-9.375l-192-192c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L224 338.8l169.4-169.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-192 192C240.4 412.9 232.2 416 224 416z"/></svg>')
+    no-repeat right 10px center;
+  background-size: 10px;
+  transition: border-color 0.1s ease-in-out, box-shadow 0.1s ease-in-out;
+  border: 1px solid var(--ifm-color-primary-lightest);
+  border-radius: 3px;
+  color: #fff;
+  font-weight: 500;
+}
+[data-theme="dark"] .custom-select:hover {
+  border: 1px solid var(--ifm-color-white);
+}
+[data-theme="dark"] .custom-select:focus {
+  border: 1px solid var(--ifm-color-white);
+  box-shadow: 0 3px 5px 0 rgba(255, 255, 255, 0.3);
+  outline: none;
+}
+
+/* 👇 Custom navbar and menu link colors */
+
+[data-theme="light"] .menu__link {
+  font-family: "Lato";
+  font-weight: bold;
+}
+
+[data-theme="light"] .menu__link:hover {
+  font-family: "Lato";
+  font-weight: bold;
+  color: #000;
+}
+
+[data-theme="dark"] .menu__link {
+  font-family: "Lato";
+  font-weight: bold;
+  color: #fff;
+}
+
+[data-theme="dark"] .menu__link:hover {
+  font-family: "Lato";
+  font-weight: bold;
+  color: #fff;
+  background: var(--ifm-color-primary-lightest);
+}
+
+[data-theme="dark"] .menu__link--active {
+  font-family: "Lato";
+  font-weight: bold;
+  color: #fff;
+  background: var(--ifm-color-primary-lightest);
+}
+
+[data-theme="dark"] .menu__link--sublist:hover {
+  font-family: "Lato";
+  font-weight: bold;
+  color: #fff;
+  background: var(--ifm-color-primary-lightest);
+}
+
+[data-theme="dark"] .menu__list-item-collapsible--active {
+  font-family: "Lato";
+  font-weight: bold;
+  color: #fff;
+  background: var(--ifm-color-primary-lightest);
+}
+
+[data-theme="dark"] .pagination-nav__link {
+  color: #fff;
+}
+
+[data-theme="dark"] .navbar__title,
+/* [data-theme="dark"] .navbar__items *, */
+/* [data-theme="dark"] .navbar-sidebar__item *, */
+[data-theme="dark"] .navbar__brand svg,
+[data-theme="dark"] .navbar-sidebar__close svg g {
+  color: white;
+  text-decoration: none;
+}
+
+[data-theme="dark"] .navbar-sidebar__close svg g {
+  stroke: white;
+}
+
+/* [data-theme="light"] .navbar-sidebar__item *, */
+[data-theme="light"] .navbar-sidebar__close svg g {
+  color: white !important;
+  text-decoration: none;
+}
+
+[data-theme="light"] .navbar-sidebar__close svg g {
+  stroke: white !important;
+}
+
+[data-theme="light"]
+  .toggleButton_node_modules-\@docusaurus-theme-classic-lib-theme-ColorModeToggle-styles-module:hover,
+[data-theme="dark"]
+  .toggleButton_node_modules-\@docusaurus-theme-classic-lib-theme-ColorModeToggle-styles-module:hover {
+  background: transparent;
+}
+
+[data-theme="dark"] .navbar__title:hover,
+[data-theme="dark"] .navbar__items:hover,
+[data-theme="dark"] .navbar-sidebar__item *:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
+/* TODO: Fix dark mode link hover coloration for feedback button */
+
+/* [data-theme="dark"] .navbar__title:hover,
+[data-theme="dark"] .navbar__items *:hover,
+[data-theme="dark"] .navbar-sidebar__item *:hover {
+  color: #fff;
+  text-decoration: none;
+} */
+
+[data-theme="dark"] .navbar__toggle {
+  color: white;
+}
+
+[data-theme="light"] .navbar__toggle {
+  color: white;
+}
+
+[data-theme="light"] .navbar__items a:hover,
+[data-theme="dark"] .navbar__items a:hover,
+[data-theme="light"] .navbar__items .clean-btn:hover,
+[data-theme="dark"] .navbar__items .clean-btn:hover {
+  color: #fff;
+  background: transparent;
+}
+
+[data-theme="light"] .feedback_button_link button:hover,
+[data-theme="dark"] .feedback_button_link button:hover {
+  color: #000;
+}
+
+[data-theme="light"] .footer__link-item {
+  color: #fff;
+  line-height: 2;
+}
+
+[data-theme="dark"] .footer__link-item {
+  color: #fff;
+  line-height: 2;
+}
+
+[data-theme="light"] .footer {
+  color: #fff;
+}
+
+[data-theme="dark"] .breadcrumbs__link {
+  color: #fff;
+}
+
+/* TODO: Fix ToC link coloration in dark mode */
+
+[data-theme="dark"] .table-of-contents__link--active {
+  color: #fff;
+}
+
+[data-theme="dark"] a.table-of-contents__link {
+  color: #fff;
+}
+
+[data-theme="dark"] a {
+  color: #fff;
+  text-decoration: none;
+}
+
+[data-theme="dark"] a:hover {
+  color: var(--ifm-color-primary-lightest);
+  text-decoration: none;
+}
+
+@media screen and (max-width: 996px) {
+  .heroBanner {
+    padding: 2rem;
+  }
+
+  [data-theme="light"] .menu__link {
+    font-family: "Lato";
+    font-weight: bold;
+    color: var(--ifm-menu-color);
+  }
+
+  [data-theme="light"] .menu__link:hover {
+    font-family: "Lato";
+    font-weight: bold;
+    color: #fff;
+    background: var(--ifm-color-primary-lightest);
+  }
+
+  [data-theme="light"] .menu__link--active {
+    font-family: "Lato";
+    font-weight: bold;
+    color: #fff;
+    background: var(--ifm-color-primary-lightest);
+  }
+
+  [data-theme="dark"] .menu__link {
+    font-family: "Lato";
+    font-weight: bold;
+    color: var(--ifm-menu-color);
+  }
+
+  [data-theme="dark"] .menu__link:hover {
+    font-family: "Lato";
+    font-weight: bold;
+    color: #fff;
+    background: var(--ifm-color-primary-lightest);
+  }
+
+  [data-theme="dark"] .menu__link--sublist:hover {
+    background: var(--ifm-color-primary-lightest);
+  }
+
+  [data-theme="dark"] .menu__list-item-collapsible:hover {
+    background: var(--ifm-color-primary-lightest);
+  }
+}

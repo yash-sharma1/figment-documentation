@@ -1,0 +1,53 @@
+---
+title: 1. Create a New Flow
+---
+
+We will create a new Flow with `POST /api/v1/flows`.
+
+The `flow` JSON field for this request will be:
+
+```json
+{
+  "network_code": "polkadot",
+  "chain_code": "westend",
+  "operation": "staking",
+  "version": "v1"
+}
+```
+
+```text
+curl -X POST https://polkadot-slate.datahub.figment.io/api/v1/flows \
+-H "Authorization: API-KEY" \
+-H "Content-Type: application/json" \
+-d '{
+  "flow": {
+    "network_code": "polkadot",
+    "chain_code": "westend",
+    "operation": "staking",
+    "version": "v1"
+  }
+}'
+```
+
+The response indicates two possible actions:
+
+- `assign_stash_and_controller_account` — Use this action if you already have a controller account set up and wish to add bond to it.
+- `create_bonding_tx` — Use this action if you do not have a controller account set up and would like to create a controller and bond tokens.
+
+:::info
+
+If you want to skip creating a stash / controller relationship, you will use the assign_stash_and_controller_account action and skip to step (?)
+
+:::
+
+Since we want to create a new controller relationship, we will use the `create_bonding_tx` action which indicates six fields for data collection:
+
+1. `controller_account_address` (**required**) - The wallet DOT will be bonded to.
+2. `controller_proxy_account_address` (_optional_) - A proxy account that will sign on behalf of the controller account.
+3. `stash_ account_address` (**required**) - Primary wallet from which DOT will be bonded.
+4. `stash_proxy_account_address` (_optional_) - A proxy account that will sign on behalf of the controller account.
+5. `reward_destination` (**required**) - Indicates whether rewards are to be:
+   - Added to the staked balance (`staked`)
+   - Sent to the controller account, liquid (`controller`)
+   - Sent to the stash account, liquid (`stash`)
+6. `amount` (**required**) - The amount of DOT to be bonded to the controller. This field should be in full DOT, not in Planck (ie. if you want to stake 5 DOT, return `"amount": 5.0`). Slate will translate the amount to Plancks so you do not have to worry about the conversion factor.

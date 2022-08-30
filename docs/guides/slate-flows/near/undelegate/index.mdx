@@ -1,0 +1,27 @@
+---
+title: Un-Delegate
+---
+
+Un-delegating NEAR is a simple process. We will collect:
+
+- The delegating address
+- The signing address
+- The validator address to un-delegate from
+- Amount of NEAR to be un-delegated
+- Optionally, an undelegate all flag if you wish to undelegae the full amount without having to check the current balance
+- Optionally, a max gas amount (upper limit of the transaction fee to be paid)
+
+Once the un-delegation transaction is confirmed on-chain, the unbonding process will begin immediately.
+
+NEAR has an unbonding period of approximately 4 days. During this time the unbonding NEAR will be illiquid and will not earn rewards.
+Upon completion of the unbonding period, the NEAR will be available to be withdrawn.
+
+By continuing with the Flow you will be able to make a withdrawal transaction.
+
+:::info
+
+If you have a balance waiting to be withdrawn and do not wish to un-delegate more NEAR, you can use the create_withdraw_tx action to withdraw from that balance without first unbonding any NEAR.
+
+:::
+
+Follow the steps in this section for the details on this process.

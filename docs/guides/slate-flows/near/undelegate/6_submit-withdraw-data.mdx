@@ -1,0 +1,40 @@
+---
+title: Submit Withdraw Data
+---
+
+After collecting the required inputs, we `PUT /api/v1/flows/[:flow_id]/next` to move on to the next step.
+
+In this case, the `inputs` JSON would be:
+
+```json
+{
+  "validator_address": "[:validator_address]",
+  "delegator_address": "[:delegator_address]",
+  "delegator_pubkey": "[:delegator_pubkey]",
+  "withdraw_amount": "[:withdraw_amount]"
+}
+```
+
+```text
+curl -X PUT https://near-slate.datahub.figment.io/api/v1/flows/[:flow_id]/next \
+-H "Authorization: API-KEY" \
+-H "Content-Type: application/json" \
+-d '{
+  "name": "create_withdraw_tx",
+  "inputs": {
+    "validator_address": "[:validator_address]",
+    "delegator_address": "[:delegator_address]",
+    "delegator_pubkey": "[:delegator_pubkey]",
+    "withdraw_amount": "[:withdraw_amount]"
+  }
+}'
+```
+
+We see two possible `actions`:
+
+- `refresh_withdraw_tx` — If you need to get a fresh version of the transaction payload (i.e., if the nonce needs to be updated)
+- `sign_withdraw_tx` — Submit a signed transaction payload ready to be broadcast to the network.
+
+We will choose `sign_withdraw_tx`, which indicates one input to collect:
+
+- `transaction_payload` (**required**) — The signed transaction payload ready to be broadcast to the network.

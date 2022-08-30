@@ -1,0 +1,44 @@
+---
+title: Create a New Flow
+---
+
+We will create a new Flow with `POST /api/v1/flows`.
+
+The `flow` JSON field for this request will be:
+
+```json
+{
+  "network_code": "near",
+  "chain_code": "testnet",
+  "operation": "unstaking",
+  "version": "v1"
+}
+```
+
+```text
+curl -X POST https://near-slate.datahub.figment.io/api/v1/flows \
+-H "Authorization: API-KEY" \
+-H "Content-Type: application/json" \
+-d '{
+  "flow": {
+ {
+    "network_code": "near",
+    "chain_code": "testnet",
+    "operation": "unstaking",
+    "version": "v1"
+  }
+}'
+```
+
+The response indicates one possible action:
+
+- `create_undelegate_tx` - use this action to generate an undelegation transaction to unstake your NEAR.
+
+The `create_undelegate_tx` action indicates five fields for data collection:
+
+- `delegator_address` (**required**) — The delegator address
+- `delegator_pubkey` (**required**) — The public key of the signing account
+- `validator_address` (**required**) — Validator address from which NEAR will be un-delegated
+- `undelegate_amount` (**required**) — The amount of NEAR to be un-delegated
+- `undelegate_maximum` (_optional_) — Set to true if you wish to unbond the full delegated balance without needing to know the exact delegated balance.
+- `max_gas` (_optional_) — Adjust if you wish to limit the possible transaction fee

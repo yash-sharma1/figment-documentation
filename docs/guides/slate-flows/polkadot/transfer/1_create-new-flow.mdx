@@ -1,0 +1,40 @@
+---
+title: 1. Create a New Flow
+---
+
+We will create a new Flow with `POST /api/v1/flows`.
+
+The `flow` JSON field for this request will be:
+
+```json
+{
+  "network_code": "dot",
+  "chain_code": "westend",
+  "operation": "transfer",
+  "version": "v1"
+}
+```
+
+```text
+curl -X POST https://polkadot-slate.datahub.figment.io/api/v1/flows \
+-H "Authorization: API-KEY" \
+-H "Content-Type: application/json" \
+-d '{
+  "flow": {
+    "network_code": "dot",
+    "chain_code": "westend",
+    "operation": "transfer",
+    "version": "v1"
+  }
+}'
+```
+
+The response indicates one possible action:
+
+- `create_transfer_tx` - use this action to generate a deposit transaction to stake your ETH.
+
+The `create_transfer_tx` action indicates three fields for data collection:
+
+1. `from_account_address` (**required**) — The address which DOT will be transferred from.
+2. `to_account_address` (**required**) — The address which DOT will be transferred to.
+3. `amount` (**required**) — The amount of DOT to be transferred.

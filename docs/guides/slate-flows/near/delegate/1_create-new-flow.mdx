@@ -1,0 +1,42 @@
+---
+title: Create New Flow
+---
+
+We will create a new Flow with `POST /api/v1/flows`.
+
+The `flow` JSON field for this request will be:
+
+```json
+{
+  "network_code": "near",
+  "chain_code": "testnet",
+  "operation": "staking",
+  "version": "v1"
+}
+```
+
+```text
+curl -X POST https://near-slate.datahub.figment.io/api/v1/flows \
+-H "Authorization: API-KEY" \
+-H "Content-Type: application/json" \
+-d '{
+  "flow": {
+    "network_code": "near",
+    "chain_code": "testnet",
+    "operation": "staking",
+    "version": "v1"
+  }
+}'
+```
+
+The response indicates one possible action:
+
+- `create_delegate_tx` - use this action to generate a delegation transaction to stake your NEAR.
+
+The `create_delegate_tx` action indicates five fields for data collection:
+
+- `validator_address` (**required**) — Figment validator address.
+- `delegator_address` (**required**) — The delegating address.
+- `delegator_pubkey` (**required**) — The public key of the signing account. Must start with `ed25519:`
+- `amount` (**required**) — The amount of NEAR to be delegated.
+- `max_gas` (_optional_) — Adjust if you wish to limit the possible transaction fee.

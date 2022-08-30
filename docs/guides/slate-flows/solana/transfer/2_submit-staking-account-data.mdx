@@ -1,0 +1,36 @@
+---
+title: Submit Staking Account Data
+---
+
+After collecting the required Inputs, we `PUT /api/v1/flows/[:flow_id]/next` to move on to the next step. In this case, the inputs JSON would be:
+
+```json
+{
+  "from_account_pubkey": "[:from_account_pubkey]",
+  "to_account_pubkey": "[:to_account_pubkey]",
+  "amount": "[:amount]"
+}
+```
+
+```text
+curl -X PUT https://solana-slate.datahub.figment.io/api/v1/flows/[:flow_id]/next \
+-H "Authorization: API-KEY" \
+-H "Content-Type: application/json" \
+-d '{
+  "name": "create_transfer_tx",
+  "inputs": {
+    "from_account_pubkey": "[:from_account_pubkey]",
+    "to_account_pubkey": "[:to_account_pubkey]",
+    "amount": "[:amount]"
+  }
+}'
+```
+
+We see two possible `actions`:
+
+- `refresh_transfer_tx` — If you need to get a fresh version of the transaction Payload (i.e., the recent blockhash has expired).
+- `sign_transfer_tx` — Submit a signed transaction Payload ready to be broadcast to the network.
+
+We will choose `sign_transfer_tx`, which indicates one Input to collect:
+
+- `transaction_payload` (**required**) — The signed transaction Payload ready to be broadcast to the network.

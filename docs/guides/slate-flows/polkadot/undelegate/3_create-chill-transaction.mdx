@@ -1,0 +1,31 @@
+---
+title: 3. Create Chill Transaction
+---
+
+After collecting the required Inputs, we `PUT /api/v1/flows/[:flow_id]/next` to move on to the next step.
+
+All data is already input so the inputs JSON is empty:
+
+```json title="inputs"
+{}
+```
+
+```text title="Example curl request"
+curl --request PUT \
+  --url https://polkadot-slate.datahub.figment.io/api/v1/flows/[:flow_id]/next \
+  --header 'Authorization: API-KEY' \
+  --header 'Content-Type: application/json' \
+  --data '{
+  "name": "create_chill_tx",
+  "inputs": {}
+}'
+```
+
+We see two possible `actions`:
+
+- `refresh_chill_tx` — If you need to get a fresh version of the transaction Payload (ie. the nonce needs to be updated)
+- `sign_chill_tx` — Submit a signed transaction Payload ready to be broadcast to the network
+
+We will choose `sign_chill_tx``, which indicates one Input to collect:
+
+- `transaction_payload` (**required**) — the signed transaction Payload ready to be broadcast to the network

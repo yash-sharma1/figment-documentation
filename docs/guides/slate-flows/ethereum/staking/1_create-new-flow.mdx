@@ -1,0 +1,44 @@
+---
+title: Create New Flow
+---
+
+We will create a new Flow with `POST /api/v1/flows`.
+
+The `flow` JSON field for this request will be:
+
+```json
+{
+  "network_code": "ethereum",
+  "chain_code": "goerli-prater",
+  "operation": "staking",
+  "version": "v1"
+}
+```
+
+```text
+curl -X POST https://eth-slate.datahub.figment.io/api/v1/flows \
+-H "Authorization: API-KEY" \
+-H "Content-Type: application/json" \
+-d '{
+  "flow": {
+    "network_code": "ethereum",
+    "chain_code": "goerli-prater",
+    "operation": "staking",
+    "version": "v1"
+  }
+}'
+```
+
+The response indicates one possible action:
+
+- `create_deposit_transaction` - use this action to generate a deposit transaction to stake your ETH.
+
+The `create_deposit_transaction` action indicates 7 fields for data collection:
+
+1. `funding_account_address` (**required**) - the wallet ETH will be originating from.
+2. `validator_pub_key` (**required**) - the public key of the validator that the ETH is to be deposited to.
+3. `withdraw_credentials` (**required**) - the withdrawal address for the given validator.
+4. `signature` (**required**) - a BLS proof of possession, i.e. a proof that the private key corresponding to the `validator_pub_key` is known by the signer.
+5. `deposit_data_root` (**required**) - uniquely identifies the set of deposits made so far.
+6. `gas_limit` (_optional_) - adjust the gas limit.
+7. `gas_price` (_optional_) - adjust the gas price.

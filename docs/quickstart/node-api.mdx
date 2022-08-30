@@ -1,0 +1,120 @@
+---
+title: Using the Node API
+sidebar_position: 3
+---
+
+import { Accordion, AccordionSummary, AccordionDetails } from "@mui/material";
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+import img1 from "/static/img/datahub/endpoint_example.png";
+
+:::info
+
+After creating your App, you can immediately start using the Figment APIs.
+
+The following sections explain where, how and what you need to access these APIs.
+
+:::
+
+> The Node APIs are used to communicate with nodes running on a given blockchain protocol. For example if you wanted to get information about a specific block on Polygon, you could send a request to the Polygon endpoint to run the method `eth_getBlockByNumber` - which will return a JSON object containing the data you have requested.
+
+You can see the endpoint URLs on the Protocols detail page:
+
+1. From the Dashboard, select your App, then click on the **Overview** tab. Click on the Protocol you want to access.
+2. On the Protocols detail page, you can see a list of all available Services and Networks for that Protocol on the right side of the page. Next to each endpoint URL is a link to an **Example**.
+3. From the Example, you can see the full URL for this service as well as some sample requests to get you started.
+
+<img
+  src={img1}
+  alt="Endpoint Example"
+  width="700"
+  className="shadow--tl inline-image"
+/>
+
+## Authentication
+
+To authenticate your requests, you can pass your API key as an [Authorization](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Authorization) header.
+
+You must also have an [Allowed Origin](settings-and-security#allowed-origins) set in your DataHub App, if your App is making any Cross-Origin requests.
+
+:::warning
+
+To maintain the security of your API keys, we recommend always using [**HTTPS**](https://www.cloudflare.com/en-ca/learning/ssl/what-is-https/).
+
+Keep in mind that API keys sent over **HTTP** are insecure, regardless of the method used.
+
+:::
+
+#### Example Requests
+
+:::info
+
+In example requests, the text `API-KEY` must be replaced with your actual credentials for it to function. Similarly, you would need to replace the _value_ of the constant `API_KEY` in any code examples.
+
+:::
+
+<Tabs>
+  <TabItem value="curl" label="curl" default>
+
+```text title="Example curl request with API key sent via Authorization header"
+curl -X POST 'https://ethereum-mainnet--rpc.datahub.figment.io' \
+-H 'Content-Type: application/json' \
+// highlight-next-line
+-H 'Authorization: API-KEY' \
+-d '{
+  "jsonrpc": "2.0",
+  "method": "eth_blockNumber",
+  "params": [],
+  "id": 1
+}'
+```
+
+  </TabItem>
+  <TabItem value="js" label="JavaScript">
+
+```javascript title="Example JavaScript Fetch request to the Node API for Solana Devnet"
+const API_KEY = "YOUR API KEY";
+
+var myHeaders = new Headers();
+myHeaders.append("Content-Type", "application/json");
+// highlight-next-line
+myHeaders.append("Authorization", API_KEY);
+
+var raw = JSON.stringify({
+  jsonrpc: "2.0",
+  method: "eth_blockNumber",
+  params: [],
+  id: 1,
+});
+
+var requestOptions = {
+  method: "POST",
+  // highlight-next-line
+  headers: myHeaders,
+  body: raw,
+  redirect: "follow",
+};
+
+fetch("https://ethereum-mainnet--rpc.datahub.figment.io", requestOptions)
+  .then((response) => response.text())
+  .then((result) => console.log(result))
+  .catch((error) => console.log("error", error));
+```
+
+  </TabItem>
+</Tabs>
+
+```json title="Example JSON response from Ethereum node"
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": "0x1d43bd1"
+}
+```
+
+## API Reference
+
+View the full Node API reference [HERE](/api-reference/node-api)
+
+---

@@ -1,0 +1,229 @@
+[data-theme="light"] textarea.userinput {
+  width: 350px;
+  height: 350px;
+  resize: none;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 5px;
+  margin-left: 10px;
+}
+
+[data-theme="dark"] textarea.userinput {
+  width: 350px;
+  height: 350px;
+  resize: none;
+  border: 1px solid white;
+  border-radius: 10px;
+  padding: 5px;
+  margin-left: 10px;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+[data-theme="dark"] .response::-webkit-scrollbar {
+  height: 10px;
+  width: 0px;
+  border: 2px solid #fff;
+  border-radius: 4px;
+  /* display: none; */
+}
+
+[data-theme="dark"] .response::-webkit-scrollbar-track {
+  border-radius: 4px;
+  background: #eeeeee;
+}
+
+[data-theme="dark"] .response::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background: #b0b0b0;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+[data-theme="dark"] .response {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+[data-theme="light"] .response::-webkit-scrollbar {
+  height: 10px;
+  width: 0px;
+  border: 2px solid #fff;
+  border-radius: 4px;
+  /* display: none; */
+}
+
+[data-theme="light"] .response::-webkit-scrollbar-track {
+  border-radius: 4px;
+  background: #eeeeee;
+}
+
+[data-theme="light"] .response::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background: #b0b0b0;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+[data-theme="light"] .response {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+[data-theme="light"] .reqmethod {
+  margin-left: 10px;
+  border-radius: 4px;
+  background: rgb(208, 255, 0);
+  width: 125px;
+  text-align: center;
+}
+
+[data-theme="light"] .response {
+  max-height: 500px;
+  min-height: 500px;
+  min-width: 600px;
+  border-radius: 10px;
+  background: rgb(210, 210, 210);
+}
+
+[data-theme="light"] .responsebody {
+  background: rgb(210, 210, 210);
+  overflow: hidden;
+  min-width: 600px;
+}
+
+[data-theme="dark"] .reqmethod {
+  margin-left: 10px;
+  border-radius: 4px;
+  background: rgb(255, 0, 76);
+  width: 125px;
+  text-align: center;
+}
+
+[data-theme="dark"] .response {
+  max-height: 500px;
+  min-height: 500px;
+  min-width: 600px;
+  border-radius: 10px;
+  background: rgb(0, 0, 0);
+}
+
+[data-theme="dark"] .responsebody {
+  background: rgb(0, 0, 0);
+  overflow: hidden;
+  min-width: 600px;
+}
+
+.description {
+  /* background:rgba(208, 255, 0, 0.5); */
+  border: 0px solid black;
+  border-radius: 10px;
+  text-align: left;
+  /* margin-top: 25px; */
+  margin-bottom: 25px;
+  font-weight: bold;
+  word-wrap: break-word;
+  padding: 5px;
+}
+
+.methodblock {
+  /* background:rgba(60, 68, 21, 0.5); */
+  border: 0px solid black;
+  border-radius: 10px;
+  text-align: left;
+  /* margin-top: 25px; */
+  margin-bottom: 25px;
+}
+
+.leftcolumn {
+  display: flex;
+  /* background:rgba(0, 0, 0, 0.5); */
+  min-width: 400px;
+}
+
+.rightcolumn {
+  display: flex;
+  overflow: hidden;
+  /* background:rgba(208, 255, 0, 0.5); */
+  text-align: justify;
+  min-width: 600px;
+  min-height: 100%;
+}
+
+.submitbutton {
+  height: 24px;
+  border-radius: 4px;
+  margin: 15px;
+}
+
+.row {
+  padding-bottom: 20px !important;
+  margin-bottom: 20px;
+  border-spacing: 20px;
+  row-gap: 20px;
+}
+
+.docs {
+  max-height: 0px;
+  overflow: hidden;
+}
+
+.docsOpen {
+  max-height: none;
+}
+
+.heading {
+  font-size: var(--ifm-h3-font-size);
+  display: flex;
+  gap: 10px;
+  padding: 0;
+}
+
+.heading > code {
+  padding: 0 5px;
+}
+
+.heading::before {
+  content: attr(data-method);
+  background-color: transparent;
+  border: 0.1rem solid rgba(0, 0, 0, 0.1);
+  border-radius: var(--ifm-code-border-radius);
+  font-family: var(--ifm-font-family-monospace);
+  font-size: var(--ifm-code-font-size);
+  padding: var(--ifm-code-padding-vertical) var(--ifm-code-padding-horizontal);
+  vertical-align: middle;
+}
+
+.test,
+.copy {
+  background: none;
+  border: none;
+  padding: none;
+  cursor: pointer;
+  font-size: 30px;
+  padding: 0;
+  margin: 0;
+  position: absolute;
+  transform: translateX(-100%);
+}
+.copy {
+  transform: translateX(-200%);
+}
+
+.responseText {
+  max-height: 500px;
+  overflow: auto;
+}
+
+.endpointUrl {
+  display: block;
+  margin-top: -10px;
+  margin-bottom: 10px;
+}
+
+.anchor {
+  opacity: 0;
+  padding: 0 4px;
+  transition: opacity 200ms;
+}
+
+.anchor:hover {
+  opacity: 1;
+}

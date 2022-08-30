@@ -1,0 +1,35 @@
+---
+title: Submit a Signed Transaction for Broadcast
+---
+
+After signing the transaction, you will `PUT /api/v1/flows/[:flow_id]/next` and Slate will manage broadcasting the transaction to the Solana network.
+
+At this step, the `inputs` JSON will be:
+
+```json
+{
+  "transaction_payload": "[:signed_transaction_payload]"
+}
+```
+
+```text
+curl --request PUT https://solana-slate.datahub.figment.io/api/v1/flows/[:flow_id]/next \
+-H "Authorization: API-KEY" \
+-H "Content-Type: application/json" \
+-d '{
+  "name": "sign_delegate_tx",
+  "inputs": {
+    "transaction_payload": "[:signed_transaction_payload]"
+  }
+}'
+```
+
+And just as in Step 4, Slate will broadcast the transaction to the network.
+
+Since delegations on Solana activate at the next epoch boundary (epochs are approximately 2.5 days), Slate will also track the delegation and send a webhook notification when it activates.
+
+It is possible the delegation will be subjected to a multi-epoch warmup period, in which case you will receive a webhook at each epoch notifying you how much has been activated until the full amount is active.
+
+## Delegation Flow Complete
+
+Congratulations, your stake is now active and earning rewards!

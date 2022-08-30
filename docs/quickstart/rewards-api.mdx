@@ -1,0 +1,173 @@
+---
+title: Using the Rewards API
+sidebar_position: 5
+---
+
+import { Accordion, AccordionSummary, AccordionDetails } from "@mui/material";
+import { ExpandMore } from "@mui/icons-material";
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+> The Rewards API is used to query staking rewards data. When a user is staking on a validator, they earn rewards while helping to secure the network. It is challenging and very time-consuming to index and query this data on your own, so the Rewards API is your gateway to succinct rewards data on a daily basis or by epoch.
+
+:::note
+
+The Rewards API is currently only available for **Ethereum** (epoch & daily) and **Solana** (epoch only).
+
+The endpoints for this API are located at:
+
+- `https://eth-rewards.datahub.figment.io/rewards`
+- `https://solana-rewards.datahub.figment.io/rewards`
+
+:::
+
+## Authentication
+
+To authenticate your requests, you can pass your API key as an `[Authorization](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Authorization)` header.
+
+You must also have an [Allowed Origin](settings-and-security#allowed-origins) set in your DataHub App, if your App is making any Cross-Origin requests.
+
+:::warning
+
+To maintain the security of your API keys, we recommend always using [**HTTPS**](https://www.cloudflare.com/en-ca/learning/ssl/what-is-https/).
+
+Keep in mind that API keys sent over **HTTP** are insecure, regardless of the method used.
+
+:::
+
+## Requests
+
+You can send an HTTP `GET` request to the endpoint to fetch rewards data.
+
+The JSON payload must include the following parameters:
+
+- `network`: The network (Ethereum or Solana)
+- `chain_id`: The chain identifier (`mainnet` or `testnet`)
+- `accounts`: An array containing one or more PoSETH Validator addresses
+- `start_time`: The start time for collecting rewards data (format is `YYYY-MM-DD`)
+- `end_time`: The end time for collecting rewards data (format is `YYYY-MM-DD`)
+- `grouping`: Either `epoch` or `daily`
+
+```json title="Example JSON for a Rewards API query"
+{
+  "network": "ethereum",
+  "chain_id": "mainnet",
+  "accounts": [
+    "0x8aa7939a2d3d9f2f88f5b3a61cf603603e7a3c28be36aa7f7312c8d0452e81486fcd24208ae8f6a44701267cf4365942"
+  ],
+  "start_time": "2022-07-23",
+  "end_time": "2022-07-26",
+  "grouping": "epoch"
+}
+```
+
+:::info
+
+If you have selected `epoch`, make sure that your `start_time` and `end_time` align with that epoch - otherwise you may get an empty response.
+
+If you have selected `daily`, keep the `start_time` and `end_time` reasonably close together (within 5 days). Large ranges will cause latency in the response.
+
+:::
+
+#### Example Requests
+
+:::info
+
+In example requests, the text `API-KEY` must be replaced with your actual credentials for it to function. Similarly, you would need to replace the _value_ of the constant `API_KEY` in any code examples.
+
+:::
+
+<Tabs>
+  <TabItem value="curl" label="curl" default>
+
+```text title="Example curl request to Rewards API for Ethereum Mainnet"
+curl -X GET https://eth-rewards.datahub.figment.io/rewards \
+-H 'Content-Type: application/json' \
+-H 'Authorization: API-KEY' \
+-d '{
+  // highlight-start
+  "network": "ethereum",
+  "chain_id": "mainnet",
+  "accounts": [
+    "0x8aa7939a2d3d9f2f88f5b3a61cf603603e7a3c28be36aa7f7312c8d0452e81486fcd24208ae8f6a44701267cf4365942"
+  ],
+  "start_time": "2022-07-23",
+  "end_time": "2022-07-26",
+  "grouping": "epoch"
+  // highlight-end
+}'
+```
+
+  </TabItem>
+  <TabItem value="js" label="JavaScript">
+
+```javascript title="Example JavaScript Fetch request to Rewards API for Ethereum Mainnet"
+const API_KEY = "YOUR API KEY";
+
+var myHeaders = new Headers();
+myHeaders.append("Content-Type", "application/json");
+myHeaders.append("Authorization", API_KEY);
+
+var raw = JSON.stringify({
+  // highlight-start
+  network: "ethereum",
+  chain_id: "mainnet",
+  accounts: [
+    "0x93257a7d4f1e6998f019483f149a4dbe3bfc8b89358411be769aeedd943de907f178da1773aea9016d1ac2bdfe3794ba",
+  ],
+  start_time: "2022-07-27",
+  end_time: "2022-07-28",
+  grouping: "daily",
+  // highlight-end
+});
+
+var requestOptions = {
+  method: "POST",
+  headers: myHeaders,
+  body: raw,
+  redirect: "follow",
+};
+
+fetch(`https://eth-rewards.datahub.figment.io/rewards`, requestOptions)
+  .then((response) => response.text())
+  .then((result) => console.log(result))
+  .catch((error) => console.log("error", error));
+```
+
+  </TabItem>
+</Tabs>
+
+<Accordion className="shadow--tl">
+    <AccordionSummary expandIcon={<ExpandMore />}>
+        Click to view example response
+    </AccordionSummary>
+
+```json title="Example Rewards API JSON response"
+[
+  {
+    "accounts": [
+      "0x93257a7d4f1e6998f019483f149a4dbe3bfc8b89358411be769aeedd943de907f178da1773aea9016d1ac2bdfe3794ba"
+    ],
+    "chain_id": "mainnet",
+    "rewards": [
+      {
+        "text": "0.00335099 ETH",
+        "currency": "ETH",
+        "numeric": 3350990,
+        "exp": 9
+      }
+    ],
+    "network": "ethereum",
+    "validator": "0x93257a7d4f1e6998f019483f149a4dbe3bfc8b89358411be769aeedd943de907f178da1773aea9016d1ac2bdfe3794ba",
+    "time": "2022-07-27T00:00:00Z"
+  }
+]
+```
+
+</Accordion>
+
+## API Reference
+
+View the full Rewards API reference [HERE](/api-reference/rewards-api)
+
+---

@@ -1,0 +1,20 @@
+---
+title: Unbonding Period
+---
+
+NEAR has an unbonding period of approximately 2-4 days. During this time, the un-delegated NEAR will be illiquid and will not earn rewards.
+
+You can find the expected unbonding completion time in the response you received in Step 4 after submitting the signed un-delegate transaction.
+
+Once the unbonding period ends, the un-delegated NEAR will be added to the available for withdrawal balance of the delegating address.
+
+You will then need to submit a withdrawal transaction to bring those NEAR into the delegating address' liquid balance.
+
+The `create_withdraw_tx` action indicates five fields for data collection:
+
+- `delegator_address` (**required**) — The delegator address
+- `delegator_pubkey` (**required**) — The pubkey of the signing account
+- `validator_address` (**required**) — Validator address from which LUNA will be un-delegated
+- `withdraw_amount` (**required**) — the amount of NEAR to be withdrawn
+- `withdraw_maximum` (_optional_) — Set to true if you wish to withdraw the full available balance without needing to know the exact available balance.
+- `max_gas` (_optional_) — Adjust if you wish to limit the possible transaction fee

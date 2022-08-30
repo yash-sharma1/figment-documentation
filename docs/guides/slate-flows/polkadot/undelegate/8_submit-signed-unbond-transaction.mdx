@@ -1,0 +1,36 @@
+---
+title: 8. Submit a Signed Unbond Transaction for Broadcast
+---
+
+After signing the transaction, you will `PUT /api/v1/flows/[:flow_id]/next` and Slate will manage broadcasting the transaction to the Polkadot network.
+
+At this step, the `inputs` JSON will be:
+
+```json title="inputs"
+{
+  "transaction_payload": "[:signed_transaction_payload]"
+}
+```
+
+```text title="Example curl request"
+curl --request PUT \
+  --url https://polkadot-slate.datahub.figment.io/api/v1/flows/[:flow_id]/next \
+  --header 'Authorization: API-KEY' \
+  --header 'Content-Type: application/json' \
+  --data '{
+  "name": "sign_unbond_tx",
+  "inputs": {
+    "transaction_payload": "[:signed_transaction_payload]"
+  }
+}'
+```
+
+With the signed transaction provided, Slate will broadcast it to the network. As the transaction progresses towards confirmation, the returned state will be `unbond_tx_broadcasting`.
+
+Upon transaction finalization, the unbond will be complete and you can move on to one of the three next steps:
+
+- If the unbonded entry _does not_ exist in the era, then it is considered `rebonded` and it moves into the `done` state
+- If the unbonded entry _does_ exist and there are no funds to withdraw, it is considered unbonded and it moves into the `done` state
+- If the unbonded entry _does_ exist and there are funds to withdraw, it moves into the `ready_to_withdraw` state. We will see two possible actions:
+  - `create_withdraw_tx` — This proceeds with withdrawing from the account
+  - `complete` — This will end the flow if we do not want to withdraw funds

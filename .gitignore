@@ -1,0 +1,17 @@
+# VSCode & misc
+*.code-workspace
+.vscode
+static/.DS_Store
+static/img/.DS_Store
+static/img/**/.DS_Store
+schemas/.DS_Store
+
+# Dependencies
+node_modules
+
+# Artifacts
+.docusaurus
+docs/api-reference/*-api*
+build
+partials/transaction-search-parameters
+.env

@@ -1,0 +1,38 @@
+---
+title: 2. Assign Unstaking Data
+---
+
+After collecting the required Inputs, we `PUT /api/v1/flows/[:flow_id]/next` to move on to the next step.
+
+In this case, the `inputs` JSON would be:
+
+```json title="inputs"
+{
+  "controller_account_address": "[:controller_account_address]",
+  "stash_account_address": "[:stash_account_address]",
+  "controller_proxy_account_address": "[:controller_proxy_account_address]",
+  "amount": "[:amount]",
+  "maximum": "[:maximum]"
+}
+```
+
+```text title="Example curl request"
+curl --request PUT \
+  --url https://polkadot-slate.datahub.figment.io/api/v1/flows/[:flow_id]/next \
+  --header 'Authorization: API-KEY' \
+  --header 'Content-Type: application/json' \
+  --data '{
+  "name": "assign_unstaking_data",
+  "inputs": {
+    "controller_account_address": "[:controller_account_address]",
+    "stash_account_address": "[:stash_account_address]",
+    "controller_proxy_account_address": "[:controller_proxy_account_address]",
+    "amount": "[:amount]",
+    "maximum": "[:maximum]"
+  }
+}'
+```
+
+If chilling is required before unbonding, we will be required to create a chill transaction: [3. Create Chill Transaction](/guides/slate-flows/polkadot/undelegate/create-chill-transaction)
+
+If no chilling is required, we can move straight to creating the unbond transaction: [6. Create Unbond Transaction](/guides/slate-flows/polkadot/undelegate/create-unbond-transaction)

@@ -1,0 +1,64 @@
+---
+title: 9. Create Withdraw Transaction
+---
+
+This transaction be created directly from initializing or after the unbonding flow.
+
+If this is created directly after initializing, inputs will be required to gather stash account address, controller account address, and an optional controller proxy account address. Otherwise, `inputs` will not be required.
+
+If the information **has not** been collected:
+
+After collecting the required inputs, we `PUT /api/v1/flows/[:flow_id]/next` to move on to the next step.
+
+In this case, the inputs JSON would be like in Step 2:
+
+```json title="inputs"
+{
+  "stash_account_address": "[:stash_account_address]",
+  "controller_account_address": "[:controller_account_address]",
+  "controller_proxy_account_address": "[:controller_proxy_account_address]"
+}
+```
+
+```text title="Example curl request"
+curl --request PUT \
+  --url https://slate.figment.io/api/v1/flows/[:flow_id]/next \
+  --header 'Authorization: API-KEY' \
+  --header 'Content-Type: application/json' \
+  --data '{
+  "name": "create_withdraw_tx",
+  "inputs": {
+    "stash_account_address": "[:stash_account_address]",
+    "controller_account_address": "[:controller_account_address]",
+    "controller_proxy_account_address": "[:controller_proxy_account_address]"
+  }
+}'
+```
+
+**If this is following the flow from unbonding, no inputs are required!**
+
+Now that the account is unbonded, submit a withdraw transaction to withdraw from the stake.
+
+Once again, there are no required `inputs` for this.
+
+```text title="Example curl request"
+curl --request PUT \
+  --url https://slate.figment.io/api/v1/flows/[:flow_id]/next \
+  --header 'Authorization: API-KEY' \
+  --header 'Content-Type: application/json' \
+  --data '{
+  "name": "create_withdraw_tx",
+  "inputs": {}
+}'
+```
+
+**After creating the withdraw transaction, the rest will follow the same in both cases**:
+
+We see two possible `actions`:
+
+- `refresh_withdraw_tx` — If you need to get a fresh version of the transaction Payload (ie. the nonce needs to be updated)
+- `sign_withdraw_tx` — Submit a signed transaction Payload ready to be broadcast to the network
+
+We will choose `sign_withdraw_tx`, which indicates one Input to collect:
+
+- `transaction_payload` (**required**) — the signed transaction Payload ready to be broadcast to the network

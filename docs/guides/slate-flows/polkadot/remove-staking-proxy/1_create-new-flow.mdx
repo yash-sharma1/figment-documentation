@@ -1,0 +1,39 @@
+---
+title: 1. Create a New Flow
+---
+
+We will create a new Flow with `POST /api/v1/flows`.
+
+The `flow` JSON field for this request will be:
+
+```json
+{
+  "network_code": "polkadot",
+  "chain_code": "westend",
+  "operation": "remove_proxy",
+  "version": "v1"
+}
+```
+
+```text
+curl -X POST https://polkadot-slate.datahub.figment.io/api/v1/flows \
+-H "Authorization: API-KEY" \
+-H "Content-Type: application/json" \
+-d '{
+  "flow": {
+    "network_code": "polkadot",
+    "chain_code": "westend",
+    "operation": "remove_proxy",
+    "version": "v1"
+  }
+}'
+```
+
+The response indicates one possible action:
+
+- `create_remove_proxy_tx` - use this action to generate a proxy removal transaction.
+
+The `create_remove_proxy_tx` action indicates two fields for data collection:
+
+1. `proxy_account_address` (**required** )— The address from which you want to remove proxy rights.
+2. `proxied_account_address` (**required**) — The account whose rights will be proxied.
