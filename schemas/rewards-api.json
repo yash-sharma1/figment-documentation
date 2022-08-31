@@ -331,7 +331,7 @@
 							}
 						},
 						"url": "https://{{ETH_REWARDS_HOST}}/apikey/{{API_KEY}}/rewards",
-						"description": "Returns gross validator rewards grouped by epoch or day.\n\n### Parameters\n\n*   `network` => `ethereum`\n*   `chain_id` => `mainnet`\n*   `accounts` takes in an array of validator's public addresses. 50 max.\n*   `grouping`\n    *   `epoch` will return rewards grouped by epochs.\n    *   `daily` will return rewards grouped by day.\n*   `start_time` and `end_time` are ISO 8601 timestamps in UTC.\n    *   For daily grouping, we ignore the time component and only care about the YYYY-MM-DD component: `start_time` is inclusive and `end_time` is not. For example, if you wanted to query rewards for only January 1st, 2022, then `start_time` would be “2022-01-01” and `end_time` would be “2022-01-02\"\n    *   For epoch grouping, if the start of an epoch falls into the requested date range it will be included (even if it doesn't end inside the date range).\n\n### Results\n\n*   `network` and `chain_id` are the same as the request.\n*   `accounts` returns an array of account public addresses.\n*   `validator` returns the validator that tokens were staked to.\n*   `time` and `epoch` reference the start of the daily or epoch bucket.\n*   `rewards` is an array of objects with four components: `numeric` , `exp` and `currency`. The formula to compute the final rewards in the `currency` unit is `numeric * 10^-exp`(`text` is the string version of this).\n    \n\n### Limitations\n\n*   This API serves data for the last 7 days for epoch grouping and 60 days for daily grouping.\n*   This API returns rewards for Figment validators only.\n*   Data is available approximatively an hour after the end of the day or epoch. When requesting daily for the current day, the data will be available but obviously partially complete as the day progresses.\n    \n\n### FAQ\n\n#### Reward Types\n\nWe index block proposal, attestation, sync committee and slashing rewards.\n\n#### Negative Rewards\n\nIn theory, there could be a negative rewards amount for a day. But slashing events are rare. Current negative amounts would more likely be caused by repeatedly missing attestations and/or sync committee votes.\n\n* * *"
+						"description": "Returns gross validator rewards grouped by epoch or day.\n\n### Parameters\n\n*   `network` => `ethereum`\n*   `chain_id` => `mainnet`\n*   `accounts` takes in an array of validator's public addresses. 50 max.\n*   `grouping`\n    *   `epoch` will return rewards grouped by epochs.\n    *   `daily` will return rewards grouped by day.\n*   `start_time` and `end_time` are ISO 8601 timestamps in UTC.\n    *   For daily grouping, we ignore the time component and only care about the YYYY-MM-DD component: `start_time` is inclusive and `end_time` is not. For example, if you wanted to query rewards for only January 1st, 2022, then `start_time` would be “2022-01-01” and `end_time` would be “2022-01-02\"\n    *   For epoch grouping, if the start of an epoch falls into the requested date range it will be included (even if it doesn't end inside the date range).\n\n### Response\n\n*   `network` and `chain_id` are the same as the request.\n*   `accounts` returns an array of account public addresses.\n*   `validator` returns the validator that tokens were staked to.\n*   `time` and `epoch` reference the start of the daily or epoch bucket.\n*   `rewards` is an array of objects with four components: `numeric` , `exp` and `currency`. The formula to compute the final rewards in the `currency` unit is `numeric * 10^-exp`(`text` is the string version of this).\n    \n\n### Limitations\n\n*   This API serves data for the last 7 days for epoch grouping and 60 days for daily grouping.\n*   This API returns rewards for Figment validators only.\n*   Data is available approximatively an hour after the end of the day or epoch. When requesting daily for the current day, the data will be available but obviously partially complete as the day progresses.\n    \n\n### FAQ\n\n#### Reward Types\n\nWe index block proposal, attestation, sync committee and slashing rewards.\n\n#### Negative Rewards\n\nIn theory, there could be a negative rewards amount for a day. But slashing events are rare. Current negative amounts would more likely be caused by repeatedly missing attestations and/or sync committee votes.\n\n* * *"
 					},
 					"response": [
 						{
@@ -931,17 +931,17 @@
 	],
 	"variable": [
 		{
-			"id": "1082b06c-0920-4833-a730-ec86064b00ca",
+			"id": "b8e6f971-d078-4de3-8125-7baec8da1424",
 			"key": "ETH_REWARDS_HOST",
 			"value": "eth-rewards.datahub.figment.io"
 		},
 		{
-			"id": "84774763-47a4-4bfa-84ee-8d21d7051769",
+			"id": "96351cbc-338e-47b3-8d7d-7337858f94ff",
 			"key": "SOL_REWARDS_HOST",
 			"value": "solana-rewards.datahub.figment.io"
 		},
 		{
-			"id": "714a8bbb-643b-446f-8284-86a91a74e729",
+			"id": "f1eb5e69-c3f2-49e5-b164-5b3e29850d36",
 			"key": "DOT_REWARDS_HOST",
 			"value": "polkadot-rewards.datahub.figment.io",
 			"type": "string"
