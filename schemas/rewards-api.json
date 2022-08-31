@@ -628,7 +628,7 @@
 			"name": "Polkadot",
 			"item": [
 				{
-					"name": "DOT",
+					"name": "Rewards (by epoch)",
 					"event": [
 						{
 							"listen": "test",
@@ -931,17 +931,17 @@
 	],
 	"variable": [
 		{
-			"id": "87f85756-69e2-4cbd-9dcf-9751afd14553",
+			"id": "70d3a208-3dbf-42d0-b382-0337d3ad2204",
 			"key": "ETH_REWARDS_HOST",
 			"value": "eth-rewards.datahub.figment.io"
 		},
 		{
-			"id": "b9fb8437-cea8-4272-b798-2c72a11dcf05",
+			"id": "f81a4f32-3827-4781-807b-f30a4114fb89",
 			"key": "SOL_REWARDS_HOST",
 			"value": "solana-rewards.datahub.figment.io"
 		},
 		{
-			"id": "34b0fa32-869d-4212-89d4-064eb88fb6d5",
+			"id": "1ff88725-adc4-4549-98d0-8d9f097c519e",
 			"key": "DOT_REWARDS_HOST",
 			"value": "polkadot-rewards.datahub.figment.io",
 			"type": "string"
