@@ -633,6 +633,7 @@
 						{
 							"listen": "test",
 							"script": {
+								"id": "c16a6a84-1eef-44ff-a213-0b8d53792a78",
 								"exec": [
 									"const schema = {",
 									"    \"type\": \"array\",",
@@ -707,8 +708,7 @@
 									"    pm.response.to.have.jsonSchema(schema);",
 									"});"
 								],
-								"type": "text/javascript",
-								"id": "c16a6a84-1eef-44ff-a213-0b8d53792a78"
+								"type": "text/javascript"
 							}
 						}
 					],
@@ -724,7 +724,7 @@
 								"key": "apikey"
 							}
 						},
-						"method": "GET",
+						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
@@ -931,12 +931,12 @@
 	],
 	"variable": [
 		{
-			"id": "ee562c88-7eb9-4299-a5ea-6f3cd72a8106",
+			"id": "1792a63e-1332-440b-8f40-e0ba7d70e036",
 			"key": "ETH_REWARDS_HOST",
 			"value": "eth-rewards.datahub.figment.io"
 		},
 		{
-			"id": "88b3ec80-4562-40ed-b433-3831fdd7e912",
+			"id": "3f58946e-dad9-408d-94cd-a80c44dc1758",
 			"key": "SOL_REWARDS_HOST",
 			"value": "solana-rewards.datahub.figment.io"
 		}
