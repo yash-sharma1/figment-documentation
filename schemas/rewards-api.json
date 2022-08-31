@@ -743,7 +743,7 @@
 							"id": "a22dcd28-0aad-4776-b4f2-205d2f9f2b0b",
 							"name": "DOT",
 							"originalRequest": {
-								"method": "GET",
+								"method": "POST",
 								"header": [],
 								"url": "https://{{DOT_REWARDS_HOST}}/rewards"
 							},
@@ -931,17 +931,17 @@
 	],
 	"variable": [
 		{
-			"id": "f55a0f0d-0fd3-40b5-873e-b49ec624a46b",
+			"id": "f65cca82-38cc-48f0-9f09-069a25c02225",
 			"key": "ETH_REWARDS_HOST",
 			"value": "eth-rewards.datahub.figment.io"
 		},
 		{
-			"id": "04f77611-4768-4cb5-8b58-72dcf6274e10",
+			"id": "68af1c15-e372-4742-9544-31f25e07fdb6",
 			"key": "SOL_REWARDS_HOST",
 			"value": "solana-rewards.datahub.figment.io"
 		},
 		{
-			"id": "6af1ee03-ec48-487d-ba54-6da29a993614",
+			"id": "2c6e627b-5729-4e60-b480-ea616ab22d43",
 			"key": "DOT_REWARDS_HOST",
 			"value": "polkadot-rewards.datahub.figment.io",
 			"type": "string"
