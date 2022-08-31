@@ -12587,7 +12587,31 @@
 						"url": "https://{{AVAX_HOST}}/apikey/{{API_KEY}}/ext/bc/X",
 						"description": "Send a signed transaction to the network. \n\n### Parameters\n\n- `tx` transaction string.\n- `encoding` specifies the format of the signed transaction. Can only be `hex` when a value is provided.\n\n### Results\n\n- `txID` Transaction ID of this transaction."
 					},
-					"response": []
+					"response": [
+						{
+							"id": "e8a5d1c6-0941-4936-bdcc-d40c1bcfeb75",
+							"name": "avm.issueTx",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"jsonrpc\": \"2.0\",\n    \"id\": 1,\n    \"method\": \"avm.issueTx\",\n    \"params\": {\n        \"tx\": \"0x00000009de31b4d8b22991d51aa6aa1fc733f23a851a8c9400000000000186a0000000005f041280000000005f9ca900000030390000000000000001fceda8f90fcb5d30614b99d79fc4baa29307762668f16eb0259a57c2d3b78c875c86ec2045792d4df2d926c40f829196e0bb97ee697af71f5b0a966dabff749634c8b729855e937715b0e44303fd1014daedc752006011b730\",\n        \"encoding\": \"hex\"\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://{{AVAX_HOST}}/apikey/{{API_KEY}}/ext/bc/X"
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"responseTime": null,
+							"body": null
+						}
+					]
 				},
 				{
 					"name": "avm.listAddresses",
@@ -59928,72 +59952,72 @@
 	],
 	"variable": [
 		{
-			"id": "4dcd3deb-48f6-471f-86c7-805634ef7ce1",
+			"id": "807b1848-b911-4903-bda5-5224e9f6cfbe",
 			"key": "ARBI_HOST",
 			"value": "arbitrum-mainnet-rpc-archive-dbgtxn.datahub.figment.io"
 		},
 		{
-			"id": "f83407f9-2109-4265-826f-c96e44473f20",
+			"id": "39c0bf74-8a54-495d-a4be-c9af7d269896",
 			"key": "AVAX_HOST",
 			"value": "avalanche--mainnet--rpc.datahub.figment.io"
 		},
 		{
-			"id": "c5feff38-a6e6-482e-ba0d-b75bdfb38d99",
+			"id": "8f0d7180-737d-42cc-bec9-8842b21ee5bf",
 			"key": "BNB_HOST",
 			"value": "bsc--mainnet--rpc-archive-dbgtxn.datahub.figment.io"
 		},
 		{
-			"id": "9764df75-7f30-41e4-8a77-fbee14188111",
+			"id": "72485445-72ae-49af-a35c-b4198e17230c",
 			"key": "CELO_HOST",
 			"value": "celo-mainnet--rpc.datahub.figment.io"
 		},
 		{
-			"id": "48d0d19d-0c17-4c78-bdb4-183eb456c328",
+			"id": "5896470e-9c22-4801-9f01-e6e21830e04d",
 			"key": "COSMOS_LCD_HOST",
 			"value": "cosmoshub-4--lcd--archive.datahub.figment.io"
 		},
 		{
-			"id": "c8e5260e-8bf7-4a2a-b29c-af0e8d2084bf",
+			"id": "7688e98a-6dc1-451d-bb28-ca9dc27f7921",
 			"key": "COSMOS_RPC_HOST",
 			"value": "cosmoshub-4--rpc--archive.datahub.figment.io"
 		},
 		{
-			"id": "2f81e8a5-3dd2-45ec-b7d3-b68b226cad5c",
+			"id": "bcaa12ec-b358-408a-b743-222dbe7f3e28",
 			"key": "ETH_HOST",
 			"value": "erigon-mainnet--rpc-dbgtxn.datahub.figment.io"
 		},
 		{
-			"id": "bf36304f-6253-4ddc-a4d0-30045ba30f63",
+			"id": "65191751-00bd-48c3-a08b-b713be9ba628",
 			"key": "FTM_HOST",
 			"value": "ftm--mainnet--rpc-archive-dbgtxn.datahub.figment.io"
 		},
 		{
-			"id": "74bf037d-6c93-48b2-bcd9-2f9a89e8d295",
+			"id": "e614d8cb-656b-4f93-bd47-717831867755",
 			"key": "NEAR_HOST",
 			"value": "near-mainnet--rpc--archive.datahub.figment.io"
 		},
 		{
-			"id": "7ccbb366-b9a3-469c-9a60-c6f6d8f707d2",
+			"id": "e253b06a-4cc9-47f1-9e5e-93a778cc8a1b",
 			"key": "OPTIMISM_HOST",
 			"value": "optimism-mainnet-rpc-archive.datahub.figment.io"
 		},
 		{
-			"id": "06fe2d1b-8e2f-4d0c-8e59-880b99476ec5",
+			"id": "fc639ae7-444b-4ff1-a5ee-302ed605efb8",
 			"key": "OSMO_RPC_HOST",
 			"value": "osmosis-1--rpc--archive.datahub.figment.io"
 		},
 		{
-			"id": "3494191b-6643-4311-bbd3-4db56618e616",
+			"id": "87fa6b16-4f0e-46a8-a242-ebc389fd96f2",
 			"key": "POLYGON_HOST",
 			"value": "matic-mainnet--jsonrpc-archive-dbgtxn.datahub.figment.io"
 		},
 		{
-			"id": "72bd8fc3-cd12-4213-bd57-ff88fd5107be",
+			"id": "e7e5b478-e7e2-4890-bac5-4be3c0314b39",
 			"key": "SOL_HOST",
 			"value": "solana--mainnet.datahub.figment.io"
 		},
 		{
-			"id": "13fd7bc1-74bf-4125-9d77-044d65b66639",
+			"id": "a60fc590-3796-4ad6-8d56-ae8377d4ba6c",
 			"key": "INTERACTIVE",
 			"value": "true"
 		}
