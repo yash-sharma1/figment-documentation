@@ -338,7 +338,7 @@
 							"id": "07b51def-a4f6-4f53-b02b-f8cbbe54ec86",
 							"name": "ETH2 (daily)",
 							"originalRequest": {
-								"method": "GET",
+								"method": "POST",
 								"header": [],
 								"url": "https://{{ETH_REWARDS_HOST}}/rewards"
 							},
@@ -931,17 +931,17 @@
 	],
 	"variable": [
 		{
-			"id": "bd708011-8775-4e34-b780-05875ceb889c",
+			"id": "92f1f5a4-9ecb-4d49-b501-8ff83933137a",
 			"key": "ETH_REWARDS_HOST",
 			"value": "eth-rewards.datahub.figment.io"
 		},
 		{
-			"id": "5351e681-5d6a-4ea7-b753-5a3a510cd98d",
+			"id": "2f77134c-dac8-4837-9a24-9ca8a52135cf",
 			"key": "SOL_REWARDS_HOST",
 			"value": "solana-rewards.datahub.figment.io"
 		},
 		{
-			"id": "9711990d-80a1-4b4a-81c6-a9c8478ba05a",
+			"id": "c4b257a8-c241-474b-a1ca-5d8834b29d3f",
 			"key": "DOT_REWARDS_HOST",
 			"value": "polkadot-rewards.datahub.figment.io",
 			"type": "string"
