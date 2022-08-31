@@ -231,74 +231,7 @@
 							"script": {
 								"id": "6ba5cc1a-b138-4791-b565-0c1563e18f77",
 								"exec": [
-									"const schema = {",
-									"    \"type\": \"array\",",
-									"    \"items\": {",
-									"        \"type\": \"object\",",
-									"        \"properties\": {",
-									"            \"accounts\": {",
-									"                \"type\": \"array\",",
-									"                \"items\": {",
-									"                    \"type\": \"string\"",
-									"                }",
-									"            },",
-									"            \"chain_id\": {",
-									"                \"type\": \"string\"",
-									"            },",
-									"            \"network\": {",
-									"                \"type\": \"string\"",
-									"            },",
-									"            \"rewards\": {",
-									"                \"type\": \"array\",",
-									"                \"items\": {",
-									"                    \"type\": \"object\",",
-									"                    \"properties\": {",
-									"                        \"currency\": {",
-									"                            \"type\": \"string\"",
-									"                        },",
-									"                        \"exp\": {",
-									"                            \"type\": \"number\"",
-									"                        },",
-									"                        \"numeric\": {",
-									"                            \"type\": \"number\"",
-									"                        },",
-									"                        \"text\": {",
-									"                            \"type\": \"string\"",
-									"                        }",
-									"                    },",
-									"                    \"required\": [",
-									"                        \"numeric\",",
-									"                        \"exp\",",
-									"                        \"text\",",
-									"                        \"currency\"",
-									"                    ]",
-									"                }",
-									"            },",
-									"            \"time\": {",
-									"                \"type\": \"string\"",
-									"            },",
-									"            \"validator\": {",
-									"                \"type\": \"string\"",
-									"            }",
-									"        },",
-									"        \"required\": [",
-									"            \"accounts\",",
-									"            \"chain_id\",",
-									"            \"rewards\",",
-									"            \"network\",",
-									"            \"validator\",",
-									"            \"time\"",
-									"        ]",
-									"    }",
-									"};",
-									"",
-									"pm.test(\"status code 200\", function () {",
-									"    pm.response.to.have.status(200);",
-									"});",
-									"",
-									"pm.test(\"validating schema\", function() {",
-									"    pm.response.to.have.jsonSchema(schema);",
-									"});"
+									""
 								],
 								"type": "text/javascript"
 							}
@@ -335,33 +268,27 @@
 							"query": [
 								{
 									"key": "network",
-									"value": "ethereum",
-									"type": "text"
+									"value": "ethereum"
 								},
 								{
 									"key": "chain_id",
-									"value": "mainnet",
-									"type": "text"
+									"value": "mainnet"
 								},
 								{
 									"key": "accounts",
-									"value": "0x93257a7d4f1e6998f019483f149a4dbe3bfc8b89358411be769aeedd943de907f178da1773aea9016d1ac2bdfe3794ba",
-									"type": "text"
+									"value": "0x93257a7d4f1e6998f019483f149a4dbe3bfc8b89358411be769aeedd943de907f178da1773aea9016d1ac2bdfe3794ba"
 								},
 								{
 									"key": "start_time",
-									"value": "2022-08-25",
-									"type": "text"
+									"value": "2022-08-25"
 								},
 								{
 									"key": "end_time",
-									"value": "2022-08-26",
-									"type": "text"
+									"value": "2022-08-26"
 								},
 								{
 									"key": "grouping",
-									"value": "epoch",
-									"type": "text"
+									"value": "epoch"
 								}
 							]
 						},
@@ -897,12 +824,12 @@
 	],
 	"variable": [
 		{
-			"id": "1d3f129f-5707-49f7-825f-2e9bf4aa89cf",
+			"id": "be6527f9-cd64-43ee-838b-75c6b5977b65",
 			"key": "ETH_REWARDS_HOST",
 			"value": "eth-rewards.datahub.figment.io"
 		},
 		{
-			"id": "27f23cd4-14c8-4d67-9cd4-5b5c918b17d2",
+			"id": "891dd113-4607-4cac-817d-03ee412433ac",
 			"key": "SOL_REWARDS_HOST",
 			"value": "solana-rewards.datahub.figment.io"
 		}
