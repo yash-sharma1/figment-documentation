@@ -824,7 +824,7 @@
 							"id": "9e2056e6-c804-4889-bff0-75ad2cdc96ed",
 							"name": "DOT (Multiple Addresses)",
 							"originalRequest": {
-								"method": "GET",
+								"method": "POST",
 								"header": [],
 								"url": "https://{{DOT_REWARDS_HOST}}/rewards"
 							},
@@ -931,17 +931,17 @@
 	],
 	"variable": [
 		{
-			"id": "f65cca82-38cc-48f0-9f09-069a25c02225",
+			"id": "b657c512-16ad-4b65-ab86-c3752b6f563b",
 			"key": "ETH_REWARDS_HOST",
 			"value": "eth-rewards.datahub.figment.io"
 		},
 		{
-			"id": "68af1c15-e372-4742-9544-31f25e07fdb6",
+			"id": "72645cba-1007-4015-95a5-7f7ac056e910",
 			"key": "SOL_REWARDS_HOST",
 			"value": "solana-rewards.datahub.figment.io"
 		},
 		{
-			"id": "2c6e627b-5729-4e60-b480-ea616ab22d43",
+			"id": "eb0ad9a5-87be-4638-bd1a-bd174bc2ce27",
 			"key": "DOT_REWARDS_HOST",
 			"value": "polkadot-rewards.datahub.figment.io",
 			"type": "string"
