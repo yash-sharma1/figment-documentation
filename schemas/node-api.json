@@ -26279,7 +26279,22 @@
 						"url": "https://{{COSMOS_LCD_HOST}}/apikey/{{API_KEY}}/cosmos/authz/v1beta1/grants",
 						"description": "Returns list of `Authorization`, granted to the grantee by the granter.\n\n### Parameters\n\n- `granter` string (query)\n\n- `grantee` string (query)\n\n- `msg_type_url` string (query) Optional, msg_type_url, when set, will query only grants matching given msg type.\n\n- `pagination.key` string ($byte) (query) Key is a value returned in PageResponse.next_key to begin querying the next page most efficiently. Only one offset or key should be set.\n\n- `pagination.offset` string ($uint64 (query)\toffset is a numeric offset that can be used when key is unavailable. It is less efficient than using key. Only one of offset or key should be set.\n\n- `pagination.limit` string ($uint64) (query) limit is the total number of results to be returned in the result page. If left empty it will default to a value to be set by each app.\n\n- `pagination.count_total` boolean($boolean) (query) count_total is set to true to indicate that the result set should include a count of the total number of items available for pagination in UIs. count_total is only respected when offset is used. It is ignored when key is set.\n\n- `pagination.reverse` boolean ($boolean (query) reverse is set to true if results are to be returned in the descending order.\n\n### Results\n\n- Returns the list of `grants` with `authorization` and `expiration`."
 					},
-					"response": []
+					"response": [
+						{
+							"id": "59c962a6-40af-41fc-b3c7-34b1822c5e98",
+							"name": "/cosmos/authz/v1beta1/grants",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": "https://{{COSMOS_LCD_HOST}}/apikey/{{API_KEY}}/cosmos/authz/v1beta1/grants"
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"responseTime": null,
+							"body": null
+						}
+					]
 				},
 				{
 					"name": "/cosmos/feegrant/v1beta1/allowance/{granter}/{grantee}",
@@ -59976,72 +59991,72 @@
 	],
 	"variable": [
 		{
-			"id": "79a93129-1e09-49aa-aa0c-b94bda6785e1",
+			"id": "0caf8fb9-92b5-44fc-9dda-6b849d3f3c8c",
 			"key": "ARBI_HOST",
 			"value": "arbitrum-mainnet-rpc-archive-dbgtxn.datahub.figment.io"
 		},
 		{
-			"id": "6923fd73-516d-49a7-ba54-c08ee57177cc",
+			"id": "0abc528e-8c2c-419d-8b57-2a739d3b014c",
 			"key": "AVAX_HOST",
 			"value": "avalanche--mainnet--rpc.datahub.figment.io"
 		},
 		{
-			"id": "3054f300-c7b1-4e39-b3e2-89d2c482c320",
+			"id": "759a95ea-631e-478d-830f-8064e910c116",
 			"key": "BNB_HOST",
 			"value": "bsc--mainnet--rpc-archive-dbgtxn.datahub.figment.io"
 		},
 		{
-			"id": "f2283e82-6148-4b27-a302-6609a6f603c2",
+			"id": "4b34fc2f-648d-4136-8a98-2d7f76f72e73",
 			"key": "CELO_HOST",
 			"value": "celo-mainnet--rpc.datahub.figment.io"
 		},
 		{
-			"id": "bcd95a46-64a3-44fd-adaf-8b35ac730964",
+			"id": "11ecefc8-4815-4bb1-86eb-5aba5090fde9",
 			"key": "COSMOS_LCD_HOST",
 			"value": "cosmoshub-4--lcd--archive.datahub.figment.io"
 		},
 		{
-			"id": "3916ac29-e60a-40a5-81a9-9889e85ea127",
+			"id": "9097a96a-172d-4a45-a693-bef95ad38633",
 			"key": "COSMOS_RPC_HOST",
 			"value": "cosmoshub-4--rpc--archive.datahub.figment.io"
 		},
 		{
-			"id": "87229555-1c53-469d-b557-abec3abe85b7",
+			"id": "080f7122-9371-489a-9319-3fae67037937",
 			"key": "ETH_HOST",
 			"value": "erigon-mainnet--rpc-dbgtxn.datahub.figment.io"
 		},
 		{
-			"id": "5dce52c9-cd4c-46a5-b89c-2577d4d61134",
+			"id": "c05ae588-7b9e-4734-b76f-d118c0cef683",
 			"key": "FTM_HOST",
 			"value": "ftm--mainnet--rpc-archive-dbgtxn.datahub.figment.io"
 		},
 		{
-			"id": "e012388e-cffd-422a-a756-4ccdc2b916a3",
+			"id": "ab3ce876-efc7-47c1-9625-002d560706a1",
 			"key": "NEAR_HOST",
 			"value": "near-mainnet--rpc--archive.datahub.figment.io"
 		},
 		{
-			"id": "e51e103e-8840-4f66-a814-902a3377b924",
+			"id": "f538cccc-d6b2-4124-859e-c4d6b2df18f6",
 			"key": "OPTIMISM_HOST",
 			"value": "optimism-mainnet-rpc-archive.datahub.figment.io"
 		},
 		{
-			"id": "d63656b9-042e-49d5-a6ab-85cfb546b2e1",
+			"id": "f95d790e-8add-44e7-af51-3eeef02a1fa4",
 			"key": "OSMO_RPC_HOST",
 			"value": "osmosis-1--rpc--archive.datahub.figment.io"
 		},
 		{
-			"id": "0fcbd2a1-2094-4052-a2b1-6b9aa907adef",
+			"id": "2e0d0404-f518-4923-9f81-7c1f5eb888ba",
 			"key": "POLYGON_HOST",
 			"value": "matic-mainnet--jsonrpc-archive-dbgtxn.datahub.figment.io"
 		},
 		{
-			"id": "e75cb62a-313e-4caa-ae1c-173201ff3a8d",
+			"id": "33364d77-93e7-4a0f-acde-6570006b7d24",
 			"key": "SOL_HOST",
 			"value": "solana--mainnet.datahub.figment.io"
 		},
 		{
-			"id": "d7cecf03-445c-45cf-8f3f-0dd71003547d",
+			"id": "d064f445-37f0-4a92-9dce-3c0a2978d87f",
 			"key": "INTERACTIVE",
 			"value": "true"
 		}
