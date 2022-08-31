@@ -623,6 +623,11 @@
 				}
 			],
 			"id": "79cf9d1b-cf8a-4fe1-b04a-cb33d7bcd7fe"
+		},
+		{
+			"name": "New Folder",
+			"item": [],
+			"id": "5e0b69aa-a605-4489-a9ee-2f056fc74993"
 		}
 	],
 	"event": [
@@ -649,12 +654,12 @@
 	],
 	"variable": [
 		{
-			"id": "775a4bb5-d76a-47b2-9f9d-21aa52fee88e",
+			"id": "7dcd752e-a106-4d2e-b065-9b9647963058",
 			"key": "ETH_REWARDS_HOST",
 			"value": "eth-rewards.datahub.figment.io"
 		},
 		{
-			"id": "8da094ef-8e1c-4574-8a96-11bfc98d2148",
+			"id": "f54e34a7-9e66-4bda-a60e-33b9d766d817",
 			"key": "SOL_REWARDS_HOST",
 			"value": "solana-rewards.datahub.figment.io"
 		}
