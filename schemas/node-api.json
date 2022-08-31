@@ -20930,7 +20930,7 @@
 							],
 							"cookie": [],
 							"responseTime": null,
-							"body": "{\n    \"node_info\": {\n        \"protocol_version\": {\n            \"p2p\": \"8\",\n            \"block\": \"11\",\n            \"app\": \"0\"\n        },\n        \"id\": \"9f2567a0b1bb6e7e4521c3e815e9924e8272a54e\",\n        \"listen_addr\": \"tcp://15.235.53.169:26656\",\n        \"network\": \"cosmoshub-4\",\n        \"version\": \"v0.34.19\",\n        \"channels\": \"40202122233038606100\",\n        \"moniker\": \"dGmusr3h66\",\n        \"other\": {\n            \"tx_index\": \"on\",\n            \"rpc_address\": \"tcp://0.0.0.0:26657\"\n        }\n    },\n    \"application_version\": {\n        \"name\": \"gaia\",\n        \"server_name\": \"gaiad\",\n        \"version\": \"v7.0.3\",\n        \"commit\": \"d0884c29aac4c1e647b0a82f3df31515d2bd06a3\",\n        \"build_tags\": \"netgo,ledger\",\n        \"go\": \"go version go1.19 linux/amd64\",\n        \"build_deps\": [\n            \"filippo.io/edwards25519@v1.0.0-beta.2\",\n            \"github.com/99designs/keyring@v1.1.6\",\n            \"github.com/ChainSafe/go-schnorrkel@v0.0.0-20200405005733-88cbf1b4c40d\",\n            \"github.com/Workiva/go-datastructures@v1.0.53\",\n            \"github.com/armon/go-metrics@v0.3.10\",\n            \"github.com/beorn7/perks@v1.0.1\",\n            \"github.com/bgentry/speakeasy@v0.1.0\",\n            \"github.com/btcsuite/btcd@v0.22.0-beta\",\n            \"github.com/cespare/xxhash/v2@v2.1.2\",\n            \"github.com/coinbase/rosetta-sdk-go@v0.7.0\",\n            \"github.com/confio/ics23/go@v0.7.0\",\n            \"github.com/cosmos/btcutil@v1.0.4\",\n            \"github.com/cosmos/cosmos-sdk@v0.45.6\",\n            \"github.com/cosmos/go-bip39@v1.0.0\",\n            \"github.com/cosmos/iavl@v0.17.3\",\n            \"github.com/cosmos/ibc-go/v3@v3.0.0\",\n            \"github.com/cosmos/ledger-cosmos-go@v0.11.1\",\n            \"github.com/cosmos/ledger-go@v0.9.3\",\n            \"github.com/davecgh/go-spew@v1.1.1\",\n            \"github.com/desertbit/timer@v0.0.0-20180107155436-c41aec40b27f\",\n            \"github.com/dvsekhvalnov/jose2go@v0.0.0-20200901110807-248326c1351b\",\n            \"github.com/felixge/httpsnoop@v1.0.1\",\n            \"github.com/fsnotify/fsnotify@v1.5.1\",\n            \"github.com/go-kit/kit@v0.12.0\",\n            \"github.com/go-kit/log@v0.2.0\",\n            \"github.com/go-logfmt/logfmt@v0.5.1\",\n            \"github.com/godbus/dbus@v0.0.0-20190726142602-4481cbc300e2\",\n            \"github.com/gogo/gateway@v1.1.0\",\n            \"github.com/gogo/protobuf@v1.3.3 => github.com/regen-network/protobuf@v1.3.3-alpha.regen.1\",\n            \"github.com/golang/protobuf@v1.5.2\",\n            \"github.com/golang/snappy@v0.0.3\",\n            \"github.com/google/btree@v1.0.0\",\n            \"github.com/google/orderedcode@v0.0.1\",\n            \"github.com/gorilla/handlers@v1.5.1\",\n            \"github.com/gorilla/mux@v1.8.0\",\n            \"github.com/gorilla/websocket@v1.5.0\",\n            \"github.com/gravity-devs/liquidity@v1.5.1\",\n            \"github.com/grpc-ecosystem/go-grpc-middleware@v1.3.0\",\n            \"github.com/grpc-ecosystem/grpc-gateway@v1.16.0\",\n            \"github.com/grpc-ecosystem/grpc-gateway/v2@v2.0.1\",\n            \"github.com/gsterjov/go-libsecret@v0.0.0-20161001094733-a6f4afe4910c\",\n            \"github.com/gtank/merlin@v0.1.1\",\n            \"github.com/gtank/ristretto255@v0.1.2\",\n            \"github.com/hashicorp/go-immutable-radix@v1.3.1\",\n            \"github.com/hashicorp/golang-lru@v0.5.4\",\n            \"github.com/hashicorp/hcl@v1.0.0\",\n            \"github.com/hdevalence/ed25519consensus@v0.0.0-20210204194344-59a8610d2b87\",\n            \"github.com/improbable-eng/grpc-web@v0.14.1\",\n            \"github.com/klauspost/compress@v1.13.6\",\n            \"github.com/lib/pq@v1.10.4\",\n            \"github.com/libp2p/go-buffer-pool@v0.0.2\",\n            \"github.com/magiconair/properties@v1.8.5\",\n            \"github.com/mattn/go-isatty@v0.0.14\",\n            \"github.com/matttproud/golang_protobuf_extensions@v1.0.1\",\n            \"github.com/mimoo/StrobeGo@v0.0.0-20181016162300-f8f6d4d2b643\",\n            \"github.com/minio/highwayhash@v1.0.2\",\n            \"github.com/mitchellh/go-homedir@v1.1.0\",\n            \"github.com/mitchellh/mapstructure@v1.4.3\",\n            \"github.com/mtibben/percent@v0.2.1\",\n            \"github.com/pelletier/go-toml@v1.9.4\",\n            \"github.com/pkg/errors@v0.9.1\",\n            \"github.com/pmezard/go-difflib@v1.0.0\",\n            \"github.com/prometheus/client_golang@v1.12.1\",\n            \"github.com/prometheus/client_model@v0.2.0\",\n            \"github.com/prometheus/common@v0.32.1\",\n            \"github.com/prometheus/procfs@v0.7.3\",\n            \"github.com/rakyll/statik@v0.1.7\",\n            \"github.com/rcrowley/go-metrics@v0.0.0-20200313005456-10cdbea86bc0\",\n            \"github.com/regen-network/cosmos-proto@v0.3.1\",\n            \"github.com/rs/cors@v1.8.2\",\n            \"github.com/rs/zerolog@v1.23.0\",\n            \"github.com/spf13/afero@v1.6.0\",\n            \"github.com/spf13/cast@v1.4.1\",\n            \"github.com/spf13/cobra@v1.4.0\",\n            \"github.com/spf13/jwalterweatherman@v1.1.0\",\n            \"github.com/spf13/pflag@v1.0.5\",\n            \"github.com/spf13/viper@v1.10.1\",\n            \"github.com/strangelove-ventures/packet-forward-middleware/v2@v2.1.1\",\n            \"github.com/stretchr/testify@v1.8.0\",\n            \"github.com/subosito/gotenv@v1.2.0\",\n            \"github.com/syndtr/goleveldb@v1.0.1-0.20200815110645-5c35d600f0ca\",\n            \"github.com/tendermint/btcd@v0.1.1\",\n            \"github.com/tendermint/crypto@v0.0.0-20191022145703-50d29ede1e15\",\n            \"github.com/tendermint/go-amino@v0.16.0\",\n            \"github.com/tendermint/tendermint@v0.34.19\",\n            \"github.com/tendermint/tm-db@v0.6.7\",\n            \"github.com/zondax/hid@v0.9.0\",\n            \"golang.org/x/crypto@v0.0.0-20220214200702-86341886e292\",\n            \"golang.org/x/net@v0.0.0-20211208012354-db4efeb81f4b\",\n            \"golang.org/x/sys@v0.0.0-20220209214540-3681064d5158\",\n            \"golang.org/x/term@v0.0.0-20201126162022-7de9c90e9dd1\",\n            \"golang.org/x/text@v0.3.7\",\n            \"google.golang.org/genproto@v0.0.0-20211223182754-3ac035c7e7cb\",\n            \"google.golang.org/grpc@v1.45.0 => google.golang.org/grpc@v1.33.2\",\n            \"google.golang.org/protobuf@v1.27.1\",\n            \"gopkg.in/ini.v1@v1.66.2\",\n            \"gopkg.in/yaml.v2@v2.4.0\",\n            \"gopkg.in/yaml.v3@v3.0.1\",\n            \"nhooyr.io/websocket@v1.8.6\"\n        ],\n        \"cosmos_sdk_version\": \"v0.45.6\"\n    }\n}"
+							"body": "{\n    \"node_info\": {\n        \"protocol_version\": {\n            \"p2p\": \"8\",\n            \"block\": \"11\",\n            \"app\": \"0\"\n        },\n        \"id\": \"9f2567a0b1bb6e7e4521c3e815e9924e8272a54e\",\n        \"listen_addr\": \"tcp://15.235.53.169:26656\",\n        \"network\": \"cosmoshub-4\",\n        \"version\": \"v0.34.19\",\n        \"channels\": \"40202122233038606100\",\n        \"moniker\": \"dGmusr3h66\",\n        \"other\": {\n            \"tx_index\": \"on\",\n            \"rpc_address\": \"tcp://0.0.0.0:26657\"\n        }\n    },\n    \"application_version\": {\n        \"name\": \"gaia\",\n        \"server_name\": \"gaiad\",\n        \"version\": \"v7.0.3\",\n        \"commit\": \"d0884c29aac4c1e647b0a82f3df31515d2bd06a3\",\n        \"build_tags\": \"netgo,ledger\",\n        \"go\": \"go version go1.19 linux/amd64\",\n        \"build_deps\": [\n            \"filippo.io/edwards25519@v1.0.0-beta.2\",\n            \"github.com/99designs/keyring@v1.1.6\",\n            \"github.com/ChainSafe/go-schnorrkel@v0.0.0-20200405005733-88cbf1b4c40d\",\n            \"github.com/Workiva/go-datastructures@v1.0.53\",\n            \"github.com/armon/go-metrics@v0.3.10\",\n            \"github.com/beorn7/perks@v1.0.1\"\n        ],\n        \"cosmos_sdk_version\": \"v0.45.6\"\n    }\n}"
 						}
 					]
 				},
@@ -59976,72 +59976,72 @@
 	],
 	"variable": [
 		{
-			"id": "7493cf47-7134-4d7d-8b5a-1e49b54389fa",
+			"id": "4cba475b-deb1-4d9d-bef9-805a890a2e96",
 			"key": "ARBI_HOST",
 			"value": "arbitrum-mainnet-rpc-archive-dbgtxn.datahub.figment.io"
 		},
 		{
-			"id": "838970cc-c8f5-40b3-9870-5a87a381c923",
+			"id": "a6617baf-7f77-4ef7-8fad-915c519003b8",
 			"key": "AVAX_HOST",
 			"value": "avalanche--mainnet--rpc.datahub.figment.io"
 		},
 		{
-			"id": "3437bc78-5da0-437a-a3ee-75401a2de7f1",
+			"id": "64755ebf-a777-4989-ae41-95763beeb95a",
 			"key": "BNB_HOST",
 			"value": "bsc--mainnet--rpc-archive-dbgtxn.datahub.figment.io"
 		},
 		{
-			"id": "8e97e32f-f696-414a-b7ad-2d4f7f37a9b6",
+			"id": "8141f73f-15e8-40cd-84e5-b5984672281d",
 			"key": "CELO_HOST",
 			"value": "celo-mainnet--rpc.datahub.figment.io"
 		},
 		{
-			"id": "e190e26a-2c34-4f2c-b667-6dbb6c557f89",
+			"id": "576acbd9-b05b-4231-91c7-0107fc0eaf93",
 			"key": "COSMOS_LCD_HOST",
 			"value": "cosmoshub-4--lcd--archive.datahub.figment.io"
 		},
 		{
-			"id": "0e86ceaf-7902-4662-96ce-5e204d6e2386",
+			"id": "7fe274d7-faa2-4dee-a6bf-f5bf8b609876",
 			"key": "COSMOS_RPC_HOST",
 			"value": "cosmoshub-4--rpc--archive.datahub.figment.io"
 		},
 		{
-			"id": "2739ad2a-241c-4c71-ab30-1e645c659d99",
+			"id": "2911aa8b-b7f2-41d2-a8bc-6f46323b0cb4",
 			"key": "ETH_HOST",
 			"value": "erigon-mainnet--rpc-dbgtxn.datahub.figment.io"
 		},
 		{
-			"id": "ca11e33d-6ea1-4bf0-8a1a-598d83bef22b",
+			"id": "cf5f3394-9ca5-449f-91a5-cb3127e7a4d7",
 			"key": "FTM_HOST",
 			"value": "ftm--mainnet--rpc-archive-dbgtxn.datahub.figment.io"
 		},
 		{
-			"id": "b8a32a15-205f-436c-a9d5-f84e3cd37ed3",
+			"id": "1466b746-4a57-477a-9a1b-d613bbefdca9",
 			"key": "NEAR_HOST",
 			"value": "near-mainnet--rpc--archive.datahub.figment.io"
 		},
 		{
-			"id": "3f0deadb-77df-4acb-a55e-cac2c50f47af",
+			"id": "4cedb850-5ff0-409c-b1f2-8b330889e455",
 			"key": "OPTIMISM_HOST",
 			"value": "optimism-mainnet-rpc-archive.datahub.figment.io"
 		},
 		{
-			"id": "46b0e4fb-61d2-4c28-8cb5-0b840a23fe42",
+			"id": "98f33f8a-df21-43f8-85dd-3084bd04252b",
 			"key": "OSMO_RPC_HOST",
 			"value": "osmosis-1--rpc--archive.datahub.figment.io"
 		},
 		{
-			"id": "6b63eecf-edba-413d-857d-5b0097c080c5",
+			"id": "d434f06f-56dc-4e32-9edb-9f14f1039f81",
 			"key": "POLYGON_HOST",
 			"value": "matic-mainnet--jsonrpc-archive-dbgtxn.datahub.figment.io"
 		},
 		{
-			"id": "5645f73a-a545-48a8-a541-003c4bb3f87c",
+			"id": "efc377d5-65d4-40a8-b8ff-db94d04c79d9",
 			"key": "SOL_HOST",
 			"value": "solana--mainnet.datahub.figment.io"
 		},
 		{
-			"id": "726146eb-238a-4f34-b84c-faf3e58136dd",
+			"id": "6d919e68-9ec8-46b7-b8e5-fe07e34cad22",
 			"key": "INTERACTIVE",
 			"value": "true"
 		}
