@@ -312,7 +312,7 @@
 						"auth": {
 							"type": "noauth"
 						},
-						"method": "GET",
+						"method": "POST",
 						"header": [
 							{
 								"key": "",
@@ -649,12 +649,12 @@
 	],
 	"variable": [
 		{
-			"id": "dfd5a986-65ea-45ac-b3f0-3576b80e76cc",
+			"id": "855f02d1-375c-4d36-964f-36c158beac6a",
 			"key": "ETH_REWARDS_HOST",
 			"value": "eth-rewards.datahub.figment.io"
 		},
 		{
-			"id": "9dc0aa51-f4f1-4e68-a068-a9a00b701661",
+			"id": "3e28a07c-65ef-4ee9-91cd-e54999c27266",
 			"key": "SOL_REWARDS_HOST",
 			"value": "solana-rewards.datahub.figment.io"
 		}
