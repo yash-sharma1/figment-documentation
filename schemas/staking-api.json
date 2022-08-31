@@ -1694,7 +1694,7 @@
 					]
 				},
 				{
-					"name": "refresh_deposit_tx",
+					"name": "Refresh Deposit Transaction",
 					"event": [
 						{
 							"listen": "test",
@@ -14151,37 +14151,37 @@
 	],
 	"variable": [
 		{
-			"id": "40bf96ed-8d14-48ae-b65b-4e1765f9c734",
+			"id": "83e966f0-7192-4e2c-935d-ef5a5cfdbb53",
 			"key": "AVAX_STAKING_HOST",
 			"value": "avalanche-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "5afde70a-5474-4719-98e1-343872cc4632",
+			"id": "7b2af7bf-aee0-4237-96f6-03cd4eff6826",
 			"key": "ETH_STAKING_HOST",
 			"value": "eth-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "82a6de8b-498e-471f-9893-08107ac4b581",
+			"id": "df90da2f-852f-41f8-a11d-4ef5854a2ea5",
 			"key": "NEAR_STAKING_HOST",
 			"value": "near-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "e27f5914-0171-47dd-8c7d-a178e918c979",
+			"id": "5dde98a8-43cd-4a8c-a6d9-2ff36964465e",
 			"key": "DOT_STAKING_HOST",
 			"value": "polkadot-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "d3cef37f-2a4e-407a-836e-58c5d28e9def",
+			"id": "0d13fc8d-a133-4a3c-ad70-391b8c65e522",
 			"key": "SOL_STAKING_HOST",
 			"value": "solana-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "772fc2f3-0f36-484a-b107-569f2f2ed6fd",
+			"id": "08447cb8-6aed-4fc2-9db6-b47440bdcc6f",
 			"key": "INTERACTIVE",
 			"value": "false",
 			"type": "string"
