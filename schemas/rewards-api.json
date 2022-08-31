@@ -321,16 +321,50 @@
 								"disabled": true
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"network\": \"ethereum\",\n    \"chain_id\": \"mainnet\",\n    \"accounts\": [\n        \"0x93257a7d4f1e6998f019483f149a4dbe3bfc8b89358411be769aeedd943de907f178da1773aea9016d1ac2bdfe3794ba\"\n    ], \n    \"start_time\": \"2022-08-25\",\n    \"end_time\": \"2022-08-26\",\n    \"grouping\": \"epoch\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
+						"url": {
+							"raw": "https://{{ETH_REWARDS_HOST}}/apikey/{{API_KEY}}/rewards?network=ethereum&chain_id=mainnet&accounts=0x93257a7d4f1e6998f019483f149a4dbe3bfc8b89358411be769aeedd943de907f178da1773aea9016d1ac2bdfe3794ba&start_time=2022-08-25&end_time=2022-08-26&grouping=epoch",
+							"protocol": "https",
+							"host": [
+								"{{ETH_REWARDS_HOST}}"
+							],
+							"path": [
+								"apikey",
+								"{{API_KEY}}",
+								"rewards"
+							],
+							"query": [
+								{
+									"key": "network",
+									"value": "ethereum",
+									"type": "text"
+								},
+								{
+									"key": "chain_id",
+									"value": "mainnet",
+									"type": "text"
+								},
+								{
+									"key": "accounts",
+									"value": "0x93257a7d4f1e6998f019483f149a4dbe3bfc8b89358411be769aeedd943de907f178da1773aea9016d1ac2bdfe3794ba",
+									"type": "text"
+								},
+								{
+									"key": "start_time",
+									"value": "2022-08-25",
+									"type": "text"
+								},
+								{
+									"key": "end_time",
+									"value": "2022-08-26",
+									"type": "text"
+								},
+								{
+									"key": "grouping",
+									"value": "epoch",
+									"type": "text"
 								}
-							}
+							]
 						},
-						"url": "https://{{ETH_REWARDS_HOST}}/apikey/{{API_KEY}}/rewards",
 						"description": "Returns gross validator rewards grouped by epoch or day.\n\n### Parameters\n\n*   `network` => `ethereum`\n*   `chain_id` => `mainnet`\n*   `accounts` takes in an array of validator's public addresses. 50 max.\n*   `grouping`\n    *   `epoch` will return rewards grouped by epochs.\n    *   `daily` will return rewards grouped by day.\n*   `start_time` and `end_time` are ISO 8601 timestamps in UTC.\n    *   For daily grouping, we ignore the time component and only care about the YYYY-MM-DD component: `start_time` is inclusive and `end_time` is not. For example, if you wanted to query rewards for only January 1st, 2022, then `start_time` would be “2022-01-01” and `end_time` would be “2022-01-02\".\n    *   For epoch grouping, if the start of an epoch falls into the requested date range it will be included (even if it doesn't end inside the date range).\n\n### Results\n\n*   `network` and `chain_id` are the same as the request.\n*   `accounts` returns an array of account public addresses.\n*   `validator` returns the validator that tokens were staked to.\n*   `time` and `epoch` reference the start of the daily or epoch bucket.\n*   `rewards` is an array of objects with four components: `numeric` , `exp` and `currency`. The formula to compute the final rewards in the `currency` unit is `numeric * 10^-exp`(`text` is the string version of this).\n    \n\n### Limitations\n\n*   This API serves data for the last 7 days for epoch grouping and 60 days for daily grouping.\n*   This API returns rewards for Figment validators only.\n*   Data is available approximatively an hour after the end of the day or epoch. When requesting daily for the current day, the data will be available but obviously partially complete as the day progresses.\n    \n\n### FAQ\n\n#### Reward Types\n\nWe index block proposal, attestation, sync committee and slashing rewards.\n\n#### Negative Rewards\n\nIn theory, there could be a negative rewards amount for a day. But slashing events are rare. Current negative amounts would more likely be caused by repeatedly missing attestations and/or sync committee votes.\n\n* * *"
 					},
 					"response": [
@@ -863,12 +897,12 @@
 	],
 	"variable": [
 		{
-			"id": "1bccfa98-0d9b-4349-89c1-0ae2b018ad33",
+			"id": "1d3f129f-5707-49f7-825f-2e9bf4aa89cf",
 			"key": "ETH_REWARDS_HOST",
 			"value": "eth-rewards.datahub.figment.io"
 		},
 		{
-			"id": "af7a6b48-38fa-4066-8a5d-622ff951c7ef",
+			"id": "27f23cd4-14c8-4d67-9cd4-5b5c918b17d2",
 			"key": "SOL_REWARDS_HOST",
 			"value": "solana-rewards.datahub.figment.io"
 		}
