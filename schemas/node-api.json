@@ -12728,7 +12728,31 @@
 						"url": "https://{{AVAX_HOST}}/apikey/{{API_KEY}}/ext/bc/X",
 						"description": "Sends multiple transfers of `amount` of `assetID`, to a specified address from a list of owned addresses.\n\n> Not recommended for use on Mainnet. See warning notice in [Keystore API](https://docs.avax.network/apis/avalanchego/apis/keystore).\n\n### Parameters\n\n- `outputs` is an array of object literals which each contain an `assetID`, `amount` and `to`.\n- `memo` is an optional message, whose length can be up to 256 bytes.\n- `from` are the addresses that you want to use for this operation. If omitted, uses any of your addresses as needed.\n- `changeAddr` is the address any change will be sent to. If omitted, change is sent to one of the addresses controlled by the user.\n- The asset is sent from addresses controlled by user `username`. (Of course, that user will need to hold at least the balance of the asset being sent.)\n\n### Results\n\n- `txID` ID of this transaction.\n- `changeAddr` is the address to which changes was sent to."
 					},
-					"response": []
+					"response": [
+						{
+							"id": "71fe115a-4bc5-4d42-a735-29e383075466",
+							"name": "avm.sendMultiple",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"jsonrpc\": \"2.0\",\n    \"id\": 1,\n    \"method\": \"avm.sendMultiple\",\n    \"params\": {\n        \"outputs\": [\n            {\n                \"assetID\": \"AVAX\",\n                \"to\": \"X-avax18jma8ppw3nhx5r4ap8clazz0dps7rv5ukulre5\",\n                \"amount\": 1000000000\n            },\n            {\n                \"assetID\": \"26aqSTpZuWDAVtRmo44fjCx4zW6PDEx3zy9Qtp2ts1MuMFn9FB\",\n                \"to\": \"X-avax18knvhxx8uhc0mwlgrfyzjcm2wrd6e60w37xrjq\",\n                \"amount\": 10\n            }\n        ],\n        \"memo\": \"hi, mom!\",\n        \"from\": [\n            \"X-avax18jma8ppw3nhx5r4ap8clazz0dps7rv5ukulre5\"\n        ],\n        \"changeAddr\": \"X-avax1turszjwn05lflpewurw96rfrd3h6x8flgs5uf8\",\n        \"username\": \"username\",\n        \"password\": \"myPassword\"\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://{{AVAX_HOST}}/apikey/{{API_KEY}}/ext/bc/X"
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"responseTime": null,
+							"body": null
+						}
+					]
 				},
 				{
 					"name": "avm.sendNFT",
@@ -59952,72 +59976,72 @@
 	],
 	"variable": [
 		{
-			"id": "bc865d59-0d0a-4d55-a598-2d95a3db5c1f",
+			"id": "e3b195ac-1c69-46ae-886c-a8387f0abdab",
 			"key": "ARBI_HOST",
 			"value": "arbitrum-mainnet-rpc-archive-dbgtxn.datahub.figment.io"
 		},
 		{
-			"id": "9ace9417-f439-47a1-9db9-b81ee9e09fa7",
+			"id": "2d090616-c4c4-477a-b596-6f9a597e1a84",
 			"key": "AVAX_HOST",
 			"value": "avalanche--mainnet--rpc.datahub.figment.io"
 		},
 		{
-			"id": "e74693e6-3165-4262-9dc6-d6c238e43250",
+			"id": "d1623ccd-7b8e-49b2-ac30-7562c5f8d04f",
 			"key": "BNB_HOST",
 			"value": "bsc--mainnet--rpc-archive-dbgtxn.datahub.figment.io"
 		},
 		{
-			"id": "90fc64e1-6be1-451b-9623-531a69c5bece",
+			"id": "4a0ab307-45ae-4e6f-9e00-c518c1ad1d42",
 			"key": "CELO_HOST",
 			"value": "celo-mainnet--rpc.datahub.figment.io"
 		},
 		{
-			"id": "c36c13a7-b3fa-453e-8d84-66145e98ace4",
+			"id": "fa690d14-7202-4031-a369-ce3c66d9e805",
 			"key": "COSMOS_LCD_HOST",
 			"value": "cosmoshub-4--lcd--archive.datahub.figment.io"
 		},
 		{
-			"id": "939d2dc1-2d91-4374-a708-b4fcf8f5dc86",
+			"id": "a500301e-2e0d-410f-8863-d5ed60f94e93",
 			"key": "COSMOS_RPC_HOST",
 			"value": "cosmoshub-4--rpc--archive.datahub.figment.io"
 		},
 		{
-			"id": "2431f0bb-3819-47ab-9288-e63aa7b1c5dc",
+			"id": "283de1ca-4a36-4ce8-9c3b-64cf80f7807e",
 			"key": "ETH_HOST",
 			"value": "erigon-mainnet--rpc-dbgtxn.datahub.figment.io"
 		},
 		{
-			"id": "27b63918-4be0-4915-b706-b2fdace21854",
+			"id": "2d3b7ed6-d7a1-47c9-b581-00de62e6deda",
 			"key": "FTM_HOST",
 			"value": "ftm--mainnet--rpc-archive-dbgtxn.datahub.figment.io"
 		},
 		{
-			"id": "33f9db50-ce51-487d-b2e3-c9d504649df7",
+			"id": "d5a40638-42ff-4d9f-b877-d55b8f1b0379",
 			"key": "NEAR_HOST",
 			"value": "near-mainnet--rpc--archive.datahub.figment.io"
 		},
 		{
-			"id": "7d38c983-6931-4ce1-b4ce-710f5e660544",
+			"id": "f6bcbe6a-3978-4637-b3cc-06a9671a1e84",
 			"key": "OPTIMISM_HOST",
 			"value": "optimism-mainnet-rpc-archive.datahub.figment.io"
 		},
 		{
-			"id": "b7d229ea-8c29-4335-bd13-670b43616dd0",
+			"id": "837c0eaa-dd46-41cc-b6b8-6b06ac5adb1f",
 			"key": "OSMO_RPC_HOST",
 			"value": "osmosis-1--rpc--archive.datahub.figment.io"
 		},
 		{
-			"id": "9ac712e2-7209-40d5-8dd4-1e5690a47a6a",
+			"id": "30368c4b-2b0f-4323-b4fa-134cba5caabc",
 			"key": "POLYGON_HOST",
 			"value": "matic-mainnet--jsonrpc-archive-dbgtxn.datahub.figment.io"
 		},
 		{
-			"id": "5de24fea-01f7-49de-b21b-177d2c96bc85",
+			"id": "8781850b-5a81-4de1-bc73-692411103ec3",
 			"key": "SOL_HOST",
 			"value": "solana--mainnet.datahub.figment.io"
 		},
 		{
-			"id": "5f590770-385e-4c1a-a349-ef3098c2092e",
+			"id": "e3628ca9-abc8-48bc-a246-dd34983c4d3d",
 			"key": "INTERACTIVE",
 			"value": "true"
 		}
