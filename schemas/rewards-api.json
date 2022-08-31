@@ -322,7 +322,7 @@
 							}
 						],
 						"url": {
-							"raw": "https://{{ETH_REWARDS_HOST}}/apikey/{{API_KEY}}/rewards?network=ethereum&chain_id=mainnet&accounts=0x93257a7d4f1e6998f019483f149a4dbe3bfc8b89358411be769aeedd943de907f178da1773aea9016d1ac2bdfe3794ba&start_time=2022-08-25&end_time=2022-08-26&grouping=epoch",
+							"raw": "https://{{ETH_REWARDS_HOST}}/apikey/{{API_KEY}}/rewards?network=ethereum&chain_id=mainnet&accounts[]=0x93257a7d4f1e6998f019483f149a4dbe3bfc8b89358411be769aeedd943de907f178da1773aea9016d1ac2bdfe3794ba&start_time=2022-08-25&end_time=2022-08-26&grouping=epoch",
 							"protocol": "https",
 							"host": [
 								"{{ETH_REWARDS_HOST}}"
@@ -342,7 +342,7 @@
 									"value": "mainnet"
 								},
 								{
-									"key": "accounts",
+									"key": "accounts[]",
 									"value": "0x93257a7d4f1e6998f019483f149a4dbe3bfc8b89358411be769aeedd943de907f178da1773aea9016d1ac2bdfe3794ba"
 								},
 								{
@@ -891,12 +891,12 @@
 	],
 	"variable": [
 		{
-			"id": "0a9f4560-4ded-47d0-8e4d-ffe400880974",
+			"id": "eb2565e6-469f-4239-96a6-f5a1033d7f26",
 			"key": "ETH_REWARDS_HOST",
 			"value": "eth-rewards.datahub.figment.io"
 		},
 		{
-			"id": "f1f046a2-7f4e-4459-a6cf-501feb760ed9",
+			"id": "0edd75de-6b9a-4c79-90ba-dc8bb80c79a8",
 			"key": "SOL_REWARDS_HOST",
 			"value": "solana-rewards.datahub.figment.io"
 		}
