@@ -1,5 +1,5 @@
 ---
-title: 1. Create a New Flow
+title: Create a New Flow
 ---
 
 We will create a new Flow with a `POST` request to `/api/v1/flows`.
@@ -44,6 +44,6 @@ The `assign_unstaking_data` action indicates 5 fields for data collection:
 4. `amount` (**required**) - the amount of DOT to be unbonded from the controller. This field should be in full DOT, not in Planck (ie. if you want to stake 5 DOT, return `"amount": 5.0`). Slate will translate the amount to Plancks so you do not have to worry about the conversion factor
 5. `maximum` (**optional**) - this boolean indicates if all bonded funds should be unbonded
 
-If the account does not need to be chilled, you can skip to [6. Create Unbond Transaction](/guides/slate-flows/polkadot/undelegate/create-unbond-transaction)
+If the account does not need to be chilled, you can skip to [Create Unbond Transaction](/guides/slate-flows/polkadot/undelegate/create-unbond-transaction)
 
-If you want to skip the unbonding process as well, you can skip to [9. Create Withdraw Transaction](/guides/slate-flows/polkadot/undelegate/create-withdraw-transaction)
+If you want to skip the unbonding process as well, you can skip to [Create Withdraw Transaction](/guides/slate-flows/polkadot/undelegate/create-withdraw-transaction)

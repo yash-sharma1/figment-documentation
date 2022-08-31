@@ -89,7 +89,11 @@ export default function CodeExample({ req, res, interactive }: Props) {
   return (
     <>
       <CodeEditor
-        header={"Live Editor"}
+        header={
+          req.method === "GET"
+            ? `Request Query ${interactive ? "(try it)" : ""}`
+            : `Request Body ${interactive ? "(try it)" : ""}`
+        }
         actions={actions}
         disabled={!interactive}
         onValueChange={handleOnValueChange}
