@@ -5,7 +5,7 @@ export default function APIHomeRoute({ service, network }) {
   const history = useHistory();
 
   useEffect(() => {
-    history.push(`/api-reference/${service}/${network}`);
+    history.push(`api-reference/${service}/${network}`);
   }, [service, network]);
   return <></>;
 }
