@@ -14151,37 +14151,37 @@
 	],
 	"variable": [
 		{
-			"id": "9b0debff-53cb-41c4-80e6-33005aa168b5",
+			"id": "4e5bf5c2-6c65-4514-bb1e-7bbda152eb76",
 			"key": "AVAX_STAKING_HOST",
 			"value": "avalanche-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "f6e6d568-e6ab-4eec-9cb7-e8e58737f929",
+			"id": "920fb3c1-0f09-454a-9356-5e84f2856622",
 			"key": "ETH_STAKING_HOST",
 			"value": "eth-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "76a0105f-fede-42fa-ad12-5137af5fbf6e",
+			"id": "c0325a77-b7d8-489b-9bd1-cafe924befd8",
 			"key": "NEAR_STAKING_HOST",
 			"value": "near-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "af7106f9-7230-4547-a3cc-fbc14d428da8",
+			"id": "072b2c11-dc05-4869-89a8-147db9cca634",
 			"key": "DOT_STAKING_HOST",
 			"value": "polkadot-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "5ed62cc3-7a96-4992-8fc9-492435ced95a",
+			"id": "ed2db2b8-0bd1-4100-99c6-34471ddda3bb",
 			"key": "SOL_STAKING_HOST",
 			"value": "solana-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "359d8e94-c50b-4211-8682-53dcee5dd893",
+			"id": "c5cc90fc-f1ea-4610-9093-49abc183f141",
 			"key": "INTERACTIVE",
 			"value": "false",
 			"type": "string"
