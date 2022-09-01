@@ -6,7 +6,7 @@ export default function APIHomeRoute({ service, network }) {
   const location = useLocation();
 
   useEffect(() => {
-    history.push(`${location.pathname}/${network}`);
+    history.push(`${location.pathname}/${network}`.replace("//", "/"));
   }, [service, network]);
   return <></>;
 }
