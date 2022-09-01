@@ -12179,7 +12179,7 @@
 					]
 				},
 				{
-					"name": "sign_stake_account_tx",
+					"name": "Sign Stake Account Transaction",
 					"event": [
 						{
 							"listen": "test",
@@ -12365,7 +12365,7 @@
 					]
 				},
 				{
-					"name": "create_delegate_tx",
+					"name": "Create Delegate Transaction",
 					"event": [
 						{
 							"listen": "test",
@@ -14151,37 +14151,37 @@
 	],
 	"variable": [
 		{
-			"id": "cd11263e-0d07-4f61-a4ea-b39ff3e261ca",
+			"id": "d5a55b7b-1734-47b3-b6ce-acd527d8e7e4",
 			"key": "AVAX_STAKING_HOST",
 			"value": "avalanche-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "ab0a6d55-ac46-44e7-9297-692d40c81b29",
+			"id": "be848193-4fbd-4ab5-bfc9-2191a478175a",
 			"key": "ETH_STAKING_HOST",
 			"value": "eth-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "01194c6a-0773-4619-8591-3f251aa37952",
+			"id": "4f4777c9-299c-4e36-bbdd-cdf38c855fda",
 			"key": "NEAR_STAKING_HOST",
 			"value": "near-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "62da2b20-f7d3-4ca2-a851-3f30c8d50261",
+			"id": "d234e780-46a3-4940-8c83-380660dc01d0",
 			"key": "DOT_STAKING_HOST",
 			"value": "polkadot-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "2284dd46-9739-4520-a28d-c2f58d227dd2",
+			"id": "a4757abd-cfe0-4637-8a76-559707c5dfdc",
 			"key": "SOL_STAKING_HOST",
 			"value": "solana-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "a37371f9-710c-4926-aada-15dc887db406",
+			"id": "0f993791-147e-44d1-9ede-cafbdabaabde",
 			"key": "INTERACTIVE",
 			"value": "false",
 			"type": "string"
