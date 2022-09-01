@@ -1,11 +1,12 @@
-import { useHistory } from "@docusaurus/router";
+import { useHistory, useLocation } from "@docusaurus/router";
 import React, { useEffect } from "react";
 
 export default function APIHomeRoute({ service, network }) {
   const history = useHistory();
+  const location = useLocation();
 
   useEffect(() => {
-    history.push(`${service}/${network}`);
+    history.push(`${location.pathname}/${network}`);
   }, [service, network]);
   return <></>;
 }
