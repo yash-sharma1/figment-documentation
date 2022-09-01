@@ -13020,7 +13020,7 @@
 					"response": []
 				},
 				{
-					"name": "sign_withdraw_tx",
+					"name": "Sign Withdraw Transaction",
 					"event": [
 						{
 							"listen": "test",
@@ -14151,37 +14151,37 @@
 	],
 	"variable": [
 		{
-			"id": "07b446a6-61bd-4172-a27d-67955cb5e72b",
+			"id": "f188d016-dcae-43e5-9f8e-85726726222f",
 			"key": "AVAX_STAKING_HOST",
 			"value": "avalanche-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "c359e993-c1c7-48b6-bdee-0134c8874018",
+			"id": "f2d73fb6-35cc-4482-8421-ac38b8ed7f1e",
 			"key": "ETH_STAKING_HOST",
 			"value": "eth-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "70b3cd9c-7155-40cb-b1f3-8394ac16c36c",
+			"id": "d9f6b7ef-370e-4222-a389-e71b5c1aa10e",
 			"key": "NEAR_STAKING_HOST",
 			"value": "near-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "baee2bce-0556-40f4-b07d-6bde3c6de6ad",
+			"id": "e7f3e7d9-a59d-49b2-a81f-afb05d86aa96",
 			"key": "DOT_STAKING_HOST",
 			"value": "polkadot-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "f0a4a2ed-4880-4e30-badf-8137dc230946",
+			"id": "3a0a2e71-6fde-45c9-b573-cb3eafa6367b",
 			"key": "SOL_STAKING_HOST",
 			"value": "solana-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "b2b5f149-741f-4127-be74-422b6ff9b03a",
+			"id": "c1186dfc-83e6-4be9-9f76-aac926ea671d",
 			"key": "INTERACTIVE",
 			"value": "false",
 			"type": "string"
