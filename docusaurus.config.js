@@ -5,7 +5,7 @@ const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 const githubConfig =
   process.env.NODE_ENV === "development"
     ? {
-        baseUrl: "/",
+        baseUrl: "/test/",
       }
     : {
         baseUrl: "/figment-documentation/",
