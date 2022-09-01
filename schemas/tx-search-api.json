@@ -145,7 +145,102 @@
 						},
 						"description": "Returns transactions matching the search parameters.\n  \n\n### Parameters\n\nQuery string parameters -\n\n*   `chain` -`string` Filter by chain ID.\n*   `type` - `string` Filter by transaction type. Separate multiple values by comma.\n*   `start_time` - `string` Search range start time.\n*   `end_time` - `string` Search range end time.\n*   `start_height` - `string` Search range start block height (if applicable).\n*   `block_hash` - `string` Filter by block hash (if applicable).\n*   `memo` - `string` Filter by memo text field.\n*   `address` - `string` Filter by account address. Separate multiple values by comma.\n*   `asset` - `string` Filter by asset ID.\n*   `page` - `integer` Results page.\n    \n\n### Results\n\nReturns transaction details based on the given parameters.\n\n* * *"
 					},
-					"response": []
+					"response": [
+						{
+							"id": "e633d8e6-223a-4865-b0e3-b1d48c08b6f7",
+							"name": "/transactions",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://{{AVAX_SEARCH_HOST}}/apikey/{{API_KEY}}/transactions?network=avalanche&chain_ids=mainnet&start_height=1921984&address=avax1pvkhyf0y9674p2ps40vmp0a8w427384lpr8zan,avax1rlu93pnalclt7h0dte3evua97lv4fp4qzax5wq",
+									"protocol": "https",
+									"host": [
+										"{{AVAX_SEARCH_HOST}}"
+									],
+									"path": [
+										"apikey",
+										"{{API_KEY}}",
+										"transactions"
+									],
+									"query": [
+										{
+											"key": "network",
+											"value": "avalanche"
+										},
+										{
+											"key": "chain_ids",
+											"value": "mainnet"
+										},
+										{
+											"key": "start_height",
+											"value": "1921984"
+										},
+										{
+											"key": "address",
+											"value": "avax1pvkhyf0y9674p2ps40vmp0a8w427384lpr8zan,avax1rlu93pnalclt7h0dte3evua97lv4fp4qzax5wq"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 01 Sep 2022 16:12:15 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "vary",
+									"value": "Origin"
+								},
+								{
+									"key": "X-Quota-Limit-Month",
+									"value": "650000000"
+								},
+								{
+									"key": "Quota-Reset",
+									"value": "1"
+								},
+								{
+									"key": "X-Quota-Remaining-Second",
+									"value": "7999"
+								},
+								{
+									"key": "X-Quota-Limit-Second",
+									"value": "8000"
+								},
+								{
+									"key": "Quota-Limit",
+									"value": "8000"
+								},
+								{
+									"key": "Quota-Remaining",
+									"value": "7999"
+								},
+								{
+									"key": "X-Quota-Remaining-Month",
+									"value": "649999997"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "[\n    {\n        \"id\": \"2a9qJQvitJd1Y5RiqLoMonxVEj76PzvusXgHD1GztYjJUXtJmL\",\n        \"chain\": \"11111111111111111111111111111111LpoYY\",\n        \"type\": \"p_add_delegator\",\n        \"block\": \"dcb81QQ2jx5SAr5BsWmgepEiWSy8RfSwupredqzZZke5w76Mu\",\n        \"block_height\": 1932215,\n        \"timestamp\": \"2022-07-28T13:25:56.159481Z\",\n        \"status\": \"accepted\",\n        \"memo\": \"\",\n        \"memo_text\": \"\",\n        \"fee\": 0,\n        \"metadata\": {\n            \"duration\": 1209710,\n            \"end_time\": \"2022-08-11T13:32:00Z\",\n            \"node_id\": \"NodeID-GW7CvXwkPFDsfFHrix1SA148NHF5ZnSXs\",\n            \"start_time\": \"2022-07-28T13:30:10Z\",\n            \"weight\": 25000000000\n        },\n        \"inputs\": [\n            {\n                \"id\": \"25cYWZAvGhepiJUMVVu97q3fx16MQx27Z8rbdgX97tfTdhmMxh\",\n                \"tx_id\": \"E82EwpekLxZ9DnKQquCEVR9KR6G3tF1ut3xhUjLcKjtVZQ4GE\",\n                \"chain\": \"\",\n                \"asset\": \"FvwEAhmxKfeiG8SnEvq42hc6whRyY3EFYAvebMqDNDGCgxN5Z\",\n                \"type\": \"transfer\",\n                \"index\": 0,\n                \"locktime\": 0,\n                \"threshold\": 1,\n                \"amount\": 381000000,\n                \"group\": 0,\n                \"addresses\": [\n                    \"avax1pvkhyf0y9674p2ps40vmp0a8w427384lpr8zan\"\n                ],\n                \"stake\": false,\n                \"reward\": false,\n                \"spent\": true,\n                \"spent_in_tx\": \"2a9qJQvitJd1Y5RiqLoMonxVEj76PzvusXgHD1GztYjJUXtJmL\"\n            },\n            {\n                \"id\": \"2GhcGygHpEKt5h4b9SqwtSbQYyfUAZq7Kbx5TEP72rzAmHcUh9\",\n                \"tx_id\": \"2uGfC7MdRC394CRKtWjAqp6dW2yh32xK3qJ3LD3EKjRFtSBoxt\",\n                \"chain\": \"\",\n                \"asset\": \"FvwEAhmxKfeiG8SnEvq42hc6whRyY3EFYAvebMqDNDGCgxN5Z\",\n                \"type\": \"transfer\",\n                \"index\": 0,\n                \"locktime\": 0,\n                \"threshold\": 1,\n                \"amount\": 25000000000,\n                \"group\": 0,\n                \"addresses\": [\n                    \"avax1nne34ukaqsgqxmjgsuup8ymt08lulj5546g7c6\"\n                ],\n                \"stake\": false,\n                \"reward\": false,\n                \"spent\": true,\n                \"spent_in_tx\": \"2a9qJQvitJd1Y5RiqLoMonxVEj76PzvusXgHD1GztYjJUXtJmL\"\n            }\n        ],\n        \"input_amounts\": {\n            \"FvwEAhmxKfeiG8SnEvq42hc6whRyY3EFYAvebMqDNDGCgxN5Z\": 25381000000\n        },\n        \"outputs\": [\n            {\n                \"id\": \"2A25iE3uPWo5BNDMZAfZGQz8CvyGkLtS4pQ7c5mvkFJiChQvay\",\n                \"tx_id\": \"2a9qJQvitJd1Y5RiqLoMonxVEj76PzvusXgHD1GztYjJUXtJmL\",\n                \"chain\": \"\",\n                \"asset\": \"FvwEAhmxKfeiG8SnEvq42hc6whRyY3EFYAvebMqDNDGCgxN5Z\",\n                \"type\": \"transfer\",\n                \"index\": 1,\n                \"locktime\": 0,\n                \"threshold\": 1,\n                \"amount\": 25000000000,\n                \"group\": 0,\n                \"addresses\": [\n                    \"avax1h05yc8gyz55020az2fz4z02nn78xlnducgy2mf\"\n                ],\n                \"stake\": true,\n                \"reward\": false,\n                \"spent\": false,\n                \"spent_in_tx\": null\n            },\n            {\n                \"id\": \"28tTGPuUSY7GCRbJS1qrWrWRvAnHo6QCXxiS4e9n3jUKXgCf5D\",\n                \"tx_id\": \"2a9qJQvitJd1Y5RiqLoMonxVEj76PzvusXgHD1GztYjJUXtJmL\",\n                \"chain\": \"\",\n                \"asset\": \"FvwEAhmxKfeiG8SnEvq42hc6whRyY3EFYAvebMqDNDGCgxN5Z\",\n                \"type\": \"transfer\",\n                \"index\": 0,\n                \"locktime\": 0,\n                \"threshold\": 1,\n                \"amount\": 381000000,\n                \"group\": 0,\n                \"addresses\": [\n                    \"avax1rlu93pnalclt7h0dte3evua97lv4fp4qzax5wq\"\n                ],\n                \"stake\": false,\n                \"reward\": false,\n                \"spent\": true,\n                \"spent_in_tx\": \"fr3Eq8FeKN1YGVAKr1DEc3hAbCSBqrVXrG2Pwf8nuCXySDUrw\"\n            }\n        ],\n        \"output_amounts\": {\n            \"FvwEAhmxKfeiG8SnEvq42hc6whRyY3EFYAvebMqDNDGCgxN5Z\": 25381000000\n        }\n    },\n    {\n        \"id\": \"E82EwpekLxZ9DnKQquCEVR9KR6G3tF1ut3xhUjLcKjtVZQ4GE\",\n        \"chain\": \"11111111111111111111111111111111LpoYY\",\n        \"type\": \"p_add_delegator\",\n        \"block\": \"hXnSceGbJajBQeKsFypokezZroD87LRF75yCsGEBoX2p4CQ5Y\",\n        \"block_height\": 1924119,\n        \"timestamp\": \"2022-07-26T20:46:55.696341Z\",\n        \"status\": \"accepted\",\n        \"memo\": \"\",\n        \"memo_text\": \"\",\n        \"fee\": 0,\n        \"metadata\": {\n            \"duration\": 1209643,\n            \"end_time\": \"2022-08-09T20:52:00Z\",\n            \"node_id\": \"NodeID-GW7CvXwkPFDsfFHrix1SA148NHF5ZnSXs\",\n            \"start_time\": \"2022-07-26T20:51:17Z\",\n            \"weight\": 25000000000\n        },\n        \"inputs\": [\n            {\n                \"id\": \"yEiEpKePV5KtacM85EX1iqBonXaDV7N6AodiWKGxUyKHFqRk8\",\n                \"tx_id\": \"UsXVfL8uj3Kv4t6h7fvy4nPNXkf7q4HgZLkDoTnsMzCF5DcKo\",\n                \"chain\": \"\",\n                \"asset\": \"FvwEAhmxKfeiG8SnEvq42hc6whRyY3EFYAvebMqDNDGCgxN5Z\",\n                \"type\": \"transfer\",\n                \"index\": 0,\n                \"locktime\": 0,\n                \"threshold\": 1,\n                \"amount\": 293000000,\n                \"group\": 0,\n                \"addresses\": [\n                    \"avax1nhx84207m2t85pyud5lpyucaja9zg0amt62zfl\"\n                ],\n                \"stake\": false,\n                \"reward\": false,\n                \"spent\": true,\n                \"spent_in_tx\": \"E82EwpekLxZ9DnKQquCEVR9KR6G3tF1ut3xhUjLcKjtVZQ4GE\"\n            },\n            {\n                \"id\": \"hQsWoanzMAmGrw41nJaN1bSRcGmLEBdptxtQ87ympoiJHpBtr\",\n                \"tx_id\": \"BSVFaYseLC9QUuUTtYGxCh8tf7DE7zqHpwZPBBH6CSwiutUv6\",\n                \"chain\": \"\",\n                \"asset\": \"FvwEAhmxKfeiG8SnEvq42hc6whRyY3EFYAvebMqDNDGCgxN5Z\",\n                \"type\": \"transfer\",\n                \"index\": 0,\n                \"locktime\": 0,\n                \"threshold\": 1,\n                \"amount\": 88000000,\n                \"group\": 0,\n                \"addresses\": [\n                    \"avax1rlu93pnalclt7h0dte3evua97lv4fp4qzax5wq\"\n                ],\n                \"stake\": false,\n                \"reward\": false,\n                \"spent\": true,\n                \"spent_in_tx\": \"E82EwpekLxZ9DnKQquCEVR9KR6G3tF1ut3xhUjLcKjtVZQ4GE\"\n            },\n            {\n                \"id\": \"28yvfYYy5VyZecsS3DUTnDGhc43pg42GeEdAkR4BuorzQGzygy\",\n                \"tx_id\": \"24etLv7LZ7wLpoWQnqD36aodZQ1LKZbTLYC6oaoWtJythADzZy\",\n                \"chain\": \"\",\n                \"asset\": \"FvwEAhmxKfeiG8SnEvq42hc6whRyY3EFYAvebMqDNDGCgxN5Z\",\n                \"type\": \"transfer\",\n                \"index\": 0,\n                \"locktime\": 0,\n                \"threshold\": 1,\n                \"amount\": 1000000000,\n                \"group\": 0,\n                \"addresses\": [\n                    \"avax1kh9r03972vqxlglsarxrc9f9mxe2zcw5prfhel\"\n                ],\n                \"stake\": false,\n                \"reward\": false,\n                \"spent\": true,\n                \"spent_in_tx\": \"E82EwpekLxZ9DnKQquCEVR9KR6G3tF1ut3xhUjLcKjtVZQ4GE\"\n            },\n            {\n                \"id\": \"2tAq1Lm8rpbmgMtXq55EoAzV8ZHUCXNER6BNL4M4SZ61MnqWxp\",\n                \"tx_id\": \"2kDCa96WgnT9T4MtXABJZWzU4RnafDnEEN6o4RNV44L8zy9CYJ\",\n                \"chain\": \"\",\n                \"asset\": \"FvwEAhmxKfeiG8SnEvq42hc6whRyY3EFYAvebMqDNDGCgxN5Z\",\n                \"type\": \"transfer\",\n                \"index\": 0,\n                \"locktime\": 0,\n                \"threshold\": 1,\n                \"amount\": 24000000000,\n                \"group\": 0,\n                \"addresses\": [\n                    \"avax10ahyx8xnnapxll8ny0ttvs3uycnm6ks8p3ker4\"\n                ],\n                \"stake\": false,\n                \"reward\": false,\n                \"spent\": true,\n                \"spent_in_tx\": \"E82EwpekLxZ9DnKQquCEVR9KR6G3tF1ut3xhUjLcKjtVZQ4GE\"\n            }\n        ],\n        \"input_amounts\": {\n            \"FvwEAhmxKfeiG8SnEvq42hc6whRyY3EFYAvebMqDNDGCgxN5Z\": 25381000000\n        },\n        \"outputs\": [\n            {\n                \"id\": \"2SpjS1MMm2FbR2PxQt5UEsMbQY4EEKxWVebmhnGt3jByc5h2hn\",\n                \"tx_id\": \"E82EwpekLxZ9DnKQquCEVR9KR6G3tF1ut3xhUjLcKjtVZQ4GE\",\n                \"chain\": \"\",\n                \"asset\": \"FvwEAhmxKfeiG8SnEvq42hc6whRyY3EFYAvebMqDNDGCgxN5Z\",\n                \"type\": \"transfer\",\n                \"index\": 1,\n                \"locktime\": 0,\n                \"threshold\": 1,\n                \"amount\": 25000000000,\n                \"group\": 0,\n                \"addresses\": [\n                    \"avax1jex2dcfz06n9f8p2y5ww2aqtd35vd53nlp8em3\"\n                ],\n                \"stake\": true,\n                \"reward\": false,\n                \"spent\": false,\n                \"spent_in_tx\": null\n            },\n            {\n                \"id\": \"25cYWZAvGhepiJUMVVu97q3fx16MQx27Z8rbdgX97tfTdhmMxh\",\n                \"tx_id\": \"E82EwpekLxZ9DnKQquCEVR9KR6G3tF1ut3xhUjLcKjtVZQ4GE\",\n                \"chain\": \"\",\n                \"asset\": \"FvwEAhmxKfeiG8SnEvq42hc6whRyY3EFYAvebMqDNDGCgxN5Z\",\n                \"type\": \"transfer\",\n                \"index\": 0,\n                \"locktime\": 0,\n                \"threshold\": 1,\n                \"amount\": 381000000,\n                \"group\": 0,\n                \"addresses\": [\n                    \"avax1pvkhyf0y9674p2ps40vmp0a8w427384lpr8zan\"\n                ],\n                \"stake\": false,\n                \"reward\": false,\n                \"spent\": true,\n                \"spent_in_tx\": \"2a9qJQvitJd1Y5RiqLoMonxVEj76PzvusXgHD1GztYjJUXtJmL\"\n            }\n        ],\n        \"output_amounts\": {\n            \"FvwEAhmxKfeiG8SnEvq42hc6whRyY3EFYAvebMqDNDGCgxN5Z\": 25381000000\n        }\n    }\n]"
+						}
+					]
 				},
 				{
 					"name": "/transactions/{hash}",
@@ -1245,100 +1340,100 @@
 	],
 	"variable": [
 		{
-			"id": "81f30c7a-87a4-4df7-ba9a-7588f4468fbd",
+			"id": "9b148002-20b1-4044-959c-6d04ccc895bd",
 			"key": "AVAX_SEARCH_HOST",
 			"value": "avalanche--mainnet--indexer.datahub.figment.io"
 		},
 		{
-			"id": "c7850d79-5d0d-48da-9168-96fcc015cc8d",
+			"id": "74036678-11a2-4b5e-a45d-c81199052467",
 			"key": "NEAR_SEARCH_HOST",
 			"value": "near--indexer.datahub.figment.io"
 		},
 		{
-			"id": "e83ef311-1723-445e-950e-023734365eb0",
+			"id": "48321250-9573-4a6d-960c-39319942ee15",
 			"key": "DOT_SEARCH_HOST",
 			"value": "polkadot--search.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "2d2d31e8-49a6-4771-9e28-7d3ebd0d7c54",
+			"id": "bd7f09bb-6743-41c4-aa14-30411262d2f0",
 			"key": "KUSAMA_SEARCH_HOST",
 			"value": "polkadot-kusama--search.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "21967475-7564-4dd3-9179-2d278ef4a487",
+			"id": "d68e9204-a906-43ae-84b6-64bbe8a0fe01",
 			"key": "COSMOS_SEARCH_HOST",
 			"value": "cosmos--search.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "8aa03ab7-503e-44c8-b769-40eca27d791f",
+			"id": "7102bb4e-3922-4a07-aea3-4a61b1ceaa01",
 			"key": "AVALANCHE_TRANSACTION_HASH",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "db3acaf7-6063-48e2-ad61-0261625c5100",
+			"id": "ba002be2-aa54-4bb7-9ee4-ee46941fd836",
 			"key": "NEAR_TRANSACTION_HASH",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "c8e28862-c46f-4f2a-8da2-750de8f43a10",
+			"id": "4f684986-8beb-4d03-b123-dc65d26c1996",
 			"key": "------ UNUSED VARS BELOW THIS LINE ------",
 			"value": "",
 			"type": "string",
 			"disabled": true
 		},
 		{
-			"id": "73ccf369-3ea1-4d7b-9d31-9d7ba64b5179",
+			"id": "c9af2b3f-4115-4481-80ef-a04c72c54547",
 			"key": "OSMOSIS_SEARCH_HOST",
 			"value": "osmosis--search.datahub.figment.io",
 			"type": "string",
 			"disabled": true
 		},
 		{
-			"id": "9736a827-2af2-4f9e-8aa7-c708f0a884eb",
+			"id": "a70e2b39-413a-4d11-a8ba-e9cd1fc5fee1",
 			"key": "CELO_MAINNET_HOST",
 			"value": "celo--mainnet--indexer.datahub.figment.io",
 			"type": "string",
 			"disabled": true
 		},
 		{
-			"id": "f8f02d9a-393b-4b29-ac83-6fa0f6646735",
+			"id": "27182584-9dd0-4234-86b7-2b1fb5000ad0",
 			"key": "OASIS_MAINNET_HOST",
 			"value": "oasis--mainnet.datahub.figment.io",
 			"type": "string",
 			"disabled": true
 		},
 		{
-			"id": "7dc51e35-2d8e-4a20-a8f5-33a6263e994b",
+			"id": "8ffcd902-3258-484f-a25c-a9619bc8e800",
 			"key": "KAVA_HOST",
 			"value": "kava--search.datahub.figment.io",
 			"type": "string",
 			"disabled": true
 		},
 		{
-			"id": "d80bb816-5b7a-43a3-ab29-4546661d4fc1",
+			"id": "8ac673fa-735d-49dd-bb61-0174ff14cf3d",
 			"key": "MINA_MAINNET_HOST",
 			"value": "mina--mainnet--indexer.datahub.figment.io",
 			"type": "string",
 			"disabled": true
 		},
 		{
-			"id": "d88e3c87-9791-4561-8336-30bffd17b70c",
+			"id": "110c0a2f-8d06-4bfb-92a7-f361be1aa695",
 			"key": "random-tx-id",
 			"value": "",
 			"disabled": true
 		},
 		{
-			"id": "8decdcf1-8fa7-4185-9d28-830275c17799",
+			"id": "cf59cdaa-cc4d-47f9-ba95-f950bfd19191",
 			"key": "random-block-hash",
 			"value": ""
 		},
 		{
-			"id": "6f9a0983-a601-4326-8fb4-16394cb8bcfc",
+			"id": "d6b3c34a-9805-4b07-b2a0-8690219d450e",
 			"key": "kusama-random-block-hash",
 			"value": ""
 		}
