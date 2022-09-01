@@ -740,161 +740,7 @@
 						},
 						"description": "Returns transactions matching the search parameters.\n\n### Parameters\n\nQuery string parameters -\n\n*   `block_hash` - `string` Filter by block hash.\n*   `block_height` - `string` Filter by block height.\n*   `sender` - Account which sent the transaction.\n*   `receiver` - Account which was the transaction recipient.\n*   `start_date` - `string` Search range start time.\n*   `end_date` - `string` Search range end time.\n*   `start_height` - `string` Search range start time.\n*   `end_height` - `string` Search range end time.\n*   `limit` - Limit results. Max is 100.\n    \n\n### Results\n\nReturns transaction details."
 					},
-					"response": [
-						{
-							"id": "19653307-1513-4f92-a4c7-d58604dc2e2c",
-							"name": "/transactions",
-							"originalRequest": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Authorization",
-										"value": "{{API_KEY}}",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"network\": \"near\",\n    \"chain_id\": \"mainnet\",\n    \"account\": \"ledgerbyfigment.poolv1.near\",\n    \"limit\": 100\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "https://{{NEAR_SEARCH_HOST}}/apikey/{{API_KEY}}/transactions",
-									"protocol": "https",
-									"host": [
-										"{{NEAR_SEARCH_HOST}}"
-									],
-									"path": [
-										"apikey",
-										"{{API_KEY}}",
-										"transactions"
-									],
-									"query": [
-										{
-											"key": "block_hash",
-											"value": "",
-											"disabled": true
-										},
-										{
-											"key": "block_height",
-											"value": "",
-											"disabled": true
-										},
-										{
-											"key": "sender",
-											"value": "",
-											"disabled": true
-										},
-										{
-											"key": "receiver",
-											"value": "",
-											"disabled": true
-										},
-										{
-											"key": "start_date",
-											"value": "",
-											"disabled": true
-										},
-										{
-											"key": "end_date",
-											"value": "",
-											"disabled": true
-										},
-										{
-											"key": "start_height",
-											"value": "",
-											"disabled": true
-										},
-										{
-											"key": "end_height",
-											"value": "",
-											"disabled": true
-										}
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Date",
-									"value": "Wed, 10 Aug 2022 21:48:28 GMT"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json; charset=utf-8"
-								},
-								{
-									"key": "Transfer-Encoding",
-									"value": "chunked"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								},
-								{
-									"key": "X-RateLimit-Remaining-Second",
-									"value": "1999"
-								},
-								{
-									"key": "X-RateLimit-Limit-Second",
-									"value": "2000"
-								},
-								{
-									"key": "RateLimit-Limit",
-									"value": "2000"
-								},
-								{
-									"key": "RateLimit-Remaining",
-									"value": "1999"
-								},
-								{
-									"key": "RateLimit-Reset",
-									"value": "1"
-								},
-								{
-									"key": "vary",
-									"value": "Origin"
-								},
-								{
-									"key": "X-Quota-Remaining-Second",
-									"value": "7999"
-								},
-								{
-									"key": "X-Quota-Limit-Second",
-									"value": "8000"
-								},
-								{
-									"key": "Quota-Limit",
-									"value": "8000"
-								},
-								{
-									"key": "X-Quota-Remaining-Month",
-									"value": "649999978"
-								},
-								{
-									"key": "X-Quota-Limit-Month",
-									"value": "650000000"
-								},
-								{
-									"key": "Quota-Reset",
-									"value": "1"
-								},
-								{
-									"key": "Quota-Remaining",
-									"value": "7999"
-								}
-							],
-							"cookie": [],
-							"responseTime": null,
-							"body": "{\n    \"page\": 1,\n    \"limit\": 100,\n    \"records\": [\n        {\n            \"id\": 194400030,\n            \"created_at\": \"2022-08-09T13:12:45.752125Z\",\n            \"updated_at\": \"2022-08-09T13:12:45.752125Z\",\n            \"time\": \"2022-08-09T13:11:48.456291Z\",\n            \"height\": 71637448,\n            \"hash\": \"7KdyjsrR6DzooU1nnR4LokiKU5wDjiDp8CApEjtbVdf8\",\n            \"block_hash\": \"Gbhxj8mPMw98VN9r7h8241yrnYXfR5FL3fBUPE7omkBm\",\n            \"sender\": \"wikiguy.near\",\n            \"receiver\": \"ledgerbyfigment.poolv1.near\",\n            \"gas_burnt\": \"14114524209045\",\n            \"fee\": \"1344497652154500000000\",\n            \"public_key\": \"ed25519:9CFktPuXGDDrohfSGTgqgZYZTiqdu9b43Ufmon4wdG8i\",\n            \"signature\": \"ed25519:4mwudLPLEhWbcDoRUekCui7g3QdGGGJiweWssfafRXXhegfTkyuyohwEjeS1qkv1mWtLpXC6558aQ4uk6cHYF4Ka\",\n            \"actions\": [\n                {\n                    \"data\": {\n                        \"gas\": 125000000000000,\n                        \"deposit\": \"47257080825000000000000\",\n                        \"method_name\": \"deposit_and_stake\"\n                    },\n                    \"type\": \"FunctionCall\"\n                }\n            ],\n            \"actions_count\": 1,\n            \"outcome\": {\n                \"id\": \"7KdyjsrR6DzooU1nnR4LokiKU5wDjiDp8CApEjtbVdf8\",\n                \"outcome\": {\n                    \"logs\": [],\n                    \"status\": {\n                        \"Failure\": null,\n                        \"SuccessValue\": null,\n                        \"SuccessReceiptId\": \"Ao2TTEtqKuZAjVsPVKeCnyzQqdA7kZRS2ABbdo2HEYqg\"\n                    },\n                    \"gas_burnt\": 2427963482746,\n                    \"executor_id\": \"wikiguy.near\",\n                    \"receipt_ids\": [\n                        \"Ao2TTEtqKuZAjVsPVKeCnyzQqdA7kZRS2ABbdo2HEYqg\"\n                    ],\n                    \"tokens_burnt\": \"242796348274600000000\"\n                },\n                \"block_hash\": \"Gbhxj8mPMw98VN9r7h8241yrnYXfR5FL3fBUPE7omkBm\"\n            },\n            \"receipt\": [\n                {\n                    \"id\": \"Ao2TTEtqKuZAjVsPVKeCnyzQqdA7kZRS2ABbdo2HEYqg\",\n                    \"outcome\": {\n                        \"logs\": [\n                            \"Epoch 1430: Contract received total rewards of 40940868875191165183701248 tokens. New total staked balance is 197488177297134097804548034756. Total number of shares 188996994084833307289419894366\",\n                            \"Total rewards fee is 2938543432776188931665576 stake shares.\",\n                            \"@wikiguy.near deposited 47257080825000000000000. New unstaked balance is 47257080825000000000000\",\n                            \"@wikiguy.near staking 47257080824999999999999. Received 45225219794859211381906 new staking shares. Total 1 unstaked balance and 45225219794859211381906 staking shares\",\n                            \"Contract total staked balance is 197488224554214922804548034756. Total number of shares 188997039310053102148631276272\"\n                        ],\n                        \"status\": {\n                            \"Failure\": null,\n                            \"SuccessValue\": \"\",\n                            \"SuccessReceiptId\": null\n                        },\n                        \"gas_burnt\": 7846363173416,\n                        \"executor_id\": \"ledgerbyfigment.poolv1.near\",\n                        \"receipt_ids\": [\n                            \"AQDXSUcUHgcoqRrmq7Y7Czqs6nJWooX2K7dGz8LZ78Tw\",\n                            \"AFSBfmabV4UA7F2HGkHhDgXdgXPYk6TW67ZRgbRBorms\",\n                            \"3CfN1W1jxDcvZ1hG7EL1CWuNhZczqksCkXbp9WNs561a\"\n                        ],\n                        \"tokens_burnt\": \"784636317341600000000\"\n                    },\n                    \"block_hash\": \"4L7QBst7iV3oikWptfzAABrSTcvbwCqJT9UcJx8tj3X4\"\n                },\n                {\n                    \"id\": \"AQDXSUcUHgcoqRrmq7Y7Czqs6nJWooX2K7dGz8LZ78Tw\",\n                    \"outcome\": {\n                        \"logs\": [],\n                        \"status\": {\n                            \"Failure\": null,\n                            \"SuccessValue\": \"\",\n                            \"SuccessReceiptId\": null\n                        },\n                        \"gas_burnt\": 210277125000,\n                        \"executor_id\": \"ledgerbyfigment.poolv1.near\",\n                        \"receipt_ids\": [\n                            \"Ejr5JoFXMsWtszvxPvGFrJbMrjL4RAJoyVLM4JpAvGia\"\n                        ],\n                        \"tokens_burnt\": \"21027712500000000000\"\n                    },\n                    \"block_hash\": \"B3Z47qWYe4YAxFHwg8K1uAJZSRaYqYnbBSZJXXB7YRbK\"\n                },\n                {\n                    \"id\": \"Ejr5JoFXMsWtszvxPvGFrJbMrjL4RAJoyVLM4JpAvGia\",\n                    \"outcome\": {\n                        \"logs\": [],\n                        \"status\": {\n                            \"Failure\": null,\n                            \"SuccessValue\": \"\",\n                            \"SuccessReceiptId\": null\n                        },\n                        \"gas_burnt\": 223182562500,\n                        \"executor_id\": \"wikiguy.near\",\n                        \"receipt_ids\": [],\n                        \"tokens_burnt\": \"0\"\n                    },\n                    \"block_hash\": \"6NabwtmUu8UhQJDLcsUtZJPKRLqtxkbLiJHTQzYSsZaA\"\n                },\n                {\n                    \"id\": \"AFSBfmabV4UA7F2HGkHhDgXdgXPYk6TW67ZRgbRBorms\",\n                    \"outcome\": {\n                        \"logs\": [],\n                        \"status\": {\n                            \"Failure\": null,\n                            \"SuccessValue\": \"\",\n                            \"SuccessReceiptId\": null\n                        },\n                        \"gas_burnt\": 2960372740383,\n                        \"executor_id\": \"ledgerbyfigment.poolv1.near\",\n                        \"receipt_ids\": [\n                            \"2TrqtX9yFnKf8a2Y5y6jYtgkTC7kCyg5u2JvdnjsJzDy\"\n                        ],\n                        \"tokens_burnt\": \"296037274038300000000\"\n                    },\n                    \"block_hash\": \"6NabwtmUu8UhQJDLcsUtZJPKRLqtxkbLiJHTQzYSsZaA\"\n                },\n                {\n                    \"id\": \"2TrqtX9yFnKf8a2Y5y6jYtgkTC7kCyg5u2JvdnjsJzDy\",\n                    \"outcome\": {\n                        \"logs\": [],\n                        \"status\": {\n                            \"Failure\": null,\n                            \"SuccessValue\": \"\",\n                            \"SuccessReceiptId\": null\n                        },\n                        \"gas_burnt\": 223182562500,\n                        \"executor_id\": \"wikiguy.near\",\n                        \"receipt_ids\": [],\n                        \"tokens_burnt\": \"0\"\n                    },\n                    \"block_hash\": \"49ZrfXdkLsiYxy84VkqAxBcPpdQaKsvj6Q93GPqDuYmS\"\n                },\n                {\n                    \"id\": \"3CfN1W1jxDcvZ1hG7EL1CWuNhZczqksCkXbp9WNs561a\",\n                    \"outcome\": {\n                        \"logs\": [],\n                        \"status\": {\n                            \"Failure\": null,\n                            \"SuccessValue\": \"\",\n                            \"SuccessReceiptId\": null\n                        },\n                        \"gas_burnt\": 223182562500,\n                        \"executor_id\": \"wikiguy.near\",\n                        \"receipt_ids\": [],\n                        \"tokens_burnt\": \"0\"\n                    },\n                    \"block_hash\": \"B3Z47qWYe4YAxFHwg8K1uAJZSRaYqYnbBSZJXXB7YRbK\"\n                }\n            ],\n            \"success\": true\n        }\n    ]\n}"
-						}
-					]
+					"response": []
 				},
 				{
 					"name": "/transactions/{hash}",
@@ -1336,100 +1182,100 @@
 	],
 	"variable": [
 		{
-			"id": "be3c23b8-44a1-4a22-972a-fad5be907e3c",
+			"id": "cfcb255c-e0e7-4724-8d50-5330ef8158bf",
 			"key": "AVAX_SEARCH_HOST",
 			"value": "avalanche--mainnet--indexer.datahub.figment.io"
 		},
 		{
-			"id": "240e4d90-e427-4b23-aa5b-afd3705d1a74",
+			"id": "8134629b-c559-4ff8-a3f0-18ac893993d2",
 			"key": "NEAR_SEARCH_HOST",
 			"value": "near--indexer.datahub.figment.io"
 		},
 		{
-			"id": "8daa2e40-bf1d-470d-b56e-f1588f04409a",
+			"id": "4026d06b-d7da-49c5-807f-2c3deb2622ab",
 			"key": "DOT_SEARCH_HOST",
 			"value": "polkadot--search.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "65a248b2-7762-4085-b0c3-153d0268b2f6",
+			"id": "861dc2b5-6f2c-46ca-9116-f1a196a14d36",
 			"key": "KUSAMA_SEARCH_HOST",
 			"value": "polkadot-kusama--search.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "1284b6da-0b06-4f6c-bde2-b7147fb5a3df",
+			"id": "7b81f1e9-37a1-4ab9-80bb-cdb44d531dd0",
 			"key": "COSMOS_SEARCH_HOST",
 			"value": "cosmos--search.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "bd8b7ac3-f013-426a-a7b7-bc79fd79c828",
+			"id": "7b7bf649-c890-440e-bee8-48074cf63c67",
 			"key": "AVALANCHE_TRANSACTION_HASH",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "854957c6-2dc5-4b81-8c73-134a69cde8e5",
+			"id": "c010be54-f2dc-46c0-ba26-a746242af4c9",
 			"key": "NEAR_TRANSACTION_HASH",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "c4c0599b-0eea-4abe-ab98-5e0205d5d2f6",
+			"id": "78f25fab-4f82-4a43-ad1e-cffe96ae7f01",
 			"key": "------ UNUSED VARS BELOW THIS LINE ------",
 			"value": "",
 			"type": "string",
 			"disabled": true
 		},
 		{
-			"id": "198649a7-0082-4a72-af32-df23f573c065",
+			"id": "5a919275-7ce1-483a-8044-1b84a607843d",
 			"key": "OSMOSIS_SEARCH_HOST",
 			"value": "osmosis--search.datahub.figment.io",
 			"type": "string",
 			"disabled": true
 		},
 		{
-			"id": "10224ede-c116-404d-b695-bfb5cdf88a43",
+			"id": "45a30db8-5cdb-44f4-88d7-c7bc7716c773",
 			"key": "CELO_MAINNET_HOST",
 			"value": "celo--mainnet--indexer.datahub.figment.io",
 			"type": "string",
 			"disabled": true
 		},
 		{
-			"id": "868b4fad-cd59-4b7f-b79a-592211b7da23",
+			"id": "b72b6d37-ae0e-48b7-82fb-5ef06760bccb",
 			"key": "OASIS_MAINNET_HOST",
 			"value": "oasis--mainnet.datahub.figment.io",
 			"type": "string",
 			"disabled": true
 		},
 		{
-			"id": "e3306abc-ec0f-4756-8180-0595838c7db5",
+			"id": "500b7abc-dfd2-4852-863f-4523d863755f",
 			"key": "KAVA_HOST",
 			"value": "kava--search.datahub.figment.io",
 			"type": "string",
 			"disabled": true
 		},
 		{
-			"id": "c7b9ebda-f15d-4fd7-ab62-eb60e0f8f640",
+			"id": "fd6b1f21-0847-4fc6-8111-f22a8c54fb2a",
 			"key": "MINA_MAINNET_HOST",
 			"value": "mina--mainnet--indexer.datahub.figment.io",
 			"type": "string",
 			"disabled": true
 		},
 		{
-			"id": "6f8af4cb-789b-4f4d-aac8-573ac684e7e3",
+			"id": "14b28ff4-4b71-4f3f-b7af-b8fba4fd380e",
 			"key": "random-tx-id",
 			"value": "",
 			"disabled": true
 		},
 		{
-			"id": "5c052de8-3c7a-4f17-a63e-41fe6e800b12",
+			"id": "94cbc49a-b72f-434b-aa2d-6aff95a5f69f",
 			"key": "random-block-hash",
 			"value": ""
 		},
 		{
-			"id": "d2ca90be-cf21-484d-ac28-73e99ef97b9c",
+			"id": "1aa64adb-48cc-4b14-9546-7b899a3ebeed",
 			"key": "kusama-random-block-hash",
 			"value": ""
 		}
