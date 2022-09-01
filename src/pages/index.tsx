@@ -21,7 +21,7 @@ function HomepageHeader() {
           <div className={styles.quickLinks}>
             <div
               className={styles.quickLink}
-              onClick={() => history.push("/quickstart")}
+              onClick={() => history.push("quickstart")}
             >
               <h3>🚀 Quick Start</h3>
               <p>Go from 0 to 1 with our bite-sized quickstarts</p>
@@ -29,7 +29,7 @@ function HomepageHeader() {
             </div>
             <div
               className={styles.quickLink}
-              onClick={() => history.push("/api-reference")}
+              onClick={() => history.push("api-reference")}
             >
               <h3>📚 API Reference</h3>
               <p>
@@ -40,7 +40,7 @@ function HomepageHeader() {
             </div>
             <div
               className={styles.quickLink}
-              onClick={() => history.push("/guides")}
+              onClick={() => history.push("guides")}
             >
               <h3>📝 Guides</h3>
               <p>Learn important concepts with our easy to leverage guides</p>
@@ -52,7 +52,7 @@ function HomepageHeader() {
           <div className={styles.products}>
             <div
               className={styles.product}
-              onClick={() => history.push("/api-reference/node-api/arbitrum")}
+              onClick={() => history.push("api-reference/node-api/arbitrum")}
             >
               <h3>Nodes</h3>
               {/* we should add an image here -- keeping up with our Plaid-theme */}
@@ -64,7 +64,7 @@ function HomepageHeader() {
             <div
               className={styles.product}
               onClick={() =>
-                history.push("/api-reference/staking-api/avalanche")
+                history.push("api-reference/staking-api/avalanche")
               }
             >
               <h3>Staking</h3>
@@ -76,9 +76,7 @@ function HomepageHeader() {
             </div>
             <div
               className={styles.product}
-              onClick={() =>
-                history.push("/api-reference/rewards-api/ethereum")
-              }
+              onClick={() => history.push("api-reference/rewards-api/ethereum")}
             >
               <h3>Rewards</h3>
               {/* we should add an image here -- keeping up with our Plaid-theme */}
@@ -90,7 +88,7 @@ function HomepageHeader() {
             <div
               className={styles.product}
               onClick={() =>
-                history.push("/api-reference/transaction-search-api/avalanche")
+                history.push("api-reference/transaction-search-api/avalanche")
               }
             >
               <h3>Transaction</h3>

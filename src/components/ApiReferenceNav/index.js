@@ -12,7 +12,9 @@ export default function ChangeNetwork({ network, networks, methods, service }) {
         className="custom-select"
         defaultValue={network}
         onChange={(e) => {
-          history.push(`/api-reference/${service}/${e.target.value}`);
+          history.push(
+            location.pathname.replace(/\/[^\/]+$/, `/${e.target.value}`)
+          );
         }}
       >
         {networks.map((n) => (
