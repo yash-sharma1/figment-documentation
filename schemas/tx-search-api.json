@@ -107,18 +107,42 @@
 						"disableBodyPruning": true
 					},
 					"request": {
-						"method": "POST",
+						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"network\": \"avalanche\",\n    \"chain_ids\": [\"mainnet\"],\n    \"start_height\": 1921984,\n    \"address\": \"avax1pvkhyf0y9674p2ps40vmp0a8w427384lpr8zan,avax1rlu93pnalclt7h0dte3evua97lv4fp4qzax5wq\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
+						"url": {
+							"raw": "https://{{AVAX_SEARCH_HOST}}/apikey/{{API_KEY}}/transactions?network=avalanche&chain_ids=mainnet&start_height=1921984&address=avax1pvkhyf0y9674p2ps40vmp0a8w427384lpr8zan,avax1rlu93pnalclt7h0dte3evua97lv4fp4qzax5wq",
+							"protocol": "https",
+							"host": [
+								"{{AVAX_SEARCH_HOST}}"
+							],
+							"path": [
+								"apikey",
+								"{{API_KEY}}",
+								"transactions"
+							],
+							"query": [
+								{
+									"key": "network",
+									"value": "avalanche",
+									"type": "text"
+								},
+								{
+									"key": "chain_ids",
+									"value": "mainnet",
+									"type": "text"
+								},
+								{
+									"key": "start_height",
+									"value": "1921984",
+									"type": "text"
+								},
+								{
+									"key": "address",
+									"value": "avax1pvkhyf0y9674p2ps40vmp0a8w427384lpr8zan,avax1rlu93pnalclt7h0dte3evua97lv4fp4qzax5wq",
+									"type": "text"
 								}
-							}
+							]
 						},
-						"url": "https://{{AVAX_SEARCH_HOST}}/apikey/{{API_KEY}}/transactions",
 						"description": "Returns transactions matching the search parameters.\n  \n\n### Parameters\n\nQuery string parameters -\n\n*   `chain` -`string` Filter by chain ID.\n*   `type` - `string` Filter by transaction type. Separate multiple values by comma.\n*   `start_time` - `string` Search range start time.\n*   `end_time` - `string` Search range end time.\n*   `start_height` - `string` Search range start block height (if applicable).\n*   `block_hash` - `string` Filter by block hash (if applicable).\n*   `memo` - `string` Filter by memo text field.\n*   `address` - `string` Filter by account address. Separate multiple values by comma.\n*   `asset` - `string` Filter by asset ID.\n*   `page` - `integer` Results page.\n    \n\n### Results\n\nReturns transaction details based on the given parameters.\n\n* * *"
 					},
 					"response": [
@@ -1303,100 +1327,100 @@
 	],
 	"variable": [
 		{
-			"id": "3d54f01b-3b0d-41ca-9fb4-fbcef467189d",
+			"id": "3a3865f9-d9d4-4c61-b5e3-0e1639a800f4",
 			"key": "AVAX_SEARCH_HOST",
 			"value": "avalanche--mainnet--indexer.datahub.figment.io"
 		},
 		{
-			"id": "7604412c-cc25-4ab2-928c-37850deb6f69",
+			"id": "87d297c4-d260-4959-bf99-34d15e0855d6",
 			"key": "NEAR_SEARCH_HOST",
 			"value": "near--indexer.datahub.figment.io"
 		},
 		{
-			"id": "a3d1f134-e2de-42c4-b21e-84eb1b197908",
+			"id": "92924ce4-9dae-41e5-865f-39e74ec77ea3",
 			"key": "DOT_SEARCH_HOST",
 			"value": "polkadot--search.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "35157346-fc94-4533-8189-2d7ab7ba3be3",
+			"id": "1e3da5a9-3ab0-4ddb-a7dd-505212c7ba06",
 			"key": "KUSAMA_SEARCH_HOST",
 			"value": "polkadot-kusama--search.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "adb05381-9242-420b-9321-1e0462eaee6a",
+			"id": "1028097b-259e-4134-91ab-bb42384a4ddf",
 			"key": "COSMOS_SEARCH_HOST",
 			"value": "cosmos--search.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "32032e5d-d12d-4cc0-9754-3fee8d465a0a",
+			"id": "1579fac8-46ae-4434-a482-f2def1893247",
 			"key": "AVALANCHE_TRANSACTION_HASH",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "84eef7c4-7b55-4716-99f1-ba2759c66ef3",
+			"id": "0d2c6b5c-3169-430f-aa24-fd381c9ba9e3",
 			"key": "NEAR_TRANSACTION_HASH",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "2b97bb16-130c-4e0e-97cf-bf65319d311c",
+			"id": "b955cf90-243b-46c7-a4fd-a6bb4acc1ba4",
 			"key": "------ UNUSED VARS BELOW THIS LINE ------",
 			"value": "",
 			"type": "string",
 			"disabled": true
 		},
 		{
-			"id": "a24e22a7-91d6-4cdd-ad01-37f5ecb98c11",
+			"id": "b943e975-386c-49f7-98ed-c4234d3c1f97",
 			"key": "OSMOSIS_SEARCH_HOST",
 			"value": "osmosis--search.datahub.figment.io",
 			"type": "string",
 			"disabled": true
 		},
 		{
-			"id": "5ee1448f-d474-49d8-9280-1d73b692da7a",
+			"id": "e1056fba-6792-4348-aba6-6a4082b02a94",
 			"key": "CELO_MAINNET_HOST",
 			"value": "celo--mainnet--indexer.datahub.figment.io",
 			"type": "string",
 			"disabled": true
 		},
 		{
-			"id": "956475e3-372c-4cf5-a9a5-22f547958860",
+			"id": "d3ef0f43-0595-47e2-a1c4-187ad87f5b30",
 			"key": "OASIS_MAINNET_HOST",
 			"value": "oasis--mainnet.datahub.figment.io",
 			"type": "string",
 			"disabled": true
 		},
 		{
-			"id": "a9b034bc-ed42-4b36-adb4-61f905488314",
+			"id": "b4e53be1-aed9-4436-b57f-33d2595628fa",
 			"key": "KAVA_HOST",
 			"value": "kava--search.datahub.figment.io",
 			"type": "string",
 			"disabled": true
 		},
 		{
-			"id": "65e7dbe1-f57f-482b-a2f3-d8bced0cfced",
+			"id": "5cb1de37-5a05-409c-96ef-f4e982ef24e4",
 			"key": "MINA_MAINNET_HOST",
 			"value": "mina--mainnet--indexer.datahub.figment.io",
 			"type": "string",
 			"disabled": true
 		},
 		{
-			"id": "609b8b21-ae29-43e4-a2f6-b15b6805112e",
+			"id": "910138c7-b068-4ebf-84a5-45a0c330368c",
 			"key": "random-tx-id",
 			"value": "",
 			"disabled": true
 		},
 		{
-			"id": "4c5ffd68-0327-4a6d-83cd-0414b9963b56",
+			"id": "2d33bbd3-39b3-4615-a3c7-ba980d087e2c",
 			"key": "random-block-hash",
 			"value": ""
 		},
 		{
-			"id": "ea86c935-eb08-4603-8467-b5b057301b27",
+			"id": "eb8e15d8-ff86-4e58-86ba-0680316f585e",
 			"key": "kusama-random-block-hash",
 			"value": ""
 		}
