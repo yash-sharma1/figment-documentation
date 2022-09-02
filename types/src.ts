@@ -20,7 +20,7 @@ export interface RequestBody {
 }
 
 export interface RequestObject {
-  body: object | undefined;
+  body: object | string | undefined;
   query: string | undefined;
   header: [];
   method: "POST" | "GET";

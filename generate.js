@@ -29,7 +29,7 @@ function loadSchemas() {
     .filter((schema) => schema !== null);
 }
 
-function processJSON(raw) {
+function processJSON(raw = "") {
   try {
     return JSON.parse(raw);
   } catch (e) {
@@ -68,7 +68,11 @@ function processMethod(method, vars) {
     content: description,
     request: {
       ...request,
-      body: request.body ? processJSON(request.body.raw) : undefined,
+      body: request.body
+        ? request.body.mode === "graphql"
+          ? request.body.graphql.query
+          : processJSON(request.body.raw)
+        : undefined,
       query,
       url,
     },
@@ -127,6 +131,23 @@ collapsible: false`
 ${body}`;
 }
 
+function sidebarIndexForService(service) {
+  switch (service) {
+    case "node-api":
+      return 1;
+    case "transaction-search-api":
+      return 2;
+    case "staking-api":
+      return 3;
+    case "staking-api-webhooks":
+      return 4;
+    case "rewards-api":
+      return 5;
+    default:
+      return 0;
+  }
+}
+
 function createMarkdown(services) {
   const indexBackup = fs.readFileSync("docs/api-reference/index.mdx", "utf-8");
   if (!indexBackup) throw new Error("failed to backup api-reference index");
@@ -141,6 +162,7 @@ function createMarkdown(services) {
         `docs/api-reference/${toDashCase(service)}/index.mdx`,
         frontMatterTemplate({
           title: toTitleCase(service),
+          pos: sidebarIndexForService(service),
           body: `import APIHomeRoute from '@site/src/components/APIHomeRoute'\n\n<APIHomeRoute service='${toDashCase(
             service
           )}' network='${toDashCase(networks[0].network)}' />`,
