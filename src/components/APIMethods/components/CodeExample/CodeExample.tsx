@@ -22,13 +22,17 @@ interface Props {
 }
 
 export default function CodeExample({ req, res, interactive }: Props) {
-  const [reqBody, setReqBody] = useState<string>(formatJSON(req.body));
+  const [reqBody, setReqBody] = useState<string>(formatRequest(req.body));
   const [queryString, setQueryString] = useState<string>(req.query);
-  const [resBody, setResBody] = useState<string>(formatJSON(res.body));
+  const [resBody, setResBody] = useState<string>(formatResult(res.body));
+  const graphql =
+    typeof req.body === "string" && req.body.indexOf("query") == 0;
   const { data, error, loading, fetchData } = useFetch<ResponseBody>(req.url, {
     method: req.method,
-    headers: { "Content-Type": "application/json" },
-    body: formatJSON(req.body),
+    headers: {
+      "Content-Type": graphql ? "application/graphql" : "application/json",
+    },
+    body: formatRequest(req.body),
   });
 
   const [status, setStatus] = useState<ResponseStatus | null>(null);
@@ -58,7 +62,7 @@ export default function CodeExample({ req, res, interactive }: Props) {
           title: "Run request",
           onClick: async () => {
             const apiData = await fetchData(queryString, { body: reqBody });
-            if (apiData) setResBody(formatJSON(apiData));
+            if (apiData) setResBody(formatResult(apiData));
           },
           Component: (
             <>
@@ -78,8 +82,8 @@ export default function CodeExample({ req, res, interactive }: Props) {
           onClick: () => {
             setStatus(null);
             setQueryString(req.query);
-            setReqBody(formatJSON(req.body));
-            setResBody(formatJSON(res.body));
+            setReqBody(formatRequest(req.body));
+            setResBody(formatResult(res.body));
           },
           Component: <RefreshFilled />,
         }
@@ -118,6 +122,11 @@ export default function CodeExample({ req, res, interactive }: Props) {
   );
 }
 
-function formatJSON(json: {}) {
+function formatResult(json: {}) {
   return JSON.stringify(json, null, 2);
+}
+
+function formatRequest(body) {
+  if (typeof body === "string") return body;
+  return JSON.stringify(body, null, 2);
 }

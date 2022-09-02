@@ -29,7 +29,7 @@ function loadSchemas() {
     .filter((schema) => schema !== null);
 }
 
-function processJSON(raw) {
+function processJSON(raw = "") {
   try {
     return JSON.parse(raw);
   } catch (e) {
@@ -68,7 +68,11 @@ function processMethod(method, vars) {
     content: description,
     request: {
       ...request,
-      body: request.body ? processJSON(request.body.raw) : undefined,
+      body: request.body
+        ? request.body.mode === "graphql"
+          ? request.body.graphql.query
+          : processJSON(request.body.raw)
+        : undefined,
       query,
       url,
     },
