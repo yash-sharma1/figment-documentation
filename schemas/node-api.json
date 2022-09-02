@@ -40400,6 +40400,78 @@
 							"cookie": [],
 							"responseTime": null,
 							"body": null
+						},
+						{
+							"id": "37c42477-e77b-4201-a429-98d11add9421",
+							"name": "network status",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "graphql",
+									"graphql": {
+										"query": "query status {\n  daemonStatus {\n    syncStatus\n    stateHash\n    numAccounts\n    chainId\n    commitId\n    catchupStatus\n    blockchainLength\n  }\n}",
+										"variables": ""
+									}
+								},
+								"url": "https://{{MINA_HOST}}/apikey/{{API_KEY}}/graphql"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Fri, 02 Sep 2022 13:08:28 GMT"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Mina-Proxy",
+									"value": "0.7.0"
+								},
+								{
+									"key": "vary",
+									"value": "Origin"
+								},
+								{
+									"key": "X-Quota-Remaining-Month",
+									"value": "2999990"
+								},
+								{
+									"key": "X-Quota-Limit-Month",
+									"value": "3000000"
+								},
+								{
+									"key": "Quota-Reset",
+									"value": "1"
+								},
+								{
+									"key": "Quota-Remaining",
+									"value": "9"
+								},
+								{
+									"key": "X-Quota-Remaining-Second",
+									"value": "9"
+								},
+								{
+									"key": "X-Quota-Limit-Second",
+									"value": "10"
+								},
+								{
+									"key": "Quota-Limit",
+									"value": "10"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\"data\":{\"daemonStatus\":{\"syncStatus\":\"SYNCED\",\"stateHash\":\"3NLEhHJKPTxhkh7dom7hpNeuoqejh9UsJADXFoQW6sX6DQNvqzzA\",\"numAccounts\":120343,\"chainId\":\"5f704cc0c82e0ed70e873f0893d7e06f148524e3f0bdae2afb02e7819a0c24d1\",\"commitId\":\"f361ba19d78ba930b5b551f58d1a82942c0f724b\",\"catchupStatus\":[\"to_build_breadcrumb\",\"to_initial_validate\",\"finished\",\"to_download\",\"wait_for_parent\",\"to_verify\"],\"blockchainLength\":174063}}}"
 						}
 					]
 				},
@@ -68171,82 +68243,82 @@
 	],
 	"variable": [
 		{
-			"id": "6997fb90-1960-4420-842d-95dbf88192a8",
+			"id": "3cd07706-d571-444a-b0e8-6df2849f7a99",
 			"key": "ARBI_HOST",
 			"value": "arbitrum-mainnet-rpc-archive-dbgtxn.datahub.figment.io"
 		},
 		{
-			"id": "836a7a51-3207-42cb-9ad6-5550cb0c216b",
+			"id": "8f25df19-a6b3-4b8b-8b40-900ee5a19b0a",
 			"key": "AVAX_HOST",
 			"value": "avalanche--mainnet--rpc.datahub.figment.io"
 		},
 		{
-			"id": "5679a347-1e03-4d07-b8c6-5767d0bf3770",
+			"id": "64b1f057-3de5-465c-b843-049c4eb4b468",
 			"key": "BNB_HOST",
 			"value": "bsc--mainnet--rpc-archive-dbgtxn.datahub.figment.io"
 		},
 		{
-			"id": "8bf15952-05fe-459a-ba13-4e75bfd5cb2b",
+			"id": "bcdca2c8-3ed9-4a85-826d-6772e97ce24f",
 			"key": "CELO_HOST",
 			"value": "celo-mainnet--rpc.datahub.figment.io"
 		},
 		{
-			"id": "f694d7bf-2d03-4465-818d-f66395d698b8",
+			"id": "ff4572ad-ea46-4450-aede-ac4b8492aad4",
 			"key": "COSMOS_LCD_HOST",
 			"value": "cosmoshub-4--lcd--archive.datahub.figment.io"
 		},
 		{
-			"id": "b2ff1a3c-ff68-4658-ac5f-c26625f2bee8",
+			"id": "b5a9be73-c4d3-4b39-b324-81f61cbaa094",
 			"key": "COSMOS_RPC_HOST",
 			"value": "cosmoshub-4--rpc--archive.datahub.figment.io"
 		},
 		{
-			"id": "af14b791-5d27-482a-af55-0a08a49c2179",
+			"id": "b0a5c682-ec85-486b-a48e-3322cf32e10e",
 			"key": "ETH_HOST",
 			"value": "erigon-mainnet--rpc-dbgtxn.datahub.figment.io"
 		},
 		{
-			"id": "c24316f1-45b0-403c-ac43-d9cb651776ff",
+			"id": "66b9b309-825c-4671-83ea-acd8f4a7b547",
 			"key": "FTM_HOST",
 			"value": "ftm--mainnet--rpc-archive-dbgtxn.datahub.figment.io"
 		},
 		{
-			"id": "36bc49e2-6ff9-427e-bc90-1027402d4f0b",
+			"id": "e5ec6477-9a93-4dc2-af9e-551f7c800aff",
 			"key": "MINA_HOST",
 			"value": "mina-mainnet--graphql.datahub.figment.io"
 		},
 		{
-			"id": "8a1c37ab-4904-4788-a9ab-f6ca736d0984",
+			"id": "38f538ee-7fe6-4442-ace9-dd3e9e366432",
 			"key": "NEAR_HOST",
 			"value": "near-mainnet--rpc--archive.datahub.figment.io"
 		},
 		{
-			"id": "9274c86f-c8b2-4fea-ac84-1f57fac41677",
+			"id": "5ad15f96-058d-4041-bc7e-9731d4dfe9e4",
 			"key": "OPTIMISM_HOST",
 			"value": "optimism-mainnet-rpc-archive.datahub.figment.io"
 		},
 		{
-			"id": "223d99b8-c019-4aef-8773-4a43c38ba1e7",
+			"id": "523ff1ea-8cea-4d20-b0aa-59485b92da00",
 			"key": "OSMO_LCD_HOST",
 			"value": "osmosis-1--lcd--archive.datahub.figment.io"
 		},
 		{
-			"id": "7dd30658-d7fa-4b87-a91e-d99c331b65bf",
+			"id": "38fbe9f9-f8df-4a8e-9fa5-06e72dee5c90",
 			"key": "OSMO_RPC_HOST",
 			"value": "osmosis-1--rpc--archive.datahub.figment.io"
 		},
 		{
-			"id": "c01d9f3f-37f6-4e26-a077-5121177807b6",
+			"id": "6452cecb-472e-4be1-b76f-c60762104fa5",
 			"key": "POLYGON_HOST",
 			"value": "matic-mainnet--jsonrpc-archive-dbgtxn.datahub.figment.io"
 		},
 		{
-			"id": "3959960a-8a8b-48d7-85eb-9b40695d2e9a",
+			"id": "71b232d1-3928-4228-8b25-bc968535ff08",
 			"key": "SOL_HOST",
 			"value": "solana--mainnet.datahub.figment.io"
 		},
 		{
-			"id": "4cdeb57a-8b5b-4b3a-ad38-ca518a52891d",
+			"id": "82d1a0fa-7b27-467b-860a-c281e67e6ba1",
 			"key": "INTERACTIVE",
 			"value": "true"
 		}
