@@ -68202,7 +68202,7 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "9ebe19c5-7b79-418c-95ab-b003c4e2bf63",
+				"id": "2978e830-47f9-493f-93b1-16246d08a833",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -68212,7 +68212,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "6c8f1588-a8f7-4b63-add0-ac7336404d45",
+				"id": "43c752ae-41e0-40f4-905d-c7ea96d3d57d",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -68222,95 +68222,107 @@
 	],
 	"variable": [
 		{
-			"id": "5c24deb1-6e0e-4abd-998c-78eb2a5ccfbf",
+			"id": "c05786ea-21cb-4531-82d1-fb8f31e86727",
 			"key": "ARBI_HOST",
 			"value": "arbitrum-mainnet-rpc-archive-dbgtxn.datahub.figment.io"
 		},
 		{
-			"id": "e8f38e28-8898-4410-bf99-cbfcfce4bd9d",
+			"id": "4da8ca28-ea19-4434-8106-0c2c8e4c1a9e",
 			"key": "AVAX_HOST",
 			"value": "avalanche--mainnet--rpc.datahub.figment.io"
 		},
 		{
-			"id": "6c484ebb-a992-48f5-959e-bbd7c484ad77",
+			"id": "bb2ea99f-4584-4e7e-a80a-828d778a20d5",
 			"key": "BNB_HOST",
 			"value": "bsc--mainnet--rpc-archive-dbgtxn.datahub.figment.io"
 		},
 		{
-			"id": "c49e2098-9501-4992-b6cc-3158b18b0212",
+			"id": "047dae0c-f3ee-4a1e-bac3-b10250a2d31f",
 			"key": "CELO_HOST",
 			"value": "celo-mainnet--rpc.datahub.figment.io"
 		},
 		{
-			"id": "3672d481-f1db-4c33-a714-2e40b6edafd6",
+			"id": "9c4c175a-8bb4-4b0c-85fa-3c93cc1dc104",
 			"key": "COSMOS_LCD_HOST",
 			"value": "cosmoshub-4--lcd--archive.datahub.figment.io"
 		},
 		{
-			"id": "ef3d2188-2148-4d03-b3aa-ff47406e472c",
+			"id": "fd505fb5-a2fb-4431-bcc5-652d338fc1c4",
 			"key": "COSMOS_RPC_HOST",
 			"value": "cosmoshub-4--rpc--archive.datahub.figment.io"
 		},
 		{
-			"id": "597bd268-c530-48ac-a490-0af4ed9ddb22",
+			"id": "4aa83fe3-0424-4c12-89b4-a1efeeed5ef9",
 			"key": "ETH_HOST",
 			"value": "erigon-mainnet--rpc-dbgtxn.datahub.figment.io"
 		},
 		{
-			"id": "80833e13-a822-45f8-858b-2d3d03a6c566",
+			"id": "01a7c7de-8904-4cd9-b9dc-04564329eb7b",
 			"key": "FTM_HOST",
 			"value": "ftm--mainnet--rpc-archive-dbgtxn.datahub.figment.io"
 		},
 		{
-			"id": "d63e360d-f9eb-4cc5-aa58-ffcf2561f80d",
+			"id": "edad75f8-5ba4-455c-b154-43ce8d0e4cfd",
 			"key": "MINA_HOST",
 			"value": "mina-mainnet--graphql.datahub.figment.io"
 		},
 		{
-			"id": "a331d1e5-c749-4c74-8d19-0cf4c4288f9e",
+			"id": "e0d93ac6-9c76-4fce-be86-22fccaa13726",
 			"key": "NEAR_HOST",
 			"value": "near-mainnet--rpc--archive.datahub.figment.io"
 		},
 		{
-			"id": "9386339c-8518-41a6-8f36-f94a09e82f6b",
+			"id": "758c67b8-06f1-4f41-a18d-769133793e9c",
 			"key": "OPTIMISM_HOST",
 			"value": "optimism-mainnet-rpc-archive.datahub.figment.io"
 		},
 		{
-			"id": "7ca03685-6f7e-4dd0-a76a-43cd4203f41f",
+			"id": "7062bf0d-9aaa-404c-a1d0-2c7ef94d094c",
 			"key": "OSMO_LCD_HOST",
 			"value": "osmosis-1--lcd--archive.datahub.figment.io"
 		},
 		{
-			"id": "106702f0-7db2-4fbd-8209-512525a0d776",
+			"id": "ed020a43-44d7-47f8-814a-53493787a927",
 			"key": "OSMO_RPC_HOST",
 			"value": "osmosis-1--rpc--archive.datahub.figment.io"
 		},
 		{
-			"id": "b855a8bb-b737-4eec-a446-e3c60ce3f92a",
+			"id": "181cd2d5-47e1-4cd8-9d10-c6e76ece0d31",
 			"key": "POLYGON_HOST",
 			"value": "matic-mainnet--jsonrpc-archive-dbgtxn.datahub.figment.io"
 		},
 		{
-			"id": "c392794c-0f7c-4ea4-8182-1f304d58cc62",
+			"id": "b7012153-020b-4968-b5af-3e34deda3bf8",
 			"key": "SOL_HOST",
 			"value": "solana--mainnet.datahub.figment.io"
 		},
 		{
-			"id": "6ef124b8-d507-433c-9c74-a0202c4c977c",
+			"id": "67211153-a125-4f43-a66b-fa026b649f1b",
 			"key": "INTERACTIVE",
 			"value": "true"
 		},
 		{
-			"id": "500617a8-d699-4490-a0b7-da3f595cf468",
+			"id": "2fb64bcb-e52b-4f37-b146-c0566bbdcccd",
 			"key": "WEBSOCKETS",
 			"value": "arbitrum, bnb, celo, centrifuge, cosmos, ethereum, fantom, kusama, optimism, polkadot, polygon, solana",
 			"type": "string"
 		},
 		{
-			"id": "190842af-c89c-4430-8fe7-77d11a3a5f25",
+			"id": "68688fd3-468e-447f-9ce9-2581960ea1a4",
 			"key": "NETWORKS",
 			"value": "[\"arbitrum\": \"mainnet\", \"avalanche\": \"mainnet, testnet\"]",
+			"type": "string"
+		},
+		{
+			"id": "bdc331bf-ac82-4e5a-af4c-bb0dd733a67c",
+			"key": "TESTNETS",
+			"value": "avalanche, celo, ethereum, mina, near, polkadot, polygon",
+			"type": "string"
+		},
+		{
+			"id": "66ab5f83-11dd-4bc9-8bff-05063ad0cca8",
+			"key": "DEVNETS",
+			"value": "solana",
 			"type": "string"
 		}
 	]
