@@ -68202,7 +68202,7 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "3501f393-421c-4dd6-b7dc-d515ce0d0c75",
+				"id": "e45dc8cf-9643-455c-8cf7-084b1d1f5fe4",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -68212,7 +68212,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "d16adf5b-57e9-4a07-b29a-997cef48375d",
+				"id": "195e561d-a700-47f1-892d-99976fdb2fe9",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -68222,95 +68222,95 @@
 	],
 	"variable": [
 		{
-			"id": "4672f9d2-e162-43bc-b859-cc3f3ad6be2d",
+			"id": "f63d2919-71ec-42de-b2d3-5c73ca833660",
 			"key": "ARBI_HOST",
 			"value": "arbitrum-mainnet-rpc-archive-dbgtxn.datahub.figment.io"
 		},
 		{
-			"id": "81670416-e4aa-4486-8f77-d097ea0c916d",
+			"id": "3e4399b7-40ce-475a-9a02-846831e32d0d",
 			"key": "AVAX_HOST",
 			"value": "avalanche--mainnet--rpc.datahub.figment.io"
 		},
 		{
-			"id": "210a0f4a-e57d-4137-8105-ac33b672db8e",
+			"id": "fb340054-8b99-4fac-b8c9-587e1a33fdab",
 			"key": "BNB_HOST",
 			"value": "bsc--mainnet--rpc-archive-dbgtxn.datahub.figment.io"
 		},
 		{
-			"id": "cd190b0a-1c95-4bfe-aae8-066cef201112",
+			"id": "97b5a4ad-fd81-4661-b96d-38db9dc307be",
 			"key": "CELO_HOST",
 			"value": "celo-mainnet--rpc.datahub.figment.io"
 		},
 		{
-			"id": "05e13189-aaa2-44e6-8884-195830982ddc",
+			"id": "5518cad3-39bd-418f-9d93-c1c39c8133ac",
 			"key": "COSMOS_LCD_HOST",
 			"value": "cosmoshub-4--lcd--archive.datahub.figment.io"
 		},
 		{
-			"id": "dc9683a3-02b1-41e5-9b69-a8fcc3abc632",
+			"id": "7314c359-55b9-440f-9e0b-e328c2692b98",
 			"key": "COSMOS_RPC_HOST",
 			"value": "cosmoshub-4--rpc--archive.datahub.figment.io"
 		},
 		{
-			"id": "993bbca1-bc20-4b08-8ce5-4fe95ef5b79b",
+			"id": "582e421c-adb1-41bc-92c6-856cdefab933",
 			"key": "ETH_HOST",
 			"value": "erigon-mainnet--rpc-dbgtxn.datahub.figment.io"
 		},
 		{
-			"id": "3bc254d0-ecdb-44f5-b17f-5722a7ee46d2",
+			"id": "1bbeb734-9e03-4166-a083-4716d224337f",
 			"key": "FTM_HOST",
 			"value": "ftm--mainnet--rpc-archive-dbgtxn.datahub.figment.io"
 		},
 		{
-			"id": "70675572-ce5d-4f02-a93a-2c3a0d360bc0",
+			"id": "dcbeed91-10b2-414c-bc65-ccbe91168e57",
 			"key": "MINA_HOST",
 			"value": "mina-mainnet--graphql.datahub.figment.io"
 		},
 		{
-			"id": "6adcc7df-09f0-4484-a7ba-15e5dfa16be1",
+			"id": "f002d9e7-1e4d-4079-a198-bb0524622117",
 			"key": "NEAR_HOST",
 			"value": "near-mainnet--rpc--archive.datahub.figment.io"
 		},
 		{
-			"id": "106ce203-3b1c-43c0-8d1a-509d18f62d90",
+			"id": "cf625974-e5e9-46af-b478-1cc410f5e7fa",
 			"key": "OPTIMISM_HOST",
 			"value": "optimism-mainnet-rpc-archive.datahub.figment.io"
 		},
 		{
-			"id": "fc9aa893-abd0-4224-8e42-0e7c83303992",
+			"id": "38f5f233-963c-4027-9c2c-574ba2e51278",
 			"key": "OSMO_LCD_HOST",
 			"value": "osmosis-1--lcd--archive.datahub.figment.io"
 		},
 		{
-			"id": "3eab01df-fb26-446c-b53c-712aa89aeed3",
+			"id": "7d550bed-ff42-4809-9ac1-3649e2717e49",
 			"key": "OSMO_RPC_HOST",
 			"value": "osmosis-1--rpc--archive.datahub.figment.io"
 		},
 		{
-			"id": "5b757d17-8826-49ad-a786-6ee5a2d0bc34",
+			"id": "ef64015f-b004-4cbd-be28-3bb62efa5aae",
 			"key": "POLYGON_HOST",
 			"value": "matic-mainnet--jsonrpc-archive-dbgtxn.datahub.figment.io"
 		},
 		{
-			"id": "908931fb-9eaa-44d1-a763-2753277cf89e",
+			"id": "ddb56d7d-d36b-4d34-bb61-d14610982de8",
 			"key": "SOL_HOST",
 			"value": "solana--mainnet.datahub.figment.io"
 		},
 		{
-			"id": "f79eeee4-70a3-4825-bf3a-2227942cd683",
+			"id": "d8cfdde0-f0ab-4c61-a1e6-6a2e1f1cb7c4",
 			"key": "INTERACTIVE",
 			"value": "true"
 		},
 		{
-			"id": "c9c00ead-0ff0-4f1a-8732-f58cdb27628f",
+			"id": "e336fa64-116c-4db5-aa47-b0722720cadf",
 			"key": "WEBSOCKETS",
 			"value": "arbitrum, bnb, celo, centrifuge, cosmos, ethereum, fantom, kusama, optimism, polkadot, polygon, solana",
 			"type": "string"
 		},
 		{
-			"id": "1f2e48aa-299b-4210-a959-6216ff8cf1d8",
+			"id": "0d5c482e-0dfe-4608-8fb4-8502f7834109",
 			"key": "NETWORKS",
-			"value": "\"arbitrum\": \"mainnet\", \"avalanche\": \"mainnet, testnet\"",
+			"value": "[\"arbitrum\": \"mainnet\", \"avalanche\": \"mainnet, testnet\"]",
 			"type": "string"
 		}
 	]
