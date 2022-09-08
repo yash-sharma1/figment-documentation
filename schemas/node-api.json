@@ -68202,7 +68202,7 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "e45dc8cf-9643-455c-8cf7-084b1d1f5fe4",
+				"id": "9ebe19c5-7b79-418c-95ab-b003c4e2bf63",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -68212,7 +68212,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "195e561d-a700-47f1-892d-99976fdb2fe9",
+				"id": "6c8f1588-a8f7-4b63-add0-ac7336404d45",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -68222,93 +68222,93 @@
 	],
 	"variable": [
 		{
-			"id": "f63d2919-71ec-42de-b2d3-5c73ca833660",
+			"id": "5c24deb1-6e0e-4abd-998c-78eb2a5ccfbf",
 			"key": "ARBI_HOST",
 			"value": "arbitrum-mainnet-rpc-archive-dbgtxn.datahub.figment.io"
 		},
 		{
-			"id": "3e4399b7-40ce-475a-9a02-846831e32d0d",
+			"id": "e8f38e28-8898-4410-bf99-cbfcfce4bd9d",
 			"key": "AVAX_HOST",
 			"value": "avalanche--mainnet--rpc.datahub.figment.io"
 		},
 		{
-			"id": "fb340054-8b99-4fac-b8c9-587e1a33fdab",
+			"id": "6c484ebb-a992-48f5-959e-bbd7c484ad77",
 			"key": "BNB_HOST",
 			"value": "bsc--mainnet--rpc-archive-dbgtxn.datahub.figment.io"
 		},
 		{
-			"id": "97b5a4ad-fd81-4661-b96d-38db9dc307be",
+			"id": "c49e2098-9501-4992-b6cc-3158b18b0212",
 			"key": "CELO_HOST",
 			"value": "celo-mainnet--rpc.datahub.figment.io"
 		},
 		{
-			"id": "5518cad3-39bd-418f-9d93-c1c39c8133ac",
+			"id": "3672d481-f1db-4c33-a714-2e40b6edafd6",
 			"key": "COSMOS_LCD_HOST",
 			"value": "cosmoshub-4--lcd--archive.datahub.figment.io"
 		},
 		{
-			"id": "7314c359-55b9-440f-9e0b-e328c2692b98",
+			"id": "ef3d2188-2148-4d03-b3aa-ff47406e472c",
 			"key": "COSMOS_RPC_HOST",
 			"value": "cosmoshub-4--rpc--archive.datahub.figment.io"
 		},
 		{
-			"id": "582e421c-adb1-41bc-92c6-856cdefab933",
+			"id": "597bd268-c530-48ac-a490-0af4ed9ddb22",
 			"key": "ETH_HOST",
 			"value": "erigon-mainnet--rpc-dbgtxn.datahub.figment.io"
 		},
 		{
-			"id": "1bbeb734-9e03-4166-a083-4716d224337f",
+			"id": "80833e13-a822-45f8-858b-2d3d03a6c566",
 			"key": "FTM_HOST",
 			"value": "ftm--mainnet--rpc-archive-dbgtxn.datahub.figment.io"
 		},
 		{
-			"id": "dcbeed91-10b2-414c-bc65-ccbe91168e57",
+			"id": "d63e360d-f9eb-4cc5-aa58-ffcf2561f80d",
 			"key": "MINA_HOST",
 			"value": "mina-mainnet--graphql.datahub.figment.io"
 		},
 		{
-			"id": "f002d9e7-1e4d-4079-a198-bb0524622117",
+			"id": "a331d1e5-c749-4c74-8d19-0cf4c4288f9e",
 			"key": "NEAR_HOST",
 			"value": "near-mainnet--rpc--archive.datahub.figment.io"
 		},
 		{
-			"id": "cf625974-e5e9-46af-b478-1cc410f5e7fa",
+			"id": "9386339c-8518-41a6-8f36-f94a09e82f6b",
 			"key": "OPTIMISM_HOST",
 			"value": "optimism-mainnet-rpc-archive.datahub.figment.io"
 		},
 		{
-			"id": "38f5f233-963c-4027-9c2c-574ba2e51278",
+			"id": "7ca03685-6f7e-4dd0-a76a-43cd4203f41f",
 			"key": "OSMO_LCD_HOST",
 			"value": "osmosis-1--lcd--archive.datahub.figment.io"
 		},
 		{
-			"id": "7d550bed-ff42-4809-9ac1-3649e2717e49",
+			"id": "106702f0-7db2-4fbd-8209-512525a0d776",
 			"key": "OSMO_RPC_HOST",
 			"value": "osmosis-1--rpc--archive.datahub.figment.io"
 		},
 		{
-			"id": "ef64015f-b004-4cbd-be28-3bb62efa5aae",
+			"id": "b855a8bb-b737-4eec-a446-e3c60ce3f92a",
 			"key": "POLYGON_HOST",
 			"value": "matic-mainnet--jsonrpc-archive-dbgtxn.datahub.figment.io"
 		},
 		{
-			"id": "ddb56d7d-d36b-4d34-bb61-d14610982de8",
+			"id": "c392794c-0f7c-4ea4-8182-1f304d58cc62",
 			"key": "SOL_HOST",
 			"value": "solana--mainnet.datahub.figment.io"
 		},
 		{
-			"id": "d8cfdde0-f0ab-4c61-a1e6-6a2e1f1cb7c4",
+			"id": "6ef124b8-d507-433c-9c74-a0202c4c977c",
 			"key": "INTERACTIVE",
 			"value": "true"
 		},
 		{
-			"id": "e336fa64-116c-4db5-aa47-b0722720cadf",
+			"id": "500617a8-d699-4490-a0b7-da3f595cf468",
 			"key": "WEBSOCKETS",
 			"value": "arbitrum, bnb, celo, centrifuge, cosmos, ethereum, fantom, kusama, optimism, polkadot, polygon, solana",
 			"type": "string"
 		},
 		{
-			"id": "0d5c482e-0dfe-4608-8fb4-8502f7834109",
+			"id": "190842af-c89c-4430-8fe7-77d11a3a5f25",
 			"key": "NETWORKS",
 			"value": "[\"arbitrum\": \"mainnet\", \"avalanche\": \"mainnet, testnet\"]",
 			"type": "string"
