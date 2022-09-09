@@ -8,7 +8,7 @@ const githubConfig =
         baseUrl: "/",
       }
     : {
-        baseUrl: "/figment-documentation/",
+        baseUrl: "/",
         organizationName: "figment-networks", // Usually your GitHub org/user name.
         projectName: "figment-documentation", // Usually your repo name.
         deploymentBranch: "gh-pages",
