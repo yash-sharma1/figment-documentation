@@ -8,13 +8,13 @@ import { ExpandMore } from "@mui/icons-material";
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 
-> The Rewards API is used to query staking rewards data. When a user is staking on a validator, they earn rewards while helping to secure the network. It is challenging and very time-consuming to index and query this data on your own, so the Rewards API is your gateway to succinct rewards data on a daily basis or by epoch.
+> The Rewards API queries staking rewards data. By staking on a validator, a user earns rewards while securing the network. Indexing and querying this data is challenging and very time-consuming on your own; the Rewards API is your gateway to succinct rewards data on a daily basis or by epoch.
 
 :::note
 
 The Rewards API is currently only available for **Ethereum** (epoch & daily) and **Solana** (epoch only).
 
-The endpoints for this API are located at:
+The locations of the endpoints for this API are:
 
 - `https://eth-rewards.datahub.figment.io/rewards`
 - `https://solana-rewards.datahub.figment.io/rewards`
@@ -25,7 +25,7 @@ The endpoints for this API are located at:
 
 To authenticate your requests, you can pass your API key as an `[Authorization](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Authorization)` header.
 
-You must also have an [Allowed Origin](settings-and-security#allowed-origins) set in your DataHub App, if your App is making any Cross-Origin requests.
+You must also have an [Allowed Origin](settings-and-security#allowed-origins) set in your DataHub app, if your app is making any cross-origin requests.
 
 :::warning
 
@@ -63,9 +63,9 @@ The JSON payload must include the following parameters:
 
 :::info
 
-If you have selected `epoch`, make sure that your `start_time` and `end_time` align with that epoch - otherwise you may get an empty response.
+If you have selected `epoch`, make sure that your `start_time` and `end_time` align with that epoch$mdash;otherwise you may get an empty response.
 
-If you have selected `daily`, keep the `start_time` and `end_time` reasonably close together (within 5 days). Large ranges will cause latency in the response.
+If you have selected `daily`, keep the `start_time` and `end_time` reasonably close together (within five days). Large ranges will cause latency in the response.
 
 :::
 
