@@ -11,19 +11,19 @@ import img1 from "/static/img/datahub/endpoint_example.png";
 
 :::info
 
-After creating your App, you can immediately start using the Figment APIs.
+After creating your app, you can immediately use the Figment APIs.
 
-The following sections explain where, how and what you need to access these APIs.
+The following sections explain accessing the APIs.
 
 :::
 
-> The Node APIs are used to communicate with nodes running on a given blockchain protocol. For example if you wanted to get information about a specific block on Polygon, you could send a request to the Polygon endpoint to run the method `eth_getBlockByNumber` - which will return a JSON object containing the data you have requested.
+> The Node APIs are used to communicate with nodes running on a given blockchain protocol. For example, if you want to get information about a specific block on Polygon, you can send a request to the Polygon endpoint to run the method `eth_getBlockByNumber`&mdash;which returns a JSON object containing the data you have requested.
 
-You can see the endpoint URLs on the Protocols detail page:
+You can see the endpoint URLs on the protocol's detail page:
 
-1. From the Dashboard, select your App, then click on the **Overview** tab. Click on the Protocol you want to access.
-2. On the Protocols detail page, you can see a list of all available Services and Networks for that Protocol on the right side of the page. Next to each endpoint URL is a link to an **Example**.
-3. From the Example, you can see the full URL for this service as well as some sample requests to get you started.
+1. From the Dashboard, select your app. Choose the **Overview** tab. Click on the protocol you want to access.
+2. On the protocol's detail page, you can see a list of all available services and networks for that protocol on the right side of the page. Next to each endpoint URL is a link to an example.
+3. From the example, you can see the full URL for this service as well as some sample requests to get you started.
 
 <img
   src={img1}
@@ -36,7 +36,7 @@ You can see the endpoint URLs on the Protocols detail page:
 
 To authenticate your requests, you can pass your API key as an [Authorization](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Authorization) header.
 
-You must also have an [Allowed Origin](settings-and-security#allowed-origins) set in your DataHub App, if your App is making any Cross-Origin requests.
+You must also have an [Allowed Origin](settings-and-security#allowed-origins) set in your DataHub app, if your app makes any cross-origin requests.
 
 :::warning
 
