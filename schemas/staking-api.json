@@ -1207,7 +1207,6 @@
 				}
 			],
 			"id": "75617530-ecb7-4fc8-94ac-1e8c798f0898",
-			"description": "Delegating AVAX is a simple process. We will collect:\n\n*   The delegating address\n*   The validator node address\n*   The amount of AVAX to be staked\n*   Optionally, a Delegation start time (UNIX timestamp format, defaults to 5 minutes from when the transaction is created)\n*   Optionally, a Delegation end time (UNIX timestamp, defaults to the end of the validator node lifetime)\n*   Optionally, a transaction memo\n    \n\nOnce the delegating transaction is confirmed on-chain, the delegation will activate at the delegation start time.",
 			"auth": {
 				"type": "noauth"
 			},
@@ -14151,37 +14150,37 @@
 	],
 	"variable": [
 		{
-			"id": "473472b2-0b1e-42ed-a5a9-33fa8e0ab34e",
+			"id": "836a0bc0-8fb1-4a83-80c3-b09a8cc0b264",
 			"key": "AVAX_STAKING_HOST",
 			"value": "avalanche-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "9707e5ce-abc5-42d8-8f69-5b35ff5d5125",
+			"id": "21766192-3cef-41e0-96a9-5004aa8b9bdd",
 			"key": "ETH_STAKING_HOST",
 			"value": "eth-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "bb84c5bb-b139-4207-bb50-3ed09d1e04b8",
+			"id": "7ab1d704-4526-4e71-a4d4-a2f8aaa96852",
 			"key": "NEAR_STAKING_HOST",
 			"value": "near-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "a4a99094-7ddf-4565-a663-453dbc46579d",
+			"id": "558a05e5-ae3f-44a5-8844-c46de1cd2b9a",
 			"key": "DOT_STAKING_HOST",
 			"value": "polkadot-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "023cd2fc-628b-41e3-a7e6-f7166d3f2bc8",
+			"id": "4c15e86d-fa02-4537-a91c-04cade7eb286",
 			"key": "SOL_STAKING_HOST",
 			"value": "solana-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "f3f1a3f0-91ca-4f36-b4a5-69a6c011c526",
+			"id": "e49593e4-8eec-45d2-928e-afc8cc328d5f",
 			"key": "INTERACTIVE",
 			"value": "false",
 			"type": "string"
