@@ -98,7 +98,7 @@ const config = {
         },
       },
       zoom: {
-        selector: ".markdown :not(em) > img",
+        selector: ".inline-image",
         config: {
           // options you can specify via https://github.com/francoischalifour/medium-zoom#usage
           background: {

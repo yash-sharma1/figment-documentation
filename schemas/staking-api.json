@@ -1207,7 +1207,6 @@
 				}
 			],
 			"id": "75617530-ecb7-4fc8-94ac-1e8c798f0898",
-			"description": "Delegating AVAX is a simple process. We will collect:\n\n*   The delegating address\n*   The validator node address\n*   The amount of AVAX to be staked\n*   Optionally, a Delegation start time (UNIX timestamp format, defaults to 5 minutes from when the transaction is created)\n*   Optionally, a Delegation end time (UNIX timestamp, defaults to the end of the validator node lifetime)\n*   Optionally, a transaction memo\n    \n\nOnce the delegating transaction is confirmed on-chain, the delegation will activate at the delegation start time.",
 			"auth": {
 				"type": "noauth"
 			},
@@ -1817,7 +1816,6 @@
 				}
 			],
 			"id": "791b22bd-c7b0-4084-b5db-a63096496972",
-			"description": "Depositing ETH to stake on a validator is a simple process. We will collect:\n\n*   The funding account address.\n*   The public key of the validator that the ETH is to be deposited to.\n*   The withdrawal address for the given validator\n*   A BLS proof of possession (i.e., a proof that the private key corresponding to the `validator_pub_key` is known by the signer).\n*   A deposit data root which uniquely identifies the set of deposits made so far.\n*   Optionally, the amount of Gas to be used and the Gas price can be specified for the staking transaction itself.\n    \n\nOnce the deposit transaction is confirmed on-chain, your validator will soon enter the activation queue. Once activated, you will be earning rewards which can be reported by Figment's Rewards API.",
 			"auth": {
 				"type": "noauth"
 			},
@@ -5956,7 +5954,6 @@
 				}
 			],
 			"id": "2a1c2145-c04d-4821-9245-6a0567580173",
-			"description": "Delegating NEAR is a simple process. We will collect:\n\n- The delegating address\n- The signing public key, prefixed with `ed25519:`\n- The validator address\n- The amount of NEAR to be staked\n- Optionally, a maximum gas amount, which is the upper limit of transaction fee to be paid.\n\nOnce the delegating transaction is confirmed on-chain, the delegation will immediately be active and earning staking rewards.",
 			"auth": {
 				"type": "noauth"
 			},
@@ -11233,7 +11230,6 @@
 				}
 			],
 			"id": "6d94ec34-0c5f-4896-ac3b-1c323af4cb18",
-			"description": "The Staking API's DOT staking flow will walk your application through the process of both bonding DOT, and making validator nominations.\n\nYou are able to skip either step so effectively you can:\n\n*   Bond and nominate\n*   Bond (or bond extra) with or without updating nominations\n*   Just nominate\n\nTransferring DOT is a simple process. This Staking API flow will collect:\n\n- The address from which DOT is transferred\n- The account that will sign the transaction\n- The address to which DOT is transferred\n- The amount of DOT to be transferred \n\nThere are also individual flows to add and remove proxies for use in the staking process.",
 			"auth": {
 				"type": "noauth"
 			},
@@ -14099,7 +14095,6 @@
 				}
 			],
 			"id": "2d040f6f-d5a1-4cb7-8797-7afb2d4df212",
-			"description": "There are two ways of delegating SOL:\n\n- Using an existing stake account that is in an inactive state.\n- Generating a new stake account and funding it with SOL.",
 			"auth": {
 				"type": "noauth"
 			},
@@ -14151,37 +14146,37 @@
 	],
 	"variable": [
 		{
-			"id": "473472b2-0b1e-42ed-a5a9-33fa8e0ab34e",
+			"id": "091c676e-a2ab-4751-b177-a0ca45cd5b5d",
 			"key": "AVAX_STAKING_HOST",
 			"value": "avalanche-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "9707e5ce-abc5-42d8-8f69-5b35ff5d5125",
+			"id": "f0f5b406-ce99-4a8a-a60e-946076c06334",
 			"key": "ETH_STAKING_HOST",
 			"value": "eth-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "bb84c5bb-b139-4207-bb50-3ed09d1e04b8",
+			"id": "94ea3af9-3077-485b-8126-ec7a4f24d14c",
 			"key": "NEAR_STAKING_HOST",
 			"value": "near-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "a4a99094-7ddf-4565-a663-453dbc46579d",
+			"id": "3fcc6802-4e05-4c37-bcae-f756559fcda9",
 			"key": "DOT_STAKING_HOST",
 			"value": "polkadot-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "023cd2fc-628b-41e3-a7e6-f7166d3f2bc8",
+			"id": "5a32e02e-ed0b-4aa9-918f-58af2e454bdc",
 			"key": "SOL_STAKING_HOST",
 			"value": "solana-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "f3f1a3f0-91ca-4f36-b4a5-69a6c011c526",
+			"id": "e4c6f22c-b901-4ee1-9770-506f120eb7f4",
 			"key": "INTERACTIVE",
 			"value": "false",
 			"type": "string"

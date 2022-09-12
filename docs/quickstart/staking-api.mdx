@@ -10,9 +10,9 @@ import TabItem from "@theme/TabItem";
 
 ## Authentication
 
-To authenticate your requests, you can pass your API key as an `[Authorization](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Authorization)` header.
+To authenticate your requests, you can pass your API key as an [Authorization](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Authorization) header.
 
-You must also have an [Allowed Origin](settings-and-security#allowed-origins) set in your DataHub App, if your App is making any Cross-Origin requests.
+You must also have an [Allowed Origin](settings-and-security#allowed-origins) set in your DataHub app, if your app makes any cross-origin requests.
 
 :::warning
 
@@ -427,7 +427,7 @@ The endpoints for this API are located at:
 
 </Accordion>
 
-## Create a new Webhook endpoint
+## Create a New Webhook Endpoint
 
 Send a `POST` request to create a new webhook endpoint. Each webhook is identified by a sequential number. Currently when a webhook ID has been deleted it cannot be reused.
 
@@ -507,7 +507,7 @@ fetch(
 }
 ```
 
-## Retrieve Webhook endpoint(s)
+## Retrieve Webhook Endpoints
 
 ### All Webhook Endpoints
 
@@ -641,7 +641,7 @@ fetch(
 }
 ```
 
-## Update Webhook endpoint
+## Update Webhook Endpoint
 
 You can send a `PUT` request to update details for an existing webhook endpoint.
 
@@ -720,7 +720,7 @@ fetch(
 }
 ```
 
-## Delete an existing Webhook endpoint
+## Delete an Existing Webhook Endpoint
 
 You can send a `DELETE` request, including the webhook ID number in the request URL, to delete a webhook endpoint.
 
