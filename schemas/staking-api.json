@@ -1816,7 +1816,6 @@
 				}
 			],
 			"id": "791b22bd-c7b0-4084-b5db-a63096496972",
-			"description": "Depositing ETH to stake on a validator is a simple process. We will collect:\n\n*   The funding account address.\n*   The public key of the validator that the ETH is to be deposited to.\n*   The withdrawal address for the given validator\n*   A BLS proof of possession (i.e., a proof that the private key corresponding to the `validator_pub_key` is known by the signer).\n*   A deposit data root which uniquely identifies the set of deposits made so far.\n*   Optionally, the amount of Gas to be used and the Gas price can be specified for the staking transaction itself.\n    \n\nOnce the deposit transaction is confirmed on-chain, your validator will soon enter the activation queue. Once activated, you will be earning rewards which can be reported by Figment's Rewards API.",
 			"auth": {
 				"type": "noauth"
 			},
@@ -14150,37 +14149,37 @@
 	],
 	"variable": [
 		{
-			"id": "836a0bc0-8fb1-4a83-80c3-b09a8cc0b264",
+			"id": "d4320a9c-01c7-41f7-8dc9-eaae757df745",
 			"key": "AVAX_STAKING_HOST",
 			"value": "avalanche-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "21766192-3cef-41e0-96a9-5004aa8b9bdd",
+			"id": "e9d72818-da8e-47d0-b008-ae04131f82d5",
 			"key": "ETH_STAKING_HOST",
 			"value": "eth-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "7ab1d704-4526-4e71-a4d4-a2f8aaa96852",
+			"id": "280cb270-9b31-4921-9f86-5bc4cd233b21",
 			"key": "NEAR_STAKING_HOST",
 			"value": "near-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "558a05e5-ae3f-44a5-8844-c46de1cd2b9a",
+			"id": "adaba2e5-38b7-4c57-b78e-4bf0b61c92cc",
 			"key": "DOT_STAKING_HOST",
 			"value": "polkadot-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "4c15e86d-fa02-4537-a91c-04cade7eb286",
+			"id": "15aa0276-ed8d-4fb9-acd8-47d16c593b0b",
 			"key": "SOL_STAKING_HOST",
 			"value": "solana-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "e49593e4-8eec-45d2-928e-afc8cc328d5f",
+			"id": "f7b4d1e9-baf0-48fc-a598-b45f93d4b5ee",
 			"key": "INTERACTIVE",
 			"value": "false",
 			"type": "string"
