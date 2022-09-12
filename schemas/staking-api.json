@@ -11230,7 +11230,6 @@
 				}
 			],
 			"id": "6d94ec34-0c5f-4896-ac3b-1c323af4cb18",
-			"description": "The Staking API's DOT staking flow will walk your application through the process of both bonding DOT, and making validator nominations.\n\nYou are able to skip either step so effectively you can:\n\n*   Bond and nominate\n*   Bond (or bond extra) with or without updating nominations\n*   Just nominate\n\nTransferring DOT is a simple process. This Staking API flow will collect:\n\n- The address from which DOT is transferred\n- The account that will sign the transaction\n- The address to which DOT is transferred\n- The amount of DOT to be transferred \n\nThere are also individual flows to add and remove proxies for use in the staking process.",
 			"auth": {
 				"type": "noauth"
 			},
@@ -14148,37 +14147,37 @@
 	],
 	"variable": [
 		{
-			"id": "6a228fcc-8d34-44bf-8a73-0474b1d77bad",
+			"id": "033a42bc-8750-4c28-8f05-7972196b5c46",
 			"key": "AVAX_STAKING_HOST",
 			"value": "avalanche-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "680280d2-e746-4741-84b7-298fc36eb357",
+			"id": "d3d25122-b63d-42fd-99d7-a7be459a8add",
 			"key": "ETH_STAKING_HOST",
 			"value": "eth-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "ca53d1cd-d017-49c8-aac6-74cbc9f12c6a",
+			"id": "6c580e8f-26ae-4428-82d2-9a17480b158b",
 			"key": "NEAR_STAKING_HOST",
 			"value": "near-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "374101fb-6313-46fd-857d-fa8729f76a51",
+			"id": "9b2ebd9b-ca89-40e5-a0df-41b8dc23fc15",
 			"key": "DOT_STAKING_HOST",
 			"value": "polkadot-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "18bf9b8a-0382-47de-a938-38856cdde913",
+			"id": "e9c73e30-3353-4d6e-b056-e9d22766d739",
 			"key": "SOL_STAKING_HOST",
 			"value": "solana-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "0a512472-3732-431f-8dfe-836ed52ac468",
+			"id": "8f0f6924-d820-4527-90c4-4a731afb091a",
 			"key": "INTERACTIVE",
 			"value": "false",
 			"type": "string"
