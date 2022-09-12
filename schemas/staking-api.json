@@ -5954,7 +5954,6 @@
 				}
 			],
 			"id": "2a1c2145-c04d-4821-9245-6a0567580173",
-			"description": "Delegating NEAR is a simple process. We will collect:\n\n- The delegating address\n- The signing public key, prefixed with `ed25519:`\n- The validator address\n- The amount of NEAR to be staked\n- Optionally, a maximum gas amount, which is the upper limit of transaction fee to be paid.\n\nOnce the delegating transaction is confirmed on-chain, the delegation will immediately be active and earning staking rewards.",
 			"auth": {
 				"type": "noauth"
 			},
@@ -14149,37 +14148,37 @@
 	],
 	"variable": [
 		{
-			"id": "d4320a9c-01c7-41f7-8dc9-eaae757df745",
+			"id": "6a228fcc-8d34-44bf-8a73-0474b1d77bad",
 			"key": "AVAX_STAKING_HOST",
 			"value": "avalanche-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "e9d72818-da8e-47d0-b008-ae04131f82d5",
+			"id": "680280d2-e746-4741-84b7-298fc36eb357",
 			"key": "ETH_STAKING_HOST",
 			"value": "eth-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "280cb270-9b31-4921-9f86-5bc4cd233b21",
+			"id": "ca53d1cd-d017-49c8-aac6-74cbc9f12c6a",
 			"key": "NEAR_STAKING_HOST",
 			"value": "near-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "adaba2e5-38b7-4c57-b78e-4bf0b61c92cc",
+			"id": "374101fb-6313-46fd-857d-fa8729f76a51",
 			"key": "DOT_STAKING_HOST",
 			"value": "polkadot-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "15aa0276-ed8d-4fb9-acd8-47d16c593b0b",
+			"id": "18bf9b8a-0382-47de-a938-38856cdde913",
 			"key": "SOL_STAKING_HOST",
 			"value": "solana-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "f7b4d1e9-baf0-48fc-a598-b45f93d4b5ee",
+			"id": "0a512472-3732-431f-8dfe-836ed52ac468",
 			"key": "INTERACTIVE",
 			"value": "false",
 			"type": "string"
