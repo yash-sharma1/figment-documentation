@@ -418,7 +418,8 @@
 					]
 				}
 			],
-			"id": "cd7ac279-a458-490a-9b90-3a466065b3e0"
+			"id": "cd7ac279-a458-490a-9b90-3a466065b3e0",
+			"description": "Ethereum!"
 		},
 		{
 			"name": "Solana",
@@ -927,17 +928,17 @@
 	],
 	"variable": [
 		{
-			"id": "6a67235e-9497-47cc-a3dd-add6f4616374",
+			"id": "2aacebbf-bf86-4394-981c-aebc256ab651",
 			"key": "ETH_REWARDS_HOST",
 			"value": "eth-rewards.datahub.figment.io"
 		},
 		{
-			"id": "46b9bd63-17a4-4088-8f3a-c3a6dd3e274e",
+			"id": "26179baa-a2d2-4840-9b55-a4f4dfcda582",
 			"key": "SOL_REWARDS_HOST",
 			"value": "solana-rewards.datahub.figment.io"
 		},
 		{
-			"id": "6f51874f-d5f5-4394-8e63-10f9c9361cd2",
+			"id": "baaf00e3-9b36-412a-8d2b-a78c2cb6d291",
 			"key": "DOT_REWARDS_HOST",
 			"value": "polkadot-rewards.datahub.figment.io",
 			"type": "string"
