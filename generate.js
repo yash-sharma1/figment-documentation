@@ -177,21 +177,11 @@ function createMarkdown(services) {
     }));
 
     networks.forEach(({ network, methods, parameters }) => {
-      if (parameters)
-        fs.writeFileSync(
-          `partials/transaction-search-parameters/${toDashCase(network)}.mdx`,
-          parameters
-        );
       fs.writeFileSync(
         `docs/api-reference/${toDashCase(service)}/${toDashCase(network)}.mdx`,
         frontMatterTemplate({
           title: network,
           body:
-            (parameters
-              ? `import Parameters from '@site/partials/transaction-search-parameters/${toDashCase(
-                  network
-                )}.mdx'\n`
-              : "") +
             `import {APIMethods} from '@site/src/components'\n` +
             `import ApiReferenceNav from '@site/src/components/ApiReferenceNav'\n` +
             `import MakingCalls from '@site/partials/api-reference/making-calls.mdx'\n\n` +
@@ -204,9 +194,6 @@ function createMarkdown(services) {
               networksList
             )}} network="${toDashCase(network)}" />\n\n` +
             `<MakingCalls url="${methods[0].request.url}" />\n\n` +
-            (parameters
-              ? "<details><summary><h3>Parameters</h3></summary><Parameters /></details>\n"
-              : "") +
             `<APIMethods methods={${JSON.stringify(
               methods
             )}} service="${toDashCase(service)}" networks={${JSON.stringify(
