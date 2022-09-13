@@ -24,7 +24,7 @@ Click each heading below for a quick overview of what each directory contains:
 - `node-api` - Node schema
 - `rewards-api` - Rewards schema
 - `indexer-api` - Indexer schema
-- `staking-api` - Staking (Slate) schema
+- `staking-api` - Staking schema
 - `tx-search-api` - Transaction Search schema
 
 </details>

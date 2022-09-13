@@ -1,0 +1,33 @@
+---
+title: Submit a Signed Chill Transaction for Broadcast
+---
+
+After signing the transaction, you will `PUT /api/v1/flows/[:flow_id]/next` and the Staking API will manage broadcasting the transaction to the Polkadot network.
+
+At this step, the `inputs` JSON will be:
+
+```json title="inputs"
+{
+  "transaction_payload": "[:signed_transaction_payload]"
+}
+```
+
+```text title="Example curl request"
+curl --request PUT \
+  --url https://polkadot-slate.datahub.figment.io/api/v1/flows/[:flow_id]/next \
+  --header 'Authorization: API-KEY' \
+  --header 'Content-Type: application/json' \
+  --data '{
+  "name": "sign_chill_tx",
+  "inputs": {
+    "transaction_payload": "[:signed_transaction_payload]"
+  }
+}'
+```
+
+With the signed transaction provided, Staking API will broadcast it to the network. As the transaction progresses towards confirmation, the returned state will be `chill_tx_broadcasting`.
+
+Upon transaction finalization, the chill will be complete and you can move on to one of the two next steps:
+
+- `complete` — use this action if you are done and do not want to unbond
+- `create_unbond_tx` — use this action if you want to continue without unbonding

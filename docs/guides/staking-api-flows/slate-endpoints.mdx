@@ -1,0 +1,767 @@
+---
+title: Staking API Endpoints
+sidebar_position: 2
+---
+
+import { Accordion, AccordionSummary, AccordionDetails } from "@mui/material";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import Typography from "@mui/material/Typography";
+
+The Staking API has 3 endpoints for managing Flows and 5 endpoints for managing Webhooks.
+
+## Managing Flows
+
+### Code Examples
+
+<Accordion className="shadow--tl">
+    <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+        Click to view sample JavaScript code
+    </AccordionSummary>
+
+```javascript
+const NETWORK_CODES = {
+  ethereum: "ethereum",
+  near: "near",
+  polkadot: "dot",
+  solana: "solana",
+};
+
+const CHAIN_CODES = {
+  mainnet: "mainnet", // All Networks
+  goerli: "goerli-prater", // Ethereum PoS testnet
+  testnet: "testnet", // NEAR testnet
+  devnet: "devnet", // Solana devnet
+  westend: "westend", // Polkadot testnet
+};
+
+const OPERATIONS = {
+  staking: "staking", // Ethereum only supports staking
+  unstaking: "unstaking", // NEAR or Polkadot
+  transfer: "transfer", // NEAR or Polkadot or Solana
+  sol_unstaking: "unstaking", // Solana unstaking
+  add_proxy: "add_proxy", // Polkadot only
+  remove_proxy: "remove_proxy", // Polkadot only
+};
+
+const API_KEY = "YOUR API KEY";
+
+function startNewFlow(network, chain, operation, params = {}) {
+  fetch(flowUrl, {
+    method: "POST",
+    headers: {
+      Authorization: `${API_KEY}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      flow: {
+        network_code: NETWORK_CODES[`${network}`],
+        chain_code: CHAIN_CODES[`${chain}`],
+        operation: OPERATIONS[`${operation}`],
+        version: "v1",
+      },
+    }),
+  })
+    .then((result) => result.json())
+    .then(console.log);
+}
+
+function continueFlow(flowId, name, inputs = {}) {
+  console.log(name, inputs);
+  fetch(`${flowUrl}/${flowId}/next`, {
+    method: "PUT",
+    headers: {
+      Authorization: `${API_KEY}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      name,
+      inputs,
+    }),
+  })
+    .then((result) => result.json())
+    .then((json) => console.log(JSON.stringify(json, null, 2)));
+}
+
+function getFlow(flowId) {
+  fetch(`${flowUrl}/${flowId}`, {
+    method: "GET",
+    headers: {
+      Authorization: `${API_KEY}`,
+    },
+  })
+    .then((result) => result.json())
+    .then((json) => console.log(JSON.stringify(json, null, 2)));
+}
+```
+
+</Accordion>
+
+### Start a new flow
+
+- `POST` `/api/v1/flows`
+
+#### Parameters
+
+#### Body
+
+| parameter      |  type  | description                                  | required |
+| :------------- | :----: | :------------------------------------------- | -------: |
+| `network_code` | String | Network this flow operates on (ex. `solana`) | Required |
+| `chain_code`   | String | Chain this flow operates on (ex. `mainnet`)  | Required |
+| `operation`    | String | The operation to perform (ex. `staking`)     | Required |
+| `version`      | String | API version to use (ex. `v1`)                | Optional |
+
+#### curl Request
+
+```text title="Example curl request to the Staking API to start a staking flow on NEAR"
+curl -X POST https://near-slate.datahub.figment.io/api/v1/flows \
+-H "Authorization: API-KEY" \
+-d '{"flow": {"network_code":"near", "chain_code": "testnet", "operation": "staking", "version": "v1"}}'
+```
+
+<Accordion className="shadow--tl">
+    <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+        Click to view sample response
+    </AccordionSummary>
+
+:::note
+
+In the response, the `actions` array contains the name of the next action in the flow and details of the expected inputs in the `data` field.
+
+:::
+
+```json
+{
+  "id": "1d9e9d5d-f4a2-4974-b549-c35531344fa9",
+  "state": "initialized",
+  "actions": [
+    {
+      "name": "create_delegate_tx",
+      "inputs": [
+        {
+          "name": "delegator_address",
+          "display": "Delegator Address",
+          "description": "",
+          "type": "string",
+          "validations": [
+            {
+              "type": "presence",
+              "options": {}
+            },
+            {
+              "type": "account_balance",
+              "options": {
+                "on": "with_on_chain_validations",
+                "greater_than_or_equal_to": null
+              }
+            }
+          ]
+        },
+        {
+          "name": "delegator_pubkey",
+          "display": "Delegator Pubkey",
+          "description": "",
+          "type": "string",
+          "validations": [
+            {
+              "type": "presence",
+              "options": {}
+            }
+          ]
+        },
+        {
+          "name": "validator_address",
+          "display": "Validator Address",
+          "description": "",
+          "type": "string",
+          "validations": [
+            {
+              "type": "presence",
+              "options": {}
+            },
+            {
+              "type": "is_validator",
+              "options": {
+                "on": "with_on_chain_validations"
+              }
+            }
+          ]
+        },
+        {
+          "name": "amount",
+          "display": "Amount",
+          "description": "",
+          "type": "decimal",
+          "validations": [
+            {
+              "type": "presence",
+              "options": {}
+            },
+            {
+              "type": "numericality",
+              "options": {
+                "greater_than": 0
+              }
+            }
+          ]
+        },
+        {
+          "name": "max_gas",
+          "display": "Max Gas",
+          "description": "",
+          "type": "decimal",
+          "validations": []
+        }
+      ]
+    }
+  ],
+  "data": {
+    "delegator_address": null,
+    "delegator_pubkey": null,
+    "validator_address": null,
+    "amount": null,
+    "max_gas": null,
+    "delegate_transaction": null
+  },
+  "network_code": "near",
+  "chain_code": "testnet",
+  "created_at": "2022-07-19T17:54:02.882Z",
+  "updated_at": "2022-07-19T17:54:02.882Z"
+}
+```
+
+</Accordion>
+
+---
+
+### Get status of existing flow
+
+- `GET` `/api/v1/flows/[:flow_id]`
+
+#### Parameters
+
+- `[:flow_id]`: This is a placeholder for the actual Flow ID. Pass the Flow ID you received in the reponse when creating the flow in the GET request URL.
+
+#### curl Request
+
+```text
+curl -X GET https://eth-slate.figment.io/api/v1/flows/FLOW-ID \
+-H "Authorization: API-KEY"
+```
+
+<Accordion className="shadow--tl">
+    <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+        Click to view sample response
+    </AccordionSummary>
+
+:::note
+
+In the response, the `actions` array contains the name of the next action in the flow and the expected inputs for the next step in the `data` field.
+
+:::
+
+```json
+{
+  "id": "1d9e9d5d-f4a2-4974-b549-c35531344fa9",
+  "state": "initialized",
+  "actions": [
+    {
+      "name": "create_delegate_tx",
+      "inputs": [
+        {
+          "name": "delegator_address",
+          "display": "Delegator Address",
+          "description": "",
+          "type": "string",
+          "validations": [
+            {
+              "type": "presence",
+              "options": {}
+            },
+            {
+              "type": "account_balance",
+              "options": {
+                "on": "with_on_chain_validations",
+                "greater_than_or_equal_to": null
+              }
+            }
+          ]
+        },
+        {
+          "name": "delegator_pubkey",
+          "display": "Delegator Pubkey",
+          "description": "",
+          "type": "string",
+          "validations": [
+            {
+              "type": "presence",
+              "options": {}
+            }
+          ]
+        },
+        {
+          "name": "validator_address",
+          "display": "Validator Address",
+          "description": "",
+          "type": "string",
+          "validations": [
+            {
+              "type": "presence",
+              "options": {}
+            },
+            {
+              "type": "is_validator",
+              "options": {
+                "on": "with_on_chain_validations"
+              }
+            }
+          ]
+        },
+        {
+          "name": "amount",
+          "display": "Amount",
+          "description": "",
+          "type": "decimal",
+          "validations": [
+            {
+              "type": "presence",
+              "options": {}
+            },
+            {
+              "type": "numericality",
+              "options": {
+                "greater_than": 0
+              }
+            }
+          ]
+        },
+        {
+          "name": "max_gas",
+          "display": "Max Gas",
+          "description": "",
+          "type": "decimal",
+          "validations": []
+        }
+      ]
+    }
+  ],
+  "data": {
+    "delegator_address": null,
+    "delegator_pubkey": null,
+    "validator_address": null,
+    "amount": null,
+    "max_gas": null,
+    "delegate_transaction": null
+  },
+  "network_code": "near",
+  "chain_code": "testnet",
+  "created_at": "2022-07-19T17:54:02.882Z",
+  "updated_at": "2022-07-19T17:54:02.882Z"
+}
+```
+
+</Accordion>
+
+---
+
+### Continue to next step of flow
+
+- `POST` `/api/v1/flows/[:flow_id]/next`
+
+#### Parameters
+
+##### Body
+
+The parameters will be different, depending on which protocol and flow you are using.
+Refer to the individual protocol guides for more details (links are in the sidebar).
+
+#### curl Request
+
+```text title="Example curl request for the next step of a flow, with blank values"
+curl -X POST https://eth-slate.figment.io/api/v1/flows/FLOW-ID/next \
+-H "Authorization: API-KEY" \
+--data-raw '{"name": "create_deposit_transaction", \
+  "inputs": {
+  "funding_account_address": "",
+  "validator_pub_key": "",
+  "withdrawal_credentials": "",
+  "signature": "",
+  "deposit_data_root": ""
+  }
+}'
+```
+
+<Accordion className="shadow--tl">
+    <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+        Click to view sample response
+    </AccordionSummary>
+
+:::note
+
+In the response, the `actions` array contains the name of the next action in the flow and the expected inputs for the next step in the `data` field.
+
+:::
+
+```json
+{
+  "id": "1d9e9d5d-f4a2-4974-b549-c35531344fa9",
+  "state": "initialized",
+  "actions": [
+    {
+      "name": "create_delegate_tx",
+      "inputs": [
+        {
+          "name": "delegator_address",
+          "display": "Delegator Address",
+          "description": "",
+          "type": "string",
+          "validations": [
+            {
+              "type": "presence",
+              "options": {}
+            },
+            {
+              "type": "account_balance",
+              "options": {
+                "on": "with_on_chain_validations",
+                "greater_than_or_equal_to": null
+              }
+            }
+          ]
+        },
+        {
+          "name": "delegator_pubkey",
+          "display": "Delegator Pubkey",
+          "description": "",
+          "type": "string",
+          "validations": [
+            {
+              "type": "presence",
+              "options": {}
+            }
+          ]
+        },
+        {
+          "name": "validator_address",
+          "display": "Validator Address",
+          "description": "",
+          "type": "string",
+          "validations": [
+            {
+              "type": "presence",
+              "options": {}
+            },
+            {
+              "type": "is_validator",
+              "options": {
+                "on": "with_on_chain_validations"
+              }
+            }
+          ]
+        },
+        {
+          "name": "amount",
+          "display": "Amount",
+          "description": "",
+          "type": "decimal",
+          "validations": [
+            {
+              "type": "presence",
+              "options": {}
+            },
+            {
+              "type": "numericality",
+              "options": {
+                "greater_than": 0
+              }
+            }
+          ]
+        },
+        {
+          "name": "max_gas",
+          "display": "Max Gas",
+          "description": "",
+          "type": "decimal",
+          "validations": []
+        }
+      ]
+    }
+  ],
+  "data": {
+    "delegator_address": null,
+    "delegator_pubkey": null,
+    "validator_address": null,
+    "amount": null,
+    "max_gas": null,
+    "delegate_transaction": null
+  },
+  "network_code": "near",
+  "chain_code": "testnet",
+  "created_at": "2022-07-19T17:54:02.882Z",
+  "updated_at": "2022-07-19T17:54:02.882Z"
+}
+```
+
+</Accordion>
+
+---
+
+## Managing Webhooks
+
+### Code Examples
+
+<Accordion className="shadow--tl">
+    <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+        Click to view sample JavaScript code
+    </AccordionSummary>
+
+```javascript
+// The following example code uses the NPM packages:
+// - cross-fetch
+// - serialize-error
+// Install them with: npm install cross-fetch serialize-error
+import fetch from "cross-fetch";
+import { serializeError } from "serialize-error";
+
+// Production token
+const API_KEY = "your DataHub API key";
+// Production URL
+const webhookUrl = `https://eth-slate.datahub.figment.io/api/v1/webhook_endpoints`;
+
+function createWebhook(params = {}) {
+  fetch(webhookUrl, {
+    method: "POST",
+    headers: {
+      Authorization: `${API_KEY}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      webhook_endpoint: {
+        ...params,
+      },
+    }),
+  })
+    .then(async (result) => ({
+      code: result.status,
+      json: await result.json(),
+    }))
+    .then(console.log);
+}
+
+function updateWebhook(webhookId, params = {}) {
+  fetch(`${webhookUrl}/${webhookId}`, {
+    method: "PUT",
+    headers: {
+      Authorization: `${API_KEY}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      webhook_endpoint: {
+        ...params,
+      },
+    }),
+  })
+    .then(async (result) => ({
+      code: result.code,
+      json: await result.json(),
+    }))
+    .then(console.log);
+}
+
+function deleteWebhook(webhookId) {
+  fetch(`${webhookUrl}/${webhookId}`, {
+    method: "DELETE",
+    headers: {
+      Authorization: `${API_KEY}`,
+    },
+  })
+    .then((result) => ({
+      code: result.status,
+    }))
+    .then(console.log);
+}
+
+function getWebhook(webhookId) {
+  fetch(`${webhookUrl}/${webhookId}`, {
+    method: "GET",
+    headers: {
+      Authorization: `${API_KEY}`,
+    },
+  })
+    .then(async (result) => ({
+      code: result.code,
+      json: await result.json(),
+    }))
+    .then(console.log);
+}
+
+function getAllWebhooks() {
+  fetch(webhookUrl, {
+    method: "GET",
+    headers: {
+      Authorization: `${API_KEY}`,
+    },
+  })
+    .then(async (result) => ({
+      code: result.status,
+      json: await result.json(),
+    }))
+    .then((result) => console.log(result.json))
+    .catch((error) => {
+      console.log(serializeError(error));
+    });
+}
+```
+
+</Accordion>
+
+### Authentication
+
+You require a DataHub API key to authenticate requests to the Webhooks API endpoint.
+
+```text title="curl Authorization header example"
+curl -X GET 'https://eth-slate.figment.io/api/v1/webhook_endpoints/15' \
+// highlight-next-line
+-H 'Authorization: API-KEY'
+```
+
+### Create a new Webhook endpoint
+
+You can send a `POST` request to create a new webhook endpoint. Each webhook is identified by a sequential number. Currently when a webhook ID has been deleted it cannot be reused. You will be provided with the `secret` when you first create a webhook. Remember to capture this data.
+
+```text title="Example curl request POST /webhook_endpoints"
+curl -X POST 'https://eth-slate.figment.io/api/v1/webhook_endpoints' \
+-H 'Authorization: API-KEY' \
+-H 'Content-Type: application/json' \
+--data-raw '{
+    "webhook_endpoint": {
+        "target_url": "https://example.com/my/endpoint",
+        "event_types": ["*"],
+        "enabled": "false"
+    }
+}'
+```
+
+```json title="Example JSON response"
+{
+  "id": 16,
+  "event_types": [],
+  "target_url": "https://example.com/my/endpoint",
+  "enabled": true,
+  "object": "webhook_endpoint",
+  "created": "2022-07-26T19:27:12.647Z",
+  // highlight-next-line
+  "secret": "whsec_B8sidV4Bm8NnstMuP3a9TSGYov... [REDACTED]"
+}
+```
+
+### Retreive a Webhook endpoint
+
+You can send a `GET` request, including the webhook ID number in the request URL, to retreive details for an existing webhook endpoint.
+
+```text title="GET /webhook_endpoints/[:webhook_endpoint_id]"
+curl -X GET 'https://eth-slate.figment.io/api/v1/webhook_endpoints/15' \
+-H 'Authorization: API-KEY'
+```
+
+```json title="Example JSON response"
+{
+  "object": "list",
+  "url": "/api/v1/webhook_endpoints",
+  "has_more": false,
+  "data": [
+    {
+      "id": 15,
+      "event_types": ["*"],
+      "target_url": "https://example.com/my/endpoint",
+      "enabled": true,
+      "object": "webhook_endpoint",
+      "created": "2022-07-26T18:20:21.849Z"
+    }
+  ]
+}
+```
+
+### Update Webhook endpoint
+
+You can send a `PUT` request to update details for an existing webhook endpoint.
+
+```text title="PUT /webhook_endpoints/[:webhook_endpoint_id]"
+curl -X PUT 'https://eth-slate.figment.io/api/v1/webhook_endpoints/15' \
+-H 'Authorization: API-KEY' \
+-H 'Content-Type: application/json' \
+--data-raw '{
+    "webhook_endpoint": {
+        "target_url": "https://example.com/my/new/endpoint",
+        "event_types": ["*"],
+        // highlight-next-line
+        "enabled": "true"
+    }
+}'
+```
+
+```json title="Example JSON response"
+{
+  "id": 15,
+  "event_types": ["*"],
+  "target_url": "https://example.com/my/new/endpoint",
+  // highlight-next-line
+  "enabled": true,
+  "object": "webhook_endpoint",
+  "created": "2022-07-26T19:27:12.647Z"
+}
+```
+
+### List existing Webhook endpoints
+
+You can send a `GET` request to retreive details for all your webhook endpoints.
+
+```text title="GET /webhook_endpoints"
+curl -X PUT 'https://eth-slate.figment.io/api/v1/webhook_endpoints' \
+-H 'Authorization: API-KEY'
+```
+
+```json title="Example JSON response"
+{
+  "object": "list",
+  "url": "/api/v1/webhook_endpoints",
+  "has_more": false,
+  "data": [
+    {
+      "id": 16,
+      "event_types": ["*"],
+      "target_url": "https://example.com/my/endpoint",
+      "enabled": true,
+      "object": "webhook_endpoint",
+      "created": "2022-07-26T19:27:12.647Z"
+    },
+    {
+      "id": 15,
+      "event_types": ["*"],
+      "target_url": "https://example.com/my/new/endpoint",
+      "enabled": false,
+      "object": "webhook_endpoint",
+      "created": "2022-07-26T18:20:21.849Z"
+    }
+  ]
+}
+```
+
+### Delete an existing Webhook endpoint
+
+You can send a `DELETE` request, including the webhook ID number in the request URL, to delete a webhook endpoint.
+
+```text title="DELETE /webhook_endpoints/[:webhook_endpoint_id]"
+curl -X PUT 'https://eth-slate.figment.io/api/v1/webhook_endpoints/15' \
+-H 'Authorization: API-KEY'
+```
+
+```text title="Example response"
+204 - No Content
+```
+
+:::info
+
+This response does not contain any JSON. Status Code **204** indicates a successful deletion.
+
+:::

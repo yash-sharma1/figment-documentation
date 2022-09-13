@@ -1,0 +1,105 @@
+---
+title: Submit Withdrawl Transaction Data
+---
+
+After receiving the deactivation webhook, a query to `GET /api/v1/flows/[:flow_id]/next` will return the following response:
+
+```json
+{
+  "id": "[:id]",
+  "state": "deactivated",
+  "actions": [
+    {
+      "name": "create_withdraw_tx",
+      "inputs": [
+        {
+          "name": "amount",
+          "description": "",
+          "type": "decimal",
+          "validations": [
+            {
+              "type": "presence",
+              "options": {}
+            },
+            {
+              "type": "numericality",
+              "options": {
+                "greater_than": 0
+              }
+            }
+          ]
+        },
+        {
+          "name": "funding_account_pubkey",
+          "description": "",
+          "type": "string",
+          "validations": []
+        },
+        {
+          "name": "recipient_pubkey",
+          "description": "",
+          "type": "string",
+          "validations": [
+            {
+              "type": "presence",
+              "options": {}
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "data": {},
+  "network_code": "solana",
+  "chain_code": "devnet",
+  "created_at": "[:date_time]",
+  "updated_at": "[:date_time]"
+}
+```
+
+We see there is one Action — `create_withdraw_tx` — and three required fields:
+
+- `amount` (**required**) — the number of SOL to be withdrawn. Partial withdrawal is possible.
+- `funding_account_pubkey` (**required**) — The address of the account that will pay the transaction fee.
+- `recipient_pubkey` (**required**) — The address of the wallet to which the withdrawn SOL will be sent.
+
+:::info
+
+**IMPORTANT**: Note that the recipient of the withdrawal is _not_ the originating address by default!
+
+:::
+
+Once this data has been collected we submit it to the Staking API with `PUT /api/v1/flows/[:flow_id]/next` and the following `inputs` JSON:
+
+```json
+{
+  "amount": "[:amount]",
+  "funding_account_pubkey": "[:funding_account_pubkey]",
+  "recipient_pubkey": "[:recipient_pubkey]"
+}
+```
+
+```text
+curl -X PUT https://slate-staging.figment.io/api/v1/flows/[:flow_id]/next \
+-H "Authorization: API-KEY" \
+-H "Content-Type: application/json" \
+-d '{
+  "name": "create_withdraw_tx",
+  "inputs": {
+    "amount": "[:amount]",
+    "funding_account_pubkey": "[:funding_account_pubkey]",
+    "recipient_pubkey": "[:recipient_pubkey]"
+  }
+}'
+```
+
+Note that, in this response, you can find the unsigned, serialized transaction in `data[create_withdraw_transaction][raw]`.
+
+There are two possible `actions`:
+
+- `refresh_withdraw_tx` — If you need to get a fresh version of the transaction Payload (i.e., the recent blockhash has expired)
+- `sign_withdraw_tx` — Submit a signed transaction payload ready to be broadcast to the network.
+
+We will choose `sign_withdraw_tx`, which indicates one Input to collect:
+
+- `transaction_payload` (**required**) — The signed transaction Payload ready to be broadcast to the network.
