@@ -1,0 +1,32 @@
+---
+title: Submit Signed Transaction for Broadcast
+---
+
+After signing the transaction, you will `PUT /api/v1/flows/[:flow_id]/next` (as always!) and the Staking API will manage broadcasting the transaction to the Ethereum network.
+
+At this stage, the inputs JSON will be:
+
+```json
+{
+  "transaction_payload": "[:signed_transaction_payload]"
+}
+```
+
+- PUT `http://eth-slate.datahub.figment.io/api/v1/flows/[:flow_id]/next`
+
+```text
+curl -X PUT https://eth-slate.datahub.figment.io/api/v1/flows/[:flow_id]/next \
+-H "Authorization: API-KEY" \
+-H "Content-Type: application/json" \
+-d '{
+  "name": "sign_deposit_tx",
+  "inputs": {
+    "transaction_payload": "[:signed_transaction_payload]"
+  }
+}'
+```
+
+With the signed transaction provided, Staking API will broadcast it to the network. As the transaction progresses towards confirmation, the returned state will be one of:
+
+- `deposit_tx_broadcasting` — Transaction has been broadcast and confirmed.
+- `deposited` — Transaction has been confirmed.

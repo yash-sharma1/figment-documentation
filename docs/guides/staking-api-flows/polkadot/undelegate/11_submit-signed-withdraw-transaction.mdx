@@ -1,0 +1,34 @@
+---
+title: Submit a Signed Withdraw Transaction for Broadcast
+---
+
+After signing the transaction, you will `PUT /api/v1/flows/[:flow_id]/next` and the Staking API will manage broadcasting the transaction to the Polkadot network.
+
+At this step, the `inputs` JSON will be:
+
+```json title="inputs"
+{
+  "transaction_payload": "[:signed_transaction_payload]"
+}
+```
+
+```text title="Example curl request"
+curl --request PUT \
+  --url https://slate.figment.io/api/v1/flows/[:flow_id]/next \
+  --header 'Authorization: API-KEY' \
+  --header 'Content-Type: application/json' \
+  --data '{
+  "name": "sign_withdraw_tx",
+  "inputs": {
+    "transaction_payload": "[:signed_transaction_payload]"
+  }
+}'
+```
+
+With the signed transaction provided, Staking API will broadcast it to the network. As the transaction progresses towards confirmation, the returned state will be `withdraw_tx_broadcasting`.
+
+Once the transaction is confirmed, the DOT will be withdrawn and this flow will be complete!
+
+## Un-Delegation Flow Complete
+
+Congratulations, your stake is deactivated and withdrawn!

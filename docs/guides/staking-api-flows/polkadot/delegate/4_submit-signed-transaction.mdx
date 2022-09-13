@@ -1,0 +1,29 @@
+---
+title: Submit a Signed Transaction for Broadcast
+---
+
+After signing the transaction, you will `PUT /api/v1/flows/[:flow_id]/next` (as always!) and the Staking API will manage broadcasting the transaction to the Polkadot network.
+
+At this step, the `inputs` JSON will be:
+
+```json
+{
+  "transaction_payload": "[:signed_transaction_payload]"
+}
+```
+
+```text
+curl -X PUT https://polkadot-slate.datahub.figment.io/api/v1/flows/[:flow_id]/next \
+-H "Authorization: API-KEY" \
+-H "Content-Type: application/json" \
+-d '{
+  "name": "sign_bonding_tx",
+  "inputs": {
+    "transaction_payload": "[:signed_transaction_payload]"
+  }
+}'
+```
+
+With the signed transaction provided, Staking API will broadcast it to the network. As the transaction progresses towards confirmation, the returned state will be `bonding_tx_broadcasting`.
+
+Upon transaction finalization, the bond will be complete and you can move on to the next step — The nomination transaction!
