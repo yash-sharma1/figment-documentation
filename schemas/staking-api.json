@@ -11302,7 +11302,7 @@
 								}
 							}
 						},
-						"url": "https://{{SOL_STAKING_HOST}}/apikey/{{API_KEY_STAKING}}/api/v1/flows",
+						"url": "https://{{SOL_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows",
 						"description": "Create a new Staking flow with a `POST` request to `/api/v1/flows`.\n\n### Parameters\n\n*   `flow` - `object`\n    *   `network_code` - `string` Network this flow operates on (i.e., `near`) (required)\n    *   `chain_code` - `string` Chain this flow operates on (i.e., `mainnet`, `testnet`) (required)\n    *   `operation` `string` The operation to -perform (i.e., `staking`) (required)\n    *   `version` - `string` API version to use (ex. `v1`) (optional)\n\n### Results\n\n*   `id` - `string` Id of the newly created flow.\n*   `state` - `string` The current state of the flow i.e., `initialized`.\n*   `actions` - `array` The actions array contains the name of the next action in the flow and details of the expected inputs in the data field.\n    \n\n* * *"
 					},
 					"response": [
@@ -14146,37 +14146,37 @@
 	],
 	"variable": [
 		{
-			"id": "d6ebc112-671e-43f3-a6a3-cc3df1ca5a5f",
+			"id": "b0d4dd1f-3bc9-4407-b5cb-978498c3108a",
 			"key": "AVAX_STAKING_HOST",
 			"value": "avalanche-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "951ca9a3-a879-46e0-8fbf-75ae891e1687",
+			"id": "f60a3fa9-1db5-4a8c-8a87-855b0654aaa7",
 			"key": "ETH_STAKING_HOST",
 			"value": "eth-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "e5baead7-f183-4f11-bfad-47759538411d",
+			"id": "f713aa7c-6dd1-443a-9a40-b09a2c67c7ce",
 			"key": "NEAR_STAKING_HOST",
 			"value": "near-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "e35d7f42-8644-411e-a822-b83b7aea54f5",
+			"id": "51bee346-479d-4ad8-a941-71dd0169918f",
 			"key": "DOT_STAKING_HOST",
 			"value": "polkadot-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "089ede35-793e-4d18-92fd-c4d42dc23fe8",
+			"id": "656df739-4cdb-4238-89d1-d5760b8d7511",
 			"key": "SOL_STAKING_HOST",
 			"value": "solana-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "b487b86e-bc76-450f-80d2-e9e3aa4cab88",
+			"id": "a7d5907c-b1e8-49a1-8e1a-b22cd6f80274",
 			"key": "INTERACTIVE",
 			"value": "false",
 			"type": "string"
