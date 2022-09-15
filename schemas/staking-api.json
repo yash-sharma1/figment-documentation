@@ -12433,7 +12433,7 @@
 								}
 							}
 						},
-						"url": "https://{{SOL_STAKING_HOST}}/apikey/{{API_KEY_STAKING}}/api/v1/flows/{{solanaStakingFlowId}}/next",
+						"url": "https://{{SOL_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{solanaStakingFlowId}}/next",
 						"description": "If you need to get a fresh version of the transaction payload (i.e., if the nonce needs to be updated)\n\n### Parameters\n\n*   `name` - `string` name of the action to execute (i.e., `refresh_delegate_tx`).\n*   `inputs` - `array` There are no inputs for this action (optional).\n    \n\n### Results\n\n*   `id` - `string` Id of the flow.\n*   `state` - `string` Current state of the flow.\n*   `actions` - `array` The actions array contains the name of the next action in the flow and details of the expected inputs in the data field.\n    \n\n* * *"
 					},
 					"response": []
@@ -14146,37 +14146,37 @@
 	],
 	"variable": [
 		{
-			"id": "b8271cd0-b86c-4a19-8cf9-301043875a28",
+			"id": "ab1a3ebb-09e8-4c16-b6d2-1f998a6ba28f",
 			"key": "AVAX_STAKING_HOST",
 			"value": "avalanche-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "a24c56b7-e4e6-4493-bf5b-a7e5b1d27176",
+			"id": "0d6bdcd0-6daa-48e6-8bc8-5059e4f40fdc",
 			"key": "ETH_STAKING_HOST",
 			"value": "eth-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "4f590d70-82b5-4127-b462-612551f93c5b",
+			"id": "7fa3daa1-ae8d-4c94-b29b-402975b9b7f7",
 			"key": "NEAR_STAKING_HOST",
 			"value": "near-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "62d33cbb-1667-4d46-8fce-4b29df90b849",
+			"id": "e1f3a903-e616-49af-a749-8af58f03b348",
 			"key": "DOT_STAKING_HOST",
 			"value": "polkadot-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "4cd198c4-9071-4467-a6ae-277f90b33526",
+			"id": "187e7849-0769-4073-8555-7fd8e25a1fcd",
 			"key": "SOL_STAKING_HOST",
 			"value": "solana-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "a4c85c30-cfbe-44e9-92d1-134f35bf47e1",
+			"id": "61e71a36-16de-4b19-8fb1-3a10354c40c9",
 			"key": "INTERACTIVE",
 			"value": "false",
 			"type": "string"
