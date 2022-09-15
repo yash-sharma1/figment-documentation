@@ -4,7 +4,7 @@ const SCHEMAS_DIR = "schemas";
 const API_KEY = process.env.API_KEY;
 
 function toDashCase(str) {
-  return str.toLowerCase().replace(/\s+/g, "-");
+  return str?.toLowerCase().replace(/\s+/g, "-");
 }
 
 function toTitleCase(str) {
@@ -112,6 +112,7 @@ function frontMatterTemplate({
   pos = 0,
   prev = "null",
   next = "null",
+  slug = undefined,
   body = "",
   flat = false,
 }) {
@@ -120,14 +121,8 @@ title: ${title}
 sidebar_position: ${pos}
 pagination_prev: ${prev}
 pagination_next: ${next}
-${
-  flat
-    ? `collapsed: false
-collapsible: false`
-    : ""
-}
----
-
+${slug ? `slug: ${slug}` : ""}
+${flat ? `collapsed: false\ncollapsible: false\n---\n` : "---\n"}
 ${body}`;
 }
 
@@ -148,11 +143,184 @@ function sidebarIndexForService(service) {
   }
 }
 
-function createMarkdown(services) {
-  const indexBackup = fs.readFileSync("docs/api-reference/index.mdx", "utf-8");
-  if (!indexBackup) throw new Error("failed to backup api-reference index");
+function referenceTable(_services, variables) {
+  const vars = variables["node-api"];
+  const websockets = vars.WEBSOCKETS.split(", ");
+  const testnets = vars.TESTNETS.split(", ");
+  const devnets = vars.DEVNETS.split(", ");
+  const archivenodes = new Set(vars.ARCHIVENODES.split(", "));
+  const fullnodes = new Set(vars.FULLNODES.split(", "));
+  const ARCHIVE_ONLY = new Set(
+    [...archivenodes].filter((element) => !fullnodes.has(element))
+  );
+  const comment = `<!-- This file is generated at build time. See the referenceTable function in generate.js for details. -->\n\n`;
+  const content = `Check this table to see which APIs are supported for each Protocol.\nClick the name of the API in the table header to go directly to that API Reference (or use the sidebar links!).\n\n`;
+
+  let markdown = "";
+  let editedProtocolList = "";
+
+  // TODO: Determine if this can be sorted alphabetically
+  const services = [
+    _services.find((s) => s.service === "node-api"),
+    _services.find((s) => s.service === "transaction-search-api"),
+    _services.find((s) => s.service === "staking-api"),
+    _services.find((s) => s.service === "staking-api-webhooks"),
+    _services.find((s) => s.service === "rewards-api"),
+    ..._services.filter(
+      (s) =>
+        [
+          "node-api",
+          "transaction-search-api",
+          "staking-api",
+          "staking-api-webhooks",
+          "rewards-api",
+        ].indexOf(s.service) < 0
+    ),
+  ];
+
+  // Define column headers
+  let columns = [["Protocol"], ["Network"], ["Node type"], ["WebSockets"]];
+  columns = [...columns, ...services.map((s) => [s.service])];
+
+  // Define column alignment
+  let alignment =
+    "| " +
+    Array(3).fill(":---").join(" | ") +
+    " | " +
+    Array(columns.length - 4)
+      .fill(":---:")
+      .join(" | ") +
+    " |";
+
+  // Loop through headers
+  for (let index in columns) {
+    let header = columns[index][0];
+    if (header === "Protocol") {
+      // We only want a single protocol name to display in the table
+      editedProtocolList = [
+        ...new Set(
+          services
+            .flatMap((s) => s.networks.map((n) => n.network))
+            .map((n) => n.split(" ")[0])
+        ),
+      ];
+
+      // TODO: Remove need to manually check for outliers
+      // Add any protocols that don't belong to a service
+      // .. or protocols that don't have a Node API
+      editedProtocolList = editedProtocolList.sort();
+
+      columns[index] = [...columns[index], ...editedProtocolList];
+    } else if (header === "Network") {
+      columns[index] = [
+        ...columns[index],
+        ...columns[0]
+          .filter((c) => c != "Protocol")
+          .map(
+            (n) =>
+              `Mainnet${testnets.includes(n.toLowerCase()) ? ", Testnet" : ""}${
+                devnets.includes(n.toLowerCase()) ? ", Devnet" : ""
+              }`
+          ),
+      ];
+    } else if (header === "Node type") {
+      columns[index] = [
+        ...columns[index],
+        ...columns[0]
+          .filter((c) => c != "Protocol")
+          .map(
+            (n) =>
+              `${
+                Array.from(ARCHIVE_ONLY).includes(n.toLowerCase())
+                  ? "Archive"
+                  : "Full"
+              }${
+                Array.from(archivenodes)
+                  .filter(
+                    (n) => !Array.from(ARCHIVE_ONLY).includes(n.toLowerCase())
+                  )
+                  .includes(n.toLowerCase())
+                  ? " & Archive"
+                  : ""
+              }`
+          ),
+      ];
+    } else if (header === "WebSockets") {
+      columns[index] = [
+        ...columns[index],
+        ...columns[0]
+          .filter((c) => c != "Protocol")
+          .map((n) => `${websockets.includes(n.toLowerCase()) ? "✓" : "-"}`),
+      ];
+    } else {
+      let service = services.find((s) => toDashCase(header) === s.service);
+      let serviceLink = `[${toTitleCase(
+        service.service
+      )}](/api-reference/${toDashCase(service.service)})`;
+
+      columns[index] = [
+        serviceLink,
+        ...columns[0]
+          .filter((n) => n != "Protocol")
+          .map((n) => {
+            if (service.service === "node-api") {
+              return "✓";
+            }
+            if (
+              service.networks.filter(
+                (s) => s.network.split(" ")[0].toLowerCase() === n.toLowerCase()
+              ).length
+            ) {
+              return "✓";
+            }
+            return "-";
+          }),
+      ];
+    }
+  }
+
+  function makeRow(row) {
+    for (let index of columns) {
+      markdown = markdown + (columns[0][0] ? "| " : " ") + index[row] + " ";
+    }
+    let finishedRow = markdown;
+    markdown = "";
+    return finishedRow;
+  }
+
+  for (let [i] of columns[0].entries()) {
+    // Handle first iteration - add alignment row
+    if (i === 0) {
+      markdown = makeRow(i) + "|\n";
+      markdown = markdown + alignment + "\n";
+      continue;
+    }
+    // Handle last iteration
+    if (i === columns[0].length - 1) {
+      markdown = makeRow(i) + "|\n";
+      continue;
+    }
+    markdown = makeRow(i) + "|\n";
+  }
+
+  return (outputTable = frontMatterTemplate({
+    title: "API Reference",
+    pos: 3,
+    prev: "null",
+    next: "null",
+    slug: "/api-reference",
+    body: comment + content + markdown,
+    flat: false,
+  }));
+}
+
+function createMarkdown(services, variables) {
   fs.emptyDirSync("docs/api-reference/");
-  fs.writeFileSync("docs/api-reference/index.mdx", indexBackup, "utf-8");
+  fs.writeFileSync(
+    "docs/api-reference/index.mdx",
+    referenceTable(services, variables),
+    "utf-8"
+  );
   fs.emptyDirSync(`partials/transaction-search-parameters`);
 
   services.forEach(({ service, networks }) => {
@@ -225,6 +393,6 @@ function getEnvironmentVariables(schemas) {
   const schemas = loadSchemas();
   const variables = getEnvironmentVariables(schemas);
   const services = processServices(schemas, variables);
-  createMarkdown(services);
+  createMarkdown(services, variables);
   process.exit?.();
 })();
