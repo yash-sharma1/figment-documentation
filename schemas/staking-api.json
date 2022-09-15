@@ -7328,7 +7328,7 @@
 							}
 						},
 						"url": "https://{{DOT_STAKING_HOST}}/apikey/{{API_KEY_STAKING}}/api/v1/flows/{{polkadotStakingFlowId}}/next",
-						"description": "Use the `sign_nomination_tx` action to submit a signed transaction payload.\n\n### Parameters\n\n*   `name` - `string` Name of the action to execute (required).\n*   `inputs` - `array`\n    *   `transaction_payload` - `string` Transaction payload can be found in the response after creating the transaction. (required). **OR**\n    *   `signatures` - `array` An array of signatures. Staking API will sign the payload if this is provided (optional).\n\n### Results\n\nWith the signed transaction provided, Staking API will broadcast it to the network. As the transaction progresses towards confirmation, the returned `state` will be `nomination_tx_broadcasting.`\n\nSince nominations on Polkadot activate at the next epoch boundary (epochs are approximately 1 day), Slate will also track the nomination and send a webhook notification when it activates.\n\nUpon transaction finalization, the nomination will be complete and your stake is now active and earning rewards.\n\n* * *"
+						"description": "Use the `sign_nomination_tx` action to submit a signed transaction payload.\n\n### Parameters\n\n*   `name` - `string` Name of the action to execute (required).\n*   `inputs` - `array`\n    *   `transaction_payload` - `string` Transaction payload can be found in the response after creating the transaction. (required). **OR**\n    *   `signatures` - `array` An array of signatures. Staking API will sign the payload if this is provided (optional).\n\n### Results\n\nWith the signed transaction provided, Staking API will broadcast it to the network. As the transaction progresses towards confirmation, the returned `state` will be `nomination_tx_broadcasting.`\n\nSince nominations on Polkadot activate at the next epoch boundary (epochs are approximately 1 day), Staking API will also track the nomination and send a webhook notification when it activates.\n\nUpon transaction finalization, the nomination will be complete and your stake is now active and earning rewards.\n\n* * *"
 					},
 					"response": []
 				},
@@ -14146,37 +14146,37 @@
 	],
 	"variable": [
 		{
-			"id": "6560bfac-71e8-4471-80a8-e290d8a91627",
+			"id": "f6ccdefd-1260-494d-9893-b6222b5be995",
 			"key": "AVAX_STAKING_HOST",
 			"value": "avalanche-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "9fec4be4-2967-45ac-a213-2b5b374a6775",
+			"id": "76241148-0532-4cf3-a0f2-d0ed62942fef",
 			"key": "ETH_STAKING_HOST",
 			"value": "eth-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "52617cf5-ac73-4b80-81fc-878a3e391fa0",
+			"id": "06550287-9a41-4ac7-8598-d0594f4558c6",
 			"key": "NEAR_STAKING_HOST",
 			"value": "near-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "81ccfe55-2325-46d1-8921-96458ff3bf08",
+			"id": "9ec8a0d6-67e7-4546-a9b8-4bf538d844f8",
 			"key": "DOT_STAKING_HOST",
 			"value": "polkadot-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "c7673120-2a39-450f-a979-98beb30fb641",
+			"id": "b647a540-650f-4141-94b0-0a95c72be8b1",
 			"key": "SOL_STAKING_HOST",
 			"value": "solana-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "f8640806-1a00-4d63-bd1c-6e6783b00745",
+			"id": "9ef6d103-c3a7-434c-804e-ab03affc8634",
 			"key": "INTERACTIVE",
 			"value": "false",
 			"type": "string"
