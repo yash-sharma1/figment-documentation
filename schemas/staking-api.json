@@ -12395,7 +12395,7 @@
 							}
 						},
 						"url": "https://{{SOL_STAKING_HOST}}/apikey/{{API_KEY_STAKING}}/api/v1/flows/{{solanaStakingFlowId}}/next",
-						"description": "Use the `sign_stake_account_tx` action to submit a signed transaction payload.\n\n### Parameters\n\n*   `name` - `string` Name of the action to execute (required).\n*   `inputs` - `array`\n    *   `transaction_payload` - `string` Transaction payload can be found in the response after creating the transaction. (required). **OR**\n    *   `signatures` - `array` An array of signatures. Slate will sign the payload if this is provided (optional).\n\n### Results\n\nWith the signed transaction provided, Slate will broadcast it to the network. As the transaction progresses towards confirmation, the returned state will be either:\n\n- `stake_account_tx_broadcasting` - The transaction has been broadcast to the Solana cluster but not confirmed.\n- `stake_account_tx_expired` - If the transaction has expired, it will automatically move the flow state back to `stake_account_tx_signature`.\n\nUpon transaction finalization, the stake account will be ready for the next step — the delegation transaction.\n\n* * *"
+						"description": "Use the `sign_stake_account_tx` action to submit a signed transaction payload.\n\n### Parameters\n\n*   `name` - `string` Name of the action to execute (required).\n*   `inputs` - `array`\n    *   `transaction_payload` - `string` Transaction payload can be found in the response after creating the transaction. (required). **OR**\n    *   `signatures` - `array` An array of signatures. Staking API will sign the payload if this is provided (optional).\n\n### Results\n\nWith the signed transaction provided, Staking API will broadcast it to the network. As the transaction progresses towards confirmation, the returned state will be either:\n\n- `stake_account_tx_broadcasting` - The transaction has been broadcast to the Solana cluster but not confirmed.\n- `stake_account_tx_expired` - If the transaction has expired, it will automatically move the flow state back to `stake_account_tx_signature`.\n\nUpon transaction finalization, the stake account will be ready for the next step — the delegation transaction.\n\n* * *"
 					},
 					"response": []
 				},
@@ -14146,37 +14146,37 @@
 	],
 	"variable": [
 		{
-			"id": "51a73aa8-d931-4f0a-bb8f-1dd7596bdbaf",
+			"id": "e9cde855-4a39-41d8-bdf1-d14898071042",
 			"key": "AVAX_STAKING_HOST",
 			"value": "avalanche-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "39f34e65-26fe-44a1-8826-d7516f6a2d37",
+			"id": "c6e229c6-dc8a-47c0-a07c-07b95d77a873",
 			"key": "ETH_STAKING_HOST",
 			"value": "eth-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "5124ef54-1f70-48e4-a273-5e29a79317c5",
+			"id": "f02cf8d4-6540-44c2-a552-385b04a3dfe9",
 			"key": "NEAR_STAKING_HOST",
 			"value": "near-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "276b1149-7728-43b7-a35f-9c9f56c3ac70",
+			"id": "2a6fe0d9-8551-4b18-aebd-f1c8a71b79d7",
 			"key": "DOT_STAKING_HOST",
 			"value": "polkadot-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "74dc65dd-d888-4332-80cb-61e383da9c29",
+			"id": "706461bd-a8ed-4bae-b2e2-0207a884419c",
 			"key": "SOL_STAKING_HOST",
 			"value": "solana-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "446af649-cde4-49a6-8245-bc63be00a85e",
+			"id": "623230ca-bf53-498b-9272-ccc14faa6d6c",
 			"key": "INTERACTIVE",
 			"value": "false",
 			"type": "string"
