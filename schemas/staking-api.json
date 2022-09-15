@@ -8407,7 +8407,7 @@
 							}
 						},
 						"url": "https://{{DOT_STAKING_HOST}}/apikey/{{API_KEY_STAKING}}/api/v1/flows/{{polkadotUnstakingFlowId}}/next",
-						"description": "Use the `sign_unbond_tx` action to submit a signed transaction payload.\n\n### Parameters\n\n*   `name` - `string` Name of the action to execute (required).\n*   `inputs` - `array`\n    *   `transaction_payload` - `string` Transaction payload can be found in the response after creating the transaction. (required). **OR**\n    *   `signatures` - `array` An array of signatures. Slate will sign the payload if this is provided (optional).\n\n### Results\n\nWith the signed transaction provided, Slate will broadcast it to the network. As the transaction progresses towards confirmation, the returned `state` will be `withdraw_tx_broadcasting`.\n\n* * *"
+						"description": "Use the `sign_unbond_tx` action to submit a signed transaction payload.\n\n### Parameters\n\n*   `name` - `string` Name of the action to execute (required).\n*   `inputs` - `array`\n    *   `transaction_payload` - `string` Transaction payload can be found in the response after creating the transaction. (required). **OR**\n    *   `signatures` - `array` An array of signatures. Staking API will sign the payload if this is provided (optional).\n\n### Results\n\nWith the signed transaction provided, Staking API will broadcast it to the network. As the transaction progresses towards confirmation, the returned `state` will be `withdraw_tx_broadcasting`.\n\n* * *"
 					},
 					"response": [
 						{
@@ -14146,37 +14146,37 @@
 	],
 	"variable": [
 		{
-			"id": "7c71dac0-c6d6-495d-9abb-bf5c7491f513",
+			"id": "664ae9c5-d8ad-4f5e-8a7d-946b5b2d4aea",
 			"key": "AVAX_STAKING_HOST",
 			"value": "avalanche-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "324a2561-a13e-4e46-8507-916fcedf693b",
+			"id": "9630fbf6-b197-4325-8130-9c2f35051916",
 			"key": "ETH_STAKING_HOST",
 			"value": "eth-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "33e207e2-2ff3-4ac0-abfa-fae7d695c358",
+			"id": "8a140072-0b12-40f5-90d7-b1b7300d5891",
 			"key": "NEAR_STAKING_HOST",
 			"value": "near-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "1b802abd-6ab0-40cd-bfaa-8334be964f34",
+			"id": "b5c946ef-f99e-4697-bc5a-0d86486645ad",
 			"key": "DOT_STAKING_HOST",
 			"value": "polkadot-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "67d755ce-c401-4675-bb50-3d2afda871bf",
+			"id": "3692d0c4-b3cd-4adc-8d70-90200b22a397",
 			"key": "SOL_STAKING_HOST",
 			"value": "solana-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "a78ac574-82ad-45a1-86ba-fb62333b8ea8",
+			"id": "a4d49968-c8a9-41f6-9da5-642982a90a47",
 			"key": "INTERACTIVE",
 			"value": "false",
 			"type": "string"
