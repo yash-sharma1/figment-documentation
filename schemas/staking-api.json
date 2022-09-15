@@ -11837,7 +11837,7 @@
 							}
 						},
 						"url": "https://{{SOL_STAKING_HOST}}/apikey/{{API_KEY_STAKING}}/api/v1/flows/{{solanaStakingFlowId}}/next",
-						"description": "Use this action if you do not have an inactive stake account and want to create a new one.\n\nAfter collecting the required inputs, `PUT /api/v1/flows/[:flow_id]/next` to move on to the next step in the flow.\n\n### Parameters\n\n*   `name` - `string` Name of the action to execute (required).\n*   `inputs` - `array`.\n    *   `funding_account_pubkey` - `string` The main wallet SOL will be originating from (required).\n    *   `stake_authority_pubkey` - `string` Grants authority to sign certain staking relation transactions to the provided address. Defaults to `funding_account_pubkey` (optional).\n    *   `withdraw_authority_pubkey` - `string` Grants authority to sign certain withdrawal-related transactions to the provided address. Defaults to `funding_account_pubkey` (optional).\n- `amount` - `number` The amount of SOL to be sent to the Stake Account. This field should be in full SOL, not in lamports (i.e., if you want to stake 5 SOL, return `\"amount\": 5.0`). Slate will translate the amount to lamports so you do not have to worry about the conversion factor  (required).\n\n### Results\n\nNote that in this response you can find the unsigned, serialized transaction in `data[create_stake_account_transaction][raw]`.\n\n*   `id` - `string` Id of the newly created flow.\n*   `state` - `string` Current state of the flow i:e; `delegate_tx_signature`\n*   `actions` - `array` The actions array contains the name of the next action in the flow and details of the expected inputs in the data field.\n    \n\n* * *"
+						"description": "Use this action if you do not have an inactive stake account and want to create a new one.\n\nAfter collecting the required inputs, `PUT /api/v1/flows/[:flow_id]/next` to move on to the next step in the flow.\n\n### Parameters\n\n*   `name` - `string` Name of the action to execute (required).\n*   `inputs` - `array`.\n    *   `funding_account_pubkey` - `string` The main wallet SOL will be originating from (required).\n    *   `stake_authority_pubkey` - `string` Grants authority to sign certain staking relation transactions to the provided address. Defaults to `funding_account_pubkey` (optional).\n    *   `withdraw_authority_pubkey` - `string` Grants authority to sign certain withdrawal-related transactions to the provided address. Defaults to `funding_account_pubkey` (optional).\n- `amount` - `number` The amount of SOL to be sent to the Stake Account. This field should be in full SOL, not in lamports (i.e., if you want to stake 5 SOL, return `\"amount\": 5.0`). Staking API will translate the amount to lamports so you do not have to worry about the conversion factor  (required).\n\n### Results\n\nNote that in this response you can find the unsigned, serialized transaction in `data[create_stake_account_transaction][raw]`.\n\n*   `id` - `string` Id of the newly created flow.\n*   `state` - `string` Current state of the flow i:e; `delegate_tx_signature`\n*   `actions` - `array` The actions array contains the name of the next action in the flow and details of the expected inputs in the data field.\n    \n\n* * *"
 					},
 					"response": [
 						{
@@ -14146,37 +14146,37 @@
 	],
 	"variable": [
 		{
-			"id": "73349b61-6022-4535-a675-19fbbb9e9e20",
+			"id": "823030a0-c9cd-4e62-9ce5-8af50369e3b9",
 			"key": "AVAX_STAKING_HOST",
 			"value": "avalanche-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "1151beb5-30db-4404-b7da-38ba0139bb9e",
+			"id": "cefee2c1-17f1-422d-bab9-1fe87fcadd41",
 			"key": "ETH_STAKING_HOST",
 			"value": "eth-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "fc2e539b-d394-474c-9b00-5d0b08243379",
+			"id": "54942c52-667d-441a-9725-ff56412c4f7d",
 			"key": "NEAR_STAKING_HOST",
 			"value": "near-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "ed37c185-9770-409c-9705-0d27d7a8af9c",
+			"id": "d655b012-766e-4906-8489-ba78b8be40c9",
 			"key": "DOT_STAKING_HOST",
 			"value": "polkadot-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "6a9bcc5e-d9d3-46f7-a7cb-a742e3da9718",
+			"id": "57c224b0-dd80-43b7-9a37-4d848bd4401c",
 			"key": "SOL_STAKING_HOST",
 			"value": "solana-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "f7424a4c-69c0-4b69-9479-0abf4fa78958",
+			"id": "bdd90bec-cda3-44d2-a4ce-db7b0a0864fc",
 			"key": "INTERACTIVE",
 			"value": "false",
 			"type": "string"
