@@ -6555,7 +6555,7 @@
 							}
 						},
 						"url": "https://{{DOT_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{polkadotStakingFlowId}}/next",
-						"description": "Use the `create_bonding_tx` action if you do not have a controller account set up and would like to create a controller and bond tokens.\n\n### Parameters\n\n*   `name` - `string` Name of the action to execute (required).\n*   `inputs` - `object`\n    *   `controller_account_address` - `string` Address of the wallet DOT will be bonded to (required).\n    *   `controller_proxy_account_address` - `string` A proxy account that will sign on behalf of the controller account (optional).\n    *   `stash_account_address` - `string` Primary wallet from which DOT will be bonded.  Cannot have a zero balance. (required).\n    *   `stash_proxy_account_address` - `string` A proxy account that will sign on behalf of the controller account (optional).\n    *   `reward_destination` - `string` Reward destination. (required) Indicates whether rewards are to be:\n     1.  Added to the staked balance (`Staked`), note the uppercase, `staked` will not work.\n     2.  Sent to the controller account, liquid (`Controller`), note the uppercase, `controller` will not work.\n     3.  Sent to the stash account, liquid (`Stash`), note the uppercase, `stash` will not work.\n    *   `amount` - `number` - The amount of DOT to be bonded to the controller. Minimum of `1.0`. This field should be in full DOT, not in Planck (ie. if you want to stake 5 DOT, return `\"amount\": 5.0`). Slate will translate the amount to Plancks so you do not have to worry about the conversion factor (required).\n\n### Results\n\nNote that in this response you can find the unsigned, serialized transaction in `data[create_bonding_tx][raw]`.\n\n*   `id` - `string` ID of the newly created flow.\n*   `state` - `string` Current state of the flow.\n*   `actions` - `array` The actions array contains the name of the next action in the flow and details of the expected inputs in the data field.\n\nThere are two possible `actions`:\n\n- `refresh_bonding_tx` - If you need to get a fresh version of the transaction Payload (i.e., if the nonce needs to be updated).\n- `sign_bonding_tx` - Submit a signed transaction Payload ready to be broadcast to the network.\n    \n\n* * *"
+						"description": "Use the `create_bonding_tx` action if you do not have a controller account set up and would like to create a controller and bond tokens.\n\n### Parameters\n\n*   `name` - `string` Name of the action to execute (required).\n*   `inputs` - `object`\n    *   `controller_account_address` - `string` Address of the wallet DOT will be bonded to (required).\n    *   `controller_proxy_account_address` - `string` A proxy account that will sign on behalf of the controller account (optional).\n    *   `stash_account_address` - `string` Primary wallet from which DOT will be bonded.  Cannot have a zero balance. (required).\n    *   `stash_proxy_account_address` - `string` A proxy account that will sign on behalf of the controller account (optional).\n    *   `reward_destination` - `string` Reward destination. (required) Indicates whether rewards are to be:\n     1.  Added to the staked balance (`Staked`), note the uppercase, `staked` will not work.\n     2.  Sent to the controller account, liquid (`Controller`), note the uppercase, `controller` will not work.\n     3.  Sent to the stash account, liquid (`Stash`), note the uppercase, `stash` will not work.\n    *   `amount` - `number` - The amount of DOT to be bonded to the controller. Minimum of `1.0`. This field should be in full DOT, not in Planck (ie. if you want to stake 5 DOT, return `\"amount\": 5.0`). Staking API will translate the amount to Plancks so you do not have to worry about the conversion factor (required).\n\n### Results\n\nNote that in this response you can find the unsigned, serialized transaction in `data[create_bonding_tx][raw]`.\n\n*   `id` - `string` ID of the newly created flow.\n*   `state` - `string` Current state of the flow.\n*   `actions` - `array` The actions array contains the name of the next action in the flow and details of the expected inputs in the data field.\n\nThere are two possible `actions`:\n\n- `refresh_bonding_tx` - If you need to get a fresh version of the transaction Payload (i.e., if the nonce needs to be updated).\n- `sign_bonding_tx` - Submit a signed transaction Payload ready to be broadcast to the network.\n    \n\n* * *"
 					},
 					"response": [
 						{
@@ -14146,37 +14146,37 @@
 	],
 	"variable": [
 		{
-			"id": "5dba5781-c179-46e4-b8a1-68919f518595",
+			"id": "bad81b3c-9547-4149-9fe8-ba1e80904160",
 			"key": "AVAX_STAKING_HOST",
 			"value": "avalanche-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "9e4c09c0-063e-432d-a8e1-d040e44f4e94",
+			"id": "23700c96-860e-4d93-a921-8ab653b6f396",
 			"key": "ETH_STAKING_HOST",
 			"value": "eth-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "710ebbf6-1162-462a-88cc-a411c5372b1e",
+			"id": "8a0cc264-7535-448d-b5d7-6e1e85cb0f0a",
 			"key": "NEAR_STAKING_HOST",
 			"value": "near-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "bdea8736-b830-4219-b2ce-a8581fa4383c",
+			"id": "b87f94b8-e4be-4ad0-bb58-fb15d314859d",
 			"key": "DOT_STAKING_HOST",
 			"value": "polkadot-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "3774a8b1-7586-4ff1-8e1c-79d3a3f119e9",
+			"id": "7073e5d6-495a-49d3-8267-557d02810cd7",
 			"key": "SOL_STAKING_HOST",
 			"value": "solana-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "063ceffd-e078-40a3-ba84-dbff8adce45d",
+			"id": "21145503-6943-4819-97a5-68bbc4b77825",
 			"key": "INTERACTIVE",
 			"value": "false",
 			"type": "string"
