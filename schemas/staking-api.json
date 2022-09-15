@@ -12022,7 +12022,7 @@
 								}
 							}
 						},
-						"url": "https://{{SOL_STAKING_HOST}}/apikey/{{API_KEY_STAKING}}/api/v1/flows/{{solanaStakingFlowId}}/next",
+						"url": "https://{{SOL_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{solanaStakingFlowId}}/next",
 						"description": "Use `refresh_nomination_tx` if you need to get a fresh version of the transaction Payload (for example, if the nonce needs to be updated).\n\n### Parameters\n\n*   `name` - `string` Name of the action to execute (required).\n*   `inputs` - `object` There are no inputs for this action (optional).\n    \n\n### Results\n\nThe transaction payload is refreshed.\n\n* * *"
 					},
 					"response": [
@@ -14146,37 +14146,37 @@
 	],
 	"variable": [
 		{
-			"id": "8c1a2389-7905-479d-8b5c-1c7861ddddf1",
+			"id": "e41143d0-c433-48cc-b1e5-87656d0716d9",
 			"key": "AVAX_STAKING_HOST",
 			"value": "avalanche-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "08b94a22-eef3-45f9-8970-44529d83a432",
+			"id": "ef37da6f-a3b2-458f-b555-34061274da29",
 			"key": "ETH_STAKING_HOST",
 			"value": "eth-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "daee98f0-3b66-4c02-981e-59a62677bfb4",
+			"id": "6e582c23-ab4a-4d04-b209-a2462c10ceb6",
 			"key": "NEAR_STAKING_HOST",
 			"value": "near-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "c71bcee3-740e-43d9-8c81-d19a951f6c8a",
+			"id": "4b6799cb-f8bf-49dc-a63d-5f2db57f7979",
 			"key": "DOT_STAKING_HOST",
 			"value": "polkadot-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "3d717c48-dbb8-4e6d-949b-c508b8267041",
+			"id": "dc79080a-682b-4cfa-b459-2a6b69a58399",
 			"key": "SOL_STAKING_HOST",
 			"value": "solana-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "4ae56ac5-400c-4b55-b0dd-88d083a77119",
+			"id": "82e4a905-c55e-4d2d-9c48-85793687ddda",
 			"key": "INTERACTIVE",
 			"value": "false",
 			"type": "string"
