@@ -13047,7 +13047,7 @@
 								}
 							}
 						},
-						"url": "https://{{SOL_STAKING_HOST}}/apikey/{{API_KEY_STAKING}}/api/v1/flows/{{solanaUnstakingFlowId}}/next",
+						"url": "https://{{SOL_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{solanaUnstakingFlowId}}/next",
 						"description": "Submit a signed transaction payload ready to be broadcast to the network.\n\n### Parameters\n\n*   `name` - `string` Name of the action you want to execute (i.e., `sign_withdraw_tx`).\n*   `inputs` - `array`\n    *   `transaction_payload` - `string` Transaction payload can be found in the response after creating the transaction. (required). **OR**\n    *   `signatures` - `array` An array of signatures. Staking API will sign the payload if this is provided (optional).\n\n### Results\n\nThe transaction is broadcast to the network. Once it is confirmed, the unstaking flow is completed.\n\n**Note**: If you only withdrew a portion of the stake account balance and want to reactivate the remaining portion, simply start a new Staking flow and use the `assign_stake_account` action in the first step.\n \n* * *"
 					},
 					"response": []
@@ -14146,37 +14146,37 @@
 	],
 	"variable": [
 		{
-			"id": "c5d1eebd-ac25-4110-9ef8-39f6d927c356",
+			"id": "ffc3ee51-c8ca-4cee-a05c-8726ac502c7f",
 			"key": "AVAX_STAKING_HOST",
 			"value": "avalanche-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "fc6ec438-2efe-49cf-8e61-be4759afb942",
+			"id": "9adecb24-0579-48eb-ba30-2accdbbb313c",
 			"key": "ETH_STAKING_HOST",
 			"value": "eth-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "891b65a8-c7a4-4d58-89d6-b56554a5d3ce",
+			"id": "e6275b08-bd7d-4ef0-b2bc-1ea01c6f9a46",
 			"key": "NEAR_STAKING_HOST",
 			"value": "near-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "a46d6f35-7f80-41f6-8bb8-bac2b4d85b0e",
+			"id": "3f255663-1b43-49d2-ab0b-a9683d515776",
 			"key": "DOT_STAKING_HOST",
 			"value": "polkadot-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "2b51ea38-3712-4132-98a3-af9c911824e3",
+			"id": "384bfaea-8275-4adf-a51f-c3da589edc5d",
 			"key": "SOL_STAKING_HOST",
 			"value": "solana-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "6a533dcf-b7fa-407d-9767-b979e3322a71",
+			"id": "d9fe1888-2e61-4c04-91a6-b7f8472d4091",
 			"key": "INTERACTIVE",
 			"value": "false",
 			"type": "string"
