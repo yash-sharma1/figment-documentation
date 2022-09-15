@@ -12472,7 +12472,7 @@
 								}
 							}
 						},
-						"url": "https://{{SOL_STAKING_HOST}}/apikey/{{API_KEY_STAKING}}/api/v1/flows/{{solanaStakingFlowId}}/next",
+						"url": "https://{{SOL_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{solanaStakingFlowId}}/next",
 						"description": "Submit a signed transaction payload ready to be broadcast to the network.\n\n### Parameters\n\n*   `name` - `string` Name of the action you want to execute (i.e., `sign_withdraw_tx`).\n*   `inputs` - `array`\n    *   `transaction_payload` - `string` Transaction payload can be found in the response after creating the transaction. (required). **OR**\n    *   `signatures` - `array` An array of signatures. Staking API will sign the payload if this is provided (optional).\n\n### Results\n\nThe transaction is broadcast to the network. Once it is confirmed, the staking flow is completed. Your stake is now active and earning rewards.\n\n* * *"
 					},
 					"response": []
@@ -14146,37 +14146,37 @@
 	],
 	"variable": [
 		{
-			"id": "ab1a3ebb-09e8-4c16-b6d2-1f998a6ba28f",
+			"id": "42884568-9846-4e43-af56-580c2c02f458",
 			"key": "AVAX_STAKING_HOST",
 			"value": "avalanche-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "0d6bdcd0-6daa-48e6-8bc8-5059e4f40fdc",
+			"id": "8df70aff-543c-4e33-85b7-bedb9b4e5836",
 			"key": "ETH_STAKING_HOST",
 			"value": "eth-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "7fa3daa1-ae8d-4c94-b29b-402975b9b7f7",
+			"id": "5b3cc07d-e0a4-43ab-8ae0-317feb97863b",
 			"key": "NEAR_STAKING_HOST",
 			"value": "near-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "e1f3a903-e616-49af-a749-8af58f03b348",
+			"id": "4c1470d9-ba35-47ef-94f0-74366056423b",
 			"key": "DOT_STAKING_HOST",
 			"value": "polkadot-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "187e7849-0769-4073-8555-7fd8e25a1fcd",
+			"id": "7ee9c000-967b-4f2d-a32c-9a1bed59270c",
 			"key": "SOL_STAKING_HOST",
 			"value": "solana-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "61e71a36-16de-4b19-8fb1-3a10354c40c9",
+			"id": "6baf769b-6df0-446a-8f0f-241f2766fa67",
 			"key": "INTERACTIVE",
 			"value": "false",
 			"type": "string"
