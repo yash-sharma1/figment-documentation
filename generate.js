@@ -187,7 +187,7 @@ function referenceTable(_services, variables) {
     "| " +
     Array(3).fill(":---").join(" | ") +
     " | " +
-    Array(columns.length - 4)
+    Array(columns.length - 3)
       .fill(":---:")
       .join(" | ") +
     " |";
