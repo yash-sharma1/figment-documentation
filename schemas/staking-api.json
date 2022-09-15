@@ -6371,7 +6371,7 @@
 							}
 						},
 						"url": "https://{{DOT_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{polkadotStakingFlowId}}/next",
-						"description": "Use the `assign_stash_and_controller_account` action if you already have a controller account set up and wish to add bond to it.\n\n### Parameters\n\n*   `name` - `string` Name of the action to execute (required).\n*   `inputs` - `array`\n    *   `controller_account_address` - `string` Address of the wallet DOT will be bonded to (required).\n    *   `controller_proxy_account_address` - `string` A proxy account that will sign on behalf of the controller account (optional).\n    *   `stash_account_address` - `string` Primary wallet from which DOT will be bonded (required).\n    *   `stash_proxy_account_address` - `string` A proxy account that will sign on behalf of the controller account (optional).\n    *   `validator_address` - `string` Address of the validator to whom you want to delegate your tokens.\n    *   `reward_destination` - `string` Reward destination. (required) Indicates whether rewards are to be:\n     1. Added to the staked balance (`staked`)\n     2. Sent to the controller account, liquid (`controller`)\n     3. Sent to the stash account, liquid (`stash`)\n    *   `amount` - `number` - The amount of DOT to be bonded to the controller. This field should be in full DOT, not in Planck (ie. if you want to stake 5 DOT, return \"amount\": 5.0). Slate will translate the amount to Plancks so you do not have to worry about the conversion factor (required).\n\n### Results\n\n*   `id` - `string` ID of the newly created flow.\n*   `state` - `string` Current state of the flow.\n*   `actions` - `array` The actions array contains the name of the next action in the flow and details of the expected inputs in the data field.\n    \n\n* * *"
+						"description": "Use the `assign_stash_and_controller_account` action if you already have a controller account set up and wish to add bond to it.\n\n### Parameters\n\n*   `name` - `string` Name of the action to execute (required).\n*   `inputs` - `array`\n    *   `controller_account_address` - `string` Address of the wallet DOT will be bonded to (required).\n    *   `controller_proxy_account_address` - `string` A proxy account that will sign on behalf of the controller account (optional).\n    *   `stash_account_address` - `string` Primary wallet from which DOT will be bonded (required).\n    *   `stash_proxy_account_address` - `string` A proxy account that will sign on behalf of the controller account (optional).\n    *   `validator_address` - `string` Address of the validator to whom you want to delegate your tokens.\n    *   `reward_destination` - `string` Reward destination. (required) Indicates whether rewards are to be:\n     1. Added to the staked balance (`staked`)\n     2. Sent to the controller account, liquid (`controller`)\n     3. Sent to the stash account, liquid (`stash`)\n    *   `amount` - `number` - The amount of DOT to be bonded to the controller. This field should be in full DOT, not in Planck (ie. if you want to stake 5 DOT, return \"amount\": 5.0). Staking API will translate the amount to Plancks so you do not have to worry about the conversion factor (required).\n\n### Results\n\n*   `id` - `string` ID of the newly created flow.\n*   `state` - `string` Current state of the flow.\n*   `actions` - `array` The actions array contains the name of the next action in the flow and details of the expected inputs in the data field.\n    \n\n* * *"
 					},
 					"response": [
 						{
@@ -14146,37 +14146,37 @@
 	],
 	"variable": [
 		{
-			"id": "1f5dec12-fac9-4b70-a3e2-1b8f2e1146e5",
+			"id": "5dba5781-c179-46e4-b8a1-68919f518595",
 			"key": "AVAX_STAKING_HOST",
 			"value": "avalanche-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "0fa5ece9-c428-44dd-83fd-400e718137f3",
+			"id": "9e4c09c0-063e-432d-a8e1-d040e44f4e94",
 			"key": "ETH_STAKING_HOST",
 			"value": "eth-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "4a079391-003d-46c6-a8de-b39cb53910ff",
+			"id": "710ebbf6-1162-462a-88cc-a411c5372b1e",
 			"key": "NEAR_STAKING_HOST",
 			"value": "near-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "71b8bae5-3fde-42f0-b7fe-abe01d418bbc",
+			"id": "bdea8736-b830-4219-b2ce-a8581fa4383c",
 			"key": "DOT_STAKING_HOST",
 			"value": "polkadot-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "7a8643e7-daad-4d98-89aa-6fb7f95482f2",
+			"id": "3774a8b1-7586-4ff1-8e1c-79d3a3f119e9",
 			"key": "SOL_STAKING_HOST",
 			"value": "solana-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "7a3d65b2-dfe4-4f26-8b3a-51abb24c90a7",
+			"id": "063ceffd-e078-40a3-ba84-dbff8adce45d",
 			"key": "INTERACTIVE",
 			"value": "false",
 			"type": "string"
