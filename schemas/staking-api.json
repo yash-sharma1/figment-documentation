@@ -12512,7 +12512,7 @@
 								}
 							}
 						},
-						"url": "https://{{SOL_STAKING_HOST}}/apikey/{{API_KEY_STAKING}}/api/v1/flows",
+						"url": "https://{{SOL_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows",
 						"description": "Create a new flow with `POST /api/v1/flows` to initiate the unstaking process.\n\n### Parameters\n\n*   `flow` - `object`\n    *   `network_code` - `string` Network this flow operates on (required).\n    *   `chain_code` - `string` Chain this flow operates on (required).\n    *   `operation` `string` The operation to perform (required).\n    *   `version` - `string` API version to use (optional).\n\n### Results\n\n*   `id` - `string` Id of the newly created flow.\n*   `state` - `string` The current state of the flow.\n*   `actions` - `array` The actions array contains the name of the next action in the flow and details of the expected inputs in the data field.\n    \n\n* * *"
 					},
 					"response": [
@@ -14146,37 +14146,37 @@
 	],
 	"variable": [
 		{
-			"id": "42884568-9846-4e43-af56-580c2c02f458",
+			"id": "0a36854f-5104-4774-b27b-014b6a907208",
 			"key": "AVAX_STAKING_HOST",
 			"value": "avalanche-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "8df70aff-543c-4e33-85b7-bedb9b4e5836",
+			"id": "4d60557a-e253-40cf-9665-1d591d51f3ce",
 			"key": "ETH_STAKING_HOST",
 			"value": "eth-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "5b3cc07d-e0a4-43ab-8ae0-317feb97863b",
+			"id": "32119774-0570-4052-827c-eb049aaf17a0",
 			"key": "NEAR_STAKING_HOST",
 			"value": "near-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "4c1470d9-ba35-47ef-94f0-74366056423b",
+			"id": "e11c34f6-66c8-4774-bbb7-5bfe7c876d8e",
 			"key": "DOT_STAKING_HOST",
 			"value": "polkadot-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "7ee9c000-967b-4f2d-a32c-9a1bed59270c",
+			"id": "debae835-8745-4f3b-b018-10ff22055442",
 			"key": "SOL_STAKING_HOST",
 			"value": "solana-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "6baf769b-6df0-446a-8f0f-241f2766fa67",
+			"id": "3144296f-933e-4e84-a385-e3d47c9e49d1",
 			"key": "INTERACTIVE",
 			"value": "false",
 			"type": "string"
