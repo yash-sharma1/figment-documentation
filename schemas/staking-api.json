@@ -8468,7 +8468,7 @@
 							}
 						},
 						"url": "https://{{DOT_STAKING_HOST}}/apikey/{{API_KEY_STAKING}}/api/v1/flows/{{polkadotUnstakingFlowId}}/next",
-						"description": "Use the `create_withddraw_tx` action to create a withdrawl transaction payload.\n\nAfter collecting the required Inputs, send a `PUT` request to `/api/v1/flows/[:flow_id]/next` to move on to the next step in the flow.\n\n### Parameters\n\n*   `name` - `string` Name of the action to execute (required).\n*   `inputs` - `object`\n  *  `controller_account_address` - `string` Address of the wallet DOT will be bonded to (required). \n  *  `controller_proxy_account_address` - `string` A proxy account that will sign on behalf of the controller account (optional).\n  *  `stash_account_address` - `string` Primary wallet from which DOT will be bonded (required). \n  *  `amount` - `number` The amount of DOT to be bonded to the controller. This field should be in full DOT, not in Planck (ie. if you want to stake 5 DOT, return \"amount\": 5.0). Slate will translate the amount to Plancks so you do not have to worry about the conversion factor (required).\n  *  `maximum` - `boolean`  `true` if you want to unbond the maximum number of tokens (optional).\n    \n\n### Results\n\n*   `id` - `string` Id of the newly created flow.\n*   `state` - `string` Current state of the flow.\n*   `actions` - `array` The actions array contains the name of the next action in the flow and details of the expected inputs in the data field.\n    \n\n* * *"
+						"description": "Use the `create_withddraw_tx` action to create a withdrawl transaction payload.\n\nAfter collecting the required Inputs, send a `PUT` request to `/api/v1/flows/[:flow_id]/next` to move on to the next step in the flow.\n\n### Parameters\n\n*   `name` - `string` Name of the action to execute (required).\n*   `inputs` - `object`\n  *  `controller_account_address` - `string` Address of the wallet DOT will be bonded to (required). \n  *  `controller_proxy_account_address` - `string` A proxy account that will sign on behalf of the controller account (optional).\n  *  `stash_account_address` - `string` Primary wallet from which DOT will be bonded (required). \n  *  `amount` - `number` The amount of DOT to be bonded to the controller. This field should be in full DOT, not in Planck (ie. if you want to stake 5 DOT, return \"amount\": 5.0). Staking API will translate the amount to Plancks so you do not have to worry about the conversion factor (required).\n  *  `maximum` - `boolean`  `true` if you want to unbond the maximum number of tokens (optional).\n    \n\n### Results\n\n*   `id` - `string` Id of the newly created flow.\n*   `state` - `string` Current state of the flow.\n*   `actions` - `array` The actions array contains the name of the next action in the flow and details of the expected inputs in the data field.\n    \n\n* * *"
 					},
 					"response": []
 				},
@@ -14146,37 +14146,37 @@
 	],
 	"variable": [
 		{
-			"id": "664ae9c5-d8ad-4f5e-8a7d-946b5b2d4aea",
+			"id": "673cb1cb-4369-4434-94c3-345e6b07c700",
 			"key": "AVAX_STAKING_HOST",
 			"value": "avalanche-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "9630fbf6-b197-4325-8130-9c2f35051916",
+			"id": "d2ff9059-1dd9-49d2-b6cd-56c6bc69f77b",
 			"key": "ETH_STAKING_HOST",
 			"value": "eth-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "8a140072-0b12-40f5-90d7-b1b7300d5891",
+			"id": "febafdd9-ab58-457c-abf6-4bfc46a33564",
 			"key": "NEAR_STAKING_HOST",
 			"value": "near-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "b5c946ef-f99e-4697-bc5a-0d86486645ad",
+			"id": "ef6ddb44-de0d-46af-adf6-7ec2abfa8857",
 			"key": "DOT_STAKING_HOST",
 			"value": "polkadot-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "3692d0c4-b3cd-4adc-8d70-90200b22a397",
+			"id": "1bfb1c0b-c5d1-4386-a3f4-97a1c3647a98",
 			"key": "SOL_STAKING_HOST",
 			"value": "solana-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "a4d49968-c8a9-41f6-9da5-642982a90a47",
+			"id": "941aacfc-2350-422a-8f0d-8483609c86e0",
 			"key": "INTERACTIVE",
 			"value": "false",
 			"type": "string"
