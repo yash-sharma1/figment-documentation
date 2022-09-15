@@ -50,7 +50,16 @@ const config = {
           }) {
             const sidebarItems = await defaultSidebarItemsGenerator(args).map(
               (link) => {
-                if (link.label !== "API Reference") return link;
+                if (link.label === "Terms & Conditions") {
+                  return {
+                    ...link,
+                    className: "hide-network-link",
+                  };
+                }
+
+                if (link.label !== "API Reference") {
+                  return link;
+                }
                 return {
                   ...link,
                   collapsed: false,
@@ -188,6 +197,10 @@ const config = {
               {
                 label: "Protocol Governance",
                 to: "https://figment.io/solutions/governance",
+              },
+              {
+                label: "Terms & Conditions",
+                to: "/terms-and-conditions/",
               },
             ],
           },
