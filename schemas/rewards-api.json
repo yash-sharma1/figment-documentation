@@ -897,96 +897,6 @@
 							"cookie": [],
 							"responseTime": null,
 							"body": "[\n    {\n        \"accounts\": [\n            \"12m7XtVWZQuxTirqtzm2dm5J4r16vSQruPmahThMnskG8Bcp\"\n        ],\n        \"chain_id\": \"mainnet\",\n        \"rewards\": [\n            {\n                \"text\": \"4.0480473284 DOT\",\n                \"currency\": \"DOT\",\n                \"numeric\": 40480473284,\n                \"exp\": 10\n            }\n        ],\n        \"epoch\": \"806\",\n        \"network\": \"polkadot\",\n        \"validator\": \"138QdRbUTB9eNY94Q4Mj5r39FkgMiyHCAy8UFMNA5gvtrfSB\",\n        \"time\": \"2022-08-17T15:36:18Z\"\n    }\n]"
-						},
-						{
-							"id": "cb284b49-fb94-4705-b357-34456734df33",
-							"name": "Rewards (by epoch)",
-							"originalRequest": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"network\": \"polkadot\",\n    \"chain_id\": \"mainnet\",\n    \"accounts\": [\n        \"12m7XtVWZQuxTirqtzm2dm5J4r16vSQruPmahThMnskG8Bcp\"\n    ], \n    \"start_time\": \"2022-08-28\",\n    \"end_time\": \"2022-08-30\",\n    \"grouping\": \"epoch\"\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": "https://{{DOT_REWARDS_HOST}}/apikey/{{API_KEY}}/rewards"
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Date",
-									"value": "Fri, 16 Sep 2022 04:37:36 GMT"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json"
-								},
-								{
-									"key": "Content-Length",
-									"value": "606"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								},
-								{
-									"key": "RateLimit-Limit",
-									"value": "2000"
-								},
-								{
-									"key": "RateLimit-Remaining",
-									"value": "1999"
-								},
-								{
-									"key": "X-RateLimit-Remaining-Minute",
-									"value": "1999"
-								},
-								{
-									"key": "X-RateLimit-Limit-Minute",
-									"value": "2000"
-								},
-								{
-									"key": "RateLimit-Reset",
-									"value": "25"
-								},
-								{
-									"key": "vary",
-									"value": "Origin"
-								},
-								{
-									"key": "Access-Control-Allow-Origin",
-									"value": "https://docs.figment.io"
-								},
-								{
-									"key": "X-Quota-Remaining-Minute",
-									"value": "2499"
-								},
-								{
-									"key": "X-Quota-Limit-Minute",
-									"value": "2500"
-								},
-								{
-									"key": "Quota-Remaining",
-									"value": "2499"
-								},
-								{
-									"key": "Quota-Reset",
-									"value": "25"
-								},
-								{
-									"key": "Quota-Limit",
-									"value": "2500"
-								}
-							],
-							"cookie": [],
-							"responseTime": null,
-							"body": "[\n    {\n        \"accounts\": [\n            \"12m7XtVWZQuxTirqtzm2dm5J4r16vSQruPmahThMnskG8Bcp\"\n        ],\n        \"chain_id\": \"mainnet\",\n        \"rewards\": [\n            {\n                \"text\": \"2.93108787 DOT\",\n                \"currency\": \"DOT\",\n                \"numeric\": 29310878700,\n                \"exp\": 10\n            }\n        ],\n        \"epoch\": \"817\",\n        \"network\": \"polkadot\",\n        \"validator\": \"138QdRbUTB9eNY94Q4Mj5r39FkgMiyHCAy8UFMNA5gvtrfSB\",\n        \"time\": \"2022-08-28T15:36:18Z\"\n    },\n    {\n        \"accounts\": [\n            \"12m7XtVWZQuxTirqtzm2dm5J4r16vSQruPmahThMnskG8Bcp\"\n        ],\n        \"chain_id\": \"mainnet\",\n        \"rewards\": [\n            {\n                \"text\": \"4.6874859323 DOT\",\n                \"currency\": \"DOT\",\n                \"numeric\": 46874859323,\n                \"exp\": 10\n            }\n        ],\n        \"epoch\": \"818\",\n        \"network\": \"polkadot\",\n        \"validator\": \"138QdRbUTB9eNY94Q4Mj5r39FkgMiyHCAy8UFMNA5gvtrfSB\",\n        \"time\": \"2022-08-29T15:36:18Z\"\n    }\n]"
 						}
 					]
 				}
@@ -1018,17 +928,17 @@
 	],
 	"variable": [
 		{
-			"id": "8268ee09-31fc-445c-ae47-2eef2e61f052",
+			"id": "83752670-c65f-4ad1-a198-884c18bc2e33",
 			"key": "ETH_REWARDS_HOST",
 			"value": "eth-rewards.datahub.figment.io"
 		},
 		{
-			"id": "8247be01-0f76-4ae9-860d-bbca173845b9",
+			"id": "5d18dbb4-8497-4c2d-a4c3-4f99d870f560",
 			"key": "SOL_REWARDS_HOST",
 			"value": "solana-rewards.datahub.figment.io"
 		},
 		{
-			"id": "91737754-9161-46d2-a8f3-d3889688b80a",
+			"id": "a91b51bf-29a5-4a17-b833-711f9dd3f32a",
 			"key": "DOT_REWARDS_HOST",
 			"value": "polkadot-rewards.datahub.figment.io",
 			"type": "string"
