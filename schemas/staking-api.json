@@ -11302,7 +11302,7 @@
 								}
 							}
 						},
-						"url": "https://{{SOL_STAKING_HOST}}/apikey/{{API_KEY_STAKING}}/api/v1/flows",
+						"url": "https://{{SOL_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows",
 						"description": "Create a new Staking flow with a `POST` request to `/api/v1/flows`.\n\n### Parameters\n\n*   `flow` - `object`\n    *   `network_code` - `string` Network this flow operates on (i.e., `near`) (required)\n    *   `chain_code` - `string` Chain this flow operates on (i.e., `mainnet`, `testnet`) (required)\n    *   `operation` `string` The operation to -perform (i.e., `staking`) (required)\n    *   `version` - `string` API version to use (ex. `v1`) (optional)\n\n### Results\n\n*   `id` - `string` Id of the newly created flow.\n*   `state` - `string` The current state of the flow i.e., `initialized`.\n*   `actions` - `array` The actions array contains the name of the next action in the flow and details of the expected inputs in the data field.\n    \n\n* * *"
 					},
 					"response": [
@@ -11483,7 +11483,7 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "https://{{SOL_STAKING_HOST}}/apikey/{{API_KEY_STAKING}}/api/v1/flows/{{solanaStakingFlowId}}",
+						"url": "https://{{SOL_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{solanaStakingFlowId}}",
 						"description": "Get the status of the existing flow using the `flow_id` from the previous step.\n\n### Parameters\n\n*   `flow_id` - `string` Pass the Flow ID you received in the response when creating the flow in the GET request URL, ex. `/flows/69d02e2c-bbde-4b09-bbe9-2be287a9a6de`.\n    \n\n### Results\n\n*   `id` - `string` Id of the flow.\n*   `state` - `string` The current state of the flow, i.e., `initialized`.\n*   `actions` - `array` The actions array contains the name of the next action in the flow and details of the expected inputs in the data field.\n    \n\n* * *"
 					},
 					"response": [
@@ -11797,7 +11797,7 @@
 								}
 							}
 						},
-						"url": "https://{{SOL_STAKING_HOST}}/apikey/{{API_KEY_STAKING}}/api/v1/flows/{{solanaStakingFlowId}}/next",
+						"url": "https://{{SOL_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{solanaStakingFlowId}}/next",
 						"description": "Use this action if you already have an inactive stake account you want to activate.\n\nAfter collecting the required inputs, send a  `PUT` request to `/api/v1/flows/[:flow_id]/next` to move on to the next step in the flow.\n\n### Parameters\n\n*   `name` - `string` Name of the action to execute (required).\n*   `inputs` - `array`\n    *   `stake_account_pubkey` - `string` The address of the stake account to be activated (required).\n    *   `funding_account_pubkey` - `string` The main wallet SOL will be originating from (required).\n\n### Results\n\n*   `id` - `string` ID of the newly created flow.\n*   `state` - `string` Current state of the flow (i.e., `delegate_tx_signature`).\n*   `actions` - `array` The actions array contains the name of the next action in the flow and details of the expected inputs in the data field.\n    \n\n* * *"
 					},
 					"response": []
@@ -11836,7 +11836,7 @@
 								}
 							}
 						},
-						"url": "https://{{SOL_STAKING_HOST}}/apikey/{{API_KEY_STAKING}}/api/v1/flows/{{solanaStakingFlowId}}/next",
+						"url": "https://{{SOL_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{solanaStakingFlowId}}/next",
 						"description": "Use this action if you do not have an inactive stake account and want to create a new one.\n\nAfter collecting the required inputs, `PUT /api/v1/flows/[:flow_id]/next` to move on to the next step in the flow.\n\n### Parameters\n\n*   `name` - `string` Name of the action to execute (required).\n*   `inputs` - `array`.\n    *   `funding_account_pubkey` - `string` The main wallet SOL will be originating from (required).\n    *   `stake_authority_pubkey` - `string` Grants authority to sign certain staking relation transactions to the provided address. Defaults to `funding_account_pubkey` (optional).\n    *   `withdraw_authority_pubkey` - `string` Grants authority to sign certain withdrawal-related transactions to the provided address. Defaults to `funding_account_pubkey` (optional).\n- `amount` - `number` The amount of SOL to be sent to the Stake Account. This field should be in full SOL, not in lamports (i.e., if you want to stake 5 SOL, return `\"amount\": 5.0`). Staking API will translate the amount to lamports so you do not have to worry about the conversion factor  (required).\n\n### Results\n\nNote that in this response you can find the unsigned, serialized transaction in `data[create_stake_account_transaction][raw]`.\n\n*   `id` - `string` Id of the newly created flow.\n*   `state` - `string` Current state of the flow i:e; `delegate_tx_signature`\n*   `actions` - `array` The actions array contains the name of the next action in the flow and details of the expected inputs in the data field.\n    \n\n* * *"
 					},
 					"response": [
@@ -12022,7 +12022,7 @@
 								}
 							}
 						},
-						"url": "https://{{SOL_STAKING_HOST}}/apikey/{{API_KEY_STAKING}}/api/v1/flows/{{solanaStakingFlowId}}/next",
+						"url": "https://{{SOL_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{solanaStakingFlowId}}/next",
 						"description": "Use `refresh_nomination_tx` if you need to get a fresh version of the transaction Payload (for example, if the nonce needs to be updated).\n\n### Parameters\n\n*   `name` - `string` Name of the action to execute (required).\n*   `inputs` - `object` There are no inputs for this action (optional).\n    \n\n### Results\n\nThe transaction payload is refreshed.\n\n* * *"
 					},
 					"response": [
@@ -12208,7 +12208,7 @@
 								}
 							}
 						},
-						"url": "https://{{SOL_STAKING_HOST}}/apikey/{{API_KEY_STAKING}}/api/v1/flows/{{solanaStakingFlowId}}/next",
+						"url": "https://{{SOL_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{solanaStakingFlowId}}/next",
 						"description": "Use the `sign_stake_account_tx` action to submit a signed transaction payload.\n\n### Parameters\n\n*   `name` - `string` Name of the action to execute (required).\n*   `inputs` - `array`\n    *   `transaction_payload` - `string` Transaction payload can be found in the response after creating the transaction. (required). **OR**\n    *   `signatures` - `array` An array of signatures. Staking API will sign the payload if this is provided (optional).\n\n### Results\n\nWith the signed transaction provided, Staking API will broadcast it to the network. As the transaction progresses towards confirmation, the returned state will be either:\n\n- `stake_account_tx_broadcasting` - The transaction has been broadcast to the Solana cluster but not confirmed.\n- `stake_account_tx_expired` - If the transaction has expired, it will automatically move the flow state back to `stake_account_tx_signature`.\n\nUpon transaction finalization, the stake account will be ready for the next step — the delegation transaction.\n\n* * *"
 					},
 					"response": [
@@ -12394,7 +12394,7 @@
 								}
 							}
 						},
-						"url": "https://{{SOL_STAKING_HOST}}/apikey/{{API_KEY_STAKING}}/api/v1/flows/{{solanaStakingFlowId}}/next",
+						"url": "https://{{SOL_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{solanaStakingFlowId}}/next",
 						"description": "Use the `sign_stake_account_tx` action to submit a signed transaction payload.\n\n### Parameters\n\n*   `name` - `string` Name of the action to execute (required).\n*   `inputs` - `array`\n    *   `transaction_payload` - `string` Transaction payload can be found in the response after creating the transaction. (required). **OR**\n    *   `signatures` - `array` An array of signatures. Staking API will sign the payload if this is provided (optional).\n\n### Results\n\nWith the signed transaction provided, Staking API will broadcast it to the network. As the transaction progresses towards confirmation, the returned state will be either:\n\n- `stake_account_tx_broadcasting` - The transaction has been broadcast to the Solana cluster but not confirmed.\n- `stake_account_tx_expired` - If the transaction has expired, it will automatically move the flow state back to `stake_account_tx_signature`.\n\nUpon transaction finalization, the stake account will be ready for the next step — the delegation transaction.\n\n* * *"
 					},
 					"response": []
@@ -12433,7 +12433,7 @@
 								}
 							}
 						},
-						"url": "https://{{SOL_STAKING_HOST}}/apikey/{{API_KEY_STAKING}}/api/v1/flows/{{solanaStakingFlowId}}/next",
+						"url": "https://{{SOL_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{solanaStakingFlowId}}/next",
 						"description": "If you need to get a fresh version of the transaction payload (i.e., if the nonce needs to be updated)\n\n### Parameters\n\n*   `name` - `string` name of the action to execute (i.e., `refresh_delegate_tx`).\n*   `inputs` - `array` There are no inputs for this action (optional).\n    \n\n### Results\n\n*   `id` - `string` Id of the flow.\n*   `state` - `string` Current state of the flow.\n*   `actions` - `array` The actions array contains the name of the next action in the flow and details of the expected inputs in the data field.\n    \n\n* * *"
 					},
 					"response": []
@@ -12472,7 +12472,7 @@
 								}
 							}
 						},
-						"url": "https://{{SOL_STAKING_HOST}}/apikey/{{API_KEY_STAKING}}/api/v1/flows/{{solanaStakingFlowId}}/next",
+						"url": "https://{{SOL_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{solanaStakingFlowId}}/next",
 						"description": "Submit a signed transaction payload ready to be broadcast to the network.\n\n### Parameters\n\n*   `name` - `string` Name of the action you want to execute (i.e., `sign_withdraw_tx`).\n*   `inputs` - `array`\n    *   `transaction_payload` - `string` Transaction payload can be found in the response after creating the transaction. (required). **OR**\n    *   `signatures` - `array` An array of signatures. Staking API will sign the payload if this is provided (optional).\n\n### Results\n\nThe transaction is broadcast to the network. Once it is confirmed, the staking flow is completed. Your stake is now active and earning rewards.\n\n* * *"
 					},
 					"response": []
@@ -12512,7 +12512,7 @@
 								}
 							}
 						},
-						"url": "https://{{SOL_STAKING_HOST}}/apikey/{{API_KEY_STAKING}}/api/v1/flows",
+						"url": "https://{{SOL_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows",
 						"description": "Create a new flow with `POST /api/v1/flows` to initiate the unstaking process.\n\n### Parameters\n\n*   `flow` - `object`\n    *   `network_code` - `string` Network this flow operates on (required).\n    *   `chain_code` - `string` Chain this flow operates on (required).\n    *   `operation` `string` The operation to perform (required).\n    *   `version` - `string` API version to use (optional).\n\n### Results\n\n*   `id` - `string` Id of the newly created flow.\n*   `state` - `string` The current state of the flow.\n*   `actions` - `array` The actions array contains the name of the next action in the flow and details of the expected inputs in the data field.\n    \n\n* * *"
 					},
 					"response": [
@@ -12687,7 +12687,7 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "https://{{SOL_STAKING_HOST}}/apikey/{{API_KEY_STAKING}}/api/v1/flows/{{solanaUnstakingFlowId}}",
+						"url": "https://{{SOL_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{solanaUnstakingFlowId}}",
 						"description": "Get the status of the existing flow using the `flow_id` from the previous step.\n\n### Parameters\n\n*   `flow_id` - `string` Pass the Flow ID you received in the response when creating the flow in the GET request URL.\n    \n\n### Results\n\n*   `id` - `string` Id of the newly created flow.\n*   `state` - `string` The current state of the flow.\n*   `actions` - `array` The actions array contains the name of the next action in the flow and details of the expected inputs in the data field.\n    \n\n* * *"
 					},
 					"response": [
@@ -12862,7 +12862,7 @@
 								}
 							}
 						},
-						"url": "https://{{SOL_STAKING_HOST}}/apikey/{{API_KEY_STAKING}}/api/v1/flows/{{solanaUnstakingFlowId}}/next",
+						"url": "https://{{SOL_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{solanaUnstakingFlowId}}/next",
 						"description": "After collecting the required Inputs, `PUT /api/v1/flows/[:flow_id]/next` to move on to the next step in the flow.\n\n### Parameters\n\n*   `name` - `string` Name of the action to execute (required).\n*   `inputs` - `array`\n    *   `funding_account_pubkey` - `string` - The address of the stake account to be deactivated (required).\n    *   `stake_account_pubkey` - `string` - The address of the wallet with signing rights to deactivate the stake account (required).\n\n### Results\n\n*   `id` - `string` Id of the newly created flow.\n*   `state` - `string` Current state of the flow.\n*   `actions` - `array` The actions array contains the name of the next action in the flow and details of the expected inputs in the data field.\n    \n\n* * *"
 					},
 					"response": []
@@ -12899,7 +12899,7 @@
 								}
 							}
 						},
-						"url": "https://{{SOL_STAKING_HOST}}/apikey/{{API_KEY_STAKING}}/api/v1/flows/{{solanaUnstakingFlowId}}/next",
+						"url": "https://{{SOL_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{solanaUnstakingFlowId}}/next",
 						"description": "If you need to get a fresh version of the transaction payload (i.e., if the nonce needs to be updated)\n\n### Parameters\n\n*   `name` - `string` name of the action to execute i:e; `refresh_deactivate_tx`\n*   `inputs` - `array` There are no inputs for this action (optional)\n    \n\n### Results\n\n*   `id` - `string` Id of the flow.\n*   `state` - `string` Current state of the flow.\n*   `actions` - `array` The actions array contains the name of the next action in the flow and details of the expected inputs in the data field.\n    \n\n* * *"
 					},
 					"response": []
@@ -12936,7 +12936,7 @@
 								}
 							}
 						},
-						"url": "https://{{SOL_STAKING_HOST}}/apikey/{{API_KEY_STAKING}}/api/v1/flows/{{solanaUnstakingFlowId}}/next",
+						"url": "https://{{SOL_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{solanaUnstakingFlowId}}/next",
 						"description": "Submit a signed transaction payload ready to be broadcast to the network.\n\n### Parameters\n\n*   `name` - `string` Name of the action you want to execute i:e; `sign_undelegate_tx`\n*   `inputs` - `array`\n    *   `transaction_payload` - `string` Transaction payload can be found in the response after creating the transaction. (required). **OR**\n    *   `signatures` - `array` An array of signatures. Staking API will sign the payload if this is provided (optional).\n\n### Results\n\nThe transaction is broadcast to the network. Once it is confirmed, the staking flow is completed.\n\n* * *"
 					},
 					"response": []
@@ -12973,7 +12973,7 @@
 								}
 							}
 						},
-						"url": "https://{{SOL_STAKING_HOST}}/apikey/{{API_KEY_STAKING}}/api/v1/flows/{{solanaUnstakingFlowId}}/next",
+						"url": "https://{{SOL_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{solanaUnstakingFlowId}}/next",
 						"description": "After collecting the required Inputs, `PUT /api/v1/flows/[:flow_id]/next` to move on to the next step in the flow.\n\n### Parameters\n\n*   `name` - `string` Name of the action to execute (required).\n*   `inputs` - `array`\n    *   `funding_account_pubkey` - `string` Public key of the funding account (required).\n    *   `recipient_pubkey` - `string` The public key of the recipient (required).\n\n### Results\n\n*   `id` - `string` Id of the newly created flow.\n*   `state` - `string` Current state of the flow.\n*   `actions` - `array` The actions array contains the name of the next action in the flow and details of the expected inputs in the data field.\n    \n\n* * *"
 					},
 					"response": []
@@ -13010,7 +13010,7 @@
 								}
 							}
 						},
-						"url": "https://{{SOL_STAKING_HOST}}/apikey/{{API_KEY_STAKING}}/api/v1/flows/{{solanaUnstakingFlowId}}/next",
+						"url": "https://{{SOL_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{solanaUnstakingFlowId}}/next",
 						"description": "If you need to get a fresh version of the transaction payload (i.e., if the nonce needs to be updated)\n\n### Parameters\n\n*   `name` - `string` name of the action to execute i:e; `refresh_withdraw_tx`\n*   `inputs` - `array` There are no inputs for this action (optional)\n    \n\n### Results\n\n*   `id` - `string` Id of the flow.\n*   `state` - `string` Current state of the flow.\n*   `actions` - `array` The actions array contains the name of the next action in the flow and details of the expected inputs in the data field.\n    \n\n* * *"
 					},
 					"response": []
@@ -13047,7 +13047,7 @@
 								}
 							}
 						},
-						"url": "https://{{SOL_STAKING_HOST}}/apikey/{{API_KEY_STAKING}}/api/v1/flows/{{solanaUnstakingFlowId}}/next",
+						"url": "https://{{SOL_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{solanaUnstakingFlowId}}/next",
 						"description": "Submit a signed transaction payload ready to be broadcast to the network.\n\n### Parameters\n\n*   `name` - `string` Name of the action you want to execute (i.e., `sign_withdraw_tx`).\n*   `inputs` - `array`\n    *   `transaction_payload` - `string` Transaction payload can be found in the response after creating the transaction. (required). **OR**\n    *   `signatures` - `array` An array of signatures. Staking API will sign the payload if this is provided (optional).\n\n### Results\n\nThe transaction is broadcast to the network. Once it is confirmed, the unstaking flow is completed.\n\n**Note**: If you only withdrew a portion of the stake account balance and want to reactivate the remaining portion, simply start a new Staking flow and use the `assign_stake_account` action in the first step.\n \n* * *"
 					},
 					"response": []
@@ -13086,7 +13086,7 @@
 								}
 							}
 						},
-						"url": "https://{{SOL_STAKING_HOST}}/apikey/{{API_KEY_STAKING}}/api/v1/flows",
+						"url": "https://{{SOL_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows",
 						"description": "Create a new flow with `POST /api/v1/flows` to initiate the transfer process.\n\n### Parameters\n\n*   `flow` - `object`\n    *   `network_code` - `string` Network this flow operates on (required).\n    *   `chain_code` - `string` Chain this flow operates on (required).\n    *   `operation` `string` The operation to -perform (required).\n    *   `version` - `string` API version to use (optional).\n\n### Results\n\n*   `id` - `string` Id of the newly created flow.\n*   `state` - `string` Current state of the flow.\n*   `actions` - `array` The actions array contains the name of the next action in the flow and details of the expected inputs in the data field.\n    \n\n* * *"
 					},
 					"response": [
@@ -13261,7 +13261,7 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "https://{{SOL_STAKING_HOST}}/apikey/{{API_KEY_STAKING}}/api/v1/flows/{{solanaTransferFlowId}}",
+						"url": "https://{{SOL_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{solanaTransferFlowId}}",
 						"description": "Get the status of the existing flow using the `flow_id` from the previous step.\n\n### Parameters\n\n*   `flow_id` - `string` Pass the Flow ID you received in the response when creating the flow in the GET request URL.\n    \n\n### Results\n\n*   `id` - `string` Id of the newly created flow.\n*   `state` - `string` The current state of the flow.\n*   `actions` - `array` The actions array contains the name of the next action in the flow and details of the expected inputs in the data field.\n    \n\n* * *"
 					},
 					"response": [
@@ -13573,7 +13573,7 @@
 								}
 							}
 						},
-						"url": "https://{{SOL_STAKING_HOST}}/apikey/{{API_KEY_STAKING}}/api/v1/flows/{{solanaTransferFlowId}}/next",
+						"url": "https://{{SOL_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{solanaTransferFlowId}}/next",
 						"description": "After collecting the required Inputs, `PUT /api/v1/flows/[:flow_id]/next` to move on to the next step in the flow.\n\n### Parameters\n\n*   `name` - `string` Name of the action to execute i:e; `create_transfer_tx`\n*   `inputs` - `array`\n    *   `from_account_pubkey` - `string` main wallet SOL will be originating from (required).\n    *   `from_account_address` - `string` Address of the sender's account.\n    *   `to_account_address` - `string` Address of the Wallet to which SOL will be transferred (required).\n    *   `amount` - `number` - Number of the tokens you want to transfer (required).\n\n### Results\n\n*   `id` - `string` Id of the newly created flow.\n*   `state` - `string` Current state of the flow.\n*   `actions` - `array` The actions array contains the name of the next action in the flow and details of the expected inputs in the data field.\n    \n\n* * *"
 					},
 					"response": [
@@ -13757,7 +13757,7 @@
 								}
 							}
 						},
-						"url": "https://{{SOL_STAKING_HOST}}/apikey/{{API_KEY_STAKING}}/api/v1/flows/{{solanaTransferFlowId}}/next",
+						"url": "https://{{SOL_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{solanaTransferFlowId}}/next",
 						"description": "If you need to get a fresh version of the transaction payload (i.e., if the nonce needs to be updated).\n\n### Parameters\n\n*   `name` - `string` name of the action to execute i:e; `refresh_transfer_tx`\n*   `inputs` - `array` There are no inputs for this action (optional)\n    \n\n### Results\n\n*   `id` - `string` Id of the newly created flow.\n*   `state` - `string` Current state of the flow.\n*   `actions` - `array` The actions array contains the name of the next action in the flow and details of the expected inputs in the data field.\n    \n\n* * *"
 					},
 					"response": [
@@ -13941,7 +13941,7 @@
 								}
 							}
 						},
-						"url": "https://{{SOL_STAKING_HOST}}/apikey/{{API_KEY_STAKING}}/api/v1/flows/{{solanaTransferFlowId}}/next",
+						"url": "https://{{SOL_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{solanaTransferFlowId}}/next",
 						"description": "Submit a signed transaction payload ready to be broadcast to the network.\n\n### Parameters\n\n*   `name` - `string` Name of the action you want to execute (i.e., `sign_transfer_tx`).\n*   `inputs` - `array`\n    *   `transaction_payload` - `string` Transaction payload can be found in the response after creating the transaction. (required). **OR**\n    *   `signatures` - `array` An array of signatures. Staking API will sign the payload if this is provided (optional).\n\n### Results\n\nWith the signed transaction provided, Staking API will broadcast it to the network. As the transaction progresses towards confirmation, the returned state will be:\n\n- `transfer_tx_broadcasting` - The transaction has been broadcast and is waiting for confirmation.\n- `confirmed` - The transfer transaction has been confirmed.\n\n* * *"
 					},
 					"response": [
@@ -14146,37 +14146,37 @@
 	],
 	"variable": [
 		{
-			"id": "d6ebc112-671e-43f3-a6a3-cc3df1ca5a5f",
+			"id": "83c7bb33-64d4-4470-b8d6-5596683a62ae",
 			"key": "AVAX_STAKING_HOST",
 			"value": "avalanche-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "951ca9a3-a879-46e0-8fbf-75ae891e1687",
+			"id": "8bc79d7c-dc7f-4776-b166-62eee7156507",
 			"key": "ETH_STAKING_HOST",
 			"value": "eth-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "e5baead7-f183-4f11-bfad-47759538411d",
+			"id": "2e905e0b-dbd5-4571-954c-e67a1ba3a588",
 			"key": "NEAR_STAKING_HOST",
 			"value": "near-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "e35d7f42-8644-411e-a822-b83b7aea54f5",
+			"id": "e170b393-b317-4c89-a63f-b25a76950e83",
 			"key": "DOT_STAKING_HOST",
 			"value": "polkadot-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "089ede35-793e-4d18-92fd-c4d42dc23fe8",
+			"id": "8ba80192-f002-4c6a-8f48-dfb6d2c8fba1",
 			"key": "SOL_STAKING_HOST",
 			"value": "solana-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "b487b86e-bc76-450f-80d2-e9e3aa4cab88",
+			"id": "75c9145f-a91d-417f-948f-bfaa094cb929",
 			"key": "INTERACTIVE",
 			"value": "false",
 			"type": "string"

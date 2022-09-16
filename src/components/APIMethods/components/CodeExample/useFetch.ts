@@ -54,7 +54,19 @@ function useFetch<T = unknown>(
         ...partOptions,
       });
       if (!response.ok) {
-        throw new Error(response.statusText);
+        let errorjson, errorstring, errortext;
+        try {
+          errortext = JSON.parse(await response.text()) as T;
+          errorjson = (await response.json()) as T;
+          errorstring = JSON.stringify(errorjson, null, 2);
+        } catch {
+          // NOOP
+        }
+        throw new Error(
+          JSON.stringify(errorstring, null, 2) ||
+            JSON.stringify(errortext, null, 2) ||
+            response.statusText
+        );
       }
 
       const data = (await response.json()) as T;
@@ -66,7 +78,7 @@ function useFetch<T = unknown>(
     } catch (error) {
       if (cancelRequest.current) return;
 
-      dispatch({ type: "error", payload: error as Error });
+      dispatch({ type: "error", payload: error.message as Error });
 
       return null;
     }
