@@ -219,7 +219,7 @@
 							],
 							"cookie": [],
 							"responseTime": null,
-							"body": "[\n    {\n        \"accounts\": [\n            \"0x93257a7d4f1e6998f019483f149a4dbe3bfc8b89358411be769aeedd943de907f178da1773aea9016d1ac2bdfe3794ba\"\n        ],\n        \"chain_id\": \"mainnet\",\n        \"rewards\": [\n            {\n                \"text\": \"0.000014843 ETH\",\n                \"currency\": \"ETH\",\n                \"numeric\": 14843,\n                \"exp\": 9\n            }\n        ],\n        \"epoch\": \"139163\",\n        \"network\": \"ethereum\",\n        \"validator\": \"0x93257a7d4f1e6998f019483f149a4dbe3bfc8b89358411be769aeedd943de907f178da1773aea9016d1ac2bdfe3794ba\",\n        \"time\": \"2022-08-12T00:03:12Z\"\n    },\n    {\n        \"accounts\": [\n            \"0x93257a7d4f1e6998f019483f149a4dbe3bfc8b89358411be769aeedd943de907f178da1773aea9016d1ac2bdfe3794ba\"\n        ],\n        \"chain_id\": \"mainnet\",\n        \"rewards\": [\n            {\n                \"text\": \"0.000014964 ETH\",\n                \"currency\": \"ETH\",\n                \"numeric\": 14964,\n                \"exp\": 9\n            }\n        ],\n        \"epoch\": \"139164\",\n        \"network\": \"ethereum\",\n        \"validator\": \"0x93257a7d4f1e6998f019483f149a4dbe3bfc8b89358411be769aeedd943de907f178da1773aea9016d1ac2bdfe3794ba\",\n        \"time\": \"2022-08-12T00:09:36Z\"\n    }\n]"
+							"body": "[\n    {\n        \"accounts\": [\n            \"0x93257a7d4f1e6998f019483f149a4dbe3bfc8b89358411be769aeedd943de907f178da1773aea9016d1ac2bdfe3794ba\"\n        ],\n        \"chain_id\": \"mainnet\",\n        \"rewards\": [\n            {\n                \"text\": \"0.000014843 ETH\",\n                \"currency\": \"ETH\",\n                \"numeric\": 14843,\n                \"exp\": 9\n            }\n        ],\n        \"epoch\": \"139163\",\n        \"network\": \"ethereum\",\n        \"validator\": \"0x93257a7d4f1e6998f019483f149a4dbe3bfc8b89358411be769aeedd943de907f178da1773aea9016d1ac2bdfe3794ba\",\n        \"time\": \"2022-08-12T00:03:12Z\"\n    }\n]"
 						}
 					]
 				},
@@ -928,17 +928,17 @@
 	],
 	"variable": [
 		{
-			"id": "2aacebbf-bf86-4394-981c-aebc256ab651",
+			"id": "28e42ca1-d188-4d18-ab12-5ba7e3cce4cd",
 			"key": "ETH_REWARDS_HOST",
 			"value": "eth-rewards.datahub.figment.io"
 		},
 		{
-			"id": "26179baa-a2d2-4840-9b55-a4f4dfcda582",
+			"id": "be1d272a-b911-4576-ba42-1252751e13c2",
 			"key": "SOL_REWARDS_HOST",
 			"value": "solana-rewards.datahub.figment.io"
 		},
 		{
-			"id": "baaf00e3-9b36-412a-8d2b-a78c2cb6d291",
+			"id": "30ca2265-790e-40ea-ac90-3ff10aedc253",
 			"key": "DOT_REWARDS_HOST",
 			"value": "polkadot-rewards.datahub.figment.io",
 			"type": "string"
