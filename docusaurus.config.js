@@ -62,11 +62,11 @@ const config = {
                 }
                 return {
                   ...link,
-                  collapsed: false,
+                  collapsed: true,
                   items: link.items.map((service) => {
                     return {
                       ...service,
-                      collapsed: false,
+                      collapsed: true,
                       collapsible: false,
                       link: service.items[0],
                       items: service.items.map((network) => ({
