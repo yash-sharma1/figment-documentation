@@ -114,7 +114,6 @@ function frontMatterTemplate({
   next = "null",
   slug = undefined,
   body = "",
-  flat = false,
 }) {
   return `---
 title: ${title}
@@ -122,7 +121,9 @@ sidebar_position: ${pos}
 pagination_prev: ${prev}
 pagination_next: ${next}
 ${slug ? `slug: ${slug}` : ""}
-${flat ? `collapsed: false\ncollapsible: false\n---\n` : "---\n"}
+collapsed: true
+collapsible: true
+---
 ${body}`;
 }
 
@@ -310,7 +311,6 @@ function referenceTable(_services, variables) {
     next: "null",
     slug: "/api-reference",
     body: comment + content + markdown,
-    flat: false,
   }));
 }
 
