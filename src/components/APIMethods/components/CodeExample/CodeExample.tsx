@@ -105,18 +105,11 @@ export default function CodeExample({ req, res, interactive }: Props) {
         {req.method === "GET" ? queryString : reqBody}
       </CodeEditor>
 
-      {error && (
-        <ErrorBanner
-          title="Network error"
-          content="It could be a CORS issue, or a dropped internet connection. Please check the browser console for details."
-        />
-      )}
-
       <CodeBlock
         title={status ? "Response" : "Example Response"}
         language="json"
       >
-        {error ? "" : resBody}
+        {error ? `${error}` : resBody}
       </CodeBlock>
     </>
   );
