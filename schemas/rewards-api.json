@@ -340,7 +340,7 @@
 							"originalRequest": {
 								"method": "POST",
 								"header": [],
-								"url": "https://{{ETH_REWARDS_HOST}}/rewards"
+								"url": "https://{{ETH_REWARDS_HOST}}/apikey/{{API_KEY}}/rewards"
 							},
 							"status": "OK",
 							"code": 200,
@@ -928,17 +928,17 @@
 	],
 	"variable": [
 		{
-			"id": "4175e6c1-6274-4a49-af13-90a2479ad78f",
+			"id": "88138fed-ddd6-408c-9392-7d9851a993ea",
 			"key": "ETH_REWARDS_HOST",
 			"value": "eth-rewards.datahub.figment.io"
 		},
 		{
-			"id": "35b9218b-5e1d-4485-8f95-1a9dd3931375",
+			"id": "73dea7d2-6e14-4483-a872-1aef958f7aae",
 			"key": "SOL_REWARDS_HOST",
 			"value": "solana-rewards.datahub.figment.io"
 		},
 		{
-			"id": "263b5096-6232-4aed-8d51-0459cf47c946",
+			"id": "5aa907c0-d5b4-4c15-b371-05faa6879242",
 			"key": "DOT_REWARDS_HOST",
 			"value": "polkadot-rewards.datahub.figment.io",
 			"type": "string"
