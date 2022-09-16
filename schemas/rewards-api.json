@@ -928,17 +928,17 @@
 	],
 	"variable": [
 		{
-			"id": "3134087c-2958-43bb-a4fa-867e8268e956",
+			"id": "76b37552-89c0-445e-8ca2-457ca86c3630",
 			"key": "ETH_REWARDS_HOST",
 			"value": "eth-rewards.datahub.figment.io"
 		},
 		{
-			"id": "e8358c51-a19d-4243-a8b7-5f98e1b4e222",
+			"id": "de7f419d-a3a2-4399-84be-b564999e623e",
 			"key": "SOL_REWARDS_HOST",
 			"value": "solana-rewards.datahub.figment.io"
 		},
 		{
-			"id": "9c2a236b-c81c-4286-b405-873a260f7412",
+			"id": "e3406094-41ae-47a1-8699-bae41d463a36",
 			"key": "DOT_REWARDS_HOST",
 			"value": "polkadot-rewards.datahub.figment.io",
 			"type": "string"
