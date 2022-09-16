@@ -896,7 +896,7 @@
 							],
 							"cookie": [],
 							"responseTime": null,
-							"body": "[\n    {\n        \"accounts\": [\n            \"12m7XtVWZQuxTirqtzm2dm5J4r16vSQruPmahThMnskG8Bcp\"\n        ],\n        \"chain_id\": \"mainnet\",\n        \"rewards\": [\n            {\n                \"text\": \"4.0480473284 DOT\",\n                \"currency\": \"DOT\",\n                \"numeric\": 40480473284,\n                \"exp\": 10\n            }\n        ],\n        \"epoch\": \"806\",\n        \"network\": \"polkadot\",\n        \"validator\": \"138QdRbUTB9eNY94Q4Mj5r39FkgMiyHCAy8UFMNA5gvtrfSB\",\n        \"time\": \"2022-08-17T15:36:18Z\"\n    },\n    {\n        \"accounts\": [\n            \"12m7XtVWZQuxTirqtzm2dm5J4r16vSQruPmahThMnskG8Bcp\"\n        ],\n        \"chain_id\": \"mainnet\",\n        \"rewards\": [\n            {\n                \"text\": \"3.98158356 DOT\",\n                \"currency\": \"DOT\",\n                \"numeric\": 39815835600,\n                \"exp\": 10\n            }\n        ],\n        \"epoch\": \"807\",\n        \"network\": \"polkadot\",\n        \"validator\": \"138QdRbUTB9eNY94Q4Mj5r39FkgMiyHCAy8UFMNA5gvtrfSB\",\n        \"time\": \"2022-08-18T15:36:18Z\"\n    },\n    {\n        \"accounts\": [\n            \"12m7XtVWZQuxTirqtzm2dm5J4r16vSQruPmahThMnskG8Bcp\"\n        ],\n        \"chain_id\": \"mainnet\",\n        \"rewards\": [\n            {\n                \"text\": \"5.0270357928 DOT\",\n                \"currency\": \"DOT\",\n                \"numeric\": 50270357928,\n                \"exp\": 10\n            }\n        ],\n        \"epoch\": \"808\",\n        \"network\": \"polkadot\",\n        \"validator\": \"138QdRbUTB9eNY94Q4Mj5r39FkgMiyHCAy8UFMNA5gvtrfSB\",\n        \"time\": \"2022-08-19T15:36:18Z\"\n    }\n]"
+							"body": "[\n    {\n        \"accounts\": [\n            \"12m7XtVWZQuxTirqtzm2dm5J4r16vSQruPmahThMnskG8Bcp\"\n        ],\n        \"chain_id\": \"mainnet\",\n        \"rewards\": [\n            {\n                \"text\": \"4.0480473284 DOT\",\n                \"currency\": \"DOT\",\n                \"numeric\": 40480473284,\n                \"exp\": 10\n            }\n        ],\n        \"epoch\": \"806\",\n        \"network\": \"polkadot\",\n        \"validator\": \"138QdRbUTB9eNY94Q4Mj5r39FkgMiyHCAy8UFMNA5gvtrfSB\",\n        \"time\": \"2022-08-17T15:36:18Z\"\n    }\n]"
 						}
 					]
 				}
@@ -928,17 +928,17 @@
 	],
 	"variable": [
 		{
-			"id": "a404e9c8-17da-451c-911b-ad021720f6ae",
+			"id": "1a6b72ea-05d8-4441-b3b4-04ed2790bd0c",
 			"key": "ETH_REWARDS_HOST",
 			"value": "eth-rewards.datahub.figment.io"
 		},
 		{
-			"id": "6559b112-7bc7-4247-83c7-928e6333add1",
+			"id": "ca6169cb-8417-4ced-8348-be1e0fe9520e",
 			"key": "SOL_REWARDS_HOST",
 			"value": "solana-rewards.datahub.figment.io"
 		},
 		{
-			"id": "db4b7f14-ede2-4065-ac6a-b7f52cca635e",
+			"id": "81de6a1e-f900-495c-b94a-808e16b4907d",
 			"key": "DOT_REWARDS_HOST",
 			"value": "polkadot-rewards.datahub.figment.io",
 			"type": "string"
