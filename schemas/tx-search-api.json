@@ -1340,100 +1340,100 @@
 	],
 	"variable": [
 		{
-			"id": "deb11dc5-37a7-4d15-a629-774baa65e743",
+			"id": "177c36f9-879d-4bc7-a562-e8dc752b0f9e",
 			"key": "AVAX_SEARCH_HOST",
 			"value": "avalanche--mainnet--indexer.datahub.figment.io"
 		},
 		{
-			"id": "c226fbe5-7070-404d-87d2-d1cd0f2706be",
+			"id": "80e93e93-c6c6-4386-9579-3175f4f8d2c7",
 			"key": "NEAR_SEARCH_HOST",
 			"value": "near--indexer.datahub.figment.io"
 		},
 		{
-			"id": "40bdb33f-f364-4fdc-aaef-0ca9ebf0b096",
+			"id": "1c02bf32-7cf4-43bb-b1b5-8dcff7d3dce3",
 			"key": "DOT_SEARCH_HOST",
 			"value": "polkadot--search.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "9eb7ca1b-b551-409b-b400-6050e6cb6e87",
+			"id": "72e0426d-fdd0-45ba-a7e4-9d6925e01f41",
 			"key": "KUSAMA_SEARCH_HOST",
 			"value": "polkadot-kusama--search.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "a3c71210-9756-4dcc-b366-420abe538758",
+			"id": "85014a9d-1477-4c5f-a897-6cde3514f23a",
 			"key": "COSMOS_SEARCH_HOST",
 			"value": "cosmos--search.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "d831a7a1-ba02-4c1c-9c22-d66d6e03960b",
+			"id": "03b0fd9f-7286-4cad-aea7-92a64201a78e",
 			"key": "AVALANCHE_TRANSACTION_HASH",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "54405a29-397d-4f96-9d38-74179bd73f29",
+			"id": "de11e9c8-ca56-4a53-9bc2-69fa440e7a46",
 			"key": "NEAR_TRANSACTION_HASH",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "e0076fc7-9b09-4255-8bec-763c2429c73e",
+			"id": "7d0a0f27-87e1-4328-812f-cc46ada65be9",
 			"key": "------ UNUSED VARS BELOW THIS LINE ------",
 			"value": "",
 			"type": "string",
 			"disabled": true
 		},
 		{
-			"id": "64ff9ed2-ae6c-47c8-ab3f-d8e201b61c35",
+			"id": "deed6896-6e79-486e-9623-9e6e70d79539",
 			"key": "OSMOSIS_SEARCH_HOST",
 			"value": "osmosis--search.datahub.figment.io",
 			"type": "string",
 			"disabled": true
 		},
 		{
-			"id": "85ef655a-f20b-4e8a-8fb3-f36dbf3962ae",
+			"id": "dc2eab62-c9f8-459d-9b3b-3fc8a9600d6f",
 			"key": "CELO_MAINNET_HOST",
 			"value": "celo--mainnet--indexer.datahub.figment.io",
 			"type": "string",
 			"disabled": true
 		},
 		{
-			"id": "1bf627a0-e87f-4235-b0fd-c3732d3eb39d",
+			"id": "183aea6b-627d-43b3-8777-1cf05af0f048",
 			"key": "OASIS_MAINNET_HOST",
 			"value": "oasis--mainnet.datahub.figment.io",
 			"type": "string",
 			"disabled": true
 		},
 		{
-			"id": "3d564296-1333-4170-995b-faa96c8e827b",
+			"id": "0a5d014e-f100-468b-a12b-7e7af4a312dc",
 			"key": "KAVA_HOST",
 			"value": "kava--search.datahub.figment.io",
 			"type": "string",
 			"disabled": true
 		},
 		{
-			"id": "1ac091b5-646e-4265-8608-1dc5d85bc410",
+			"id": "78249a15-6be0-4bb8-a565-7115d737aca7",
 			"key": "MINA_MAINNET_HOST",
 			"value": "mina--mainnet--indexer.datahub.figment.io",
 			"type": "string",
 			"disabled": true
 		},
 		{
-			"id": "6aa671f6-b93b-4220-86bc-697496898520",
+			"id": "66d90246-820c-44d7-bf55-ec802de7f4c8",
 			"key": "random-tx-id",
 			"value": "",
 			"disabled": true
 		},
 		{
-			"id": "08b2ffe5-13c7-446f-99c1-1380d565084c",
+			"id": "016a0ef0-066d-4cfb-aaf6-4baf36ad11ec",
 			"key": "random-block-hash",
 			"value": ""
 		},
 		{
-			"id": "c7109cd7-d1bc-4e68-b913-4e159a49f6b4",
+			"id": "41f22507-3b42-4279-8968-a3f74f2c24a5",
 			"key": "kusama-random-block-hash",
 			"value": ""
 		}
