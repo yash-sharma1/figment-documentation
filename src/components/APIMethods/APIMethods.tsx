@@ -20,6 +20,13 @@ function APIMethod({
   request,
   response,
 }: Props) {
+  if (["Rewards (by epoch)", "Rewards (daily)"].includes(name)) {
+    request.body = {
+      ...request.body,
+      start_time: new Date(Date.now() - 86400000).toISOString().split("T")[0],
+      end_time: new Date().toISOString().split("T")[0],
+    };
+  }
   return (
     <>
       <h2
