@@ -25289,7 +25289,7 @@
 								}
 							]
 						},
-						"description": "Qqueries all validators that match the given status.\n\n### Parameters\n\n- `status` string (query) (required) status enables to query for validators matching a given status.\n\n- `pagination.key` string ($byte) (query) Key is a value returned in PageResponse.next_key to begin querying the next page most efficiently. Only one offset or key should be set.\n\n- `pagination.offset` string ($uint64 (query)\toffset is a numeric offset that can be used when key is unavailable. It is less efficient than using key. Only one of offset or key should be set.\n\n- `pagination.limit` string ($uint64) (query) limit is the total number of Response to be returned in the result page. If left empty it will default to a value to be set by each app.\n\n- `pagination.count_total` boolean($boolean) (query) count_total is set to true to indicate that the result set should include a count of the total number of items available for pagination in UIs. count_total is only respected when offset is used. It is ignored when key is set.\n\n- `pagination.reverse` boolean ($boolean (query) reverse is set to true if Response are to be returned in the descending order.\n\n### Response\n\n- Returns the `validators` info including the `operator_address` (validator), `consensus_pukey`, `jailed` status, bond `status`, no. of `tokens` delegated, `delagator_shares` and validator's `description`."
+						"description": "Queries all validators that match the given status.\n\n### Parameters\n\n\\*   `status` string (query) (required) status enables to query for validators matching a given status.\n\\*   `pagination.key` string ($byte) (query) Key is a value returned in PageResponse.next_key to begin querying the next page most efficiently. Only one offset or key should be set.\n\\*   `pagination.offset` string ($uint64 (query) offset is a numeric offset that can be used when key is unavailable. It is less efficient than using key. Only one of offset or key should be set.\n\\*   `pagination.limit` string ($uint64) (query) limit is the total number of Response to be returned in the result page. If left empty it will default to a value to be set by each app.\n\\*   `pagination.count_total` boolean($boolean) (query) count_total is set to true to indicate that the result set should include a count of the total number of items available for pagination in UIs. count_total is only respected when offset is used. It is ignored when key is set.\n\\*   `pagination.reverse` boolean ($boolean (query) reverse is set to true if Response are to be returned in the descending order.\n    \n\n### Response\n\n\\*   Returns the `validators` info including the `operator_address` (validator), `consensus_pukey`, `jailed` status, bond `status`, no. of `tokens` delegated, `delagator_shares` and validator's `description`."
 					},
 					"response": [
 						{
@@ -68221,111 +68221,111 @@
 	],
 	"variable": [
 		{
-			"id": "a8758a16-7718-414c-a18c-ae989bf59c65",
+			"id": "d72e3fd2-0d71-4f26-8b49-7167cd101d72",
 			"key": "ARBI_HOST",
 			"value": "arbitrum-mainnet-rpc-archive-dbgtxn.datahub.figment.io"
 		},
 		{
-			"id": "46a52a56-c59e-407d-81a3-12192fbaf46e",
+			"id": "7ad7de05-e132-4a8c-9fa8-4c8c622d5202",
 			"key": "AVAX_HOST",
 			"value": "avalanche--mainnet--rpc.datahub.figment.io"
 		},
 		{
-			"id": "47ce7acb-33b3-4c2d-afba-793006ab567d",
+			"id": "cbfc80bd-fd87-43b5-9fb3-e8ef19fba99c",
 			"key": "BNB_HOST",
 			"value": "bsc--mainnet--rpc-archive-dbgtxn.datahub.figment.io"
 		},
 		{
-			"id": "40308ccd-5014-41b9-a752-8bd76b4b9e71",
+			"id": "62d3820b-ad2c-4928-bfba-32c769e1cf5f",
 			"key": "CELO_HOST",
 			"value": "celo-mainnet--rpc.datahub.figment.io"
 		},
 		{
-			"id": "736a5ccf-99b9-4647-8ed4-6e44d782ed08",
+			"id": "fa2fd55a-85b7-48da-9e04-9a61eaff110a",
 			"key": "COSMOS_LCD_HOST",
 			"value": "cosmoshub-4--lcd--archive.datahub.figment.io"
 		},
 		{
-			"id": "0a347d31-8daa-4f84-a373-5d4c54f30444",
+			"id": "955c9eb3-3fc6-4579-bb68-36bd0462b080",
 			"key": "COSMOS_RPC_HOST",
 			"value": "cosmoshub-4--rpc--archive.datahub.figment.io"
 		},
 		{
-			"id": "51b2e68e-dfe0-4032-9d74-06ed20636a98",
+			"id": "b18c7b63-a74d-4fbe-b8ce-ebb310356ee0",
 			"key": "ETH_HOST",
 			"value": "erigon-mainnet--rpc-dbgtxn.datahub.figment.io"
 		},
 		{
-			"id": "a5a93605-e39b-4ff2-b6cb-292500650d6d",
+			"id": "064b1b2a-db7f-4411-b5b9-795a6c0a5d06",
 			"key": "FTM_HOST",
 			"value": "ftm--mainnet--rpc-archive-dbgtxn.datahub.figment.io"
 		},
 		{
-			"id": "7f5c2d11-1f2e-4d53-b83a-1148b82c09ed",
+			"id": "914abb1f-7d31-4536-83ba-f1c569c08e06",
 			"key": "MINA_HOST",
 			"value": "mina-mainnet--graphql.datahub.figment.io"
 		},
 		{
-			"id": "ec857355-a388-4f28-98bb-8b1005107c19",
+			"id": "3cba0aec-7e32-404e-b207-6b82408ccb1c",
 			"key": "NEAR_HOST",
 			"value": "near-mainnet--rpc--archive.datahub.figment.io"
 		},
 		{
-			"id": "ca2575fa-9174-454c-8f5b-0476ba028962",
+			"id": "5e7b178d-a96a-4746-a109-4e1cbbe382c1",
 			"key": "OPTIMISM_HOST",
 			"value": "optimism-mainnet-rpc-archive.datahub.figment.io"
 		},
 		{
-			"id": "f8871691-f531-459b-b7c0-32e3eaae0949",
+			"id": "99a4baa2-3ade-4200-b0fd-4d072463edea",
 			"key": "OSMO_LCD_HOST",
 			"value": "osmosis-1--lcd--archive.datahub.figment.io"
 		},
 		{
-			"id": "b18ed8bd-0c37-48f6-80be-9c948e8f8f48",
+			"id": "fabeb5e1-3f4b-4f9d-ab69-a7f9708ed702",
 			"key": "OSMO_RPC_HOST",
 			"value": "osmosis-1--rpc--archive.datahub.figment.io"
 		},
 		{
-			"id": "92a8c0b7-035b-4290-8500-ad80cebdd602",
+			"id": "ad915a0d-f01e-41e6-b3d4-98d8d4ce6805",
 			"key": "POLYGON_HOST",
 			"value": "matic-mainnet--jsonrpc-archive-dbgtxn.datahub.figment.io"
 		},
 		{
-			"id": "fce66b85-2331-4bc2-8df9-90ef3bda54b0",
+			"id": "c9de6bf8-8080-4eb5-8089-b492fbf1ef64",
 			"key": "SOL_HOST",
 			"value": "solana--mainnet.datahub.figment.io"
 		},
 		{
-			"id": "cdcfeafb-6e55-477d-bb90-d4736ec22d8a",
+			"id": "786763b7-ceec-41d3-8b65-5e95b826c7ff",
 			"key": "INTERACTIVE",
 			"value": "true"
 		},
 		{
-			"id": "b1e5d10e-1137-4946-b00a-432688e16e55",
+			"id": "13fc1042-aaff-4d4c-b211-fbd4486c417d",
 			"key": "WEBSOCKETS",
 			"value": "arbitrum, bnb, celo, centrifuge, cosmos, ethereum, fantom, kusama, optimism, polkadot, polygon, solana",
 			"type": "string"
 		},
 		{
-			"id": "e20dc47b-d410-4703-9366-906f6b913156",
+			"id": "d90f641a-38fc-43b6-b9a8-11f57696ec3d",
 			"key": "TESTNETS",
 			"value": "avalanche, celo, ethereum, mina, near, polkadot, polygon",
 			"type": "string"
 		},
 		{
-			"id": "29175d42-7d5c-498e-b6a1-a6814b73760d",
+			"id": "70b02d3b-bdb8-4abe-b1b1-459df7777df3",
 			"key": "DEVNETS",
 			"value": "solana",
 			"type": "string"
 		},
 		{
-			"id": "f664f40e-e2fd-4a91-a863-81bf904350b1",
+			"id": "6953f0fc-3e47-4a21-af53-ff8f092f4edf",
 			"key": "ARCHIVENODES",
 			"value": "arbitrum, avalanche, bnb, celo, cosmos, ethereum, fantom, kusama, mina, near, optimism, osmosis, polkadot, polygon, solana",
 			"type": "string"
 		},
 		{
-			"id": "a4bd010e-e8e9-4979-90cf-ac959116eee0",
+			"id": "cd3dd0f4-8726-4bb6-981d-d04b976fe361",
 			"key": "FULLNODES",
 			"value": "arbitrum, bnb, centrifuge, cosmos, ethereum, fantom, kusama, mina, near, optimism, osmosis, polkadot, polygon, solana",
 			"type": "string"
