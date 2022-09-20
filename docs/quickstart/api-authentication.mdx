@@ -54,19 +54,19 @@ Here's an example to get you started.
     </CodeBlock>
   </TabItem>
   <TabItem value="curl-header" label="CURL with Header">
-    <CodeBlock language="curl">
-      {`curl -X POST 'https://erigon-mainnet--rpc-dbgtxn.datahub.figment.io/' \
---header 'Content-Type: application/json' \
---header 'Authorization: <api_key>' \
+    <CodeBlock language="bash">
+      {`curl -X POST 'https://erigon-mainnet--rpc-dbgtxn.datahub.figment.io/' \\
+--header 'Content-Type: application/json' \\
+--header 'Authorization: <api_key>' \\
 --data '{
   // JSON Payload
 }'`}
     </CodeBlock>
   </TabItem>
   <TabItem value="curl-parameter" label="CURL with Parameter">
-    <CodeBlock language="curl">
-      {`curl -X POST 'https://erigon-mainnet--rpc-dbgtxn.datahub.figment.io/apikey/<api_key>/' \
---header 'Content-Type: application/json' \
+    <CodeBlock language="bash">
+      {`curl -X POST 'https://erigon-mainnet--rpc-dbgtxn.datahub.figment.io/apikey/<api_key>/' \\
+--header 'Content-Type: application/json' \\
 --data '{
   // JSON Payload
 }'`}
