@@ -2,7 +2,7 @@ import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 import CodeBlock from "@theme/CodeBlock";
 
-### Authentication & Making Calls
+### Authentication
 
 Making API calls with DataHub requires authentication, which can be performed by passing your API key via the request header `Authorization` or as a parameter in the query URL.
 
@@ -40,7 +40,7 @@ Here's some boilerplate to get you started.
     </CodeBlock>
   </TabItem>
   <TabItem value="curl-header" label="CURL with Header">
-    <CodeBlock language="curl">
+    <CodeBlock language="bash">
       {`curl -X POST '${props.url.replace(/(apikey\/[^\/]+\/){1}/, "")}' \\
 --header 'Content-Type: application/json' \\
 --header 'Authorization: <api_key>' \\
@@ -50,7 +50,7 @@ Here's some boilerplate to get you started.
     </CodeBlock>
   </TabItem>
   <TabItem value="curl-parameter" label="CURL with Parameter">
-    <CodeBlock language="curl">
+    <CodeBlock language="bash">
       {`curl -X POST '${props.url.replace(
         /(apikey\/[^\/]+\/){1}/,
         "apikey/<api_key>/"

@@ -109,10 +109,13 @@ function processServices(services, variables) {
 
 function frontMatterTemplate({
   title = "",
+  desc,
+  image,
+  keywords,
   pos = 0,
   prev = "null",
   next = "null",
-  slug = undefined,
+  slug,
   body = "",
 }) {
   return `---
@@ -120,9 +123,12 @@ title: ${title}
 sidebar_position: ${pos}
 pagination_prev: ${prev}
 pagination_next: ${next}
-${slug ? `slug: ${slug}` : ""}
 collapsed: true
 collapsible: true
+${desc ? `description: ${desc}` : ""}
+${image ? `image: ${image}` : ""}
+${keywords ? `keywords: ${keywords}` : ""}
+${slug ? `slug: ${slug}` : ""}
 ---
 ${body}`;
 }
@@ -306,6 +312,9 @@ function referenceTable(_services, variables) {
 
   return (outputTable = frontMatterTemplate({
     title: "API Reference",
+    desc: "API Reference supported protocols table",
+    image: "/img/logo.svg",
+    keywords: "[API Reference, Documentation]",
     pos: 3,
     prev: "null",
     next: "null",
@@ -349,6 +358,9 @@ function createMarkdown(services, variables) {
         `docs/api-reference/${toDashCase(service)}/${toDashCase(network)}.mdx`,
         frontMatterTemplate({
           title: network,
+          desc: `${toTitleCase(service)} - ${network}`,
+          keywords: `[${toTitleCase(service)}, ${network}]`,
+          image: "img/logo.svg",
           body:
             `import {APIMethods} from '@site/src/components'\n` +
             `import ApiReferenceNav from '@site/src/components/ApiReferenceNav'\n` +
