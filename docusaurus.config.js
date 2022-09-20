@@ -16,10 +16,10 @@ const githubConfig =
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: "Welcome to the Figment Docs",
+  title: "Figment Docs",
   tagline:
     "Here you'll find everything you need to start building with Figment.",
-  url: "https://github.com",
+  url: "https://docs.figment.io",
   onBrokenLinks: "ignore",
   onBrokenMarkdownLinks: "ignore",
   favicon: "img/favicon.ico",

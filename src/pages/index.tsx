@@ -16,7 +16,7 @@ function HomepageHeader() {
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <header className={clsx("hero", styles.heroBanner)}>
         <div className="container">
-          <h1 className="hero__title">{siteConfig.title}</h1>
+          <h1 className="hero__title">Welcome to the Figment Documentation</h1>
           <p className="hero__subtitle">{siteConfig.tagline}</p>
           <div className={styles.quickLinks}>
             <div
@@ -108,10 +108,7 @@ function HomepageHeader() {
 export default function Home(): JSX.Element {
   const { siteConfig } = useDocusaurusContext();
   return (
-    <Layout
-      title={`${siteConfig.title}`}
-      description="Welcome to the Figment Docs"
-    >
+    <Layout description="Start building with Figment">
       <HomepageHeader />
       <main></main>
     </Layout>
