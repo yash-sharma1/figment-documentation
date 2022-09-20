@@ -4,6 +4,7 @@ import BackToTopButton from "@theme/BackToTopButton";
 import { RequestObject, ResponseObject } from "@site/types/src";
 import { Description, CodeExample } from "./components";
 import styles from "./styles.module.css";
+import Link from "@docusaurus/Link";
 
 interface Props {
   name: string;
@@ -34,10 +35,7 @@ function APIMethod({
         className={styles.heading}
         data-method={request.method}
       >
-        <code>{name}</code>
-        <a className={styles.anchor} href={`#${name.toLowerCase()}`}>
-          #
-        </a>
+        <Link to={`#${name.toLowerCase()}`}>{name}</Link>
       </h2>
 
       <Description content={content} />
