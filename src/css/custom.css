@@ -4,27 +4,72 @@
  * work well for content-centric websites.
  */
 
-@import url("https://fonts.googleapis.com/css?family=Lato&family=Spectral");
+@font-face {
+  font-family: "Jungka";
+  font-weight: normal;
+  src: url("../fonts/Jungka/Jungka-Regular.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Jungka";
+  font-weight: bold;
+  src: url("../fonts/Jungka/Jungka-Medium.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Signifier";
+  font-weight: 400;
+  src: url("../fonts/Signifier/Signifier-Light.otf") format("opentype");
+}
+
+/* Override the default Infima variables here. */
+:root {
+  --ifm-font-family-base: "Jungka", "Helvetica", "Arial", sans-serif;
+  --ifm-color-primary: #034d77;
+  --ifm-color-primary-dark: #03456b;
+  --ifm-color-primary-darker: #034165;
+  --ifm-color-primary-darkest: #023653;
+  --ifm-color-primary-light: #035583;
+  --ifm-color-primary-lighter: #035989;
+  --ifm-color-primary-lightest: #04649b;
+  --ifm-code-font-size: 95%;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+  --ifm-navbar-background-color: #0c3f5c;
+  --ifm-footer-background-color: #0c3f5c;
+}
+
+/* For readability concerns, you should choose a lighter palette in dark mode. */
+[data-theme="dark"] {
+  --ifm-font-family-base: "Jungka", "Helvetica", "Arial", sans-serif;
+  --ifm-color-primary: #034d77;
+  --ifm-color-primary-dark: #03456b;
+  --ifm-color-primary-darker: #034165;
+  --ifm-color-primary-darkest: #023653;
+  --ifm-color-primary-light: #035583;
+  --ifm-color-primary-lighter: #035989;
+  --ifm-color-primary-lightest: #04649b;
+  --ifm-code-font-size: 95%;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+  --ifm-navbar-background-color: #0c3f5c;
+  --ifm-footer-background-color: #0c3f5c;
+}
 
 html {
   scroll-behavior: smooth;
 }
 
+h1.hero__title {
+  font-family: "Signifier", "Times New Roman", serif;
+  font-size: 60px;
+  font-weight: 400;
+}
+
 [data-theme="light"] body {
-  font-family: "Lato";
   color: #000;
 }
 
 [data-theme="dark"] body {
-  font-family: "Lato";
   color: #fff;
-}
-
-h1,
-h2,
-h3,
-h4 {
-  font-family: "Lato";
 }
 
 img.inline-image {
@@ -62,36 +107,6 @@ iframe.signup {
 label {
   padding-top: 10px;
   display: flex;
-}
-
-/* Override the default Infima variables here. */
-:root {
-  --ifm-color-primary: #034d77;
-  --ifm-color-primary-dark: #03456b;
-  --ifm-color-primary-darker: #034165;
-  --ifm-color-primary-darkest: #023653;
-  --ifm-color-primary-light: #035583;
-  --ifm-color-primary-lighter: #035989;
-  --ifm-color-primary-lightest: #04649b;
-  --ifm-code-font-size: 95%;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
-  --ifm-navbar-background-color: #0c3f5c;
-  --ifm-footer-background-color: #0c3f5c;
-}
-
-/* For readability concerns, you should choose a lighter palette in dark mode. */
-[data-theme="dark"] {
-  --ifm-color-primary: #034d77;
-  --ifm-color-primary-dark: #03456b;
-  --ifm-color-primary-darker: #034165;
-  --ifm-color-primary-darkest: #023653;
-  --ifm-color-primary-light: #035583;
-  --ifm-color-primary-lighter: #035989;
-  --ifm-color-primary-lightest: #04649b;
-  --ifm-code-font-size: 95%;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
-  --ifm-navbar-background-color: #0c3f5c;
-  --ifm-footer-background-color: #0c3f5c;
 }
 
 /* 👇 Code block customizations */
@@ -188,7 +203,7 @@ select::-ms-expand {
   border: 1px solid var(--ifm-color-primary-lightest);
   border-radius: 3px;
   color: #fff;
-  font-weight: 500;
+  font-weight: bold;
 }
 [data-theme="dark"] .custom-select:hover {
   border: 1px solid var(--ifm-color-white);
@@ -202,45 +217,38 @@ select::-ms-expand {
 /* 👇 Custom navbar and menu link colors */
 
 [data-theme="light"] .menu__link {
-  font-family: "Lato";
   font-weight: bold;
 }
 
 [data-theme="light"] .menu__link:hover {
-  font-family: "Lato";
   font-weight: bold;
   color: #000;
 }
 
 [data-theme="dark"] .menu__link {
-  font-family: "Lato";
   font-weight: bold;
   color: #fff;
 }
 
 [data-theme="dark"] .menu__link:hover {
-  font-family: "Lato";
   font-weight: bold;
   color: #fff;
   background: var(--ifm-color-primary-lightest);
 }
 
 [data-theme="dark"] .menu__link--active {
-  font-family: "Lato";
   font-weight: bold;
   color: #fff;
   background: var(--ifm-color-primary-lightest);
 }
 
 [data-theme="dark"] .menu__link--sublist:hover {
-  font-family: "Lato";
   font-weight: bold;
   color: #fff;
   background: var(--ifm-color-primary-lightest);
 }
 
 [data-theme="dark"] .menu__list-item-collapsible--active {
-  font-family: "Lato";
   font-weight: bold;
   color: #fff;
   background: var(--ifm-color-primary-lightest);
@@ -361,33 +369,28 @@ select::-ms-expand {
   }
 
   [data-theme="light"] .menu__link {
-    font-family: "Lato";
     font-weight: bold;
     color: var(--ifm-menu-color);
   }
 
   [data-theme="light"] .menu__link:hover {
-    font-family: "Lato";
     font-weight: bold;
     color: #fff;
     background: var(--ifm-color-primary-lightest);
   }
 
   [data-theme="light"] .menu__link--active {
-    font-family: "Lato";
     font-weight: bold;
     color: #fff;
     background: var(--ifm-color-primary-lightest);
   }
 
   [data-theme="dark"] .menu__link {
-    font-family: "Lato";
     font-weight: bold;
     color: var(--ifm-menu-color);
   }
 
   [data-theme="dark"] .menu__link:hover {
-    font-family: "Lato";
     font-weight: bold;
     color: #fff;
     background: var(--ifm-color-primary-lightest);
