@@ -186,6 +186,12 @@
 [data-method="GET"]::before {
   background-color: rgb(97, 174, 255);
 }
+[data-method="PUT"]::before {
+  background-color: rgb(255, 174, 0);
+}
+[data-method="DELETE"]::before {
+  background-color: rgb(244, 67, 67);
+}
 
 .heading::before {
   content: attr(data-method);
