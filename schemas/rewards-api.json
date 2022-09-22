@@ -639,7 +639,7 @@
 					]
 				},
 				{
-					"name": "Rewards (by epoch) Copy",
+					"name": "Rewards (daily)",
 					"event": [
 						{
 							"listen": "test",
@@ -1060,17 +1060,17 @@
 	],
 	"variable": [
 		{
-			"id": "c779d717-ee59-425a-a2d8-f64b8dd3dd57",
+			"id": "251090e2-e670-42ba-a3c9-10b05f1c333e",
 			"key": "ETH_REWARDS_HOST",
 			"value": "eth-rewards.datahub.figment.io"
 		},
 		{
-			"id": "40baff9c-694a-4340-92d5-cdfb377fda56",
+			"id": "584b4c17-b4e8-4d35-b3e2-30247bec01c6",
 			"key": "SOL_REWARDS_HOST",
 			"value": "solana-rewards.datahub.figment.io"
 		},
 		{
-			"id": "2ceda56d-2ecd-407a-b4e8-9892b2a672f7",
+			"id": "307d4070-74c2-4ce1-992b-9c62e3874871",
 			"key": "DOT_REWARDS_HOST",
 			"value": "polkadot-rewards.datahub.figment.io",
 			"type": "string"
