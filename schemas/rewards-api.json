@@ -540,87 +540,6 @@
 					},
 					"response": [
 						{
-							"id": "8037e478-b6c6-4eb6-905f-4d47488d6282",
-							"name": "SOL (epoch)",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": "https://{{SOL_REWARDS_HOST}}/apikey/{{API_KEY}}/rewards"
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Date",
-									"value": "Mon, 25 Jul 2022 18:42:05 GMT"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json"
-								},
-								{
-									"key": "Content-Length",
-									"value": "595"
-								},
-								{
-									"key": "Connection",
-									"value": "close"
-								},
-								{
-									"key": "X-RateLimit-Remaining-Minute",
-									"value": "1999"
-								},
-								{
-									"key": "RateLimit-Limit",
-									"value": "2000"
-								},
-								{
-									"key": "RateLimit-Remaining",
-									"value": "1999"
-								},
-								{
-									"key": "RateLimit-Reset",
-									"value": "56"
-								},
-								{
-									"key": "X-RateLimit-Limit-Minute",
-									"value": "2000"
-								},
-								{
-									"key": "X-Quota-Limit-Month",
-									"value": "650000000"
-								},
-								{
-									"key": "Quota-Reset",
-									"value": "1"
-								},
-								{
-									"key": "X-Quota-Remaining-Second",
-									"value": "7999"
-								},
-								{
-									"key": "X-Quota-Limit-Second",
-									"value": "8000"
-								},
-								{
-									"key": "Quota-Limit",
-									"value": "8000"
-								},
-								{
-									"key": "Quota-Remaining",
-									"value": "7999"
-								},
-								{
-									"key": "X-Quota-Remaining-Month",
-									"value": "649999771"
-								}
-							],
-							"cookie": [],
-							"responseTime": null,
-							"body": "[\n    {\n        \"accounts\": [\n            \"99nMQb8zVX8GsyJa4aZQ9amThWRwmoUbPfTDD9FKTVEH\"\n        ],\n        \"chain_id\": \"mainnet\",\n        \"rewards\": [\n            {\n                \"text\": \"287.973703841 SOL\",\n                \"currency\": \"SOL\",\n                \"numeric\": 287973703841,\n                \"exp\": 9\n            }\n        ],\n        \"epoch\": \"324\",\n        \"network\": \"solana_sf\",\n        \"validator\": \"Fd7btgySsrjuo25CJCj7oE7VPMyezDhnx7pZkj2v69Nk\",\n        \"time\": \"2022-07-06T03:09:12Z\"\n    }\n]"
-						},
-						{
 							"id": "f2bd297a-3c14-4b2d-96fb-1d83fa971a5f",
 							"name": "Rewards (by epoch)",
 							"originalRequest": {
@@ -1025,17 +944,17 @@
 	],
 	"variable": [
 		{
-			"id": "2b2953f5-a35b-4fd7-a358-924164d31a32",
+			"id": "4ddf5781-7d6f-451e-968d-dab648d6aa29",
 			"key": "ETH_REWARDS_HOST",
 			"value": "eth-rewards.datahub.figment.io"
 		},
 		{
-			"id": "5f42b69e-8ab6-4105-adf7-f1498b58f163",
+			"id": "f937dff5-4059-423c-8235-d56ca7309060",
 			"key": "SOL_REWARDS_HOST",
 			"value": "solana-rewards.datahub.figment.io"
 		},
 		{
-			"id": "6edd443c-fe9f-4c21-a86a-5bcf1d542553",
+			"id": "ac45c679-b655-41ef-950e-726eea7111d2",
 			"key": "DOT_REWARDS_HOST",
 			"value": "polkadot-rewards.datahub.figment.io",
 			"type": "string"
