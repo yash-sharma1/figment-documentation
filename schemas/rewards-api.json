@@ -637,122 +637,6 @@
 							"body": "[\n    {\n        \"accounts\": [\n            \"2yoofMr4N78WPxVK8MU8Yy26dfRZbPw5WDzTRCA9uv95\"\n        ],\n        \"chain_id\": \"mainnet\",\n        \"rewards\": [\n            {\n                \"text\": \"0.001351654 SOL\",\n                \"currency\": \"SOL\",\n                \"numeric\": 1351654,\n                \"exp\": 9\n            }\n        ],\n        \"epoch\": \"349\",\n        \"network\": \"solana_sf\",\n        \"validator\": \"CcaHc2L43ZWjwCHART3oZoJvHLAe9hzT2DJNUpBzoTN1\",\n        \"time\": \"2022-09-18T08:26:46Z\"\n    }\n]"
 						}
 					]
-				},
-				{
-					"name": "Rewards (daily)",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "38922fde-0785-44bc-ac5a-e41eb91c5f9c",
-								"exec": [
-									"const schema = {",
-									"    \"type\": \"array\",",
-									"    \"items\": {",
-									"        \"type\": \"object\",",
-									"        \"properties\": {",
-									"            \"accounts\": {",
-									"                \"type\": \"array\",",
-									"                \"items\": {",
-									"                    \"type\": \"string\"",
-									"                }",
-									"            },",
-									"            \"chain_id\": {",
-									"                \"type\": \"string\"",
-									"            },",
-									"            \"epoch\": {",
-									"                \"type\": \"string\"",
-									"            },",
-									"            \"network\": {",
-									"                \"type\": \"string\"",
-									"            },",
-									"            \"rewards\": {",
-									"                \"type\": \"array\",",
-									"                \"items\": {",
-									"                    \"type\": \"object\",",
-									"                    \"properties\": {",
-									"                        \"currency\": {",
-									"                            \"type\": \"string\"",
-									"                        },",
-									"                        \"exp\": {",
-									"                            \"type\": \"number\"",
-									"                        },",
-									"                        \"numeric\": {",
-									"                            \"type\": \"number\"",
-									"                        },",
-									"                        \"text\": {",
-									"                            \"type\": \"string\"",
-									"                        }",
-									"                    },",
-									"                    \"required\": [",
-									"                        \"currency\",",
-									"                        \"numeric\",",
-									"                        \"exp\",",
-									"                        \"text\"",
-									"                    ]",
-									"                }",
-									"            },",
-									"            \"time\": {",
-									"                \"type\": \"string\"",
-									"            },",
-									"            \"validator\": {",
-									"                \"type\": \"string\"",
-									"            }",
-									"        },",
-									"        \"required\": [",
-									"            \"rewards\",",
-									"            \"epoch\",",
-									"            \"network\",",
-									"            \"validator\",",
-									"            \"time\",",
-									"            \"accounts\",",
-									"            \"chain_id\"",
-									"        ]",
-									"    }",
-									"};",
-									"",
-									"pm.test(\"status code 200\", function () {",
-									"    pm.response.to.have.status(200);",
-									"});",
-									"",
-									"pm.test(\"validating schema\", function() {",
-									"    pm.response.to.have.jsonSchema(schema);",
-									"});"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"id": "5438c593-9340-466e-aebd-673da05fb92a",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "noauth"
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "",
-								"value": "",
-								"type": "text",
-								"disabled": true
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"network\": \"solana_sf\",\n    \"chain_id\": \"mainnet\",\n    \"accounts\": [\n        \"2yoofMr4N78WPxVK8MU8Yy26dfRZbPw5WDzTRCA9uv95\"\n    ], \n    \"start_time\": \"2022-09-18\",\n    \"end_time\": \"2022-09-20\",\n    \"grouping\": \"epoch\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": "https://{{SOL_REWARDS_HOST}}/apikey/{{API_KEY}}/rewards",
-						"description": "Returns net delegator rewards (aka post on-chain validator commission) grouped by epoch.\n\n### Parameters\n\n*   `network` => `solana_sf`\n*   `chain_id` => `mainnet`\n*   `accounts` takes in an array of Stake Account public addresses.\n*   `grouping` => `epoch` will return rewards grouped by epochs.\n*   `start_time` and `end_time` are ISO 8601 timestamps in UTC. If the start of an epoch falls into the requested date range it will be included (even if it doesn't end inside the date range).\n    \n\n### Response\n\n*   `network` and `chain_id` are the same as the request.\n*   `accounts` returns an array of Stake Account public addresses.\n*   `validator` returns the validator that tokens were staked to.\n*   `time` and `epoch` reference the start of the daily or epoch bucket.\n*   `rewards` is an array of objects with four components: `numeric` , `exp` and `currency`. The formula to compute the final rewards in the `currency` unit is `numeric * 10^-exp`(`text` is the string version of this).\n    \n\n### Limitations\n\n*   The API returns rewards for Figment validators only.\n*   The API returns rewards for the last 10 epochs.\n*   Data is available approximatively an hour after the end of the day or epoch. When requesting daily for the current day, the data will be available but obviously partially complete as the day progresses.\n    \n\n* * *"
-					},
-					"response": []
 				}
 			],
 			"id": "79cf9d1b-cf8a-4fe1-b04a-cb33d7bcd7fe"
@@ -1060,17 +944,17 @@
 	],
 	"variable": [
 		{
-			"id": "251090e2-e670-42ba-a3c9-10b05f1c333e",
+			"id": "c181c63a-fad0-4b29-86b5-8a4894f0a638",
 			"key": "ETH_REWARDS_HOST",
 			"value": "eth-rewards.datahub.figment.io"
 		},
 		{
-			"id": "584b4c17-b4e8-4d35-b3e2-30247bec01c6",
+			"id": "9df01642-a842-48fb-aea8-7f3ab2a8cea3",
 			"key": "SOL_REWARDS_HOST",
 			"value": "solana-rewards.datahub.figment.io"
 		},
 		{
-			"id": "307d4070-74c2-4ce1-992b-9c62e3874871",
+			"id": "8e3793e4-ae3a-4a09-8df8-5eb205f1bba1",
 			"key": "DOT_REWARDS_HOST",
 			"value": "polkadot-rewards.datahub.figment.io",
 			"type": "string"
