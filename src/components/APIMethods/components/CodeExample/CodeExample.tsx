@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import copy from "copy-text-to-clipboard";
+import styles from "./styles.module.css";
 
 import {
   RequestObject,
@@ -11,6 +12,7 @@ import useFetch from "./useFetch";
 import CodeBlock from "@theme/CodeBlock";
 import { CodeEditor } from "../CodeEditor";
 import { ErrorBanner } from "../ErrorBanner";
+import CopyButton from "@theme/CodeBlock/CopyButton";
 import ContentCopyFilled from "@site/static/img/icons/ContentCopyFilled.svg";
 import PlayCircleOutlineFilled from "@site/static/img/icons/PlayCircleOutlineFilled.svg";
 import RefreshFilled from "@site/static/img/icons/RefreshFilled.svg";
@@ -74,7 +76,9 @@ export default function CodeExample({ req, res, interactive }: Props) {
     {
       title: "Copy",
       onClick: () => copy(reqBody),
-      Component: <ContentCopyFilled />,
+      Component: (
+        <CopyButton code={""} className={styles.overlayHeaderButton} />
+      ),
     },
     interactive
       ? {
