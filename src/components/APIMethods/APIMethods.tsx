@@ -24,7 +24,11 @@ function APIMethod({
   if (["Rewards (by epoch)", "Rewards (daily)"].includes(name)) {
     request.body = {
       ...request.body,
-      start_time: new Date(Date.now() - 86400000).toISOString().split("T")[0],
+      start_time: new Date(
+        Date.now() - (name === "Rewards (by epoch)" ? 172800000 : 86400000)
+      )
+        .toISOString()
+        .split("T")[0],
       end_time: new Date().toISOString().split("T")[0],
     };
   }
