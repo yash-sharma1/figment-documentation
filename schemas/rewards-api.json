@@ -528,7 +528,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"network\": \"solana_sf\",\n    \"chain_id\": \"mainnet\",\n    \"accounts\": [\n        \"99nMQb8zVX8GsyJa4aZQ9amThWRwmoUbPfTDD9FKTVEH\"\n    ], \n    \"start_time\": \"2022-07-05\",\n    \"end_time\": \"2022-07-11\",\n    \"grouping\": \"epoch\"\n}",
+							"raw": "{\n    \"network\": \"solana_sf\",\n    \"chain_id\": \"mainnet\",\n    \"accounts\": [\n        \"2yoofMr4N78WPxVK8MU8Yy26dfRZbPw5WDzTRCA9uv95\"\n    ], \n    \"start_time\": \"2022-09-18\",\n    \"end_time\": \"2022-09-20\",\n    \"grouping\": \"epoch\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -540,11 +540,27 @@
 					},
 					"response": [
 						{
-							"id": "8037e478-b6c6-4eb6-905f-4d47488d6282",
-							"name": "SOL (epoch)",
+							"id": "f2bd297a-3c14-4b2d-96fb-1d83fa971a5f",
+							"name": "Rewards (by epoch)",
 							"originalRequest": {
-								"method": "GET",
-								"header": [],
+								"method": "POST",
+								"header": [
+									{
+										"key": "",
+										"value": "",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"network\": \"solana_sf\",\n    \"chain_id\": \"mainnet\",\n    \"accounts\": [\n        \"2yoofMr4N78WPxVK8MU8Yy26dfRZbPw5WDzTRCA9uv95\"\n    ], \n    \"start_time\": \"2022-09-18\",\n    \"end_time\": \"2022-09-20\",\n    \"grouping\": \"epoch\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
 								"url": "https://{{SOL_REWARDS_HOST}}/apikey/{{API_KEY}}/rewards"
 							},
 							"status": "OK",
@@ -553,7 +569,7 @@
 							"header": [
 								{
 									"key": "Date",
-									"value": "Mon, 25 Jul 2022 18:42:05 GMT"
+									"value": "Thu, 22 Sep 2022 04:21:23 GMT"
 								},
 								{
 									"key": "Content-Type",
@@ -561,15 +577,19 @@
 								},
 								{
 									"key": "Content-Length",
-									"value": "595"
+									"value": "292"
 								},
 								{
 									"key": "Connection",
-									"value": "close"
+									"value": "keep-alive"
 								},
 								{
-									"key": "X-RateLimit-Remaining-Minute",
-									"value": "1999"
+									"key": "X-RateLimit-Limit-Minute",
+									"value": "2000"
+								},
+								{
+									"key": "RateLimit-Reset",
+									"value": "37"
 								},
 								{
 									"key": "RateLimit-Limit",
@@ -580,45 +600,41 @@
 									"value": "1999"
 								},
 								{
-									"key": "RateLimit-Reset",
-									"value": "56"
+									"key": "X-RateLimit-Remaining-Minute",
+									"value": "1999"
 								},
 								{
-									"key": "X-RateLimit-Limit-Minute",
-									"value": "2000"
+									"key": "vary",
+									"value": "Origin"
 								},
 								{
-									"key": "X-Quota-Limit-Month",
-									"value": "650000000"
+									"key": "Access-Control-Allow-Origin",
+									"value": "https://docs.figment.io"
 								},
 								{
-									"key": "Quota-Reset",
-									"value": "1"
-								},
-								{
-									"key": "X-Quota-Remaining-Second",
-									"value": "7999"
-								},
-								{
-									"key": "X-Quota-Limit-Second",
-									"value": "8000"
-								},
-								{
-									"key": "Quota-Limit",
-									"value": "8000"
+									"key": "X-Quota-Limit-Minute",
+									"value": "2500"
 								},
 								{
 									"key": "Quota-Remaining",
-									"value": "7999"
+									"value": "2499"
 								},
 								{
-									"key": "X-Quota-Remaining-Month",
-									"value": "649999771"
+									"key": "Quota-Reset",
+									"value": "37"
+								},
+								{
+									"key": "Quota-Limit",
+									"value": "2500"
+								},
+								{
+									"key": "X-Quota-Remaining-Minute",
+									"value": "2499"
 								}
 							],
 							"cookie": [],
 							"responseTime": null,
-							"body": "[\n    {\n        \"accounts\": [\n            \"99nMQb8zVX8GsyJa4aZQ9amThWRwmoUbPfTDD9FKTVEH\"\n        ],\n        \"chain_id\": \"mainnet\",\n        \"rewards\": [\n            {\n                \"text\": \"287.973703841 SOL\",\n                \"currency\": \"SOL\",\n                \"numeric\": 287973703841,\n                \"exp\": 9\n            }\n        ],\n        \"epoch\": \"324\",\n        \"network\": \"solana_sf\",\n        \"validator\": \"Fd7btgySsrjuo25CJCj7oE7VPMyezDhnx7pZkj2v69Nk\",\n        \"time\": \"2022-07-06T03:09:12Z\"\n    }\n]"
+							"body": "[\n    {\n        \"accounts\": [\n            \"2yoofMr4N78WPxVK8MU8Yy26dfRZbPw5WDzTRCA9uv95\"\n        ],\n        \"chain_id\": \"mainnet\",\n        \"rewards\": [\n            {\n                \"text\": \"0.001351654 SOL\",\n                \"currency\": \"SOL\",\n                \"numeric\": 1351654,\n                \"exp\": 9\n            }\n        ],\n        \"epoch\": \"349\",\n        \"network\": \"solana_sf\",\n        \"validator\": \"CcaHc2L43ZWjwCHART3oZoJvHLAe9hzT2DJNUpBzoTN1\",\n        \"time\": \"2022-09-18T08:26:46Z\"\n    }\n]"
 						}
 					]
 				}
@@ -928,17 +944,17 @@
 	],
 	"variable": [
 		{
-			"id": "c1c9af5f-67d2-40a4-bce9-b3e78611f438",
+			"id": "c181c63a-fad0-4b29-86b5-8a4894f0a638",
 			"key": "ETH_REWARDS_HOST",
 			"value": "eth-rewards.datahub.figment.io"
 		},
 		{
-			"id": "949dddcc-9e40-4912-9411-255bba88655c",
+			"id": "9df01642-a842-48fb-aea8-7f3ab2a8cea3",
 			"key": "SOL_REWARDS_HOST",
 			"value": "solana-rewards.datahub.figment.io"
 		},
 		{
-			"id": "445b3a10-1727-492c-b78d-78bb431f0f51",
+			"id": "8e3793e4-ae3a-4a09-8df8-5eb205f1bba1",
 			"key": "DOT_REWARDS_HOST",
 			"value": "polkadot-rewards.datahub.figment.io",
 			"type": "string"

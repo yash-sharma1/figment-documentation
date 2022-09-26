@@ -1,0 +1,6 @@
+[data-theme] button.overlayHeaderButton,
+[data-theme] button.overlayHeaderButton:hover {
+  height: 20px;
+  border-radius: 16px;
+  border-color: transparent;
+}
