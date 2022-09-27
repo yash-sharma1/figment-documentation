@@ -1,0 +1,17 @@
+@font-face {
+  font-family: "Jungka";
+  font-weight: normal;
+  src: url("../fonts/Jungka/Jungka-Book.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Jungka";
+  font-weight: bold;
+  src: url("../fonts/Jungka/Jungka-Medium.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Signifier";
+  font-weight: 400;
+  src: url("../fonts/Signifier/Signifier-Light.otf") format("opentype");
+}

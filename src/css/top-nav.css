@@ -1,0 +1,26 @@
+/* 👇 Feedback button in navbar */
+.navbar .feedback_button_link button {
+  background: var(--top-nav-font-color);
+  font-weight: normal;
+  border-color: var(--top-nav-font-color);
+}
+
+.navbar [class*="toggle_node_modules"] button {
+  background-color: transparent;
+}
+
+.navbar__title,
+.navbar__brand svg,
+.navbar-sidebar__close svg g {
+  color: var(--top-nav-font-color);
+  text-decoration: none;
+}
+
+.navbar-sidebar__close svg g {
+  stroke: var(--top-nav-font-color);
+}
+
+.navbar-sidebar__close svg g {
+  color: var(--top-nav-font-color) !important;
+  text-decoration: none;
+}
