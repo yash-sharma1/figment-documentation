@@ -109,7 +109,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"network\": \"ethereum\", \n    \"chain_id\": \"mainnet\",\n    \"accounts\": [\n        \"0x93257a7d4f1e6998f019483f149a4dbe3bfc8b89358411be769aeedd943de907f178da1773aea9016d1ac2bdfe3794ba\"\n    ], \n    \"start_time\": \"2022-08-25\",\n    \"end_time\": \"2022-08-26\",\n    \"grouping\": \"epoch\"\n}",
+							"raw": "{\n    \"network\": \"ethereum\",\n    \"chain_id\": \"mainnet\",\n    \"accounts\": [\n        \"0x93257a7d4f1e6998f019483f149a4dbe3bfc8b89358411be769aeedd943de907f178da1773aea9016d1ac2bdfe3794ba\"\n    ], \n    \"start_time\": \"2022-08-25\",\n    \"end_time\": \"2022-08-26\",\n    \"grouping\": \"epoch\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1136,17 +1136,17 @@
 	],
 	"variable": [
 		{
-			"id": "8e75c3c9-511d-47dc-b1e8-be725347931c",
+			"id": "d9e1d779-5280-4e7c-8dd2-31190bcc53e8",
 			"key": "ETH_REWARDS_HOST",
 			"value": "eth-rewards.datahub.figment.io"
 		},
 		{
-			"id": "a1df2d8a-e15c-4d26-941c-97add1093378",
+			"id": "088e4c1e-0282-499f-bc18-61e1509f00b3",
 			"key": "SOL_REWARDS_HOST",
 			"value": "solana-rewards.datahub.figment.io"
 		},
 		{
-			"id": "35ae86f7-a5c9-45c8-81fb-0139500fdb22",
+			"id": "27beee75-866f-47b5-a976-b69fcfbbe992",
 			"key": "DOT_REWARDS_HOST",
 			"value": "polkadot-rewards.datahub.figment.io",
 			"type": "string"
