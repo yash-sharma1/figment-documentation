@@ -6200,7 +6200,141 @@
 						"url": "https://{{MATIC_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{polygonStakingFlowId}}",
 						"description": "Get the status of existing flow using the flow id from the previous step.\n\n### Parameters\n\n*   `flow_id` - `string` Pass the Flow ID you received in the response when creating the flow in the GET request URL, ex. `/flows/69d02e2c-bbde-4b09-bbe9-2be287a9a6de`.\n    \n\n### Response\n\n*   `id` - `string` Id of the flow.\n*   `state` - `string` The current state of the flow, i.e., `initialized`.\n*   `actions` - `array` The actions array contains the name of the next action in the flow and details of the expected inputs in the data field.\n    \n\n* * *"
 					},
-					"response": []
+					"response": [
+						{
+							"id": "5f8c508e-e7ff-45d5-aabc-37c500636073",
+							"name": "Get Delegation Flow Status",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": "https://{{MATIC_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{polygonStakingFlowId}}"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Wed, 28 Sep 2022 21:49:26 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "RateLimit-Limit",
+									"value": "2000"
+								},
+								{
+									"key": "RateLimit-Remaining",
+									"value": "1999"
+								},
+								{
+									"key": "X-RateLimit-Remaining-Minute",
+									"value": "1999"
+								},
+								{
+									"key": "X-RateLimit-Limit-Minute",
+									"value": "2000"
+								},
+								{
+									"key": "RateLimit-Reset",
+									"value": "34"
+								},
+								{
+									"key": "Server",
+									"value": "nginx"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "strict-origin-when-cross-origin"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"45a92575820c4cd7dc8737ab99a5cf2f\""
+								},
+								{
+									"key": "Cache-Control",
+									"value": "max-age=0, private, must-revalidate"
+								},
+								{
+									"key": "X-Request-Id",
+									"value": "7d35d3e0-69e3-403b-845a-535710c5f281"
+								},
+								{
+									"key": "X-Runtime",
+									"value": "0.048035"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=63072000; includeSubDomains"
+								},
+								{
+									"key": "vary",
+									"value": "Origin"
+								},
+								{
+									"key": "X-Quota-Remaining-Second",
+									"value": "7999"
+								},
+								{
+									"key": "X-Quota-Limit-Second",
+									"value": "8000"
+								},
+								{
+									"key": "Quota-Limit",
+									"value": "8000"
+								},
+								{
+									"key": "Quota-Remaining",
+									"value": "7999"
+								},
+								{
+									"key": "X-Quota-Remaining-Month",
+									"value": "649999980"
+								},
+								{
+									"key": "X-Quota-Limit-Month",
+									"value": "650000000"
+								},
+								{
+									"key": "Quota-Reset",
+									"value": "1"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"id\": \"ceb756c4-725d-4446-9cf2-d23ba446be9c\",\n    \"state\": \"initialized\",\n    \"actions\": [\n        {\n            \"name\": \"assign_staking_data\",\n            \"inputs\": [\n                {\n                    \"name\": \"delegator_address\",\n                    \"display\": \"Delegator Address\",\n                    \"description\": \"\",\n                    \"type\": \"string\",\n                    \"validations\": [\n                        {\n                            \"type\": \"presence\",\n                            \"options\": {}\n                        }\n                    ]\n                },\n                {\n                    \"name\": \"validator_address\",\n                    \"display\": \"Validator Address\",\n                    \"description\": \"\",\n                    \"type\": \"string\",\n                    \"validations\": [\n                        {\n                            \"type\": \"presence\",\n                            \"options\": {}\n                        },\n                        {\n                            \"type\": \"is_validator\",\n                            \"options\": {\n                                \"on\": \"with_on_chain_validations\"\n                            }\n                        }\n                    ]\n                },\n                {\n                    \"name\": \"amount\",\n                    \"display\": \"Amount\",\n                    \"description\": \"\",\n                    \"type\": \"decimal\",\n                    \"validations\": [\n                        {\n                            \"type\": \"presence\",\n                            \"options\": {}\n                        },\n                        {\n                            \"type\": \"precision\",\n                            \"options\": {\n                                \"max\": 18\n                            }\n                        }\n                    ]\n                },\n                {\n                    \"name\": \"minimum_shares_to_mint\",\n                    \"display\": \"Minimum Shares To Mint\",\n                    \"description\": \"\",\n                    \"type\": \"integer\",\n                    \"validations\": [\n                        {\n                            \"type\": \"numericality\",\n                            \"options\": {\n                                \"allow_nil\": true,\n                                \"greater_than_or_equal_to\": 0\n                            }\n                        }\n                    ]\n                },\n                {\n                    \"name\": \"max_slippage_percentage\",\n                    \"display\": \"Max Slippage Percentage\",\n                    \"description\": \"\",\n                    \"type\": \"integer\",\n                    \"validations\": [\n                        {\n                            \"type\": \"numericality\",\n                            \"options\": {\n                                \"allow_nil\": true,\n                                \"only_integer\": true,\n                                \"less_than_or_equal_to\": 100,\n                                \"greater_than_or_equal_to\": 0\n                            }\n                        }\n                    ]\n                }\n            ]\n        }\n    ],\n    \"data\": {\n        \"delegator_address\": null,\n        \"validator_address\": null,\n        \"amount\": null,\n        \"minimum_shares_to_mint\": null,\n        \"max_slippage_percentage\": null,\n        \"exchange_rate\": null,\n        \"exchange_rate_precision\": null,\n        \"allowance_transaction\": null,\n        \"delegate_transaction\": null\n    },\n    \"network_code\": \"polygon\",\n    \"chain_code\": \"testnet\",\n    \"created_at\": \"2022-09-28T20:52:33.281Z\",\n    \"updated_at\": \"2022-09-28T20:52:33.281Z\"\n}"
+						}
+					]
 				},
 				{
 					"name": "Assign Staking Data",
@@ -15155,43 +15289,43 @@
 	],
 	"variable": [
 		{
-			"id": "45fe54cc-1dd8-49f0-b50b-279816fee406",
+			"id": "6b1ab30b-60b6-4488-a65e-a8c230bd144b",
 			"key": "AVAX_STAKING_HOST",
 			"value": "avalanche-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "7c1851b6-9ff2-4c7a-824a-9096902be14a",
+			"id": "2e329f73-963a-4a7f-bb06-888da8946ac5",
 			"key": "ETH_STAKING_HOST",
 			"value": "eth-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "46bb7d19-3939-4b9e-8027-aa254695a307",
+			"id": "38ea1872-a264-4b44-9f56-06f0e7239a77",
 			"key": "NEAR_STAKING_HOST",
 			"value": "near-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "282d7f25-f6bc-425f-9fba-10e41428adcd",
+			"id": "4f5cd7ca-d48d-4ac0-afa0-51802ee25879",
 			"key": "DOT_STAKING_HOST",
 			"value": "polkadot-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "5a9c1a1b-5c6c-4dd2-a06c-7fddef22d1f7",
+			"id": "029bbeb9-307a-46a8-abb2-abc58d64e770",
 			"key": "SOL_STAKING_HOST",
 			"value": "solana-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "cd33ed31-f9a8-45f0-b42d-dca89660cac4",
+			"id": "be7df18b-6fe3-4612-b823-9b208c55234c",
 			"key": "MATIC_STAKING_HOST",
 			"value": "polygon-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "1aa333e9-edb3-485c-bb52-7565af27faef",
+			"id": "4aedc5c6-5114-4b89-a912-674d5271b721",
 			"key": "INTERACTIVE",
 			"value": "false",
 			"type": "string"
