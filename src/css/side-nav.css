@@ -82,6 +82,10 @@
   background-color: var(--side-nav-open-category-bg);
 }
 
+.menu__link:hover,
+.menu__link--active,
+.menu__list-item-collapsible--active,
+.menu__caret:hover,
 .menu__list-item-collapsible:hover {
   background: transparent;
 }
