@@ -418,14 +418,15 @@
 					]
 				},
 				{
-					"name": "Staking Reward Rates",
+					"name": "Reward Rates",
 					"id": "9a9f074b-d7bc-4df6-a37e-ed572341a11a",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": "https://{{ETH_REWARDS_HOST}}/apikey/{{API_KEY}}/rewards"
 					},
 					"response": []
 				}
@@ -956,17 +957,17 @@
 	],
 	"variable": [
 		{
-			"id": "237e6e83-a977-496b-a768-68684414ca79",
+			"id": "5d9a6232-98c3-48cf-9b4a-823b0f6df38c",
 			"key": "ETH_REWARDS_HOST",
 			"value": "eth-rewards.datahub.figment.io"
 		},
 		{
-			"id": "77679610-ccd7-43b1-9193-88d022eb48be",
+			"id": "ef2e7fbb-54d1-4fed-a815-965fa35b7b84",
 			"key": "SOL_REWARDS_HOST",
 			"value": "solana-rewards.datahub.figment.io"
 		},
 		{
-			"id": "bd1b8433-8d3b-4f62-a305-1ede0e84c22e",
+			"id": "e5a10199-f4b4-44fc-b4e1-e844e2fa30f5",
 			"key": "DOT_REWARDS_HOST",
 			"value": "polkadot-rewards.datahub.figment.io",
 			"type": "string"
