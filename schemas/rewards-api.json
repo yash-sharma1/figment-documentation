@@ -734,7 +734,7 @@
 					]
 				},
 				{
-					"name": "New Request",
+					"name": "Reward Rates",
 					"id": "42d51a04-ebd1-4818-a23d-04eff8ba68ba",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
@@ -1052,17 +1052,17 @@
 	],
 	"variable": [
 		{
-			"id": "1263586c-0a69-48c6-812f-b8c5277525bf",
+			"id": "da3ec0a1-4f31-45fa-9a23-dba306d45d1f",
 			"key": "ETH_REWARDS_HOST",
 			"value": "eth-rewards.datahub.figment.io"
 		},
 		{
-			"id": "afa0bc5b-3a6c-4532-bcf0-9cfda280aa76",
+			"id": "29a6f390-b4e5-4ff4-b908-e335ce4956b6",
 			"key": "SOL_REWARDS_HOST",
 			"value": "solana-rewards.datahub.figment.io"
 		},
 		{
-			"id": "f7368ea9-508f-45be-8fe7-9bf3e5f5826b",
+			"id": "ac61e683-2fde-48fa-a746-110d740cc21c",
 			"key": "DOT_REWARDS_HOST",
 			"value": "polkadot-rewards.datahub.figment.io",
 			"type": "string"
