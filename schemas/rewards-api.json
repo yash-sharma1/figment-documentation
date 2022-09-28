@@ -416,6 +416,18 @@
 							"body": "[\n    {\n        \"accounts\": [\n            \"0x93257a7d4f1e6998f019483f149a4dbe3bfc8b89358411be769aeedd943de907f178da1773aea9016d1ac2bdfe3794ba\"\n        ],\n        \"chain_id\": \"mainnet\",\n        \"rewards\": [\n            {\n                \"text\": \"0.003292558 ETH\",\n                \"currency\": \"ETH\",\n                \"numeric\": 3292558,\n                \"exp\": 9\n            }\n        ],\n        \"network\": \"ethereum\",\n        \"validator\": \"0x93257a7d4f1e6998f019483f149a4dbe3bfc8b89358411be769aeedd943de907f178da1773aea9016d1ac2bdfe3794ba\",\n        \"time\": \"2022-07-21T00:00:00Z\"\n    }\n]"
 						}
 					]
+				},
+				{
+					"name": "New Request",
+					"id": "9a9f074b-d7bc-4df6-a37e-ed572341a11a",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
 				}
 			],
 			"id": "cd7ac279-a458-490a-9b90-3a466065b3e0",
@@ -944,17 +956,17 @@
 	],
 	"variable": [
 		{
-			"id": "c181c63a-fad0-4b29-86b5-8a4894f0a638",
+			"id": "09641752-916b-42f8-96c1-6155377fe5c7",
 			"key": "ETH_REWARDS_HOST",
 			"value": "eth-rewards.datahub.figment.io"
 		},
 		{
-			"id": "9df01642-a842-48fb-aea8-7f3ab2a8cea3",
+			"id": "466a344f-8d60-444c-876d-1f8a75b9d9d5",
 			"key": "SOL_REWARDS_HOST",
 			"value": "solana-rewards.datahub.figment.io"
 		},
 		{
-			"id": "8e3793e4-ae3a-4a09-8df8-5eb205f1bba1",
+			"id": "222a443b-90e2-4b23-b5f6-1d216c1cb343",
 			"key": "DOT_REWARDS_HOST",
 			"value": "polkadot-rewards.datahub.figment.io",
 			"type": "string"
