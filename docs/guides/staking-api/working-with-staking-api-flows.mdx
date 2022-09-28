@@ -275,7 +275,7 @@ These transaction steps will always have two possible actions:
 - `refresh_[transaction_type]_tx`: returns to the same point in the flow, but with an updated transaction payload. Use this action if you need an updated nonce (or recent block hash in the case of Solana flows)
 - `sign_[transaction_type]_tx`: you will return a signed transaction payload or signing payload to the Staking API in order for the Staking API to broadcast it to the network
 
-The refresh transaction action does not require any inputs - it simply regenerates the transaction payload and singing payload so the nonce is current.
+The refresh transaction action does not require any inputs—it simply regenerates the transaction payload and signing payload so the nonce is current.
 
 But what happens when you are ready to sign the transaction?
 
@@ -328,7 +328,7 @@ After you submit data during a data collection step, the response returned by th
     "amount": "[:amount]",
     "transfer_transaction": {
       "raw": "[:raw_transaction_payload]",
-      "signing_payload": "[:singing_payload]",
+      "signing_payload": "[:signing_payload]",
       "signed": null,
       "hash": "",
       "status": null,
