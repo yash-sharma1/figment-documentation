@@ -99,6 +99,6 @@
 }
 
 /* fix sublist indents */
-.menu__list li {
+.menu__list ul li {
   margin-left: 24px;
 }
