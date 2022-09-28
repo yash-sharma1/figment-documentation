@@ -6364,7 +6364,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\": \"assign_staking_data\",\n    \"inputs\": {\n        \"delegator_address\": null,\n        \"valiator_address\": null,\n        \"amount\": null,\n        \"minimum_shares_to_mint\": null,\n        \"max_slippage_percentage\": null\n    }\n}",
+							"raw": "{\n    \"name\": \"assign_staking_data\",\n    \"inputs\": {\n        \"delegator_address\": null,\n        \"validator_address\": null,\n        \"amount\": null,\n        \"minimum_shares_to_mint\": null,\n        \"max_slippage_percentage\": null\n    }\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -15289,43 +15289,43 @@
 	],
 	"variable": [
 		{
-			"id": "0f5d1688-5933-4c66-ac12-ea44b775f462",
+			"id": "825e4880-e9c7-49db-bbd6-89e15318b815",
 			"key": "AVAX_STAKING_HOST",
 			"value": "avalanche-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "86934216-672d-4e0b-a802-095eae3012f4",
+			"id": "de40b7ed-2464-4076-897b-5137b4d1f24b",
 			"key": "ETH_STAKING_HOST",
 			"value": "eth-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "0b5a2cd6-2b38-4e5e-951b-6679592c0770",
+			"id": "1daee57b-dc30-4d1c-86c5-5e7d9daaf197",
 			"key": "NEAR_STAKING_HOST",
 			"value": "near-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "a9a2113f-f08c-41f2-a127-3106f784f6a4",
+			"id": "33119ab3-493b-4b0d-8db4-b3e1121903e1",
 			"key": "DOT_STAKING_HOST",
 			"value": "polkadot-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "b25fbd79-5d10-4552-92db-6eeda3d4d488",
+			"id": "ce85d36d-464e-49f5-99b5-4e74a5d23240",
 			"key": "SOL_STAKING_HOST",
 			"value": "solana-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "6476b3a0-5148-45a1-9a3d-3c1a3d085e7a",
+			"id": "0b0f324a-5348-4dff-ae51-3fe19fa4ddcb",
 			"key": "MATIC_STAKING_HOST",
 			"value": "polygon-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "753ca971-27e3-411a-8092-76c4a70a493b",
+			"id": "56dca034-1a97-4e29-b1f7-d2fd733c13a4",
 			"key": "INTERACTIVE",
 			"value": "false",
 			"type": "string"
