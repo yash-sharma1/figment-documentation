@@ -632,7 +632,7 @@
 							}
 						},
 						"url": "https://{{SOL_REWARDS_HOST}}/apikey/{{API_KEY}}/rewards",
-						"description": "Returns net delegator rewards (aka post on-chain validator commission) grouped by epoch.\n\n### Parameters\n\n*   `network` => `solana_sf`\n*   `chain_id` => `mainnet`\n*   `accounts` takes in an array of Stake Account public addresses.\n*   `grouping` => `epoch` will return rewards grouped by epochs.\n*   `start_time` and `end_time` are ISO 8601 timestamps in UTC. If the start of an epoch falls into the requested date range it will be included (even if it doesn't end inside the date range).\n    \n\n### Response\n\n*   `network` and `chain_id` are the same as the request.\n*   `accounts` returns an array of Stake Account public addresses.\n*   `validator` returns the validator that tokens were staked to.\n*   `time` and `epoch` reference the start of the daily or epoch bucket.\n*   `rewards` is an array of objects with four components: `numeric` , `exp` and `currency`. The formula to compute the final rewards in the `currency` unit is `numeric * 10^-exp`(`text` is the string version of this).\n    \n\n### Limitations\n\n*   The API returns rewards for Figment validators only.\n*   The API returns rewards for the last 10 epochs.\n*   Data is available approximatively an hour after the end of the day or epoch. When requesting daily for the current day, the data will be available but obviously partially complete as the day progresses.\n    \n\n* * *"
+						"description": "Returns net delegator rewards (aka post on-chain validator commission) grouped by epoch.\n\n### Parameters\n\n*   `network` => `solana_sf`\n*   `chain_id` => `mainnet`\n*   `accounts` takes in an array of Stake Account public addresses.\n*   `grouping` => `epoch` will return rewards grouped by epochs.\n*   `start_time` and `end_time` are ISO 8601 timestamps in UTC. If the start of an epoch falls into the requested date range it will be included (even if it doesn't end inside the date range).\n    \n\n### Response\n\n*   `network` and `chain_id` are the same as the request.\n*   `accounts` returns an array of Stake Account public addresses.\n*   `validator` returns the validator that tokens were staked to.\n*   `time` and `epoch` reference the start of the daily or epoch bucket.\n*   `rewards` is an array of objects with four components: `numeric` , `exp` and `currency`. The formula to compute the final rewards in the `currency` unit is `numeric * 10^-exp`(`text` is the string version of this).\n    \n\n### Limitations\n\n*   The API returns rewards for Figment validators only.\n*   Data is available approximatively an hour after the end of the day or epoch. When requesting daily for the current day, the data will be available but obviously partially complete as the day progresses.\n    \n\n* * *"
 					},
 					"response": [
 						{
@@ -1136,17 +1136,17 @@
 	],
 	"variable": [
 		{
-			"id": "47fd7a1d-4a15-4386-b803-27196e142901",
+			"id": "ca41a491-d9e0-48b8-9a6f-0773beb9cd03",
 			"key": "ETH_REWARDS_HOST",
 			"value": "eth-rewards.datahub.figment.io"
 		},
 		{
-			"id": "7778db99-8060-44f5-8175-ede7de980a52",
+			"id": "f0a27588-8a17-4711-8c80-135af4d426f3",
 			"key": "SOL_REWARDS_HOST",
 			"value": "solana-rewards.datahub.figment.io"
 		},
 		{
-			"id": "0891c4af-e6a1-4d92-b849-28cbcf40b3ef",
+			"id": "97f0b399-181f-4cf5-a388-6c8899aa2eb1",
 			"key": "DOT_REWARDS_HOST",
 			"value": "polkadot-rewards.datahub.figment.io",
 			"type": "string"
