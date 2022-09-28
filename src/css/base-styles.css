@@ -1,8 +1,9 @@
 :root {
+  --doc-sidebar-width: 420px !important;
+
   --ifm-font-family-base: "Jungka", "Helvetica", "Arial", sans-serif;
   --ifm-font-color-base: #000;
   --ifm-link-color: #000;
-  --ifm-menu-color-active: var(--ifm-link-color);
   --ifm-code-font-size: 95%;
 
   --ifm-color-primary: #034d77;
@@ -22,6 +23,12 @@
 
   --top-nav-font-color: #f6f8fb;
 
+  --side-nav-bg: #f6f8fb;
+  --side-nav-open-category-bg: #fff;
+  --side-nav-color: #16161a;
+  --side-nav-sublist-color: #595959;
+  --side-nav-color--active: #000;
+
   --ifm-breadcrumb-color-active: #000;
 }
 
@@ -30,7 +37,6 @@
   --ifm-font-family-base: "Jungka", "Helvetica", "Arial", sans-serif;
   --ifm-font-color-base: #fff;
   --ifm-link-color: #fff;
-  --ifm-menu-color-active: var(--ifm-link-color);
   --ifm-code-font-size: 95%;
 
   --ifm-color-primary: #034d77;
@@ -51,6 +57,12 @@
   --ifm-breadcrumb-color-active: #f6f8fb;
   --ifm-tabs-color-active-border: #f6f8fb;
   --ifm-tabs-color-active: #f6f8fb;
+
+  --side-nav-bg: #16161a;
+  --side-nav-open-category-bg: #1b1c1d;
+  --side-nav-color: #f6f8fb;
+  --side-nav-sublist-color: #b9b9ba;
+  --side-nav-color--active: #fff;
 }
 
 html {

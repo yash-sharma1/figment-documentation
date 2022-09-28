@@ -1,13 +1,97 @@
-@media (max-width: 996px) {
-  [data-theme="dark"] .menu__link.menu__link--sublist::after,
-  [data-theme="dark"] .clean-btn.menu__caret::before,
-  [data-theme="light"] .menu__link.menu__link--sublist::after,
-  [data-theme="light"] .clean-btn.menu__caret::before {
-    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16px" height="16px" viewBox="0 0 24 24"><path fill="rgba(255,255,255,0.7)" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path></svg>') !important;
-    filter: none !important;
-  }
+/* make links bold when active */
+.menu__link,
+.navbar-sidebar__back {
+  color: var(--side-nav-color);
+}
+.menu__link:hover {
+  color: var(--side-nav-color--active);
 }
 
 .menu__link--active {
   font-weight: bold;
+  color: var(--side-nav-color--active);
+}
+
+/* fix font-sizes */
+.menu__list .menu__link {
+  font-size: 1.33333rem;
+}
+
+.menu__list .menu__list .menu__link {
+  color: var(--side-nav-sublist-color);
+  font-size: 1rem;
+}
+
+.menu__list .menu__list .menu__link.menu__link--active {
+  color: var(--side-nav-color);
+}
+
+/* fix menu caret size */
+[data-theme] .clean-btn.menu__caret {
+  width: 1.25rem;
+  padding: 0;
+}
+
+.menu__link--sublist-caret {
+  padding-left: 1.75rem;
+}
+
+/* fix menu caret position */
+.menu__list-item-collapsible a {
+  order: 1;
+}
+
+.menu__list-item-collapsible button {
+  order: 0;
+}
+
+.menu__link--sublist-caret::after {
+  position: absolute;
+  left: 0;
+}
+
+/* fix menu carets colors */
+[data-theme] .menu__link--sublist-caret::after,
+[data-theme] .clean-btn.menu__caret::before {
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16px" height="16px" viewBox="0 0 24 24"><path fill="rgba(0,0,0,.6)" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path></svg>')
+    50% / 1.25rem 1.25rem;
+}
+
+[data-theme] .menu__link--sublist-caret::after,
+[data-theme] .menu__link--active + .clean-btn.menu__caret::before {
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16px" height="16px" viewBox="0 0 24 24"><path fill="rgba(0,0,0,1)" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path></svg>')
+    50% / 1.25rem 1.25rem;
+}
+
+/* identify current link */
+.menu__link--active:not(.menu__list-item-collapsible):not(.menu__link--sublist)::before {
+  content: "";
+  background-color: #6894ad;
+  height: 0.5rem;
+  width: 0.5rem;
+  border-radius: 50%;
+  margin-right: 0.7rem;
+}
+
+/* fix menu color*/
+.menu {
+  background: var(--side-nav-bg);
+}
+
+.theme-doc-sidebar-item-category-level-1:not(.menu__list-item--collapsed) {
+  background-color: var(--side-nav-open-category-bg);
+}
+
+.menu__list-item-collapsible:hover {
+  background: transparent;
+}
+
+/* remove background color on active links */
+.menu__link--active:not(.menu__link--sublist) {
+  background-color: transparent;
+}
+
+/* fix sublist indents */
+.menu__list li {
+  margin-left: 24px;
 }
