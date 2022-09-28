@@ -732,6 +732,18 @@
 							"body": "[\n    {\n        \"accounts\": [\n            \"2yoofMr4N78WPxVK8MU8Yy26dfRZbPw5WDzTRCA9uv95\"\n        ],\n        \"chain_id\": \"mainnet\",\n        \"rewards\": [\n            {\n                \"text\": \"0.001351654 SOL\",\n                \"currency\": \"SOL\",\n                \"numeric\": 1351654,\n                \"exp\": 9\n            }\n        ],\n        \"epoch\": \"349\",\n        \"network\": \"solana_sf\",\n        \"validator\": \"CcaHc2L43ZWjwCHART3oZoJvHLAe9hzT2DJNUpBzoTN1\",\n        \"time\": \"2022-09-18T08:26:46Z\"\n    }\n]"
 						}
 					]
+				},
+				{
+					"name": "New Request",
+					"id": "42d51a04-ebd1-4818-a23d-04eff8ba68ba",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
 				}
 			],
 			"id": "79cf9d1b-cf8a-4fe1-b04a-cb33d7bcd7fe"
@@ -1039,17 +1051,17 @@
 	],
 	"variable": [
 		{
-			"id": "78e6ac48-747c-4207-b325-02c2db0affaa",
+			"id": "39157da1-3691-479e-861c-9d990ccdc878",
 			"key": "ETH_REWARDS_HOST",
 			"value": "eth-rewards.datahub.figment.io"
 		},
 		{
-			"id": "7a205a1a-2415-41db-a1e9-d1d788af602c",
+			"id": "f2bca28b-841f-48dd-ad63-4c990968d1ba",
 			"key": "SOL_REWARDS_HOST",
 			"value": "solana-rewards.datahub.figment.io"
 		},
 		{
-			"id": "d34f3f8f-d2b5-44f0-a9c9-6ab761332aa7",
+			"id": "255cb207-8b0c-42bb-9ff9-8999d23c0999",
 			"key": "DOT_REWARDS_HOST",
 			"value": "polkadot-rewards.datahub.figment.io",
 			"type": "string"
