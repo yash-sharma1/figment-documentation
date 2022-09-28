@@ -66,10 +66,13 @@
 /* identify current link */
 .menu__link--active:not(.menu__list-item-collapsible):not(.menu__link--sublist)::before {
   content: "";
+  display: inline-block;
   background-color: #6894ad;
   height: 0.5rem;
   width: 0.5rem;
-  border-radius: 50%;
+  min-height: 0.5rem;
+  min-width: 0.5rem;
+  border-radius: 0.25rem;
   margin-right: 0.7rem;
 }
 
