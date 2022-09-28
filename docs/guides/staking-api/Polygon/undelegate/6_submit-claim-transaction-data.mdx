@@ -1,0 +1,36 @@
+---
+title: Submit Claim Transaction Data
+---
+
+After collecting the required inputs, we `PUT /api/v1/flows/[:flow_id]/next` to move on to the next step.
+In this case, the `inputs` JSON would be:
+
+```json
+{
+  "gas_limit": "[:gas_limit]",
+  "gas_price": "[:gas_price]"
+}
+```
+
+```bash title="Example cURL request"
+curl --request PUT \
+  --url https://polygon-slate.datahub.figment.io/api/v1/flows/[:flow_id]/next \
+  --header 'Authorization: API_KEY' \
+  --header 'Content-Type: application/json' \
+  --data '{
+  "name": "create_claim_tx",
+  "inputs": {
+    "gas_limit": "[:gas_limit]",
+    "gas_price": "[:gas_price]"
+  }
+}'
+```
+
+We see two possible `actions`:
+
+- `refresh_claim_tx` — If you need to get a fresh version of the transaction payload (for example, if the nonce needs to be updated)
+- `sign_claim_tx` — Submit a signed transaction payload ready to be broadcast to the network
+
+We will choose `sign_claim_tx`, which indicates one input to collect:
+
+- `transaction_payload` (**required**) — the signed transaction payload ready to be broadcast to the network

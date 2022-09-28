@@ -1,0 +1,42 @@
+---
+title: Submit Staking Allowance Data
+---
+
+After collecting the required Inputs, we `PUT /api/v1/flows/[:flow_id]/next` to move on to the next step.
+In this case, the `inputs` JSON would be:
+
+```json
+{
+  "gas_limit": "[:gas_limit]",
+  "gas_price": "[:gas_price]"
+}
+```
+
+```bash title="example cURL request"
+curl --request PUT \
+  --url https://slate.figment.io/api/v1/flows/[:flow_id]/next \
+  --header 'Authorization: API_KEY' \
+  --header 'Content-Type: application/json' \
+  --data '{
+  "name": "create_allowance_tx",
+  "inputs": {
+    "gas_limit": "[:gas_limit]",
+    "gas_price": "[:gas_price]"
+  }
+}'
+```
+
+:::info Note
+
+In this response you can find the unsigned, serialized transaction in `data[create_allowance_tx][raw]`.
+
+:::
+
+There are two possible `actions`:
+
+- `refresh_allowance_tx` — If you need to get a fresh version of the transaction Payload.
+- `sign_allowance_tx` — Submit a signed transaction Payload ready to be broadcast to the network.
+
+We will chose `sign_allowance_tx``, so note that it indicates one Input to collect:
+
+- `transaction_payload` (**required**) — the signed transaction Payload ready to be broadcast to the network.
