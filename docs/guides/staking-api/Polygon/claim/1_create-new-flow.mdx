@@ -1,0 +1,41 @@
+---
+title: Create New Claim Flow
+---
+
+We will create a new Flow with `POST /api/v1/flows`.
+
+The `flow` JSON field for this request will be:
+
+```json
+{
+  "network_code": "polygon",
+  "chain_code": "testnet",
+  "operation": "claim_rewards",
+  "version": "v1"
+}
+```
+
+```bash title="Example cURL request"
+curl -X POST https://polygon-slate.datahub.figment.io/api/v1/flows \
+-H "Authorization: API-KEY" \
+-H "Content-Type: application/json" \
+-d '{
+  "flow": {
+    "network_code": "polygon",
+    "chain_code": "testnet",
+    "operation": "claim_rewards",
+    "version": "v1"
+  }
+}'
+```
+
+The response indicates one possible `action`:
+
+- `create_claim_rewards_tx` -
+
+The `create_claim_rewards_tx` action indicates four fields for data collection:
+
+- `delegator_address` (**required**) — the address delegating MATIC
+- `validator_address` (**required**) — the Validator contract address to which MATIC are delegated
+- `gas_limit` (**optional**) — adjust gas limit for the claim transaction
+- `gas_price` (**optional**) — adjust gas price for the claim transaction

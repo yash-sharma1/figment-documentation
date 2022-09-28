@@ -275,7 +275,7 @@ These transaction steps will always have two possible actions:
 - `refresh_[transaction_type]_tx`: returns to the same point in the flow, but with an updated transaction payload. Use this action if you need an updated nonce (or recent block hash in the case of Solana flows)
 - `sign_[transaction_type]_tx`: you will return a signed transaction payload or signing payload to the Staking API in order for the Staking API to broadcast it to the network
 
-The refresh transaction action does not require any inputs - it simply regenerates the transaction payload and singing payload so the nonce is current.
+The refresh transaction action does not require any inputs—it simply regenerates the transaction payload and signing payload so the nonce is current.
 
 But what happens when you are ready to sign the transaction?
 
@@ -328,7 +328,7 @@ After you submit data during a data collection step, the response returned by th
     "amount": "[:amount]",
     "transfer_transaction": {
       "raw": "[:raw_transaction_payload]",
-      "signing_payload": "[:singing_payload]",
+      "signing_payload": "[:signing_payload]",
       "signed": null,
       "hash": "",
       "status": null,
@@ -357,7 +357,7 @@ Generally speaking, the signing payload is derived from the transaction payload.
 
 **The transaction payload and the signing payload are clearly not human readable, and it is never advisable to blind sign a transaction**.
 
-We have published an NPM package used to decode transactions and confirm the details of a given transaction. Details are available at https://www.npmjs.com/package/@figmentio/slate
+We have published an [NPM package](https://www.npmjs.com/package/@figmentio/slate) used to decode transactions and confirm the details of a given transaction. Details are available in the guide <Link to="/guides/staking-api/figment-signing-transactions">**Signing Transactions with Figment's NPM Package**</Link>.
 
 We encourage you to explore the code in order to understand how it works. You can run the code locally on your own system. It does not connect to the Staking API endpoints in any way, also you do not provide any identifying information for the transaction.
 
@@ -367,6 +367,8 @@ Similarly, the NPM package will return a signing payload - this should exactly m
 
 ### Signing the Transaction
 
-If you are using Fireblocks as a custodial solution check the following page for instructions on using the raw signing capabilities of Fireblocks: <Link to="/guides/staking-api/fireblocks-signing-transactions">Signing Staking API Transactions with Fireblocks</Link>
+If you are using Fireblocks as a custodial solution, check the following page for instructions on using the raw signing capabilities of Fireblocks: <Link to="/guides/staking-api/fireblocks-signing-transactions">**Signing Transactions with Fireblocks**</Link>
 
-Otherwise, it will be up to you to understand signing with your unique custody arrangement. As a frame of reference you can check out our NPM package linked above. It contains signing capabilities for every network - if you have access to the private keys then you can sign with the NPM package. Otherwise, you may review the code to understand how signing is performed for a given network.
+Otherwise, it will be up to you to understand signing with your unique custody arrangement.
+As a frame of reference you can follow our guide to using the slate NPM package: <Link to="/guides/staking-api/figment-signing-transactions">**Signing Transactions with Figment's NPM Package**</Link>. It contains signing capabilities for every network supported by the Staking API - if you have access to the private key of the delegating address, then you can sign with the NPM package.
+You may review the code to understand how signing is performed for a given network.

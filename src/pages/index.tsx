@@ -1,6 +1,5 @@
-import React, { useEffect } from "react";
+import React from "react";
 import clsx from "clsx";
-import Link from "@docusaurus/Link";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import Layout from "@theme/Layout";
 import styles from "./index.module.css";
@@ -16,7 +15,9 @@ function HomepageHeader() {
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <header className={clsx("hero", styles.heroBanner)}>
         <div className="container">
-          <h1 className="hero__title">Welcome to the Figment Documentation</h1>
+          <h1 className={styles.heroTitle}>
+            Welcome to the Figment Documentation
+          </h1>
           <p className="hero__subtitle">{siteConfig.tagline}</p>
           <div className={styles.quickLinks}>
             <div

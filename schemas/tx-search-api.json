@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "66f4afe5-2e2a-48a0-a2d6-009bf271b930",
+		"_postman_id": "29835ec8-827b-40c2-ba76-8568906873c2",
 		"name": "transaction-search-api",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
@@ -14,7 +14,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "d70992b6-58a4-4173-a101-2c023e188091",
 								"exec": [
 									"const schema = {",
 									"    \"type\": \"array\",",
@@ -98,11 +97,12 @@
 									"});",
 									""
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"id": "f054528a-926e-485b-b3d9-ccdcfb1ac201"
 							}
 						}
 					],
-					"id": "2a1a129f-8c4e-48c3-9ddf-207176089d2c",
+					"_postman_id": "22c9312a-28c4-4dfc-992f-1536b78d1317",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -123,31 +123,27 @@
 							"query": [
 								{
 									"key": "network",
-									"value": "avalanche",
-									"type": "text"
+									"value": "avalanche"
 								},
 								{
 									"key": "chain_ids",
-									"value": "mainnet",
-									"type": "text"
+									"value": "mainnet"
 								},
 								{
 									"key": "start_height",
-									"value": "1921984",
-									"type": "text"
+									"value": "1921984"
 								},
 								{
 									"key": "address",
-									"value": "avax1pvkhyf0y9674p2ps40vmp0a8w427384lpr8zan,avax1rlu93pnalclt7h0dte3evua97lv4fp4qzax5wq",
-									"type": "text"
+									"value": "avax1pvkhyf0y9674p2ps40vmp0a8w427384lpr8zan,avax1rlu93pnalclt7h0dte3evua97lv4fp4qzax5wq"
 								}
 							]
 						},
-						"description": "Returns transactions matching the search parameters.\n  \n\n### Parameters\n\nQuery string parameters -\n\n*   `chain` -`string` Filter by chain ID.\n*   `type` - `string` Filter by transaction type. Separate multiple values by comma.\n*   `start_time` - `string` Search range start time.\n*   `end_time` - `string` Search range end time.\n*   `start_height` - `string` Search range start block height (if applicable).\n*   `block_hash` - `string` Filter by block hash (if applicable).\n*   `memo` - `string` Filter by memo text field.\n*   `address` - `string` Filter by account address. Separate multiple values by comma.\n*   `asset` - `string` Filter by asset ID.\n*   `page` - `integer` Results page.\n    \n\n### Results\n\nReturns transaction details based on the given parameters.\n\n* * *"
+						"description": "Returns transactions matching the search parameters.\n  \n\n### Parameters\n\nQuery string parameters -\n\n*   `chain` -`string` Filter by chain ID.\n*   `type` - `string` Filter by transaction type. Separate multiple values by comma.\n*   `start_time` - `string` Search range start time.\n*   `end_time` - `string` Search range end time.\n*   `start_height` - `string` Search range start block height (if applicable).\n*   `block_hash` - `string` Filter by block hash (if applicable).\n*   `memo` - `string` Filter by memo text field.\n*   `address` - `string` Filter by account address. Separate multiple values by comma.\n*   `asset` - `string` Filter by asset ID.\n*   `page` - `integer` Results page.\n    \n\n### Response\n\nReturns transaction details based on the given parameters.\n\n* * *"
 					},
 					"response": [
 						{
-							"id": "e633d8e6-223a-4865-b0e3-b1d48c08b6f7",
+							"id": "320da526-b87e-4fea-8fdc-e4db7ac209cf",
 							"name": "/transactions",
 							"originalRequest": {
 								"method": "GET",
@@ -248,7 +244,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "a2005688-12d6-4717-a328-4f7b07015ec8",
 								"exec": [
 									"const schema = {",
 									"    \"type\": \"array\",",
@@ -332,11 +327,12 @@
 									"});",
 									""
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"id": "c1676413-c7d1-423b-a184-8045b9b876c7"
 							}
 						}
 					],
-					"id": "832f45a1-2396-4d0a-9423-541587c02dfd",
+					"_postman_id": "010dedb9-b0b8-4b34-901e-5e9324ee63a6",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -344,11 +340,11 @@
 						"method": "GET",
 						"header": [],
 						"url": "https://{{AVAX_SEARCH_HOST}}/apikey/{{API_KEY}}/transactions/E82EwpekLxZ9DnKQquCEVR9KR6G3tF1ut3xhUjLcKjtVZQ4GE",
-						"description": "Returns transaction details for a given transaction hash.\n    \n\n### Parameters\n\nQuery string parameters -\n\n- `/transactions/{hash}` - Pass the transaction hash in the request URL.   \n \n### Results\n\nReturns transaction details for the given transaction hash.\n\n* * *"
+						"description": "Returns transaction details for a given transaction hash.\n    \n\n### Parameters\n\nQuery string parameters -\n\n- `/transactions/{hash}` - Pass the transaction hash in the request URL.   \n \n### Response\n\nReturns transaction details for the given transaction hash.\n\n* * *"
 					},
 					"response": [
 						{
-							"id": "1c57fa45-4a40-4619-9e38-a6fea02d5e4f",
+							"id": "2cdc0052-66bf-48d5-b87a-83ea3031b9e2",
 							"name": "/transactions/{hash}",
 							"originalRequest": {
 								"method": "GET",
@@ -415,7 +411,7 @@
 					]
 				}
 			],
-			"id": "ed0fb294-6081-4667-a146-b78ca664f799"
+			"_postman_id": "431e54b6-a8b8-4e74-befd-5106fe266f6d"
 		},
 		{
 			"name": "NEAR Protocol",
@@ -426,7 +422,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "b0972b41-a253-4326-8847-33e70f7204d8",
 								"exec": [
 									"var schema = {",
 									"    \"type\": \"object\",",
@@ -724,11 +719,12 @@
 									"    pm.response.to.have.jsonSchema(schema);",
 									"});"
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"id": "5e105c11-afaf-4c18-97c3-0b13cde2441b"
 							}
 						}
 					],
-					"id": "0dc4a763-2b57-4a1a-b542-21f83662c8d8",
+					"_postman_id": "0996f323-aa38-455a-979a-c459bf594726",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -755,31 +751,27 @@
 							"query": [
 								{
 									"key": "network",
-									"value": "near",
-									"type": "text"
+									"value": "near"
 								},
 								{
 									"key": "chain_id",
-									"value": "mainnet",
-									"type": "text"
+									"value": "mainnet"
 								},
 								{
 									"key": "account",
-									"value": "ledgerbyfigment.poolv1.near",
-									"type": "text"
+									"value": "ledgerbyfigment.poolv1.near"
 								},
 								{
 									"key": "limit",
-									"value": "100",
-									"type": "text"
+									"value": "100"
 								}
 							]
 						},
-						"description": "Returns transactions matching the search parameters.\n\n### Parameters\n\nQuery string parameters -\n\n*   `block_hash` - `string` Filter by block hash.\n*   `block_height` - `string` Filter by block height.\n*   `sender` - Account which sent the transaction.\n*   `receiver` - Account which was the transaction recipient.\n*   `start_date` - `string` Search range start time.\n*   `end_date` - `string` Search range end time.\n*   `start_height` - `string` Search range start time.\n*   `end_height` - `string` Search range end time.\n*   `limit` - Limit results. Max is 100.\n    \n\n### Results\n\nReturns transaction details."
+						"description": "Returns transactions matching the search parameters.\n\n### Parameters\n\nQuery string parameters -\n\n*   `block_hash` - `string` Filter by block hash.\n*   `block_height` - `string` Filter by block height.\n*   `sender` - Account which sent the transaction.\n*   `receiver` - Account which was the transaction recipient.\n*   `start_date` - `string` Search range start time.\n*   `end_date` - `string` Search range end time.\n*   `start_height` - `string` Search range start time.\n*   `end_height` - `string` Search range end time.\n*   `limit` - Limit results. Max is 100.\n    \n\n### Response\n\nReturns transaction details."
 					},
 					"response": [
 						{
-							"id": "fde606c3-88a1-4f71-9995-c3f770621f36",
+							"id": "bc6003d7-c550-4719-845a-bb1af0545efa",
 							"name": "/transactions",
 							"originalRequest": {
 								"method": "GET",
@@ -906,7 +898,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "a8bb4eda-8b97-4904-89ca-234245be424b",
 								"exec": [
 									"var schema = {",
 									"    \"type\": \"object\",",
@@ -1204,11 +1195,12 @@
 									"    pm.response.to.have.jsonSchema(schema);",
 									"});"
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"id": "125c6a8a-c1c1-4977-a234-1379f014821b"
 							}
 						}
 					],
-					"id": "62a32f10-32b1-43f4-a16f-5f2e1e3cfe5f",
+					"_postman_id": "c4445ba3-2f30-40c4-88ee-3bad46ce2cc7",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -1216,11 +1208,11 @@
 						"method": "GET",
 						"header": [],
 						"url": "https://{{NEAR_SEARCH_HOST}}/apikey/{{API_KEY}}/transactions/DspNwXncMr9MHqsUbr7xP8oXnr8BrXZ19dtQ9z8AazQE",
-						"description": "Returns transaction details for a given transaction hash.\n    \n### Parameters\n\nQuery string parameters -\n\n- `/transactions/{hash}` - Pass the transaction hash in the request URL.   \n\n### Results\n\nReturns transaction details for the given transaction hash."
+						"description": "Returns transaction details for a given transaction hash.\n    \n### Parameters\n\nQuery string parameters -\n\n- `/transactions/{hash}` - Pass the transaction hash in the request URL.   \n\n### Response\n\nReturns transaction details for the given transaction hash."
 					},
 					"response": [
 						{
-							"id": "c90d7495-5aff-4172-b347-2fd91cdf6978",
+							"id": "029ce495-7412-44a0-9757-137d59c7f79a",
 							"name": "/transactions/{hash}",
 							"originalRequest": {
 								"method": "GET",
@@ -1313,129 +1305,134 @@
 					]
 				}
 			],
-			"id": "7d137ed4-b215-4905-a07d-699b597d4f8b"
+			"_postman_id": "b2d4513d-fc46-426e-9116-c1bbc8dcfce7"
 		}
 	],
 	"event": [
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "39f56b96-373e-4acf-a8d8-02869a33ae71",
 				"type": "text/javascript",
 				"exec": [
 					""
-				]
+				],
+				"id": "5fb6eeee-e38f-4a0a-81bf-a57ad17f4c9d"
 			}
 		},
 		{
 			"listen": "test",
 			"script": {
-				"id": "dc5d71d6-4878-4f04-93a7-6f18a555ef24",
 				"type": "text/javascript",
 				"exec": [
 					""
-				]
+				],
+				"id": "4b0cad0d-bbf9-4e41-8f67-b6343268381a"
 			}
 		}
 	],
 	"variable": [
 		{
-			"id": "e70acdd3-e225-4cec-ab76-4c2688c9be6b",
+			"id": "72fc2bf0-bed8-43a9-916b-5a5d4835e16c",
 			"key": "AVAX_SEARCH_HOST",
-			"value": "avalanche--mainnet--indexer.datahub.figment.io"
+			"value": "avalanche--mainnet--indexer.datahub.figment.io",
+			"type": "string"
 		},
 		{
-			"id": "bb4e6764-b257-447f-87e5-1dd1db0e493f",
+			"id": "c78f0373-369b-4705-80cf-8547c049db12",
 			"key": "NEAR_SEARCH_HOST",
-			"value": "near--indexer.datahub.figment.io"
+			"value": "near--indexer.datahub.figment.io",
+			"type": "string"
 		},
 		{
-			"id": "25663d4d-09b7-482f-9ef2-183df122586b",
+			"id": "8b383665-6c32-4401-be28-9d6586d29a52",
 			"key": "DOT_SEARCH_HOST",
 			"value": "polkadot--search.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "230fc291-03eb-46c7-bb8a-05431b1b4cb6",
+			"id": "112514bf-259b-4d2a-b2db-e3653b1cde47",
 			"key": "KUSAMA_SEARCH_HOST",
 			"value": "polkadot-kusama--search.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "59860241-7e97-4960-97fb-6ef7c0b724a6",
+			"id": "48401d33-e6fd-453f-8a13-c2660eed918a",
 			"key": "COSMOS_SEARCH_HOST",
 			"value": "cosmos--search.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "829aeff4-f0c2-482e-aaae-7751cacc9182",
+			"id": "962367a1-5b1e-4b6f-9cec-3ce7a74f6c57",
 			"key": "AVALANCHE_TRANSACTION_HASH",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "beaaa374-e747-4962-95df-962e00f6737f",
+			"id": "d01f6a8d-a05b-43ae-872a-6293fac30fda",
 			"key": "NEAR_TRANSACTION_HASH",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "3cdfa595-1519-4ad0-aa3c-b9cb7700aae3",
+			"id": "6f4c61d8-1632-461b-bd95-1c09a272d37a",
 			"key": "------ UNUSED VARS BELOW THIS LINE ------",
 			"value": "",
 			"type": "string",
 			"disabled": true
 		},
 		{
-			"id": "74620566-c322-457b-8c54-bebc9b964b7b",
+			"id": "4afcc798-a240-4607-af95-aa959cd339a1",
 			"key": "OSMOSIS_SEARCH_HOST",
 			"value": "osmosis--search.datahub.figment.io",
 			"type": "string",
 			"disabled": true
 		},
 		{
-			"id": "b67fdcaf-70a4-407a-9714-33ae25c8acd6",
+			"id": "63a47bd4-1d8a-4066-a570-9f5d04674b27",
 			"key": "CELO_MAINNET_HOST",
 			"value": "celo--mainnet--indexer.datahub.figment.io",
 			"type": "string",
 			"disabled": true
 		},
 		{
-			"id": "b1fd91bc-8f7c-4943-9321-ba43853860c5",
+			"id": "b305f95a-660d-4fbe-8160-91df91fbae52",
 			"key": "OASIS_MAINNET_HOST",
 			"value": "oasis--mainnet.datahub.figment.io",
 			"type": "string",
 			"disabled": true
 		},
 		{
-			"id": "4cd8c6db-400b-4710-b23f-8f4f253b2689",
+			"id": "34587566-3143-4f01-82fa-100f554ee25d",
 			"key": "KAVA_HOST",
 			"value": "kava--search.datahub.figment.io",
 			"type": "string",
 			"disabled": true
 		},
 		{
-			"id": "eba16efc-0fe3-4397-81dd-9782f7a23d92",
+			"id": "24d60b83-0b61-490c-8a4d-bdf6f0f5bf87",
 			"key": "MINA_MAINNET_HOST",
 			"value": "mina--mainnet--indexer.datahub.figment.io",
 			"type": "string",
 			"disabled": true
 		},
 		{
-			"id": "b2f73bf5-278b-456d-b75d-1aaec6e818ed",
+			"id": "8f17ea0e-029f-497f-a760-de6a126bcbf0",
 			"key": "random-tx-id",
 			"value": "",
+			"type": "string",
 			"disabled": true
 		},
 		{
-			"id": "f47ce74d-cc59-4108-8fda-f928aed2add7",
+			"id": "5e092c0b-ef77-42de-a8a7-2f4458a0b0d4",
 			"key": "random-block-hash",
-			"value": ""
+			"value": "",
+			"type": "string"
 		},
 		{
-			"id": "794db6ca-a4fb-406d-9876-9360de597d49",
+			"id": "d78433bd-1e3e-4277-9290-f8df6c8c6475",
 			"key": "kusama-random-block-hash",
-			"value": ""
+			"value": "",
+			"type": "string"
 		}
 	]
 }

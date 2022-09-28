@@ -1,0 +1,35 @@
+---
+title: Submit Claim Rewards Data
+---
+
+After collecting the required inputs, we `PUT /api/v1/flows/[:flow_id]/next` to move on to the next step.
+In this case, the `inputs` JSON would be:
+
+```json
+{
+  "delegator_address": "[:delegator_address]",
+  "validator_address": "[:validator_address]"
+}
+```
+
+```bash title="Example cURL request"
+curl -X PUT https://polygon-slate.figment.io/api/v1/flows/[:flow_id]/next \
+  --header 'Authorization: API_KEY' \
+  --header 'Content-Type: application/json' \
+  --data '{
+  "name": "create_claim_rewards_tx",
+  "inputs": {
+    "delegator_address": "[:delegator_address]",
+    "validator_address": "[:validator_address]",
+  }
+}'
+```
+
+We see two possible `actions`:
+
+- `refresh_claim_rewards_tx` — If you need to get a fresh version of the transaction payload (for example, if the nonce needs to be updated)
+- `sign_claim_rewards_tx ` — Submit a signed transaction payload ready to be broadcast to the network
+
+We will choose `sign_claim_rewards_tx`, which indicates one input to collect:
+
+- `transaction_payload` (**required**) — the signed transaction payload ready to be broadcast to the network

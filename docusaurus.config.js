@@ -53,7 +53,7 @@ const config = {
                 if (link.label === "Terms & Conditions") {
                   return {
                     ...link,
-                    className: "hide-network-link",
+                    className: "hidden",
                   };
                 }
 
@@ -71,7 +71,7 @@ const config = {
                       link: service.items[0],
                       items: service.items.map((network) => ({
                         ...network,
-                        className: "hide-network-link",
+                        className: "hidden",
                       })),
                     };
                   }),
@@ -91,7 +91,15 @@ const config = {
           },
         },
         theme: {
-          customCss: require.resolve("./src/css/custom.css"),
+          customCss: [
+            require.resolve("./src/css/font-imports.css"),
+            require.resolve("./src/css/base-styles.css"),
+            require.resolve("./src/css/api-reference.css"),
+            require.resolve("./src/css/top-nav.css"),
+            require.resolve("./src/css/table-of-contents.css"),
+            require.resolve("./src/css/side-nav.css"),
+            require.resolve("./src/css/footer.css"),
+          ],
         },
       }),
     ],

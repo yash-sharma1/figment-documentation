@@ -1,0 +1,79 @@
+[class*="docs-doc-id-api-reference"] label {
+  padding-top: 10px;
+  display: flex;
+}
+
+/* 👇 Code block customizations */
+[class*="docs-doc-id-api-reference"] pre.prism-code {
+  max-height: 300px;
+}
+
+[class*="docs-doc-id-api-reference"] pre.prism-code [class^="codeLineNumber"] {
+  white-space: nowrap;
+}
+
+/* 👇 Used for custom selectboxes */
+
+/* remove default arrow in IE */
+[class*="docs-doc-id-api-reference"] select::-ms-expand {
+  display: none;
+}
+
+[class*="docs-doc-id-api-reference"][data-theme="light"] .custom-select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  height: 30px;
+  padding: 5px 38px 5px 16px;
+  margin-right: 16px;
+  background: #f6f8fb
+    url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="black" d="M224 416c-8.188 0-16.38-3.125-22.62-9.375l-192-192c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L224 338.8l169.4-169.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-192 192C240.4 412.9 232.2 416 224 416z"/></svg>')
+    no-repeat right 10px center;
+  background-size: 10px;
+  transition: border-color 0.1s ease-in-out, box-shadow 0.1s ease-in-out;
+  border: 1px solid #999;
+  border-radius: 3px;
+}
+
+[class*="docs-doc-id-api-reference"][data-theme="light"] .custom-select:hover {
+  border: 1px solid var(--ifm-color-primary-lightest);
+}
+
+[class*="docs-doc-id-api-reference"][data-theme="light"] .custom-select:focus {
+  border: 1px solid var(--ifm-color-primary-lightest);
+  box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.2);
+  outline: none;
+}
+
+[class*="docs-doc-id-api-reference"][data-theme="dark"] .custom-select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  height: 30px;
+  padding: 5px 38px 5px 16px;
+  margin-right: 16px;
+  background: var(--ifm-color-primary-lightest)
+    url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="black" d="M224 416c-8.188 0-16.38-3.125-22.62-9.375l-192-192c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L224 338.8l169.4-169.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-192 192C240.4 412.9 232.2 416 224 416z"/></svg>')
+    no-repeat right 10px center;
+  background-size: 10px;
+  transition: border-color 0.1s ease-in-out, box-shadow 0.1s ease-in-out;
+  border: 1px solid var(--ifm-color-primary-lightest);
+  border-radius: 3px;
+  color: #fff;
+  font-weight: bold;
+}
+
+[class*="docs-doc-id-api-reference"][data-theme="dark"] .custom-select:hover {
+  border: 1px solid var(--ifm-color-white);
+}
+
+[class*="docs-doc-id-api-reference"][data-theme="dark"] .custom-select:focus {
+  border: 1px solid var(--ifm-color-white);
+  box-shadow: 0 3px 5px 0 rgba(255, 255, 255, 0.3);
+  outline: none;
+}
+
+[class*="docs-doc-id-api-reference"] th a {
+  text-decoration: underline;
+  color: var(--ifm-link-color);
+}

@@ -3,6 +3,12 @@
  * and scoped locally.
  */
 
+.heroTitle {
+  font-family: "Signifier", "Times New Roman", serif;
+  font-size: 60px;
+  font-weight: 400;
+}
+
 [data-theme="dark"] p {
   color: #fff;
 }

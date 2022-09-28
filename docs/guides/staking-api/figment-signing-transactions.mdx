@@ -1,0 +1,178 @@
+---
+title: Signing Transactions with Figment's NPM Package
+sidebar_position: 4
+---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import Link from "@docusaurus/Link";
+
+Figment has published the NPM package <Link to="https://www.npmjs.com/package/@figmentio/slate">**@figmentio/slate**</Link>, which simplifies the signing (and payload decoding) process for networks supported by the Staking API.
+This guide covers everything you will need to start signing and decoding Staking API transaction payloads.
+
+## Installing the package
+
+```bash npm2yarn
+npm install @figmentio/slate
+```
+
+Check your `package.json` dependencies to confirm which version you’re using.
+
+```json
+"dependencies": {
+    ...
+    "@figmentio/slate": "^1.6.0",
+    ...
+}
+```
+
+## Usage
+
+In your code, require `@figmentio/slate`. The package exports two methods: `decode` and `sign`.
+
+```jsx
+const slate = require("@figmentio/slate");
+```
+
+### Sign
+
+This method takes four parameters:
+
+- `<network_code>`: The name of the network.
+- `<version>`: The Staking API version number used to generate the transaction.
+- `<transaction_payload>`: The raw, unsigned transaction payload returned by the Staking API.
+- `[<signing_private_keys>]`: An array of private keys used to sign the transaction payload.
+
+:::info note
+
+Because the format of private keys differs between networks, attempting to sign a payload with a private key from another network will fail.
+The private key used to sign the payload must match the delegator's public key or address.
+
+:::
+
+```js title="Code Example"
+await slate.sign(
+  "near",
+  "v1",
+  "12000000736c6174652d64656d6f2e746573746e657400415d57cdf21d28e35e0cfa864e895c18b4bc6a711642d38eb6762af81ec1cf3907cc1038fc5700001600000030316e6f64652e706f6f6c2e663836333937332e6d30192fc3497d275b958dea9de8d901c456292125c060c1304318ae9582a7bff20f0100000002110000006465706f7369745f616e645f7374616b65020000007b7d00e057eb481b000000000025a4000a8bca22040000000000",
+  ["ed25519:<private_key>"]
+);
+```
+
+```text title="Example Output - Signed Transaction Payload"
+12000000736c6174652d64656d6f2e746573746e657400415d57cdf21d28e35e0cfa864e895c18b4bc6a711642d38eb6762af81ec1cf3907cc1038fc5700001600000030316e6f64652e706f6f6c2e663836333937332e6d3084edd29289b3a590be582317bb0061016a8df058b7c29a0278f5b82f86c283010100000002080000007769746864726177270000007b22616d6f756e74223a223235303030303030303030303030303030303030303030303030227d00e057eb481b00000000000000000000000000000000000000235397dfd3f0b7ce06a4fe11395e36ce40d12610eae07dcc1dc1d962b38fa9592cdc22f6c9164b0155967a773c369719f71d76b84185ec13c39381343c63cf0b
+```
+
+:::info note
+
+The array of private keys `[<signing_private_keys>]` only requires the private key of the delegator, however it can accommodate multiple private keys in cases where a multisig is used for delegation. Signing occurs entirely offline, your private keys are never exposed during this process.
+
+See the guide on <Link to="/guides/staking-api/fireblocks-signing-transactions">Signing Transactions with Fireblocks</Link> if you require a custodial signing solution.
+
+:::
+
+### Decode
+
+This method takes five parameters:
+
+- `<network_code>`: The name of the network (ex. `near`)
+- `<operation>`: The operation the transaction is built to accomplish (ex. `staking`, [see below](/guides/staking-api/figment-signing-transactions#operations-and-transaction-types) for a complete list)
+- `<version>`: The Staking API version number used to generate the transaction (ex. `v1`)
+- `<transaction_type>`: The type of transaction being decoded (ex. `delegateTransaction`, [see below](/guides/staking-api/figment-signing-transactions#operations-and-transaction-types) for a complete list)
+- `<transaction_payload>`: The raw, unsigned transaction payload returned by the Staking API
+
+```js title="Code Example"
+await slate.decode(
+  "near",
+  "staking",
+  "v1",
+  "delegateTransaction",
+  "12000000736c6174652d64656d6f2e746573746e657400415d57cdf21d28e35e0cfa864e895c18b4bc6a711642d38eb6762af81ec1cf3907cc1038fc5700001600000030316e6f64652e706f6f6c2e663836333937332e6d30192fc3497d275b958dea9de8d901c456292125c060c1304318ae9582a7bff20f0100000002110000006465706f7369745f616e645f7374616b65020000007b7d00e057eb481b000000000025a4000a8bca22040000000000"
+);
+```
+
+```json title="Example Output - Decoded Transaction Payload"
+{
+  "delegatorPubkey": "5QA46X6NkNmsFdu9xWVBaLNowh9gGeF1c5r9u6NcxaLY",
+  "delegatorAddress": "slate-demo.testnet",
+  "validatorAddress": "01node.pool.f863973.m0",
+  "amount": "5"
+}
+```
+
+### Operations and Transaction Types
+
+<!--
+
+To ensure Tabs work with Markdown content, maintain the formatting below
+ - No whitespace between the Tabs and TabItem tags
+ - Linebreaks before & after Markdown content
+
+Example:
+
+<Tabs><TabItem value="unique-value" label="Label Text">
+
+## Markdown content
+
+</TabItem></Tabs>
+
+-->
+
+<Tabs><TabItem value="avax" label="Avalanche" default>
+
+- `staking`
+  - `delegateTransaction`
+
+</TabItem><TabItem value="eth" label="Ethereum">
+
+- `staking`
+  - `depositTransaction`
+
+</TabItem><TabItem value="dot" label="Polkadot">
+
+- `staking`
+  - `bondingTransaction`
+  - `nominationTransaction`
+- `unstaking`
+  - `chillTransaction`
+  - `unbondTransaction`
+  - `withdrawTransaction`
+- `transfer`
+  - `transferTransaction`
+- `addProxy`
+  - `addProxyTransaction`
+- `removeProxy`
+  - `removeProxyTransaction`
+
+</TabItem><TabItem value="matic" label="Polygon">
+
+- `staking`
+  - `bondingTransaction`
+  - `nominationTransaction`
+- `unstaking`
+  - `chillTransaction`
+  - `unbondTransaction`
+  - `withdrawTransaction`
+
+</TabItem><TabItem value="near" label="NEAR">
+
+- `staking`
+  - `delegateTransaction`
+- `unstaking`
+  - `undelegateTransaction`
+  - `withdrawTransaction`
+- `transfer`
+  - `transferTransaction`
+
+</TabItem><TabItem value="sol" label="Solana">
+
+- `staking`
+  - `createStakeAccountTransaction`
+  - `delegateTransaction`
+- `unstaking`
+  - `deactivateTransaction`
+  - `withdrawTransaction`
+- `transfer`
+  - `transferTransaction`
+
+</TabItem></Tabs>

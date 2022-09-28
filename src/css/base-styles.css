@@ -1,0 +1,94 @@
+:root {
+  --doc-sidebar-width: 380px !important;
+
+  --ifm-font-family-base: "Jungka", "Helvetica", "Arial", sans-serif;
+  --ifm-font-color-base: #000;
+  --ifm-link-color: #000;
+  --ifm-code-font-size: 95%;
+
+  --ifm-color-primary: #034d77;
+  --ifm-color-primary-dark: #03456b;
+  --ifm-color-primary-darker: #034165;
+  --ifm-color-primary-darkest: #023653;
+  --ifm-color-primary-light: #035583;
+  --ifm-color-primary-lighter: #035989;
+  --ifm-color-primary-lightest: #04649b;
+
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+
+  --ifm-footer-background-color: #0c3f5c;
+  --ifm-footer-title-color: #f6f8fb;
+  --ifm-footer-color: #f6f8fb;
+  --ifm-footer-link-color: #f6f8fb;
+
+  --top-nav-font-color: #f6f8fb;
+
+  --side-nav-bg: #f6f8fb;
+  --side-nav-open-category-bg: #fff;
+  --side-nav-color: #16161a;
+  --side-nav-sublist-color: #595959;
+  --side-nav-color--active: #000;
+
+  --ifm-breadcrumb-color-active: #000;
+}
+
+/* For readability concerns, you should choose a lighter palette in dark mode. */
+[data-theme="dark"] {
+  --ifm-font-family-base: "Jungka", "Helvetica", "Arial", sans-serif;
+  --ifm-font-color-base: #fff;
+  --ifm-link-color: #fff;
+  --ifm-code-font-size: 95%;
+
+  --ifm-color-primary: #034d77;
+  --ifm-color-primary-dark: #03456b;
+  --ifm-color-primary-darker: #034165;
+  --ifm-color-primary-darkest: #023653;
+  --ifm-color-primary-light: #035583;
+  --ifm-color-primary-lighter: #035989;
+  --ifm-color-primary-lightest: #04649b;
+
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+
+  --ifm-footer-background-color: #0c3f5c;
+  --ifm-footer-title-color: #f6f8fb;
+  --ifm-footer-color: #f6f8fb;
+  --ifm-footer-link-color: #f6f8fb;
+
+  --ifm-breadcrumb-color-active: #f6f8fb;
+  --ifm-tabs-color-active-border: #f6f8fb;
+  --ifm-tabs-color-active: #f6f8fb;
+
+  --side-nav-bg: #16161a;
+  --side-nav-open-category-bg: #1b1c1d;
+  --side-nav-color: #f6f8fb;
+  --side-nav-sublist-color: #b9b9ba;
+  --side-nav-color--active: #fff;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* miscellaneous */
+iframe.signup,
+img.inline-image {
+  border-radius: 8px;
+  margin: 30px 20px;
+}
+
+[data-theme="dark"] article a {
+  color: #fff;
+  text-decoration: underline;
+}
+
+[data-theme="dark"] article a:hover {
+  color: var(--ifm-footer-link-color);
+}
+
+[data-theme] a.breadcrumbs__link {
+  text-decoration: none;
+}

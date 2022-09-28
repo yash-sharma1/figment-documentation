@@ -1,0 +1,14 @@
+---
+title: Unbonding Period
+---
+
+Polygon has an unbonding period of approximately 2 days. During this time, the un-delegated MATIC will be illiquid and will not earn rewards.
+
+You can find the expected unbonding completion time in the response you received after submitting the signed un-delegate transaction.
+Once the unbonding period ends, the un-delegated MATIC will be added to the available for withdrawal balance of the delegating address.
+You will then need to submit a claim transaction to bring those MATIC into the delegating address' liquid balance.
+
+The `create_claim_tx` action indicates two fields for data collection:
+
+- `gas_limit` (_optional_) — Adjust the gas limit for the transaction
+- `gas_price` (_optional_) — Adjust the gas price for the transaction
