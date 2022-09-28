@@ -55,10 +55,12 @@ Each Input includes a display which can be used for human readable Input field l
 
 For each step in a Flow where a transaction must be signed, the response from the Staking API includes a serialized transaction Payload ready for signature. It is your responsibility to manage signing the transaction and submitting the signed Payload back to the Staking API for broadcasting to the network.
 
-## Using Staking API
+## Using the Staking API
 
 Now that you are familiar with the core concepts the Staking API uses to navigate complex Flows on various PoS networks, you can take a deeper look at how they all work together in practice. Check out our guide to <Link to="/guides/staking-api/working-with-staking-api-flows">Working With Staking API Flows</Link>.
 
-Figment has also published an NPM package for decoding the Staking API transactions: https://www.npmjs.com/package/@figmentio/slate
+Figment has also published an NPM package for decoding and signing Staking API transactions: https://www.npmjs.com/package/@figmentio/slate
+
+Learn how to use it with the guide <Link to="/guides/staking-api/figment-signing-transactions">**Signing Transactions with Figment's NPM Package**</Link>
 
 ---
