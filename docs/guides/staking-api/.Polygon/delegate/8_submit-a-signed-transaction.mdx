@@ -1,0 +1,30 @@
+---
+title: Submit a Signed Delegate Transaction for Broadcast
+---
+
+After signing the transaction, you will `PUT /api/v1/flows/[:flow_id]/next` and the Staking API will manage broadcasting the transaction to the network.
+
+At this step, the `inputs` JSON will be:
+
+```json
+{
+  "transaction_payload": "[:signed_transaction_payload]"
+}
+```
+
+```bash title="Example cURL request"
+  curl --request PUT \
+  --url https://polygon-slate.datahub.figment.io/api/v1/flows/[:flow_id]/next \
+  --header 'Authorization: API_KEY' \
+  --header 'Content-Type: application/json' \
+  --data '{
+  "name": "sign_delegate_tx",
+  "inputs": {
+    "transaction_payload": "[:signed_transaction_payload]"
+  }
+}'
+```
+
+## Delegation Flow Complete!
+
+Congratulations, your stake is now active and earning rewards!
