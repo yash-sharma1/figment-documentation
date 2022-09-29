@@ -1275,7 +1275,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"flow\": {\n        \"network_code\": \"ethereum\",\n        \"chain_code\": \"goerli-prater\",\n        \"operation\": \"staking\",\n        \"version\": \"v1\" \n    }\n}",
+							"raw": "{\n    \"flow\": {\n        \"network_code\": \"ethereum\",\n        \"chain_code\": \"goerli-prater\",\n        \"operation\": \"staking\",\n        \"version\": \"v1\"\n    }\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -14146,43 +14146,43 @@
 	],
 	"variable": [
 		{
-			"id": "3415aa71-d224-46e6-a585-8714eb390689",
+			"id": "f77acd3c-fdde-407d-8207-7c1000f117f6",
 			"key": "AVAX_STAKING_HOST",
 			"value": "avalanche-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "576f624a-2a8b-461e-b52d-e547d81b9c83",
+			"id": "e76265b1-22e2-4459-b121-ab9c66d54cc7",
 			"key": "ETH_STAKING_HOST",
 			"value": "eth-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "5a836a10-2b08-4858-8ea0-a09e0eadaa92",
+			"id": "5c0fa37c-f214-427a-881e-00b6b63de28b",
 			"key": "NEAR_STAKING_HOST",
 			"value": "near-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "b13fb5af-241c-4f58-bdb5-364c84470f0f",
+			"id": "575eeddc-e20f-4cf7-ad0c-de13f3629f44",
 			"key": "DOT_STAKING_HOST",
 			"value": "polkadot-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "eeae8fb3-6237-4951-ae08-b4cfd130afb4",
+			"id": "a8d926d9-e71b-4411-99c2-5965f43459e9",
 			"key": "SOL_STAKING_HOST",
 			"value": "solana-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "ab41b731-2246-41bc-99f2-a6b41ed692fd",
+			"id": "bb67462a-b141-423d-b45f-981f8b26c200",
 			"key": "MATIC_STAKING_HOST",
 			"value": "polygon-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "23017cc4-75a8-4733-b2fa-269b1e94e7c4",
+			"id": "a5f918d8-47f7-4588-8d1a-b27af73af562",
 			"key": "INTERACTIVE",
 			"value": "false",
 			"type": "string"
