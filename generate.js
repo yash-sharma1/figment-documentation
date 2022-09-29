@@ -373,7 +373,11 @@ function createMarkdown(services, variables) {
             )}} networks={${JSON.stringify(
               networksList
             )}} network="${toDashCase(network)}" />\n\n` +
-            `<MakingCalls url="${methods[0].request.url}" />\n\n` +
+            `<MakingCalls url="${
+              methods[0].request.url
+            }" network="${toTitleCase(network)}" service="${toTitleCase(
+              service
+            )}" />\n\n` +
             `<APIMethods methods={${JSON.stringify(
               methods
             )}} service="${toDashCase(service)}" networks={${JSON.stringify(
