@@ -357,7 +357,7 @@ Generally speaking, the signing payload is derived from the transaction payload.
 
 **The transaction payload and the signing payload are clearly not human readable, and it is never advisable to blind sign a transaction**.
 
-We have published an [NPM package](https://www.npmjs.com/package/@figmentio/slate) used to decode transactions and confirm the details of a given transaction. Details are available in the guide <Link to="/guides/staking-api/figment-signing-transactions">**Signing Transactions with Figment's NPM Package**</Link>.
+We have published an [NPM package](https://www.npmjs.com/package/@figmentio/slate) used to decode transactions and confirm the details of a given transaction. Details are available in the guide <Link to="/guides/staking-api/figment-signing-transactions">Signing Transactions with Figment's NPM Package</Link>.
 
 We encourage you to explore the code in order to understand how it works. You can run the code locally on your own system. It does not connect to the Staking API endpoints in any way, also you do not provide any identifying information for the transaction.
 
@@ -367,8 +367,8 @@ Similarly, the NPM package will return a signing payload - this should exactly m
 
 ### Signing the Transaction
 
-If you are using Fireblocks as a custodial solution, check the following page for instructions on using the raw signing capabilities of Fireblocks: <Link to="/guides/staking-api/fireblocks-signing-transactions">**Signing Transactions with Fireblocks**</Link>
+If you are using Fireblocks as a custodial solution, check the following page for instructions on using the raw signing capabilities of Fireblocks: <Link to="/guides/staking-api/fireblocks-signing-transactions">Signing Transactions with Fireblocks</Link>
 
 Otherwise, it will be up to you to understand signing with your unique custody arrangement.
-As a frame of reference you can follow our guide to using the slate NPM package: <Link to="/guides/staking-api/figment-signing-transactions">**Signing Transactions with Figment's NPM Package**</Link>. It contains signing capabilities for every network supported by the Staking API - if you have access to the private key of the delegating address, then you can sign with the NPM package.
+As a frame of reference you can follow our guide to using the slate NPM package: <Link to="/guides/staking-api/figment-signing-transactions">Signing Transactions with Figment's NPM Package</Link>. It contains signing capabilities for every network supported by the Staking API - if you have access to the private key of the delegating address, then you can sign with the NPM package.
 You may review the code to understand how signing is performed for a given network.
