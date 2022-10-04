@@ -9,6 +9,18 @@
   font-weight: 400;
 }
 
+@media (max-width: 760px) {
+  .heroTitle {
+    font-size: 48px;
+  }
+}
+
+@media (max-width: 440px) {
+  .heroTitle {
+    font-size: 36px;
+  }
+}
+
 [data-theme="dark"] p {
   color: #fff;
 }

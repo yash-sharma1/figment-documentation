@@ -1,0 +1,247 @@
+{
+	"info": {
+		"_postman_id": "e3a4ea63-281a-4ddd-ac3a-e7becb1f4312",
+		"name": "rewards-rates-api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Ethereum",
+			"item": [
+				{
+					"name": "Reward Rates",
+					"id": "5248b9c6-a802-422c-8d89-2a3aa1792fd4",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "https://{{ETH_REWARDS_HOST}}/apikey/{{API_KEY}}/rates",
+						"description": "This API returns a time series of daily network-wide annualized staking reward rates, in %.\n\nWe aggregate all rewards received by all validators and divide this by the aggregated balances of all validators at the beginning of the period.\n\nIt includes all rewards, on both consensus and execution layers\n\n### Parameters\n\n- None\n\n### Response\n\n- `date` - Specific date associated with `value` (staking reward rates).\n- `value` - Staking reward rates, in %."
+					},
+					"response": [
+						{
+							"id": "98d241df-1979-4f21-865c-07a1816e579e",
+							"name": "Reward Rates",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": "https://{{ETH_REWARDS_HOST}}/apikey/{{API_KEY}}/rates"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Wed, 28 Sep 2022 06:17:25 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "RateLimit-Limit",
+									"value": "2000"
+								},
+								{
+									"key": "RateLimit-Remaining",
+									"value": "1997"
+								},
+								{
+									"key": "X-RateLimit-Remaining-Minute",
+									"value": "1997"
+								},
+								{
+									"key": "X-RateLimit-Limit-Minute",
+									"value": "2000"
+								},
+								{
+									"key": "RateLimit-Reset",
+									"value": "35"
+								},
+								{
+									"key": "vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "https://docs.figment.io"
+								},
+								{
+									"key": "Quota-Reset",
+									"value": "35"
+								},
+								{
+									"key": "X-Quota-Remaining-Minute",
+									"value": "2497"
+								},
+								{
+									"key": "X-Quota-Limit-Minute",
+									"value": "2500"
+								},
+								{
+									"key": "Quota-Limit",
+									"value": "2500"
+								},
+								{
+									"key": "Quota-Remaining",
+									"value": "2497"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "[\n    {\n        \"date\": \"2022-09-22\",\n        \"value\": \"5.6274\"\n    },\n    {\n        \"date\": \"2022-09-21\",\n        \"value\": \"6.249326\"\n    },\n    {\n        \"date\": \"2022-09-20\",\n        \"value\": \"5.712024\"\n    }\n]"
+						}
+					]
+				}
+			],
+			"id": "154d5b0d-bf51-41c7-ac4c-9d181a35243b"
+		},
+		{
+			"name": "Solana",
+			"item": [
+				{
+					"name": "Reward Rates",
+					"id": "c708c71a-e4d2-451b-9f3e-c146e09c20b3",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "https://{{SOL_REWARDS_HOST}}/apikey/{{API_KEY}}/rates",
+						"description": "This API returns a time series of daily network-wide annualized staking reward rates, in %.\n\nWe aggregate all rewards received by all validators and divide this by the aggregated balances of all validators at the beginning of the period.\n\nIt includes all rewards, on both consensus and execution layers\n\n### Parameters\n\n\\*   None\n    \n\n### Response\n\n\\*   `date` - Specific date associated with `value` (staking reward rates).\n\\*   `value` - Staking reward rates, in %."
+					},
+					"response": [
+						{
+							"id": "f8ea308a-a959-4754-8432-4b73870d9bea",
+							"name": "Reward Rates",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": "https://{{SOL_REWARDS_HOST}}/apikey/{{API_KEY}}/rates"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Tue, 04 Oct 2022 20:46:45 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "RateLimit-Limit",
+									"value": "2000"
+								},
+								{
+									"key": "RateLimit-Remaining",
+									"value": "1999"
+								},
+								{
+									"key": "X-RateLimit-Remaining-Minute",
+									"value": "1999"
+								},
+								{
+									"key": "X-RateLimit-Limit-Minute",
+									"value": "2000"
+								},
+								{
+									"key": "RateLimit-Reset",
+									"value": "15"
+								},
+								{
+									"key": "vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "https://docs.figment.io"
+								},
+								{
+									"key": "Quota-Limit",
+									"value": "2500"
+								},
+								{
+									"key": "X-Quota-Remaining-Minute",
+									"value": "2499"
+								},
+								{
+									"key": "X-Quota-Limit-Minute",
+									"value": "2500"
+								},
+								{
+									"key": "Quota-Reset",
+									"value": "15"
+								},
+								{
+									"key": "Quota-Remaining",
+									"value": "2499"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "[\n    {\n        \"date\": \"2022-10-02\",\n        \"value\": \"5.303821\"\n    },\n    {\n        \"date\": \"2022-10-01\",\n        \"value\": \"5.239139\"\n    },\n    {\n        \"date\": \"2022-09-30\",\n        \"value\": \"5.587652\"\n    }\n]"
+						}
+					]
+				}
+			],
+			"id": "3d168579-dd2d-4bac-a109-6a1eb28ad764"
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "23cfb68a-7256-476e-99c8-d77c916be1fe",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "b53c857a-80e5-4623-8210-e778c59952e1",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "78bf54c7-9279-4260-b892-2818f08f893b",
+			"key": "ETH_REWARDS_HOST",
+			"value": "eth-rewards.datahub.figment.io"
+		},
+		{
+			"id": "154e988c-f34a-4420-a9cc-20c2d31d5160",
+			"key": "SOL_REWARDS_HOST",
+			"value": "eth-rewards.datahub.figment.io"
+		}
+	]
+}

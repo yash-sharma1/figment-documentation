@@ -145,6 +145,8 @@ function sidebarIndexForService(service) {
       return 4;
     case "rewards-api":
       return 5;
+    case "rewards-rates-api":
+      return 6;
     default:
       return 0;
   }
@@ -173,6 +175,7 @@ function referenceTable(_services, variables) {
     _services.find((s) => s.service === "staking-api"),
     _services.find((s) => s.service === "staking-api-webhooks"),
     _services.find((s) => s.service === "rewards-api"),
+    _services.find((s) => s.service === "rewards-rates-api"),
     ..._services.filter(
       (s) =>
         [
@@ -181,6 +184,7 @@ function referenceTable(_services, variables) {
           "staking-api",
           "staking-api-webhooks",
           "rewards-api",
+          "rewards-rates-api",
         ].indexOf(s.service) < 0
     ),
   ];

@@ -169,6 +169,10 @@ const config = {
                 to: "/api-reference/rewards-api",
               },
               {
+                label: "Rewards Rates API",
+                to: "/api-reference/rewards-rates-api",
+              },
+              {
                 label: "Transaction Search API",
                 to: "/api-reference/transaction-search-api",
               },

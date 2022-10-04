@@ -9,6 +9,7 @@ import Link from "@docusaurus/Link";
 interface Props {
   name: string;
   content: string;
+  accordionOpen: boolean;
   interactive: boolean;
   request: RequestObject;
   response: ResponseObject;
@@ -19,6 +20,7 @@ function APIMethod({
   content = "",
   interactive,
   request,
+  accordionOpen = false,
   response,
 }: Props) {
   if (["Rewards (by epoch)", "Rewards (daily)"].includes(name)) {
@@ -42,7 +44,7 @@ function APIMethod({
         <Link to={`#${name.toLowerCase()}`}>{name}</Link>
       </h2>
 
-      <Description content={content} />
+      <Description content={content} accordionOpen={accordionOpen} />
 
       <CodeExample req={request} res={response} interactive={interactive} />
 
@@ -51,12 +53,16 @@ function APIMethod({
   );
 }
 
-export default function APIMethods({ network, methods }) {
+export default function APIMethods({ network, methods, service }) {
   return (
     <>
       <h3>Available Methods</h3>
       {methods.map((method, index) => (
-        <APIMethod key={network + index} {...method} />
+        <APIMethod
+          key={network + index}
+          {...method}
+          accordionOpen={service !== "node-api"}
+        />
       ))}
       <BackToTopButton />
     </>

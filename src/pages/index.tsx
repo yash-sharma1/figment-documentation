@@ -89,6 +89,19 @@ function HomepageHeader() {
             <div
               className={styles.product}
               onClick={() =>
+                history.push("api-reference/rewards-rates-api/ethereum")
+              }
+            >
+              <h3>Rewards Rates</h3>
+              {/* we should add an image here -- keeping up with our Plaid-theme */}
+              <p>
+                Retrieve time series of daily network-wide annualized staking
+                rewards rates.
+              </p>
+            </div>
+            <div
+              className={styles.product}
+              onClick={() =>
                 history.push("api-reference/transaction-search-api/avalanche")
               }
             >

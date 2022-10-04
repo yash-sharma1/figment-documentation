@@ -77,3 +77,11 @@
   text-decoration: underline;
   color: var(--ifm-link-color);
 }
+
+details:not([open]) .open {
+  display: none;
+}
+
+details[open] .closed {
+  display: none;
+}
