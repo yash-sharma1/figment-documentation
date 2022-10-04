@@ -1,5 +1,5 @@
 ---
-title: Signing Transactions with Figment's NPM Package
+title: Signing Transactions with Figment's npm Package
 sidebar_position: 4
 ---
 
@@ -7,8 +7,8 @@ import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 import Link from "@docusaurus/Link";
 
-Figment has published the NPM package <Link to="https://www.npmjs.com/package/@figmentio/slate">@figmentio/slate</Link>, which simplifies the signing (and payload decoding) process for networks supported by the Staking API.
-This guide covers everything you will need to start signing and decoding Staking API transaction payloads.
+Figment's npm package <Link to="https://www.npmjs.com/package/@figmentio/slate">@figmentio/slate</Link> simplifies the signing and payload decoding process for networks supported by the Staking API.
+This guide covers everything you will need to sign and decode Staking API transaction payloads.
 
 ## Installing the package
 
@@ -59,13 +59,13 @@ await slate.sign(
 );
 ```
 
-```text title="Example Output - Signed Transaction Payload"
+```text title="Example Output: Signed Transaction Payload"
 12000000736c6174652d64656d6f2e746573746e657400415d57cdf21d28e35e0cfa864e895c18b4bc6a711642d38eb6762af81ec1cf3907cc1038fc5700001600000030316e6f64652e706f6f6c2e663836333937332e6d3084edd29289b3a590be582317bb0061016a8df058b7c29a0278f5b82f86c283010100000002080000007769746864726177270000007b22616d6f756e74223a223235303030303030303030303030303030303030303030303030227d00e057eb481b00000000000000000000000000000000000000235397dfd3f0b7ce06a4fe11395e36ce40d12610eae07dcc1dc1d962b38fa9592cdc22f6c9164b0155967a773c369719f71d76b84185ec13c39381343c63cf0b
 ```
 
 :::info note
 
-The array of private keys `[<signing_private_keys>]` only requires the private key of the delegator, however it can accommodate multiple private keys in cases where a multisig is used for delegation. Signing occurs entirely offline, your private keys are never exposed during this process.
+The array of private keys `[<signing_private_keys>]` only requires the private key of the delegator, however it can accommodate multiple private keys in cases where a multisig is used for delegation. Signing occurs entirely offline; your private keys are never exposed during this process.
 
 See the guide on <Link to="/guides/staking-api/fireblocks-signing-transactions">Signing Transactions with Fireblocks</Link> if you require a custodial signing solution.
 
@@ -91,7 +91,7 @@ await slate.decode(
 );
 ```
 
-```json title="Example Output - Decoded Transaction Payload"
+```json title="Example Output: Decoded Transaction Payload"
 {
   "delegatorPubkey": "5QA46X6NkNmsFdu9xWVBaLNowh9gGeF1c5r9u6NcxaLY",
   "delegatorAddress": "slate-demo.testnet",
