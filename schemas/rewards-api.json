@@ -539,7 +539,7 @@
 							}
 						},
 						"url": "https://{{NEAR_REWARDS_HOST}}/apikey/{{API_KEY}}/rewards",
-						"description": "Returns net delegator rewards (aka post on-chain validator commission) grouped by epoch.\n\n### Parameters\n\n- `network` => `near`\n- `chain_id` => `mainnet`  \n- `accounts` takes in an array of Stash Account public addresses  \n- `start_time` and `end_time` are ISO 8601 timestamps in UTC. If the start of an epoch falls into the requested date range it will be included (even if it doesn't end inside the date range)  \n- `grouping` => `epoch` will return rewards grouped by **eras**.\n\n### Response\n\n- `network` and `chain_id` are the same as the request  \n- `accounts` returns an array of Stash Account public addresses  \n- `validator` returns the validator that tokens were staked to  \n- `time` and `epoch` reference the start of the daily or epoch bucket  \n- `rewards` is an array of objects with four components: `text`, `numeric` , `exp` and `currency`. The formula to compute the final rewards in the `currency` unit is `numeric \\\\* 10^-exp`(`text` is the string version of this)\n\n### Limitations\n\n\\* The API returns rewards for Figment validators only  \n\\* The API returns rewards for the last 30 days  \n\\* Data is available approximately an hour after the end of the day or epoch. When requesting daily for the current day, the data will be available but obviously partially complete as the day progresses."
+						"description": "Returns net delegator rewards (aka post on-chain validator commission) grouped by epoch.\n\n### Parameters\n\n- `network` => `near`\n- `chain_id` => `mainnet`  \n- `accounts` takes in an array of Stash Account public addresses  \n- `start_time` and `end_time` are ISO 8601 timestamps in UTC. If the start of an epoch falls into the requested date range it will be included (even if it doesn't end inside the date range)  \n- `grouping` => `epoch` will return rewards grouped by **eras**.\n\n### Response\n\n- `network` and `chain_id` are the same as the request  \n- `accounts` returns an array of Stash Account public addresses  \n- `validator` returns the validator that tokens were staked to  \n- `time` and `epoch` reference the start of the daily or epoch bucket  \n- `rewards` is an array of objects with four components: `text`, `numeric` , `exp` and `currency`. The formula to compute the final rewards in the `currency` unit is `numeric * 10^-exp`(`text` is the string version of this).)\n\n### Limitations\n\n- The API returns rewards for Figment validators only  \n- The API returns rewards for the last 30 days  \n- Data is available approximately an hour after the end of the day or epoch. When requesting daily for the current day, the data will be available but obviously partially complete as the day progresses."
 					},
 					"response": [
 						{
@@ -1256,23 +1256,23 @@
 	],
 	"variable": [
 		{
-			"id": "22526cbc-3f1e-4cfd-92a0-8ad6a21508f0",
+			"id": "520061ad-be4f-48d5-83ac-a9c2535fdaed",
 			"key": "ETH_REWARDS_HOST",
 			"value": "eth-rewards.datahub.figment.io"
 		},
 		{
-			"id": "81f6fb64-6b36-42f8-bd6c-835267f2930f",
+			"id": "e9a8ebbc-5cce-41e6-a43a-d2954b085570",
 			"key": "SOL_REWARDS_HOST",
 			"value": "solana-rewards.datahub.figment.io"
 		},
 		{
-			"id": "7941e637-a310-458e-86fa-2f8ca1345cb8",
+			"id": "0fd5d3a7-06b7-4704-b1cc-91955213304d",
 			"key": "DOT_REWARDS_HOST",
 			"value": "polkadot-rewards.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "0867c4ee-20ff-4c14-9bf1-bc6f0a0da716",
+			"id": "961b511a-483b-4d78-bfce-ecfaebce0a86",
 			"key": "NEAR_REWARDS_HOST",
 			"value": "near-rewards.datahub.figment.io",
 			"type": "string"
