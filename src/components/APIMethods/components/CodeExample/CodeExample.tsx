@@ -11,9 +11,7 @@ import {
 import useFetch from "./useFetch";
 import CodeBlock from "@theme/CodeBlock";
 import { CodeEditor } from "../CodeEditor";
-import { ErrorBanner } from "../ErrorBanner";
 import CopyButton from "@theme/CodeBlock/CopyButton";
-import ContentCopyFilled from "@site/static/img/icons/ContentCopyFilled.svg";
 import PlayCircleOutlineFilled from "@site/static/img/icons/PlayCircleOutlineFilled.svg";
 import RefreshFilled from "@site/static/img/icons/RefreshFilled.svg";
 

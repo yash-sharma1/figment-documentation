@@ -3,7 +3,7 @@ import ReactMarkdown from "react-markdown";
 
 import MDDetails from "./MDDetails.mdx";
 
-export default function Description({ content = "" }) {
+export default function Description({ content = "", accordionOpen = false }) {
   const [description, ...rest] = content.trim().split(/\n+/);
   const specs = rest.join("\n");
 
@@ -11,7 +11,7 @@ export default function Description({ content = "" }) {
     <div>
       <ReactMarkdown>{description}</ReactMarkdown>
 
-      <MDDetails title="View specification" details={specs} />
+      <MDDetails details={specs} accordionOpen={accordionOpen} />
     </div>
   );
 }
