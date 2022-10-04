@@ -630,7 +630,7 @@
 							],
 							"cookie": [],
 							"responseTime": null,
-							"body": "[\n    {\n        \"accounts\": [\n            \"figment.near\"\n        ],\n        \"chain_id\": \"mainnet\",\n        \"rewards\": [\n            {\n                \"text\": \"180.332217192742628015506446 NEAR\",\n                \"currency\": \"NEAR\",\n                \"numeric\": 1.80332217192742628015506446e+26,\n                \"exp\": 24\n            }\n        ],\n        \"epoch\": \"74879490\",\n        \"network\": \"near\",\n        \"validator\": \"figment.poolv1.near\",\n        \"time\": \"2022-09-26T04:17:28.831146914Z\"\n    }\n]"
+							"body": "[\n    {\n        \"accounts\": [\n            \"figment.near\"\n        ],\n        \"chain_id\": \"mainnet\",\n        \"rewards\": [\n            {\n                \"text\": \"180.332217192742628015506446 NEAR\",\n                \"currency\": \"NEAR\",\n                \"numeric\": 1.80332217192742628015506446e+26,\n                \"exp\": 24\n            }\n        ],\n        \"epoch\": \"74879490\",\n        \"network\": \"near\",\n        \"validator\": \"figment.poolv1.near\",\n        \"time\": \"2022-09-26T04:17:28.831146914Z\"\n    },\n    {\n        \"accounts\": [\n            \"figment.near\"\n        ],\n        \"chain_id\": \"mainnet\",\n        \"rewards\": [\n            {\n                \"text\": \"181.67471822329716480716324 NEAR\",\n                \"currency\": \"NEAR\",\n                \"numeric\": 1.8167471822329716480716324e+26,\n                \"exp\": 24\n            }\n        ],\n        \"epoch\": \"74922690\",\n        \"network\": \"near\",\n        \"validator\": \"figment.poolv1.near\",\n        \"time\": \"2022-09-26T18:49:43.647537689Z\"\n    },\n    {\n        \"accounts\": [\n            \"figment.near\"\n        ],\n        \"chain_id\": \"mainnet\",\n        \"rewards\": [\n            {\n                \"text\": \"181.326989881237317444456718 NEAR\",\n                \"currency\": \"NEAR\",\n                \"numeric\": 1.81326989881237317444456718e+26,\n                \"exp\": 24\n            }\n        ],\n        \"epoch\": \"74965890\",\n        \"network\": \"near\",\n        \"validator\": \"figment.poolv1.near\",\n        \"time\": \"2022-09-27T09:13:39.623125317Z\"\n    },\n    {\n        \"accounts\": [\n            \"figment.near\"\n        ],\n        \"chain_id\": \"mainnet\",\n        \"rewards\": [\n            {\n                \"text\": \"179.415049936991080040262323 NEAR\",\n                \"currency\": \"NEAR\",\n                \"numeric\": 1.79415049936991080040262323e+26,\n                \"exp\": 24\n            }\n        ],\n        \"epoch\": \"75009090\",\n        \"network\": \"near\",\n        \"validator\": \"figment.poolv1.near\",\n        \"time\": \"2022-09-27T23:38:42.777178202Z\"\n    },\n    {\n        \"accounts\": [\n            \"figment.near\"\n        ],\n        \"chain_id\": \"mainnet\",\n        \"rewards\": [\n            {\n                \"text\": \"179.600557403504278536893009 NEAR\",\n                \"currency\": \"NEAR\",\n                \"numeric\": 1.79600557403504278536893009e+26,\n                \"exp\": 24\n            }\n        ],\n        \"epoch\": \"75052290\",\n        \"network\": \"near\",\n        \"validator\": \"figment.poolv1.near\",\n        \"time\": \"2022-09-28T13:45:57.421827054Z\"\n    },\n    {\n        \"accounts\": [\n            \"figment.near\"\n        ],\n        \"chain_id\": \"mainnet\",\n        \"rewards\": [\n            {\n                \"text\": \"178.461099962757970006478891 NEAR\",\n                \"currency\": \"NEAR\",\n                \"numeric\": 1.78461099962757970006478891e+26,\n                \"exp\": 24\n            }\n        ],\n        \"epoch\": \"75095490\",\n        \"network\": \"near\",\n        \"validator\": \"figment.poolv1.near\",\n        \"time\": \"2022-09-29T03:52:48.028301752Z\"\n    },\n    {\n        \"accounts\": [\n            \"figment.near\"\n        ],\n        \"chain_id\": \"mainnet\",\n        \"rewards\": [\n            {\n                \"text\": \"178.628253818074775588642293 NEAR\",\n                \"currency\": \"NEAR\",\n                \"numeric\": 1.78628253818074775588642293e+26,\n                \"exp\": 24\n            }\n        ],\n        \"epoch\": \"75138690\",\n        \"network\": \"near\",\n        \"validator\": \"figment.poolv1.near\",\n        \"time\": \"2022-09-29T19:54:20.913081104Z\"\n    }\n]"
 						}
 					]
 				}
@@ -1256,23 +1256,23 @@
 	],
 	"variable": [
 		{
-			"id": "063106c7-5bc0-4784-ab7a-c16dc9bdb947",
+			"id": "c427c741-3437-4665-b854-01d33a84201f",
 			"key": "ETH_REWARDS_HOST",
 			"value": "eth-rewards.datahub.figment.io"
 		},
 		{
-			"id": "319e3929-2fbd-4849-acc6-57da5914d9d8",
+			"id": "ef5b7796-26da-4f41-8fd5-eb56247c312d",
 			"key": "SOL_REWARDS_HOST",
 			"value": "solana-rewards.datahub.figment.io"
 		},
 		{
-			"id": "41b8bc0a-4e24-4c9b-ba70-65b90ba37224",
+			"id": "24fb7006-fae0-425e-ad86-519a6a85eedd",
 			"key": "DOT_REWARDS_HOST",
 			"value": "polkadot-rewards.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "0318b7ac-3b74-4ee4-910c-c9ad46ecae65",
+			"id": "b9c3f8c1-423a-4247-9ba2-c4084ec42a29",
 			"key": "NEAR_REWARDS_HOST",
 			"value": "near-rewards.datahub.figment.io",
 			"type": "string"
