@@ -6,7 +6,7 @@
 	},
 	"item": [
 		{
-			"name": "ethereum",
+			"name": "Ethereum",
 			"item": [
 				{
 					"name": "Reward Rates",
@@ -132,7 +132,7 @@
 	],
 	"variable": [
 		{
-			"id": "eb93be26-4bd4-400f-969d-3033583a661c",
+			"id": "d5c83cc7-fb96-45c8-a440-df3b1506298d",
 			"key": "ETH_REWARDS_HOST",
 			"value": "eth-rewards.datahub.figment.io",
 			"type": "string"
