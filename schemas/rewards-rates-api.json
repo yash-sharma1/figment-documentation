@@ -6,11 +6,11 @@
 	},
 	"item": [
 		{
-			"name": "ETH",
+			"name": "ethereum",
 			"item": [
 				{
 					"name": "Reward Rates",
-					"_postman_id": "5248b9c6-a802-422c-8d89-2a3aa1792fd4",
+					"id": "5248b9c6-a802-422c-8d89-2a3aa1792fd4",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -105,7 +105,7 @@
 					]
 				}
 			],
-			"_postman_id": "154d5b0d-bf51-41c7-ac4c-9d181a35243b"
+			"id": "154d5b0d-bf51-41c7-ac4c-9d181a35243b"
 		}
 	],
 	"event": [
@@ -132,7 +132,7 @@
 	],
 	"variable": [
 		{
-			"id": "210b49d4-e85b-431c-9955-9bf22b1832cb",
+			"id": "eb93be26-4bd4-400f-969d-3033583a661c",
 			"key": "ETH_REWARDS_HOST",
 			"value": "eth-rewards.datahub.figment.io",
 			"type": "string"
