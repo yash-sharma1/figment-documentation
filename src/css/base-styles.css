@@ -89,6 +89,15 @@ img.inline-image {
   color: var(--ifm-footer-link-color);
 }
 
+[data-theme="light"] article a {
+  color: #000;
+  text-decoration: underline;
+}
+
+[data-theme="light"] article a:hover {
+  color: var(--side-nav-color--active);
+}
+
 [data-theme] a.breadcrumbs__link {
   text-decoration: none;
 }
