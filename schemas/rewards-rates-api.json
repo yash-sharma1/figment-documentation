@@ -214,7 +214,7 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "00fcc2c6-ce23-4867-bf49-fd16e5a0ee8b",
+				"id": "6d87334e-4f99-408f-a7ab-ae30c9ad82c1",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -224,7 +224,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "d6f0643c-13c4-4879-9f6a-05ac791d1943",
+				"id": "687be83a-3eeb-4ad1-bb3b-d29cad45d180",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -234,12 +234,12 @@
 	],
 	"variable": [
 		{
-			"id": "c7feb5c5-ba93-4a6b-80c4-5cff19c8d92d",
+			"id": "cc2fe0bd-6cc2-4193-b014-3f4b99839411",
 			"key": "ETH_REWARDS_HOST",
 			"value": "eth-rewards.datahub.figment.io"
 		},
 		{
-			"id": "33b343b9-8bed-45b2-910c-b6c019dd2506",
+			"id": "c969b1d1-d04a-4fbc-9fa5-84bf05e89935",
 			"key": "SOL_REWARDS_HOST",
 			"value": "sol-rewards.datahub.figment.io"
 		}
