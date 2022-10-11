@@ -894,25 +894,25 @@
 	],
 	"variable": [
 		{
-			"id": "e49b009a-ec36-44f7-93d7-f3e7bf53f9c5",
+			"id": "ab677d35-5440-4fa5-b9f5-f62836803d50",
 			"key": "ETH_REWARDS_HOST",
 			"value": "eth-rewards.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "76d50449-d195-4428-a060-e157e18067d5",
+			"id": "6f1d3971-0a3a-4599-b031-33fb1c81d2db",
 			"key": "SOL_REWARDS_HOST",
 			"value": "solana-rewards.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "940c170b-f56a-4816-88c5-ac5c3d17d735",
+			"id": "a0da454d-0e6a-4181-9660-82a9d2249113",
 			"key": "DOT_REWARDS_HOST",
 			"value": "polkadot-rewards.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "d794ae8f-bebe-400a-b176-2b0337c053db",
+			"id": "7b6bf32d-7c12-41b9-87ce-5ae8e250b3b7",
 			"key": "NEAR_REWARDS_HOST",
 			"value": "near-rewards.datahub.figment.io",
 			"type": "string"
