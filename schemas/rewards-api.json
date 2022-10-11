@@ -755,7 +755,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"network\": \"polkadot\",\n    \"chain_id\": \"mainnet\",\n    \"accounts\": [\n        \"12m7XtVWZQuxTirqtzm2dm5J4r16vSQruPmahThMnskG8Bcp\"\n    ], \n    \"start\": 845,\n    \"end\": 847\n}",
+							"raw": "{\n    \"network\": \"polkadot\",\n    \"chain_id\": \"mainnet\",\n    \"accounts\": [\n        \"12m7XtVWZQuxTirqtzm2dm5J4r16vSQruPmahThMnskG8Bcp\"\n    ], \n    \"start\": 845,\n    \"end\": 847\n} ",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -886,25 +886,25 @@
 	],
 	"variable": [
 		{
-			"id": "2cbcf177-4a60-4547-8337-f0ad57f10e8a",
+			"id": "f62ff26b-5502-4f3c-9a13-5585f177bf52",
 			"key": "ETH_REWARDS_HOST",
 			"value": "eth-rewards.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "04f1b3d5-f75c-4126-a12d-fe76d75baddf",
+			"id": "5bbd6ecd-93d4-472c-bf40-f135e5f2d9b6",
 			"key": "SOL_REWARDS_HOST",
 			"value": "solana-rewards.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "c80c0d54-d5f9-462b-adf1-a77598887a3a",
+			"id": "04efc6c9-e9c0-4fcc-bdf4-1caac06f21db",
 			"key": "DOT_REWARDS_HOST",
 			"value": "polkadot-rewards.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "532a1b1f-9975-419c-9ed1-3481d0969c32",
+			"id": "333a1826-bce6-4b05-b9fb-9bdc63b1129a",
 			"key": "NEAR_REWARDS_HOST",
 			"value": "near-rewards.datahub.figment.io",
 			"type": "string"
