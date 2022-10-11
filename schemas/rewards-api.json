@@ -10,7 +10,7 @@
 			"item": [
 				{
 					"name": "Rewards by epoch",
-					"_postman_id": "0fac7278-6e28-4af9-9af2-f7ca29b4abf0",
+					"id": "0fac7278-6e28-4af9-9af2-f7ca29b4abf0",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -124,7 +124,7 @@
 				},
 				{
 					"name": "Rewards  by day",
-					"_postman_id": "bd90e4a8-c6be-4020-b25b-d6314eedac20",
+					"id": "bd90e4a8-c6be-4020-b25b-d6314eedac20",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -327,14 +327,14 @@
 					]
 				}
 			],
-			"_postman_id": "c8594856-7151-4247-b205-e696c9ad12c8"
+			"id": "c8594856-7151-4247-b205-e696c9ad12c8"
 		},
 		{
 			"name": "Solana",
 			"item": [
 				{
 					"name": "Rewards by epoch",
-					"_postman_id": "8c0f2da9-05df-4d16-bb5e-a2b6da83fff1",
+					"id": "8c0f2da9-05df-4d16-bb5e-a2b6da83fff1",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -447,7 +447,7 @@
 					]
 				}
 			],
-			"_postman_id": "45d9bd01-3412-4a81-823f-e7b96995696e"
+			"id": "45d9bd01-3412-4a81-823f-e7b96995696e"
 		},
 		{
 			"name": "NEAR",
@@ -537,7 +537,7 @@
 							}
 						}
 					],
-					"_postman_id": "39a63b9d-567c-4943-b098-a0906cc50196",
+					"id": "39a63b9d-567c-4943-b098-a0906cc50196",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -657,7 +657,7 @@
 					]
 				}
 			],
-			"_postman_id": "58f5dfe4-c1d8-445f-982d-84410fdd5d8a"
+			"id": "58f5dfe4-c1d8-445f-982d-84410fdd5d8a"
 		},
 		{
 			"name": "Polkadot",
@@ -747,7 +747,7 @@
 							}
 						}
 					],
-					"_postman_id": "cbea2d15-b449-43bb-9a4a-c30a6d52a70d",
+					"id": "cbea2d15-b449-43bb-9a4a-c30a6d52a70d",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -763,7 +763,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"network\": \"polkadot\",\n    \"chain_id\": \"mainnet\",\n    \"accounts\": [\n        \"12m7XtVWZQuxTirqtzm2dm5J4r16vSQruPmahThMnskG8Bcp\"\n    ], \n    \"start\": 845,\n    \"end\": 847\n}",
+							"raw": "{\n    \"network\": \"polkadot\",\n    \"chain_id\": \"mainnet\",\n    \"accounts\": [\n        \"12m7XtVWZQuxTirqtzm2dm5J4r16vSQruPmahThMnskG8Bcp\"\n    ], \n    \"start\": 845, \n    \"end\": 847\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -867,7 +867,7 @@
 					]
 				}
 			],
-			"_postman_id": "88ce3dd9-3927-49bf-92ec-534c859bced7"
+			"id": "88ce3dd9-3927-49bf-92ec-534c859bced7"
 		}
 	],
 	"event": [
@@ -894,25 +894,25 @@
 	],
 	"variable": [
 		{
-			"id": "b9e9b435-baec-4230-ba0b-23aca04687d0",
+			"id": "018ef814-8b77-47ff-ae64-97d1a06642c7",
 			"key": "ETH_REWARDS_HOST",
 			"value": "eth-rewards.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "df61016b-f7f0-47f4-bfb4-d31eecb4740c",
+			"id": "3fb02f98-8b9b-406d-b90f-ca29c85ccbb1",
 			"key": "SOL_REWARDS_HOST",
 			"value": "solana-rewards.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "cd2fcd23-fc27-4093-8b41-18b1da58f514",
+			"id": "8c699728-432a-4c51-9d61-af774827a683",
 			"key": "DOT_REWARDS_HOST",
 			"value": "polkadot-rewards.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "a7df8eb1-350e-4f79-b815-8aa856837ebe",
+			"id": "3f88a077-5025-4033-8a0d-e7ac4714dcfb",
 			"key": "NEAR_REWARDS_HOST",
 			"value": "near-rewards.datahub.figment.io",
 			"type": "string"
