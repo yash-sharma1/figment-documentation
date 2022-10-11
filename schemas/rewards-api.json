@@ -763,7 +763,7 @@
 							}
 						},
 						"url": "https://polkadot-rewards.datahub.figment.io/v2/apikey/{{API_KEY}}/rewards",
-						"description": "Returns net delegator rewards (post on-chain validator commission) by epoch\n\n## Request\n\n\\* `network` is `polkadot` _(Required)_  \n\\* `chain_id` is `mainnet` _(Required)_  \n\\* `accounts` takes in an array of stash accounts addresses _(Required)_  \n\\* `start` and `end` are era numbers, both inclusive. _(Required)_\n\n## Response\n\nThe response is broken down between `meta` and `data`\n\n##### `meta`\n\n\\* `network` is the same as in the request  \n\\* `period_unit` is the unit of the `period` field under `data`\n\n##### `data`\n\nis an array of objects - one for each era - containing:\n\n\\* `validator` returns the validator that distributed the rewards  \n\\* `period` is the era number  \n\\* `timestamp` is the timestamp of the end of the era  \n\\* `rewards` is an array of objects with four components: `numeric` , `exp` and `currency`. The formula to compute the final rewards in the `currency` unit is `numeric \\\\\\\\\\\\\\\\\\\\\\\\\\\\* 10^-exp`(`text` is the string version of this)\n\n## Limitations\n\n\\* The API returns rewards for Figment validators only  \n\\* Data is available approximatively an hour after the end of the day or epoch. When requesting daily for the current day, the data will be available but obviously partially complete as the day progresses."
+						"description": "Returns net delegator rewards (post on-chain validator commission) by epoch\n\n## Request\n\n\\* `network` is `polkadot` _(Required)_  \n\\* `chain_id` is `mainnet` _(Required)_  \n\\* `accounts` takes in an array of stash accounts addresses _(Required)_  \n\\* `start` and `end` are era numbers, both inclusive. _(Required)_\n\n## Response\n\nThe response is broken down between `meta` and `data`\n\n##### `meta`\n\n\\* `network` is the same as in the request  \n\\* `period_unit` is the unit of the `period` field under `data`\n\n##### `data`\n\nis an array of objects - one for each era - containing:\n\n\\* `validator` returns the validator that distributed the rewards  \n\\* `period` is the era number  \n\\* `timestamp` is the timestamp of the end of the era  \n\\* `rewards` is an array of objects with four components: `numeric` , `exp` and `currency`. The formula to compute the final rewards in the `currency` unit is `numeric x 10^-exp`(`text` is the string version of this)\n\n## Limitations\n\n\\* The API returns rewards for Figment validators only  \n\\* Data is available approximatively an hour after the end of the day or epoch. When requesting daily for the current day, the data will be available but obviously partially complete as the day progresses."
 					},
 					"response": [
 						{
@@ -886,25 +886,25 @@
 	],
 	"variable": [
 		{
-			"id": "10c8bb90-5ee8-4e4c-b809-bd5a6cef8d28",
+			"id": "ffcbae28-adb9-40cc-b892-60a201470424",
 			"key": "ETH_REWARDS_HOST",
 			"value": "eth-rewards.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "b0395686-7e5d-4f9a-85d1-44b185afaee0",
+			"id": "e39c0dba-ce64-4981-ba11-83f6f3982392",
 			"key": "SOL_REWARDS_HOST",
 			"value": "solana-rewards.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "52509625-0afa-4211-82b8-1ac4a21bd8fe",
+			"id": "517ac997-9b75-4281-bf25-1e5030f0649e",
 			"key": "DOT_REWARDS_HOST",
 			"value": "polkadot-rewards.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "cb0f7c0a-e437-40cb-801b-efc5fc04b75a",
+			"id": "1e174e5b-3cb3-4cdf-8713-3e62da0d6575",
 			"key": "NEAR_REWARDS_HOST",
 			"value": "near-rewards.datahub.figment.io",
 			"type": "string"
