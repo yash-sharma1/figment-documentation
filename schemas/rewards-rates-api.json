@@ -214,7 +214,7 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "0eeec73a-c0d1-46a8-ab57-b35dc622f20e",
+				"id": "99d67f9d-f765-4271-8661-f3d9bc9e4ba7",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -224,7 +224,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "8f8f5e28-74c8-465c-8687-d9c53e2d7623",
+				"id": "5bec967b-e613-4531-bcfd-c23e1b9281c4",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -234,14 +234,14 @@
 	],
 	"variable": [
 		{
-			"id": "23648c18-d353-494a-b61f-c081f93de628",
+			"id": "948e826b-2c3d-4e55-9259-2e2a00e8beb8",
 			"key": "ETH_REWARDS_HOST",
 			"value": "eth-rewards.datahub.figment.io"
 		},
 		{
-			"id": "7e4923a0-e9ea-4fee-8399-13f3670c1543",
+			"id": "ff941426-252c-4c39-89a3-eddc6bfec6f4",
 			"key": "SOL_REWARDS_HOST",
-			"value": "eth-rewards.datahub.figment.io"
+			"value": "solana-rewards.datahub.figment.io"
 		}
 	]
 }
