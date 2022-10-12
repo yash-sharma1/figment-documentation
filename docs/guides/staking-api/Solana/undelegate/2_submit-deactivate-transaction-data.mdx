@@ -1,36 +1,118 @@
 ---
 title: Submit Deactivate Transaction Data
+slug: /guides/staking-api/solana/undelegate/submit-deactivate-transaction-data
 ---
 
-After collecting the required Inputs, we `PUT /api/v1/flows/[:flow_id]/next` to move on to the next step. In this case, the inputs JSON would be:
+After collecting the required inputs, send a PUT request to `/api/v1/flows/[:flow_id]/next` to proceed to the next step.
 
-```json
-{
-  "funding_account_pubkey": "[:funding_account_pubkey]",
-  "stake_account_pubkey": "[:stake_account_pubkey]"
-}
-```
+### Parameters
 
-```text
-curl -X PUT https://solana-slate.datahub.figment.io/api/v1/flows/[:flow_id]/next \
--H "Authorization: API-KEY" \
--H "Content-Type: application/json" \
+- `name` &mdash; `string` Name of the action to execute (required).
+- `inputs` &mdash; `array`
+  - `funding_account_pubkey` &mdash; `string` The address of the stake account to be deactivated (required).
+  - `stake_account_pubkey` &mdash; `string` The address of the wallet with signing rights to deactivate the stake account (required).
+
+#### Sample cURL Request
+
+```bash {5-9}
+curl -X PUT 'https://solana-slate.datahub.figment.io/api/v1/flows/b5fb1f97-bd9d-4207-bfe1-112d33309820/next' \
+-H 'Content-Type: application/json' \
+-H 'Authorization: <api_key>' \
 -d '{
-  "name": "create_deactivate_tx",
-  "inputs": {
-    "funding_account_pubkey": "[:funding_account_pubkey]",
-    "stake_account_pubkey": "[:stake_account_pubkey]"
+	"name": "create_deactivate_tx",
+	"inputs": {
+		"stake_account_pubkey": "FNN2VwQy5TMkVegyXyejbwKL5S1SvRkmYHkoK62FReo7",
+		"funding_account_pubkey": "Hk5voGB7wh9HtXTeszbW7AFm3A4B94xWkXeeaqTYspqy"
   }
 }'
 ```
 
-Note that in this response you can find the unsigned, serialized transaction in `data[create_deactivate_transaction][raw]`.
+### Response
 
-Again we see two possible `actions` :
+:::info note
 
-- `refresh_deactivate_tx` — If you need to get a fresh version of the transaction Payload (i.e., the recent blockhash has expired).
-- `sign_deactivate_tx` — Submit a signed transaction Payload ready to be broadcast to the network.
+You can find the unsigned, serialized transaction in `data[create_deactivate_transaction][raw]`.
 
-We will choose `sign_deactivate_tx`, which indicates one Input to collect:
+:::
 
-- `transaction_payload` (**required**) — The signed transaction Payload ready to be broadcast to the network.
+There are two possible `actions`:
+
+- `refresh_deactivate_tx` &mdash; If you need to get a fresh version of the transaction payload (i.e., the recent blockhash has expired).
+- `sign_deactivate_tx` &mdash; Submit a signed transaction payload ready to be broadcast to the network.
+
+We will choose `sign_deactivate_tx`, which indicates one input to collect:
+
+- `transaction_payload` &mdash; The signed transaction payload ready to be broadcast to the network.
+
+#### Sample Response
+
+```json {2-3,6,10,19}
+{
+  "id": "b5fb1f97-bd9d-4207-bfe1-112d33309820",
+  "state": "deactivate_tx_signature",
+  "actions": [
+    {
+      "name": "refresh_deactivate_tx",
+      "inputs": []
+    },
+    {
+      "name": "sign_deactivate_tx",
+      "inputs": [
+        {
+          "name": "transaction_payload",
+          "display": "Transaction Payload",
+          "description": "",
+          "type": "signed_transaction",
+          "validations": [],
+          "signers": ["Hk5voGB7wh9HtXTeszbW7AFm3A4B94xWkXeeaqTYspqy"],
+          "transaction_payload": "010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000204f8c4898641adada76eeeee2de872d931bc58bfb2ce5b79734e32808cc501a534d57c96845584709596f8fb1e1be584d1be3e8f258cdba157ab5a3cb8397e712606a1d8179137542a983437bdfe2a7ab2557f535c8a78722b68a49dc00000000006a7d51718c774c928566398691d5eb68b5eb8a39b4b6d5c73555b21000000005afa09621c026f3bee396f91e3f6f77ab70c6b9160e7fa8ee35a89f82611914e0102030103000405000000"
+        },
+        {
+          "name": "signatures",
+          "display": "Signatures",
+          "description": "",
+          "type": "array_of_signatures",
+          "validations": [],
+          "signers": ["Hk5voGB7wh9HtXTeszbW7AFm3A4B94xWkXeeaqTYspqy"],
+          "transaction_payload": "010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000204f8c4898641adada76eeeee2de872d931bc58bfb2ce5b79734e32808cc501a534d57c96845584709596f8fb1e1be584d1be3e8f258cdba157ab5a3cb8397e712606a1d8179137542a983437bdfe2a7ab2557f535c8a78722b68a49dc00000000006a7d51718c774c928566398691d5eb68b5eb8a39b4b6d5c73555b21000000005afa09621c026f3bee396f91e3f6f77ab70c6b9160e7fa8ee35a89f82611914e0102030103000405000000",
+          "signing_payload": "01000204f8c4898641adada76eeeee2de872d931bc58bfb2ce5b79734e32808cc501a534d57c96845584709596f8fb1e1be584d1be3e8f258cdba157ab5a3cb8397e712606a1d8179137542a983437bdfe2a7ab2557f535c8a78722b68a49dc00000000006a7d51718c774c928566398691d5eb68b5eb8a39b4b6d5c73555b21000000005afa09621c026f3bee396f91e3f6f77ab70c6b9160e7fa8ee35a89f82611914e0102030103000405000000"
+        }
+      ]
+    }
+  ],
+  "data": {
+    "funding_account_pubkey": "Hk5voGB7wh9HtXTeszbW7AFm3A4B94xWkXeeaqTYspqy",
+    "stake_account_pubkey": "FNN2VwQy5TMkVegyXyejbwKL5S1SvRkmYHkoK62FReo7",
+    "stake_authority_pubkey": "Hk5voGB7wh9HtXTeszbW7AFm3A4B94xWkXeeaqTYspqy",
+    "withdraw_authority_pubkey": "Hk5voGB7wh9HtXTeszbW7AFm3A4B94xWkXeeaqTYspqy",
+    "deactivate_transaction": {
+      "raw": "010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000204f8c4898641adada76eeeee2de872d931bc58bfb2ce5b79734e32808cc501a534d57c96845584709596f8fb1e1be584d1be3e8f258cdba157ab5a3cb8397e712606a1d8179137542a983437bdfe2a7ab2557f535c8a78722b68a49dc00000000006a7d51718c774c928566398691d5eb68b5eb8a39b4b6d5c73555b21000000005afa09621c026f3bee396f91e3f6f77ab70c6b9160e7fa8ee35a89f82611914e0102030103000405000000",
+      "signing_payload": "01000204f8c4898641adada76eeeee2de872d931bc58bfb2ce5b79734e32808cc501a534d57c96845584709596f8fb1e1be584d1be3e8f258cdba157ab5a3cb8397e712606a1d8179137542a983437bdfe2a7ab2557f535c8a78722b68a49dc00000000006a7d51718c774c928566398691d5eb68b5eb8a39b4b6d5c73555b21000000005afa09621c026f3bee396f91e3f6f77ab70c6b9160e7fa8ee35a89f82611914e0102030103000405000000",
+      "signed": null,
+      "hash": null,
+      "status": null,
+      "error": null,
+      "signatures": null
+    },
+    "delegation_active_amount": null,
+    "delegation_inactive_amount": null,
+    "delegation_status": null,
+    "delegation_status_error": null,
+    "recipient_pubkey": null,
+    "withdraw_amount": null,
+    "withdraw_transaction": null,
+    "withdraw_transaction_funding_account_pubkey": null,
+    "estimated_inactive_at": null
+  },
+  "network_code": "solana",
+  "chain_code": "testnet",
+  "created_at": "2022-10-05T17:37:31.573Z",
+  "updated_at": "2022-10-05T17:43:53.209Z"
+}
+```
+
+:::info note
+
+Make sure to save the `transaction_payload` from this response, which is what needs to be signed in the next step.
+
+:::

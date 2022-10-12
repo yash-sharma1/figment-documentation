@@ -1,11 +1,28 @@
 ---
-title: Sign the Delegate Transaction
+title: Sign Delegate Transaction
+slug: /guides/staking-api/polygon/delegate/sign-delegate-transaction
 ---
 
-This part is all on you! Get that transaction signed and move on to the next step.
+Sign the delegate transaction using the `transaction_payload` you received in response to submitting the delegate data.
+
+Locate the `transaction_payload` in the response from the previous step. It will look something like this -
+
+```json
+"transaction_payload": "0x02f86d05018459682f0084598840d28303d2e19415ed57ca28cbebb58d9c6c62f570046bc089bc6680b8446ab150710000000000000000000000000000000000000000000000000de0b6b3a76400000000000000000000000000000000000000000000000000000000000000000000c0"
+```
 
 :::caution important
 
-At this point, it is best practice to always confirm the details of the transaction, which can be done using our provided [NPM package](https://www.npmjs.com/package/@figmentio/slate) or CLI tool.
+Always confirm the details of the transaction before signing the payload.
+
+Figment has a tool for signing and decoding Staking API payloads, see the guide [Signing Transactions with Figment's NPM Package](/guides/staking-api/figment-signing-transactions) to continue.
 
 :::
+
+Transactions can also be signed using [web3.js](https://web3js.readthedocs.io/en/v1.2.11/web3-eth-accounts.html#signtransaction) or [Fireblocks](/guides/staking-api/fireblocks-signing-transactions).
+
+Sign the transaction and move on to the next step. A signed transaction payload for Polygon will look something like this:
+
+```text
+0x02f8b005018459682f0084598840d28303d2e19415ed57ca28cbebb58d9c6c62f570046bc089bc6680b8446ab150710000000000000000000000000000000000000000000000000de0b6b3a76400000000000000000000000000000000000000000000000000000000000000000000c001a0424cfeb222e8dda2207cfa4e3958e252c9d5b79af6ca9e356a9f736a1de31483a03d0d9acc2cec2dca7569bdfaaf29e598a61faf7ce488de658e9af354c0d21c1b
+```

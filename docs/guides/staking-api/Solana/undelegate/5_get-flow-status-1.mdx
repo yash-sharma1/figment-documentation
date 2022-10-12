@@ -1,0 +1,122 @@
+---
+title: Get Flow Status
+slug: /guides/staking-api/solana/undelegate/get-flow-status-deactivated
+---
+
+To refresh the transaction state and get the latest status of the existing flow we'll be using the flow id from the previous step.
+
+### Parameters
+
+- None
+
+#### Sample cURL Request
+
+```bash
+curl -X GET 'https://solana-slate.datahub.figment.io/api/v1/flows/b5fb1f97-bd9d-4207-bfe1-112d33309820' \
+-H 'Authorization: <api_key>'
+```
+
+### Response
+
+- `state` &mdash; `string` The current state of the flow.
+
+:::info note
+
+The `state` field will update from `cool_down` to `deactivated`.
+
+:::
+
+#### Sample Response
+
+```json {3}
+{
+  "id": "b5fb1f97-bd9d-4207-bfe1-112d33309820",
+  "state": "deactivated",
+  "actions": [
+    {
+      "name": "create_withdraw_tx",
+      "inputs": [
+        {
+          "name": "amount",
+          "display": "Amount",
+          "description": "",
+          "type": "decimal",
+          "validations": [
+            {
+              "type": "presence",
+              "options": {}
+            },
+            {
+              "type": "numericality",
+              "options": {
+                "greater_than": 0
+              }
+            },
+            {
+              "type": "precision",
+              "options": {
+                "max": 9
+              }
+            },
+            {
+              "type": "numericality",
+              "options": {
+                "on": "with_on_chain_validations",
+                "less_than_or_equal_to": "1.5",
+                "if": "stake_account_balance"
+              }
+            }
+          ]
+        },
+        {
+          "name": "funding_account_pubkey",
+          "display": "Funding Account Pubkey",
+          "description": "",
+          "type": "string",
+          "validations": []
+        },
+        {
+          "name": "recipient_pubkey",
+          "display": "Recipient Pubkey",
+          "description": "",
+          "type": "string",
+          "validations": [
+            {
+              "type": "presence",
+              "options": {}
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "data": {
+    "funding_account_pubkey": "Hk5voGB7wh9HtXTeszbW7AFm3A4B94xWkXeeaqTYspqy",
+    "stake_account_pubkey": "FNN2VwQy5TMkVegyXyejbwKL5S1SvRkmYHkoK62FReo7",
+    "stake_authority_pubkey": "Hk5voGB7wh9HtXTeszbW7AFm3A4B94xWkXeeaqTYspqy",
+    "withdraw_authority_pubkey": "Hk5voGB7wh9HtXTeszbW7AFm3A4B94xWkXeeaqTYspqy",
+    "deactivate_transaction": {
+      "raw": "010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000204f8c4898641adada76eeeee2de872d931bc58bfb2ce5b79734e32808cc501a534d57c96845584709596f8fb1e1be584d1be3e8f258cdba157ab5a3cb8397e712606a1d8179137542a983437bdfe2a7ab2557f535c8a78722b68a49dc00000000006a7d51718c774c928566398691d5eb68b5eb8a39b4b6d5c73555b2100000000f40a7dc3da4a140d6dbc49cb6652f7a652896f98d99b63bb63027fbb5b6c26000102030103000405000000",
+      "signing_payload": "01000204f8c4898641adada76eeeee2de872d931bc58bfb2ce5b79734e32808cc501a534d57c96845584709596f8fb1e1be584d1be3e8f258cdba157ab5a3cb8397e712606a1d8179137542a983437bdfe2a7ab2557f535c8a78722b68a49dc00000000006a7d51718c774c928566398691d5eb68b5eb8a39b4b6d5c73555b2100000000f40a7dc3da4a140d6dbc49cb6652f7a652896f98d99b63bb63027fbb5b6c26000102030103000405000000",
+      "signed": "0152c4cb266798cfe2cf1f542d6713ccc365e6052282301aee4292217326c0dff37ca07a39df7930b96570242b5b7405ce2bde1f748f75c1b9e833829cbdc9520b01000204f8c4898641adada76eeeee2de872d931bc58bfb2ce5b79734e32808cc501a534d57c96845584709596f8fb1e1be584d1be3e8f258cdba157ab5a3cb8397e712606a1d8179137542a983437bdfe2a7ab2557f535c8a78722b68a49dc00000000006a7d51718c774c928566398691d5eb68b5eb8a39b4b6d5c73555b2100000000f40a7dc3da4a140d6dbc49cb6652f7a652896f98d99b63bb63027fbb5b6c26000102030103000405000000",
+      "hash": "2eynfQTjXTcJSTmsVSgPKNefVLKG6sJEx1ArhtWqieHXuQ3UnYHvcvaArscjsaCz2WBuSTTALNf6rAaCj9iN8Ddk",
+      "status": "confirmed",
+      "error": null,
+      "signatures": []
+    },
+    "delegation_active_amount": "0.0",
+    "delegation_inactive_amount": "1497717120.0",
+    "delegation_status": "inactive",
+    "delegation_status_error": null,
+    "recipient_pubkey": null,
+    "withdraw_amount": null,
+    "withdraw_transaction": null,
+    "withdraw_transaction_funding_account_pubkey": null,
+    "estimated_inactive_at": "2022-10-07T14:30:23.200Z"
+  },
+  "network_code": "solana",
+  "chain_code": "testnet",
+  "created_at": "2022-10-05T17:37:31.573Z",
+  "updated_at": "2022-10-07T16:52:11.390Z"
+}
+```

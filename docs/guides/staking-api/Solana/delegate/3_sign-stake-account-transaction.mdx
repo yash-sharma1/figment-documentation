@@ -1,11 +1,36 @@
 ---
-title: Sign the Stake Account Transaction
+title: Sign Create Stake Account Transaction
+slug: /guides/staking-api/solana/delegate/sign-create-stake-account-transaction
 ---
 
-This part is all on you! Get that transaction signed and move on to the next step.
+:::warning important
+
+The transaction signing window on Solana is sometimes less than 90 seconds.
+
+If you encounter an error `"Transaction simulation failed: Blockhash not found"`, refresh the transaction, sign the payload again and submit it in < 90 seconds.
+
+:::
+
+Sign the create stake account transaction using the `transaction_payload` you received in response to submitting the stake account data.
+
+Locate the `transaction_payload` in the response from the previous step. It will look something like this -
+
+```json
+"transaction_payload": "0200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000faab033b72345bd8287d37a0b3c190d8837ef55d5444bc2d95b537827e1922f475a383aa0a27f0ee522a6701ee2e3166543265e7dc590fadedd48008c4bc540d02000305f8c4898641adada76eeeee2de872d931bc58bfb2ce5b79734e32808cc501a534d57c96845584709596f8fb1e1be584d1be3e8f258cdba157ab5a3cb8397e7126000000000000000000000000000000000000000000000000000000000000000006a1d8179137542a983437bdfe2a7ab2557f535c8a78722b68a49dc00000000006a7d517192c5c51218cc94c3d4af17f58daee089ba1fd44e3dbd98a00000000cd99d35b1c9672eadb9deb72ca282469e921bb31b409d4c811d8f227cf184e8702020200013400000000002f685900000000c80000000000000006a1d8179137542a983437bdfe2a7ab2557f535c8a78722b68a49dc000000000030201047400000000f8c4898641adada76eeeee2de872d931bc58bfb2ce5b79734e32808cc501a534f8c4898641adada76eeeee2de872d931bc58bfb2ce5b79734e32808cc501a53400000000000000000000000000000000f8c4898641adada76eeeee2de872d931bc58bfb2ce5b79734e32808cc501a534"
+```
 
 :::caution important
 
-At this point, it is best practice to always confirm the details of the transaction, which can be done using our provided [NPM package](https://www.npmjs.com/package/@figmentio/slate) or CLI tool.
+Always confirm the details of the transaction before signing the payload.
+
+Figment has a tool for signing and decoding Staking API payloads, see the guide [Signing Transactions with Figment's NPM Package](/guides/staking-api/figment-signing-transactions) to continue.
 
 :::
+
+Transactions can also be signed using the [Solana CLI](https://docs.solana.com/offline-signing#:~:text=Typically%20a%20Solana%20transaction%20must,the%20extra%20time%20you%20need) or [Fireblocks](/guides/staking-api/fireblocks-signing-transactions).
+
+Sign the transaction and move on to the next step. A signed transaction payload for Polygon will look something like this:
+
+```text
+02534e6edc69334009871bfa180fe3ce8113805a75a67dde1d686e6fabca6712278503bae3d56b54a2781ca9df08c28ca2106b92d8a62182eecbd3d35710014e0cfaab033b72345bd8287d37a0b3c190d8837ef55d5444bc2d95b537827e1922f475a383aa0a27f0ee522a6701ee2e3166543265e7dc590fadedd48008c4bc540d02000305f8c4898641adada76eeeee2de872d931bc58bfb2ce5b79734e32808cc501a534d57c96845584709596f8fb1e1be584d1be3e8f258cdba157ab5a3cb8397e7126000000000000000000000000000000000000000000000000000000000000000006a1d8179137542a983437bdfe2a7ab2557f535c8a78722b68a49dc00000000006a7d517192c5c51218cc94c3d4af17f58daee089ba1fd44e3dbd98a00000000cd99d35b1c9672eadb9deb72ca282469e921bb31b409d4c811d8f227cf184e8702020200013400000000002f685900000000c80000000000000006a1d8179137542a983437bdfe2a7ab2557f535c8a78722b68a49dc000000000030201047400000000f8c4898641adada76eeeee2de872d931bc58bfb2ce5b79734e32808cc501a534f8c4898641adada76eeeee2de872d931bc58bfb2ce5b79734e32808cc501a53400000000000000000000000000000000f8c4898641adada76eeeee2de872d931bc58bfb2ce5b79734e32808cc501a534
+```

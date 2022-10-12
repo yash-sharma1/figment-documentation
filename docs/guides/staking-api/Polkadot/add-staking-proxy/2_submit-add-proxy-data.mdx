@@ -1,34 +1,103 @@
 ---
-title: Submit the Add Proxy Data
+title: Submit Add Proxy Data
+slug: /guides/staking-api/polkadot/add-staking-proxy/submit-proxy-data
 ---
 
-After collecting the required Inputs, we `PUT /api/v1/flows/[:flow_id]/next` to move on to the next step. In this case, the inputs JSON would be:
+After collecting the required inputs, send a PUT request to `/api/v1/flows/[:flow_id]/next` to proceed to the next step.
 
-```json
-{
-  "proxy_account_address": "[:proxy_account_address]",
-  "proxied_account_address": "[:proxied_account_address]"
-}
-```
+### Parameters
 
-```text
-curl -X PUT https://polkadot-slate.datahub.figment.io/api/v1/flows/[:flow_id]/next \
--H "Authorization: API-KEY" \
--H "Content-Type: application/json" \
+- `name` &mdash; `string` Name of the action to execute (required).
+- `inputs` &mdash; `array`
+  - `proxy_account_address` &mdash; `string` The address to which you want to add proxy rights (required).
+  - `proxied_account_address` &mdash; `string` The account whose rights will be proxied (required).
+
+### Sample cURL Request
+
+```bash {5-9}
+curl -X PUT 'https://polkadot-slate.datahub.figment.io/api/v1/flows/0bfcc570-57d1-4cb6-a78b-55e16710d76e/next' \
+-H 'Content-Type: application/json' \
+-H 'Authorization: <api_key>' \
 -d '{
-  "name": "create_add_proxy_tx",
+	"name": "create_add_proxy_tx",
   "inputs": {
-    "proxy_account_address": "[:proxy_account_address]",
-    "proxied_account_address": "[:proxied_account_address]",
+    "proxy_account_address": "5CDAhYcPZEx6sN4oGbQMRFZzo5Eur6NTN4nd85SADgMdnxAS",
+    "proxied_account_address": "5FWX3P9gwg4FKAyDHp1UYJp4ZZYPPoQZHfWRcN74HwBgXifh"
   }
 }'
 ```
 
-We see two possible `actions`:
+### Response
 
-- `refresh_add_proxy_tx` — If you need to get a fresh version of the transaction Payload (i.e., the nonce has increased).
-- `sign_add_proxy_tx` — Submit a signed transaction Payload ready to be broadcast to the network.
+The response indicates two possible `actions` :
+
+- `refresh_add_proxy_tx` &mdash; If you need to get a fresh version of the transaction Payload (i.e., the nonce has increased).
+- `sign_add_proxy_tx` &mdash; Submit a signed transaction Payload ready to be broadcast to the network.
 
 We will choose `sign_add_proxy_tx`, which indicates one Input to collect:
 
-- `transaction_payload` (**required**) — The signed transaction Payload ready to be broadcast to the network.
+- `transaction_payload` &mdash; The signed transaction Payload ready to be broadcast to the network.
+
+#### Sample Response
+
+```json {3,6,10,19}
+{
+  "id": "0bfcc570-57d1-4cb6-a78b-55e16710d76e",
+  "state": "add_proxy_tx_signature",
+  "actions": [
+    {
+      "name": "refresh_add_proxy_tx",
+      "inputs": []
+    },
+    {
+      "name": "sign_add_proxy_tx",
+      "inputs": [
+        {
+          "name": "transaction_payload",
+          "display": "Transaction Payload",
+          "description": "",
+          "type": "signed_transaction",
+          "validations": [],
+          "signers": ["5FWX3P9gwg4FKAyDHp1UYJp4ZZYPPoQZHfWRcN74HwBgXifh"],
+          "transaction_payload": "0x0004000000000000000000e143f23803ac50e8f6f8e62695d1ce9e4e1d68aa36c1cd2cfd15340213f3423ee143f23803ac50e8f6f8e62695d1ce9e4e1d68aa36c1cd2cfd15340213f3423e00000000000000000000000000000000000000000000000000000000000000000000000000160100067452e7828dafb80be77c82b33a3781e71de7d04096aad144cfac000a7fd24002000000001c77657374656e64387061726974792d77657374656e64020000004a2400000000000040df6acb689907609b0400000037e397fc7c91f5e40100000040fe3ad401f8959a06000000d2bc9897eed08f1503000000f78b278be53f454c02000000af2c0297a23e6d3d0200000049eaaf1b548a0cb00100000091d5df18b0d2cf5801000000ed99c5acb25eedf503000000cbca25e39f14238702000000687ad44ad37f03c201000000ab3c0572291feb8b01000000bc9d89904f5b923f0100000037c8bb1350a9a2a801000000f3ff14d5ab5270590100000017a6bc0d0062aeb3010000000c0000000004"
+        },
+        {
+          "name": "signatures",
+          "display": "Signatures",
+          "description": "",
+          "type": "array_of_signatures",
+          "validations": [],
+          "signers": ["5FWX3P9gwg4FKAyDHp1UYJp4ZZYPPoQZHfWRcN74HwBgXifh"],
+          "transaction_payload": "0x0004000000000000000000e143f23803ac50e8f6f8e62695d1ce9e4e1d68aa36c1cd2cfd15340213f3423ee143f23803ac50e8f6f8e62695d1ce9e4e1d68aa36c1cd2cfd15340213f3423e00000000000000000000000000000000000000000000000000000000000000000000000000160100067452e7828dafb80be77c82b33a3781e71de7d04096aad144cfac000a7fd24002000000001c77657374656e64387061726974792d77657374656e64020000004a2400000000000040df6acb689907609b0400000037e397fc7c91f5e40100000040fe3ad401f8959a06000000d2bc9897eed08f1503000000f78b278be53f454c02000000af2c0297a23e6d3d0200000049eaaf1b548a0cb00100000091d5df18b0d2cf5801000000ed99c5acb25eedf503000000cbca25e39f14238702000000687ad44ad37f03c201000000ab3c0572291feb8b01000000bc9d89904f5b923f0100000037c8bb1350a9a2a801000000f3ff14d5ab5270590100000017a6bc0d0062aeb3010000000c0000000004",
+          "signing_payload": "0x160100067452e7828dafb80be77c82b33a3781e71de7d04096aad144cfac000a7fd24002000000000004004a2400000c000000e143f23803ac50e8f6f8e62695d1ce9e4e1d68aa36c1cd2cfd15340213f3423ee143f23803ac50e8f6f8e62695d1ce9e4e1d68aa36c1cd2cfd15340213f3423e"
+        }
+      ]
+    }
+  ],
+  "data": {
+    "proxy_account_address": "5CDAhYcPZEx6sN4oGbQMRFZzo5Eur6NTN4nd85SADgMdnxAS",
+    "proxied_account_address": "5FWX3P9gwg4FKAyDHp1UYJp4ZZYPPoQZHfWRcN74HwBgXifh",
+    "add_proxy_transaction": {
+      "raw": "0x0004000000000000000000e143f23803ac50e8f6f8e62695d1ce9e4e1d68aa36c1cd2cfd15340213f3423ee143f23803ac50e8f6f8e62695d1ce9e4e1d68aa36c1cd2cfd15340213f3423e00000000000000000000000000000000000000000000000000000000000000000000000000160100067452e7828dafb80be77c82b33a3781e71de7d04096aad144cfac000a7fd24002000000001c77657374656e64387061726974792d77657374656e64020000004a2400000000000040df6acb689907609b0400000037e397fc7c91f5e40100000040fe3ad401f8959a06000000d2bc9897eed08f1503000000f78b278be53f454c02000000af2c0297a23e6d3d0200000049eaaf1b548a0cb00100000091d5df18b0d2cf5801000000ed99c5acb25eedf503000000cbca25e39f14238702000000687ad44ad37f03c201000000ab3c0572291feb8b01000000bc9d89904f5b923f0100000037c8bb1350a9a2a801000000f3ff14d5ab5270590100000017a6bc0d0062aeb3010000000c0000000004",
+      "signing_payload": "0x160100067452e7828dafb80be77c82b33a3781e71de7d04096aad144cfac000a7fd24002000000000004004a2400000c000000e143f23803ac50e8f6f8e62695d1ce9e4e1d68aa36c1cd2cfd15340213f3423ee143f23803ac50e8f6f8e62695d1ce9e4e1d68aa36c1cd2cfd15340213f3423e",
+      "signed": null,
+      "hash": null,
+      "status": null,
+      "error": null,
+      "signatures": null,
+      "block_number": null,
+      "proxy": null
+    }
+  },
+  "network_code": "polkadot",
+  "chain_code": "westend",
+  "created_at": "2022-10-06T18:52:18.856Z",
+  "updated_at": "2022-10-06T18:55:01.821Z"
+}
+```
+
+:::info note
+
+Make sure to save the `transaction_payload` from this response, which is what needs to be signed in the next step.
+
+:::

@@ -1,0 +1,60 @@
+---
+title: Get Flow Status
+slug: /guides/staking-api/polkadot/add-staking-proxy/get-flow-status-registered
+---
+
+To refresh the transaction state and get the latest status of the existing flow we'll be using the flow id from the previous step.
+
+### Parameters
+
+- None
+
+#### Sample cURL Request
+
+```bash
+curl -X GET 'https://polkadot-slate.datahub.figment.io/api/v1/flows/0bfcc570-57d1-4cb6-a78b-55e16710d76e' \
+-H 'Authorization: <api_key>'
+```
+
+### Response
+
+- `state` &mdash; `string` The current state of the flow.
+
+:::info note
+
+The `state` field will update from `add_proxy_tx_broadcasting` to `registered`.
+
+:::
+
+#### Sample Response
+
+```json
+{
+  "id": "0bfcc570-57d1-4cb6-a78b-55e16710d76e",
+  "state": "registered",
+  "actions": [],
+  "data": {
+    "proxy_account_address": "5CDAhYcPZEx6sN4oGbQMRFZzo5Eur6NTN4nd85SADgMdnxAS",
+    "proxied_account_address": "5FWX3P9gwg4FKAyDHp1UYJp4ZZYPPoQZHfWRcN74HwBgXifh",
+    "add_proxy_transaction": {
+      "raw": "0x0004000000000000000000e143f23803ac50e8f6f8e62695d1ce9e4e1d68aa36c1cd2cfd15340213f3423ee143f23803ac50e8f6f8e62695d1ce9e4e1d68aa36c1cd2cfd15340213f3423e00000000000000000000000000000000000000000000000000000000000000000000000000160100067452e7828dafb80be77c82b33a3781e71de7d04096aad144cfac000a7fd24002000000001c77657374656e64387061726974792d77657374656e64020000004a2400000000000040df6acb689907609b0400000037e397fc7c91f5e40100000040fe3ad401f8959a06000000d2bc9897eed08f1503000000f78b278be53f454c02000000af2c0297a23e6d3d0200000049eaaf1b548a0cb00100000091d5df18b0d2cf5801000000ed99c5acb25eedf503000000cbca25e39f14238702000000687ad44ad37f03c201000000ab3c0572291feb8b01000000bc9d89904f5b923f0100000037c8bb1350a9a2a801000000f3ff14d5ab5270590100000017a6bc0d0062aeb3010000000c0000000004",
+      "signing_payload": "0x160100067452e7828dafb80be77c82b33a3781e71de7d04096aad144cfac000a7fd24002000000000004004a2400000c000000e143f23803ac50e8f6f8e62695d1ce9e4e1d68aa36c1cd2cfd15340213f3423ee143f23803ac50e8f6f8e62695d1ce9e4e1d68aa36c1cd2cfd15340213f3423e",
+      "signed": "0x390284009864ac6455584af3c38540ec03927eca126342d266d3c9b62e44b41844a3166601665fc2eaae2fa8bdd6b7be7f0aaec5081ed2f45d54910cf6695a5795f329c262331af7f0803768c510a59fd45b7f81f0a01c4c393504a50a790545ec3f99538a000400160100067452e7828dafb80be77c82b33a3781e71de7d04096aad144cfac000a7fd2400200000000",
+      "hash": "0x727ae4e1820aa4d5b7941a551db96da0db2db573d3e866b580d222cf7d5d3b9f",
+      "status": "confirmed",
+      "error": null,
+      "signatures": [],
+      "block_number": 12776194,
+      "proxy": null
+    }
+  },
+  "network_code": "polkadot",
+  "chain_code": "westend",
+  "created_at": "2022-10-06T18:52:18.856Z",
+  "updated_at": "2022-10-06T18:58:07.588Z"
+}
+```
+
+### Staking Proxy Flow Complete
+
+Congratulations, you've successfully added a staking proxy and are ready to move to the next step of delegation!

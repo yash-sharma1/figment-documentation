@@ -1,0 +1,135 @@
+---
+title: Create New Staking Account
+slug: /guides/staking-api/solana/delegate/create-new-stake-account
+---
+
+import Link from "@docusaurus/Link";
+
+After creating the new staking flow, we need to submit the staking account data to create a new staking account and move forward. After collecting the required inputs as mentioned below, send a PUT request to `/api/v1/flows/[:flow_id]/next` to proceed to the next step.
+If you already have a staking account, proceed to the step <Link to="/guides/staking-api/Solana/delegate/submit-staking-account-data">Submit Staking Account Data</Link>
+
+### Parameters
+
+- `name` &mdash; `string` Name of the action to execute (required).
+- `inputs` &mdash; `array`
+  - `funding_account_pubkey` &mdash; The main wallet your SOL will be originating from (required).
+  - `stake_authority_pubkey` &mdash; Grants authority to sign certain staking relation transactions to the provided address. Defaults to `funding_account_pubkey` (optional).
+  - `withdraw_authority_pubkey` &mdash; Grants authority to sign certain withdrawal related transactions to the provided address. Defaults to `funding_account_pubkey` (optional).
+  - `amount` &mdash; The amount of SOL to be sent to the Stake Account. This field should be in full SOL, not in lamports (i.e. if you want to stake 5 SOL, return `"amount": 5.0`). The Staking API will translate the amount to lamports so you do not have to worry about the conversion factor (required).
+
+#### Sample cURL Request
+
+```bash {5-9}
+curl -X PUT 'https://solana-slate.datahub.figment.io/api/v1/flows/436bd609-48fc-46c4-bde8-1aa921ff2ef5/next' \
+-H 'Content-Type: application/json' \
+-H 'Authorization: <api_key>' \
+-d '{
+    "name": "create_new_stake_account",
+    "inputs": {
+        "funding_account_pubkey": "Hk5voGB7wh9HtXTeszbW7AFm3A4B94xWkXeeaqTYspqy",
+        "amount": 1.5
+    }
+}'
+```
+
+### Response
+
+:::info note
+
+You can find the unsigned, serialized transaction in `data[create_stake_account_transaction][raw]`.
+
+:::
+
+The response indicates two possible `actions` :
+
+- `refresh_stake_account_tx` &mdash; If you need to get a fresh version of the transaction payload (i.e., the recent blockhash has expired).
+- `sign_stake_account_tx` &mdash; Submit a signed transaction payload ready to be broadcast to the network.
+
+We will choose `sign_stake_account_tx`, which indicates one input to collect:
+
+- `transaction_payload` &mdash; The signed transaction Payload ready to be broadcast to the network.
+
+#### Sample cURL Request To Refresh Transaction Payload
+
+```bash {5}
+curl -X PUT 'https://solana-slate.datahub.figment.io/api/v1/flows/3512562a-6384-40b4-ab45-36a8d3804d6c/next' \
+-H 'Content-Type: application/json' \
+-H 'Authorization: <api_key>' \
+-d '{
+    "name": "refresh_stake_account_tx"
+}'
+```
+
+- `sign_stake_account_tx` &mdash; Submit a signed transaction Payload ready to be broadcast to the network.
+
+We will choose `sign_stake_account_tx`, which indicates one Input to collect:
+
+- `transaction_payload` &mdash; The signed transaction Payload ready to be broadcast to the network.
+
+#### Sample Response
+
+```json {19}
+{
+  "id": "436bd609-48fc-46c4-bde8-1aa921ff2ef5",
+  "state": "stake_account_tx_signature",
+  "actions": [
+    {
+      "name": "refresh_stake_account_tx",
+      "inputs": []
+    },
+    {
+      "name": "sign_stake_account_tx",
+      "inputs": [
+        {
+          "name": "transaction_payload",
+          "display": "Transaction Payload",
+          "description": "",
+          "type": "signed_transaction",
+          "validations": [],
+          "signers": ["Hk5voGB7wh9HtXTeszbW7AFm3A4B94xWkXeeaqTYspqy"],
+          "transaction_payload": "02000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000008b030fb575b6d9d091db2ac1161d793911f5574839423822f13c455e3a33aa5a97cfff762cdb0a2e10c06f1a6387bb86efd684db78d2f68436d8279311f6520102000305f8c4898641adada76eeeee2de872d931bc58bfb2ce5b79734e32808cc501a53488ea970ce324ce4d667cef3d53e42b1cb3f5c1d7972cd2cd7a4d2cca7039a119000000000000000000000000000000000000000000000000000000000000000006a1d8179137542a983437bdfe2a7ab2557f535c8a78722b68a49dc00000000006a7d517192c5c51218cc94c3d4af17f58daee089ba1fd44e3dbd98a000000005f9516d7cd57707b7fd5866ad4f995ae395e78a5ede138b9a2af9258359a6a6f02020200013400000000002f685900000000c80000000000000006a1d8179137542a983437bdfe2a7ab2557f535c8a78722b68a49dc000000000030201047400000000f8c4898641adada76eeeee2de872d931bc58bfb2ce5b79734e32808cc501a534f8c4898641adada76eeeee2de872d931bc58bfb2ce5b79734e32808cc501a53400000000000000000000000000000000f8c4898641adada76eeeee2de872d931bc58bfb2ce5b79734e32808cc501a534"
+        },
+        {
+          "name": "signatures",
+          "display": "Signatures",
+          "description": "",
+          "type": "array_of_signatures",
+          "validations": [],
+          "signers": ["Hk5voGB7wh9HtXTeszbW7AFm3A4B94xWkXeeaqTYspqy"],
+          "transaction_payload": "02000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000008b030fb575b6d9d091db2ac1161d793911f5574839423822f13c455e3a33aa5a97cfff762cdb0a2e10c06f1a6387bb86efd684db78d2f68436d8279311f6520102000305f8c4898641adada76eeeee2de872d931bc58bfb2ce5b79734e32808cc501a53488ea970ce324ce4d667cef3d53e42b1cb3f5c1d7972cd2cd7a4d2cca7039a119000000000000000000000000000000000000000000000000000000000000000006a1d8179137542a983437bdfe2a7ab2557f535c8a78722b68a49dc00000000006a7d517192c5c51218cc94c3d4af17f58daee089ba1fd44e3dbd98a000000005f9516d7cd57707b7fd5866ad4f995ae395e78a5ede138b9a2af9258359a6a6f02020200013400000000002f685900000000c80000000000000006a1d8179137542a983437bdfe2a7ab2557f535c8a78722b68a49dc000000000030201047400000000f8c4898641adada76eeeee2de872d931bc58bfb2ce5b79734e32808cc501a534f8c4898641adada76eeeee2de872d931bc58bfb2ce5b79734e32808cc501a53400000000000000000000000000000000f8c4898641adada76eeeee2de872d931bc58bfb2ce5b79734e32808cc501a534",
+          "signing_payload": "02000305f8c4898641adada76eeeee2de872d931bc58bfb2ce5b79734e32808cc501a53488ea970ce324ce4d667cef3d53e42b1cb3f5c1d7972cd2cd7a4d2cca7039a119000000000000000000000000000000000000000000000000000000000000000006a1d8179137542a983437bdfe2a7ab2557f535c8a78722b68a49dc00000000006a7d517192c5c51218cc94c3d4af17f58daee089ba1fd44e3dbd98a000000005f9516d7cd57707b7fd5866ad4f995ae395e78a5ede138b9a2af9258359a6a6f02020200013400000000002f685900000000c80000000000000006a1d8179137542a983437bdfe2a7ab2557f535c8a78722b68a49dc000000000030201047400000000f8c4898641adada76eeeee2de872d931bc58bfb2ce5b79734e32808cc501a534f8c4898641adada76eeeee2de872d931bc58bfb2ce5b79734e32808cc501a53400000000000000000000000000000000f8c4898641adada76eeeee2de872d931bc58bfb2ce5b79734e32808cc501a534"
+        }
+      ]
+    }
+  ],
+  "data": {
+    "stake_account_pubkey": "ADTvLFhaGNfQTjyZQmDM3w2HpDJtYwHa1MkuFdTu8p4x",
+    "create_stake_account_transaction": {
+      "raw": "02000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000008b030fb575b6d9d091db2ac1161d793911f5574839423822f13c455e3a33aa5a97cfff762cdb0a2e10c06f1a6387bb86efd684db78d2f68436d8279311f6520102000305f8c4898641adada76eeeee2de872d931bc58bfb2ce5b79734e32808cc501a53488ea970ce324ce4d667cef3d53e42b1cb3f5c1d7972cd2cd7a4d2cca7039a119000000000000000000000000000000000000000000000000000000000000000006a1d8179137542a983437bdfe2a7ab2557f535c8a78722b68a49dc00000000006a7d517192c5c51218cc94c3d4af17f58daee089ba1fd44e3dbd98a000000005f9516d7cd57707b7fd5866ad4f995ae395e78a5ede138b9a2af9258359a6a6f02020200013400000000002f685900000000c80000000000000006a1d8179137542a983437bdfe2a7ab2557f535c8a78722b68a49dc000000000030201047400000000f8c4898641adada76eeeee2de872d931bc58bfb2ce5b79734e32808cc501a534f8c4898641adada76eeeee2de872d931bc58bfb2ce5b79734e32808cc501a53400000000000000000000000000000000f8c4898641adada76eeeee2de872d931bc58bfb2ce5b79734e32808cc501a534",
+      "signing_payload": "02000305f8c4898641adada76eeeee2de872d931bc58bfb2ce5b79734e32808cc501a53488ea970ce324ce4d667cef3d53e42b1cb3f5c1d7972cd2cd7a4d2cca7039a119000000000000000000000000000000000000000000000000000000000000000006a1d8179137542a983437bdfe2a7ab2557f535c8a78722b68a49dc00000000006a7d517192c5c51218cc94c3d4af17f58daee089ba1fd44e3dbd98a000000005f9516d7cd57707b7fd5866ad4f995ae395e78a5ede138b9a2af9258359a6a6f02020200013400000000002f685900000000c80000000000000006a1d8179137542a983437bdfe2a7ab2557f535c8a78722b68a49dc000000000030201047400000000f8c4898641adada76eeeee2de872d931bc58bfb2ce5b79734e32808cc501a534f8c4898641adada76eeeee2de872d931bc58bfb2ce5b79734e32808cc501a53400000000000000000000000000000000f8c4898641adada76eeeee2de872d931bc58bfb2ce5b79734e32808cc501a534",
+      "signed": null,
+      "hash": null,
+      "status": null,
+      "error": null,
+      "signatures": null
+    },
+    "funding_account_pubkey": "Hk5voGB7wh9HtXTeszbW7AFm3A4B94xWkXeeaqTYspqy",
+    "stake_authority_pubkey": "Hk5voGB7wh9HtXTeszbW7AFm3A4B94xWkXeeaqTYspqy",
+    "withdraw_authority_pubkey": "Hk5voGB7wh9HtXTeszbW7AFm3A4B94xWkXeeaqTYspqy",
+    "amount": "1.5",
+    "validator_address": null,
+    "delegate_transaction": null,
+    "delegation_active_amount": null,
+    "delegation_inactive_amount": null,
+    "delegation_status": null,
+    "delegation_status_error": null,
+    "estimated_active_at": null
+  },
+  "network_code": "solana",
+  "chain_code": "testnet",
+  "created_at": "2022-10-04T19:05:21.115Z",
+  "updated_at": "2022-10-04T19:07:18.073Z"
+}
+```
+
+The `transaction_payload` you've received in the response make sure to copy/save it because you'll require it in the next step to sign the transaction.

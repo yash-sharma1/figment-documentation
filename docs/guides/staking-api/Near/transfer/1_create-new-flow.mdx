@@ -1,39 +1,38 @@
 ---
-title: Create New Flow
+title: Create New Transfer Flow
+slug: /guides/staking-api/near/transfer/create-new-flow
 ---
 
-To initiate the transfer process with Staking API firstly we need to create a new Flow with `POST /api/v1/flows`.
+To initiate the transfer process, create a new flow with a POST request to `/api/v1/flows`.
 
 ### Parameters
 
-- `flow` - `object`
-  - `network_code` - `string` Network this flow operates on (ex. near) (required)
-  - `chain_code` - `string` Chain this flow operates on (ex. mainnet) (required)
-  - `operation` - `string` The operation to perform (ex. staking) (required)
-  - `version` - `string` API version to use (ex. v1) (optional)
+- `flow` &mdash; `object`
+  - `network_code` &mdash; `string` Network this flow operates on (ex. `near`) (required).
+  - `chain_code` &mdash; `string` Chain this flow operates on (ex. `testnet`) (required).
+  - `operation` &mdash; `string` The operation to perform (ex. `transfer`) (required).
+  - `version` &mdash; `string` API version to use (ex. `v1`) (optional).
 
 #### Sample cURL Request
 
-```json
+```bash {5-10}
 curl -X POST 'https://near-slate.datahub.figment.io/api/v1/flows' \
---header 'Content-Type: application/json' \
---header 'Authorization: <api_key>' \
---data '{
-  // highlight-start
+-H 'Content-Type: application/json' \
+-H 'Authorization: <api_key>' \
+-d '{
   "flow": {
     "network_code": "near",
     "chain_code": "testnet",
     "operation": "transfer",
     "version": "v1"
   }
-  // highlight-end
 }'
 ```
 
 ### Response
 
-- `id` - `string` ID of the newly created flow.
-- `state` - `string` The current state of the flow.
+- `id` &mdash; `string` ID of the newly created flow.
+- `state` &mdash; `string` The current state of the flow.
 
 The response indicates one possible action:
 
@@ -41,14 +40,14 @@ The response indicates one possible action:
 
 The `create_transfer_tx` action indicates seven fields for data collection:
 
-- `from_account_address` (required) — The address which NEAR will be transferred from
-- `from_account_pubkey` (required) — The account that will sign the transaction
-- `to_account_address` (required) — The address which NEAR will be transferred to
-- `amount` (required) — The amount of NEAR to be transferred
+- `from_account_address` &mdash; The address from which NEAR will be transferred.
+- `from_account_pubkey` &mdash; The account that will sign the transaction.
+- `to_account_address` &mdash; The address to which NEAR will be transferred.
+- `amount` &mdash; The amount of NEAR to be transferred.
 
 #### Sample Response
 
-```json
+```json {2-3,6,9,21,33,45}
 {
   "id": "5f0962d5-fba0-453c-bf35-0dad79624b59",
   "state": "initialized",

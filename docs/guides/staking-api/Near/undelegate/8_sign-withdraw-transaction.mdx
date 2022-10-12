@@ -1,31 +1,28 @@
 ---
 title: Sign the Withdraw Transaction
+slug: /guides/staking-api/near/undelegate/sign-withdraw-transaction
 ---
 
-After successfully submiting the withdraw data, in reasponse you have received the `transaction_payload`, you'll be using this `transaction_payload` to sign the transaction for withdraw.
+Sign thewithdraw transaction using the `transaction_payload` you received in response to submitting the withdraw data.
 
-`transaction_payload` look something like this -
+Locate the `transaction_payload` in the response from the previous step. It will look something like this -
 
-```bash
+```json
 "transaction_payload": "12000000736c6174652d64656d6f2e746573746e657400415d57cdf21d28e35e0cfa864e895c18b4bc6a711642d38eb6762af81ec1cf3907cc1038fc5700001600000030316e6f64652e706f6f6c2e663836333937332e6d3084edd29289b3a590be582317bb0061016a8df058b7c29a0278f5b82f86c283010100000002080000007769746864726177270000007b22616d6f756e74223a223235303030303030303030303030303030303030303030303030227d00e057eb481b000000000000000000000000000000000000"
 ```
 
-You can sign transaction using the [NearJS API](https://docs.near.org/integrator/create-transactions#create-sign--send-transaction), [Fireblocks](/guides/staking-api/fireblocks-signing-transactions) OR [@figmentio/slate npm package](https://www.npmjs.com/package/@figmentio/slate).
-
-To know how to sign the transaction with [@figmentio/slate npm package](https://www.npmjs.com/package/@figmentio/slate) please check out this guide [HERE](/guides).
-
-Once you sign the transaction successfully you'll get the signed transaction payload in response which you'll need in next step so make sure to copy/save it.
-
-Signed transaction payload will look something like this -
-
-```bash
-12000000736c6174652d64656d6f2e746573746e657400415d57cdf21d28e35e0cfa864e895c18b4bc6a711642d38eb6762af81ec1cf3907cc1038fc5700001600000030316e6f64652e706f6f6c2e663836333937332e6d3084edd29289b3a590be582317bb0061016a8df058b7c29a0278f5b82f86c283010100000002080000007769746864726177270000007b22616d6f756e74223a223235303030303030303030303030303030303030303030303030227d00e057eb481b00000000000000000000000000000000000000235397dfd3f0b7ce06a4fe11395e36ce40d12610eae07dcc1dc1d962b38fa9592cdc22f6c9164b0155967a773c369719f71d76b84185ec13c39381343c63cf0b
-```
-
-This part is all on you! Get that transaction signed and move on to the next step.
-
 :::caution important
 
-At this point, it is best practice to always confirm the details of the transaction, which can be done using our provided [NPM package](https://www.npmjs.com/package/@figmentio/slate) or CLI tool.
+Always confirm the details of the transaction before signing the payload.
+
+Figment has a tool for signing and decoding Staking API payloads, see the guide [Signing Transactions with Figment's NPM Package](/guides/staking-api/figment-signing-transactions) to continue.
 
 :::
+
+Transactions can also be signed using the [NearJS API](https://docs.near.org/integrator/create-transactions#create-sign--send-transaction) or [Fireblocks](/guides/staking-api/fireblocks-signing-transactions).
+
+Sign the transaction and move on to the next step. A signed transaction payload for NEAR will look something like this:
+
+```text
+12000000736c6174652d64656d6f2e746573746e657400415d57cdf21d28e35e0cfa864e895c18b4bc6a711642d38eb6762af81ec1cf3907cc1038fc5700001600000030316e6f64652e706f6f6c2e663836333937332e6d3084edd29289b3a590be582317bb0061016a8df058b7c29a0278f5b82f86c283010100000002080000007769746864726177270000007b22616d6f756e74223a223235303030303030303030303030303030303030303030303030227d00e057eb481b00000000000000000000000000000000000000235397dfd3f0b7ce06a4fe11395e36ce40d12610eae07dcc1dc1d962b38fa9592cdc22f6c9164b0155967a773c369719f71d76b84185ec13c39381343c63cf0b
+```

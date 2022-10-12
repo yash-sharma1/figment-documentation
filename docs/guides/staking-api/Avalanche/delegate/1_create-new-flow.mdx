@@ -1,42 +1,146 @@
 ---
-title: Create New Flow
+title: Create New Delegation Flow
+slug: /guides/staking-api/avalanche/delegate/create-new-flow
 ---
 
-We will create a new Flow with `POST /api/v1/flows`.
+To initiate the staking process, create a new flow with a POST request to `/api/v1/flows`.
 
-The `flow` JSON field for this request will be:
+### Parameters
 
-```json
-{
-  "network_code": "avalanche",
-  "chain_code": "testnet",
-  "operation": "staking",
-  "version": "v1"
-}
-```
+- `flow` &mdash; `object`
+  - `network_code` &mdash; `string` Network this flow operates on (ex. `avalanche`) (required).
+  - `chain_code` &mdash; `string` Chain this flow operates on (ex. `testnet`) (required).
+  - `operation` `string` The operation to perform (ex. `staking`) (required).
+  - `version` &mdash; `string` API version to use (ex. `v1`) (optional).
 
-```text
-curl -X POST https://avalanche-slate.datahub.figment.io/api/v1/flows \
--H "Authorization: API-KEY" \
--H "Content-Type: application/json" \
+#### Sample cURL Request
+
+```bash {5-10}
+curl -X POST 'https://avalanche-slate.datahub.figment.io/api/v1/flows' \
+-H 'Content-Type: application/json' \
+-H 'Authorization: <api_key>' \
 -d '{
-"flow": {
-  "network_code": "avalanche",
-  "chain_code": "testnet",
-  "operation": "staking",
-  "version": "v1"
+  "flow": {
+    "network_code": "avalanche",
+    "chain_code": "testnet",
+    "operation": "staking",
+    "version": "v1"
   }
 }'
 ```
 
+### Response
+
+- `id` &mdash; `string` ID of the newly created flow.
+- `state` &mdash; `string` The current state of the flow.
+
 The response indicates one possible action:
 
-- `create_delegate_tx` - use this action to generate a delegation transaction to stake your NEAR.
+- `create_delegate_tx` &mdash; use this action to generate a delegation transaction to stake your AVAX.
 
 The `create_delegate_tx` action indicates five fields for data collection:
 
-- `validator_address` (**required**) — Figment validator address.
-- `delegator_address` (**required**) — The delegating address.
-- `delegator_pubkey` (**required**) — The public key of the signing account. Must start with `ed25519:`
-- `amount` (**required**) — The amount of NEAR to be delegated.
-- `max_gas` (_optional_) — Adjust if you wish to limit the possible transaction fee.
+- `delegator_address` &mdash; The delegating address, where AVAX is being staked from. This must be a P-chain address.
+- `validator_address` &mdash; Figment's validator address.
+- `amount` &mdash; The amount of AVAX to be delegated.
+- `start_time` &mdash; Optional timestamp for when the delegation will be active.
+- `end_time` &mdash; Optional timestamp for when the delegation will end.
+- `memo` &mdash; A plaintext memo to identify the transaction.
+
+#### Sample Response
+
+```json {2-3,6,9,21,33,57,64,71}
+{
+  "id": "a04dfc7b-03de-413a-9997-531025623d35",
+  "state": "initialized",
+  "actions": [
+    {
+      "name": "create_delegate_tx",
+      "inputs": [
+        {
+          "name": "delegator_address",
+          "display": "Delegator Address",
+          "description": "",
+          "type": "string",
+          "validations": [
+            {
+              "type": "presence",
+              "options": {}
+            }
+          ]
+        },
+        {
+          "name": "validator_address",
+          "display": "Validator Address",
+          "description": "",
+          "type": "string",
+          "validations": [
+            {
+              "type": "presence",
+              "options": {}
+            }
+          ]
+        },
+        {
+          "name": "amount",
+          "display": "Amount",
+          "description": "",
+          "type": "decimal",
+          "validations": [
+            {
+              "type": "presence",
+              "options": {}
+            },
+            {
+              "type": "numericality",
+              "options": {
+                "greater_than": 0
+              }
+            },
+            {
+              "type": "precision",
+              "options": {
+                "max": 9
+              }
+            }
+          ]
+        },
+        {
+          "name": "start_time",
+          "display": "Start Time",
+          "description": "Defaults to 5 minutes from when the transaction is generated",
+          "type": "timestamp",
+          "validations": []
+        },
+        {
+          "name": "end_time",
+          "display": "End Time",
+          "description": "Defaults to the end time of the validator",
+          "type": "timestamp",
+          "validations": []
+        },
+        {
+          "name": "memo",
+          "display": "Memo",
+          "description": "",
+          "type": "string",
+          "validations": []
+        }
+      ]
+    }
+  ],
+  "data": {
+    "delegator_address": null,
+    "validator_address": null,
+    "amount": null,
+    "start_time": null,
+    "end_time": null,
+    "memo": null,
+    "delegate_transaction": null
+  },
+  "network_code": "avalanche",
+  "chain_code": "testnet",
+  "created_at": "2022-10-06T14:27:41.016Z",
+  "updated_at": "2022-10-06T14:27:41.016Z"
+}
+```

@@ -1,30 +1,29 @@
 ---
 title: Submit Delegate Transaction Data
+slug: /guides/staking-api/polygon/delegate/submit-delegate-transaction-data
 ---
 
-Now that the allowance is in place, submit a delegation transaction to delegate the MATIC.
-The previous response indicates two required `inputs`:
+Now that the smart contract allowance is in place, submit a delegation transaction to delegate the MATIC.
 
-```json
-{
-  "gas_limit": "[:gas_limit]",
-  "gas_price": "[:gas_price]"
-}
-```
+### Parameters
 
-```bash title="Example cURL request"
-curl --request PUT \
-  --url https://slate.figment.io/api/v1/flows/[:flow_id]/next \
-  --header 'Authorization: API_KEY' \
-  --header 'Content-Type: application/json' \
-  --data '{
-  "name": "create_delegate_tx",
-  "inputs": {
-    "gas_limit": "[:gas_limit]",
-    "gas_price": "[:gas_price]"
-  }
+- `name` &mdash; `string` Name of the action to execute (required).
+- `inputs` &mdash; `array`
+  - `gas_limit` &mdash; `string` Adjust if you wish to limit the possible transaction fee (optional).
+  - `gas_price` &mdash; `string` Adjust if you wish to limit the possible transaction fee (optional).
+
+#### Sample cURL Request
+
+```bash {5}
+curl -X PUT 'https://eth-slate.datahub.figment.io/api/v1/flows/e6dc662e-f77c-4235-9b28-7141d90c8ab8/next' \
+-H 'Content-Type: application/json' \
+-H 'Authorization: <api_key>' \
+-d '{
+  "name": "create_delegate_tx"
 }'
 ```
+
+### Response
 
 :::info note
 
@@ -34,9 +33,83 @@ In this response you can find the unsigned, serialized transaction in `data[crea
 
 There are two possible `actions`:
 
-- `refresh_delegate_tx` — If you need to get a fresh version of the transaction Payload.
-- `sign_delegate_tx` — Submit a signed transaction Payload ready to be broadcast to the network.
+- `refresh_delegate_tx` &mdash; If you need to get a fresh version of the transaction Payload.
+- `sign_delegate_tx` &mdash; Submit a signed transaction Payload ready to be broadcast to the network.
 
-We will chose `sign_delegate_tx``, so note that it indicates one Input to collect:
+We will chose `sign_delegate_tx`, so note that it indicates one Input to collect:
 
-- `transaction_payload` (**required**) — the signed transaction payload ready to be broadcast to the network.
+- `transaction_payload` &mdash; the signed transaction payload ready to be broadcast to the network.
+
+#### Sample Response
+
+```json {6,10,19}
+{
+  "id": "e6dc662e-f77c-4235-9b28-7141d90c8ab8",
+  "state": "delegate_tx_signature",
+  "actions": [
+    {
+      "name": "refresh_delegate_tx",
+      "inputs": []
+    },
+    {
+      "name": "sign_delegate_tx",
+      "inputs": [
+        {
+          "name": "transaction_payload",
+          "display": "Transaction Payload",
+          "description": "",
+          "type": "signed_transaction",
+          "validations": [],
+          "signers": ["0x542138451d0953Aa082dE659d2A1ca1e5EF452Bf"],
+          "transaction_payload": "0x02f86d05018459682f0084598840d28303d2e19415ed57ca28cbebb58d9c6c62f570046bc089bc6680b8446ab150710000000000000000000000000000000000000000000000000de0b6b3a76400000000000000000000000000000000000000000000000000000000000000000000c0"
+        },
+        {
+          "name": "signatures",
+          "display": "Signatures",
+          "description": "",
+          "type": "array_of_signatures",
+          "validations": [],
+          "signers": ["0x542138451d0953Aa082dE659d2A1ca1e5EF452Bf"],
+          "transaction_payload": "0x02f86d05018459682f0084598840d28303d2e19415ed57ca28cbebb58d9c6c62f570046bc089bc6680b8446ab150710000000000000000000000000000000000000000000000000de0b6b3a76400000000000000000000000000000000000000000000000000000000000000000000c0",
+          "signing_payload": null
+        }
+      ]
+    }
+  ],
+  "data": {
+    "delegator_address": "0x542138451d0953Aa082dE659d2A1ca1e5EF452Bf",
+    "validator_address": "0x15ED57Ca28cbebb58d9c6C62F570046BC089bC66",
+    "amount": "1.0",
+    "minimum_shares_to_mint": 0,
+    "max_slippage_percentage": null,
+    "exchange_rate": null,
+    "exchange_rate_precision": null,
+    "allowance_transaction": {
+      "raw": "0x02f86c05808459682f00845994f6fa82b58394499d11e0b6eac7c0593d8fb292dcbbf815fb29ae80b844095ea7b300000000000000000000000000200ea4ee292e253e6ca07dba5edc07c8aa37a3ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffc0",
+      "signing_payload": null,
+      "signed": "0x02f8af05808459682f00845994f6fa82b58394499d11e0b6eac7c0593d8fb292dcbbf815fb29ae80b844095ea7b300000000000000000000000000200ea4ee292e253e6ca07dba5edc07c8aa37a3ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffc001a08019145182b704f15aca2a95242e25abfe9382dd74d0c15e88087978beb476b1a05b4c37b70e316c91e6a19738208e7eae6b79dd2c8ef62aa229f76548490c26b7",
+      "hash": "0xb71295568a41375014cb4de57ffbdb489f9d81283b3d6647029424d72c176f6d",
+      "status": null,
+      "error": null,
+      "signatures": [],
+      "gas_limit": null,
+      "gas_price": null
+    },
+    "delegate_transaction": {
+      "raw": "0x02f86d05018459682f0084598840d28303d2e19415ed57ca28cbebb58d9c6c62f570046bc089bc6680b8446ab150710000000000000000000000000000000000000000000000000de0b6b3a76400000000000000000000000000000000000000000000000000000000000000000000c0",
+      "signing_payload": null,
+      "signed": null,
+      "hash": null,
+      "status": null,
+      "error": null,
+      "signatures": null,
+      "gas_limit": null,
+      "gas_price": null
+    }
+  },
+  "network_code": "polygon",
+  "chain_code": "testnet",
+  "created_at": "2022-10-06T22:57:14.491Z",
+  "updated_at": "2022-10-07T17:17:36.976Z"
+}
+```

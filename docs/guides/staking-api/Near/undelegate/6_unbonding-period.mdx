@@ -1,20 +1,231 @@
 ---
 title: Unbonding Period
+slug: /guides/staking-api/near/undelegate/unbonding-period
 ---
 
-NEAR has an unbonding period of approximately 2-4 days. During this time, the un-delegated NEAR will be illiquid and will not earn rewards.
+NEAR has an unbonding period of approximately 2-4 days. During this time, the undelegated NEAR will be illiquid and will not earn rewards.
 
-You can find the expected unbonding completion time in the response you received in Step 4 after submitting the signed un-delegate transaction.
+You can find the expected unbonding completion time in the response you received in the previous step, after submitting the signed undelegate transaction.
 
-Once the unbonding period ends, the un-delegated NEAR will be added to the available for withdrawal balance of the delegating address.
+Once the unbonding period ends, the undelegated NEAR will be added to the available for withdrawal balance of the delegating address.
 
 You will then need to submit a withdrawal transaction to bring those NEAR into the delegating address' liquid balance.
 
 The `create_withdraw_tx` action indicates five fields for data collection:
 
-- `delegator_address` — The delegator address
-- `delegator_pubkey` — The pubkey of the signing account
-- `validator_address` — Validator address from which LUNA will be un-delegated
-- `withdraw_amount` — the amount of NEAR to be withdrawn
-- `withdraw_maximum` — Set to true if you wish to withdraw the full available balance without needing to know the exact available balance.
-- `max_gas` — Adjust if you wish to limit the possible transaction fee
+- `delegator_address` &mdash; The delegator address.
+- `delegator_pubkey` &mdash; The pubkey of the signing account.
+- `validator_address` &mdash; The validator address from which NEAR will be undelegated.
+- `withdraw_amount` &mdash; The amount of NEAR to be withdrawn.
+- `withdraw_maximum` &mdash; Set this to true if you wish to withdraw the full available balance without needing to know the exact available balance.
+- `max_gas` &mdash; Adjust if you wish to limit the possible transaction fee.
+
+```json {2-3,6,9,21,33,51,85,92}
+{
+  "id": "96237daf-973a-456b-ae07-a5e16eeffbd1",
+  "state": "initialized",
+  "actions": [
+    {
+      "name": "create_withdraw_tx",
+      "inputs": [
+        {
+          "name": "delegator_address",
+          "display": "Delegator Address",
+          "description": "",
+          "type": "string",
+          "validations": [
+            {
+              "type": "presence",
+              "options": {}
+            }
+          ]
+        },
+        {
+          "name": "delegator_pubkey",
+          "display": "Delegator Pubkey",
+          "description": "",
+          "type": "string",
+          "validations": [
+            {
+              "type": "presence",
+              "options": {}
+            }
+          ]
+        },
+        {
+          "name": "validator_address",
+          "display": "Validator Address",
+          "description": "",
+          "type": "string",
+          "validations": [
+            {
+              "type": "presence",
+              "options": {}
+            },
+            {
+              "type": "is_validator",
+              "options": {
+                "on": "with_on_chain_validations"
+              }
+            }
+          ]
+        },
+        {
+          "name": "withdraw_amount",
+          "display": "Withdraw Amount",
+          "description": "",
+          "type": "decimal",
+          "validations": [
+            {
+              "type": "presence",
+              "options": {
+                "unless": "withdraw_maximum"
+              }
+            },
+            {
+              "type": "numericality",
+              "options": {
+                "unless": "withdraw_maximum",
+                "greater_than": 0
+              }
+            },
+            {
+              "type": "withdrawal_availability",
+              "options": {
+                "on": "with_on_chain_validations"
+              }
+            },
+            {
+              "type": "withdrawal_balance",
+              "options": {
+                "unless": true,
+                "on": "with_on_chain_validations"
+              }
+            }
+          ]
+        },
+        {
+          "name": "withdraw_maximum",
+          "display": "Withdraw Maximum",
+          "description": "",
+          "type": "boolean",
+          "validations": []
+        },
+        {
+          "name": "max_gas",
+          "display": "Max Gas",
+          "description": "",
+          "type": "decimal",
+          "validations": []
+        }
+      ]
+    },
+    {
+      "name": "create_undelegate_tx",
+      "inputs": [
+        {
+          "name": "delegator_address",
+          "display": "Delegator Address",
+          "description": "",
+          "type": "string",
+          "validations": [
+            {
+              "type": "presence",
+              "options": {}
+            }
+          ]
+        },
+        {
+          "name": "delegator_pubkey",
+          "display": "Delegator Pubkey",
+          "description": "",
+          "type": "string",
+          "validations": [
+            {
+              "type": "presence",
+              "options": {}
+            }
+          ]
+        },
+        {
+          "name": "validator_address",
+          "display": "Validator Address",
+          "description": "",
+          "type": "string",
+          "validations": [
+            {
+              "type": "presence",
+              "options": {}
+            },
+            {
+              "type": "is_validator",
+              "options": {
+                "on": "with_on_chain_validations"
+              }
+            }
+          ]
+        },
+        {
+          "name": "undelegate_amount",
+          "display": "Undelegate Amount",
+          "description": "",
+          "type": "decimal",
+          "validations": [
+            {
+              "type": "presence",
+              "options": {
+                "unless": "undelegate_maximum"
+              }
+            },
+            {
+              "type": "numericality",
+              "options": {
+                "unless": "undelegate_maximum",
+                "greater_than": 0
+              }
+            },
+            {
+              "type": "staked_balance",
+              "options": {
+                "unless": true,
+                "on": "with_on_chain_validations"
+              }
+            }
+          ]
+        },
+        {
+          "name": "undelegate_maximum",
+          "display": "Undelegate Maximum",
+          "description": "",
+          "type": "boolean",
+          "validations": []
+        },
+        {
+          "name": "max_gas",
+          "display": "Max Gas",
+          "description": "",
+          "type": "decimal",
+          "validations": []
+        }
+      ]
+    }
+  ],
+  "data": {
+    "delegator_address": null,
+    "delegator_pubkey": null,
+    "validator_address": null,
+    "max_gas": null,
+    "undelegate_amount": null,
+    "undelegate_maximum": null,
+    "undelegate_transaction": null,
+    "estimated_inactive_at": null,
+    "withdraw_amount": null,
+    "withdraw_maximum": null,
+    "withdraw_transaction": null
+  },
+  "network_code": "near",
+  "chain_code": "testnet",
+  "created_at": "2022-09-26T16:15:50.379Z",
+  "updated_at": "2022-09-26T16:15:50.379Z"
+}
+```

@@ -644,7 +644,7 @@ You can send a `PUT` request to update details for an existing webhook endpoint.
 curl -X PUT 'https://eth-slate.datahub.figment.io/api/v1/webhook_endpoints/15' \
 -H 'Authorization: API-KEY' \
 -H 'Content-Type: application/json' \
---data-raw '{
+--data '{
     "webhook_endpoint": {
         // highlight-next-line
         "target_url": "https://example.com/my/new/endpoint",

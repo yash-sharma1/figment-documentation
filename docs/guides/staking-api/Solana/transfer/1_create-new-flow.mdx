@@ -1,47 +1,134 @@
 ---
-title: Create a New Flow
+title: Create New Transfer Flow
+slug: /guides/staking-api/solana/transfer/create-new-flow
 ---
 
-We will create a new Flow with `POST /api/v1/flows`.
+To initiate the transfer process with Staking API firstly we need to create a new Flow with `POST /api/v1/flows`.
 
-The `flow` JSON field for this request will be:
+### Parameters
 
-```json
-{
-  "network_code": "solana",
-  "chain_code": "devnet",
-  "operation": "transfer",
-  "version": "v1"
-}
-```
+- `flow` &mdash; `object`
+  - `network_code` &mdash; `string` Network this flow operates on (ex. `solana`) (required).
+  - `chain_code` &mdash; `string` Chain this flow operates on (ex. `mainnet` , `testnet`) (required).
+  - `operation` `string` The operation to perform (ex. `transfer`) (required).
+  - `version` &mdash; `string` API version to use (ex. `v1`) (optional).
 
-```text
-curl -X POST https://solana-slate.datahub.figment.io/api/v1/flows \
--H "Authorization: API-KEY" \
--H "Content-Type: application/json" \
+#### Sample cURL Request
+
+```bash {5-10}
+curl -X POST 'https://solana-slate.datahub.figment.io/api/v1/flows' \
+-H 'Content-Type: application/json' \
+-H 'Authorization: <api_key>' \
 -d '{
   "flow": {
     "network_code": "solana",
-    "chain_code": "devnet",
+    "chain_code": "testnet",
     "operation": "transfer",
     "version": "v1"
   }
 }'
 ```
 
-The response indicates one possible action:
+### Response
 
-- `create_transfer_tx` - use this action to generate a deposit transaction to stake your ETH.
+- `id` &mdash; `string` ID of the newly created flow.
+- `state` &mdash; `string` The current state of the flow.
+
+The response indicates one possible `action`:
+
+- `create_transfer_tx` &mdash; Use this action to generate a transfer transaction to move SOL between accounts.
 
 The `create_transfer_tx` action indicates four fields for data collection:
 
-1. `funding_account_pubkey` (_optional_) - pubkey of the wallet which will pay the transaction fee.
-2. `from_account_pubkey` (**required**) - main wallet your SOL will be originating from.
-3. `to_account_pubkey` (**required**) - the withdrawal address for the given validator.
-4. `amount` (**required**) — The amount of SOL to be transferred to the account. This field should be in full SOL, not in lamports (ie. if you want to transfer 5 SOL, return `"amount": 5.0`). The Staking API will translate the amount to lamports so you do not have to worry about the conversion factor.
+- `funding_account_pubkey` &mdash; The public key of the wallet which will pay the transaction fee.
+- `from_account_pubkey` &mdash; The wallet that SOL will be originating from.
+- `to_account_pubkey` &mdash; The withdrawal address for the given validator.
+- `amount` &mdash; The amount of SOL to be transferred to the account. This field should be in full SOL, not in lamports (ie. if you want to transfer 5 SOL, return `"amount": 5.0`). The Staking API will translate the amount to lamports so you do not have to worry about the conversion factor.
+
+#### Sample Response
+
+```json {2-3,6}
+{
+  "id": "abeb265c-9037-4a33-963e-b064d3ca81fe",
+  "state": "initialized",
+  "actions": [
+    {
+      "name": "create_transfer_tx",
+      "inputs": [
+        {
+          "name": "funding_account_pubkey",
+          "display": "Funding Account Pubkey",
+          "description": "",
+          "type": "string",
+          "validations": []
+        },
+        {
+          "name": "from_account_pubkey",
+          "display": "From Account Pubkey",
+          "description": "",
+          "type": "string",
+          "validations": [
+            {
+              "type": "presence",
+              "options": {}
+            }
+          ]
+        },
+        {
+          "name": "to_account_pubkey",
+          "display": "To Account Pubkey",
+          "description": "",
+          "type": "string",
+          "validations": [
+            {
+              "type": "presence",
+              "options": {}
+            }
+          ]
+        },
+        {
+          "name": "amount",
+          "display": "Amount",
+          "description": "",
+          "type": "decimal",
+          "validations": [
+            {
+              "type": "presence",
+              "options": {}
+            },
+            {
+              "type": "numericality",
+              "options": {
+                "greater_than": 0
+              }
+            },
+            {
+              "type": "precision",
+              "options": {
+                "max": 9
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "data": {
+    "from_account_pubkey": null,
+    "to_account_pubkey": null,
+    "amount": null,
+    "funding_account_pubkey": null,
+    "transfer_transaction": null
+  },
+  "network_code": "solana",
+  "chain_code": "testnet",
+  "created_at": "2022-10-04T17:13:57.539Z",
+  "updated_at": "2022-10-04T17:13:57.539Z"
+}
+```
 
 :::info
 
-You can read more about lamports here: https://docs.solana.com/terminology#lamport
+Learn more about lamports here: https://docs.solana.com/terminology#lamport
 
 :::
