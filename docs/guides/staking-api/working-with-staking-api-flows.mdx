@@ -37,27 +37,9 @@ The Staking API has two endpoints for starting and working through a flow:
 
 For each individual operation you want to complete, hit the first endpoint once to create the flow and the second endpoint multiple times until the flow is completed.
 
-| Network codes | Chain codes                | Operations                                                      |
-| :------------ | :------------------------- | :-------------------------------------------------------------- |
-| `avalanche`   | `mainnet`, `testnet`       | `staking`, **\*\***                                             |
-| `ethereum`    | `mainnet`, `goerli-prater` | `staking`                                                       |
-| `near`        | `mainnet`, `testnet`       | `staking`, `unstaking`, `transfer`                              |
-| `polkadot`    | `mainnet`, `westend`       | `add_proxy`, `remove_proxy`, `staking`, `unstaking`, `transfer` |
-| `solana`      | `mainnet`, `devnet`        | `staking`, `unstaking`, `transfer`                              |
-
-<!-- TODO: Add tabs component -->
-
 <Tabs><TabItem value="avax" label="Avalanche" default>
 
-:::info note
-
-**\*\*** There is no undelegate option on Avalanche.
-
-Tokens unlock automatically at the end time specified during the delegation process.
-
-:::
-
-Chain codes:
+Network codes:
 
 - `mainnet`
 - `testnet`
@@ -66,13 +48,66 @@ Operations:
 
 - `staking`
 
-</TabItem><TabItem value="eth" label="Ethereum" >
+:::info note
 
-</TabItem><TabItem value="near" label="NEAR" >
+There is no undelegate option on Avalanche.
+
+Tokens unlock automatically at the end time specified during the delegation process.
+
+:::
+
+</TabItem><TabItem value="eth" label="Ethereum">
+
+Network codes:
+
+- `mainnet`
+- `goerli-prater`
+
+Operations:
+
+- `staking`
+
+</TabItem><TabItem value="near" label="NEAR">
+
+Network codes:
+
+- `mainnet`
+- `testnet`
+
+Operations:
+
+- `staking`
+- `unstaking`
+- `transfer`
 
 </TabItem><TabItem value="dot" label="Polkadot">
 
+Network codes:
+
+- `mainnet`
+- `westend`
+
+Operations:
+
+- `staking`
+- `unstaking`
+- `add_proxy`
+- `remove_proxy`
+- `transfer`
+
 </TabItem><TabItem value="sol" label="Solana">
+
+Network codes:
+
+- `mainnet`
+- `devnet`
+- `testnet`
+
+Operations:
+
+- `staking`
+- `unstaking`
+- `transfer`
 
 </TabItem></Tabs>
 
