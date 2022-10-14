@@ -1,33 +1,80 @@
 ---
 title: Submit a Signed Chill Transaction for Broadcast
+slug: /guides/staking-api/polkadot/undelegate/submit-signed-chill-transaction
 ---
 
-After signing the transaction, you will `PUT /api/v1/flows/[:flow_id]/next` and the Staking API will manage broadcasting the transaction to the Polkadot network.
+After signing the transaction, send a PUT request to `/api/v1/flows/[:flow_id]/next` and the Staking API will manage broadcasting the transaction to the Polkadot network.
 
-At this step, the `inputs` JSON will be:
+### Parameters
 
-```json title="inputs"
-{
-  "transaction_payload": "[:signed_transaction_payload]"
-}
-```
+- `name` &mdash; `string` Name of the action to execute (required).
+- `inputs` &mdash; `object`
+  - `validator_addresses` &mdash; `array` An array containing the address(es) of the validator(s) to which the DOT will be delegated (required).
 
-```text title="Example curl request"
-curl --request PUT \
-  --url https://polkadot-slate.datahub.figment.io/api/v1/flows/[:flow_id]/next \
-  --header 'Authorization: API-KEY' \
-  --header 'Content-Type: application/json' \
-  --data '{
+#### Sample cURL Request
+
+```bash {5-8}
+curl -X PUT 'https://polkadot-slate.datahub.figment.io/api/v1/flows/86d4a5d4-1c75-4c6a-926d-ab930e57f504/next' \
+-H 'Content-Type: application/json' \
+-H 'Authorization: <api_key>' \
+-d '{
   "name": "sign_chill_tx",
   "inputs": {
-    "transaction_payload": "[:signed_transaction_payload]"
+    "transaction_payload": "0x290284009864ac6455584af3c38540ec03927eca126342d266d3c9b62e44b41844a3166601ee8b719a3b17e67a5918ccd7552ec57bfa9f2b1e94ef04121434f1fc10fb413df73dd29b931bb91612e87f6c9c3abaa2bfbb2d6e1a987c08e55d1dcf4edfd78500000006050400f268995cc38974ce0686df1364875f26f2c32b246ddc18835512c3f9969f5836"
   }
 }'
 ```
 
-With the signed transaction provided, Staking API will broadcast it to the network. As the transaction progresses towards confirmation, the returned state will be `chill_tx_broadcasting`.
+### Response
+
+With the signed transaction provided, Staking API will broadcast it to the network. As the transaction progresses towards confirmation, the returned `state` will be:
+
+- `chill_tx_broadcasting` - The chill transaction has been broadcast and is awaiting confirmation.
 
 Upon transaction finalization, the chill will be complete and you can move on to one of the two next steps:
 
-- `complete` — use this action if you are done and do not want to unbond
-- `create_unbond_tx` — use this action if you want to continue without unbonding
+- `complete` &mdash; Use this action if you are done and do not want to unbond.
+- `create_unbond_tx` &mdash; Use this action if you want to continue with unbonding.
+
+#### Sample Response
+
+```json
+{
+  "id": "86d4a5d4-1c75-4c6a-926d-ab930e57f504",
+  "state": "chill_tx_broadcasting",
+  "actions": [
+    {
+      "name": "wait",
+      "estimated_state_change_at": "2022-10-06T16:20:07.210Z",
+      "inputs": []
+    }
+  ],
+  "data": {
+    "controller_account_address": "5GNhcVwpjND83kk6uqMeCjXNUnTSdz84SFyJmd3NmZe4uvrC",
+    "controller_proxy_account_address": null,
+    "stash_account_address": "5GQmooiNwLwjXnsNp3woVDD3xhkHzcifVVAmdWcb6FaRVA4L",
+    "amount": "1.0",
+    "maximum": true,
+    "chill_transaction": null,
+    "estimated_chilled_at": null,
+    "unbond_transaction": {
+      "raw": "0x0018000000000000000000e143f23803ac50e8f6f8e62695d1ce9e4e1d68aa36c1cd2cfd15340213f3423ee143f23803ac50e8f6f8e62695d1ce9e4e1d68aa36c1cd2cfd15340213f3423e000000000000000000000000000000000000000000000000000000000000000000000000000602070010a5d4e81c77657374656e64387061726974792d77657374656e64020000004a2400000000000040df6acb689907609b0400000037e397fc7c91f5e40100000040fe3ad401f8959a06000000d2bc9897eed08f1503000000f78b278be53f454c02000000af2c0297a23e6d3d0200000049eaaf1b548a0cb00100000091d5df18b0d2cf5801000000ed99c5acb25eedf503000000cbca25e39f14238702000000687ad44ad37f03c201000000ab3c0572291feb8b01000000bc9d89904f5b923f0100000037c8bb1350a9a2a801000000f3ff14d5ab5270590100000017a6bc0d0062aeb3010000000c0000000004",
+      "signing_payload": "0x0602070010a5d4e80018004a2400000c000000e143f23803ac50e8f6f8e62695d1ce9e4e1d68aa36c1cd2cfd15340213f3423ee143f23803ac50e8f6f8e62695d1ce9e4e1d68aa36c1cd2cfd15340213f3423e",
+      "signed": "0xb9018400beaa875b14abaeae2d1a55193ba6f175aa846b7e624dce1514fbf043638aa85801ac450cfe75472d098ead17ad661c282f65fabd0547359ced7118c3962b1aba5b6a23f2cd84aa3f09df44811a0ae9cf144be73aec333105e2f18bcdfd00a1e9840018000602070010a5d4e8",
+      "hash": "0x4b788d1d7071855be8fbfd70158dd1f750f367365c0330d494d0a0f5c0568fc0",
+      "status": null,
+      "error": null,
+      "signatures": [],
+      "block_number": 12774608,
+      "proxy": false
+    },
+    "unbonding_era": null,
+    "estimated_unbonded_at": null,
+    "withdraw_transaction": null
+  },
+  "network_code": "polkadot",
+  "chain_code": "westend",
+  "created_at": "2022-10-06T16:15:36.383Z",
+  "updated_at": "2022-10-06T16:19:07.199Z"
+}
+```

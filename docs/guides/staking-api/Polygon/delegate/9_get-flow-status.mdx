@@ -1,0 +1,76 @@
+---
+title: Get Flow Status
+slug: /guides/staking-api/polygon/delegate/get-flow-status-completed
+---
+
+To refresh the transaction state and get the latest status of the existing flow we'll be using the flow ID from the previous step.
+
+### Parameters
+
+- None
+
+#### Sample cURL Request
+
+```bash
+curl -X GET 'https://polkadot-slate.datahub.figment.io/api/v1/flows/e6dc662e-f77c-4235-9b28-7141d90c8ab8' \
+-H 'Authorization: <api_key>'
+```
+
+### Response
+
+- `state` &mdash; `string` The current state of the flow.
+
+:::info note
+
+The `state` field will update from `delegate_tx_broadcasting` to `completed`.
+
+:::
+
+#### Sample Response
+
+```json {3}
+{
+  "id": "e6dc662e-f77c-4235-9b28-7141d90c8ab8",
+  "state": "completed",
+  "actions": [],
+  "data": {
+    "delegator_address": "0x542138451d0953Aa082dE659d2A1ca1e5EF452Bf",
+    "validator_address": "0x15ED57Ca28cbebb58d9c6C62F570046BC089bC66",
+    "amount": "1.0",
+    "minimum_shares_to_mint": 0,
+    "max_slippage_percentage": null,
+    "exchange_rate": null,
+    "exchange_rate_precision": null,
+    "allowance_transaction": {
+      "raw": "0x02f86c05808459682f00845994f6fa82b58394499d11e0b6eac7c0593d8fb292dcbbf815fb29ae80b844095ea7b300000000000000000000000000200ea4ee292e253e6ca07dba5edc07c8aa37a3ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffc0",
+      "signing_payload": null,
+      "signed": "0x02f8af05808459682f00845994f6fa82b58394499d11e0b6eac7c0593d8fb292dcbbf815fb29ae80b844095ea7b300000000000000000000000000200ea4ee292e253e6ca07dba5edc07c8aa37a3ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffc001a08019145182b704f15aca2a95242e25abfe9382dd74d0c15e88087978beb476b1a05b4c37b70e316c91e6a19738208e7eae6b79dd2c8ef62aa229f76548490c26b7",
+      "hash": "0xb71295568a41375014cb4de57ffbdb489f9d81283b3d6647029424d72c176f6d",
+      "status": null,
+      "error": null,
+      "signatures": [],
+      "gas_limit": null,
+      "gas_price": null
+    },
+    "delegate_transaction": {
+      "raw": "0x02f86d05018459682f0084598840d28303d2e19415ed57ca28cbebb58d9c6c62f570046bc089bc6680b8446ab150710000000000000000000000000000000000000000000000000de0b6b3a76400000000000000000000000000000000000000000000000000000000000000000000c0",
+      "signing_payload": null,
+      "signed": "0x02f8b005018459682f0084598840d28303d2e19415ed57ca28cbebb58d9c6c62f570046bc089bc6680b8446ab150710000000000000000000000000000000000000000000000000de0b6b3a76400000000000000000000000000000000000000000000000000000000000000000000c001a0424cfeb222e8dda2207cfa4e3958e252c9d5b79af6ca9e356a9f736a1de31483a03d0d9acc2cec2dca7569bdfaaf29e598a61faf7ce488de658e9af354c0d21c1b",
+      "hash": "0x04e8b654b128adda5a8bd648637ed5b8da157a152c2fe6fb12c99c8aa0811820",
+      "status": "confirmed",
+      "error": null,
+      "signatures": [],
+      "gas_limit": null,
+      "gas_price": null
+    }
+  },
+  "network_code": "polygon",
+  "chain_code": "testnet",
+  "created_at": "2022-10-06T22:57:14.491Z",
+  "updated_at": "2022-10-07T17:19:22.345Z"
+}
+```
+
+### Delegation Flow Complete!
+
+Congratulations, your stake is now active and earning rewards!

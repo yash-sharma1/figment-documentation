@@ -1,23 +1,25 @@
 ---
-title: Un-Delegate
+title: Undelegate
+slug: /guides/staking-api/near/undelegate
+sidebar_position: 2
 ---
 
-Un-delegating NEAR is a simple process. We will collect:
+Undelegating NEAR is a simple process. We will collect:
 
-- The delegating address
-- The signing address
-- The validator address to un-delegate from
-- Amount of NEAR to be un-delegated
-- Optionally, an undelegate all flag if you wish to undelegae the full amount without having to check the current balance
-- Optionally, a max gas amount (upper limit of the transaction fee to be paid)
+- The delegating address.
+- The signing address.
+- The validator address to undelegate from.
+- Amount of NEAR to be undelegated.
+- Optionally, a `maximum` boolean if you wish to undelegate the full amount without having to check the current balance.
+- Optionally, a max gas amount (upper limit of the transaction fee to be paid).
 
-Once the un-delegation transaction is confirmed on-chain, the unbonding process will begin immediately.
+Once the undelegation transaction is confirmed on-chain, the unbonding process will begin immediately.
 
 NEAR has an unbonding period of 4 epochs (≈ 48-60h). During this time, the unbonding NEAR will be illiquid and will _not_ earn rewards.
 Upon completion of the unbonding period, the NEAR will be available to be withdrawn.
 
 :::info
 
-If you have a balance waiting to be withdrawn and do not wish to un-delegate more NEAR, you can use the `create_withdraw_tx` action to withdraw from that balance without first unbonding any NEAR.
+If you have a balance waiting to be withdrawn and do not wish to undelegate more NEAR, you can use the `create_withdraw_tx` action to withdraw from that balance without first unbonding any NEAR.
 
 :::

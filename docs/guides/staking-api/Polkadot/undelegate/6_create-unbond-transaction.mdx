@@ -1,29 +1,100 @@
 ---
 title: Create Unbond Transaction
+slug: /guides/staking-api/polkadot/undelegate/create-unbond-transaction
 ---
 
-Now that the account is chilled, submit an unbond transaction to unbond from the stake. Once again, there are no required inputs for this.
+Now that the account is chilled, submit an unbond transaction to unbond from the stake.
+Once again, there are no required inputs for this action.
 
-```json title="inputs"
-{}
-```
+### Parameters
 
-```text title="Example curl request"
-curl --request PUT \
-  --url https://polkadot-slate.datahub.figment.io/api/v1/flows/[:flow_id]/next \
-  --header 'Authorization: API-KEY' \
-  --header 'Content-Type: application/json' \
-  --data '{
+- `name` &mdash; `string` Name of the action to execute (required).
+
+#### Sample cURL Request
+
+```bash {5-6}
+curl -X PUT 'https://polkadot-slate.datahub.figment.io/api/v1/flows/86d4a5d4-1c75-4c6a-926d-ab930e57f504/next' \
+-H 'Content-Type: application/json' \
+-H 'Authorization: <api_key>' \
+-d '{
   "name": "create_unbond_tx",
   "inputs": {}
 }'
 ```
 
+### Response
+
 We see two possible `actions` :
 
-- `refresh_unbond_tx` — If you need to get a fresh version of the transaction Payload (ie. the nonce needs to be updated)
-- `sign_unbond_tx` — Submit a signed transaction Payload ready to be broadcast to the network
+- `refresh_unbond_tx` &mdash; If you need to get a fresh version of the transaction Payload (ie. the nonce needs to be updated)
+- `sign_unbond_tx` &mdash; Submit a signed transaction Payload ready to be broadcast to the network
 
 We will choose `sign_unbond_tx`, which indicates one Input to collect:
 
-- `transaction_payload` (**required**) — The signed transaction Payload ready to be broadcast to the network
+- `transaction_payload` &mdash; The signed transaction payload ready to be broadcast to the network
+
+#### Sample Response
+
+```json {19}
+{
+  "id": "86d4a5d4-1c75-4c6a-926d-ab930e57f504",
+  "state": "unbond_tx_signature",
+  "actions": [
+    {
+      "name": "refresh_unbond_tx",
+      "inputs": []
+    },
+    {
+      "name": "sign_unbond_tx",
+      "inputs": [
+        {
+          "name": "transaction_payload",
+          "display": "Transaction Payload",
+          "description": "",
+          "type": "signed_transaction",
+          "validations": [],
+          "signers": ["5GNhcVwpjND83kk6uqMeCjXNUnTSdz84SFyJmd3NmZe4uvrC"],
+          "transaction_payload": "0x0018000000000000000000e143f23803ac50e8f6f8e62695d1ce9e4e1d68aa36c1cd2cfd15340213f3423ee143f23803ac50e8f6f8e62695d1ce9e4e1d68aa36c1cd2cfd15340213f3423e000000000000000000000000000000000000000000000000000000000000000000000000000602070010a5d4e81c77657374656e64387061726974792d77657374656e64020000004a2400000000000040df6acb689907609b0400000037e397fc7c91f5e40100000040fe3ad401f8959a06000000d2bc9897eed08f1503000000f78b278be53f454c02000000af2c0297a23e6d3d0200000049eaaf1b548a0cb00100000091d5df18b0d2cf5801000000ed99c5acb25eedf503000000cbca25e39f14238702000000687ad44ad37f03c201000000ab3c0572291feb8b01000000bc9d89904f5b923f0100000037c8bb1350a9a2a801000000f3ff14d5ab5270590100000017a6bc0d0062aeb3010000000c0000000004"
+        },
+        {
+          "name": "signatures",
+          "display": "Signatures",
+          "description": "",
+          "type": "array_of_signatures",
+          "validations": [],
+          "signers": ["5GNhcVwpjND83kk6uqMeCjXNUnTSdz84SFyJmd3NmZe4uvrC"],
+          "transaction_payload": "0x0018000000000000000000e143f23803ac50e8f6f8e62695d1ce9e4e1d68aa36c1cd2cfd15340213f3423ee143f23803ac50e8f6f8e62695d1ce9e4e1d68aa36c1cd2cfd15340213f3423e000000000000000000000000000000000000000000000000000000000000000000000000000602070010a5d4e81c77657374656e64387061726974792d77657374656e64020000004a2400000000000040df6acb689907609b0400000037e397fc7c91f5e40100000040fe3ad401f8959a06000000d2bc9897eed08f1503000000f78b278be53f454c02000000af2c0297a23e6d3d0200000049eaaf1b548a0cb00100000091d5df18b0d2cf5801000000ed99c5acb25eedf503000000cbca25e39f14238702000000687ad44ad37f03c201000000ab3c0572291feb8b01000000bc9d89904f5b923f0100000037c8bb1350a9a2a801000000f3ff14d5ab5270590100000017a6bc0d0062aeb3010000000c0000000004",
+          "signing_payload": "0x0602070010a5d4e80018004a2400000c000000e143f23803ac50e8f6f8e62695d1ce9e4e1d68aa36c1cd2cfd15340213f3423ee143f23803ac50e8f6f8e62695d1ce9e4e1d68aa36c1cd2cfd15340213f3423e"
+        }
+      ]
+    }
+  ],
+  "data": {
+    "controller_account_address": "5GNhcVwpjND83kk6uqMeCjXNUnTSdz84SFyJmd3NmZe4uvrC",
+    "controller_proxy_account_address": null,
+    "stash_account_address": "5GQmooiNwLwjXnsNp3woVDD3xhkHzcifVVAmdWcb6FaRVA4L",
+    "amount": "1.0",
+    "maximum": true,
+    "chill_transaction": null,
+    "estimated_chilled_at": null,
+    "unbond_transaction": {
+      "raw": "0x0018000000000000000000e143f23803ac50e8f6f8e62695d1ce9e4e1d68aa36c1cd2cfd15340213f3423ee143f23803ac50e8f6f8e62695d1ce9e4e1d68aa36c1cd2cfd15340213f3423e000000000000000000000000000000000000000000000000000000000000000000000000000602070010a5d4e81c77657374656e64387061726974792d77657374656e64020000004a2400000000000040df6acb689907609b0400000037e397fc7c91f5e40100000040fe3ad401f8959a06000000d2bc9897eed08f1503000000f78b278be53f454c02000000af2c0297a23e6d3d0200000049eaaf1b548a0cb00100000091d5df18b0d2cf5801000000ed99c5acb25eedf503000000cbca25e39f14238702000000687ad44ad37f03c201000000ab3c0572291feb8b01000000bc9d89904f5b923f0100000037c8bb1350a9a2a801000000f3ff14d5ab5270590100000017a6bc0d0062aeb3010000000c0000000004",
+      "signing_payload": "0x0602070010a5d4e80018004a2400000c000000e143f23803ac50e8f6f8e62695d1ce9e4e1d68aa36c1cd2cfd15340213f3423ee143f23803ac50e8f6f8e62695d1ce9e4e1d68aa36c1cd2cfd15340213f3423e",
+      "signed": null,
+      "hash": null,
+      "status": null,
+      "error": null,
+      "signatures": null,
+      "block_number": null,
+      "proxy": false
+    },
+    "unbonding_era": null,
+    "estimated_unbonded_at": null,
+    "withdraw_transaction": null
+  },
+  "network_code": "polkadot",
+  "chain_code": "westend",
+  "created_at": "2022-10-06T16:15:36.383Z",
+  "updated_at": "2022-10-06T16:17:09.540Z"
+}
+```

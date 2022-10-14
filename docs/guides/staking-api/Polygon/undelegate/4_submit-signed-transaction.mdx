@@ -1,33 +1,78 @@
 ---
-title: Submit a Signed Transaction for Broadcast
+title: Submit a Signed Unbonding Transaction for Broadcast
+slug: /guides/staking-api/polygon/undelegate/submit-signed-unbonding-transaction
 ---
 
-After signing the transaction, you will `PUT /api/v1/flows/[:flow_id]/next` and the Staking API will manage broadcasting the transaction to the network.
+After signing the transaction, you will `PUT /api/v1/flows/[:flow_id]/next` and the Staking API will manage broadcasting the transaction to the Polygon network.
 
-At this step, the `inputs` will be:
+### Parameters
 
-```json
-{
-  "transaction_payload": "[:signed_transaction_payload]"
-}
-```
+- `name` &mdash; `string` Name of the action to execute (required).
+- `inputs` &mdash; `array`
+  - `transaction_payload` &mdash; Signed transaction payload from the previous step's response.
 
-```bash title="Example cURL request"
-curl --request PUT \
-  --url https://polygon-slate.datahub.figment.io/api/v1/flows/[:flow_id]/next \
-  --header 'Authorization: API_KEY' \
-  --header 'Content-Type: application/json' \
-  --data '{
-  "name": "sign_undelegate_tx",
+#### Sample cURL Request
+
+```bash {5-8}
+curl -X PUT 'https://eth-slate.datahub.figment.io/api/v1/flows/07d6752c-c412-4cfa-a12c-65feab06acd6/next' \
+-H 'Content-Type: application/json' \
+-H 'Authorization: <api_key>' \
+-d '{
+  "name": "sign_unbond_tx",
   "inputs": {
-    "transaction_payload": "[:signed_transaction_payload]",
-    "signatures": []
+    "transaction_payload": "0x02f8b005028459682f0084597a1b168304cf969415ed57ca28cbebb58d9c6c62f570046bc089bc6680b844c83ec04d0000000000000000000000000000000000000000000000000de0b6b3a76400000000000000000000000000000000000000000000000000000de0b6b3a7640000c001a0f8462149f25c9942852611ea06820bf0b3f588f63aead9702225010b2e80a096a0765feade968806e16f36cadf533d779ceb071f54ca6cf4935f6464302c0873da"
   }
 }'
 ```
 
-With the signed transaction provided, the Staking API will broadcast it to the network.
-As the transaction progresses towards confirmation, the returned state will be one of:
+### Response
 
-- `unbond_tx_broadcasting` — the transaction has been broadcast and is waiting for confirmation
-- `unbonding` — the transaction has been confirmed and the delegation is unbonding
+With the signed transaction provided, the Staking API will broadcast it to the network.
+As the transaction progresses towards confirmation, the returned state will either:
+
+- `unbond_tx_broadcasting` &mdash; The transaction has been broadcast and is waiting for confirmation.
+- `unbonding` &mdash; The transaction has been confirmed and the delegation is unbonding.
+
+#### Sample Response
+
+```json {3}
+{
+  "id": "07d6752c-c412-4cfa-a12c-65feab06acd6",
+  "state": "unbond_tx_broadcasting",
+  "actions": [
+    {
+      "name": "wait",
+      "estimated_state_change_at": "2022-10-07T17:25:17.899Z",
+      "inputs": []
+    }
+  ],
+  "data": {
+    "delegator_address": "0x542138451d0953Aa082dE659d2A1ca1e5EF452Bf",
+    "validator_address": "0x15ED57Ca28cbebb58d9c6C62F570046BC089bC66",
+    "amount": "1.0",
+    "max_shares_to_burn": 1e18,
+    "max_slippage_percentage": 0,
+    "exchange_rate": "100000000000000000000000000000.0",
+    "exchange_rate_precision": "100000000000000000000000000000.0",
+    "unbond_transaction": {
+      "raw": "0x02f86d05028459682f0084597a1b168304cf969415ed57ca28cbebb58d9c6c62f570046bc089bc6680b844c83ec04d0000000000000000000000000000000000000000000000000de0b6b3a76400000000000000000000000000000000000000000000000000000de0b6b3a7640000c0",
+      "signing_payload": null,
+      "signed": "0x02f8b005028459682f0084597a1b168304cf969415ed57ca28cbebb58d9c6c62f570046bc089bc6680b844c83ec04d0000000000000000000000000000000000000000000000000de0b6b3a76400000000000000000000000000000000000000000000000000000de0b6b3a7640000c001a0f8462149f25c9942852611ea06820bf0b3f588f63aead9702225010b2e80a096a0765feade968806e16f36cadf533d779ceb071f54ca6cf4935f6464302c0873da",
+      "hash": "0x36c57e119ef341fb23f261a7a44d10d7fe4044ccbcd1b39d509730ee0b75797c",
+      "status": null,
+      "error": null,
+      "signatures": [],
+      "gas_limit": null,
+      "gas_price": null
+    },
+    "claim_transaction": null,
+    "estimated_unbonded_at": null,
+    "unbond_checkpoint": null,
+    "unbond_nonce": null
+  },
+  "network_code": "polygon",
+  "chain_code": "testnet",
+  "created_at": "2022-10-06T23:40:33.826Z",
+  "updated_at": "2022-10-07T17:24:17.339Z"
+}
+```

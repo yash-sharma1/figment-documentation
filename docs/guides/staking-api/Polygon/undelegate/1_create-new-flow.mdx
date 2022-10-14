@@ -1,27 +1,26 @@
 ---
-title: Create a New Un-Delegating Flow
+title: Create New Undelegation Flow
+slug: /guides/staking-api/polygon/undelegate/create-new-flow
 ---
 
-We will create a new Flow with `POST /api/v1/flows`.
+To initiate the undelegation process, create a new flow with a POST request to `/api/v1/flows`.
 
-The `flow` JSON field for this request will be:
+### Parameters
 
-```json
-{
-  "network_code": "polygon",
-  "chain_code": "testnet",
-  "operation": "unstaking",
-  "version": "v1"
-}
-```
+- `flow` &mdash; `object`
+  - `network_code` &mdash; `string` Network this flow operates on (ex. `polygon`) (required).
+  - `chain_code` &mdash; `string` Chain this flow operates on (ex. `testnet`) (required).
+  - `operation` `string` The operation to perform (ex. `unstaking`) (required).
+  - `version` &mdash; `string` API version to use (ex. `v1`) (optional).
 
-```bash title="Example cURL request"
-curl -X POST https://polygon-slate.datahub.figment.io/api/v1/flows \
---header 'Authorization: API_KEY' \
---header 'Content-Type: application/json' \
---data '{
+#### Sample cURL Request
+
+```bash {5-10}
+curl -X POST 'https://polygon-slate.datahub.figment.io/api/v1/flows' \
+-H 'Content-Type: application/json' \
+-H 'Authorization: <api_key>' \
+-d '{
   "flow": {
- {
     "network_code": "polygon",
     "chain_code": "testnet",
     "operation": "unstaking",
@@ -30,16 +29,167 @@ curl -X POST https://polygon-slate.datahub.figment.io/api/v1/flows \
 }'
 ```
 
+### Response
+
+- `id` &mdash; `string` ID of the newly created flow.
+- `state` &mdash; `string` The current state of the flow.
+
 The response indicates one possible `action`:
 
-- `create_unbond_tx` —
+- `create_unbond_tx`
 
-The create_unbond_tx action indicates seven fields for data collection:
+The `create_unbond_tx` action indicates seven fields for data collection:
 
-- `delegator_address` (**required**) — the delegator address
-- `validator_address` (**required**) — Validator contract address from which MATIC will be un-delegated
-- `amount` (**required**) — the amount of MATIC to be un-delegated
-- `max_shares_to_burn` (_optional_) — the maximum number of shares of the delegation to be burned. If the exchange rate results in more shares being burned, the transaction will fail.
-- `max_slippage_percentage` (_optional_) — the maximum slippage you are willing to accept
-- `gas_limit` (_optional_) — adjust gas limit for the transaction
-- `gas_price` (_optional_) — adjust gas price for the transaction
+- `delegator_address` &mdash; The delegator address.
+- `validator_address` &mdash; The validator contract address from which MATIC will be undelegated.
+- `amount` &mdash; The amount of MATIC to be undelegated.
+- `max_shares_to_burn` &mdash; The maximum number of shares of the delegation to be burned. If the exchange rate results in more shares being burned, the transaction will fail.
+- `max_slippage_percentage` &mdash; The maximum slippage you are willing to accept.
+- `gas_limit` &mdash; Adjust gas limit for the transaction.
+- `gas_price` &mdash; Adjust gas price for the transaction.
+
+#### Sample Response
+
+```json {2-3,6}
+{
+  "id": "07d6752c-c412-4cfa-a12c-65feab06acd6",
+  "state": "initialized",
+  "actions": [
+    {
+      "name": "create_unbond_tx",
+      "inputs": [
+        {
+          "name": "delegator_address",
+          "display": "Delegator Address",
+          "description": "",
+          "type": "string",
+          "validations": [
+            {
+              "type": "presence",
+              "options": {}
+            }
+          ]
+        },
+        {
+          "name": "validator_address",
+          "display": "Validator Address",
+          "description": "",
+          "type": "string",
+          "validations": [
+            {
+              "type": "presence",
+              "options": {}
+            },
+            {
+              "type": "is_validator",
+              "options": {
+                "on": "with_on_chain_validations"
+              }
+            }
+          ]
+        },
+        {
+          "name": "amount",
+          "display": "Amount",
+          "description": "",
+          "type": "string",
+          "validations": [
+            {
+              "type": "presence",
+              "options": {}
+            },
+            {
+              "type": "numericality",
+              "options": {
+                "greater_than": 0
+              }
+            }
+          ]
+        },
+        {
+          "name": "max_shares_to_burn",
+          "display": "Max Shares To Burn",
+          "description": "",
+          "type": "string",
+          "validations": [
+            {
+              "type": "numericality",
+              "options": {
+                "allow_nil": true,
+                "only_integer": true,
+                "greater_than_or_equal_to": 0
+              }
+            }
+          ]
+        },
+        {
+          "name": "max_slippage_percentage",
+          "display": "Max Slippage Percentage",
+          "description": "",
+          "type": "string",
+          "validations": [
+            {
+              "type": "numericality",
+              "options": {
+                "allow_nil": true,
+                "only_integer": true,
+                "greater_than_or_equal_to": 0,
+                "less_than_or_equal_to": 100
+              }
+            }
+          ]
+        },
+        {
+          "name": "gas_limit",
+          "display": "Gas Limit",
+          "description": "",
+          "type": "string",
+          "validations": [
+            {
+              "type": "numericality",
+              "options": {
+                "allow_nil": true,
+                "only_integer": true,
+                "greater_than": 0
+              }
+            }
+          ]
+        },
+        {
+          "name": "gas_price",
+          "display": "Gas Price",
+          "description": "",
+          "type": "string",
+          "validations": [
+            {
+              "type": "numericality",
+              "options": {
+                "allow_nil": true,
+                "greater_than": 0
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "data": {
+    "delegator_address": null,
+    "validator_address": null,
+    "amount": null,
+    "max_shares_to_burn": null,
+    "max_slippage_percentage": null,
+    "exchange_rate": null,
+    "exchange_rate_precision": null,
+    "unbond_transaction": null,
+    "claim_transaction": null,
+    "estimated_unbonded_at": null,
+    "unbond_checkpoint": null,
+    "unbond_nonce": null
+  },
+  "network_code": "polygon",
+  "chain_code": "testnet",
+  "created_at": "2022-10-06T23:40:33.826Z",
+  "updated_at": "2022-10-06T23:40:33.826Z"
+}
+```

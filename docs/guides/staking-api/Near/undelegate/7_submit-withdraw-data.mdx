@@ -1,28 +1,28 @@
 ---
 title: Submit Withdraw Data
+slug: /guides/staking-api/near/undelegate/submit-withdraw-data
 ---
 
 After collecting the required inputs, we `PUT /api/v1/flows/[:flow_id]/next` to move on to the next step.
 
 ### Parameters
 
-- `name` - `string` Name of the action to execute (required).
-- `inputs` - `array`
-  - `delegator_address` - `string` The delegator address (required).
-  - `delegator_pubkey` - `string` The pubkey of the signing account (required).
-  - `validator_address` - `string` Validator address from which NEAR will be un-delegated (required).
-  - `withdraw_amount` - `number` The amount of NEAR to be withdrawn (required).
-  - `withdraw_maximum` - `boolean` Set to `true` if you wish to withdraw the full available balance without needing to know the exact available balance. (optional).
-  - `max_gas` - `number` Adjust if you wish to limit the possible transaction fee (optional).
+- `name` &mdash; `string` Name of the action to execute (required).
+- `inputs` &mdash; `array`
+  - `delegator_address` &mdash; `string` The delegator address (required).
+  - `delegator_pubkey` &mdash; `string` The pubkey of the signing account (required).
+  - `validator_address` &mdash; `string` Validator address from which NEAR will be un-delegated (required).
+  - `withdraw_amount` &mdash; `number` The amount of NEAR to be withdrawn (required).
+  - `withdraw_maximum` &mdash; `boolean` Set to `true` if you wish to withdraw the full available balance without needing to know the exact available balance. (optional).
+  - `max_gas` &mdash; `number` Adjust if you wish to limit the possible transaction fee (optional).
 
 #### Sample cURL Request
 
-```json
+```bash {5-11}
 curl -X PUT 'https://near-slate.datahub.figment.io/api/v1/flows/96237daf-973a-456b-ae07-a5e16eeffbd1/next' \
---header 'Content-Type: application/json' \
---header 'Authorization: 31367e3376a543a9723692eac8f29d86' \
---data '{
-  // highlight-start
+-H 'Content-Type: application/json' \
+-H 'Authorization: 31367e3376a543a9723692eac8f29d86' \
+-d '{
   "name": "create_withdraw_tx",
    "inputs": {
     "validator_address": "01node.pool.f863973.m0",
@@ -30,7 +30,6 @@ curl -X PUT 'https://near-slate.datahub.figment.io/api/v1/flows/96237daf-973a-45
     "delegator_pubkey": "ed25519:5QA46X6NkNmsFdu9xWVBaLNowh9gGeF1c5r9u6NcxaLY",
     "withdraw_amount": "25"
   }
-  // highlight-end
 }'
 ```
 
@@ -38,16 +37,16 @@ curl -X PUT 'https://near-slate.datahub.figment.io/api/v1/flows/96237daf-973a-45
 
 The response indicates two possible `actions`:
 
-- `refresh_withdraw_tx` — If you need to get a fresh version of the transaction payload (i.e., if the nonce needs to be updated)
-- `sign_withdraw_tx` — Submit a signed transaction payload ready to be broadcast to the network.
+- `refresh_withdraw_tx` &mdash; If you need to get a fresh version of the transaction payload (i.e., if the nonce needs to be updated)
+- `sign_withdraw_tx` &mdash; Submit a signed transaction payload ready to be broadcast to the network.
 
 We will choose `sign_withdraw_tx`, which indicates one input to collect:
 
-- `transaction_payload` — The signed transaction payload ready to be broadcast to the network.
+- `transaction_payload` &mdash; The signed transaction payload ready to be broadcast to the network.
 
 #### Sample Response
 
-```json
+```json {5,7,16}
 {
   "id": "96237daf-973a-456b-ae07-a5e16eeffbd1",
   "state": "withdraw_tx_signature",
@@ -113,3 +112,9 @@ We will choose `sign_withdraw_tx`, which indicates one input to collect:
   "updated_at": "2022-09-28T16:40:32.482Z"
 }
 ```
+
+:::info note
+
+Make sure to save the `transaction_payload` from this response, which is what needs to be signed in the next step.
+
+:::

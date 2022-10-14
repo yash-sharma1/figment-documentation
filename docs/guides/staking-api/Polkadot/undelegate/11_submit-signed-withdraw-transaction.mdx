@@ -1,34 +1,76 @@
 ---
-title: Submit a Signed Withdraw Transaction for Broadcast
+title: Submit Signed Withdrawal Transaction for Broadcast
+slug: /guides/staking-api/polkadot/undelegate/submit-signed-withdrawal-transaction
 ---
 
-After signing the transaction, you will `PUT /api/v1/flows/[:flow_id]/next` and the Staking API will manage broadcasting the transaction to the Polkadot network.
+After signing the transaction, send a PUT request to `/api/v1/flows/[:flow_id]/next` and the Staking API will manage broadcasting the transaction to the Polkadot network.
 
-At this step, the `inputs` JSON will be:
+### Parameters
 
-```json title="inputs"
-{
-  "transaction_payload": "[:signed_transaction_payload]"
-}
-```
+- `name` &mdash; `string` Name of the action to execute (required).
+- `inputs` &mdash; `array`
+  - `transaction_payload` &mdash; Signed transaction payload from the previous step's response.
 
-```text title="Example curl request"
-curl --request PUT \
-  --url https://slate.figment.io/api/v1/flows/[:flow_id]/next \
-  --header 'Authorization: API-KEY' \
-  --header 'Content-Type: application/json' \
-  --data '{
+#### Sample cURL Request
+
+```bash {5-8}
+curl -X PUT 'https://polkadot-slate.datahub.figment.io/api/v1/flows/86d9a004-12b6-4142-90cb-9ade53864e29/next' \
+-H 'Content-Type: application/json' \
+-H 'Authorization: <api_key>' \
+-d '{
   "name": "sign_withdraw_tx",
   "inputs": {
-    "transaction_payload": "[:signed_transaction_payload]"
+    "transaction_payload": "0xb1018400beaa875b14abaeae2d1a55193ba6f175aa846b7e624dce1514fbf043638aa858012e6b1b07390a44705bc2630166187e6e1f0e35616dd51b09a9b4ca9549978237c5ecf39161c3764b06ff8dd79e261ee2b39df4a49d604766519f01e9eecbab85002400060300000000"
   }
 }'
 ```
 
-With the signed transaction provided, Staking API will broadcast it to the network. As the transaction progresses towards confirmation, the returned state will be `withdraw_tx_broadcasting`.
+### Response
 
-Once the transaction is confirmed, the DOT will be withdrawn and this flow will be complete!
+With the signed transaction provided, the Staking API will broadcast it to the network. As the transaction progresses towards confirmation, the returned state will be either:
 
-## Un-Delegation Flow Complete
+- `withdraw_tx_broadcasting` &mdash; The transaction has been broadcast and is waiting for confirmation.
+- `done` &mdash; The transaction is complete and the stake has been withdrawn to the specified location.
 
-Congratulations, your stake is deactivated and withdrawn!
+#### Sample Response
+
+```json {3}
+{
+  "id": "86d9a004-12b6-4142-90cb-9ade53864e29",
+  "state": "withdraw_tx_broadcasting",
+  "actions": [
+    {
+      "name": "wait",
+      "estimated_state_change_at": "2022-10-07T14:12:40.622Z",
+      "inputs": []
+    }
+  ],
+  "data": {
+    "controller_account_address": "5GNhcVwpjND83kk6uqMeCjXNUnTSdz84SFyJmd3NmZe4uvrC",
+    "controller_proxy_account_address": null,
+    "stash_account_address": "5GQmooiNwLwjXnsNp3woVDD3xhkHzcifVVAmdWcb6FaRVA4L",
+    "amount": null,
+    "maximum": null,
+    "chill_transaction": null,
+    "estimated_chilled_at": null,
+    "unbond_transaction": null,
+    "unbonding_era": null,
+    "estimated_unbonded_at": null,
+    "withdraw_transaction": {
+      "raw": "0x0024000000000000000000e143f23803ac50e8f6f8e62695d1ce9e4e1d68aa36c1cd2cfd15340213f3423ee143f23803ac50e8f6f8e62695d1ce9e4e1d68aa36c1cd2cfd15340213f3423e000000000000000000000000000000000000000000000000000000000000000000000000000603000000001c77657374656e64387061726974792d77657374656e64020000004a2400000000000040df6acb689907609b0400000037e397fc7c91f5e40100000040fe3ad401f8959a06000000d2bc9897eed08f1503000000f78b278be53f454c02000000af2c0297a23e6d3d0200000049eaaf1b548a0cb00100000091d5df18b0d2cf5801000000ed99c5acb25eedf503000000cbca25e39f14238702000000687ad44ad37f03c201000000ab3c0572291feb8b01000000bc9d89904f5b923f0100000037c8bb1350a9a2a801000000f3ff14d5ab5270590100000017a6bc0d0062aeb3010000000c0000000004",
+      "signing_payload": "0x0603000000000024004a2400000c000000e143f23803ac50e8f6f8e62695d1ce9e4e1d68aa36c1cd2cfd15340213f3423ee143f23803ac50e8f6f8e62695d1ce9e4e1d68aa36c1cd2cfd15340213f3423e",
+      "signed": "0xb1018400beaa875b14abaeae2d1a55193ba6f175aa846b7e624dce1514fbf043638aa858012e6b1b07390a44705bc2630166187e6e1f0e35616dd51b09a9b4ca9549978237c5ecf39161c3764b06ff8dd79e261ee2b39df4a49d604766519f01e9eecbab85002400060300000000",
+      "hash": "0x77fd4db9a4852a7386300b09f6662c6f655b5b5d2e8b0feea74197117046aed0",
+      "status": null,
+      "error": null,
+      "signatures": [],
+      "block_number": 12787596,
+      "proxy": false
+    }
+  },
+  "network_code": "polkadot",
+  "chain_code": "westend",
+  "created_at": "2022-10-07T14:06:47.401Z",
+  "updated_at": "2022-10-07T14:11:40.609Z"
+}
+```

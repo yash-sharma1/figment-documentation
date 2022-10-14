@@ -1,56 +1,55 @@
 ---
-title: Create a New Flow
+title: Create New Undelegation Flow
+slug: /guides/staking-api/near/undelegate/create-new-flow
 ---
 
-To initiate the undelegation process with Staking API firstly we need to create a new Flow with `POST /api/v1/flows`.
+To initiate the undelegation process, create a new flow with a POST request to `/api/v1/flows`.
 
 ### Parameters
 
-- `flow` - `object`
-  - `network_code` - `string` Network this flow operates on (required).
-  - `chain_code` - `string` Chain this flow operates on (required).
-  - `operation` `string` The operation to perform (required).
-  - `version` - `string` API version to use (optional).
+- `flow` &mdash; `object`
+  - `network_code` &mdash; `string` Network this flow operates on (ex. `near`) (required).
+  - `chain_code` &mdash; `string` Chain this flow operates on (ex. `testnet`) (required).
+  - `operation` `string` The operation to perform (ex. `unstaking`) (required).
+  - `version` &mdash; `string` API version to use (ex. `v1`) (optional).
 
 #### Sample cURL Request
 
-```json
+```bash {5-10}
 curl -X POST 'https://near-slate.datahub.figment.io/api/v1/flows' \
---header 'Content-Type: application/json' \
---header 'Authorization: <api_key>' \
---data '{
-  // highlight-start
+-H 'Content-Type: application/json' \
+-H 'Authorization: <api_key>' \
+-d '{
   "flow": {
     "network_code": "near",
     "chain_code": "testnet",
     "operation": "unstaking",
     "version": "v1"
   }
-  // highlight-end
 }'
 ```
 
 ### Response
 
-- `id` - `string` ID of the newly created flow.
-- `state` - `string` The current state of the flow.
+- `id` &mdash; `string` ID of the newly created flow.
+- `state` &mdash; `string` The current state of the flow.
 
 The response indicates one possible action:
 
-- `create_undelegate_tx` - use this action to generate an undelegation transaction to unstake your NEAR.
+- `create_undelegate_tx` &mdash; use this action to generate an undelegation transaction to unstake your NEAR.
 
-The `create_undelegate_tx` action indicates five fields for data collection:
+The `create_undelegate_tx` action indicates six fields for data collection:
 
-- `delegator_address` — The delegator address.
-- `delegator_pubkey` — The public key of the signing account.
-- `validator_address` — Validator address from which NEAR will be un-delegated.
-- `undelegate_amount` — The amount of NEAR to be un-delegated.
-- `undelegate_maximum` — Set to true if you wish to unbond the full delegated balance without needing to know the exact delegated balance.
-- `max_gas` — Adjust if you wish to limit the possible transaction fee.
+- `delegator_address` &mdash; The delegator address.
+- `delegator_pubkey` &mdash; The public key of the signing account.
+- `validator_address` &mdash; Validator address from which NEAR will be undelegated.
+- `undelegate_amount` &mdash; The amount of NEAR to be undelegated.
+- `undelegate_maximum` &mdash; Set to true if you wish to unbond the full delegated balance without needing to know the exact delegated balance.
+- `max_gas` &mdash; Adjust if you wish to limit the possible transaction fee.
 
 #### Sample Response
 
-```json
+```json {2-3,6,101,104,116,128,146,174,181}
 {
   "id": "96237daf-973a-456b-ae07-a5e16eeffbd1",
   "state": "initialized",

@@ -1,37 +1,35 @@
 ---
 title: Submit Delegate Data
+slug: /guides/staking-api/near/delegate/submit-delegate-data
 ---
 
 After creating the new staking flow, we need to submit the data for delegation. After collecting the required inputs as mentioned below, we `PUT /api/v1/flows/[:flow_id]/next` to move on to the next step.
 
 ### Parameters
 
-- `name` - `string` Name of the action to execute (required).
-- `inputs` - `array`
-  - `delegator_address` - `string` The delegating address (required).
-  - `delegator_pubkey` - `string` The public key of the signing account (required).
-  - `validator_address` - `string` Address of the validator you want to delegate your tokens to (required).
-  - `amount` - `number` - The amount of NEAR to be delegated (required).
-  - `max_gas` - `string` Adjust if you wish to limit the possible transaction fee (optional).
+- `name` &mdash; `string` Name of the action to execute (required).
+- `inputs` &mdash; `array`
+  - `delegator_address` &mdash; `string` The delegating address (required).
+  - `delegator_pubkey` &mdash; `string` The public key of the signing account (required).
+  - `validator_address` &mdash; `string` Address of the validator you want to delegate your tokens to (required).
+  - `amount` &mdash; `number` &mdash; The amount of NEAR to be delegated (required).
+  - `max_gas` &mdash; `string` Adjust if you wish to limit the possible transaction fee (optional).
 
 #### Sample cURL Request
 
-```json
+```bash {5-13}
 curl -X PUT 'https://near-slate.datahub.figment.io/api/v1/flows/aeb7503c-27c8-4184-8537-8f4a77f694a9/next' \
---header 'Content-Type: application/json' \
---header 'Authorization: <api_key>' \
---data '{
-  // highlight-start
+-H 'Content-Type: application/json' \
+-H 'Authorization: <api_key>' \
+-d '{
   "name": "create_delegate_tx",
   "inputs": {
     "delegator_address": "slate-demo.testnet",
     "delegator_pubkey": "ed25519:5QA46X6NkNmsFdu9xWVBaLNowh9gGeF1c5r9u6NcxaLY",
     "validator_address": "01node.pool.f863973.m0",
     "amount": "25",
-    "max_gas": null,
-    "delegate_transaction": null
+    "max_gas": null
   }
-  // highlight-end
 }'
 ```
 
@@ -39,16 +37,16 @@ curl -X PUT 'https://near-slate.datahub.figment.io/api/v1/flows/aeb7503c-27c8-41
 
 The response indicates two possible `actions` :
 
-- `refresh_delegate_tx` — If you need to get a fresh version of the transaction Payload (i.e., the nonce has increased).
-- `sign_delegate_tx` — Submit a signed transaction Payload ready to be broadcast to the network.
+- `refresh_delegate_tx` &mdash; If you need to get a fresh version of the transaction payload (i.e., the nonce has increased).
+- `sign_delegate_tx` &mdash; Submit a signed transaction payload ready to be broadcast to the network.
 
-For the next step, we will choose `sign_delegate_tx`, which indicates one Input to collect:
+For the next step, we will choose `sign_delegate_tx`, which indicates one input to collect:
 
-- `transaction_payload` — The signed transaction Payload ready to be broadcast to the network.
+- `transaction_payload` &mdash; The signed transaction payload ready to be broadcast to the network.
 
 #### Sample Response
 
-```json
+```json {19}
 {
   "id": "aeb7503c-27c8-4184-8537-8f4a77f694a9",
   "state": "delegate_tx_signature",
@@ -105,4 +103,8 @@ For the next step, we will choose `sign_delegate_tx`, which indicates one Input 
 }
 ```
 
-The `transaction_paylod` you've received in the response make sure to copy/save it because you'll require it in the next step to sign the transaction.
+:::info note
+
+Make sure to save the `transaction_payload` from this response, which is what needs to be signed in the next step.
+
+:::

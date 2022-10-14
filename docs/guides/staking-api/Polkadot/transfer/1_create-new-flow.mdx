@@ -1,27 +1,27 @@
 ---
-title: Create a New Flow
+title: Create New Transfer Flow
+slug: /guides/staking-api/polkadot/transfer/create-new-flow
 ---
 
-We will create a new Flow with `POST /api/v1/flows`.
+To initiate the transfer process, create a new flow with a POST request to `/api/v1/flows`.
 
-The `flow` JSON field for this request will be:
+### Parameters
 
-```json
-{
-  "network_code": "dot",
-  "chain_code": "westend",
-  "operation": "transfer",
-  "version": "v1"
-}
-```
+- `flow` &mdash; `object`
+  - `network_code` &mdash; `string` Network this flow operates on (ex. `polkadot`) (required).
+  - `chain_code` &mdash; `string` Chain this flow operates on (ex. `westend`) (required).
+  - `operation` `string` The operation to perform (ex. `transfer`) (required).
+  - `version` &mdash; `string` API version to use (ex. `v1`) (optional).
 
-```text
-curl -X POST https://polkadot-slate.datahub.figment.io/api/v1/flows \
--H "Authorization: API-KEY" \
--H "Content-Type: application/json" \
+#### Sample cURL Request
+
+```bash {5-10}
+curl -X POST 'https://polkadot-slate.datahub.figment.io/api/v1/flows' \
+-H 'Content-Type: application/json' \
+-H 'Authorization: <api_key>' \
 -d '{
   "flow": {
-    "network_code": "dot",
+    "network_code": "polkadot",
     "chain_code": "westend",
     "operation": "transfer",
     "version": "v1"
@@ -29,12 +29,85 @@ curl -X POST https://polkadot-slate.datahub.figment.io/api/v1/flows \
 }'
 ```
 
-The response indicates one possible action:
+### Response
 
-- `create_transfer_tx` - use this action to generate a deposit transaction to stake your ETH.
+- `id` &mdash; `string` ID of the newly created flow.
+- `state` &mdash; `string` The current state of the flow.
+
+The response indicates one possible `action`:
+
+- `create_transfer_tx` &mdash; Use this action to create a transfer transaction to send DOT between accounts.
 
 The `create_transfer_tx` action indicates three fields for data collection:
 
-1. `from_account_address` (**required**) — The address which DOT will be transferred from.
-2. `to_account_address` (**required**) — The address which DOT will be transferred to.
-3. `amount` (**required**) — The amount of DOT to be transferred.
+- `from_account_address` &mdash; The address from which DOT will be transferred.
+- `to_account_address` &mdash; The address to which DOT will be transferred.
+- `amount` &mdash; The amount of DOT to be transferred.
+
+#### Sample Response
+
+```json {2-3,6,9,21,33}
+{
+  "id": "643cb99a-7bdd-488d-aec0-b1fe6499107d",
+  "state": "initialized",
+  "actions": [
+    {
+      "name": "create_transfer_tx",
+      "inputs": [
+        {
+          "name": "from_account_address",
+          "display": "From Account Address",
+          "description": "",
+          "type": "string",
+          "validations": [
+            {
+              "type": "presence",
+              "options": {}
+            }
+          ]
+        },
+        {
+          "name": "to_account_address",
+          "display": "To Account Address",
+          "description": "",
+          "type": "string",
+          "validations": [
+            {
+              "type": "presence",
+              "options": {}
+            }
+          ]
+        },
+        {
+          "name": "amount",
+          "display": "Amount",
+          "description": "",
+          "type": "decimal",
+          "validations": [
+            {
+              "type": "presence",
+              "options": {}
+            },
+            {
+              "type": "precision",
+              "options": {
+                "max": 12
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "data": {
+    "from_account_address": null,
+    "to_account_address": null,
+    "amount": null,
+    "transfer_transaction": null
+  },
+  "network_code": "polkadot",
+  "chain_code": "westend",
+  "created_at": "2022-10-05T17:54:10.881Z",
+  "updated_at": "2022-10-05T17:54:10.881Z"
+}
+```

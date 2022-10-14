@@ -1,0 +1,94 @@
+---
+title: Get Flow Status
+slug: /guides/staking-api/polkadot/delegate/get-flow-status-bonding_complete
+---
+
+To refresh the transaction state and get the latest status of the existing flow we'll be using the flow ID from the previous step.
+
+### Parameters
+
+- None
+
+#### Sample cURL Request
+
+```bash
+curl -X GET 'https://polkadot-slate.datahub.figment.io/api/v1/flows/90a28f6e-09b4-4fe1-aeb4-c8e3720933ab' \
+-H 'Authorization: <api_key>'
+```
+
+### Response
+
+- `state` &mdash; `string` The current state of the flow.
+
+:::info note
+
+The `state` field will update from `bonding_tx_broadcasting` to `bonding_complete`.
+
+:::
+
+#### Sample Response
+
+```json {3}
+{
+  "id": "90a28f6e-09b4-4fe1-aeb4-c8e3720933ab",
+  "state": "bonding_complete",
+  "actions": [
+    {
+      "name": "create_nomination_tx",
+      "inputs": [
+        {
+          "name": "validator_addresses",
+          "display": "Validator Addresses",
+          "description": "",
+          "type": "array_of_strings",
+          "validations": [
+            {
+              "type": "array",
+              "options": {
+                "allow_empty": false,
+                "allow_duplicates": false
+              }
+            },
+            {
+              "type": "length",
+              "options": {
+                "maximum": 16,
+                "message": "Cannot have more than 16 validators"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "complete",
+      "inputs": []
+    }
+  ],
+  "data": {
+    "controller_account_address": "5FWX3P9gwg4FKAyDHp1UYJp4ZZYPPoQZHfWRcN74HwBgXifh",
+    "controller_proxy_account_address": null,
+    "stash_account_address": "5FH4Ek1u9d4V5R1REoary3MDSApLL6vkEEcW2M7fZR9bnUuz",
+    "stash_proxy_account_address": null,
+    "validator_addresses": null,
+    "reward_destination": "5FH4Ek1u9d4V5R1REoary3MDSApLL6vkEEcW2M7fZR9bnUuz",
+    "amount": "1.0",
+    "bonding_transaction": {
+      "raw": "0x0000000000000000000000e143f23803ac50e8f6f8e62695d1ce9e4e1d68aa36c1cd2cfd15340213f3423ee143f23803ac50e8f6f8e62695d1ce9e4e1d68aa36c1cd2cfd15340213f3423e000000000000000000000000000000000000000000000000000000000000000000000000000600009864ac6455584af3c38540ec03927eca126342d266d3c9b62e44b41844a31666070010a5d4e8038e20409ae393dc420d8c9efbc03028dc58718e74bf3c3fec437fc089ae80fc4c1c77657374656e64387061726974792d77657374656e64020000004a2400000000000040df6acb689907609b0400000037e397fc7c91f5e40100000040fe3ad401f8959a06000000d2bc9897eed08f1503000000f78b278be53f454c02000000af2c0297a23e6d3d0200000049eaaf1b548a0cb00100000091d5df18b0d2cf5801000000ed99c5acb25eedf503000000cbca25e39f14238702000000687ad44ad37f03c201000000ab3c0572291feb8b01000000bc9d89904f5b923f0100000037c8bb1350a9a2a801000000f3ff14d5ab5270590100000017a6bc0d0062aeb3010000000c0000000004",
+      "signing_payload": "0x0600009864ac6455584af3c38540ec03927eca126342d266d3c9b62e44b41844a31666070010a5d4e8038e20409ae393dc420d8c9efbc03028dc58718e74bf3c3fec437fc089ae80fc4c0000004a2400000c000000e143f23803ac50e8f6f8e62695d1ce9e4e1d68aa36c1cd2cfd15340213f3423ee143f23803ac50e8f6f8e62695d1ce9e4e1d68aa36c1cd2cfd15340213f3423e",
+      "signed": "0xc10284008e20409ae393dc420d8c9efbc03028dc58718e74bf3c3fec437fc089ae80fc4c01feec62b92266c99ce19a4421290b1bfbb56751a783b64ce3d701a5c8ec3e971929000e1849eb07ec7016cc7ff81b67f8a8ae6858b19de6eb313a6871624fbe8d0000000600009864ac6455584af3c38540ec03927eca126342d266d3c9b62e44b41844a31666070010a5d4e8038e20409ae393dc420d8c9efbc03028dc58718e74bf3c3fec437fc089ae80fc4c",
+      "hash": "0x0c0a1e5b08e91eaeb628437d850c147496901b252903bff2d6e40dcb9e1bfe3e",
+      "status": "confirmed",
+      "error": null,
+      "signatures": [],
+      "block_number": 12775946,
+      "proxy": false
+    },
+    "nomination_transaction": null
+  },
+  "network_code": "polkadot",
+  "chain_code": "westend",
+  "created_at": "2022-10-06T18:26:22.984Z",
+  "updated_at": "2022-10-06T18:33:16.602Z"
+}
+```

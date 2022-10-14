@@ -1,31 +1,67 @@
 ---
-title: Submit a Signed Transaction for Broadcast
-sidebar_position: 4
-pagination_next: null
+title: Submit a Signed Transfer Transaction for Broadcast
+slug: /guides/staking-api/solana/transfer/submit-signed-transfer-transaction
 ---
 
-After signing the transaction, you will `PUT /api/v1/flows/[:flow_id]/next` (as always!) and the Staking API will manage broadcasting the transaction to the Solana network.
+After signing the transaction, send a PUT request to `/api/v1/flows/[:flow_id]/next` and the Staking API will manage broadcasting the transaction to the network.
 
-At this step, the `inputs` JSON will be:
+### Parameters
 
-```json
-{
-  "transaction_payload": "[:signed_transaction_payload]"
-}
-```
+- `name` &mdash; `string` Name of the action to execute (required).
+- `inputs` &mdash; `array`
+  - `transaction_payload` &mdash; Signed transaction payload from the previous step's response.
 
-```text
-curl -X PUT https://solana-slate.datahub.figment.io/api/v1/flows/[:flow_id]/next \
--H "Authorization: API-KEY" \
--H "Content-Type: application/json" \
+#### Sample cURL Request
+
+```bash {5-8}
+curl -X PUT 'https://solana-slate.datahub.figment.io/api/v1/flows/b45f40d1-051a-41fe-907f-a9b73a55b54e/next' \
+-H 'Content-Type: application/json' \
+-H 'Authorization: <api_key>' \
 -d '{
-  "name": "sign_transfer_tx",
-  "inputs": {
-    "transaction_payload": "[:signed_transaction_payload]"
-  }
+    "name": "sign_transfer_tx",
+    "inputs": {
+      "transaction_payload": "0131a75ee59c9946c5c714a2ac67a1dfa7d6954f1f6b785f482a84215270ccc8428b112c6e0532f995d08338d6eb546b785f409a8ba9c289e378db3749e88c440601000103f8c4898641adada76eeeee2de872d931bc58bfb2ce5b79734e32808cc501a5347fdda76b682402ecb38e705b77d7eee793c587b6294a461c14ad89e7e161ade50000000000000000000000000000000000000000000000000000000000000000ecf65dc056903c93ef0555d52d65d355390c99d9e57176f8cdc859a87f0dfaf401020200010c0200000000ca9a3b00000000"
+    }
 }'
 ```
 
+### Response
+
 With the signed transaction provided, Staking API will broadcast it to the network. As the transaction progresses towards confirmation, the returned state will be:
 
-- `transfer_tx_broadcasting` — Transaction has been broadcast and confirmed.
+- `transfer_tx_broadcasting` &mdash; Transaction has been broadcast and is awaiting confirmation.
+
+#### Sample Response
+
+```json {3}
+{
+  "id": "b45f40d1-051a-41fe-907f-a9b73a55b54e",
+  "state": "transfer_tx_broadcasting",
+  "actions": [
+    {
+      "name": "wait",
+      "estimated_state_change_at": "2022-10-04T17:35:58.721Z",
+      "inputs": []
+    }
+  ],
+  "data": {
+    "from_account_pubkey": "Hk5voGB7wh9HtXTeszbW7AFm3A4B94xWkXeeaqTYspqy",
+    "to_account_pubkey": "9c8oxENj8XrEM2EMadxUoifZgB1Vbc8GEYqKTxTfPo3i",
+    "amount": "1.0",
+    "funding_account_pubkey": "Hk5voGB7wh9HtXTeszbW7AFm3A4B94xWkXeeaqTYspqy",
+    "transfer_transaction": {
+      "raw": "010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000103f8c4898641adada76eeeee2de872d931bc58bfb2ce5b79734e32808cc501a5347fdda76b682402ecb38e705b77d7eee793c587b6294a461c14ad89e7e161ade50000000000000000000000000000000000000000000000000000000000000000ecf65dc056903c93ef0555d52d65d355390c99d9e57176f8cdc859a87f0dfaf401020200010c0200000000ca9a3b00000000",
+      "signing_payload": "01000103f8c4898641adada76eeeee2de872d931bc58bfb2ce5b79734e32808cc501a5347fdda76b682402ecb38e705b77d7eee793c587b6294a461c14ad89e7e161ade50000000000000000000000000000000000000000000000000000000000000000ecf65dc056903c93ef0555d52d65d355390c99d9e57176f8cdc859a87f0dfaf401020200010c0200000000ca9a3b00000000",
+      "signed": "0131a75ee59c9946c5c714a2ac67a1dfa7d6954f1f6b785f482a84215270ccc8428b112c6e0532f995d08338d6eb546b785f409a8ba9c289e378db3749e88c440601000103f8c4898641adada76eeeee2de872d931bc58bfb2ce5b79734e32808cc501a5347fdda76b682402ecb38e705b77d7eee793c587b6294a461c14ad89e7e161ade50000000000000000000000000000000000000000000000000000000000000000ecf65dc056903c93ef0555d52d65d355390c99d9e57176f8cdc859a87f0dfaf401020200010c0200000000ca9a3b00000000",
+      "hash": "zaaAQtDB4oQuX8MSW9wExZxgm8QAk64fxgsyYV6ZPskWtdHtdQYT8vmuwKdqRyoVfecm8EsAC4XQ3eczjXbzX17",
+      "status": null,
+      "error": null,
+      "signatures": []
+    }
+  },
+  "network_code": "solana",
+  "chain_code": "testnet",
+  "created_at": "2022-10-04T17:27:16.158Z",
+  "updated_at": "2022-10-04T17:34:58.584Z"
+}
+```

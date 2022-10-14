@@ -1,39 +1,104 @@
 ---
-title: Create a New Flow
+title: Create New Undelegation Flow
+slug: /guides/staking-api/solana/undelegate/create-new-flow
 ---
 
-We will create a new Flow with `POST /api/v1/flows`.
+To initiate the undelegation process, create a new flow with a POST request to `/api/v1/flows`.
 
-The `flow` JSON field for this request will be:
+### Parameters
 
-```json
-{
-  "network_code": "solana",
-  "chain_code": "devnet",
-  "operation": "unstaking",
-  "version": "v1"
-}
-```
+- `flow` &mdash; `object`
+  - `network_code` &mdash; `string` Network this flow operates on (ex. `solana`) (required).
+  - `chain_code` &mdash; `string` Chain this flow operates on (ex. `mainnet`, `testnet`) (required).
+  - `operation` `string` The operation to perform (ex. `unstaking`) (required).
+  - `version` &mdash; `string` API version to use (ex. `v1`) (optional).
 
-```text
-curl -X POST https://solana-slate.datahub.figment.io/api/v1/flows \
--H "Authorization: API-KEY" \
--H "Content-Type: application/json" \
+#### Sample cURL Request
+
+```bash {5-10}
+curl -X POST 'https://solana-slate.datahub.figment.io/api/v1/flows' \
+-H 'Content-Type: application/json' \
+-H 'Authorization: <api_key>' \
 -d '{
   "flow": {
     "network_code": "solana",
-    "chain_code": "devnet",
+    "chain_code": "testnet",
     "operation": "unstaking",
     "version": "v1"
   }
 }'
 ```
 
+### Response
+
+- `id` &mdash; `string` ID of the newly created flow.
+- `state` &mdash; `string` The current state of the flow.
+
 The response indicates one possible action:
 
-- `create_deactivate_tx` — Collect the data needed to build a stake deactivation transaction and submit back to the Staking API.
+- `create_deactivate_tx` &mdash; Collect the data needed to build a stake deactivation transaction and submit back to the Staking API.
 
-As you can see, this Action indicates two fields need to be provided:
+The `create_deactivate_tx` action indicates two fields to be collected:
 
-- `stake_account_pubkey` (**required**) — The address of the stake account to be deactivated.
-- `funding_account_pubkey` (**required**) — The address of the wallet with signing rights to deactivate the stake account.
+- `stake_account_pubkey` &mdash; The address of the stake account to be deactivated.
+- `funding_account_pubkey` &mdash; The address of the wallet with signing rights to deactivate the stake account.
+
+#### Sample Response
+
+```json {2-3,6}
+{
+  "id": "b5fb1f97-bd9d-4207-bfe1-112d33309820",
+  "state": "initialized",
+  "actions": [
+    {
+      "name": "create_deactivate_tx",
+      "inputs": [
+        {
+          "name": "stake_account_pubkey",
+          "display": "Stake Account Pubkey",
+          "description": "",
+          "type": "string",
+          "validations": [
+            {
+              "type": "presence",
+              "options": {}
+            }
+          ]
+        },
+        {
+          "name": "funding_account_pubkey",
+          "display": "Funding Account Pubkey",
+          "description": "",
+          "type": "string",
+          "validations": [
+            {
+              "type": "presence",
+              "options": {}
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "data": {
+    "funding_account_pubkey": null,
+    "stake_account_pubkey": null,
+    "stake_authority_pubkey": null,
+    "withdraw_authority_pubkey": null,
+    "deactivate_transaction": null,
+    "delegation_active_amount": null,
+    "delegation_inactive_amount": null,
+    "delegation_status": null,
+    "delegation_status_error": null,
+    "recipient_pubkey": null,
+    "withdraw_amount": null,
+    "withdraw_transaction": null,
+    "withdraw_transaction_funding_account_pubkey": null,
+    "estimated_inactive_at": null
+  },
+  "network_code": "solana",
+  "chain_code": "testnet",
+  "created_at": "2022-10-05T17:37:31.573Z",
+  "updated_at": "2022-10-05T17:37:31.573Z"
+}
+```
