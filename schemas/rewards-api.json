@@ -887,7 +887,98 @@
 						},
 						"url": "https://{{AVAX_REWARDS_HOST}}/v2/apikey/{{API_KEY}}/rewards"
 					},
-					"response": []
+					"response": [
+						{
+							"id": "186a29a0-2fa5-4f95-88c5-ef6578b51273",
+							"name": "Rewards by day",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"network\": \"avalanche\",\n    \"accounts\": [\n        \"avax1na8x8j4yk5cwad3kgy6c9t2h2tpj2p2jljk92u\"\n    ], \n    \"start\": \"2022-10-01\",\n    \"end\": \"2022-10-08\"\n}\n\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://{{AVAX_REWARDS_HOST}}/v2/apikey/{{API_KEY}}/rewards"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Fri, 14 Oct 2022 14:26:09 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "316"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-RateLimit-Remaining-Minute",
+									"value": "1999"
+								},
+								{
+									"key": "RateLimit-Limit",
+									"value": "2000"
+								},
+								{
+									"key": "RateLimit-Remaining",
+									"value": "1999"
+								},
+								{
+									"key": "RateLimit-Reset",
+									"value": "52"
+								},
+								{
+									"key": "X-RateLimit-Limit-Minute",
+									"value": "2000"
+								},
+								{
+									"key": "vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "https://docs.figment.io"
+								},
+								{
+									"key": "Quota-Remaining",
+									"value": "2499"
+								},
+								{
+									"key": "Quota-Reset",
+									"value": "52"
+								},
+								{
+									"key": "X-Quota-Limit-Minute",
+									"value": "2500"
+								},
+								{
+									"key": "X-Quota-Remaining-Minute",
+									"value": "2499"
+								},
+								{
+									"key": "Quota-Limit",
+									"value": "2500"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"data\": [\n        {\n            \"accounts\": [\n                \"avax1na8x8j4yk5cwad3kgy6c9t2h2tpj2p2jljk92u\"\n            ],\n            \"chain_id\": \"P\",\n            \"rewards\": [\n                {\n                    \"text\": \"0.278488965 AVAX\",\n                    \"currency\": \"AVAX\",\n                    \"numeric\": 278488965,\n                    \"exp\": 9\n                }\n            ],\n            \"validator\": \"NodeID-KcCxyypJ5m55f17fbuzkKqeotY64DScum\",\n            \"timestamp\": \"2022-10-07T00:00:00Z\"\n        }\n    ],\n    \"meta\": {\n        \"network\": \"avalanche\",\n        \"period_unit\": \"daily\"\n    }\n}"
+						}
+					]
 				}
 			],
 			"id": "0e26d119-f2e9-44cf-bd69-8d91bac17f8a"
@@ -917,27 +1008,27 @@
 	],
 	"variable": [
 		{
-			"id": "eac52949-b778-412e-8e90-fc108bf01e92",
+			"id": "98aef007-fbcb-4e96-a404-bd964b88995b",
 			"key": "ETH_REWARDS_HOST",
 			"value": "eth-rewards.datahub.figment.io"
 		},
 		{
-			"id": "d7a73e2f-e021-47cb-9224-52f8c7a28d24",
+			"id": "819b1d61-0cce-45f3-9a1e-66e84127d1a8",
 			"key": "SOL_REWARDS_HOST",
 			"value": "solana-rewards.datahub.figment.io"
 		},
 		{
-			"id": "641984aa-1f82-4d00-b29e-369726c3950d",
+			"id": "a73630bc-134a-4b28-8018-482eef6a249f",
 			"key": "DOT_REWARDS_HOST",
 			"value": "polkadot-rewards.datahub.figment.io"
 		},
 		{
-			"id": "12ab8dfd-7002-4418-a93c-fe201306a880",
+			"id": "65290ff5-1530-4807-bd79-9e2407e487e8",
 			"key": "NEAR_REWARDS_HOST",
 			"value": "near-rewards.datahub.figment.io"
 		},
 		{
-			"id": "81e098a2-aeb3-4e01-b9c7-26d8701ddcb8",
+			"id": "709a7cb5-8fa7-4800-9005-a352727e7521",
 			"key": "AVAX_REWARDS_HOST",
 			"value": "avalanche-rewards.datahub.figment.io"
 		}
