@@ -1,10 +1,12 @@
 import React from "react";
+import ReactMarkdown from "react-markdown";
 import BackToTopButton from "@theme/BackToTopButton";
 
 import { RequestObject, ResponseObject } from "@site/types/src";
-import { Description, CodeExample } from "./components";
+import { CodeExample } from "./components";
 import styles from "./styles.module.css";
 import Link from "@docusaurus/Link";
+import MDDetails from "./MDDetails.mdx";
 
 interface Props {
   name: string;
@@ -27,7 +29,7 @@ function APIMethod({
 }: Props) {
   if (["Rewards (by epoch)", "Rewards (daily)"].includes(name)) {
     request.body = {
-      ...request.body,
+      ...(request.body as object),
       start_time: new Date(
         Date.now() - (name === "Rewards (by epoch)" ? 172800000 : 86400000)
       )
@@ -36,6 +38,9 @@ function APIMethod({
       end_time: new Date().toISOString().split("T")[0],
     };
   }
+
+  const [description, ...rest] = content.trim().split(/\n+/);
+  const specs = rest.join("\n");
 
   return (
     <>
@@ -47,7 +52,7 @@ function APIMethod({
         <Link to={`#${name.toLowerCase()}`}>{name}</Link>
       </h2>
 
-      <Description content={content} accordionOpen={accordionOpen} />
+      <ReactMarkdown>{description}</ReactMarkdown>
 
       <CodeExample
         req={request}
@@ -55,6 +60,8 @@ function APIMethod({
         interactive={interactive}
         endpoint={endpoint}
       />
+
+      <MDDetails details={specs} accordionOpen={accordionOpen} />
 
       <hr />
     </>
