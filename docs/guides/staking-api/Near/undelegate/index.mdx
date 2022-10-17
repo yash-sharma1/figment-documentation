@@ -10,12 +10,12 @@ Undelegating NEAR is a simple process. We will collect:
 - The signing address.
 - The validator address to undelegate from.
 - Amount of NEAR to be undelegated.
-- Optionally, a `maximum` boolean if you wish to undelegate the full amount without having to check the current balance.
+- Optionally, a `maximum` Boolean if you wish to undelegate the full amount without having to check the current balance.
 - Optionally, a max gas amount (upper limit of the transaction fee to be paid).
 
 Once the undelegation transaction is confirmed on-chain, the unbonding process will begin immediately.
 
-NEAR has an unbonding period of 4 epochs (≈ 48-60h). During this time, the unbonding NEAR will be illiquid and will _not_ earn rewards.
+NEAR has an unbonding period of four epochs (≈ 48-60h). During this time, the unbonding NEAR will be illiquid and will _not_ earn rewards.
 Upon completion of the unbonding period, the NEAR will be available to be withdrawn.
 
 :::info

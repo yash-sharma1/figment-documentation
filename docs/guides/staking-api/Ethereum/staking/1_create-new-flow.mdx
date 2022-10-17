@@ -8,8 +8,8 @@ To initiate the staking process, create a new flow with a `POST` request to `/ap
 ### Parameters
 
 - `flow` &mdash; `object`
-  - `network_code` &mdash; `string` Network this flow operates on (ex. `ethereum`) (required).
-  - `chain_code` &mdash; `string` Chain this flow operates on (ex. `goerli-prater`) (required).
+  - `network_code` &mdash; `string` Network on which this flow operates (ex. `ethereum`) (required).
+  - `chain_code` &mdash; `string` Chain on which this flow operates (ex. `goerli-prater`) (required).
   - `operation` &mdash; `string` The operation to perform (ex. `staking`) (required).
   - `version` &mdash; `string` API version to use (ex. `v1`) (optional).
 
@@ -40,8 +40,8 @@ The response indicates one possible action:
 
 The `create_deposit_transaction` action indicates seven fields for data collection:
 
-- `funding_account_address` &mdash; The wallet ETH will be originating from.
-- `validator_pub_key` -The public key of the validator that the ETH is to be deposited to.
+- `funding_account_address` &mdash; The wallet from which the ETH will originate.
+- `validator_pub_key` &mdash; The public key of the validator to which the ETH will be deposited.
 - `withdraw_credentials` &mdash; The withdrawal address for the given validator.
 - `signature` &mdash; A BLS proof of possession, i.e. a proof that the private key corresponding to the `validator_pub_key` is known by the signer.
 - `deposit_data_root` &mdash; Uniquely identifies the set of deposits made so far.

@@ -3,7 +3,7 @@ title: Sign Withdrawal Transaction
 slug: /guides/staking-api/polkadot/undelegate/sign-withdrawal-transaction
 ---
 
-After successfully submitting the withdraw transaction data, in reasponse you have received the `transaction_payload`, you'll be using this `transaction_payload` to sign the transaction for confirmation.
+After successfully submitting the withdraw transaction data, in response you have received the `transaction_payload`, you'll be using this `transaction_payload` to sign the transaction for confirmation.
 
 `transaction_payload` look something like this:
 
@@ -11,11 +11,11 @@ After successfully submitting the withdraw transaction data, in reasponse you ha
 "transaction_payload": "0x0024000000000000000000e143f23803ac50e8f6f8e62695d1ce9e4e1d68aa36c1cd2cfd15340213f3423ee143f23803ac50e8f6f8e62695d1ce9e4e1d68aa36c1cd2cfd15340213f3423e000000000000000000000000000000000000000000000000000000000000000000000000000603000000001c77657374656e64387061726974792d77657374656e64020000004a2400000000000040df6acb689907609b0400000037e397fc7c91f5e40100000040fe3ad401f8959a06000000d2bc9897eed08f1503000000f78b278be53f454c02000000af2c0297a23e6d3d0200000049eaaf1b548a0cb00100000091d5df18b0d2cf5801000000ed99c5acb25eedf503000000cbca25e39f14238702000000687ad44ad37f03c201000000ab3c0572291feb8b01000000bc9d89904f5b923f0100000037c8bb1350a9a2a801000000f3ff14d5ab5270590100000017a6bc0d0062aeb3010000000c0000000004"
 ```
 
-Figment has a tool for signing and decoding payloads, see the guide [HERE](/guides/staking-api/figment-signing-transactions) to continue.
+Figment has a tool for signing and decoding payloads, see the [guide](/guides/staking-api/figment-signing-transactions) to continue.
 
-OR you can sign transaction using the [Polkadot JS Tools](https://wiki.polkadot.network/docs/build-transaction-construction) or [Fireblocks](/guides/staking-api/fireblocks-signing-transactions).
+Or you can sign transaction using the [Polkadot JS Tools](https://wiki.polkadot.network/docs/build-transaction-construction) or [Fireblocks](/guides/staking-api/fireblocks-signing-transactions).
 
-Once you sign the transaction successfully you'll get the signed transaction payload in response which you'll need in next step so make sure to copy/save it.
+Once you sign the transaction successfully, you'll get the signed transaction payload in response which you'll need in next step so make sure to copy/save it.
 
 Signed transaction payload will look something like this:
 

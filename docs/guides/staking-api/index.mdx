@@ -46,14 +46,14 @@ At each step in the Flow, Staking API's response contains a JSON object with eac
 
 ### Inputs
 
-For each action, a number of Inputs indicates what data needs to be collected and submitted to the Staking API in order to build a transaction.
+For each action, a number ofinputs indicates what data needs to be collected and submitted to the Staking API in order to build a transaction.
 
 For example, a delegation transaction for Solana requires `validator_address`; the vote address of the validator to which the stake is delegated.
-Each Input includes a display which can be used for human readable Input field labels, as well as a description which can be used as a tool tip or other means of clarifying the value that is being collected.
+Each input includes a display which can be used for human readableinput field labels, as well as a description which can be used as a tool tip or other means of clarifying the value that is being collected.
 
 ### Payloads
 
-For each step in a Flow where a transaction must be signed, the response from the Staking API includes a serialized transaction Payload ready for signature. It is your responsibility to manage signing the transaction and submitting the signed Payload back to the Staking API for broadcasting to the network.
+For each step in a Flow where a transaction must be signed, the response from the Staking API includes a serialized transaction payload ready for signature. It is your responsibility to manage signing the transaction and submitting the signed Payload back to the Staking API for broadcasting to the network.
 
 ## Using the Staking API
 
