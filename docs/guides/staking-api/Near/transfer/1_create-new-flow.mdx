@@ -8,8 +8,8 @@ To initiate the transfer process, create a new flow with a `POST` request to `/a
 ### Parameters
 
 - `flow` &mdash; `object`
-  - `network_code` &mdash; `string` Network this flow operates on (ex. `near`) (required).
-  - `chain_code` &mdash; `string` Chain this flow operates on (ex. `testnet`) (required).
+  - `network_code` &mdash; `string` Network on which this flow operates (ex. `near`) (required).
+  - `chain_code` &mdash; `string` Chain on which this flow operates (ex. `testnet`) (required).
   - `operation` &mdash; `string` The operation to perform (ex. `transfer`) (required).
   - `version` &mdash; `string` API version to use (ex. `v1`) (optional).
 
@@ -38,7 +38,7 @@ The response indicates one possible action:
 
 - `create_transfer_tx`
 
-The `create_transfer_tx` action indicates seven fields for data collection:
+The `create_transfer_tx` action indicates four fields for data collection:
 
 - `from_account_address` &mdash; The address from which NEAR will be transferred.
 - `from_account_pubkey` &mdash; The account that will sign the transaction.

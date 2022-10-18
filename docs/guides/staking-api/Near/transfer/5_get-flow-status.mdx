@@ -3,7 +3,7 @@ title: Get Flow Status
 slug: /guides/staking-api/near/transfer/get-flow-status-transferred
 ---
 
-To refresh the transaction state and get the latest status of the existing flow, use the the flow ID from the previous step.
+To refresh the transaction state and get the latest status of the existing flow, use the flow ID from the previous step.
 
 ### Parameters
 
@@ -22,7 +22,7 @@ curl -X GET 'https://near-slate.datahub.figment.io/api/v1/flows/5f0962d5-fba0-45
 
 :::info note
 
-The `state` field will update from `transfer_tx_broadcasting` to `transfered`.
+The `state` field will update from `transfer_tx_broadcasting` to `transferred`.
 
 :::
 
@@ -31,7 +31,7 @@ The `state` field will update from `transfer_tx_broadcasting` to `transfered`.
 ```json {3}
 {
   "id": "5f0962d5-fba0-453c-bf35-0dad79624b59",
-  "state": "transfered",
+  "state": "transferred",
   "actions": [],
   "data": {
     "from_account_pubkey": "ed25519:5QA46X6NkNmsFdu9xWVBaLNowh9gGeF1c5r9u6NcxaLY",
@@ -57,4 +57,4 @@ The `state` field will update from `transfer_tx_broadcasting` to `transfered`.
 
 ### Token Transfer Flow Complete
 
-Congratulations, you have successfully transfered your tokens!
+Congratulations, you have successfully transferred your tokens!

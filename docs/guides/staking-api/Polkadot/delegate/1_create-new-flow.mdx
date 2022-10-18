@@ -10,8 +10,8 @@ To initiate the staking process, create a new flow with a `POST` request to `/ap
 ### Parameters
 
 - `flow` &mdash; `object`
-  - `network_code` &mdash; `string` Network this flow operates on (ex. `polkadot`) (required).
-  - `chain_code` &mdash; `string` Chain this flow operates on (ex. `westend`) (required).
+  - `network_code` &mdash; `string` Network on which this flow operates (ex. `polkadot`) (required).
+  - `chain_code` &mdash; `string` Chain on which this flow operates (ex. `westend`) (required).
   - `operation` `string` The operation to perform (ex. `staking`) (required).
   - `version` &mdash; `string` API version to use (ex. `v1`) (optional).
 
@@ -57,7 +57,7 @@ To create a new controller relationship, use the `create_bonding_tx` action whic
   - Added to the staked balance: `Staked`.
   - Sent to the controller account, liquid: `Controller`.
   - Sent to the stash account, liquid: `Stash`.
-- `amount` &mdash; The amount of DOT to be bonded to the controller. This field should be in full DOT, not in Planck (ie. if you want to stake 5 DOT, return `"amount": 5.0`). The Staking API will translate the amount to Plancks so you do not have to worry about the conversion factor.
+- `amount` &mdash; The amount of DOT to be bonded to the controller. This field should be in full DOT, not in Planck (ie. if you want to stake 5 DOT, return `"amount": 5.0`). The Staking API will translate the amount to Plancks so you do not have to worry about the conversion factor. A Planck is the smallest unit of DOT. One DOT contains 10,000,000,000 Plancks.
 
 #### Sample Response
 

@@ -24,8 +24,8 @@ After unbonding, you can either be done with the flow, or if there is a balance 
 ### Parameters
 
 - `flow` &mdash; `object`
-  - `network_code` &mdash; `string` Network this flow operates on (ex. `polkadot`) (required).
-  - `chain_code` &mdash; `string` Chain this flow operates on (ex. `westend`) (required).
+  - `network_code` &mdash; `string` Network on which this flow operates (ex. `polkadot`) (required).
+  - `chain_code` &mdash; `string` Chain on which this flow operates (ex. `westend`) (required).
   - `operation` `string` The operation to perform (ex. `unstaking`) (required).
   - `version` &mdash; `string` API version to use (ex. `v1`) (optional).
 
@@ -55,13 +55,13 @@ The response indicates two possible `actions`:
 - `assign_unstaking_data` &mdash; Use this action if you want to unbond. Chill first if needed. Optionally used to withdraw.
 - `create_withdraw_tx` &mdash; Use this action if you want to withdraw _without_ unbonding.
 
-The `assign_unstaking_data` action indicates 5 fields for data collection:
+The `assign_unstaking_data` action indicates five fields for data collection:
 
 - `stash_account_address` &mdash; The wallet DOT is bonded to.
 - `controller_account_address` &mdash; The account that controls the staking/unstaking actions. This is the account that will sign transactions.
 - `controller_proxy_account_address` (optional) — A proxy account that can sign on behalf of the controller account.
 - `amount` &mdash; The amount of DOT to be unbonded from the controller. This field should be in full DOT, not in Planck (i.e., if you want to stake 5 DOT, return `"amount": 5.0`). The Staking API will translate the amount to Plancks so you do not have to worry about the conversion factor.
-- `maximum` &mdash; This boolean indicates if all bonded funds should be unbonded.
+- `maximum` &mdash; This Boolean indicates if all bonded funds should be unbonded.
 
 #### Sample Response
 

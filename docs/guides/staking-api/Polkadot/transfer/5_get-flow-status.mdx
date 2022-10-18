@@ -3,7 +3,7 @@ title: Get Flow Status
 slug: /guides/staking-api/polkadot/transfer/get-flow-status-transferred
 ---
 
-To refresh the transaction state and get the latest status of the existing flow, use the the flow ID from the previous step.
+To refresh the transaction state and get the latest status of the existing flow, use the flow ID from the previous step.
 
 ### Parameters
 
@@ -22,7 +22,7 @@ curl -X GET 'https://solana-slate.datahub.figment.io/api/v1/flows/643cb99a-7bdd-
 
 :::info note
 
-The `state` field will update from `transfer_tx_broadcasting` to `transfered`.
+The `state` field will update from `transfer_tx_broadcasting` to `transferred`.
 
 :::
 
@@ -31,7 +31,7 @@ The `state` field will update from `transfer_tx_broadcasting` to `transfered`.
 ```json {3}
 {
   "id": "643cb99a-7bdd-488d-aec0-b1fe6499107d",
-  "state": "transfered",
+  "state": "transferred",
   "actions": [],
   "data": {
     "from_account_address": "5GQmooiNwLwjXnsNp3woVDD3xhkHzcifVVAmdWcb6FaRVA4L",

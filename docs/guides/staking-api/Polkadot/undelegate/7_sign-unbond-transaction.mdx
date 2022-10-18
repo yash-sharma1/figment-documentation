@@ -3,7 +3,7 @@ title: Sign Unbond Transaction
 slug: /guides/staking-api/polkadot/undelegate/sign-unbond-transaction
 ---
 
-Sign the deposit transaction using the `transaction_payload` you received in response to submitting the deposit data.
+Sign the unbonding transaction using the `transaction_payload` you received in response to submitting the unbonding data.
 
 Locate the `transaction_payload` in the response from the previous step. It will look something like this:
 
@@ -21,18 +21,8 @@ Figment has a tool for signing and decoding Staking API payloads, see the guide 
 
 Transactions can also be signed using the [PolkadotJS Tools](https://wiki.polkadot.network/docs/build-transaction-construction) or [Fireblocks](/guides/staking-api/fireblocks-signing-transactions).
 
-Once you sign the transaction successfully you'll get the signed transaction payload in response which you'll need in next step so make sure to copy/save it.
-
 Sign the transaction and move on to the next step. A signed transaction payload for Polkadot will look something like this:
 
 ```text
 0xb9018400beaa875b14abaeae2d1a55193ba6f175aa846b7e624dce1514fbf043638aa85801ac450cfe75472d098ead17ad661c282f65fabd0547359ced7118c3962b1aba5b6a23f2cd84aa3f09df44811a0ae9cf144be73aec333105e2f18bcdfd00a1e9840018000602070010a5d4e8
 ```
-
-This part is all on you! Get that transaction signed and move on to the next step.
-
-:::caution important
-
-Always confirm the details of the transaction, which can be done using our provided [npm package](https://www.npmjs.com/package/@figmentio/slate) or CLI tool.
-
-:::

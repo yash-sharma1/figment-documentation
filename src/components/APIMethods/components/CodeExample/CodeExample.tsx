@@ -37,6 +37,7 @@ export default function CodeExample({
   const { data, error, loading, fetchData } = useFetch<ResponseBody>(endpoint, {
     method: req.method,
     headers: {
+      ...req.headers,
       "Content-Type": graphql ? "application/graphql" : "application/json",
     },
     body: formatRequest(req.body),

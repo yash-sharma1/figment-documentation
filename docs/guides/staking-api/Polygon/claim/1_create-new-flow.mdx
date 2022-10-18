@@ -3,13 +3,13 @@ title: Create New Claim Rewards Flow
 slug: /guides/staking-api/polygon/claim/create-new-flow
 ---
 
-To claim the staking rewards with Staking API firstly we need to create a new Flow with `POST /api/v1/flows`.
+To claim the staking rewards with Staking API, create a new flow with `POST /api/v1/flows`.
 
 ### Parameters
 
 - `flow` &mdash; `object`
-  - `network_code` &mdash; `string` Network this flow operates on (ex. `polygon`) (required).
-  - `chain_code` &mdash; `string` Chain this flow operates on (ex. `mainnet`, `testnet`) (required).
+  - `network_code` &mdash; `string` Network on which this flow operates (ex. `polygon`) (required).
+  - `chain_code` &mdash; `string` Chain on which this flow operates (ex. `mainnet`, `testnet`) (required).
   - `operation` `string` The operation to perform (ex. `claim_rewards`) (required).
   - `version` &mdash; `string` API version to use (ex. `v1`) (optional).
 

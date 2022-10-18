@@ -18,12 +18,12 @@ The Staking API has three endpoints for managing flows and five endpoints for ma
 
 #### Body
 
-| parameter      |  type  | description                                  | required |
-| :------------- | :----: | :------------------------------------------- | -------: |
-| `network_code` | String | Network this flow operates on (ex. `solana`) | Required |
-| `chain_code`   | String | Chain this flow operates on (ex. `mainnet`)  | Required |
-| `operation`    | String | The operation to perform (ex. `staking`)     | Required |
-| `version`      | String | API version to use (ex. `v1`)                | Optional |
+| parameter      |  type  | description                                        | required |
+| :------------- | :----: | :------------------------------------------------- | -------: |
+| `network_code` | String | Network on which this flow operates (ex. `solana`) | Required |
+| `chain_code`   | String | Chain on which this flow operates (ex. `mainnet`)  | Required |
+| `operation`    | String | The operation to perform (ex. `staking`)           | Required |
+| `version`      | String | API version to use (ex. `v1`)                      | Optional |
 
 #### curl Request
 
