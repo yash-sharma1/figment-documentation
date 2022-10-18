@@ -52572,7 +52572,7 @@
 					]
 				},
 				{
-					"name": "osmosis/lockup/v1beta1/account_unlockable_coins/{owner}",
+					"name": "/osmosis/lockup/v1beta1/account_unlockable_coins/{owner}",
 					"id": "ff859d79-f558-43c0-ac0b-0be36b5f2e72",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
@@ -74421,119 +74421,119 @@
 	],
 	"variable": [
 		{
-			"id": "cc0e86ab-97e1-429f-a702-e038f724ef88",
+			"id": "2e24cd32-5dd0-4244-bb14-cb2663e1c96c",
 			"key": "ARBI_HOST",
 			"value": "arbitrum-mainnet-rpc-archive-dbgtxn.datahub.figment.io"
 		},
 		{
-			"id": "b9b2a1a8-a02d-4d64-85f0-ba13b0def48d",
+			"id": "4f4092ec-5881-4cec-ae28-7ec3b5314594",
 			"key": "AVAX_HOST",
 			"value": "avalanche--mainnet--rpc.datahub.figment.io"
 		},
 		{
-			"id": "1f9e4e2b-9b94-494f-aef0-933a171d2483",
+			"id": "a33b8f06-8fb9-418e-840b-d16e8f1fc335",
 			"key": "BNB_HOST",
 			"value": "bsc--mainnet--rpc-archive-dbgtxn.datahub.figment.io"
 		},
 		{
-			"id": "b8b95e7b-4d75-43c9-b708-2b934916e49f",
+			"id": "429e9864-eb5e-44b6-af26-76b32d4709b9",
 			"key": "CELO_HOST",
 			"value": "celo-mainnet--rpc.datahub.figment.io"
 		},
 		{
-			"id": "0a831af9-1e83-4548-9a79-6944795203d1",
+			"id": "471d2f1c-74a1-4ffd-92d2-2cd49f0cda2a",
 			"key": "COSMOS_LCD_HOST",
 			"value": "cosmoshub-4--lcd--archive.datahub.figment.io"
 		},
 		{
-			"id": "68313040-affd-4573-91de-ce9cba14e6d4",
+			"id": "1613a661-6883-4b94-b449-a1af89ff8fda",
 			"key": "COSMOS_RPC_HOST",
 			"value": "cosmoshub-4--rpc--archive.datahub.figment.io"
 		},
 		{
-			"id": "5bd47cab-637c-48fe-a31e-436688daa37a",
+			"id": "1a68db53-9380-4840-b31f-456668a0048c",
 			"key": "ETH_HOST",
 			"value": "erigon-mainnet--rpc-dbgtxn.datahub.figment.io"
 		},
 		{
-			"id": "34cf5761-8690-4001-b866-76e8d957c66a",
+			"id": "9e289d6b-9247-48bd-bc35-934d3906fde6",
 			"key": "FTM_HOST",
 			"value": "ftm--mainnet--rpc-archive-dbgtxn.datahub.figment.io"
 		},
 		{
-			"id": "fda1d270-5c7e-41e7-9fa2-8937c37431dc",
+			"id": "0ab72170-573e-4024-86f6-d51241cbb28b",
 			"key": "KSM_SIDECAR_HOST",
 			"value": "polkadot-kusama--sidecar.datahub.figment.io"
 		},
 		{
-			"id": "95afbc9c-2697-4153-84e3-f59782abd3e2",
+			"id": "ec08eef9-a9d4-4b44-86d3-3ced3b3f3284",
 			"key": "MINA_HOST",
 			"value": "mina-mainnet--graphql.datahub.figment.io"
 		},
 		{
-			"id": "f4a480a8-6427-436e-9744-1d48bd401943",
+			"id": "7adea1c7-7033-4c63-a266-632a7b6fd966",
 			"key": "NEAR_HOST",
 			"value": "near-mainnet--rpc--archive.datahub.figment.io"
 		},
 		{
-			"id": "44c8d61e-1403-47e9-a26c-64a47e315928",
+			"id": "2e6fa3c7-2657-41df-a44a-fc02488dc820",
 			"key": "OPTIMISM_HOST",
 			"value": "optimism-mainnet-rpc-archive.datahub.figment.io"
 		},
 		{
-			"id": "ff115240-8969-4634-89a4-db83e92bd9ae",
+			"id": "8562543b-b02f-40f7-8d7b-38f04e30ac14",
 			"key": "OSMO_LCD_HOST",
 			"value": "osmosis-1--lcd--archive.datahub.figment.io"
 		},
 		{
-			"id": "f9916bfc-c81b-436e-9d82-6f85bcddf425",
+			"id": "ea8f0df1-a507-49e9-ad14-b4ba34c4c1b2",
 			"key": "OSMO_RPC_HOST",
 			"value": "osmosis-1--rpc--archive.datahub.figment.io"
 		},
 		{
-			"id": "c92ae5e3-21ff-4dca-a4e4-196621e8a21f",
+			"id": "9023cfb3-f7ff-4010-b975-b0b1f6c8e85a",
 			"key": "POLKADOT_HOST",
 			"value": "polkadot--rpc.datahub.figment.io"
 		},
 		{
-			"id": "9133a63e-3f3e-4fe9-b8b0-0517460691c0",
+			"id": "36affcd2-aa2e-4355-8c07-0c896096898b",
 			"key": "POLKADOT_SIDECAR_HOST",
 			"value": "polkadot--sidecar.datahub.figment.io"
 		},
 		{
-			"id": "0495481b-ab87-45c8-a5c1-33dc48a424c2",
+			"id": "059c1139-0532-4f82-a327-d4d29d6f3158",
 			"key": "POLYGON_HOST",
 			"value": "matic-mainnet--jsonrpc-archive-dbgtxn.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "ee3d4753-ab45-4160-8573-f7d8ff92513e",
+			"id": "574b3f62-163c-4ff0-b301-0b7a3c8d5132",
 			"key": "SOL_HOST",
 			"value": "solana--mainnet.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "322fa85d-a6e2-4330-ad89-11372a62e22d",
+			"id": "9a927807-1a1c-4094-b263-7e44797599b1",
 			"key": "WEBSOCKETS",
 			"value": "arbitrum, bnb, celo, centrifuge, cosmos, ethereum, fantom, kusama, optimism, polkadot, polygon, solana"
 		},
 		{
-			"id": "66f88b89-3f9e-454e-bb1d-f79fc090af3c",
+			"id": "378fb030-ae73-4102-ab12-61010ed086bc",
 			"key": "TESTNETS",
 			"value": "avalanche, celo, ethereum, mina, near, polkadot, polygon"
 		},
 		{
-			"id": "adf0d79c-35a6-4038-a57c-e7b97ed094cd",
+			"id": "cf2c1ef9-c1ee-430b-8b93-ddde00e480ca",
 			"key": "DEVNETS",
 			"value": "solana"
 		},
 		{
-			"id": "7c7020ae-9f76-4081-9641-d92fb01051e3",
+			"id": "054db952-c015-44cd-923d-05fbad53c755",
 			"key": "ARCHIVENODES",
 			"value": "arbitrum, avalanche, bnb, celo, cosmos, ethereum, fantom, kusama, mina, near, optimism, osmosis, polkadot, polygon, solana"
 		},
 		{
-			"id": "e22c45fb-51f6-493c-a59e-cd66ffcb70c6",
+			"id": "02fc704d-160c-4c3a-82b5-b02004803ac7",
 			"key": "FULLNODES",
 			"value": "arbitrum, bnb, centrifuge, cosmos, ethereum, fantom, kusama, mina, near, optimism, osmosis, polkadot, polygon, solana"
 		}
