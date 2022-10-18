@@ -27,7 +27,7 @@
 							}
 						},
 						"url": "https://eth-rewards.datahub.figment.io/v2/apikey/{{API_KEY}}/rewards",
-						"description": "Returns gross validator rewards grouped by epoch\n\n## Request\n\n\\* `network`: `ethereum` _(Required)_  \n\\* `chain_id`: `mainnet` _(Required)_  \n\\* `accounts` takes an array of validator's public addresses. 50 max. _(Required)_  \n\\* `start` and `end` are epoch numbers (as integers). _(Required)_\n\n## Response\n\nThe response is broken down between `meta` and `data`\n\n##### `meta`\n\n\\* `network` is the same as in the request  \n\\* `period_unit` is the unit of the `period` field under `data` : `epoch` here\n\n##### `data`\n\nis an array of objects - one for each period - containing:\n\n\\* `validator` returns the validator that distributed the rewards  \n\\* `period` is the epoch number (only present when no aggregation)  \n\\* `timestamp` is the timestamp of the end of the period  \n\\* `rewards` is an array of objects. The formula to compute the final rewards in the `currency` unit is `numeric x 10^(-exp)` (`text` being the string version of this). `type` is either `staking` (for consensus layer rewards) or `tips` (for execution layer rewards). `recipient` is the address of the rewards recipient\n\n## Limitations\n\n\\* This API serves data for the last 7 days for epoch and 60 days for daily aggregation  \n\\* This API returns rewards for Figment validators only  \n\\* Data is available approximatively an hour after the end of the day or epoch. When requesting daily for the current day, the data will be available but obviously partially complete as the day progresses.\n\n## FAQ\n\n\\* **Reward Types:** `staking` type rewards are the net aggregation of all consensus layer rewards: block proposal, attestation, sync committee and slashing.  \n\\* **Negative Rewards:** In theory, there could be a negative rewards amount for a day. But slashing events are rare. Current negative amounts would more likely be caused by repeatedly missing attestations and/or sync committee votes."
+						"description": "Returns gross validator rewards grouped by epoch\n\n## Request\n\n\\* `network`: `ethereum` _(Required)_  \n\\* `chain_id`: `mainnet` _(Required)_  \n\\* `accounts` takes an array of validator's public addresses. 50 max. _(Required)_  \n\\* `start` and `end` are epoch numbers (as integers). _(Required)_\n\n## Response\n\nThe response is broken down between `meta` and `data`\n\n##### `meta`\n\n\\* `network` is the same as in the request  \n\\* `period_unit` is the unit of the `period` field under `data` : `epoch` here\n\n##### `data`\n\nis an array of objects - one for each period - containing:\n\n\\* `validator` returns the validator that distributed the rewards  \n\\* `period` is the epoch number (only present when no aggregation)  \n\\* `timestamp` is the timestamp of the end of the period  \n\\* `rewards` is an array of objects. The formula to compute the final rewards in the `currency` unit is `numeric x 10^(-exp)` (`text` being the string version of this). `type` is either `staking` (for consensus layer rewards) or `tips` (for execution layer rewards). `recipient` is the address of the rewards recipient\n\nThere can be multiple `type=tips` objects per period: one per proposed blocks. We don't aggregate them in one object because they could have different recipient addresses. `type=staking` only have one object: we aggregate all sub types (block proposals, attestations, sync committees, slashing)\n\n## Limitations\n\n\\* This API serves data for the last 7 days for epoch and 60 days for daily aggregation  \n\\* This API returns rewards for Figment validators only  \n\\* Data is available approximatively an hour after the end of the day or epoch. When requesting daily for the current day, the data will be available but obviously partially complete as the day progresses.\n\n## FAQ\n\n\\* **Reward Types:** `staking` type rewards are the net aggregation of all consensus layer rewards: block proposal, attestation, sync committee and slashing.  \n\\* **Negative Rewards:** In theory, there could be a negative rewards amount for a day. But slashing events are rare. Current negative amounts would more likely be caused by repeatedly missing attestations and/or sync committee votes."
 					},
 					"response": [
 						{
@@ -141,7 +141,7 @@
 							}
 						},
 						"url": "https://eth-rewards.datahub.figment.io/v2/apikey/{{API_KEY}}/rewards",
-						"description": "Returns gross validator rewards grouped by day (from midnight UTC to midnight UTC)\n\n#### Request\n\n\\* `network`: `ethereum` _(Required)_  \n\\* `chain_id`: `mainnet` _(Required)_  \n\\* `accounts` takes in an array of validator's public addresses. 50 max. _(Required)_  \n\\* `aggregation`: `daily` _(Required)_  \n\\* `start` and `end` are timestamps in the format \"YYYY-MM-DD\" _(Required)_\n\n#### Response\n\nThe response is broken down between `meta` and `data`\n\n##### `meta`\n\n\\* `network` is the same as in the request  \n\\* `period_unit` is the unit of the `period` field under `data`: `daily` here\n\n##### `data`\n\nis an array of objects - one for each period - containing:  \n\\* `validator` returns the validator that distributed the rewards  \n\\* `timestamp` is the timestamp of the beginning of the day  \n\\* `rewards` is an array of objects. The formula to compute the final rewards in the `currency` unit is `numeric x 10^(-exp)` (`text` being the string version of this). `type` is either `staking` (for consensus layer rewards) or `tips` (for execution layer rewards). `recipient` is the address of the rewards recipient\n\n#### Limitations\n\n\\* This API serves data for the last 7 days for epoch and 60 days for daily aggregation  \n\\* This API returns rewards for Figment validators only  \n\\* Data is available approximatively an hour after the end of the day or epoch. When requesting daily for the current day, the data will be available but obviously partially complete as the day progresses.\n\n#### FAQ\n\n**Reward Types:** `staking` type rewards are the net aggregation of all consensus layer rewards: block proposal, attestation, sync committee and slashing.\n\n**Negative Rewards:** In theory, there could be a negative rewards amount for a day. But slashing events are rare. Current negative amounts would more likely be caused by repeatedly missing attestations and/or sync committee votes."
+						"description": "Returns gross validator rewards grouped by day (from midnight UTC to midnight UTC)\n\n#### Request\n\n\\* `network`: `ethereum` _(Required)_  \n\\* `chain_id`: `mainnet` _(Required)_  \n\\* `accounts` takes in an array of validator's public addresses. 50 max. _(Required)_  \n\\* `aggregation`: `daily` _(Required)_  \n\\* `start` and `end` are timestamps in the format \"YYYY-MM-DD\" _(Required)_\n\n#### Response\n\nThe response is broken down between `meta` and `data`\n\n##### `meta`\n\n\\* `network` is the same as in the request  \n\\* `period_unit` is the unit of the `period` field under `data`: `daily` here\n\n##### `data`\n\nis an array of objects - one for each period - containing:  \n\\* `validator` returns the validator that distributed the rewards  \n\\* `timestamp` is the timestamp of the beginning of the day  \n\\* `rewards` is an array of objects. The formula to compute the final rewards in the `currency` unit is `numeric x 10^(-exp)` (`text` being the string version of this). `type` is either `staking` (for consensus layer rewards) or `tips` (for execution layer rewards). `recipient` is the address of the rewards recipient\n\nThere can be multiple `type=tips` objects per period: one per proposed blocks. We don't aggregate them in one object because they could have different recipient addresses. `type=staking` only have one object: we aggregate all sub types (block proposals, attestations, sync committees, slashing)\n\n#### Limitations\n\n\\* This API serves data for the last 7 days for epoch and 60 days for daily aggregation  \n\\* This API returns rewards for Figment validators only  \n\\* Data is available approximatively an hour after the end of the day or epoch. When requesting daily for the current day, the data will be available but obviously partially complete as the day progresses.\n\n#### FAQ\n\n**Reward Types:** `staking` type rewards are the net aggregation of all consensus layer rewards: block proposal, attestation, sync committee and slashing.\n\n**Negative Rewards:** In theory, there could be a negative rewards amount for a day. But slashing events are rare. Current negative amounts would more likely be caused by repeatedly missing attestations and/or sync committee votes."
 					},
 					"response": [
 						{
@@ -1009,27 +1009,27 @@
 	],
 	"variable": [
 		{
-			"id": "73b8f8df-3459-4376-9ab5-91984e13d2f6",
+			"id": "edd20b96-12c6-4a45-b74b-d855c1823438",
 			"key": "ETH_REWARDS_HOST",
 			"value": "eth-rewards.datahub.figment.io"
 		},
 		{
-			"id": "1b1cb3c2-c876-4d90-a525-56ae92ab21ed",
+			"id": "406df5ab-d682-416b-98e3-e562bdd9967e",
 			"key": "SOL_REWARDS_HOST",
 			"value": "solana-rewards.datahub.figment.io"
 		},
 		{
-			"id": "2d709c54-5acd-4457-a889-a1b02a84fca8",
+			"id": "0154943a-0e8f-420b-bb59-1312f11c905d",
 			"key": "DOT_REWARDS_HOST",
 			"value": "polkadot-rewards.datahub.figment.io"
 		},
 		{
-			"id": "fa9dc0be-33b4-4cd8-b924-8fa4cb817fc6",
+			"id": "2f6b2dc0-5145-4a05-8eb1-b6fd1b679a0a",
 			"key": "NEAR_REWARDS_HOST",
 			"value": "near-rewards.datahub.figment.io"
 		},
 		{
-			"id": "d444188a-10dc-4129-a016-1886a1e4a38c",
+			"id": "9c0f9016-e2f5-43e0-890d-234bdc2e59d4",
 			"key": "AVAX_REWARDS_HOST",
 			"value": "avalanche-rewards.datahub.figment.io"
 		}
