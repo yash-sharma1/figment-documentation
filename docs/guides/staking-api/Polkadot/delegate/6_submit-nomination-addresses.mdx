@@ -3,7 +3,9 @@ title: Submit Nomination Addresses
 slug: /guides/staking-api/polkadot/delegate/submit-nomination-addresses
 ---
 
-Now that the bond is created, submit a nomination transaction to activate the stake. The previous response indicates one required input: `validator_addresses`.
+Now that the bond is created, submit a nomination transaction to activate the stake.
+The previous response indicates one required input: `validator_addresses`.
+
 After collecting the required inputs, send a `PUT` request to `/api/v1/flows/[:flow_id]/next` to proceed to the next step.
 
 :::info note

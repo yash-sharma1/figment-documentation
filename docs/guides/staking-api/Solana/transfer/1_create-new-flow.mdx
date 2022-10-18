@@ -3,13 +3,13 @@ title: Create New Transfer Flow
 slug: /guides/staking-api/solana/transfer/create-new-flow
 ---
 
-To initiate the transfer process with Staking API, create a new flow with `POST /api/v1/flows`.
+To initiate the transfer process with Staking API, create a new flow with a `POST` request to `/api/v1/flows`.
 
 ### Parameters
 
 - `flow` &mdash; `object`
   - `network_code` &mdash; `string` Network on which this flow operates (ex. `solana`) (required).
-  - `chain_code` &mdash; `string` Chain on which this flow operates (ex. `mainnet` , `testnet`) (required).
+  - `chain_code` &mdash; `string` Chain on which this flow operates (ex. `testnet`) (required).
   - `operation` `string` The operation to perform (ex. `transfer`) (required).
   - `version` &mdash; `string` API version to use (ex. `v1`) (optional).
 
