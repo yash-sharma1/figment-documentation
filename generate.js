@@ -70,6 +70,11 @@ function processMethod(method, vars) {
           ? request.body.graphql.query
           : processJSON(request.body.raw)
         : undefined,
+      headers: process.env.DEVELOPMENT
+        ? {
+            Authorization: process.env.API_KEY,
+          }
+        : {},
       query,
       url,
     },
