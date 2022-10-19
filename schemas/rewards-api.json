@@ -152,7 +152,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"network\": \"ethereum\",\n    \"chain_id\": \"mainnet\",\n    \"accounts\": [\n        \"0x93257a7d4f1e6998f019483f149a4dbe3bfc8b89358411be769aeedd943de907f178da1773aea9016d1ac2bdfe3794ba\"\n    ], \n    \"start\": \"2022-10-01\",\n    \"end\": \"2022-10-02\",\n    \"aggregation\": \"daily\"\n}",
+									"raw": "{\n    \"network\": \"ethereum\",\n    \"accounts\": [\n        \"0x93257a7d4f1e6998f019483f149a4dbe3bfc8b89358411be769aeedd943de907f178da1773aea9016d1ac2bdfe3794ba\"\n    ], \n    \"start\": \"2022-10-01\",\n    \"end\": \"2022-10-02\",\n    \"aggregation\": \"daily\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -1009,27 +1009,27 @@
 	],
 	"variable": [
 		{
-			"id": "425a4a06-921d-43ba-af59-f24bdb194c37",
+			"id": "3a5405e7-5785-4f62-b9a7-95ba74eddcdf",
 			"key": "ETH_REWARDS_HOST",
 			"value": "eth-rewards.datahub.figment.io"
 		},
 		{
-			"id": "505dbdc9-17b1-4c8c-8aff-5a0aabeed103",
+			"id": "e17c7359-74b5-4fb8-83c3-ac5f46836c91",
 			"key": "SOL_REWARDS_HOST",
 			"value": "solana-rewards.datahub.figment.io"
 		},
 		{
-			"id": "7653e95c-f868-4108-8b50-a57b56ba2852",
+			"id": "9623b69b-d337-43c0-83a6-a71edc33ad37",
 			"key": "DOT_REWARDS_HOST",
 			"value": "polkadot-rewards.datahub.figment.io"
 		},
 		{
-			"id": "bf88dfc5-6f84-4e08-bcbd-57958db85826",
+			"id": "d48faaab-0ff5-4fbd-b0a0-f6115f7d7d2d",
 			"key": "NEAR_REWARDS_HOST",
 			"value": "near-rewards.datahub.figment.io"
 		},
 		{
-			"id": "31ab9a70-469e-4886-ace7-ceb0ab4731be",
+			"id": "0a9bc44d-a89b-495d-bf4e-161fafa5d9e3",
 			"key": "AVAX_REWARDS_HOST",
 			"value": "avalanche-rewards.datahub.figment.io"
 		}
