@@ -8,7 +8,7 @@ After collecting the required inputs, send a `PUT` request to `/api/v1/flows/[:f
 ### Parameters
 
 - `name` &mdash; `string` Name of the action to execute (required).
-- `inputs` &mdash; `array`
+- `inputs` &mdash; `object`
   - `delegator_address` &mdash; `string` The address delegating MATIC (required).
   - `validator_address` &mdash; `string` The Validator contract address to which MATIC are delegated (required).
   - `gas_limit` &mdash; `number` Adjust gas limit for the claim transaction (optional).

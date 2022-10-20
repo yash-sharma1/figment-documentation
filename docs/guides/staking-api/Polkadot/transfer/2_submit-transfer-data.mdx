@@ -8,7 +8,7 @@ After collecting the required inputs, send a `PUT` request to `/api/v1/flows/[:f
 ### Parameters
 
 - `name` &mdash; `string` Name of the action to execute (ex. `create_transfer_tx`)
-- `inputs` &mdash; `array`
+- `inputs` &mdash; `object`
   - `from_account_address` &mdash; `string` the address from which DOT will be transferred (required).
   - `to_account_address` &mdash; `string` The address to which DOT will be transferred (required).
   - `amount` &mdash; `number` The amount of DOT to be transferred (required).

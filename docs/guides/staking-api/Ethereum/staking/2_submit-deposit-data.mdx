@@ -8,7 +8,7 @@ After collecting the required inputs, send a `PUT` request to `/api/v1/flows/[:f
 ### Parameters
 
 - `name` &mdash; `string` Name of the action to execute (required).
-- `inputs` &mdash; `array` (required).
+- `inputs` &mdash; `object` (required).
   - `funding_account_address` &mdash; `string` The wallet from which the ETH will originate. (required).
   - `validator_pub_key` &mdash; `string` The public key of the validator to which the ETH will be deposited. (required).
   - `withdrawal_credentials` &mdash; `string` The withdrawal address for the given validator. (required).

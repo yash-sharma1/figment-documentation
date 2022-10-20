@@ -10,7 +10,7 @@ After collecting the required inputs, send a `PUT` request to `/api/v1/flows/[:f
 ### Parameters
 
 - `name` &mdash; `string` Name of the action to execute (required).
-- `inputs` &mdash; `array`
+- `inputs` &mdash; `object`
   - `delegator_address` &mdash; `string` The delegating address (P-chain) (required).
   - `validator_address` &mdash; `string` Address of the validator (required).
   - `amount` &mdash; `number` The amount of AVAX to be delegated (required).

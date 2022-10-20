@@ -10,7 +10,7 @@ After collecting the required inputs as mentioned below, send a `PUT` request to
 ### Parameters
 
 - `name` &mdash; `string` Name of the action to execute (required).
-- `inputs` &mdash; `array`
+- `inputs` &mdash; `object`
   - `funding_account_pubkey` &mdash; The main wallet your SOL will be originating from (required).
   - `stake_authority_pubkey` &mdash; Grants authority to sign certain staking relation transactions to the provided address. Defaults to `funding_account_pubkey` (optional).
   - `withdraw_authority_pubkey` &mdash; Grants authority to sign certain withdrawal related transactions to the provided address. Defaults to `funding_account_pubkey` (optional).
