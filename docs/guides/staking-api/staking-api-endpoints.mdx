@@ -285,7 +285,7 @@ Refer to the individual protocol guides for more details (links are in the sideb
 
 #### curl Request
 
-```text title="Example curl request for the next step of a flow, with blank values"
+```bash title="Example curl request for the next step of a flow, with blank values"
 curl -X POST https://eth-slate.figment.io/api/v1/flows/FLOW-ID/next \
 -H "Authorization: API-KEY" \
 -d '{"name": "create_deposit_transaction", \
@@ -548,7 +548,7 @@ curl -X POST 'https://eth-slate.figment.io/api/v1/webhook_endpoints' \
 
 You can send a `GET` request, including the webhook ID number in the request URL, to retreive details for an existing webhook endpoint.
 
-```text title="GET /webhook_endpoints/[:webhook_endpoint_id]"
+```bash title="GET /webhook_endpoints/[:webhook_endpoint_id]"
 curl -X GET 'https://eth-slate.figment.io/api/v1/webhook_endpoints/15' \
 -H 'Authorization: API-KEY'
 ```
@@ -605,7 +605,7 @@ curl -X PUT 'https://eth-slate.figment.io/api/v1/webhook_endpoints/15' \
 
 You can send a `GET` request to retreive details for all your webhook endpoints.
 
-```text title="GET /webhook_endpoints"
+```bash title="GET /webhook_endpoints"
 curl -X PUT 'https://eth-slate.figment.io/api/v1/webhook_endpoints' \
 -H 'Authorization: API-KEY'
 ```
@@ -640,7 +640,7 @@ curl -X PUT 'https://eth-slate.figment.io/api/v1/webhook_endpoints' \
 
 You can send a `DELETE` request, including the webhook ID number in the request URL, to delete a webhook endpoint.
 
-```text title="DELETE /webhook_endpoints/[:webhook_endpoint_id]"
+```bash title="DELETE /webhook_endpoints/[:webhook_endpoint_id]"
 curl -X PUT 'https://eth-slate.figment.io/api/v1/webhook_endpoints/15' \
 -H 'Authorization: API-KEY'
 ```
