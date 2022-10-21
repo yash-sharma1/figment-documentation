@@ -8,7 +8,7 @@ After collecting the required inputs, send a `PUT` request to `/api/v1/flows/[:f
 ### Parameters
 
 - `name` &mdash; `string` Name of the action to execute (required).
-- `inputs` &mdash; `array`
+- `inputs` &mdash; `object`
   - `controller_account_address` &mdash; `string` Address of the wallet DOT will be bonded to (required).
   - `controller_proxy_account_address` &mdash; `string` A proxy account that will sign on behalf of the controller account (optional).
   - `stash_account_address` &mdash; `string` Primary wallet from which DOT will be bonded (required).
