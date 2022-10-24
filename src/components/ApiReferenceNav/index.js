@@ -1,13 +1,28 @@
 import React from "react";
 import { useLocation, useHistory } from "@docusaurus/router";
 
+function toTitleCase(str) {
+  return str
+    .toLowerCase()
+    .replace(/(?:^|[\s-/])\w/g, function (match) {
+      return match.toUpperCase();
+    })
+    .replace(/\-/g, " ")
+    .replace("Api", "API");
+}
+
 export default function ChangeNetwork({ network, networks, methods, service }) {
   const location = useLocation();
   const history = useHistory();
 
   return (
-    <div>
-      <label>Change Network: </label>
+    <div className="shadow--tl apiRefNav">
+      <p className="refNavHeader">
+        You are currently viewing the {toTitleCase(service)} Reference for{" "}
+        {toTitleCase(network)}. <br /> Use the select boxes below to change
+        networks and jump to available methods or endpoints.
+      </p>
+      <label>Change Network:</label>
       <select
         className="custom-select"
         defaultValue={network}
@@ -24,7 +39,7 @@ export default function ChangeNetwork({ network, networks, methods, service }) {
         ))}
       </select>
 
-      <label> Jump to: </label>
+      <label>Jump to:</label>
       <select
         className="custom-select"
         defaultValue={location.hash.replace("#", "") || ""}

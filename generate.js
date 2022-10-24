@@ -371,7 +371,7 @@ function createMarkdown(services, variables) {
             `import {APIMethods} from '@site/src/components'\n` +
             `import ApiReferenceNav from '@site/src/components/ApiReferenceNav'\n` +
             `import MakingCalls from '@site/partials/api-reference/making-calls.mdx'\n\n` +
-            `# ${toTitleCase(service)} - ${network}\n\n` +
+            `# ${toTitleCase(service)}\n\n` +
             `<ApiReferenceNav service="${toDashCase(
               service
             )}" methods={${JSON.stringify(
