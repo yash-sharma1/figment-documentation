@@ -93,18 +93,20 @@ function processServices(services, variables) {
     const vars = variables[service.info.name] || {};
     return {
       service: service.info.name,
-      networks: service.item.map((network) => {
-        return {
-          network: network.name,
-          parameters: network.description,
-          service: service.info.name,
-          methods: Array.isArray(network.item)
-            ? network.item.map((n) => processMethod(n, vars))
-            : !!network.item
-            ? [processMethod(network.item, vars)]
-            : [],
-        };
-      }),
+      networks: service.item
+        .map((network) => {
+          return {
+            network: network.name,
+            parameters: network.description,
+            service: service.info.name,
+            methods: Array.isArray(network.item)
+              ? network.item.map((n) => processMethod(n, vars))
+              : !!network.item
+              ? [processMethod(network.item, vars)]
+              : [],
+          };
+        })
+        .sort((a, b) => (a.network < b.network ? -1 : 1)),
     };
   });
 }
@@ -359,7 +361,7 @@ function createMarkdown(services, variables) {
       value: toDashCase(n.network),
     }));
 
-    networks.forEach(({ network, methods, parameters }) => {
+    networks.forEach(({ network, methods, parameters }, index) => {
       fs.writeFileSync(
         `docs/api-reference/${toDashCase(service)}/${toDashCase(network)}.mdx`,
         frontMatterTemplate({
@@ -370,8 +372,16 @@ function createMarkdown(services, variables) {
           body:
             `import {APIMethods} from '@site/src/components'\n` +
             `import ApiReferenceNav from '@site/src/components/ApiReferenceNav'\n` +
+            `import FixBreadCrumbs from '@site/src/components/FixBreadCrumbs'\n` +
             `import MakingCalls from '@site/partials/api-reference/making-calls.mdx'\n\n` +
             `# ${toTitleCase(service)} - ${network}\n\n` +
+            `${
+              index === 0
+                ? `<FixBreadCrumbs network='${network}' service={{ link: '/api-reference/${toDashCase(
+                    service
+                  )}', label: '${toTitleCase(service)}' }} />`
+                : ""
+            }\n\n` +
             `<ApiReferenceNav service="${toDashCase(
               service
             )}" methods={${JSON.stringify(

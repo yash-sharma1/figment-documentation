@@ -1,0 +1,113 @@
+---
+title: Submit Transfer Data
+slug: /guides/staking-api/cosmos/transfer/submit-transfer-data
+---
+
+After collecting the required inputs, send a `PUT` request to `/api/v1/flows/[:flow_id]/next` to proceed to the next step.
+
+### Parameters
+
+- `name` &mdash; `string` Name of the action to execute - `create_transfer_tx`.
+- `inputs` &mdash; `object`
+  - `from_account_address` &mdash; `string` The address from which ATOM will be transferred (required).
+  - `to_account_address` &mdash; `string` The address to which ATOM will be transferred (required).
+  - `amount` &mdash; `number` The amount of ATOM to be transferred (required).
+  - `memo` &mdash; `string` A message to record on-chain with your transfer (optional).
+  - `gas_limit` &mdash; `number` The total amount of gas you're willing to let this transaction consume (optional).
+  - `gas_price` &mdash; `number` How many ATOM you're willing to pay per unit of gas consumed by this transaction (optional).
+
+#### Sample cURL Request
+
+```bash {5-10}
+curl -X PUT 'https://cosmos-slate.datahub.figment.io/api/v1/flows/fd37503c-17d0-2164-8537-8f4a33f694a9/next' \
+-H 'Content-Type: application/json' \
+-H 'Authorization: <api_key>' \
+-d '{
+  "name": "create_transfer_tx",
+  "inputs": {
+    "from_account_address": "cosmos1q73f398z4egpsj0fg2u55w34qxxkjzmf37fje7",
+    "to_account_address": "cosmos1hjyde2kfgtl78twvhs53u5j2gcsxrt649nn8j5",
+    "amount": "10",
+  }
+}'
+```
+
+### Response
+
+Note that in this step, the Staking API will check that your account balance is greater than or equal to the amount you've submitted for transfer.
+Expect an error response if that is not the case.
+
+We see two possible `actions`:
+
+- `refresh_transfer_tx` &mdash; If you need to get a fresh version of the transaction payload (i.e., the nonce has increased).
+- `sign_transfer_tx` &mdash; Submit a signed transaction payload ready to be broadcast to the network.
+
+We will choose `sign_transfer_tx`, which indicates one input to collect:
+
+- `transaction_payload` (required) &mdash; The signed transaction payload ready to be broadcast to the network.
+
+#### Sample Response
+
+```json {3}
+{
+  "id": "c1fae578-2519-4efc-9bde-c5a98451fc17",
+  "state": "transfer_tx_signature",
+  "actions": [
+    {
+      "name": "refresh_transfer_tx",
+      "inputs": []
+    },
+    {
+      "name": "sign_transfer_tx",
+      "inputs": [
+        {
+          "name": "transaction_payload",
+          "display": "Transaction Payload",
+          "description": "",
+          "type": "signed_transaction",
+          "validations": [],
+          "signers": ["cosmos1786jjkh5xk43vcmrc490zn48fh8nl02tcur0ce"],
+          "transaction_payload": "7b226d65737361676573223a5b7b227479706555726c223a222f636f736d6f732e62616e6b2e763162657461312e4d736753656e64222c2276616c7565223a7b2266726f6d41646472657373223a22636f736d6f73313738366a6a6b6835786b343376636d72633439307a6e34386668386e6c303274637572306365222c22746f41646472657373223a22636f736d6f73316c67677076306b7964633777397071616b78716468393332613676653474366d386561376a30222c22616d6f756e74223a5b7b2264656e6f6d223a227561746f6d222c22616d6f756e74223a223130303030227d5d7d7d5d2c22666565223a7b22616d6f756e74223a5b7b22616d6f756e74223a2231383332222c2264656e6f6d223a227561746f6d227d5d2c22676173223a223733323633227d2c226d656d6f223a22227d"
+        },
+        {
+          "name": "signatures",
+          "display": "Signatures",
+          "description": "",
+          "type": "array_of_signatures",
+          "validations": [],
+          "signers": ["cosmos1786jjkh5xk43vcmrc490zn48fh8nl02tcur0ce"],
+          "transaction_payload": "7b226d65737361676573223a5b7b227479706555726c223a222f636f736d6f732e62616e6b2e763162657461312e4d736753656e64222c2276616c7565223a7b2266726f6d41646472657373223a22636f736d6f73313738366a6a6b6835786b343376636d72633439307a6e34386668386e6c303274637572306365222c22746f41646472657373223a22636f736d6f73316c67677076306b7964633777397071616b78716468393332613676653474366d386561376a30222c22616d6f756e74223a5b7b2264656e6f6d223a227561746f6d222c22616d6f756e74223a223130303030227d5d7d7d5d2c22666565223a7b22616d6f756e74223a5b7b22616d6f756e74223a2231383332222c2264656e6f6d223a227561746f6d227d5d2c22676173223a223733323633227d2c226d656d6f223a22227d",
+          "signing_payload": null
+        }
+      ]
+    }
+  ],
+  "data": {
+    "from_account_address": "cosmos1786jjkh5xk43vcmrc490zn48fh8nl02tcur0ce",
+    "to_account_address": "cosmos1lggpv0kydc7w9pqakxqdh932a6ve4t6m8ea7j0",
+    "amount": "0.01",
+    "gas_price": null,
+    "gas_limit": null,
+    "memo": null,
+    "transfer_transaction": {
+      "raw": "7b226d65737361676573223a5b7b227479706555726c223a222f636f736d6f732e62616e6b2e763162657461312e4d736753656e64222c2276616c7565223a7b2266726f6d41646472657373223a22636f736d6f73313738366a6a6b6835786b343376636d72633439307a6e34386668386e6c303274637572306365222c22746f41646472657373223a22636f736d6f73316c67677076306b7964633777397071616b78716468393332613676653474366d386561376a30222c22616d6f756e74223a5b7b2264656e6f6d223a227561746f6d222c22616d6f756e74223a223130303030227d5d7d7d5d2c22666565223a7b22616d6f756e74223a5b7b22616d6f756e74223a2231383332222c2264656e6f6d223a227561746f6d227d5d2c22676173223a223733323633227d2c226d656d6f223a22227d",
+      "signing_payload": null,
+      "signed": null,
+      "hash": null,
+      "status": null,
+      "error": null,
+      "signatures": null
+    }
+  },
+  "network_code": "cosmos",
+  "chain_code": "testnet",
+  "created_at": "2022-10-25T18:06:03.248Z",
+  "updated_at": "2022-10-25T18:08:36.628Z"
+}
+```
+
+:::info note
+
+Make sure to save the `transaction_payload` from this response, which is what needs to be signed in the next step.
+
+:::
