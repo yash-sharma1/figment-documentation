@@ -885,7 +885,7 @@
 								}
 							}
 						},
-						"url": "https://{{AVAX_REWARDS_HOST}}/v2/apikey/{{API_KEY}}/rewards",
+						"url": "https://{{AVAX_REWARDS_HOST}}/v2/rewards/apikey/{{API_KEY}}/",
 						"description": "Returns net rewards grouped by day\n\n## Request\n\n\\* `network`: `avalanche` _(Required)_  \n\\* `accounts` takes an array of addresses. _(Required)_  \n\\* `start` and `end` are timestamps (in the format YYYY-MM-DD). _(Required)_\n\n## Response\n\nThe response is broken down between `meta` and `data`\n\n##### `meta`\n\n\\* `network` is the same as in the request  \n\\* `period_unit` is the unit of the `period` field under `data` : `daily` here\n\n##### `data`\n\nis an array of objects - one for each period - containing:\n\n\\* `validator` returns the validator that distributed the rewards  \n\\* `timestamp` is the timestamp of the day's start (midnight UTC)  \n\\* `rewards` is an array of objects. The formula to compute the final rewards in the `currency` unit is `numeric x 10^(-exp)` (`text` being the string version of this).\n\n## Limitations\n\n\\* This API returns rewards for Figment validators only  \n\\* Data is available approximatively an hour after the end of the day or epoch. When requesting daily for the current day, the data will be available but obviously partially complete as the day progresses."
 					},
 					"response": [
@@ -1009,27 +1009,27 @@
 	],
 	"variable": [
 		{
-			"id": "93aecef9-f6aa-440b-9813-d310b28b55b8",
+			"id": "d33fe4ae-36b3-448a-a2cb-e9241bbad46d",
 			"key": "ETH_REWARDS_HOST",
 			"value": "eth-rewards.datahub.figment.io"
 		},
 		{
-			"id": "6a578264-5512-482e-b32c-16da89c8c445",
+			"id": "6245ec97-dea5-4829-a2bf-20530ebbd447",
 			"key": "SOL_REWARDS_HOST",
 			"value": "solana-rewards.datahub.figment.io"
 		},
 		{
-			"id": "0315c21c-c89d-4d02-a6d2-1f8669e8f9f0",
+			"id": "9fa14199-02d7-4866-92cb-ec5424362e29",
 			"key": "DOT_REWARDS_HOST",
 			"value": "polkadot-rewards.datahub.figment.io"
 		},
 		{
-			"id": "f79ba4d5-b33b-471e-b4b4-b8c258990916",
+			"id": "8b2d028c-a2d7-4dcb-b8d4-4a9882249c64",
 			"key": "NEAR_REWARDS_HOST",
 			"value": "near-rewards.datahub.figment.io"
 		},
 		{
-			"id": "8a5e6e90-e783-4c90-9d97-cd33466ef9be",
+			"id": "c133fdf7-df5d-405c-b5ba-2085c381053f",
 			"key": "AVAX_REWARDS_HOST",
 			"value": "avalanche-rewards.datahub.figment.io"
 		}
