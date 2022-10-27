@@ -26,7 +26,7 @@
 								}
 							}
 						},
-						"url": "https://eth-rewards.datahub.figment.io/v2/rewards/apikey/{{API_KEY}}/",
+						"url": "https://{{ETH_REWARDS_HOST}}/v2/rewards/apikey/{{API_KEY}}/",
 						"description": "Returns gross validator rewards grouped by epoch\n\n## Request\n\n\\* `network`: `ethereum` _(Required)_  \n\\* `accounts` takes an array of validator's public addresses. 50 max. _(Required)_  \n\\* `start` and `end` are epoch numbers (as integers). _(Required)_\n\n## Response\n\nThe response is broken down between `meta` and `data`\n\n##### `meta`\n\n\\* `network` is the same as in the request  \n\\* `period_unit` is the unit of the `period` field under `data` : `epoch` here\n\n##### `data`\n\nis an array of objects - one for each period - containing:\n\n\\* `validator` returns the validator that distributed the rewards  \n\\* `period` is the epoch number (only present when no aggregation)  \n\\* `timestamp` is the timestamp of the end of the period  \n\\* `rewards` is an array of objects. The formula to compute the final rewards in the `currency` unit is `numeric x 10^(-exp)` (`text` being the string version of this). `type` is either `staking` (for consensus layer rewards) or `tips` (for execution layer rewards). `recipient` is the address of the rewards recipient\n\nThere can be multiple `type=tips` objects per period: one per proposed blocks. We don't aggregate them in one object because they could have different recipient addresses. `type=staking` only have one object: we aggregate all sub types (block proposals, attestations, sync committees, slashing)\n\n## Limitations\n\n\\* This API serves data for the last 7 days for epoch and 60 days for daily aggregation  \n\\* This API returns rewards for Figment validators only  \n\\* Data is available approximatively an hour after the end of the day or epoch. When requesting daily for the current day, the data will be available but obviously partially complete as the day progresses.\n\n## FAQ\n\n- **Reward Types:** `staking` type rewards are the net aggregation of all consensus layer rewards: block proposal, attestation, sync committee and slashing. There is one staking bucket per period. `tips` type rewards are the effective amount received by the fee recipient of the proposed block on the execution layer. There can be multiple buckets per period (one per block proposed)\n- **Negative Rewards:** In theory, there could be a negative rewards amount for a day. But slashing events are rare. Current negative amounts would more likely be caused by repeatedly missing attestations and/or sync committee votes."
 					},
 					"response": [
@@ -1009,27 +1009,27 @@
 	],
 	"variable": [
 		{
-			"id": "2b13bf3a-ce02-4d65-8c69-08c73fb7e8f0",
+			"id": "1f3759b7-b3f2-446a-bec4-bcbc65b002a1",
 			"key": "ETH_REWARDS_HOST",
 			"value": "eth-rewards.datahub.figment.io"
 		},
 		{
-			"id": "9e86f6b2-42aa-4d0c-9a36-de72d64dd31e",
+			"id": "c7a9d848-7c01-46c6-b2a8-fef31213670c",
 			"key": "SOL_REWARDS_HOST",
 			"value": "solana-rewards.datahub.figment.io"
 		},
 		{
-			"id": "0a0baee8-daba-4046-b91c-e26b49a8856b",
+			"id": "4b511d99-790c-4b5e-ad7b-6b61a9ea58d5",
 			"key": "DOT_REWARDS_HOST",
 			"value": "polkadot-rewards.datahub.figment.io"
 		},
 		{
-			"id": "e676e293-2e45-4d90-9d6b-d0d71554bc3a",
+			"id": "fcba16fb-3243-4662-a747-7471e6a925cc",
 			"key": "NEAR_REWARDS_HOST",
 			"value": "near-rewards.datahub.figment.io"
 		},
 		{
-			"id": "dcb391f1-d0d7-4840-902c-48d68f2f77a2",
+			"id": "0ba7c1f5-d1a8-4f4d-9f88-ed54396fca08",
 			"key": "AVAX_REWARDS_HOST",
 			"value": "avalanche-rewards.datahub.figment.io"
 		}
