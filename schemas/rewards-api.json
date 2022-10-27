@@ -26,7 +26,7 @@
 								}
 							}
 						},
-						"url": "https://eth-rewards.datahub.figment.io/v2/apikey/{{API_KEY}}/rewards",
+						"url": "https://{{ETH_REWARDS_HOST}}/v2/rewards/apikey/{{API_KEY}}",
 						"description": "Returns gross validator rewards grouped by epoch\n\n## Request\n\n\\* `network`: `ethereum` _(Required)_  \n\\* `accounts` takes an array of validator's public addresses. 50 max. _(Required)_  \n\\* `start` and `end` are epoch numbers (as integers). _(Required)_\n\n## Response\n\nThe response is broken down between `meta` and `data`\n\n##### `meta`\n\n\\* `network` is the same as in the request  \n\\* `period_unit` is the unit of the `period` field under `data` : `epoch` here\n\n##### `data`\n\nis an array of objects - one for each period - containing:\n\n\\* `validator` returns the validator that distributed the rewards  \n\\* `period` is the epoch number (only present when no aggregation)  \n\\* `timestamp` is the timestamp of the end of the period  \n\\* `rewards` is an array of objects. The formula to compute the final rewards in the `currency` unit is `numeric x 10^(-exp)` (`text` being the string version of this). `type` is either `staking` (for consensus layer rewards) or `tips` (for execution layer rewards). `recipient` is the address of the rewards recipient\n\nThere can be multiple `type=tips` objects per period: one per proposed blocks. We don't aggregate them in one object because they could have different recipient addresses. `type=staking` only have one object: we aggregate all sub types (block proposals, attestations, sync committees, slashing)\n\n## Limitations\n\n\\* This API serves data for the last 7 days for epoch and 60 days for daily aggregation  \n\\* This API returns rewards for Figment validators only  \n\\* Data is available approximatively an hour after the end of the day or epoch. When requesting daily for the current day, the data will be available but obviously partially complete as the day progresses.\n\n## FAQ\n\n- **Reward Types:** `staking` type rewards are the net aggregation of all consensus layer rewards: block proposal, attestation, sync committee and slashing. There is one staking bucket per period. `tips` type rewards are the effective amount received by the fee recipient of the proposed block on the execution layer. There can be multiple buckets per period (one per block proposed)\n- **Negative Rewards:** In theory, there could be a negative rewards amount for a day. But slashing events are rare. Current negative amounts would more likely be caused by repeatedly missing attestations and/or sync committee votes."
 					},
 					"response": [
@@ -140,7 +140,7 @@
 								}
 							}
 						},
-						"url": "https://eth-rewards.datahub.figment.io/v2/apikey/{{API_KEY}}/rewards",
+						"url": "https://{{ETH_REWARDS_HOST}}/v2/rewards/apikey/{{API_KEY}}/",
 						"description": "Returns gross validator rewards grouped by day (from midnight UTC to midnight UTC)\n\n#### Request\n\n\\* `network`: `ethereum` _(Required)_  \n\\* `accounts` takes in an array of validator's public addresses. 50 max. _(Required)_  \n\\* `aggregation`: `daily` _(Required)_  \n\\* `start` and `end` are timestamps in the format \"YYYY-MM-DD\" _(Required)_\n\n#### Response\n\nThe response is broken down between `meta` and `data`\n\n##### `meta`\n\n\\* `network` is the same as in the request  \n\\* `period_unit` is the unit of the `period` field under `data`: `daily` here\n\n##### `data`\n\nis an array of objects - one for each period - containing:  \n\\* `validator` returns the validator that distributed the rewards  \n\\* `timestamp` is the timestamp of the beginning of the day  \n\\* `rewards` is an array of objects. The formula to compute the final rewards in the `currency` unit is `numeric x 10^(-exp)` (`text` being the string version of this). `type` is either `staking` (for consensus layer rewards) or `tips` (for execution layer rewards). `recipient` is the address of the rewards recipient\n\nThere can be multiple `type=tips` objects per period: one per proposed blocks. We don't aggregate them in one object because they could have different recipient addresses. `type=staking` only have one object: we aggregate all sub types (block proposals, attestations, sync committees, slashing)\n\n#### Limitations\n\n\\* This API serves data for the last 7 days for epoch and 60 days for daily aggregation  \n\\* This API returns rewards for Figment validators only  \n\\* Data is available approximatively an hour after the end of the day or epoch. When requesting daily for the current day, the data will be available but obviously partially complete as the day progresses.\n\n#### FAQ\n\n- **Reward Types:** `staking` type rewards are the net aggregation of all consensus layer rewards: block proposal, attestation, sync committee and slashing. There is one staking bucket per period. `tips` type rewards are the effective amount received by the fee recipient of the proposed block on the execution layer. There can be multiple buckets per period (one per block proposed)\n    \n\n- **Negative Rewards:** In theory, there could be a negative rewards amount for a day. But slashing events are rare. Current negative amounts would more likely be caused by repeatedly missing attestations and/or sync committee votes."
 					},
 					"response": [
@@ -350,7 +350,7 @@
 								}
 							}
 						},
-						"url": "https://solana-rewards.datahub.figment.io/v2/apikey/{{API_KEY}}/rewards",
+						"url": "https://{{SOL_REWARDS_HOST}}/v2/rewards//apikey/{{API_KEY}}/",
 						"description": "Returns net delegator rewards (post on-chain validator commission) by epoch\n\n## Request\n\n\\* `network` is `solana` _(Required)_  \n\\* `accounts` is an array of stake accounts addresses _(Required)_  \n\\* `start` and `end` are epoch numbers, both inclusive. _(Required)_\n\n## Response\n\nThe response is broken down between `meta` and `data`\n\n##### `meta`\n\n\\* `network` is the same as in the request  \n\\* `period_unit` is the unit of the `period` field under `data`: here it will be `epoch`\n\n##### `data`\n\nis an array of objects - one for each epoch - containing:\n\n\\* `validator` returns the validator that distributed the rewards  \n\\* `period` is the epoch number  \n\\* `timestamp` is the timestamp at the end of the epoch  \n\\* `rewards` is an array of objects containing `numeric` , `exp`, `currency` and `text`. The formula to compute the rewards in the `currency` unit is `numeric x 10^(-exp)`(`text` is the string version of this)\n\n## Limitations\n\n\\* The API returns rewards for Figment validators only  \n\\* Data is available approximatively an hour after the end of the day or epoch. When requesting daily for the current day, the data will be available but obviously partially complete as the day progresses."
 					},
 					"response": [
@@ -556,7 +556,7 @@
 								}
 							}
 						},
-						"url": "https://near-rewards.datahub.figment.io/v2/apikey/{{API_KEY}}/rewards",
+						"url": "https://{{NEAR_REWARDS_HOST}}/v2/rewards/apikey/{{API_KEY}}/",
 						"description": "Returns net delegator rewards (post on-chain validator commission) by epoch\n\n## Request\n\n\\* `network` is `near` _(Required)_  \n\\* `accounts` takes in an array of delegator accounts addresses _(Required)_  \n\\* `start` and `end` are epoch numbers, both inclusive. _(Required)_\n\n## Response\n\nThe response is broken down between `meta` and `data`\n\n##### `meta`\n\n\\* `network` is the same as in the request  \n\\* `period_unit` is the unit of the `period` field under `data`\n\n##### `data`\n\nis an array of objects - one for each epoch - containing:\n\n\\* `validator` returns the validator that distributed the rewards  \n\\* `period` is the epoch number  \n\\* `timestamp` is the timestamp of the end of the epoch  \n\\* `rewards` is an array of objects with four components: `numeric` , `exp` and `currency`. The formula to compute the final rewards in the `currency` unit is `numeric x 10^(-exp)`(`text` is the string version of this)\n\n## Limitations\n\n\\* The API returns rewards for Figment validators only  \n\\* Data is available approximatively an hour after the end of the day or epoch. When requesting daily for the current day, the data will be available but obviously partially complete as the day progresses."
 					},
 					"response": [
@@ -762,7 +762,7 @@
 								}
 							}
 						},
-						"url": "https://polkadot-rewards.datahub.figment.io/v2/apikey/{{API_KEY}}/rewards",
+						"url": "https://{{DOT_REWARDS_HOST}}/v2/rewards/apikey/{{API_KEY}}/",
 						"description": "Returns net delegator rewards (post on-chain validator commission) by epoch\n\n## Request\n\n\\* `network` is `polkadot` _(Required)_  \n\\* `accounts` takes in an array of stash accounts addresses _(Required)_  \n\\* `start` and `end` are era numbers, both inclusive. _(Required)_\n\n## Response\n\nThe response is broken down between `meta` and `data`\n\n##### `meta`\n\n\\* `network` is the same as in the request  \n\\* `period_unit` is the unit of the `period` field under `data`\n\n##### `data`\n\nis an array of objects - one for each era - containing:\n\n\\* `validator` returns the validator that distributed the rewards  \n\\* `period` is the era number  \n\\* `timestamp` is the timestamp of the end of the era  \n\\* `rewards` is an array of objects with four components: `numeric` , `exp` and `currency`. The formula to compute the final rewards in the `currency` unit is `numeric x 10^-exp`(`text` is the string version of this)\n\n## Limitations\n\n\\* The API returns rewards for Figment validators only  \n\\* Data is available approximatively an hour after the end of the day or epoch. When requesting daily for the current day, the data will be available but obviously partially complete as the day progresses."
 					},
 					"response": [
@@ -885,7 +885,7 @@
 								}
 							}
 						},
-						"url": "https://{{AVAX_REWARDS_HOST}}/v2/apikey/{{API_KEY}}/rewards",
+						"url": "https://{{AVAX_REWARDS_HOST}}/v2/rewards/apikey/{{API_KEY}}/",
 						"description": "Returns net rewards grouped by day\n\n## Request\n\n\\* `network`: `avalanche` _(Required)_  \n\\* `accounts` takes an array of addresses. _(Required)_  \n\\* `start` and `end` are timestamps (in the format YYYY-MM-DD). _(Required)_\n\n## Response\n\nThe response is broken down between `meta` and `data`\n\n##### `meta`\n\n\\* `network` is the same as in the request  \n\\* `period_unit` is the unit of the `period` field under `data` : `daily` here\n\n##### `data`\n\nis an array of objects - one for each period - containing:\n\n\\* `validator` returns the validator that distributed the rewards  \n\\* `timestamp` is the timestamp of the day's start (midnight UTC)  \n\\* `rewards` is an array of objects. The formula to compute the final rewards in the `currency` unit is `numeric x 10^(-exp)` (`text` being the string version of this).\n\n## Limitations\n\n\\* This API returns rewards for Figment validators only  \n\\* Data is available approximatively an hour after the end of the day or epoch. When requesting daily for the current day, the data will be available but obviously partially complete as the day progresses."
 					},
 					"response": [
@@ -1009,27 +1009,27 @@
 	],
 	"variable": [
 		{
-			"id": "5ef9dce3-be7e-4a3d-98a2-8c4dd778b491",
+			"id": "d33fe4ae-36b3-448a-a2cb-e9241bbad46d",
 			"key": "ETH_REWARDS_HOST",
 			"value": "eth-rewards.datahub.figment.io"
 		},
 		{
-			"id": "1b60261a-291b-4bf9-9c36-5d106e0ee85b",
+			"id": "6245ec97-dea5-4829-a2bf-20530ebbd447",
 			"key": "SOL_REWARDS_HOST",
 			"value": "solana-rewards.datahub.figment.io"
 		},
 		{
-			"id": "0b42799e-0751-4d3b-8509-4eec56281199",
+			"id": "9fa14199-02d7-4866-92cb-ec5424362e29",
 			"key": "DOT_REWARDS_HOST",
 			"value": "polkadot-rewards.datahub.figment.io"
 		},
 		{
-			"id": "ef74d75a-052a-45bc-9a05-083f6c86b1ba",
+			"id": "8b2d028c-a2d7-4dcb-b8d4-4a9882249c64",
 			"key": "NEAR_REWARDS_HOST",
 			"value": "near-rewards.datahub.figment.io"
 		},
 		{
-			"id": "407cb2cf-ff77-4c1f-864e-0115ef21024e",
+			"id": "c133fdf7-df5d-405c-b5ba-2085c381053f",
 			"key": "AVAX_REWARDS_HOST",
 			"value": "avalanche-rewards.datahub.figment.io"
 		}
