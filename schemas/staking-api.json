@@ -14126,7 +14126,7 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "3c8010a2-a440-43bf-a0a9-466f07398982",
+				"id": "2d858b32-7a06-408e-91b3-06b3c1e68e8a",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -14136,7 +14136,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "07638042-e0d9-468f-a860-fc53f5c18ce6",
+				"id": "34d75391-498c-4fbd-943b-ebbecd3b613d",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -14146,43 +14146,49 @@
 	],
 	"variable": [
 		{
-			"id": "ffcd6c9b-3147-46ef-b9d9-184cecaecd3b",
+			"id": "3bc65541-c752-4422-b652-1cb7f5efaa28",
 			"key": "AVAX_STAKING_HOST",
 			"value": "avalanche-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "bd1c6a10-07a7-468a-b06e-d851bfd33e8f",
+			"id": "e6d4078d-52f5-4c90-b531-c05881d32b20",
+			"key": "COSMOS_STAKING_HOST",
+			"value": "cosmos-slate.datahub.figment.io",
+			"type": "string"
+		},
+		{
+			"id": "92012824-12e5-4772-a075-fbbfd9f9bf9a",
 			"key": "ETH_STAKING_HOST",
 			"value": "eth-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "d012ded7-11c0-4bf6-99c2-b1398bdf983c",
+			"id": "82328172-2f5c-40ac-8c66-5d4f1965d7a5",
 			"key": "NEAR_STAKING_HOST",
 			"value": "near-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "09ac17ee-400b-4f48-87e0-4608f2ec3f15",
+			"id": "9955dcec-cc57-4414-be3a-6f9cfb573d01",
 			"key": "DOT_STAKING_HOST",
 			"value": "polkadot-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "8ee3f9a0-34fa-4534-bc4b-482df2c7fcad",
+			"id": "42b17a02-9008-4d8f-ad55-8d0dd16326cc",
 			"key": "SOL_STAKING_HOST",
 			"value": "solana-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "e579614c-f788-48a2-8a47-9066fce5ad2f",
+			"id": "f25942e4-07ed-4727-bc15-c0072efe9c2f",
 			"key": "MATIC_STAKING_HOST",
 			"value": "polygon-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "d4d65a1f-ec55-4349-a29b-2234412a81f5",
+			"id": "0cd0c3cc-1d19-473b-b016-c75bfc47dec0",
 			"key": "INTERACTIVE",
 			"value": "false",
 			"type": "string"
