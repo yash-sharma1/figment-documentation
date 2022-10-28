@@ -2923,7 +2923,7 @@
 							}
 						},
 						"url": "https://{{POLYGON_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{polygonUnstakingFlowId}}/next",
-						"description": "Before broadcasting the transaction, you must [sign the `transaction_payload`](https://docs.figment.io/guides/staking-api/figment-signing-transactions) you received in the previous step. After signing the transaction, send a `PUT` request to `/api/v1/flows/[:flow_id]/next` and the Staking API will broadcast the transaction to the Polygon network.\n\n### Parameters\n\n- `name` &mdash; `string` Name of the action to execute (required).\n- `inputs` &mdash; `array`\n  - `transaction_payload` &mdash; Signed transaction payload from the previous step's response.\n\n### Response\n\nWith the signed transaction provided, the Staking API will broadcast it to the network.\nAs the transaction progresses towards confirmation, the returned `state` will be either:\n\n- `claim_tx_broadcasting` &mdash; The transaction has been broadcast but not confirmed.\n- `done` &mdash; The transaction has been confirmed and the rewards have been claimed."
+						"description": "Before broadcasting the transaction, you must [sign the `transaction_payload`](https://docs.figment.io/guides/staking-api/figment-signing-transactions) you received in the previous step. After signing the transaction, send a `PUT` request to `/api/v1/flows/[:flow_id]/next` and the Staking API will broadcast the transaction to the Polygon network.\n\n### Parameters\n\n- `name` &mdash; `string` Name of the action to execute (required).\n- `inputs` &mdash; `object`\n  - `transaction_payload` &mdash; Signed transaction payload from the previous step's response.\n\n### Response\n\nWith the signed transaction provided, the Staking API will broadcast it to the network.\nAs the transaction progresses towards confirmation, the returned `state` will be either:\n\n- `claim_tx_broadcasting` &mdash; The transaction has been broadcast but not confirmed.\n- `done` &mdash; The transaction has been confirmed and the rewards have been claimed."
 					},
 					"response": [
 						{
@@ -3940,49 +3940,49 @@
 	],
 	"variable": [
 		{
-			"id": "3ec0b3c6-a7fb-42b9-af3a-f4a6656a721f",
+			"id": "ef9edf3c-46a1-46fe-922a-978c2936be9a",
 			"key": "AVAX_STAKING_HOST",
 			"value": "avalanche-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "679d98ee-a05e-4e90-a742-f3b9f4a6623b",
+			"id": "8b110d7f-253b-47e0-8f78-8c519a4398eb",
 			"key": "COSMOS_STAKING_HOST",
 			"value": "cosmos-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "381cc59d-9b37-4d59-af44-d652510b0d29",
+			"id": "144523ae-7160-4d23-a942-c8577f2a57ce",
 			"key": "ETH_STAKING_HOST",
 			"value": "eth-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "ef67db12-896e-4602-8ac6-d34541f765da",
+			"id": "9ec8eeed-8855-4506-8c1b-9f60a8537caf",
 			"key": "NEAR_STAKING_HOST",
 			"value": "near-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "bf558a95-9d06-47a7-a06a-95d6b96ed3b8",
+			"id": "ff1f9962-71c2-447c-b8e0-6c43ec60c790",
 			"key": "DOT_STAKING_HOST",
 			"value": "polkadot-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "d4f1eaa7-f6f0-4a9e-92c8-3cb9482d4d9c",
+			"id": "1922bf94-6214-40b0-87f8-17398b908ac0",
 			"key": "SOL_STAKING_HOST",
 			"value": "solana-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "e3e529d5-5b37-4016-a79e-95495c251cce",
+			"id": "0c6add25-cba8-4427-a118-6e7fc2eafc6d",
 			"key": "POLYGON_STAKING_HOST",
 			"value": "polygon-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "002522be-c5f0-4b6e-94b6-20838e8a79a3",
+			"id": "64996a2f-ebb8-4b63-bdc5-ae2df3eee4f9",
 			"key": "INTERACTIVE",
 			"value": "false",
 			"type": "string"
