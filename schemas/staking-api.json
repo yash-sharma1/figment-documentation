@@ -828,7 +828,7 @@
 							}
 						},
 						"url": "https://{{NEAR_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{nearUnstakingFlowId}}/next",
-						"description": "Before broadcasting the transaction, you must [sign the `transaction_payload`](https://docs.figment.io/guides/staking-api/figment-signing-transactions) you received in the previous step. After signing the transaction, send a `PUT` request to `/api/v1/flows/[:flow_id]/next` with the signed payload. The Staking API will broadcast the transaction to the NEAR network\n\n### Parameters\n\n- `name` &mdash; `string` Name of the action to execute (required).\n- `inputs` &mdash; `array`\n  - `transaction_payload` &mdash; Signed transaction payload from the previous step's response.\n\n### Response\n\nWith the signed transaction provided, the Staking API will broadcast it to the network. As the transaction progresses towards confirmation, the returned state will be either:\n\n- `undelegate_tx_broadcasting` &mdash; Transaction has been broadcast and is waiting confirmation.\n- `cool_down` &mdash; Transaction has been confirmed and the delegation is unbonding."
+						"description": "Before broadcasting the transaction, you must [sign the `transaction_payload`](https://docs.figment.io/guides/staking-api/figment-signing-transactions) you received in the previous step. After signing the transaction, send a `PUT` request to `/api/v1/flows/[:flow_id]/next` with the signed payload. The Staking API will broadcast the transaction to the NEAR network\n\n### Parameters\n\n- `name` &mdash; `string` Name of the action to execute (required).\n- `inputs` &mdash; `object`\n  - `transaction_payload` &mdash; Signed transaction payload from the previous step's response.\n\n### Response\n\nWith the signed transaction provided, the Staking API will broadcast it to the network. As the transaction progresses towards confirmation, the returned state will be either:\n\n- `undelegate_tx_broadcasting` &mdash; Transaction has been broadcast and is waiting confirmation.\n- `cool_down` &mdash; Transaction has been confirmed and the delegation is unbonding."
 					},
 					"response": [
 						{
@@ -3940,49 +3940,49 @@
 	],
 	"variable": [
 		{
-			"id": "fe653fbf-cca3-4211-8441-7c917a419137",
+			"id": "da88114e-9509-478f-a649-edb1dc14f418",
 			"key": "AVAX_STAKING_HOST",
 			"value": "avalanche-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "695c0409-27d3-477a-8f5c-517d14e7bbe9",
+			"id": "864325f5-988f-42af-8145-c06ecd1398f4",
 			"key": "COSMOS_STAKING_HOST",
 			"value": "cosmos-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "9981e1b6-0e83-48be-9b4e-bc1a62672fa5",
+			"id": "723c417c-5483-4b8a-9218-fb4bf4593f02",
 			"key": "ETH_STAKING_HOST",
 			"value": "eth-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "82592777-5cd4-45d1-8419-b62427213e05",
+			"id": "af3f8710-5d27-43fd-9a37-2a4fa4983879",
 			"key": "NEAR_STAKING_HOST",
 			"value": "near-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "414f2fb3-2519-4470-8904-87f4f7bc41de",
+			"id": "b59df11e-ce38-4200-b75a-727b2fc675e5",
 			"key": "DOT_STAKING_HOST",
 			"value": "polkadot-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "29d3f5e7-b5c5-4d94-a493-fd9b39ea7bb4",
+			"id": "8a74182c-f47e-40e0-9760-cc99a5fb40c5",
 			"key": "SOL_STAKING_HOST",
 			"value": "solana-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "b1e729f4-a494-43b3-910f-3c5a9001171a",
+			"id": "c5c8f661-e8a0-43a3-b10b-363b29cee8cd",
 			"key": "POLYGON_STAKING_HOST",
 			"value": "polygon-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "e3eee4f9-fe95-48e1-bc34-885299cc4f01",
+			"id": "63544d4d-02dd-4a43-8819-4298e59a1a5c",
 			"key": "INTERACTIVE",
 			"value": "false",
 			"type": "string"
