@@ -2511,7 +2511,7 @@
 							}
 						},
 						"url": "https://{{POLYGON_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{polygonStakingFlowId}}/next",
-						"description": "After collecting the required inputs, send a `PUT` request to `/api/v1/flows/[:flow_id]/next` to proceed to the next step.\n\n### Parameters\n\n- `name` &mdash; `string` Name of the action to execute (required).\n- `inputs` &mdash; `array`\n  - `gas_limit` &mdash; `string` Adjust if you wish to limit the possible transaction fee (optional).\n  - `gas_price` &mdash; `string` Adjust if you wish to limit the possible transaction fee (optional).\n\n### Response\n\nIn this response you can find the unsigned, serialized transaction in `data[create_allowance_tx][raw]`.\n\nThere are two possible `actions`:\n\n- `refresh_allowance_tx` &mdash; If you need to get a fresh version of the transaction payload.\n- `sign_allowance_tx` &mdash; Submit a signed transaction payload ready to be broadcast to the network.\n\nWe will chose `sign_allowance_tx`, so note that it indicates one Input to collect:\n\n- `transaction_payload` &mdash; the signed transaction payload ready to be broadcast to the network.\n\nMake sure to save the `transaction_payload` from this response, which is what needs to be signed in the next step."
+						"description": "After collecting the required inputs, send a `PUT` request to `/api/v1/flows/[:flow_id]/next` to proceed to the next step.\n\n### Parameters\n\n- `name` &mdash; `string` Name of the action to execute (required).\n- `inputs` &mdash; `object`\n  - `gas_limit` &mdash; `string` Adjust if you wish to limit the possible transaction fee (optional).\n  - `gas_price` &mdash; `string` Adjust if you wish to limit the possible transaction fee (optional).\n\n### Response\n\nIn this response you can find the unsigned, serialized transaction in `data[create_allowance_tx][raw]`.\n\nThere are two possible `actions`:\n\n- `refresh_allowance_tx` &mdash; If you need to get a fresh version of the transaction payload.\n- `sign_allowance_tx` &mdash; Submit a signed transaction payload ready to be broadcast to the network.\n\nWe will chose `sign_allowance_tx`, so note that it indicates one Input to collect:\n\n- `transaction_payload` &mdash; the signed transaction payload ready to be broadcast to the network.\n\nMake sure to save the `transaction_payload` from this response, which is what needs to be signed in the next step."
 					},
 					"response": [
 						{
@@ -3940,49 +3940,49 @@
 	],
 	"variable": [
 		{
-			"id": "3799485e-357b-4ef6-8d24-f24e2b7d9c69",
+			"id": "7fe73b02-4684-4ab3-b5cf-4b69eb3826e0",
 			"key": "AVAX_STAKING_HOST",
 			"value": "avalanche-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "4c46412c-6b22-4f59-b755-3ab6859b63fb",
+			"id": "5c796e74-aede-4c66-bdbc-9aacb6904986",
 			"key": "COSMOS_STAKING_HOST",
 			"value": "cosmos-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "f3e0edd8-f4bf-4a2c-aab5-37d6682cc1a0",
+			"id": "f2e7cecc-cfbc-410b-9a3c-aee5f97b85b7",
 			"key": "ETH_STAKING_HOST",
 			"value": "eth-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "7ca86a5f-023a-4e9f-8005-2da2a31d5d7e",
+			"id": "c7f5651c-e055-44d6-bb61-81a2955f2555",
 			"key": "NEAR_STAKING_HOST",
 			"value": "near-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "8c32b3bd-c380-4986-bd13-872514f85578",
+			"id": "1fbbd96f-5052-497b-b282-c67e84374fc8",
 			"key": "DOT_STAKING_HOST",
 			"value": "polkadot-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "e1c18737-cb2e-4566-86fb-976f412e557c",
+			"id": "1c3f5fc8-0bf5-460b-a68d-0d0f756b3f75",
 			"key": "SOL_STAKING_HOST",
 			"value": "solana-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "6fa31907-df0a-4f81-80dc-8ea8e4984fd2",
+			"id": "8e4c2040-a762-439f-bdb1-a132cfc1c7fe",
 			"key": "POLYGON_STAKING_HOST",
 			"value": "polygon-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "bcea8e56-8b5f-4bc9-b426-aac634ccbdd6",
+			"id": "a846c256-bbcd-4531-bf31-2bb49a7c3a32",
 			"key": "INTERACTIVE",
 			"value": "false",
 			"type": "string"
