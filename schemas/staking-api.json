@@ -3638,7 +3638,7 @@
 							}
 						},
 						"url": "https://{{SOLANA_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{solanaUnstakingFlowId}}/next",
-						"description": "After deactivation, we see there is one action — `create_withdraw_tx` &mdash; and three required fields for data collection:\n\n- `amount` &mdash; The number of SOL to be withdrawn. Partial withdrawal is possible.\n- `funding_account_pubkey` &mdash; The address of the account that will pay the transaction fee.\n- `recipient_pubkey` &mdash; The address of the wallet to which the withdrawn SOL will be sent.\n\nNote that the recipient of the withdrawal is _not_ the originating address by default!\n\nOnce this data has been collected, submit it to the Staking API:\n`PUT /api/v1/flows/[:flow_id]/next`.\n\n### Parameters\n\n- `name` &mdash; `string` Name of the action to execute (required).\n- `inputs` &mdash; `array`\n  - `amount` &mdash; `string` The number of SOL to be withdrawn. Partial withdrawal is possible (required).\n  - `funding_account_pubkey` &mdash; `string` The address of the account that will pay the transaction fee (required).\n  - `recipient_pubkey` &mdash; `string` the number of SOL to be withdrawn. Partial withdrawal is possible (required).\n\n### Response\n\nNote that, in this response, you can find the unsigned, serialized transaction in `data[create_withdraw_transaction][raw]`.\n\nThere are two possible `actions`:\n\n- `refresh_withdraw_tx` &mdash; If you need to get a fresh version of the transaction payload (i.e., the recent blockhash has expired)\n- `sign_withdraw_tx` &mdash; Submit a signed transaction payload ready to be broadcast to the network.\n\nWe will choose `sign_withdraw_tx`, which indicates one input to collect:\n\n- `transaction_payload` &mdash; The signed transaction payload ready to be broadcast to the network.\n\nThe `transaction_payload` you've received in the response make sure to copy/save it because you'll require it in the next step to sign the transaction."
+						"description": "After deactivation, we see there is one action — `create_withdraw_tx` &mdash; and three required fields for data collection:\n\n- `amount` &mdash; The number of SOL to be withdrawn. Partial withdrawal is possible.\n- `funding_account_pubkey` &mdash; The address of the account that will pay the transaction fee.\n- `recipient_pubkey` &mdash; The address of the wallet to which the withdrawn SOL will be sent.\n\nNote that the recipient of the withdrawal is _not_ the originating address by default!\n\nOnce this data has been collected, submit it to the Staking API:\n`PUT /api/v1/flows/[:flow_id]/next`.\n\n### Parameters\n\n- `name` &mdash; `string` Name of the action to execute (required).\n- `inputs` &mdash; `object`\n  - `amount` &mdash; `string` The number of SOL to be withdrawn. Partial withdrawal is possible (required).\n  - `funding_account_pubkey` &mdash; `string` The address of the account that will pay the transaction fee (required).\n  - `recipient_pubkey` &mdash; `string` the number of SOL to be withdrawn. Partial withdrawal is possible (required).\n\n### Response\n\nNote that, in this response, you can find the unsigned, serialized transaction in `data[create_withdraw_transaction][raw]`.\n\nThere are two possible `actions`:\n\n- `refresh_withdraw_tx` &mdash; If you need to get a fresh version of the transaction payload (i.e., the recent blockhash has expired)\n- `sign_withdraw_tx` &mdash; Submit a signed transaction payload ready to be broadcast to the network.\n\nWe will choose `sign_withdraw_tx`, which indicates one input to collect:\n\n- `transaction_payload` &mdash; The signed transaction payload ready to be broadcast to the network.\n\nThe `transaction_payload` you've received in the response make sure to copy/save it because you'll require it in the next step to sign the transaction."
 					},
 					"response": [
 						{
@@ -3940,49 +3940,49 @@
 	],
 	"variable": [
 		{
-			"id": "5366f6f0-d285-460e-85b9-1288e1bd2da2",
+			"id": "3a93db68-4d47-42b7-9aeb-409a5773de65",
 			"key": "AVAX_STAKING_HOST",
 			"value": "avalanche-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "42f88635-b92d-49d1-ac2b-a3940afd3f7c",
+			"id": "14ddda9a-fd9c-4044-9a1f-3b44b50e4d57",
 			"key": "COSMOS_STAKING_HOST",
 			"value": "cosmos-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "c5b9684f-ba16-438f-91e0-ba5dab75dfd8",
+			"id": "b78573b8-a5bd-4cfd-96c8-75d8df17526a",
 			"key": "ETH_STAKING_HOST",
 			"value": "eth-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "93bf37f4-2fbf-46d5-907f-9a1515763161",
+			"id": "6e1714f3-c8e3-4322-8e23-40855181989a",
 			"key": "NEAR_STAKING_HOST",
 			"value": "near-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "c4b11741-1a83-4dad-a606-66597a67cba8",
+			"id": "74a0d1a8-1d5b-4b8f-9718-01b72f364031",
 			"key": "DOT_STAKING_HOST",
 			"value": "polkadot-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "067806ed-6d04-476c-aa22-9c1de0e72fcc",
+			"id": "63239e7a-1e4e-41b1-b62d-cf82000aca26",
 			"key": "SOL_STAKING_HOST",
 			"value": "solana-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "203d8aca-5614-4c82-beea-2259f6968a88",
+			"id": "103bfb41-a259-4ea9-86ec-6e6dbf6c362d",
 			"key": "POLYGON_STAKING_HOST",
 			"value": "polygon-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "35a347a3-e36f-448f-a4b0-8d8b492dc060",
+			"id": "fa22c846-73fc-4a0b-862e-6d14d167af95",
 			"key": "INTERACTIVE",
 			"value": "false",
 			"type": "string"
