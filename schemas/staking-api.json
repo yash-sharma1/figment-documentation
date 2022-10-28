@@ -3562,7 +3562,7 @@
 							}
 						},
 						"url": "https://{{SOLANA_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{solanaUnstakingFlowId}}/next",
-						"description": "Before broadcasting the transaction, you must [sign the `transaction_payload`](https://docs.figment.io/guides/staking-api/figment-signing-transactions) you received in the previous step. After signing the transaction, send a `PUT` request to `/api/v1/flows/[:flow_id]/next` and the Staking API will broadcast the transaction to the Solana network.\n\n### Parameters\n\n- `name` &mdash; `string` Name of the action to execute (required).\n- `inputs` &mdash; `array`\n  - `transaction_payload` &mdash; Signed transaction payload from the previous step's response.\n\n### Response\n\nWith the signed transaction provided, Staking API will broadcast it to the network. As the transaction progresses towards confirmation, the returned state will be either:\n\n- `deactivate_tx_broadcasting` &mdash; Transaction has been broadcast but not confirmed.\n- `cool_down` &mdash; Transaction is under cool-down period.\n\nUpon transaction finalization, the stake account will start the process of deactivating.\nThis generally happens at the next epoch boundary (max 2.5 days), but if there is a large change in network-wide delegation levels it is possible it will be subjected to a multi-epoch cooldown period.\nThis would mean that a portion of the stake will deactivate at each epoch boundary for a few epochs, until it is fully deactivated.\n\nState is now updated from `deactivate_tx_broadcasting` to `cool_down`.\n\nNote - Read more about the [warmup and cooldown period](https://docs.solana.com/cluster/stake-delegation-and-rewards#stake-warmup-cooldown-withdrawal).\n\nAt each epoch, a WebHook notifies you about how much of the stake has been deactivated, until it is fully deactivated."
+						"description": "Before broadcasting the transaction, you must [sign the `transaction_payload`](https://docs.figment.io/guides/staking-api/figment-signing-transactions) you received in the previous step. After signing the transaction, send a `PUT` request to `/api/v1/flows/[:flow_id]/next` and the Staking API will broadcast the transaction to the Solana network.\n\n### Parameters\n\n- `name` &mdash; `string` Name of the action to execute (required).\n- `inputs` &mdash; `object`\n  - `transaction_payload` &mdash; Signed transaction payload from the previous step's response.\n\n### Response\n\nWith the signed transaction provided, Staking API will broadcast it to the network. As the transaction progresses towards confirmation, the returned state will be either:\n\n- `deactivate_tx_broadcasting` &mdash; Transaction has been broadcast but not confirmed.\n- `cool_down` &mdash; Transaction is under cool-down period.\n\nUpon transaction finalization, the stake account will start the process of deactivating.\nThis generally happens at the next epoch boundary (max 2.5 days), but if there is a large change in network-wide delegation levels it is possible it will be subjected to a multi-epoch cooldown period.\nThis would mean that a portion of the stake will deactivate at each epoch boundary for a few epochs, until it is fully deactivated.\n\nState is now updated from `deactivate_tx_broadcasting` to `cool_down`.\n\nNote - Read more about the [warmup and cooldown period](https://docs.solana.com/cluster/stake-delegation-and-rewards#stake-warmup-cooldown-withdrawal).\n\nAt each epoch, a WebHook notifies you about how much of the stake has been deactivated, until it is fully deactivated."
 					},
 					"response": [
 						{
@@ -3940,49 +3940,49 @@
 	],
 	"variable": [
 		{
-			"id": "f3f5b35a-eb42-4679-a008-6a0e0f169182",
+			"id": "5366f6f0-d285-460e-85b9-1288e1bd2da2",
 			"key": "AVAX_STAKING_HOST",
 			"value": "avalanche-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "37207d57-98a0-4c46-982a-5c1679b3b7b8",
+			"id": "42f88635-b92d-49d1-ac2b-a3940afd3f7c",
 			"key": "COSMOS_STAKING_HOST",
 			"value": "cosmos-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "b7504cce-fec2-4014-9f4d-6a6444fb6db1",
+			"id": "c5b9684f-ba16-438f-91e0-ba5dab75dfd8",
 			"key": "ETH_STAKING_HOST",
 			"value": "eth-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "17dbe1f5-54e4-4988-b317-fd6b627172bd",
+			"id": "93bf37f4-2fbf-46d5-907f-9a1515763161",
 			"key": "NEAR_STAKING_HOST",
 			"value": "near-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "6cf52e0f-c92c-4250-a85b-7ef636d8a7fc",
+			"id": "c4b11741-1a83-4dad-a606-66597a67cba8",
 			"key": "DOT_STAKING_HOST",
 			"value": "polkadot-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "90d046c2-1162-4f16-9ad8-5075a4d21edd",
+			"id": "067806ed-6d04-476c-aa22-9c1de0e72fcc",
 			"key": "SOL_STAKING_HOST",
 			"value": "solana-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "17a6b353-52dc-4361-83b6-733489df1a9a",
+			"id": "203d8aca-5614-4c82-beea-2259f6968a88",
 			"key": "POLYGON_STAKING_HOST",
 			"value": "polygon-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "239bc6cc-73ec-4a2a-9dd9-dd1134aaf713",
+			"id": "35a347a3-e36f-448f-a4b0-8d8b492dc060",
 			"key": "INTERACTIVE",
 			"value": "false",
 			"type": "string"
