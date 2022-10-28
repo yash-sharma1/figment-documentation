@@ -1420,7 +1420,7 @@
 							}
 						},
 						"url": "https://{{POLKAOT_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{polkadotStakingFlowId}}/next",
-						"description": "Before broadcasting the transaction, you must [sign the `transaction_payload`](https://docs.figment.io/guides/staking-api/figment-signing-transactions) you received in the previous step. After signing the transaction, you will `PUT /api/v1/flows/[:flow_id]/next` and the Staking API will broadcast the transaction to the Polkadot network.\n\n### Parameters\n\n- `name` &mdash; `string` Name of the action to execute (required).\n- `inputs` &mdash; `array`\n  - `transaction_payload` &mdash; Signed transaction payload from the previous step's response.\n\n### Response\n\nWith the signed transaction provided, the Staking API will broadcast it to the network. As the transaction progresses towards confirmation, the returned state will be either:\n\n- `nomination_tx_broadcasting` &mdash; The transaction has been broadcasted and is waiting for confirmation.\n- `delegated` &mdash; The transaction is complete and the nomination is active.\n\nNote - Since nominations on Polkadot activate at the next epoch boundary, the Staking API will also track the nomination and send a webhook notification when it activates. An epoch on Polkadot lasts approximately 24 hours, but can vary."
+						"description": "Before broadcasting the transaction, you must [sign the `transaction_payload`](https://docs.figment.io/guides/staking-api/figment-signing-transactions) you received in the previous step. After signing the transaction, you will `PUT /api/v1/flows/[:flow_id]/next` and the Staking API will broadcast the transaction to the Polkadot network.\n\n### Parameters\n\n- `name` &mdash; `string` Name of the action to execute (required).\n- `inputs` &mdash; `object`\n  - `transaction_payload` &mdash; Signed transaction payload from the previous step's response.\n\n### Response\n\nWith the signed transaction provided, the Staking API will broadcast it to the network. As the transaction progresses towards confirmation, the returned state will be either:\n\n- `nomination_tx_broadcasting` &mdash; The transaction has been broadcasted and is waiting for confirmation.\n- `delegated` &mdash; The transaction is complete and the nomination is active.\n\nNote - Since nominations on Polkadot activate at the next epoch boundary, the Staking API will also track the nomination and send a webhook notification when it activates. An epoch on Polkadot lasts approximately 24 hours, but can vary."
 					},
 					"response": [
 						{
@@ -3940,49 +3940,49 @@
 	],
 	"variable": [
 		{
-			"id": "5ac14138-46ed-497b-b4d9-aa89f4af6f44",
+			"id": "531339d1-408d-44fd-ac6f-a053c7868039",
 			"key": "AVAX_STAKING_HOST",
 			"value": "avalanche-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "1d7b5629-c75e-4eec-bca0-066c5798fb91",
+			"id": "431ef542-eea4-47f8-a682-9fa04f5e3031",
 			"key": "COSMOS_STAKING_HOST",
 			"value": "cosmos-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "178ad9e6-4f23-4779-a6e5-72af19b0004a",
+			"id": "ee781d48-18a5-4c7c-b53b-c8c4fe693dd0",
 			"key": "ETH_STAKING_HOST",
 			"value": "eth-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "81f58c7a-649e-4ec4-956d-194caa8d9ddd",
+			"id": "4fc7e032-db41-4e01-87db-537c68e8b41f",
 			"key": "NEAR_STAKING_HOST",
 			"value": "near-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "6ae60748-0856-437c-83bd-935573184e4c",
+			"id": "cde73ed5-8dd4-496d-9e61-acc82bbdcfa0",
 			"key": "DOT_STAKING_HOST",
 			"value": "polkadot-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "c0018ad3-c9c8-4cff-b4d4-9ebfd815ee36",
+			"id": "a38c704d-9ea2-4111-a40a-a417a2f3609e",
 			"key": "SOL_STAKING_HOST",
 			"value": "solana-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "80450d2d-cc1b-4a59-a739-a72565cf8752",
+			"id": "9faf8344-b6ce-4435-86a8-e6ede915b71a",
 			"key": "POLYGON_STAKING_HOST",
 			"value": "polygon-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "21cd52d9-5a96-4218-8a1e-a51bdf7f4589",
+			"id": "a3436867-4bf6-4c6f-b318-c37817600795",
 			"key": "INTERACTIVE",
 			"value": "false",
 			"type": "string"
