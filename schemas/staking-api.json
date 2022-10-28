@@ -3808,7 +3808,7 @@
 							}
 						},
 						"url": "https://{{SOLANA_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{solanaTransferFlowId}}/next",
-						"description": "After creating the new transfer flow, we need to submit the transfer data.\n\nAfter collecting the required inputs as mentioned below, send a `PUT` request to `/api/v1/flows/[:flow_id]/next` to proceed to the next step.\n\n### Parameters\n\n- `name` &mdash; `string` Name of the action to execute, such as `create_transfer_tx`\n- `inputs` &mdash; `array`\n  - `from_account_pubkey` &mdash; `string` The wallet from which SOL will originate (required).\n  - `from_account_address` &mdash; `string` The address of the sender's account.\n  - `to_account_pubkey` &mdash; `string` The address of the wallet to which SOL will be transferred (required).\n  - `amount` &mdash; `number` &mdash; The amount of the tokens you want to transfer (required).\n\n### Response\n\nWe see two possible `actions`:\n\n- `refresh_transfer_tx` &mdash; If you need to get a fresh version of the transaction payload (i.e., the recent blockhash has expired).\n- `sign_transfer_tx` &mdash; Submit a signed transaction payload ready to be broadcast to the network.\n\nWe will choose `sign_transfer_tx`, which indicates one input to collect:\n\n- `transaction_payload` &mdash; The signed transaction payload ready to be broadcast to the network.\n\nMake sure to save the `transaction_payload` from this response, which is what needs to be signed in the next step."
+						"description": "After creating the new transfer flow, we need to submit the transfer data.\n\nAfter collecting the required inputs as mentioned below, send a `PUT` request to `/api/v1/flows/[:flow_id]/next` to proceed to the next step.\n\n### Parameters\n\n- `name` &mdash; `string` Name of the action to execute, such as `create_transfer_tx`\n- `inputs` &mdash; `object`\n  - `from_account_pubkey` &mdash; `string` The wallet from which SOL will originate (required).\n  - `from_account_address` &mdash; `string` The address of the sender's account.\n  - `to_account_pubkey` &mdash; `string` The address of the wallet to which SOL will be transferred (required).\n  - `amount` &mdash; `number` &mdash; The amount of the tokens you want to transfer (required).\n\n### Response\n\nWe see two possible `actions`:\n\n- `refresh_transfer_tx` &mdash; If you need to get a fresh version of the transaction payload (i.e., the recent blockhash has expired).\n- `sign_transfer_tx` &mdash; Submit a signed transaction payload ready to be broadcast to the network.\n\nWe will choose `sign_transfer_tx`, which indicates one input to collect:\n\n- `transaction_payload` &mdash; The signed transaction payload ready to be broadcast to the network.\n\nMake sure to save the `transaction_payload` from this response, which is what needs to be signed in the next step."
 					},
 					"response": [
 						{
@@ -3940,49 +3940,49 @@
 	],
 	"variable": [
 		{
-			"id": "40564985-bb3b-4e83-8307-e69a21b7e65b",
+			"id": "e2200fb3-2d6c-4700-8c74-198fd282a42c",
 			"key": "AVAX_STAKING_HOST",
 			"value": "avalanche-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "2f8dd65a-cdc3-4ca4-8581-720951564646",
+			"id": "2198c9c1-2fcc-469c-8abd-740563a1020a",
 			"key": "COSMOS_STAKING_HOST",
 			"value": "cosmos-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "7e65c001-1994-4770-9f0f-c1999440c726",
+			"id": "bd5b2c38-6fb8-4f7c-a551-e8479fca90e8",
 			"key": "ETH_STAKING_HOST",
 			"value": "eth-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "6ead3c80-071f-4aef-95ed-aab862693450",
+			"id": "9b452e38-e039-4ccd-bfce-57a4e4b16f7a",
 			"key": "NEAR_STAKING_HOST",
 			"value": "near-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "ce389b0b-659e-49d9-af05-79b75ab47b05",
+			"id": "1ac8dde5-be60-47aa-9404-b8fdb22c266e",
 			"key": "DOT_STAKING_HOST",
 			"value": "polkadot-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "9732daf4-85ec-4386-8933-d69c52020891",
+			"id": "144a0d62-d243-490d-abfb-11056776a008",
 			"key": "SOL_STAKING_HOST",
 			"value": "solana-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "4549a306-ccd8-40e2-82ea-a4002fbe7dea",
+			"id": "7d9691a2-ae88-42d8-a1dd-d63919943c27",
 			"key": "POLYGON_STAKING_HOST",
 			"value": "polygon-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "c3e391e6-76d3-4f78-a1c2-c60b95b56dfc",
+			"id": "41e016af-6b75-437d-8d59-35f2d95c6fd9",
 			"key": "INTERACTIVE",
 			"value": "false",
 			"type": "string"
