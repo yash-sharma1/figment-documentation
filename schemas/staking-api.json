@@ -2605,7 +2605,7 @@
 							}
 						},
 						"url": "https://{{POLYGON_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{polygonStakingFlowId}}/next",
-						"description": "Now that the smart contract allowance is in place, submit a delegation transaction to delegate the MATIC.\n\n### Parameters\n\n- `name` &mdash; `string` Name of the action to execute (required).\n- `inputs` &mdash; `array`\n  - `gas_limit` &mdash; `string` Adjust if you wish to limit the possible transaction fee (optional).\n  - `gas_price` &mdash; `string` Adjust if you wish to limit the possible transaction fee (optional).\n\n### Response\n\nIn this response you can find the unsigned, serialized transaction in `data[create_delegate_tx][raw]`.\n\nThere are two possible `actions`:\n\n- `refresh_delegate_tx` &mdash; If you need to get a fresh version of the transaction payload.\n- `sign_delegate_tx` &mdash; Submit a signed transaction payload ready to be broadcast to the network.\n\nWe will chose `sign_delegate_tx`, which indicates one input to collect:\n\n- `transaction_payload` &mdash; the signed transaction payload ready to be broadcast to the network."
+						"description": "Now that the smart contract allowance is in place, submit a delegation transaction to delegate the MATIC.\n\n### Parameters\n\n- `name` &mdash; `string` Name of the action to execute (required).\n- `inputs` &mdash; `object`\n  - `gas_limit` &mdash; `string` Adjust if you wish to limit the possible transaction fee (optional).\n  - `gas_price` &mdash; `string` Adjust if you wish to limit the possible transaction fee (optional).\n\n### Response\n\nIn this response you can find the unsigned, serialized transaction in `data[create_delegate_tx][raw]`.\n\nThere are two possible `actions`:\n\n- `refresh_delegate_tx` &mdash; If you need to get a fresh version of the transaction payload.\n- `sign_delegate_tx` &mdash; Submit a signed transaction payload ready to be broadcast to the network.\n\nWe will chose `sign_delegate_tx`, which indicates one input to collect:\n\n- `transaction_payload` &mdash; the signed transaction payload ready to be broadcast to the network."
 					},
 					"response": [
 						{
@@ -3940,49 +3940,49 @@
 	],
 	"variable": [
 		{
-			"id": "1e29415e-8ab2-432e-9b71-f0e7b4e9fd90",
+			"id": "5ee64ba8-fa7f-4406-9f74-397ac0a268c8",
 			"key": "AVAX_STAKING_HOST",
 			"value": "avalanche-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "082252e5-9c28-4783-9d66-41b037fb501e",
+			"id": "7dff6933-df18-4d8c-8147-0d9d9e6368a6",
 			"key": "COSMOS_STAKING_HOST",
 			"value": "cosmos-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "d6cb8780-62db-4970-b32f-f00e69dcde0a",
+			"id": "8a3328ce-6b23-4696-b540-28dec104eaea",
 			"key": "ETH_STAKING_HOST",
 			"value": "eth-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "6df61fff-b27d-4d2a-ac79-a22687d26930",
+			"id": "2524672b-b9ff-4906-9f7a-142c794e293f",
 			"key": "NEAR_STAKING_HOST",
 			"value": "near-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "6fa2f918-09c7-4d43-9368-6b25a1a153b0",
+			"id": "13a4a555-deff-405e-928b-467289b53340",
 			"key": "DOT_STAKING_HOST",
 			"value": "polkadot-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "5855a7bd-dab2-42ef-9593-f840108cc736",
+			"id": "027f2c06-8a54-4b28-828d-1f310bf7ea2a",
 			"key": "SOL_STAKING_HOST",
 			"value": "solana-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "ac8276fd-6abc-4f4c-898c-8ed8ab1bb6a4",
+			"id": "2a73359a-fe01-4164-9b7f-48caa197472d",
 			"key": "POLYGON_STAKING_HOST",
 			"value": "polygon-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "56f3b7af-5b88-446a-b9da-c56e093927b8",
+			"id": "6d24561b-fdce-466a-8220-1270383d6163",
 			"key": "INTERACTIVE",
 			"value": "false",
 			"type": "string"
