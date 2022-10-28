@@ -527,7 +527,7 @@
 								}
 							]
 						},
-						"description": "Request to revoke Polkadot proxy account with passed attributes.\n\n### Parameters\n\n- `stash_account_address` - `string` - A valid Polkadot address (required).\n- `controller_account_address` - `string` - A valid Polkadot address (required).\n    \n\n### Response\n\n- `success` - `boolean` - Returns `true` if the action was successful, otherwise returns `false`."
+						"description": "Request to revoke Polkadot proxy account with passed attributes.\n\n### Parameters\n\n- `stash_account_address` — `string` — A valid Polkadot address (required).\n- `controller_account_address` — `string` — A valid Polkadot address (required).\n    \n\n### Response\n\n- `success` — `boolean` — Returns `true` if the action was successful, otherwise returns `false`."
 					},
 					"response": [
 						{
@@ -580,19 +580,19 @@
 	],
 	"variable": [
 		{
-			"id": "465d8ef4-5fdb-4658-bc94-3a9ed890f319",
+			"id": "5e672a13-bd8c-40e2-9a76-51b727d1cc93",
 			"key": "ETH_HOST",
 			"value": "hubble.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "0c9ed46b-2753-4331-85ea-b10aca7330b1",
+			"id": "87dc430c-d0a6-4d7c-92eb-a33a36f93c0f",
 			"key": "DOT_HOST",
 			"value": "hubble.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "39fb261f-926b-4c94-93ba-8068cfb062a0",
+			"id": "f26a0c34-1bf3-4ff5-94ac-94db2a44315d",
 			"key": "INTERACTIVE",
 			"value": "false",
 			"type": "string"
