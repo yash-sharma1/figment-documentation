@@ -350,7 +350,7 @@
 								}
 							}
 						},
-						"url": "https://{{SOL_REWARDS_HOST}}/v2/rewards//apikey/{{API_KEY}}/",
+						"url": "https://{{SOL_REWARDS_HOST}}/v2/rewards/apikey/{{API_KEY}}/",
 						"description": "Returns net delegator rewards (post on-chain validator commission) by epoch\n\n## Request\n\n\\* `network` is `solana` _(Required)_  \n\\* `accounts` is an array of stake accounts addresses _(Required)_  \n\\* `start` and `end` are epoch numbers, both inclusive. _(Required)_\n\n## Response\n\nThe response is broken down between `meta` and `data`\n\n##### `meta`\n\n\\* `network` is the same as in the request  \n\\* `period_unit` is the unit of the `period` field under `data`: here it will be `epoch`\n\n##### `data`\n\nis an array of objects - one for each epoch - containing:\n\n\\* `validator` returns the validator that distributed the rewards  \n\\* `period` is the epoch number  \n\\* `timestamp` is the timestamp at the end of the epoch  \n\\* `rewards` is an array of objects containing `numeric` , `exp`, `currency` and `text`. The formula to compute the rewards in the `currency` unit is `numeric x 10^(-exp)`(`text` is the string version of this)\n\n## Limitations\n\n\\* The API returns rewards for Figment validators only  \n\\* Data is available approximatively an hour after the end of the day or epoch. When requesting daily for the current day, the data will be available but obviously partially complete as the day progresses."
 					},
 					"response": [
@@ -1009,27 +1009,27 @@
 	],
 	"variable": [
 		{
-			"id": "d33fe4ae-36b3-448a-a2cb-e9241bbad46d",
+			"id": "37865adb-6c03-44b3-9be0-984048d6b51c",
 			"key": "ETH_REWARDS_HOST",
 			"value": "eth-rewards.datahub.figment.io"
 		},
 		{
-			"id": "6245ec97-dea5-4829-a2bf-20530ebbd447",
+			"id": "273587e5-39ce-427a-a90a-3a9efe119574",
 			"key": "SOL_REWARDS_HOST",
 			"value": "solana-rewards.datahub.figment.io"
 		},
 		{
-			"id": "9fa14199-02d7-4866-92cb-ec5424362e29",
+			"id": "6b7b1026-aa08-4f68-b832-f9d01cbf86bf",
 			"key": "DOT_REWARDS_HOST",
 			"value": "polkadot-rewards.datahub.figment.io"
 		},
 		{
-			"id": "8b2d028c-a2d7-4dcb-b8d4-4a9882249c64",
+			"id": "46d57d42-4406-40af-9f8b-41d017cd9604",
 			"key": "NEAR_REWARDS_HOST",
 			"value": "near-rewards.datahub.figment.io"
 		},
 		{
-			"id": "c133fdf7-df5d-405c-b5ba-2085c381053f",
+			"id": "fc029515-77b0-4642-8df2-ed44dd5ed227",
 			"key": "AVAX_REWARDS_HOST",
 			"value": "avalanche-rewards.datahub.figment.io"
 		}
