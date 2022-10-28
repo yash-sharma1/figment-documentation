@@ -2118,7 +2118,7 @@
 							}
 						},
 						"url": "https://{{POLKAOT_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{polkadotRemoveProxyFlowId}}/next",
-						"description": "After collecting the required inputs, send a `PUT` request to `/api/v1/flows/[:flow_id]/next` to proceed to the next step.\n\n### Parameters\n\n- `name` &mdash; `string` Name of the action to execute (required).\n- `inputs` &mdash; `array`\n  - `proxy_account_address` &mdash; `string` The address to which you want to remove proxy rights (required).\n  - `proxied_account_address` &mdash; `string` The account whose rights will be proxied (required).\n\n### Response\n\nThe response indicates two possible `actions` :\n\n- `refresh_remove_proxy_tx` &mdash; If you need to get a fresh version of the transaction payload (i.e., the nonce has increased).\n- `sign_remove_proxy_tx` &mdash; Submit a signed transaction payload ready to be broadcast to the network.\n\nWe will choose `sign_remove_proxy_tx`, which indicates one input to collect:\n\n- `transaction_payload` &mdash; The signed transaction payload ready to be broadcast to the network.\n\nMake sure to save the `transaction_payload` from this response, which is what needs to be signed in the next step."
+						"description": "After collecting the required inputs, send a `PUT` request to `/api/v1/flows/[:flow_id]/next` to proceed to the next step.\n\n### Parameters\n\n- `name` &mdash; `string` Name of the action to execute (required).\n- `inputs` &mdash; `object`\n  - `proxy_account_address` &mdash; `string` The address to which you want to remove proxy rights (required).\n  - `proxied_account_address` &mdash; `string` The account whose rights will be proxied (required).\n\n### Response\n\nThe response indicates two possible `actions` :\n\n- `refresh_remove_proxy_tx` &mdash; If you need to get a fresh version of the transaction payload (i.e., the nonce has increased).\n- `sign_remove_proxy_tx` &mdash; Submit a signed transaction payload ready to be broadcast to the network.\n\nWe will choose `sign_remove_proxy_tx`, which indicates one input to collect:\n\n- `transaction_payload` &mdash; The signed transaction payload ready to be broadcast to the network.\n\nMake sure to save the `transaction_payload` from this response, which is what needs to be signed in the next step."
 					},
 					"response": [
 						{
@@ -3940,49 +3940,49 @@
 	],
 	"variable": [
 		{
-			"id": "5299c6fd-1be1-4e42-bc43-8321fed88416",
+			"id": "8084e21c-bd52-4a93-b4a7-9c221c64dcf1",
 			"key": "AVAX_STAKING_HOST",
 			"value": "avalanche-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "cd7eb592-e0b3-4fae-8cac-94dfda9e6dec",
+			"id": "9cbc6f96-324c-4a3a-a201-7aff54e80f28",
 			"key": "COSMOS_STAKING_HOST",
 			"value": "cosmos-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "17c51f2d-54e7-48be-9ec8-a02f623684f1",
+			"id": "dc0b058e-6afb-4062-bdf9-a2f2931d5fde",
 			"key": "ETH_STAKING_HOST",
 			"value": "eth-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "fb6882cd-5243-47f9-9f80-7367bdeed7b7",
+			"id": "9c68bd82-a69d-48c9-af93-c79025e6b73f",
 			"key": "NEAR_STAKING_HOST",
 			"value": "near-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "0aed1aa2-4903-42cf-a3ec-4f1bb83c83ef",
+			"id": "6826cdbe-9c9b-43e2-b98f-0a96defa82ec",
 			"key": "DOT_STAKING_HOST",
 			"value": "polkadot-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "467a9374-abff-447a-bc43-0b0993bd5678",
+			"id": "2c4a3d30-8570-4375-91d2-f9df7e5624fb",
 			"key": "SOL_STAKING_HOST",
 			"value": "solana-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "7070fc6b-76f5-456d-9d17-1b9dbe54e533",
+			"id": "24e518cc-8c77-42fb-9a90-b7fba1fb2179",
 			"key": "POLYGON_STAKING_HOST",
 			"value": "polygon-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "63e92f1a-749e-48a6-b7a0-c5dce8f8f717",
+			"id": "5e1615c6-a26c-46a1-9807-ded67d96d1b9",
 			"key": "INTERACTIVE",
 			"value": "false",
 			"type": "string"
