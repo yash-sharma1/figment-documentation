@@ -2165,7 +2165,7 @@
 							}
 						},
 						"url": "https://{{POLKAOT_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{polkadotRemoveProxyFlowId}}/next",
-						"description": "Before broadcasting the transaction, you must [sign the `transaction_payload`](https://docs.figment.io/guides/staking-api/figment-signing-transactions) you received in the previous step. After signing the transaction, send a `PUT` request to `/api/v1/flows/[:flow_id]/next` to proceed to the next step. The Staking API will broadcast the transaction to the Polkadot network\n\n### Parameters\n\n- `name` &mdash; `string` Name of the action to execute (required).\n- `inputs` &mdash; `array`\n  - `transaction_payload` &mdash; Signed transaction payload from the previous step's response.\n\n### Response\n\nWith the signed transaction provided, Staking API will broadcast it to the network. As the transaction progresses towards confirmation, the returned state will be either:\n\n- `remove_proxy_tx_broadcasting` &mdash; Transaction has been broadcast and is waiting confirmation.\n- `removed` &mdash; Transaction has been confirmed and the proxy is revoked."
+						"description": "Before broadcasting the transaction, you must [sign the `transaction_payload`](https://docs.figment.io/guides/staking-api/figment-signing-transactions) you received in the previous step. After signing the transaction, send a `PUT` request to `/api/v1/flows/[:flow_id]/next` to proceed to the next step. The Staking API will broadcast the transaction to the Polkadot network\n\n### Parameters\n\n- `name` &mdash; `string` Name of the action to execute (required).\n- `inputs` &mdash; `object`\n  - `transaction_payload` &mdash; Signed transaction payload from the previous step's response.\n\n### Response\n\nWith the signed transaction provided, Staking API will broadcast it to the network. As the transaction progresses towards confirmation, the returned state will be either:\n\n- `remove_proxy_tx_broadcasting` &mdash; Transaction has been broadcast and is waiting confirmation.\n- `removed` &mdash; Transaction has been confirmed and the proxy is revoked."
 					},
 					"response": [
 						{
@@ -3940,49 +3940,49 @@
 	],
 	"variable": [
 		{
-			"id": "8084e21c-bd52-4a93-b4a7-9c221c64dcf1",
+			"id": "f778d233-2192-4d50-beb4-3e0c7c9d4ce2",
 			"key": "AVAX_STAKING_HOST",
 			"value": "avalanche-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "9cbc6f96-324c-4a3a-a201-7aff54e80f28",
+			"id": "8e329b25-68e6-4076-a382-12de196655ef",
 			"key": "COSMOS_STAKING_HOST",
 			"value": "cosmos-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "dc0b058e-6afb-4062-bdf9-a2f2931d5fde",
+			"id": "66445e92-3c74-40ec-9945-d4e143447682",
 			"key": "ETH_STAKING_HOST",
 			"value": "eth-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "9c68bd82-a69d-48c9-af93-c79025e6b73f",
+			"id": "6f8690cb-f89d-4cd2-8d55-312ebca670cf",
 			"key": "NEAR_STAKING_HOST",
 			"value": "near-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "6826cdbe-9c9b-43e2-b98f-0a96defa82ec",
+			"id": "a6b077e4-98fc-47a6-906b-0ee307eb8989",
 			"key": "DOT_STAKING_HOST",
 			"value": "polkadot-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "2c4a3d30-8570-4375-91d2-f9df7e5624fb",
+			"id": "921064d2-5c23-4242-ada6-6ef3c9f18bc7",
 			"key": "SOL_STAKING_HOST",
 			"value": "solana-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "24e518cc-8c77-42fb-9a90-b7fba1fb2179",
+			"id": "e371a377-04b7-411b-92f2-02fd96adb352",
 			"key": "POLYGON_STAKING_HOST",
 			"value": "polygon-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "5e1615c6-a26c-46a1-9807-ded67d96d1b9",
+			"id": "d94024c0-73a9-4a57-973a-822f14361ef7",
 			"key": "INTERACTIVE",
 			"value": "false",
 			"type": "string"
