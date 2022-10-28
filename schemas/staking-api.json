@@ -1543,7 +1543,7 @@
 							}
 						},
 						"url": "https://{{POLKAOT_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{polkadotUnstakingFlowId}}/next",
-						"description": "After collecting the required Inputs, we `PUT /api/v1/flows/[:flow_id]/next` to move on to the next step.\n\n### Parameters\n\n- `name` &mdash; `string` Name of the action to execute (required).\n- `inputs` &mdash; `array`\n  - `controller_account_address` &mdash; `string` Address of the wallet DOT will be bonded to (required).\n  - `controller_proxy_account_address` &mdash; `string` A proxy account that will sign on behalf of the controller account (optional).\n  - `stash_account_address` &mdash; `string` Primary wallet from which DOT will be bonded (required).\n  - `amount` &mdash; `number` &mdash; The amount of DOT to be bonded to the controller. This field should be in full DOT, not in Planck (ie. if you want to stake 5 DOT, return \"amount\": 5.0). Staking API will translate the amount to Plancks so you do not have to worry about the conversion factor (required).\n  - `maximum` &mdash; `boolean` &mdash; `true` if you want to unbond the maximum number of tokens, else `false`.\n\n### Response\n\n- If chilling is needed before unbonding, create a chill transaction: [Create Chill Transaction](/guides/staking-api/polkadot/undelegate/create-chill-transaction)\n- If no chilling is required, create an unbond transaction: [Create Unbond Transaction](/guides/staking-api/polkadot/undelegate/create-unbond-transaction)"
+						"description": "After collecting the required Inputs, we `PUT /api/v1/flows/[:flow_id]/next` to move on to the next step.\n\n### Parameters\n\n- `name` &mdash; `string` Name of the action to execute (required).\n- `inputs` &mdash; `object`\n  - `controller_account_address` &mdash; `string` Address of the wallet DOT will be bonded to (required).\n  - `controller_proxy_account_address` &mdash; `string` A proxy account that will sign on behalf of the controller account (optional).\n  - `stash_account_address` &mdash; `string` Primary wallet from which DOT will be bonded (required).\n  - `amount` &mdash; `number` &mdash; The amount of DOT to be bonded to the controller. This field should be in full DOT, not in Planck (ie. if you want to stake 5 DOT, return \"amount\": 5.0). Staking API will translate the amount to Plancks so you do not have to worry about the conversion factor (required).\n  - `maximum` &mdash; `boolean` &mdash; `true` if you want to unbond the maximum number of tokens, else `false`.\n\n### Response\n\n- If chilling is needed before unbonding, create a chill transaction: [Create Chill Transaction](/guides/staking-api/polkadot/undelegate/create-chill-transaction)\n- If no chilling is required, create an unbond transaction: [Create Unbond Transaction](/guides/staking-api/polkadot/undelegate/create-unbond-transaction)"
 					},
 					"response": [
 						{
@@ -3940,49 +3940,49 @@
 	],
 	"variable": [
 		{
-			"id": "878a3077-2869-4de4-b0f7-d5ebe11dbf3f",
+			"id": "4144c000-1a95-41bc-bdfa-296df2cba2c5",
 			"key": "AVAX_STAKING_HOST",
 			"value": "avalanche-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "ef89fe85-d965-4575-a46e-1eb157ac3d9f",
+			"id": "a249793a-c45b-448b-9cb6-a5348f50e557",
 			"key": "COSMOS_STAKING_HOST",
 			"value": "cosmos-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "dae38d69-b9cf-42f4-8b4f-301d335d9757",
+			"id": "6c3fb4de-b1ed-4e84-b4f5-bf1b337a932f",
 			"key": "ETH_STAKING_HOST",
 			"value": "eth-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "4fea3d89-baf2-4cfa-8d73-72c6ddb31353",
+			"id": "af3e10da-5ba3-4c34-9640-ce54db1cd5ca",
 			"key": "NEAR_STAKING_HOST",
 			"value": "near-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "1109b1ab-4a88-4a2a-857d-b1e3edd739e8",
+			"id": "e84c55d4-ecde-4df9-a15b-312d085f7ed8",
 			"key": "DOT_STAKING_HOST",
 			"value": "polkadot-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "99da3d91-ce62-4e8a-ae43-97e5793661ca",
+			"id": "3f8e7705-f584-427f-a794-0df53d51bef7",
 			"key": "SOL_STAKING_HOST",
 			"value": "solana-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "3718ec56-9449-4946-85d4-7d392730af08",
+			"id": "99a36205-b13e-4472-949a-7c1070dd18e9",
 			"key": "POLYGON_STAKING_HOST",
 			"value": "polygon-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "89c82f98-8b9b-4cfd-9995-8ecfaa96ad08",
+			"id": "e5a27246-891b-4902-99cc-cfac9c01d378",
 			"key": "INTERACTIVE",
 			"value": "false",
 			"type": "string"
