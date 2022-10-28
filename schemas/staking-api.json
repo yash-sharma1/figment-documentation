@@ -2288,7 +2288,7 @@
 							}
 						},
 						"url": "https://{{POLKAOT_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{polkadotTransferFlowId}}/next",
-						"description": "After collecting the required inputs, send a `PUT` request to `/api/v1/flows/[:flow_id]/next` to proceed to the next step.\n\n### Parameters\n\n- `name` &mdash; `string` Name of the action to execute (ex. `create_transfer_tx`)\n- `inputs` &mdash; `array`\n  - `from_account_address` &mdash; `string` the address from which DOT will be transferred (required).\n  - `to_account_address` &mdash; `string` The address to which DOT will be transferred (required).\n  - `amount` &mdash; `number` The amount of DOT to be transferred (required).\n\n### Response\n\nWe see two possible `actions`:\n\n- `refresh_transfer_tx` &mdash; If you need to get a fresh version of the transaction payload (i.e., the nonce has increased).\n- `sign_transfer_tx` &mdash; Submit a signed transaction payload ready to be broadcast to the network.\n\nWe will choose `sign_transfert_tx`, which indicates one Input to collect:\n\n- `transaction_payload` &mdash; The signed transaction payload ready to be broadcast to the network.\n\nMake sure to save the `transaction_payload` from this response, which is what needs to be signed in the next step."
+						"description": "After collecting the required inputs, send a `PUT` request to `/api/v1/flows/[:flow_id]/next` to proceed to the next step.\n\n### Parameters\n\n- `name` &mdash; `string` Name of the action to execute (ex. `create_transfer_tx`)\n- `inputs` &mdash; `object`\n  - `from_account_address` &mdash; `string` the address from which DOT will be transferred (required).\n  - `to_account_address` &mdash; `string` The address to which DOT will be transferred (required).\n  - `amount` &mdash; `number` The amount of DOT to be transferred (required).\n\n### Response\n\nWe see two possible `actions`:\n\n- `refresh_transfer_tx` &mdash; If you need to get a fresh version of the transaction payload (i.e., the nonce has increased).\n- `sign_transfer_tx` &mdash; Submit a signed transaction payload ready to be broadcast to the network.\n\nWe will choose `sign_transfert_tx`, which indicates one Input to collect:\n\n- `transaction_payload` &mdash; The signed transaction payload ready to be broadcast to the network.\n\nMake sure to save the `transaction_payload` from this response, which is what needs to be signed in the next step."
 					},
 					"response": [
 						{
@@ -3940,49 +3940,49 @@
 	],
 	"variable": [
 		{
-			"id": "f778d233-2192-4d50-beb4-3e0c7c9d4ce2",
+			"id": "1d938326-93c2-40f6-9411-868fb7d7d33a",
 			"key": "AVAX_STAKING_HOST",
 			"value": "avalanche-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "8e329b25-68e6-4076-a382-12de196655ef",
+			"id": "00312a19-aaaa-4a1f-b98e-31d9aaeacc32",
 			"key": "COSMOS_STAKING_HOST",
 			"value": "cosmos-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "66445e92-3c74-40ec-9945-d4e143447682",
+			"id": "9c947c68-4835-4ef0-a2ed-1b5109452c40",
 			"key": "ETH_STAKING_HOST",
 			"value": "eth-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "6f8690cb-f89d-4cd2-8d55-312ebca670cf",
+			"id": "d2658b1c-0999-4afe-a276-dba411f220a1",
 			"key": "NEAR_STAKING_HOST",
 			"value": "near-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "a6b077e4-98fc-47a6-906b-0ee307eb8989",
+			"id": "8d03393b-fe84-4c29-8a54-f88467277289",
 			"key": "DOT_STAKING_HOST",
 			"value": "polkadot-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "921064d2-5c23-4242-ada6-6ef3c9f18bc7",
+			"id": "3a6e2d64-bf46-40c1-bfd0-452900125c0d",
 			"key": "SOL_STAKING_HOST",
 			"value": "solana-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "e371a377-04b7-411b-92f2-02fd96adb352",
+			"id": "23016eae-9457-4cd1-97c4-8475aa02ade0",
 			"key": "POLYGON_STAKING_HOST",
 			"value": "polygon-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "d94024c0-73a9-4a57-973a-822f14361ef7",
+			"id": "a11ab614-9a89-4c52-9a63-d5560de2de98",
 			"key": "INTERACTIVE",
 			"value": "false",
 			"type": "string"
