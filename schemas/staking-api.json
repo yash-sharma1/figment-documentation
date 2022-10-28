@@ -3855,7 +3855,7 @@
 							}
 						},
 						"url": "https://{{SOLANA_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{solanaTransferFlowId}}/next",
-						"description": "Before broadcasting the transaction, you must [sign the `transaction_payload`](https://docs.figment.io/guides/staking-api/figment-signing-transactions) you received in the previous step. After signing the transaction, send a `PUT` request to `/api/v1/flows/[:flow_id]/next` and the Staking API will broadcast the transaction to the network.\n\n### Parameters\n\n- `name` &mdash; `string` Name of the action to execute (required).\n- `inputs` &mdash; `array`\n  - `transaction_payload` &mdash; Signed transaction payload from the previous step's response.\n\n### Response\n\nWith the signed transaction provided, Staking API will broadcast it to the network. As the transaction progresses towards confirmation, the returned state will be:\n\n- `transfer_tx_broadcasting` &mdash; Transaction has been broadcast and is awaiting confirmation."
+						"description": "Before broadcasting the transaction, you must [sign the `transaction_payload`](https://docs.figment.io/guides/staking-api/figment-signing-transactions) you received in the previous step. After signing the transaction, send a `PUT` request to `/api/v1/flows/[:flow_id]/next` and the Staking API will broadcast the transaction to the network.\n\n### Parameters\n\n- `name` &mdash; `string` Name of the action to execute (required).\n- `inputs` &mdash; `object`\n  - `transaction_payload` &mdash; Signed transaction payload from the previous step's response.\n\n### Response\n\nWith the signed transaction provided, Staking API will broadcast it to the network. As the transaction progresses towards confirmation, the returned state will be:\n\n- `transfer_tx_broadcasting` &mdash; Transaction has been broadcast and is awaiting confirmation."
 					},
 					"response": [
 						{
@@ -3940,49 +3940,49 @@
 	],
 	"variable": [
 		{
-			"id": "e2200fb3-2d6c-4700-8c74-198fd282a42c",
+			"id": "2578017f-d306-4d16-a1e9-1831d87499e7",
 			"key": "AVAX_STAKING_HOST",
 			"value": "avalanche-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "2198c9c1-2fcc-469c-8abd-740563a1020a",
+			"id": "cb86a53e-c664-445d-b28e-69ff9b821312",
 			"key": "COSMOS_STAKING_HOST",
 			"value": "cosmos-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "bd5b2c38-6fb8-4f7c-a551-e8479fca90e8",
+			"id": "3754435e-c382-452f-b6e5-08b15bf6f020",
 			"key": "ETH_STAKING_HOST",
 			"value": "eth-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "9b452e38-e039-4ccd-bfce-57a4e4b16f7a",
+			"id": "2478ccd1-47e5-4ae5-bb57-d5bbddcf18b6",
 			"key": "NEAR_STAKING_HOST",
 			"value": "near-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "1ac8dde5-be60-47aa-9404-b8fdb22c266e",
+			"id": "bec03dd6-0e96-4863-bf7c-7c34638f48a0",
 			"key": "DOT_STAKING_HOST",
 			"value": "polkadot-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "144a0d62-d243-490d-abfb-11056776a008",
+			"id": "b54e1734-6bdc-41a2-b5da-9fa742493fc9",
 			"key": "SOL_STAKING_HOST",
 			"value": "solana-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "7d9691a2-ae88-42d8-a1dd-d63919943c27",
+			"id": "8595cc8b-dabe-4cbe-9e7f-8d1977e5e903",
 			"key": "POLYGON_STAKING_HOST",
 			"value": "polygon-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "41e016af-6b75-437d-8d59-35f2d95c6fd9",
+			"id": "54448c4f-e37f-46e9-9881-e2e68845e288",
 			"key": "INTERACTIVE",
 			"value": "false",
 			"type": "string"
