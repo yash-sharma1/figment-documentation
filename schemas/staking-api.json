@@ -3269,7 +3269,7 @@
 							}
 						},
 						"url": "https://{{SOLANA_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{solanaStakingFlowId}}/next",
-						"description": "Before broadcasting the transaction, you must [sign the `transaction_payload`](https://docs.figment.io/guides/staking-api/figment-signing-transactions) you received in the previous step. After signing the transaction, send a PUT request to `/api/v1/flows/[:flow_id]/next` with the signed payload. The Staking API will broadcast the transaction to the Solana network.\n\n### Parameters\n\n- `name` &mdash; `string` Name of the action to execute (required).\n- `inputs` &mdash; `array`\n  - `transaction_payload` &mdash; Signed transaction payload from the previous step's response.\n\n### Response\n\nWith the signed transaction provided, Staking API will broadcast it to the network. As the transaction progresses towards confirmation, the returned `state` will be either:\n\n- `stake_account_tx_broadcasting` &mdash; Transaction has been broadcast but not confirmed.\n- `stake_account` &mdash; Transaction broadcasted and confirmed.\n\nUpon transaction finalization, the stake account will be ready for the next step — the delegation transaction."
+						"description": "Before broadcasting the transaction, you must [sign the `transaction_payload`](https://docs.figment.io/guides/staking-api/figment-signing-transactions) you received in the previous step. After signing the transaction, send a PUT request to `/api/v1/flows/[:flow_id]/next` with the signed payload. The Staking API will broadcast the transaction to the Solana network.\n\n### Parameters\n\n- `name` &mdash; `string` Name of the action to execute (required).\n- `inputs` &mdash; `object`\n  - `transaction_payload` &mdash; Signed transaction payload from the previous step's response.\n\n### Response\n\nWith the signed transaction provided, Staking API will broadcast it to the network. As the transaction progresses towards confirmation, the returned `state` will be either:\n\n- `stake_account_tx_broadcasting` &mdash; Transaction has been broadcast but not confirmed.\n- `stake_account` &mdash; Transaction broadcasted and confirmed.\n\nUpon transaction finalization, the stake account will be ready for the next step — the delegation transaction."
 					},
 					"response": [
 						{
@@ -3940,49 +3940,49 @@
 	],
 	"variable": [
 		{
-			"id": "1fbae409-2aa3-4419-a6b3-3d83ea68c63e",
+			"id": "541d67a1-a94a-4b83-afa0-b4574723af95",
 			"key": "AVAX_STAKING_HOST",
 			"value": "avalanche-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "6aa6dfbc-62dd-4c52-ad7f-c36426df2a92",
+			"id": "b593a8ea-603f-4c32-8d39-9717b4e7d26d",
 			"key": "COSMOS_STAKING_HOST",
 			"value": "cosmos-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "fe4e8a04-9b43-462f-ac9e-2ec86f9c4ccd",
+			"id": "b728b13c-6de1-4032-8683-e6193b82f2c3",
 			"key": "ETH_STAKING_HOST",
 			"value": "eth-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "b71bd070-29cf-4aa9-9bfc-24e3c8aba7fc",
+			"id": "f798332f-8aa1-4bbd-a133-4c87f9137239",
 			"key": "NEAR_STAKING_HOST",
 			"value": "near-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "ba2b7abd-bf61-4543-9a1a-63fbf4b78295",
+			"id": "51c5bca5-39bb-46e9-bb23-4ba5861a0a07",
 			"key": "DOT_STAKING_HOST",
 			"value": "polkadot-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "49cdd6c5-5cdb-4002-b0f5-54c51955d699",
+			"id": "b1e9c76e-a52d-4469-8805-2e1fbeab553a",
 			"key": "SOL_STAKING_HOST",
 			"value": "solana-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "1bec8fb2-7efd-47b6-879a-6e60df53cb15",
+			"id": "df26ac72-7fcd-4f83-a3b9-38aec9080b46",
 			"key": "POLYGON_STAKING_HOST",
 			"value": "polygon-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "de094608-bc16-4579-b759-dfad661d3e17",
+			"id": "bf276afc-67e3-4abc-8c4c-b36e33994507",
 			"key": "INTERACTIVE",
 			"value": "false",
 			"type": "string"
