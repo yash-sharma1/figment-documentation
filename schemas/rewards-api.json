@@ -891,7 +891,7 @@
 					"response": [
 						{
 							"id": "186a29a0-2fa5-4f95-88c5-ef6578b51273",
-							"name": "Rewards by day",
+							"name": "by day",
 							"originalRequest": {
 								"method": "POST",
 								"header": [],
@@ -1009,27 +1009,27 @@
 	],
 	"variable": [
 		{
-			"id": "37865adb-6c03-44b3-9be0-984048d6b51c",
+			"id": "253e7249-1b63-46b0-bedc-cbaf2b6d479c",
 			"key": "ETH_REWARDS_HOST",
 			"value": "eth-rewards.datahub.figment.io"
 		},
 		{
-			"id": "273587e5-39ce-427a-a90a-3a9efe119574",
+			"id": "ce38d093-9edb-44e7-8e20-49042b64653b",
 			"key": "SOL_REWARDS_HOST",
 			"value": "solana-rewards.datahub.figment.io"
 		},
 		{
-			"id": "6b7b1026-aa08-4f68-b832-f9d01cbf86bf",
+			"id": "7f32a4cd-7c31-4e06-80bb-a212e46dfd3f",
 			"key": "DOT_REWARDS_HOST",
 			"value": "polkadot-rewards.datahub.figment.io"
 		},
 		{
-			"id": "46d57d42-4406-40af-9f8b-41d017cd9604",
+			"id": "38cea5c2-2421-4940-bb9d-230d41d412ec",
 			"key": "NEAR_REWARDS_HOST",
 			"value": "near-rewards.datahub.figment.io"
 		},
 		{
-			"id": "fc029515-77b0-4642-8df2-ed44dd5ed227",
+			"id": "a9bc8266-a376-4b29-b983-ab2a4f0ed552",
 			"key": "AVAX_REWARDS_HOST",
 			"value": "avalanche-rewards.datahub.figment.io"
 		}
