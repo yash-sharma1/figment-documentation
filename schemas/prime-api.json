@@ -10,7 +10,7 @@
 			"item": [
 				{
 					"name": "/eth2_staking/positions",
-					"_postman_id": "428dfee6-a51c-44f1-b408-254a205c3bf6",
+					"id": "428dfee6-a51c-44f1-b408-254a205c3bf6",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -51,8 +51,7 @@
 											"language": "json"
 										}
 									}
-								},
-								"url": null
+								}
 							},
 							"_postman_previewlanguage": "json",
 							"header": null,
@@ -64,7 +63,7 @@
 				},
 				{
 					"name": "/eth2_staking/positions",
-					"_postman_id": "b9eb6bb9-d930-473a-8546-260443c02c94",
+					"id": "b9eb6bb9-d930-473a-8546-260443c02c94",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -120,8 +119,7 @@
 										"value": "application/json",
 										"type": "text"
 									}
-								],
-								"url": null
+								]
 							},
 							"_postman_previewlanguage": "json",
 							"header": null,
@@ -133,7 +131,7 @@
 				},
 				{
 					"name": "/eth2_staking/positions/{position_id}/validators",
-					"_postman_id": "7ac30f86-491e-4e8c-8e89-70b41f8f0d11",
+					"id": "7ac30f86-491e-4e8c-8e89-70b41f8f0d11",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -255,7 +253,7 @@
 				},
 				{
 					"name": "/eth2_staking/validators",
-					"_postman_id": "a4a8e27d-a591-4506-85e0-03555d76a9d7",
+					"id": "a4a8e27d-a591-4506-85e0-03555d76a9d7",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -329,7 +327,7 @@
 				},
 				{
 					"name": "/eth2_staking/validators/{id}",
-					"_postman_id": "fe53d87e-5bd1-4d6e-bf9a-4e18fde6d6b2",
+					"id": "fe53d87e-5bd1-4d6e-bf9a-4e18fde6d6b2",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -391,14 +389,14 @@
 					]
 				}
 			],
-			"_postman_id": "69be3952-7960-44ef-8707-59b3004e5e9d"
+			"id": "69be3952-7960-44ef-8707-59b3004e5e9d"
 		},
 		{
 			"name": "Polkadot",
 			"item": [
 				{
 					"name": "/polkadot/nomination_proxy",
-					"_postman_id": "ea2a0762-d831-46a7-a3fc-584a5a41f662",
+					"id": "ea2a0762-d831-46a7-a3fc-584a5a41f662",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -415,7 +413,7 @@
 							}
 						},
 						"url": {
-							"raw": "https://{{DOT_HOST}}/api/v1/prime/polkadot/nomination_proxy/apikey/{{API_KEY}}",
+							"raw": "https://{{DOT_HOST}}/api/v1/prime/apikey/{{API_KEY}}/polkadot/nomination_proxy",
 							"protocol": "https",
 							"host": [
 								"{{DOT_HOST}}"
@@ -424,10 +422,10 @@
 								"api",
 								"v1",
 								"prime",
-								"polkadot",
-								"nomination_proxy",
 								"apikey",
-								"{{API_KEY}}"
+								"{{API_KEY}}",
+								"polkadot",
+								"nomination_proxy"
 							],
 							"query": [
 								{
@@ -472,8 +470,7 @@
 										"value": "application/json",
 										"type": "text"
 									}
-								],
-								"url": null
+								]
 							},
 							"_postman_previewlanguage": "json",
 							"header": null,
@@ -485,7 +482,7 @@
 				},
 				{
 					"name": "/polkadot/nomination_proxy/revoke_proxy",
-					"_postman_id": "db65462c-c1db-4fda-91e8-57c88e2a8d00",
+					"id": "db65462c-c1db-4fda-91e8-57c88e2a8d00",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -546,8 +543,7 @@
 										"value": "application/json",
 										"type": "text"
 									}
-								],
-								"url": null
+								]
 							},
 							"_postman_previewlanguage": "json",
 							"header": null,
@@ -558,7 +554,7 @@
 					]
 				}
 			],
-			"_postman_id": "066facec-a502-4002-88a8-ece636e49171"
+			"id": "066facec-a502-4002-88a8-ece636e49171"
 		}
 	],
 	"event": [
@@ -585,19 +581,19 @@
 	],
 	"variable": [
 		{
-			"id": "1bde10e1-fc7b-4817-9078-d8866736cb29",
+			"id": "6a9459f5-967b-4da4-b7cb-38c1d5e40ed0",
 			"key": "ETH_HOST",
 			"value": "hubble.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "2d60b17c-eb93-4ed2-8b57-8b2952787f38",
+			"id": "ab813839-8793-4468-a00a-f525ea450b40",
 			"key": "DOT_HOST",
 			"value": "hubble.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "65aded91-7f1e-4f0e-9dca-2fded1217a29",
+			"id": "71367a51-e1db-4e85-9081-ca3165bb7a88",
 			"key": "INTERACTIVE",
 			"value": "false",
 			"type": "string"
