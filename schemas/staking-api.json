@@ -904,7 +904,7 @@
 							}
 						},
 						"url": "https://{{NEAR_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{nearUnstakingFlowId}}/next",
-						"description": "After collecting the required inputs, send a `PUT` request to `/api/v1/flows/[:flow_id]/next` to move on to the next step.\n\n### Parameters\n\n- `name` &mdash; `string` Name of the action to execute (required).\n- `inputs` &mdash; `array`\n  - `delegator_address` &mdash; `string` The delegator address (required).\n  - `delegator_pubkey` &mdash; `string` The pubkey of the signing account (required).\n  - `validator_address` &mdash; `string` Validator address from which NEAR will be undelegated (required).\n  - `withdraw_amount` &mdash; `number` The amount of NEAR to be withdrawn (required).\n  - `withdraw_maximum` &mdash; `boolean` Set to `true` if you wish to withdraw the full available balance without needing to know the exact available balance. (optional).\n  - `max_gas` &mdash; `number` Adjust if you wish to limit the possible transaction fee (optional).\n\n### Response\n\nThe response indicates two possible `actions`:\n\n- `refresh_withdraw_tx` &mdash; If you need to get a fresh version of the transaction payload (i.e., if the nonce needs to be updated)\n- `sign_withdraw_tx` &mdash; Submit a signed transaction payload ready to be broadcast to the network.\n\nWe will choose `sign_withdraw_tx`, which indicates one input to collect:\n\n- `transaction_payload` &mdash; The signed transaction payload ready to be broadcast to the network.\n\nMake sure to save the `transaction_payload` from this response, which is what needs to be signed in the next step."
+						"description": "After collecting the required inputs, send a `PUT` request to `/api/v1/flows/[:flow_id]/next` to move on to the next step.\n\n### Parameters\n\n- `name` &mdash; `string` Name of the action to execute (required).\n- `inputs` &mdash; `object`\n  - `delegator_address` &mdash; `string` The delegator address (required).\n  - `delegator_pubkey` &mdash; `string` The pubkey of the signing account (required).\n  - `validator_address` &mdash; `string` Validator address from which NEAR will be undelegated (required).\n  - `withdraw_amount` &mdash; `number` The amount of NEAR to be withdrawn (required).\n  - `withdraw_maximum` &mdash; `boolean` Set to `true` if you wish to withdraw the full available balance without needing to know the exact available balance. (optional).\n  - `max_gas` &mdash; `number` Adjust if you wish to limit the possible transaction fee (optional).\n\n### Response\n\nThe response indicates two possible `actions`:\n\n- `refresh_withdraw_tx` &mdash; If you need to get a fresh version of the transaction payload (i.e., if the nonce needs to be updated)\n- `sign_withdraw_tx` &mdash; Submit a signed transaction payload ready to be broadcast to the network.\n\nWe will choose `sign_withdraw_tx`, which indicates one input to collect:\n\n- `transaction_payload` &mdash; The signed transaction payload ready to be broadcast to the network.\n\nMake sure to save the `transaction_payload` from this response, which is what needs to be signed in the next step."
 					},
 					"response": [
 						{
@@ -3940,49 +3940,49 @@
 	],
 	"variable": [
 		{
-			"id": "da88114e-9509-478f-a649-edb1dc14f418",
+			"id": "3d72934d-4ec7-4dfa-8cb5-a22860bca7eb",
 			"key": "AVAX_STAKING_HOST",
 			"value": "avalanche-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "864325f5-988f-42af-8145-c06ecd1398f4",
+			"id": "3cace8fc-e479-47ae-aa3c-3eb337f6a079",
 			"key": "COSMOS_STAKING_HOST",
 			"value": "cosmos-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "723c417c-5483-4b8a-9218-fb4bf4593f02",
+			"id": "4ed137e7-a857-4568-ad40-52a37bdf0735",
 			"key": "ETH_STAKING_HOST",
 			"value": "eth-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "af3f8710-5d27-43fd-9a37-2a4fa4983879",
+			"id": "e36ac5d7-0dd2-42ba-b4b1-26d1919b410b",
 			"key": "NEAR_STAKING_HOST",
 			"value": "near-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "b59df11e-ce38-4200-b75a-727b2fc675e5",
+			"id": "183d7d42-5597-4607-bbe4-86d1f99888f6",
 			"key": "DOT_STAKING_HOST",
 			"value": "polkadot-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "8a74182c-f47e-40e0-9760-cc99a5fb40c5",
+			"id": "4a6117a1-4246-4fd5-ac45-44dd4109eeea",
 			"key": "SOL_STAKING_HOST",
 			"value": "solana-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "c5c8f661-e8a0-43a3-b10b-363b29cee8cd",
+			"id": "77696b29-4ac7-4be9-a117-9fe987274669",
 			"key": "POLYGON_STAKING_HOST",
 			"value": "polygon-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "63544d4d-02dd-4a43-8819-4298e59a1a5c",
+			"id": "6d7ded11-dfcf-43be-bbd2-5d8ec7be8517",
 			"key": "INTERACTIVE",
 			"value": "false",
 			"type": "string"
