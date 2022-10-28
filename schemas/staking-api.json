@@ -2464,7 +2464,7 @@
 							}
 						},
 						"url": "https://{{POLYGON_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{polygonStakingFlowId}}/next",
-						"description": "After creating a new staking flow, submit the staking account data. Collect the required inputs. Send a `PUT` request to `/api/v1/flows/[:flow_id]/next` to proceed to the next step.\n\n### Parameters\n\n- `name` &mdash; `string` Name of the action to execute (required).\n- `inputs` &mdash; `array`\n  - `delegator_address` &mdash; `string` The delegating address (required).\n  - `validator_address` &mdash; `string` The address of the validator smart contract to which you want to delegate your tokens (required).\n  - `amount` &mdash; `number` &mdash; The amount of MATIC to be delegated (required).\n  - `minimum_shares_to_mint` &mdash; `string` The minimum number of shares of the delegation pool to be minted. If the exchange rate results in fewer shares being minted, the transaction will fail (optional).\n  - `max_slippage_percentage` &mdash; `number` The maximum slippage you are willing to accept (optional).\n\n### Response\n\nIn the response received from the Staking API we see one possible `action`:\n\n- `create_allowance_tx` &mdash; If an allowance transaction is needed.\n- `create_delegate_tx` &mdash; If no further allowance is needed.\n\nAssuming an allowance is needed, we will proceed with `create_allowance_transaction` which indicates two optional inputs to collect:\n\n- `gas_limit` &mdash; The gas limit for the transaction.\n- `gas_price` &mdash; The highest gas price you will pay for the transaction."
+						"description": "After creating a new staking flow, submit the staking account data. Collect the required inputs. Send a `PUT` request to `/api/v1/flows/[:flow_id]/next` to proceed to the next step.\n\n### Parameters\n\n- `name` &mdash; `string` Name of the action to execute (required).\n- `inputs` &mdash; `object`\n  - `delegator_address` &mdash; `string` The delegating address (required).\n  - `validator_address` &mdash; `string` The address of the validator smart contract to which you want to delegate your tokens (required).\n  - `amount` &mdash; `number` &mdash; The amount of MATIC to be delegated (required).\n  - `minimum_shares_to_mint` &mdash; `string` The minimum number of shares of the delegation pool to be minted. If the exchange rate results in fewer shares being minted, the transaction will fail (optional).\n  - `max_slippage_percentage` &mdash; `number` The maximum slippage you are willing to accept (optional).\n\n### Response\n\nIn the response received from the Staking API we see one possible `action`:\n\n- `create_allowance_tx` &mdash; If an allowance transaction is needed.\n- `create_delegate_tx` &mdash; If no further allowance is needed.\n\nAssuming an allowance is needed, we will proceed with `create_allowance_transaction` which indicates two optional inputs to collect:\n\n- `gas_limit` &mdash; The gas limit for the transaction.\n- `gas_price` &mdash; The highest gas price you will pay for the transaction."
 					},
 					"response": [
 						{
@@ -3940,49 +3940,49 @@
 	],
 	"variable": [
 		{
-			"id": "68154510-b8f1-4f42-9b57-7d2703e3c6a1",
+			"id": "3799485e-357b-4ef6-8d24-f24e2b7d9c69",
 			"key": "AVAX_STAKING_HOST",
 			"value": "avalanche-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "6c9754c7-9df9-40be-a13b-89b277c4ad71",
+			"id": "4c46412c-6b22-4f59-b755-3ab6859b63fb",
 			"key": "COSMOS_STAKING_HOST",
 			"value": "cosmos-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "3ab03707-3b62-48d1-aac0-7c77be2c627c",
+			"id": "f3e0edd8-f4bf-4a2c-aab5-37d6682cc1a0",
 			"key": "ETH_STAKING_HOST",
 			"value": "eth-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "7315a98e-61b9-4b24-9c0c-f2ba7939c8ec",
+			"id": "7ca86a5f-023a-4e9f-8005-2da2a31d5d7e",
 			"key": "NEAR_STAKING_HOST",
 			"value": "near-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "b5333188-4219-4a44-90e9-436998ef2d6c",
+			"id": "8c32b3bd-c380-4986-bd13-872514f85578",
 			"key": "DOT_STAKING_HOST",
 			"value": "polkadot-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "b96b7942-31bf-4903-9263-b2a56398d9b8",
+			"id": "e1c18737-cb2e-4566-86fb-976f412e557c",
 			"key": "SOL_STAKING_HOST",
 			"value": "solana-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "135f74e7-d0c8-4d22-b5b8-ab2c46a77f4d",
+			"id": "6fa31907-df0a-4f81-80dc-8ea8e4984fd2",
 			"key": "POLYGON_STAKING_HOST",
 			"value": "polygon-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "ff2a69a6-8d10-4c3d-a3fc-4abacf092c78",
+			"id": "bcea8e56-8b5f-4bc9-b426-aac634ccbdd6",
 			"key": "INTERACTIVE",
 			"value": "false",
 			"type": "string"
