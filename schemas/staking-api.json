@@ -2558,7 +2558,7 @@
 							}
 						},
 						"url": "https://{{POLYGON_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{polygonStakingFlowId}}/next",
-						"description": "Before broadcasting the transaction, you must [sign the `transaction_payload`](https://docs.figment.io/guides/staking-api/figment-signing-transactions) you received in the previous step. After signing the transaction, send a `PUT` request to `/api/v1/flows/[:flow_id]/next` and the Staking API will broadcast the transaction to the Polygon network.\n\n### Parameters\n\n- `name` &mdash; `string` Name of the action to execute (required).\n- `inputs` &mdash; `array`\n  - `transaction_payload` &mdash; Signed transaction payload from the previous step's response.\n\n### Response\n\nWith the signed transaction provided, the Staking API will broadcast it to the network.\nAs the transaction progresses towards confirmation, the returned `state` will be either:\n\n- `allowance_tx_broadcasting` &mdash; the transaction has been broadcast but not confirmed.\n- `create_delegate_tx` &mdash; the transaction has been confirmed, ready for next step in flow.\n\nUpon finalization of the transaction, the account will be ready for the next step to submit the the delegation transaction."
+						"description": "Before broadcasting the transaction, you must [sign the `transaction_payload`](https://docs.figment.io/guides/staking-api/figment-signing-transactions) you received in the previous step. After signing the transaction, send a `PUT` request to `/api/v1/flows/[:flow_id]/next` and the Staking API will broadcast the transaction to the Polygon network.\n\n### Parameters\n\n- `name` &mdash; `string` Name of the action to execute (required).\n- `inputs` &mdash; `object`\n  - `transaction_payload` &mdash; Signed transaction payload from the previous step's response.\n\n### Response\n\nWith the signed transaction provided, the Staking API will broadcast it to the network.\nAs the transaction progresses towards confirmation, the returned `state` will be either:\n\n- `allowance_tx_broadcasting` &mdash; the transaction has been broadcast but not confirmed.\n- `create_delegate_tx` &mdash; the transaction has been confirmed, ready for next step in flow.\n\nUpon finalization of the transaction, the account will be ready for the next step to submit the the delegation transaction."
 					},
 					"response": [
 						{
@@ -3940,49 +3940,49 @@
 	],
 	"variable": [
 		{
-			"id": "7fe73b02-4684-4ab3-b5cf-4b69eb3826e0",
+			"id": "1e29415e-8ab2-432e-9b71-f0e7b4e9fd90",
 			"key": "AVAX_STAKING_HOST",
 			"value": "avalanche-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "5c796e74-aede-4c66-bdbc-9aacb6904986",
+			"id": "082252e5-9c28-4783-9d66-41b037fb501e",
 			"key": "COSMOS_STAKING_HOST",
 			"value": "cosmos-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "f2e7cecc-cfbc-410b-9a3c-aee5f97b85b7",
+			"id": "d6cb8780-62db-4970-b32f-f00e69dcde0a",
 			"key": "ETH_STAKING_HOST",
 			"value": "eth-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "c7f5651c-e055-44d6-bb61-81a2955f2555",
+			"id": "6df61fff-b27d-4d2a-ac79-a22687d26930",
 			"key": "NEAR_STAKING_HOST",
 			"value": "near-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "1fbbd96f-5052-497b-b282-c67e84374fc8",
+			"id": "6fa2f918-09c7-4d43-9368-6b25a1a153b0",
 			"key": "DOT_STAKING_HOST",
 			"value": "polkadot-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "1c3f5fc8-0bf5-460b-a68d-0d0f756b3f75",
+			"id": "5855a7bd-dab2-42ef-9593-f840108cc736",
 			"key": "SOL_STAKING_HOST",
 			"value": "solana-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "8e4c2040-a762-439f-bdb1-a132cfc1c7fe",
+			"id": "ac8276fd-6abc-4f4c-898c-8ed8ab1bb6a4",
 			"key": "POLYGON_STAKING_HOST",
 			"value": "polygon-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "a846c256-bbcd-4531-bf31-2bb49a7c3a32",
+			"id": "56f3b7af-5b88-446a-b9da-c56e093927b8",
 			"key": "INTERACTIVE",
 			"value": "false",
 			"type": "string"
