@@ -3222,7 +3222,7 @@
 							}
 						},
 						"url": "https://{{SOLANA_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{solanaStakingFlowId}}/next",
-						"description": "After collecting the required inputs as mentioned below, send a `PUT` request to `/api/v1/flows/[:flow_id]/next` to proceed to the next step.\nIf you already have a staking account, proceed to the step \"Submit Staking Account Data\"\n\n### Parameters\n\n- `name` &mdash; `string` Name of the action to execute (required).\n- `inputs` &mdash; `array`\n  - `funding_account_pubkey` &mdash; The main wallet your SOL will be originating from (required).\n  - `stake_authority_pubkey` &mdash; Grants authority to sign certain staking relation transactions to the provided address. Defaults to `funding_account_pubkey` (optional).\n  - `withdraw_authority_pubkey` &mdash; Grants authority to sign certain withdrawal related transactions to the provided address. Defaults to `funding_account_pubkey` (optional).\n  - `amount` &mdash; The amount of SOL to be sent to the Stake Account. This field should be in full SOL, not in lamports (i.e. if you want to stake 5 SOL, return `\"amount\": 5.0`). The Staking API will translate the amount to lamports so you do not have to worry about the conversion factor (required).\n\n### Response\n\nThe response indicates two possible `actions` :\n\n- `refresh_stake_account_tx` &mdash; If you need to get a fresh version of the transaction payload (i.e., the recent blockhash has expired).\n- `sign_stake_account_tx` &mdash; Submit a signed transaction payload ready to be broadcast to the network.\n\nWe will choose `sign_stake_account_tx`, which indicates one input to collect:\n\n- `transaction_payload` &mdash; The signed transaction payload ready to be broadcast to the network.\n\nMake sure to save the `transaction_payload` from this response, which is what needs to be signed in the next step."
+						"description": "After collecting the required inputs as mentioned below, send a `PUT` request to `/api/v1/flows/[:flow_id]/next` to proceed to the next step.\nIf you already have a staking account, proceed to the step \"Submit Staking Account Data\"\n\n### Parameters\n\n- `name` &mdash; `string` Name of the action to execute (required).\n- `inputs` &mdash; `object`\n  - `funding_account_pubkey` &mdash; The main wallet your SOL will be originating from (required).\n  - `stake_authority_pubkey` &mdash; Grants authority to sign certain staking relation transactions to the provided address. Defaults to `funding_account_pubkey` (optional).\n  - `withdraw_authority_pubkey` &mdash; Grants authority to sign certain withdrawal related transactions to the provided address. Defaults to `funding_account_pubkey` (optional).\n  - `amount` &mdash; The amount of SOL to be sent to the Stake Account. This field should be in full SOL, not in lamports (i.e. if you want to stake 5 SOL, return `\"amount\": 5.0`). The Staking API will translate the amount to lamports so you do not have to worry about the conversion factor (required).\n\n### Response\n\nThe response indicates two possible `actions` :\n\n- `refresh_stake_account_tx` &mdash; If you need to get a fresh version of the transaction payload (i.e., the recent blockhash has expired).\n- `sign_stake_account_tx` &mdash; Submit a signed transaction payload ready to be broadcast to the network.\n\nWe will choose `sign_stake_account_tx`, which indicates one input to collect:\n\n- `transaction_payload` &mdash; The signed transaction payload ready to be broadcast to the network.\n\nMake sure to save the `transaction_payload` from this response, which is what needs to be signed in the next step."
 					},
 					"response": [
 						{
@@ -3940,49 +3940,49 @@
 	],
 	"variable": [
 		{
-			"id": "12ab90d6-e643-481c-9cbb-a4fad6a23555",
+			"id": "1fbae409-2aa3-4419-a6b3-3d83ea68c63e",
 			"key": "AVAX_STAKING_HOST",
 			"value": "avalanche-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "ba08ea03-0280-4910-9059-0f4d439a2aed",
+			"id": "6aa6dfbc-62dd-4c52-ad7f-c36426df2a92",
 			"key": "COSMOS_STAKING_HOST",
 			"value": "cosmos-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "b197b16d-884a-4245-9db9-5cf792c85c72",
+			"id": "fe4e8a04-9b43-462f-ac9e-2ec86f9c4ccd",
 			"key": "ETH_STAKING_HOST",
 			"value": "eth-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "fdc62ed4-3ecb-42c3-9f88-aa0a41a5025d",
+			"id": "b71bd070-29cf-4aa9-9bfc-24e3c8aba7fc",
 			"key": "NEAR_STAKING_HOST",
 			"value": "near-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "d695aeca-635b-4973-b0db-6458da071405",
+			"id": "ba2b7abd-bf61-4543-9a1a-63fbf4b78295",
 			"key": "DOT_STAKING_HOST",
 			"value": "polkadot-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "29a81161-0426-47a4-8170-f93a8efaa9a7",
+			"id": "49cdd6c5-5cdb-4002-b0f5-54c51955d699",
 			"key": "SOL_STAKING_HOST",
 			"value": "solana-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "7eb7a621-bd41-4826-ad33-62d833f70628",
+			"id": "1bec8fb2-7efd-47b6-879a-6e60df53cb15",
 			"key": "POLYGON_STAKING_HOST",
 			"value": "polygon-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "fd5c0fe3-1b51-40b0-956f-2af4d123b355",
+			"id": "de094608-bc16-4579-b759-dfad661d3e17",
 			"key": "INTERACTIVE",
 			"value": "false",
 			"type": "string"
