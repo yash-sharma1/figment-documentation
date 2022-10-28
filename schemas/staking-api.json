@@ -611,7 +611,7 @@
 							}
 						},
 						"url": "https://{{NEAR_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{nearStakingFlowId}}/next",
-						"description": "After creating a new staking flow, submit the staking account data. Collect the required inputs. Send a `PUT` request to `/api/v1/flows/[:flow_id]/next` to proceed to the next step.\n\n### Parameters\n\n- `name` &mdash; `string` Name of the action to execute (required).\n- `inputs` &mdash; `array`\n  - `delegator_address` &mdash; `string` The delegating address (required).\n  - `delegator_pubkey` &mdash; `string` The public key of the signing account (required).\n  - `validator_address` &mdash; `string` Address of the validator you want to delegate your tokens to (required).\n  - `amount` &mdash; `number` &mdash; The amount of NEAR to be delegated (required).\n  - `max_gas` &mdash; `string` Adjust if you wish to limit the possible transaction fee (optional).\n\n### Response\n\nThe response indicates two possible `actions` :\n\n- `refresh_delegate_tx` &mdash; If you need to get a fresh version of the transaction payload (i.e., the nonce has increased).\n- `sign_delegate_tx` &mdash; Submit a signed transaction payload ready to be broadcast to the network.\n\nFor the next step, we will choose `sign_delegate_tx`, which indicates one input to collect:\n\n- `transaction_payload` &mdash; The signed transaction payload ready to be broadcast to the network.\n\nMake sure to save the `transaction_payload` from this response, which is what needs to be signed in the next step."
+						"description": "After creating a new staking flow, submit the staking account data. Collect the required inputs. Send a `PUT` request to `/api/v1/flows/[:flow_id]/next` to proceed to the next step.\n\n### Parameters\n\n- `name` &mdash; `string` Name of the action to execute (required).\n- `inputs` &mdash; `object`\n  - `delegator_address` &mdash; `string` The delegating address (required).\n  - `delegator_pubkey` &mdash; `string` The public key of the signing account (required).\n  - `validator_address` &mdash; `string` Address of the validator you want to delegate your tokens to (required).\n  - `amount` &mdash; `number` &mdash; The amount of NEAR to be delegated (required).\n  - `max_gas` &mdash; `string` Adjust if you wish to limit the possible transaction fee (optional).\n\n### Response\n\nThe response indicates two possible `actions` :\n\n- `refresh_delegate_tx` &mdash; If you need to get a fresh version of the transaction payload (i.e., the nonce has increased).\n- `sign_delegate_tx` &mdash; Submit a signed transaction payload ready to be broadcast to the network.\n\nFor the next step, we will choose `sign_delegate_tx`, which indicates one input to collect:\n\n- `transaction_payload` &mdash; The signed transaction payload ready to be broadcast to the network.\n\nMake sure to save the `transaction_payload` from this response, which is what needs to be signed in the next step."
 					},
 					"response": [
 						{
@@ -3940,49 +3940,49 @@
 	],
 	"variable": [
 		{
-			"id": "49e4a9fb-144d-43cb-9316-5fd474655c6b",
+			"id": "39ea36ca-6095-4db9-9588-4fe4ea183333",
 			"key": "AVAX_STAKING_HOST",
 			"value": "avalanche-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "5d5646a7-17b2-4238-a08c-f0d9743842de",
+			"id": "5251a5e5-157f-415c-b57c-646c2ba2d6b6",
 			"key": "COSMOS_STAKING_HOST",
 			"value": "cosmos-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "5ff69276-3d16-4803-95b3-be938519e04b",
+			"id": "4a876a3b-4f35-4b74-b27e-46555a0bf051",
 			"key": "ETH_STAKING_HOST",
 			"value": "eth-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "a78b544d-2783-48a0-a802-f3da40304843",
+			"id": "556c744b-b07c-4b0d-a883-41bdbea82a47",
 			"key": "NEAR_STAKING_HOST",
 			"value": "near-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "e477d883-42e9-457c-a431-30ebc6366d00",
+			"id": "3f524981-7089-41cc-b223-c51433062832",
 			"key": "DOT_STAKING_HOST",
 			"value": "polkadot-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "2cda8082-eb41-4821-a344-4be6398778a1",
+			"id": "9bd05098-b6b6-4490-a142-948baa03f65a",
 			"key": "SOL_STAKING_HOST",
 			"value": "solana-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "b84aeed3-39a8-4cc2-a964-037075fa3f65",
+			"id": "ec2ade9f-1c2e-4681-b112-7d236806d60e",
 			"key": "POLYGON_STAKING_HOST",
 			"value": "polygon-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "133a74dc-342c-47a9-b2dd-c55a2a3058bc",
+			"id": "b52e57f7-4ca8-476f-b4a5-4e1a2bc52ba3",
 			"key": "INTERACTIVE",
 			"value": "false",
 			"type": "string"
