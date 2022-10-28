@@ -435,7 +435,7 @@
 							}
 						},
 						"url": "https://{{ETH_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{ethStakingFlowId}}/next",
-						"description": "After collecting the required inputs, `PUT /api/v1/flows/[:flow_id]/next` to move on to the next step.\n\n### Parameters\n\n- `name` &mdash; `string` Name of the action to execute (required).\n- `inputs` &mdash; `array` (required).\n  - `funding_account_address` &mdash; `string` The wallet from which the ETH will originate. (required).\n  - `validator_pub_key` &mdash; `string` The public key of the validator to which the ETH will be deposited. (required).\n  - `withdrawal_credentials` &mdash; `string` The withdrawal address for the given validator. (required).\n  - `signature` &mdash; `string` A BLS proof of possession i.e., a proof that the private key corresponding to the `validator_pub_key` is known by the signer. (required).\n  - `deposit_data_root` &mdash; `string` Uniquely identifies the set of deposits made so far. (required).\n  - `amount` &mdash; `number` Number of tokens you want to delegate. (required).\n  - `gas_price` &mdash; `string` Adjust the gas price (optional).\n  - `gas_limit` &mdash; `string` Adjust the gas limit (optional).\n\n### Response\n\nNote that in this response you can find the unsigned, serialized transaction in `data[create_deposit_transaction][raw]`.\n\nThe response indicates two possible `actions` :\n\n- `refresh_deposit_tx` &mdash; If you need to get a fresh version of the transaction payload (i.e., the nonce has increased).\n- `sign_deposit_tx` &mdash; Submit a signed transaction payload ready to be broadcast to the network.\n\nWe will choose `sign_deposit_tx`, which indicates one input to collect:\n\n- `transaction_payload` &mdash; The signed transaction payload ready to be broadcast to the network.\n\nMake sure to save the `transaction_payload` from this response, which is what needs to be signed in the next step."
+						"description": "After collecting the required inputs, `PUT /api/v1/flows/[:flow_id]/next` to move on to the next step.\n\n### Parameters\n\n- `name` &mdash; `string` Name of the action to execute (required).\n- `inputs` &mdash; `object` (required).\n  - `funding_account_address` &mdash; `string` The wallet from which the ETH will originate. (required).\n  - `validator_pub_key` &mdash; `string` The public key of the validator to which the ETH will be deposited. (required).\n  - `withdrawal_credentials` &mdash; `string` The withdrawal address for the given validator. (required).\n  - `signature` &mdash; `string` A BLS proof of possession i.e., a proof that the private key corresponding to the `validator_pub_key` is known by the signer. (required).\n  - `deposit_data_root` &mdash; `string` Uniquely identifies the set of deposits made so far. (required).\n  - `amount` &mdash; `number` Number of tokens you want to delegate. (required).\n  - `gas_price` &mdash; `string` Adjust the gas price (optional).\n  - `gas_limit` &mdash; `string` Adjust the gas limit (optional).\n\n### Response\n\nNote that in this response you can find the unsigned, serialized transaction in `data[create_deposit_transaction][raw]`.\n\nThe response indicates two possible `actions` :\n\n- `refresh_deposit_tx` &mdash; If you need to get a fresh version of the transaction payload (i.e., the nonce has increased).\n- `sign_deposit_tx` &mdash; Submit a signed transaction payload ready to be broadcast to the network.\n\nWe will choose `sign_deposit_tx`, which indicates one input to collect:\n\n- `transaction_payload` &mdash; The signed transaction payload ready to be broadcast to the network.\n\nMake sure to save the `transaction_payload` from this response, which is what needs to be signed in the next step."
 					},
 					"response": [
 						{
@@ -3940,49 +3940,49 @@
 	],
 	"variable": [
 		{
-			"id": "875931ac-91dc-4eed-b2b7-f371b85f644a",
+			"id": "49e4a9fb-144d-43cb-9316-5fd474655c6b",
 			"key": "AVAX_STAKING_HOST",
 			"value": "avalanche-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "646aa254-2a7b-4ba4-b251-70164b1ae33d",
+			"id": "5d5646a7-17b2-4238-a08c-f0d9743842de",
 			"key": "COSMOS_STAKING_HOST",
 			"value": "cosmos-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "b138a9d4-ebfe-4a74-a822-cde5babdc3c5",
+			"id": "5ff69276-3d16-4803-95b3-be938519e04b",
 			"key": "ETH_STAKING_HOST",
 			"value": "eth-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "0b8e5571-c222-4cbc-b5c2-c8b3b07a0ffc",
+			"id": "a78b544d-2783-48a0-a802-f3da40304843",
 			"key": "NEAR_STAKING_HOST",
 			"value": "near-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "f3dbac5a-861e-4968-92a9-f55e153441f3",
+			"id": "e477d883-42e9-457c-a431-30ebc6366d00",
 			"key": "DOT_STAKING_HOST",
 			"value": "polkadot-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "74e6095c-a478-4516-8428-78e9aae30b69",
+			"id": "2cda8082-eb41-4821-a344-4be6398778a1",
 			"key": "SOL_STAKING_HOST",
 			"value": "solana-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "5383b073-058b-415c-a9fc-c9adbfdde2f2",
+			"id": "b84aeed3-39a8-4cc2-a964-037075fa3f65",
 			"key": "POLYGON_STAKING_HOST",
 			"value": "polygon-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "07449f52-3f57-485d-97e0-de840ee7e3ef",
+			"id": "133a74dc-342c-47a9-b2dd-c55a2a3058bc",
 			"key": "INTERACTIVE",
 			"value": "false",
 			"type": "string"
