@@ -120,6 +120,7 @@ function frontMatterTemplate({
   prev = "null",
   next = "null",
   slug,
+  hide_toc,
   body = "",
 }) {
   return `---
@@ -129,6 +130,7 @@ pagination_prev: ${prev}
 pagination_next: ${next}
 collapsed: true
 collapsible: true
+${hide_toc ? `hide_table_of_contents: ${hide_toc}` : ""}
 ${desc ? `description: ${desc}` : ""}
 ${image ? `image: ${image}` : ""}
 ${keywords ? `keywords: ${keywords}` : ""}
@@ -151,6 +153,8 @@ function sidebarIndexForService(service) {
       return 5;
     case "rewards-rates-api":
       return 6;
+    case "prime-api":
+      return 7;
     default:
       return 0;
   }
@@ -327,6 +331,7 @@ function referenceTable(_services, variables) {
     prev: "null",
     next: "null",
     slug: "/api-reference",
+    hide_toc: true,
     body: comment + content + markdown,
   }));
 }

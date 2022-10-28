@@ -45,7 +45,7 @@
 										}
 									}
 								},
-								"url": "https://eth-rewards.datahub.figment.io/v2/apikey/{{API_KEY}}/rewards"
+								"url": "https://{{ETH_REWARDS_HOST}}/v2/rewards/apikey/{{API_KEY}}"
 							},
 							"status": "OK",
 							"code": 200,
@@ -159,7 +159,7 @@
 										}
 									}
 								},
-								"url": "https://eth-rewards.datahub.figment.io/v2/apikey/{{API_KEY}}/rewards"
+								"url": "https://{{ETH_REWARDS_HOST}}/v2/rewards/apikey/{{API_KEY}}/"
 							},
 							"status": "OK",
 							"code": 200,
@@ -249,7 +249,7 @@
 										}
 									}
 								},
-								"url": "https://eth-rewards.datahub.figment.io/v2/apikey/{{API_KEY}}/rewards"
+								"url": "https://{{ETH_REWARDS_HOST}}/v2/rewards/apikey/{{API_KEY}}/"
 							},
 							"status": "OK",
 							"code": 200,
@@ -350,7 +350,7 @@
 								}
 							}
 						},
-						"url": "https://{{SOL_REWARDS_HOST}}/v2/rewards//apikey/{{API_KEY}}/",
+						"url": "https://{{SOL_REWARDS_HOST}}/v2/rewards/apikey/{{API_KEY}}/",
 						"description": "Returns net delegator rewards (post on-chain validator commission) by epoch\n\n## Request\n\n\\* `network` is `solana` _(Required)_  \n\\* `accounts` is an array of stake accounts addresses _(Required)_  \n\\* `start` and `end` are epoch numbers, both inclusive. _(Required)_\n\n## Response\n\nThe response is broken down between `meta` and `data`\n\n##### `meta`\n\n\\* `network` is the same as in the request  \n\\* `period_unit` is the unit of the `period` field under `data`: here it will be `epoch`\n\n##### `data`\n\nis an array of objects - one for each epoch - containing:\n\n\\* `validator` returns the validator that distributed the rewards  \n\\* `period` is the epoch number  \n\\* `timestamp` is the timestamp at the end of the epoch  \n\\* `rewards` is an array of objects containing `numeric` , `exp`, `currency` and `text`. The formula to compute the rewards in the `currency` unit is `numeric x 10^(-exp)`(`text` is the string version of this)\n\n## Limitations\n\n\\* The API returns rewards for Figment validators only  \n\\* Data is available approximatively an hour after the end of the day or epoch. When requesting daily for the current day, the data will be available but obviously partially complete as the day progresses."
 					},
 					"response": [
@@ -369,7 +369,7 @@
 										}
 									}
 								},
-								"url": "https://solana-rewards.datahub.figment.io/v2/apikey/{{API_KEY}}/rewards"
+								"url": "https://{{SOL_REWARDS_HOST}}/v2/rewards/apikey/{{API_KEY}}/"
 							},
 							"status": "OK",
 							"code": 200,
@@ -575,7 +575,7 @@
 										}
 									}
 								},
-								"url": "https://near-rewards.datahub.figment.io/v2/rewards"
+								"url": "https://{{NEAR_REWARDS_HOST}}/v2/rewards/apikey/{{API_KEY}}/"
 							},
 							"status": "OK",
 							"code": 200,
@@ -781,7 +781,7 @@
 										}
 									}
 								},
-								"url": "https://polkadot-rewards.datahub.figment.io/v2/rewards"
+								"url": "https://{{DOT_REWARDS_HOST}}/v2/rewards/apikey/{{API_KEY}}/"
 							},
 							"status": "OK",
 							"code": 200,
@@ -891,7 +891,7 @@
 					"response": [
 						{
 							"id": "186a29a0-2fa5-4f95-88c5-ef6578b51273",
-							"name": "Rewards by day",
+							"name": "by day",
 							"originalRequest": {
 								"method": "POST",
 								"header": [],
@@ -904,7 +904,7 @@
 										}
 									}
 								},
-								"url": "https://{{AVAX_REWARDS_HOST}}/v2/apikey/{{API_KEY}}/rewards"
+								"url": "https://{{AVAX_REWARDS_HOST}}/v2/rewards/apikey/{{API_KEY}}/"
 							},
 							"status": "OK",
 							"code": 200,
@@ -1009,27 +1009,27 @@
 	],
 	"variable": [
 		{
-			"id": "d33fe4ae-36b3-448a-a2cb-e9241bbad46d",
+			"id": "1df4ef17-2e0e-4b0a-bfe5-8ffcaeaa3836",
 			"key": "ETH_REWARDS_HOST",
 			"value": "eth-rewards.datahub.figment.io"
 		},
 		{
-			"id": "6245ec97-dea5-4829-a2bf-20530ebbd447",
+			"id": "a72ac26b-2766-4b08-a661-32d6ad3cf168",
 			"key": "SOL_REWARDS_HOST",
 			"value": "solana-rewards.datahub.figment.io"
 		},
 		{
-			"id": "9fa14199-02d7-4866-92cb-ec5424362e29",
+			"id": "e83c164c-d7de-41e6-928a-5094fe748c32",
 			"key": "DOT_REWARDS_HOST",
 			"value": "polkadot-rewards.datahub.figment.io"
 		},
 		{
-			"id": "8b2d028c-a2d7-4dcb-b8d4-4a9882249c64",
+			"id": "cd77b75d-9555-456c-a666-db08235161e6",
 			"key": "NEAR_REWARDS_HOST",
 			"value": "near-rewards.datahub.figment.io"
 		},
 		{
-			"id": "c133fdf7-df5d-405c-b5ba-2085c381053f",
+			"id": "84cc4ae9-93b0-4897-87bc-321271f0f507",
 			"key": "AVAX_REWARDS_HOST",
 			"value": "avalanche-rewards.datahub.figment.io"
 		}

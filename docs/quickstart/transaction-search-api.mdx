@@ -3,17 +3,12 @@ title: Using the Transaction Search API
 sidebar_position: 6
 ---
 
-import { Accordion, AccordionSummary, AccordionDetails } from "@mui/material";
-import { ExpandMore } from "@mui/icons-material";
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 
 > The Transaction Search API can be used to find details of indexed transactions.
 
-<Accordion className="shadow--tl">
-    <AccordionSummary expandIcon={<ExpandMore />}>
-        Click to view the list of endpoints for the Transaction Search API
-    </AccordionSummary>
+<details><summary>Click here to view the list of endpoints for the Transaction Search API</summary>
 
 :::note
 
@@ -41,7 +36,7 @@ The endpoints for Transaction Search-supported networks are:
 
 :::
 
-</Accordion>
+</details>
 
 ## Authentication
 
@@ -135,10 +130,7 @@ fetch(
   </TabItem>
 </Tabs>
 
-<Accordion className="shadow--tl">
-    <AccordionSummary expandIcon={<ExpandMore />}>
-        Click to view example response
-    </AccordionSummary>
+<details><summary>Click to view example response</summary>
 
 ```json title="JSON response for a Transaction Search on Avalanche"
 [
@@ -242,7 +234,7 @@ fetch(
 ]
 ```
 
-</Accordion>
+</details>
 
 ## API Reference
 
