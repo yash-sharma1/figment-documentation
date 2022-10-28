@@ -1074,7 +1074,7 @@
 							}
 						},
 						"url": "https://{{NEAR_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{nearTransferFlowId}}/next",
-						"description": "After collecting the required inputs, send a `PUT` request to `/api/v1/flows/[:flow_id]/next` to move on to the next step.\n\n### Parameters\n\n- `name` &mdash; `string` Name of the action to execute - `create_transfer_tx`.\n- `inputs` &mdash; `array`\n  - `from_account_pubkey` &mdash; `string` The account that will sign the transaction (required).\n  - `from_account_address` &mdash; `string` the address which NEAR will be transferred from (required).\n  - `to_account_address` &mdash; `string` The address to which NEAR will be transferred (required).\n  - `amount` &mdash; `number` The amount of NEAR to be transferred (required).\n\n### Response\n\nNote that in this response you can find the unsigned, serialized transaction in `data[create_deposit_transaction][raw]`.\n\nThe response indicates two possible `actions` :\n\n- `refresh_deposit_tx` &mdash; If you need to get a fresh version of the transaction payload (i.e., the nonce has increased).\n- `sign_deposit_tx` &mdash; Submit a signed transaction payload ready to be broadcast to the network.\n\nWe will choose `sign_deposit_tx`, which indicates one Input to collect:\n\n- `transaction_payload` &mdash; The signed transaction payload ready to be broadcast to the network.\n\nMake sure to save the `transaction_payload` from this response, which is what needs to be signed in the next step."
+						"description": "After collecting the required inputs, send a `PUT` request to `/api/v1/flows/[:flow_id]/next` to move on to the next step.\n\n### Parameters\n\n- `name` &mdash; `string` Name of the action to execute - `create_transfer_tx`.\n- `inputs` &mdash; `object`\n  - `from_account_pubkey` &mdash; `string` The account that will sign the transaction (required).\n  - `from_account_address` &mdash; `string` the address which NEAR will be transferred from (required).\n  - `to_account_address` &mdash; `string` The address to which NEAR will be transferred (required).\n  - `amount` &mdash; `number` The amount of NEAR to be transferred (required).\n\n### Response\n\nNote that in this response you can find the unsigned, serialized transaction in `data[create_deposit_transaction][raw]`.\n\nThe response indicates two possible `actions` :\n\n- `refresh_deposit_tx` &mdash; If you need to get a fresh version of the transaction payload (i.e., the nonce has increased).\n- `sign_deposit_tx` &mdash; Submit a signed transaction payload ready to be broadcast to the network.\n\nWe will choose `sign_deposit_tx`, which indicates one Input to collect:\n\n- `transaction_payload` &mdash; The signed transaction payload ready to be broadcast to the network.\n\nMake sure to save the `transaction_payload` from this response, which is what needs to be signed in the next step."
 					},
 					"response": [
 						{
@@ -3940,49 +3940,49 @@
 	],
 	"variable": [
 		{
-			"id": "e97572f9-7295-46a0-b62e-4914fb7247a9",
+			"id": "ed81c6fe-c055-45e1-ae70-d44be011ead8",
 			"key": "AVAX_STAKING_HOST",
 			"value": "avalanche-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "1c187309-4d0e-4961-8906-dced86a34e3c",
+			"id": "910a19bd-9a8d-4771-a713-126b1c642d85",
 			"key": "COSMOS_STAKING_HOST",
 			"value": "cosmos-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "c2f68185-85b3-4ea2-8d81-70b50e14e4d5",
+			"id": "2c5a4e2d-b85c-4a53-9c03-d4f614350c62",
 			"key": "ETH_STAKING_HOST",
 			"value": "eth-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "0a4907ef-6858-447e-96f1-1595fcb84dc5",
+			"id": "d2eb50bd-e23f-4bd1-b9af-9c6d8218c854",
 			"key": "NEAR_STAKING_HOST",
 			"value": "near-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "1b1c7820-8df2-4e0a-8056-b56ac43b786e",
+			"id": "a35365a6-a2e1-4fb0-981c-fd7c27e97446",
 			"key": "DOT_STAKING_HOST",
 			"value": "polkadot-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "c54347ca-a71b-4dea-bd53-798b0a76f719",
+			"id": "75e2b7e5-b8e2-4dea-b432-ba9a8fe252a8",
 			"key": "SOL_STAKING_HOST",
 			"value": "solana-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "300a59d9-68cb-4574-802a-7b86ebafe017",
+			"id": "ac2a6edb-3f26-441a-ba96-fe3c00342364",
 			"key": "POLYGON_STAKING_HOST",
 			"value": "polygon-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "6ca2b7cc-bc8d-4ee1-a2f0-4c38e1c14113",
+			"id": "0538e026-6dcc-466d-bfba-3c70a9ce64df",
 			"key": "INTERACTIVE",
 			"value": "false",
 			"type": "string"
