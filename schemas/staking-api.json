@@ -3515,7 +3515,7 @@
 							}
 						},
 						"url": "https://{{SOLANA_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{solanaUnstakingFlowId}}/next",
-						"description": "After collecting the required inputs, send a `PUT` request to `/api/v1/flows/[:flow_id]/next` to proceed to the next step.\n\n### Parameters\n\n- `name` &mdash; `string` Name of the action to execute (required).\n- `inputs` &mdash; `array`\n  - `funding_account_pubkey` &mdash; `string` The address of the stake account to be deactivated (required).\n  - `stake_account_pubkey` &mdash; `string` The address of the wallet with signing rights to deactivate the stake account (required).\n\n### Response\n\nYou can find the unsigned, serialized transaction in `data[create_deactivate_transaction][raw]`.\n\nThere are two possible `actions`:\n\n- `refresh_deactivate_tx` &mdash; If you need to get a fresh version of the transaction payload (i.e., the recent blockhash has expired).\n- `sign_deactivate_tx` &mdash; Submit a signed transaction payload ready to be broadcast to the network.\n\nWe will choose `sign_deactivate_tx`, which indicates one input to collect:\n\n- `transaction_payload` &mdash; The signed transaction payload ready to be broadcast to the network.\n\nMake sure to save the `transaction_payload` from this response, which is what needs to be signed in the next step."
+						"description": "After collecting the required inputs, send a `PUT` request to `/api/v1/flows/[:flow_id]/next` to proceed to the next step.\n\n### Parameters\n\n- `name` &mdash; `string` Name of the action to execute (required).\n- `inputs` &mdash; `object`\n  - `funding_account_pubkey` &mdash; `string` The address of the stake account to be deactivated (required).\n  - `stake_account_pubkey` &mdash; `string` The address of the wallet with signing rights to deactivate the stake account (required).\n\n### Response\n\nYou can find the unsigned, serialized transaction in `data[create_deactivate_transaction][raw]`.\n\nThere are two possible `actions`:\n\n- `refresh_deactivate_tx` &mdash; If you need to get a fresh version of the transaction payload (i.e., the recent blockhash has expired).\n- `sign_deactivate_tx` &mdash; Submit a signed transaction payload ready to be broadcast to the network.\n\nWe will choose `sign_deactivate_tx`, which indicates one input to collect:\n\n- `transaction_payload` &mdash; The signed transaction payload ready to be broadcast to the network.\n\nMake sure to save the `transaction_payload` from this response, which is what needs to be signed in the next step."
 					},
 					"response": [
 						{
@@ -3940,49 +3940,49 @@
 	],
 	"variable": [
 		{
-			"id": "43bd15b6-c974-47ba-ac2a-8c8deeac5841",
+			"id": "f3f5b35a-eb42-4679-a008-6a0e0f169182",
 			"key": "AVAX_STAKING_HOST",
 			"value": "avalanche-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "c2138e47-80b5-4cfc-85fc-e7c5c4a9dd1b",
+			"id": "37207d57-98a0-4c46-982a-5c1679b3b7b8",
 			"key": "COSMOS_STAKING_HOST",
 			"value": "cosmos-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "ada705dc-8104-4b86-8484-0a4d385d498a",
+			"id": "b7504cce-fec2-4014-9f4d-6a6444fb6db1",
 			"key": "ETH_STAKING_HOST",
 			"value": "eth-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "99d74cf1-8ff4-44a2-a3e1-7782297a6139",
+			"id": "17dbe1f5-54e4-4988-b317-fd6b627172bd",
 			"key": "NEAR_STAKING_HOST",
 			"value": "near-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "27e592df-1a7c-477d-8014-2b75fdd051f1",
+			"id": "6cf52e0f-c92c-4250-a85b-7ef636d8a7fc",
 			"key": "DOT_STAKING_HOST",
 			"value": "polkadot-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "60ec4f2e-728a-4aa5-9309-e9e9b5b9443e",
+			"id": "90d046c2-1162-4f16-9ad8-5075a4d21edd",
 			"key": "SOL_STAKING_HOST",
 			"value": "solana-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "522d70f7-cfc6-42c3-a576-d0724eb2a407",
+			"id": "17a6b353-52dc-4361-83b6-733489df1a9a",
 			"key": "POLYGON_STAKING_HOST",
 			"value": "polygon-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "a8c476bd-138c-4919-b6fd-065b11ad3f52",
+			"id": "239bc6cc-73ec-4a2a-9dd9-dd1134aaf713",
 			"key": "INTERACTIVE",
 			"value": "false",
 			"type": "string"
