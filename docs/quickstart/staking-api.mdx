@@ -3,8 +3,6 @@ title: Using the Staking API
 sidebar_position: 8
 ---
 
-import { Accordion, AccordionSummary, AccordionDetails } from "@mui/material";
-import { ExpandMore } from "@mui/icons-material";
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 
@@ -12,10 +10,7 @@ import TabItem from "@theme/TabItem";
 
 Read about the authentication [HERE](/quickstart/api-authentication)
 
-<Accordion className="shadow--tl">
-    <AccordionSummary expandIcon={<ExpandMore />}>
-        Click to view the list of endpoints for the Staking API
-    </AccordionSummary>
+<details><summary>Click here to view the list of endpoints for the Staking API</summary>
 
 :::info
 
@@ -48,7 +43,7 @@ The endpoints for the Staking API are located at the following URLs:
 
 :::
 
-</Accordion>
+</details>
 
 ## Initialize a Flow
 
@@ -136,10 +131,7 @@ fetch(`https://eth-slate.datahub.figment.io/api/v1/flows`, requestOptions)
   </TabItem>
 </Tabs>
 
-<Accordion className="shadow--tl">
-    <AccordionSummary expandIcon={<ExpandMore />}>
-        Click to view example response
-    </AccordionSummary>
+<details><summary>Click to view example response</summary>
 
 :::info
 
@@ -247,7 +239,7 @@ The `name` and `inputs` for next actions are always in the `actions` array of th
 }
 ```
 
-</Accordion>
+</details>
 
 ## Continue a Flow
 
@@ -324,10 +316,7 @@ fetch(
   </TabItem>
 </Tabs>
 
-<Accordion className="shadow--tl">
-    <AccordionSummary expandIcon={<ExpandMore />}>
-        Click to view example response
-    </AccordionSummary>
+<details><summary>Click to view example response</summary>
 
 :::info
 
@@ -392,16 +381,13 @@ The `name` and `inputs` for next actions are always in the `actions` array of th
 }
 ```
 
-</Accordion>
+</details>
 
 ## Staking API Webhooks
 
 > You can add, remove, update and list webhooks with the `/webhook_endpoints` endpoint. The Staking API Webhooks endpoint works alongside the Staking API to manage your webhooks, so that you can be notified when Staking API events occur.
 
-<Accordion className="shadow--tl">
-    <AccordionSummary expandIcon={<ExpandMore />}>
-        Click to view the list of URLs for Staking API Webhooks
-    </AccordionSummary>
+<details><summary>Click to view the list of URLs for Staking API Webhooks</summary>
 
 :::note
 
@@ -415,7 +401,7 @@ The endpoints for this API are located at:
 
 :::
 
-</Accordion>
+</details>
 
 ## Create a New Webhook Endpoint
 
@@ -768,6 +754,6 @@ View the full Staking API reference [HERE](/api-reference/staking-api/)
 
 View the full Webhooks API reference [HERE](/api-reference/staking-api-webhooks/)
 
-See the Guide [**Working With Staking API**](/guides/staking-api) for more details about using the Staking API.
+See the Guide [**Working With Staking API Flows**](/guides/staking-api) for more details about using the Staking API.
 
 ---

@@ -3,8 +3,6 @@ title: Using the Rewards API
 sidebar_position: 7
 ---
 
-import { Accordion, AccordionSummary, AccordionDetails } from "@mui/material";
-import { ExpandMore } from "@mui/icons-material";
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 
@@ -128,10 +126,7 @@ fetch(`https://eth-rewards.datahub.figment.io/rewards`, requestOptions)
   </TabItem>
 </Tabs>
 
-<Accordion className="shadow--tl">
-    <AccordionSummary expandIcon={<ExpandMore />}>
-        Click to view example response
-    </AccordionSummary>
+<details><summary>Click to view example response</summary>
 
 ```json title="Example Rewards API JSON response"
 [
@@ -155,7 +150,7 @@ fetch(`https://eth-rewards.datahub.figment.io/rewards`, requestOptions)
 ]
 ```
 
-</Accordion>
+</details>
 
 ## API Reference
 

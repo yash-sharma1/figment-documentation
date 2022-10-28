@@ -1,47 +1,45 @@
 # Figment Documentation
 
-This repository contains Figment product documentation for DataHub and related APIs, built with [Docusaurus](https://docusaurus.io).
+This repository contains Figment API product documentation, built with [Docusaurus](https://docusaurus.io).
 
 Click each heading below for a quick overview of what each directory contains:
 
 <details>
   <summary>/docs</summary>
 
-- `api-reference` - Reference documentation generated from schemas
-- `indexer-api` - Indexer API Reference
-- `rewards-api` - Rewards API Reference
-- `node-api` - Node API Reference
-- `transaction-search-api` - Transaction Search API Reference
-- `guides` - Guides
-- `quickstart` - Quick Start articles
-- `terms-and-conditions` - Legal Documentation
+- `api-reference` - API Reference documentation generated from schemas.
+- `guides` - Helpful guides.
+- `quickstart` - Quick Start articles.
+- `terms-and-conditions` - Legal Documentation.
 
 </details>
 
 <details>
   <summary>/schemas</summary>
 
-- `node-api` - Node schema
-- `rewards-api` - Rewards schema
-- `indexer-api` - Indexer schema
-- `staking-api` - Staking API schema
-- `tx-search-api` - Transaction Search schema
+- `node-api` - Node schema.
+- `rewards-api` - Rewards schema.
+- `rewards-api` - Rewards rates schema.
+- `staking-api` - Staking API schema.
+- `staking-webhooks-api` - Staking Webhooks API schema.
+- `tx-search-api` - Transaction Search schema.
 
 </details>
 
 <details>
   <summary>/src</summary>
 
-- `components` - MDX components
-- `css` - Style Sheets
-- `pages` - Standalone pages related to the documentation UX
+- `components` - MDX Components.
+- `css` - Cascading Style Sheets.
+- `fonts` - Licensed fonts used when displaying the documentation.
+- `pages` - Standalone pages related to the documentation UX.
 
 </details>
 
 <details>
   <summary>/static</summary>
 
-- `img` - Static assets, images
+- `img` - Static assets and images.
 
 </details>
 
@@ -51,7 +49,7 @@ Click each heading below for a quick overview of what each directory contains:
 - Install [Node.js v16+](https://nodejs.org/en/download/) (check with `node -v`)
 - Install [yarn](https://classic.yarnpkg.com/en/docs/install) (check with `yarn --version`)
 
-### Clone The Repository
+### Clone the Repository
 
 - `git clone git@github.com/figment-networks/figment-documentation.git`
 - `cd figment-documentation`
@@ -60,7 +58,7 @@ Click each heading below for a quick overview of what each directory contains:
 
 - Run `yarn install`
 
-### Running The Development Server
+### Running the Development Server
 
 - Run `yarn start` to start the Docusaurus server (on port 3000 by default, specify with `--port XXXX`)
 
@@ -68,12 +66,12 @@ Most changes will be displayed automatically, but in some cases you might need t
 
 ## Branches & Making Changes
 
-Please only use the `development` branch to push your changes. The `main` branch requires a reviewed Pull Request to merge changes. Make sure the `main` branch is not ahead of the `development` branch by merging `main` into `development` as necessary.
+Only base feature branches and Pull Requests on the `development` branch. The `main` branch requires a reviewed Pull Request to merge changes, as this will trigger a deployment to production. Make sure the `main` branch is not ahead of the `development` branch by merging `main` into `development` as necessary.
 
-### Generating Docs From Schemas
+### Generating Docs from Schemas
 
-The schema files are sync'd automatically from [Postman](https://figmentio.postman.co) Collections and the `generate.js` script transforms them for our needs. Ensure that the contents of `/docs/api-reference` (with the exception of `/docs/api-reference/index.mdx`) remain in the `.gitignore` file.
+The schema files are sync'd automatically from [Postman](https://figmentio.postman.co) Collections. The `generate.js` script transforms them for our needs at build time. Ensure that the contents of `/docs/api-reference` (with the exception of `/docs/api-reference/index.mdx`) remain in the `.gitignore` file.
 
-### Building For Deployment
+### Building for Deployment
 
 - Run `yarn build` to output the static site for deployment.
