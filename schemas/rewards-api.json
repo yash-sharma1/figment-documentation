@@ -781,7 +781,7 @@
 										}
 									}
 								},
-								"url": "https://polkadot-rewards.datahub.figment.io/v2/rewards"
+								"url": "https://{{DOT_REWARDS_HOST}}/v2/rewards/apikey/{{API_KEY}}/"
 							},
 							"status": "OK",
 							"code": 200,
@@ -1009,27 +1009,27 @@
 	],
 	"variable": [
 		{
-			"id": "77c257fd-6955-4335-952f-5417a2d08916",
+			"id": "1f25c175-e330-4632-9409-6fab281a28a5",
 			"key": "ETH_REWARDS_HOST",
 			"value": "eth-rewards.datahub.figment.io"
 		},
 		{
-			"id": "b67dbb4a-9520-459a-8a36-6ce493d75b8d",
+			"id": "f03297f7-5344-42f4-b4c8-3205cf1c3922",
 			"key": "SOL_REWARDS_HOST",
 			"value": "solana-rewards.datahub.figment.io"
 		},
 		{
-			"id": "987e4f4a-4c8c-4bc2-9f2f-1df3964c764e",
+			"id": "815d852d-2e1d-4c89-bc09-216bbeab189a",
 			"key": "DOT_REWARDS_HOST",
 			"value": "polkadot-rewards.datahub.figment.io"
 		},
 		{
-			"id": "0a4cbf2a-11c6-4cbf-909f-f14474f43cf5",
+			"id": "538f396f-44f9-4216-9a23-9170dba0e6e2",
 			"key": "NEAR_REWARDS_HOST",
 			"value": "near-rewards.datahub.figment.io"
 		},
 		{
-			"id": "ef7c767b-3877-49f6-bd48-28cfaffa04ed",
+			"id": "0f27d3c5-5dce-4192-a5c8-9acc632e44b1",
 			"key": "AVAX_REWARDS_HOST",
 			"value": "avalanche-rewards.datahub.figment.io"
 		}
