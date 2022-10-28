@@ -74,7 +74,7 @@
 							}
 						},
 						"url": "https://{{AVAX_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{avalancheStakingFlowId}}/next",
-						"description": "After creating a new staking flow, submit the staking account data. Collect the required inputs. Send a `PUT` request to `/api/v1/flows/[:flow_id]/next` to proceed to the next step.\n\n### Parameters\n\n- `name` &mdash; `string` Name of the action to execute (required).\n- `inputs` &mdash; `array`\n  - `delegator_address` &mdash; `string` The delegating address (P-chain) (required).\n  - `validator_address` &mdash; `string` Address of the validator (required).\n  - `amount` &mdash; `number` The amount of AVAX to be delegated (required).\n  - `start_time` &mdash; `number` Adjust if you wish to set a specific delegation start time. [Unix Epoch Timestamp](https://www.unixtimestamp.com/), defaults to five minutes from when the transaction is generated (optional).\n  - `end_time` &mdash; `number` Adjust if you wish to set a specific delegation end time. [Unix Epoch Timestamp](https://www.unixtimestamp.com/), defaults to the end time of the validator (optional).\n  - `memo` &mdash; `string` Include a memo with the transaction (optional).\n\n### Response\n\nThe response indicates two possible `actions` :\n\n- `refresh_delegate_tx` &mdash; If you need to get a fresh version of the transaction Payload (i.e., the nonce has increased).\n- `sign_delegate_tx` &mdash; Submit a signed transaction Payload ready to be broadcast to the network.\n\nWe will choose `sign_delegate_tx`, which indicates one input to collect:\n\n- `transaction_payload` &mdash; The signed transaction payload ready to be broadcast to the network.\n\nMake sure to save the `transaction_payload` from this response, which is what needs to be signed in the next step."
+						"description": "After creating a new staking flow, submit the staking account data. Collect the required inputs. Send a `PUT` request to `/api/v1/flows/[:flow_id]/next` to proceed to the next step.\n\n### Parameters\n\n- `name` &mdash; `string` Name of the action to execute (required).\n- `inputs` &mdash; `object`\n  - `delegator_address` &mdash; `string` The delegating address (P-chain) (required).\n  - `validator_address` &mdash; `string` Address of the validator (required).\n  - `amount` &mdash; `number` The amount of AVAX to be delegated (required).\n  - `start_time` &mdash; `number` Adjust if you wish to set a specific delegation start time. [Unix Epoch Timestamp](https://www.unixtimestamp.com/), defaults to five minutes from when the transaction is generated (optional).\n  - `end_time` &mdash; `number` Adjust if you wish to set a specific delegation end time. [Unix Epoch Timestamp](https://www.unixtimestamp.com/), defaults to the end time of the validator (optional).\n  - `memo` &mdash; `string` Include a memo with the transaction (optional).\n\n### Response\n\nThe response indicates two possible `actions` :\n\n- `refresh_delegate_tx` &mdash; If you need to get a fresh version of the transaction Payload (i.e., the nonce has increased).\n- `sign_delegate_tx` &mdash; Submit a signed transaction Payload ready to be broadcast to the network.\n\nWe will choose `sign_delegate_tx`, which indicates one input to collect:\n\n- `transaction_payload` &mdash; The signed transaction payload ready to be broadcast to the network.\n\nMake sure to save the `transaction_payload` from this response, which is what needs to be signed in the next step."
 					},
 					"response": [
 						{
@@ -3940,49 +3940,49 @@
 	],
 	"variable": [
 		{
-			"id": "dec907d4-7597-403e-b562-a7c7845ef9bf",
+			"id": "875931ac-91dc-4eed-b2b7-f371b85f644a",
 			"key": "AVAX_STAKING_HOST",
 			"value": "avalanche-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "35e3182e-5b5e-4033-9c69-6b8fbdbfe988",
+			"id": "646aa254-2a7b-4ba4-b251-70164b1ae33d",
 			"key": "COSMOS_STAKING_HOST",
 			"value": "cosmos-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "912ef984-955e-49bb-b904-93073b6143c5",
+			"id": "b138a9d4-ebfe-4a74-a822-cde5babdc3c5",
 			"key": "ETH_STAKING_HOST",
 			"value": "eth-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "bbdf30f9-7ead-4885-8dae-f8238c3602d0",
+			"id": "0b8e5571-c222-4cbc-b5c2-c8b3b07a0ffc",
 			"key": "NEAR_STAKING_HOST",
 			"value": "near-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "4edccdde-de4b-4187-8515-5a51a8389ef1",
+			"id": "f3dbac5a-861e-4968-92a9-f55e153441f3",
 			"key": "DOT_STAKING_HOST",
 			"value": "polkadot-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "7380d576-34fb-4556-94fb-4446cd6a9f37",
+			"id": "74e6095c-a478-4516-8428-78e9aae30b69",
 			"key": "SOL_STAKING_HOST",
 			"value": "solana-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "bf83a1d5-daad-454e-9e10-8a2336c70e4f",
+			"id": "5383b073-058b-415c-a9fc-c9adbfdde2f2",
 			"key": "POLYGON_STAKING_HOST",
 			"value": "polygon-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "da4db81d-a3e1-4e93-a7ef-44a97d21d0e4",
+			"id": "07449f52-3f57-485d-97e0-de840ee7e3ef",
 			"key": "INTERACTIVE",
 			"value": "false",
 			"type": "string"
