@@ -1121,7 +1121,7 @@
 							}
 						},
 						"url": "https://{{NEAR_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{nearTransferFlowId}}/next",
-						"description": "Before broadcasting the transaction, you must [sign the `transaction_payload`](https://docs.figment.io/guides/staking-api/figment-signing-transactions) you received in the previous step. After signing the transaction, send a `PUT` request to `/api/v1/flows/[:flow_id]/next` with the signed payload. The Staking API will broadcast the transaction to the NEAR network.\n\n### Parameters\n\n- `name` &mdash; `string` Name of the action to execute (required).\n- `inputs` &mdash; `array`\n  - `transaction_payload` &mdash; Signed transaction payload from the previous step's response.\n\n### Response\n\nWith the signed transaction provided, the Staking API will broadcast it to the network. As the transaction progresses towards confirmation, the returned state will be either:\n\n- `transfer_tx_broadcasting` &mdash; Transaction has been broadcast and is waiting confirmation.\n- `transfered` &mdash; Transaction has been confirmed and the transfer is complete."
+						"description": "Before broadcasting the transaction, you must [sign the `transaction_payload`](https://docs.figment.io/guides/staking-api/figment-signing-transactions) you received in the previous step. After signing the transaction, send a `PUT` request to `/api/v1/flows/[:flow_id]/next` with the signed payload. The Staking API will broadcast the transaction to the NEAR network.\n\n### Parameters\n\n- `name` &mdash; `string` Name of the action to execute (required).\n- `inputs` &mdash; `object`\n  - `transaction_payload` &mdash; Signed transaction payload from the previous step's response.\n\n### Response\n\nWith the signed transaction provided, the Staking API will broadcast it to the network. As the transaction progresses towards confirmation, the returned state will be either:\n\n- `transfer_tx_broadcasting` &mdash; Transaction has been broadcast and is waiting confirmation.\n- `transfered` &mdash; Transaction has been confirmed and the transfer is complete."
 					},
 					"response": [
 						{
@@ -3940,49 +3940,49 @@
 	],
 	"variable": [
 		{
-			"id": "ed81c6fe-c055-45e1-ae70-d44be011ead8",
+			"id": "4a39825d-d351-4e61-9827-75b0c4715b8c",
 			"key": "AVAX_STAKING_HOST",
 			"value": "avalanche-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "910a19bd-9a8d-4771-a713-126b1c642d85",
+			"id": "561c5dd6-f5d4-4fac-b303-1ec0b6dbcd79",
 			"key": "COSMOS_STAKING_HOST",
 			"value": "cosmos-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "2c5a4e2d-b85c-4a53-9c03-d4f614350c62",
+			"id": "6d20a7ab-04ae-4019-b6ab-aaa3ec224899",
 			"key": "ETH_STAKING_HOST",
 			"value": "eth-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "d2eb50bd-e23f-4bd1-b9af-9c6d8218c854",
+			"id": "2cbd4ddf-4d98-453a-bb26-8419e928fb4f",
 			"key": "NEAR_STAKING_HOST",
 			"value": "near-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "a35365a6-a2e1-4fb0-981c-fd7c27e97446",
+			"id": "b3fa3da4-f25f-4aec-82b3-6bef35f8db2f",
 			"key": "DOT_STAKING_HOST",
 			"value": "polkadot-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "75e2b7e5-b8e2-4dea-b432-ba9a8fe252a8",
+			"id": "d195f18c-e866-4a24-b500-90b3ce51303a",
 			"key": "SOL_STAKING_HOST",
 			"value": "solana-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "ac2a6edb-3f26-441a-ba96-fe3c00342364",
+			"id": "6f65c124-1762-4cae-867d-95d72e9f0c06",
 			"key": "POLYGON_STAKING_HOST",
 			"value": "polygon-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "0538e026-6dcc-466d-bfba-3c70a9ce64df",
+			"id": "8e1dc991-3243-4a53-8cd3-984fb91da3c8",
 			"key": "INTERACTIVE",
 			"value": "false",
 			"type": "string"
