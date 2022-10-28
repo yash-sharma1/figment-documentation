@@ -1948,7 +1948,7 @@
 							}
 						},
 						"url": "https://{{POLKAOT_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{polkadotAddProxyFlowId}}/next",
-						"description": "After collecting the required inputs, send a `PUT` request to `/api/v1/flows/[:flow_id]/next` to proceed to the next step.\n\n### Parameters\n\n- `name` &mdash; `string` Name of the action to execute (required).\n- `inputs` &mdash; `array`\n  - `proxy_account_address` &mdash; `string` The address to which you want to add proxy rights (required).\n  - `proxied_account_address` &mdash; `string` The account whose rights will be proxied (required).\n\n### Response\n\nThe response indicates two possible `actions` :\n\n- `refresh_add_proxy_tx` &mdash; If you need to get a fresh version of the transaction payload (i.e., the nonce has increased).\n- `sign_add_proxy_tx` &mdash; Submit a signed transaction payload ready to be broadcast to the network.\n\nWe will choose `sign_add_proxy_tx`, which indicates one Input to collect:\n\n- `transaction_payload` &mdash; The signed transaction payload ready to be broadcast to the network.\n\nMake sure to save the `transaction_payload` from this response, which is what needs to be signed in the next step."
+						"description": "After collecting the required inputs, send a `PUT` request to `/api/v1/flows/[:flow_id]/next` to proceed to the next step.\n\n### Parameters\n\n- `name` &mdash; `string` Name of the action to execute (required).\n- `inputs` &mdash; `object`\n  - `proxy_account_address` &mdash; `string` The address to which you want to add proxy rights (required).\n  - `proxied_account_address` &mdash; `string` The account whose rights will be proxied (required).\n\n### Response\n\nThe response indicates two possible `actions` :\n\n- `refresh_add_proxy_tx` &mdash; If you need to get a fresh version of the transaction payload (i.e., the nonce has increased).\n- `sign_add_proxy_tx` &mdash; Submit a signed transaction payload ready to be broadcast to the network.\n\nWe will choose `sign_add_proxy_tx`, which indicates one Input to collect:\n\n- `transaction_payload` &mdash; The signed transaction payload ready to be broadcast to the network.\n\nMake sure to save the `transaction_payload` from this response, which is what needs to be signed in the next step."
 					},
 					"response": [
 						{
@@ -3940,49 +3940,49 @@
 	],
 	"variable": [
 		{
-			"id": "1949abc2-93ad-4e12-a17e-a8c64473c0e7",
+			"id": "a399471e-776d-4e4c-ab5e-89179e0994ee",
 			"key": "AVAX_STAKING_HOST",
 			"value": "avalanche-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "beb11e13-846b-497a-b927-bcc51107693f",
+			"id": "e4b460ed-19fa-42cd-8d63-c91e3a1687de",
 			"key": "COSMOS_STAKING_HOST",
 			"value": "cosmos-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "a8ea61e2-b52a-4c85-aa28-8d0ac2a3f1fb",
+			"id": "d064d325-dd40-43c3-a744-2a766e0d57a2",
 			"key": "ETH_STAKING_HOST",
 			"value": "eth-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "011c9788-f224-491a-82bb-d36a8fde7654",
+			"id": "1b8a87ea-1936-4498-857f-40b2a4efe15b",
 			"key": "NEAR_STAKING_HOST",
 			"value": "near-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "0e3d9ed1-0169-4219-87f8-eb66b18ab424",
+			"id": "01006608-5ae8-4acc-b611-b75e77cde31a",
 			"key": "DOT_STAKING_HOST",
 			"value": "polkadot-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "c4d549bd-3c52-4a1e-be6a-1d1fe10515b2",
+			"id": "2752048f-d4cb-447e-b7c2-c433610b4a91",
 			"key": "SOL_STAKING_HOST",
 			"value": "solana-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "8cb5f36c-8766-43c6-b88c-2a96e472214f",
+			"id": "3c7320d6-b060-4eab-b76c-7146557b5e2d",
 			"key": "POLYGON_STAKING_HOST",
 			"value": "polygon-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "16427305-b97b-4611-928a-3fa241907541",
+			"id": "4380b00e-67be-459d-abaa-fc9f1db48691",
 			"key": "INTERACTIVE",
 			"value": "false",
 			"type": "string"
