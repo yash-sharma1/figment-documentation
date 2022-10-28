@@ -499,7 +499,7 @@
 							}
 						},
 						"url": {
-							"raw": "https://{{DOT_HOST}}/api/v1/prime/polkadot/nomination_proxy/revoke_proxy/apikey/{{API_KEY}}/",
+							"raw": "https://{{DOT_HOST}}/api/v1/prime/apikey/{{API_KEY}}/polkadot/nomination_proxy/revoke_proxy",
 							"protocol": "https",
 							"host": [
 								"{{DOT_HOST}}"
@@ -508,12 +508,11 @@
 								"api",
 								"v1",
 								"prime",
-								"polkadot",
-								"nomination_proxy",
-								"revoke_proxy",
 								"apikey",
 								"{{API_KEY}}",
-								""
+								"polkadot",
+								"nomination_proxy",
+								"revoke_proxy"
 							],
 							"query": [
 								{
@@ -581,19 +580,19 @@
 	],
 	"variable": [
 		{
-			"id": "6a9459f5-967b-4da4-b7cb-38c1d5e40ed0",
+			"id": "a5bb33fd-5773-4547-b1a1-ea0ff7272a5e",
 			"key": "ETH_HOST",
 			"value": "hubble.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "ab813839-8793-4468-a00a-f525ea450b40",
+			"id": "67db6082-4f5f-4f64-ba8e-63ffcc2c6d4d",
 			"key": "DOT_HOST",
 			"value": "hubble.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "71367a51-e1db-4e85-9081-ca3165bb7a88",
+			"id": "89d52cce-4a83-4ed9-a0f9-4ef87ae6b0a9",
 			"key": "INTERACTIVE",
 			"value": "false",
 			"type": "string"
