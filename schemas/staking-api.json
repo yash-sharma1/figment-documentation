@@ -3046,7 +3046,7 @@
 							}
 						},
 						"url": "https://{{POLYGON_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{polygonClaimRewardsFlowId}}/next",
-						"description": "After collecting the required inputs, send a `PUT` request to `/api/v1/flows/[:flow_id]/next` to move on to the next step.\n\n### Parameters\n\n- `name` &mdash; `string` Name of the action to execute (required).\n- `inputs` &mdash; `array`\n  - `delegator_address` &mdash; `string` The address delegating MATIC (required).\n  - `validator_address` &mdash; `string` The Validator contract address to which MATIC are delegated (required).\n  - `gas_limit` &mdash; `number` Adjust gas limit for the claim transaction (optional).\n  - `gas_price` &mdash; `number` Adjust gas limit for the claim transaction (optional).\n\n### Response\n\nThe response indicates two possible `actions` :\n\n- `refresh_claim_rewards_tx` &mdash; If you need to get a fresh version of the transaction payload (for example, if the nonce needs to be updated).\n- `sign_claim_rewards_tx ` &mdash; Submit a signed transaction payload ready to be broadcast to the network.\n\nWe will choose `sign_claim_rewards_tx`, which indicates one input to collect:\n\n- `transaction_payload` &mdash; the signed transaction payload ready to be broadcast to the network.\n\nMake sure to save the `transaction_payload` from this response, which is what needs to be signed in the next step."
+						"description": "After collecting the required inputs, send a `PUT` request to `/api/v1/flows/[:flow_id]/next` to move on to the next step.\n\n### Parameters\n\n- `name` &mdash; `string` Name of the action to execute (required).\n- `inputs` &mdash; `object`\n  - `delegator_address` &mdash; `string` The address delegating MATIC (required).\n  - `validator_address` &mdash; `string` The Validator contract address to which MATIC are delegated (required).\n  - `gas_limit` &mdash; `number` Adjust gas limit for the claim transaction (optional).\n  - `gas_price` &mdash; `number` Adjust gas limit for the claim transaction (optional).\n\n### Response\n\nThe response indicates two possible `actions` :\n\n- `refresh_claim_rewards_tx` &mdash; If you need to get a fresh version of the transaction payload (for example, if the nonce needs to be updated).\n- `sign_claim_rewards_tx ` &mdash; Submit a signed transaction payload ready to be broadcast to the network.\n\nWe will choose `sign_claim_rewards_tx`, which indicates one input to collect:\n\n- `transaction_payload` &mdash; the signed transaction payload ready to be broadcast to the network.\n\nMake sure to save the `transaction_payload` from this response, which is what needs to be signed in the next step."
 					},
 					"response": [
 						{
@@ -3940,49 +3940,49 @@
 	],
 	"variable": [
 		{
-			"id": "ef9edf3c-46a1-46fe-922a-978c2936be9a",
+			"id": "35886eaf-f45f-47e1-aefd-3a9737e39e49",
 			"key": "AVAX_STAKING_HOST",
 			"value": "avalanche-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "8b110d7f-253b-47e0-8f78-8c519a4398eb",
+			"id": "c138786f-8f47-4c80-9fca-2ecabb6bfda8",
 			"key": "COSMOS_STAKING_HOST",
 			"value": "cosmos-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "144523ae-7160-4d23-a942-c8577f2a57ce",
+			"id": "40bc54d4-d569-4320-9f4a-a7c0d0b4c571",
 			"key": "ETH_STAKING_HOST",
 			"value": "eth-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "9ec8eeed-8855-4506-8c1b-9f60a8537caf",
+			"id": "bdb2c85e-2b9f-4d01-91f9-4508bae172f2",
 			"key": "NEAR_STAKING_HOST",
 			"value": "near-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "ff1f9962-71c2-447c-b8e0-6c43ec60c790",
+			"id": "ecf03851-5111-47d8-8621-61696a334692",
 			"key": "DOT_STAKING_HOST",
 			"value": "polkadot-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "1922bf94-6214-40b0-87f8-17398b908ac0",
+			"id": "bdd76f38-4475-443b-9e88-10bc0da9db43",
 			"key": "SOL_STAKING_HOST",
 			"value": "solana-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "0c6add25-cba8-4427-a118-6e7fc2eafc6d",
+			"id": "7d570050-4176-47e3-b3c8-92ef8d052c97",
 			"key": "POLYGON_STAKING_HOST",
 			"value": "polygon-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "64996a2f-ebb8-4b63-bdc5-ae2df3eee4f9",
+			"id": "21f9c7e2-9368-42e3-acdd-cddf35d6fe49",
 			"key": "INTERACTIVE",
 			"value": "false",
 			"type": "string"
