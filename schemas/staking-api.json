@@ -1731,7 +1731,7 @@
 							}
 						},
 						"url": "https://{{POLKAOT_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{polkadotUnstakingFlowId}}/next",
-						"description": "Before broadcasting the transaction, you must [sign the `transaction_payload`](https://docs.figment.io/guides/staking-api/figment-signing-transactions) you received in the previous step. After signing the transaction, you will `PUT /api/v1/flows/[:flow_id]/next` and the Staking API will broadcast the transaction to the Polkadot network.\n\n### Parameters\n\n- `name` &mdash; `string` Name of the action to execute (required).\n- `inputs` &mdash; `array`\n  - `transaction_payload` &mdash; Signed transaction payload from the previous step's response.\n\n### Response\n\nWith the signed transaction provided, Staking API will broadcast it to the network. As the transaction progresses towards confirmation, the returned state will be `unbond_tx_broadcasting`.\n\nUpon transaction finalization, the unbond will be complete and you can move on to one of the three next steps:\n\n- If the unbonded entry _does not_ exist in the era, then it is considered `rebonded` and it moves into the `done` state.\n- If the unbonded entry _does_ exist and there are no funds to withdraw, it is considered unbonded and it moves into the `done` state.\n- If the unbonded entry _does_ exist and there are funds to withdraw, it moves into the `ready_to_withdraw` state. We will see two possible actions:\n  - `create_withdraw_tx` &mdash; This proceeds with withdrawing from the account.\n  - `complete` &mdash; This will end the flow if we do not want to withdraw funds."
+						"description": "Before broadcasting the transaction, you must [sign the `transaction_payload`](https://docs.figment.io/guides/staking-api/figment-signing-transactions) you received in the previous step. After signing the transaction, you will `PUT /api/v1/flows/[:flow_id]/next` and the Staking API will broadcast the transaction to the Polkadot network.\n\n### Parameters\n\n- `name` &mdash; `string` Name of the action to execute (required).\n- `inputs` &mdash; `object`\n  - `transaction_payload` &mdash; Signed transaction payload from the previous step's response.\n\n### Response\n\nWith the signed transaction provided, Staking API will broadcast it to the network. As the transaction progresses towards confirmation, the returned state will be `unbond_tx_broadcasting`.\n\nUpon transaction finalization, the unbond will be complete and you can move on to one of the three next steps:\n\n- If the unbonded entry _does not_ exist in the era, then it is considered `rebonded` and it moves into the `done` state.\n- If the unbonded entry _does_ exist and there are no funds to withdraw, it is considered unbonded and it moves into the `done` state.\n- If the unbonded entry _does_ exist and there are funds to withdraw, it moves into the `ready_to_withdraw` state. We will see two possible actions:\n  - `create_withdraw_tx` &mdash; This proceeds with withdrawing from the account.\n  - `complete` &mdash; This will end the flow if we do not want to withdraw funds."
 					},
 					"response": [
 						{
@@ -3940,49 +3940,49 @@
 	],
 	"variable": [
 		{
-			"id": "4144c000-1a95-41bc-bdfa-296df2cba2c5",
+			"id": "bc0239b9-3120-4aca-a78a-04cd53e792b1",
 			"key": "AVAX_STAKING_HOST",
 			"value": "avalanche-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "a249793a-c45b-448b-9cb6-a5348f50e557",
+			"id": "07d3c1ae-5dca-4286-9a48-87eab36498e7",
 			"key": "COSMOS_STAKING_HOST",
 			"value": "cosmos-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "6c3fb4de-b1ed-4e84-b4f5-bf1b337a932f",
+			"id": "c0a4c899-6c0e-4228-8b76-a6a750286a4a",
 			"key": "ETH_STAKING_HOST",
 			"value": "eth-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "af3e10da-5ba3-4c34-9640-ce54db1cd5ca",
+			"id": "af9b4fa6-77ce-4be3-b302-a60ebad48d2b",
 			"key": "NEAR_STAKING_HOST",
 			"value": "near-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "e84c55d4-ecde-4df9-a15b-312d085f7ed8",
+			"id": "89aad303-2083-4fc2-b747-fa55c7a97410",
 			"key": "DOT_STAKING_HOST",
 			"value": "polkadot-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "3f8e7705-f584-427f-a794-0df53d51bef7",
+			"id": "535bbd34-3d8e-41e9-8665-62a00312730f",
 			"key": "SOL_STAKING_HOST",
 			"value": "solana-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "99a36205-b13e-4472-949a-7c1070dd18e9",
+			"id": "576f1fa0-e03f-43ba-986a-79c9d5552cb5",
 			"key": "POLYGON_STAKING_HOST",
 			"value": "polygon-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "e5a27246-891b-4902-99cc-cfac9c01d378",
+			"id": "235994ac-dde7-4c4f-bf5b-a4e9e4bbf318",
 			"key": "INTERACTIVE",
 			"value": "false",
 			"type": "string"
