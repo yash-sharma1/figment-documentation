@@ -658,7 +658,7 @@
 							}
 						},
 						"url": "https://{{NEAR_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{nearStakingFlowId}}/next",
-						"description": "Before broadcasting the transaction, you must [sign the `transaction_payload`](https://docs.figment.io/guides/staking-api/figment-signing-transactions) you received in the previous step. After signing the transaction, send a `PUT` request to `/api/v1/flows/[:flow_id]/next` with the signed payload. The Staking API will broadcast the transaction to the Ethereum network.\n\n### Parameters\n\n- `name` &mdash; `string` Name of the action to execute (required).\n- `inputs` &mdash; `array`\n  - `transaction_payload` &mdash; Signed transaction payload from the previous step's response.\n\n### Response\n\nWith the signed transaction payload provided, the Staking API will broadcast it to the network. As the transaction progresses towards confirmation, the returned state will be either:\n\n- `delegate_tx_broadcasting` &mdash; Transaction has been broadcast and is confirming.\n- `delegated` &mdash; Transaction has been confirmed and the delegation is active."
+						"description": "Before broadcasting the transaction, you must [sign the `transaction_payload`](https://docs.figment.io/guides/staking-api/figment-signing-transactions) you received in the previous step. After signing the transaction, send a `PUT` request to `/api/v1/flows/[:flow_id]/next` with the signed payload. The Staking API will broadcast the transaction to the Ethereum network.\n\n### Parameters\n\n- `name` &mdash; `string` Name of the action to execute (required).\n- `inputs` &mdash; `object`\n  - `transaction_payload` &mdash; Signed transaction payload from the previous step's response.\n\n### Response\n\nWith the signed transaction payload provided, the Staking API will broadcast it to the network. As the transaction progresses towards confirmation, the returned state will be either:\n\n- `delegate_tx_broadcasting` &mdash; Transaction has been broadcast and is confirming.\n- `delegated` &mdash; Transaction has been confirmed and the delegation is active."
 					},
 					"response": [
 						{
@@ -3940,49 +3940,49 @@
 	],
 	"variable": [
 		{
-			"id": "39ea36ca-6095-4db9-9588-4fe4ea183333",
+			"id": "cfe64779-903b-4f57-914b-fea814a22127",
 			"key": "AVAX_STAKING_HOST",
 			"value": "avalanche-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "5251a5e5-157f-415c-b57c-646c2ba2d6b6",
+			"id": "4cdb46b4-1fce-4187-acd8-1908e367d954",
 			"key": "COSMOS_STAKING_HOST",
 			"value": "cosmos-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "4a876a3b-4f35-4b74-b27e-46555a0bf051",
+			"id": "0ea30586-ac62-4ac0-a968-a5a0c0ff08d1",
 			"key": "ETH_STAKING_HOST",
 			"value": "eth-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "556c744b-b07c-4b0d-a883-41bdbea82a47",
+			"id": "e00d8513-b32c-499b-9ecd-c3b7a0b73259",
 			"key": "NEAR_STAKING_HOST",
 			"value": "near-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "3f524981-7089-41cc-b223-c51433062832",
+			"id": "06de66dc-be95-4f1d-9a41-5aea5b744699",
 			"key": "DOT_STAKING_HOST",
 			"value": "polkadot-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "9bd05098-b6b6-4490-a142-948baa03f65a",
+			"id": "18652adc-3cb9-4070-b0b9-3fcddc298ce8",
 			"key": "SOL_STAKING_HOST",
 			"value": "solana-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "ec2ade9f-1c2e-4681-b112-7d236806d60e",
+			"id": "a9c11896-c672-44b9-9a82-332d2ee70094",
 			"key": "POLYGON_STAKING_HOST",
 			"value": "polygon-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "b52e57f7-4ca8-476f-b4a5-4e1a2bc52ba3",
+			"id": "dd37016f-120a-4912-ac2b-1d8ecdd2767d",
 			"key": "INTERACTIVE",
 			"value": "false",
 			"type": "string"
