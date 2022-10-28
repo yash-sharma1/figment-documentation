@@ -3392,7 +3392,7 @@
 							}
 						},
 						"url": "https://{{SOLANA_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{solanaStakingFlowId}}/next",
-						"description": "Before broadcasting the transaction, you must [sign the `transaction_payload`](https://docs.figment.io/guides/staking-api/figment-signing-transactions) you received in the previous step. After signing the transaction, send a `PUT` request to `/api/v1/flows/[:flow_id]/next` and the Staking API will broadcast the transaction to the Solana network.\n\n### Parameters\n\n- `name` &mdash; `string` Name of the action to execute (required).\n- `inputs` &mdash; `array`\n  - `transaction_payload` &mdash; Signed transaction payload from the previous step's response.\n\n\n### Response\n\nWith the signed transaction payload provided, the Staking API will broadcast it to the network. As the transaction progresses towards confirmation, the returned `state` will be either:\n\n- `delegate_tx_broadcasting` &mdash; The delegation transaction has been broadcast but not confirmed.\n- `delegation_activating` &mdash; The delegation is progressing.\n- `delegation_active` &mdash; The delegation is active and confirmed.\n\nSince delegations on Solana activate at the next epoch boundary (epochs are approximately 2.5 days), the Staking API will also track the delegation and send a WebHook notification when it activates.\n\nIt is possible the delegation will be subjected to a multi-epoch warmup period, in which case you will receive a WebHook notification at each epoch, indicating how much has been activated until the full amount is active."
+						"description": "Before broadcasting the transaction, you must [sign the `transaction_payload`](https://docs.figment.io/guides/staking-api/figment-signing-transactions) you received in the previous step. After signing the transaction, send a `PUT` request to `/api/v1/flows/[:flow_id]/next` and the Staking API will broadcast the transaction to the Solana network.\n\n### Parameters\n\n- `name` &mdash; `string` Name of the action to execute (required).\n- `inputs` &mdash; `object`\n  - `transaction_payload` &mdash; Signed transaction payload from the previous step's response.\n\n\n### Response\n\nWith the signed transaction payload provided, the Staking API will broadcast it to the network. As the transaction progresses towards confirmation, the returned `state` will be either:\n\n- `delegate_tx_broadcasting` &mdash; The delegation transaction has been broadcast but not confirmed.\n- `delegation_activating` &mdash; The delegation is progressing.\n- `delegation_active` &mdash; The delegation is active and confirmed.\n\nSince delegations on Solana activate at the next epoch boundary (epochs are approximately 2.5 days), the Staking API will also track the delegation and send a WebHook notification when it activates.\n\nIt is possible the delegation will be subjected to a multi-epoch warmup period, in which case you will receive a WebHook notification at each epoch, indicating how much has been activated until the full amount is active."
 					},
 					"response": [
 						{
@@ -3940,49 +3940,49 @@
 	],
 	"variable": [
 		{
-			"id": "541d67a1-a94a-4b83-afa0-b4574723af95",
+			"id": "43bd15b6-c974-47ba-ac2a-8c8deeac5841",
 			"key": "AVAX_STAKING_HOST",
 			"value": "avalanche-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "b593a8ea-603f-4c32-8d39-9717b4e7d26d",
+			"id": "c2138e47-80b5-4cfc-85fc-e7c5c4a9dd1b",
 			"key": "COSMOS_STAKING_HOST",
 			"value": "cosmos-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "b728b13c-6de1-4032-8683-e6193b82f2c3",
+			"id": "ada705dc-8104-4b86-8484-0a4d385d498a",
 			"key": "ETH_STAKING_HOST",
 			"value": "eth-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "f798332f-8aa1-4bbd-a133-4c87f9137239",
+			"id": "99d74cf1-8ff4-44a2-a3e1-7782297a6139",
 			"key": "NEAR_STAKING_HOST",
 			"value": "near-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "51c5bca5-39bb-46e9-bb23-4ba5861a0a07",
+			"id": "27e592df-1a7c-477d-8014-2b75fdd051f1",
 			"key": "DOT_STAKING_HOST",
 			"value": "polkadot-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "b1e9c76e-a52d-4469-8805-2e1fbeab553a",
+			"id": "60ec4f2e-728a-4aa5-9309-e9e9b5b9443e",
 			"key": "SOL_STAKING_HOST",
 			"value": "solana-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "df26ac72-7fcd-4f83-a3b9-38aec9080b46",
+			"id": "522d70f7-cfc6-42c3-a576-d0724eb2a407",
 			"key": "POLYGON_STAKING_HOST",
 			"value": "polygon-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "bf276afc-67e3-4abc-8c4c-b36e33994507",
+			"id": "a8c476bd-138c-4919-b6fd-065b11ad3f52",
 			"key": "INTERACTIVE",
 			"value": "false",
 			"type": "string"
