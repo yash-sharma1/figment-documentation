@@ -27,7 +27,7 @@
 							"originalRequest": {
 								"method": "GET",
 								"header": [],
-								"url": "https://{{ETH_REWARDS_HOST}}/apikey/{{API_KEY}}/rates"
+								"url": "https://{{ETH_REWARDS_HOST}}/rates/apikey/{{API_KEY}}/"
 							},
 							"status": "OK",
 							"code": 200,
@@ -234,12 +234,12 @@
 	],
 	"variable": [
 		{
-			"id": "9c04db8d-43c9-4c36-a6df-be91837332d9",
+			"id": "42ec0f6c-7a18-407f-a676-91ea5450b438",
 			"key": "ETH_REWARDS_HOST",
 			"value": "eth-rewards.datahub.figment.io"
 		},
 		{
-			"id": "12133b39-5b37-478d-90fb-2ba9ab74db3a",
+			"id": "7e0bbb59-651e-471d-943c-9d21cdab3625",
 			"key": "SOL_REWARDS_HOST",
 			"value": "solana-rewards.datahub.figment.io"
 		}
