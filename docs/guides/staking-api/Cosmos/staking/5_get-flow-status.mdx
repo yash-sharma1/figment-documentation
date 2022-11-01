@@ -1,0 +1,62 @@
+---
+title: Get Flow Status
+slug: /guides/staking-api/cosmos/staking/get-flow-status-completed
+---
+
+To get the current state of the existing flow, send a `GET` request to `/api/v1/flows/[:flow_id]` using the flow ID from the previous step.
+
+### Parameters
+
+- None
+
+#### Sample cURL Request
+
+```bash
+curl -X GET 'https://cosmos-slate.datahub.figment.io/api/v1/flows/2fdfccac-ca61-4b10-973b-4252567fe019' \
+-H 'Authorization: <api_key>'
+```
+
+### Response
+
+- `state` &mdash; `string` The current state of the flow.
+
+:::info note
+
+The `state` field will update from `delegate_tx_broadcasting` to `completed`.
+
+:::
+
+#### Sample Response
+
+```json {3}
+{
+  "id": "2fdfccac-ca61-4b10-973b-4252567fe019",
+  "state": "completed",
+  "actions": [],
+  "data": {
+    "delegator_address": "cosmos1vyl8vkkr68ftda8gcp7kwh8h9g7hmzv4wjt6g5",
+    "validator_address": "cosmosvaloper1tflk30mq5vgqjdly92kkhhq3raev2hnz6eete3",
+    "amount": "2.0",
+    "memo": null,
+    "gas_price": null,
+    "gas_limit": null,
+    "delegate_transaction": {
+      "raw": "7b226d65737361676573223a5b7b227479706555726c223a222f636f736d6f732e7374616b696e672e763162657461312e4d736744656c6567617465222c2276616c7565223a7b2264656c656761746f7241646472657373223a22636f736d6f733176796c38766b6b7236386674646138676370376b77683868396737686d7a7634776a74366735222c2276616c696461746f7241646472657373223a22636f736d6f7376616c6f7065723174666c6b33306d71357667716a646c7939326b6b686871337261657632686e7a366565746533222c22616d6f756e74223a7b2264656e6f6d223a227561746f6d222c22616d6f756e74223a2232303030303030227d7d7d5d2c22666565223a7b22616d6f756e74223a5b7b22616d6f756e74223a2233383937222c2264656e6f6d223a227561746f6d227d5d2c22676173223a22313535383630227d2c226d656d6f223a22227d",
+      "signing_payload": null,
+      "signed": "0aa1010a9e010a232f636f736d6f732e7374616b696e672e763162657461312e4d736744656c656761746512770a2d636f736d6f733176796c38766b6b7236386674646138676370376b77683868396737686d7a7634776a743667351234636f736d6f7376616c6f7065723174666c6b33306d71357667716a646c7939326b6b686871337261657632686e7a3665657465331a100a057561746f6d12073230303030303012670a500a460a1f2f636f736d6f732e63727970746f2e736563703235366b312e5075624b657912230a21037a383fc260680a8aacb38b83a905cbb3a378bd0418f33d75030c477e1c38a5a412040a020801180312130a0d0a057561746f6d12043338393710d4c1091a40f85b9b28c4b8c9d1a1542a084f2f5eb14461052deb1791b7b51f70c2d9c8842f6662fb0ae78a7e043dcaa6c0385a0b0d06809146f8653508335c3cc3f1445bcc",
+      "hash": "7011E72B9B02935F273736C66D5B47674574C9BC74C1FEED08E942123AC8BE83",
+      "status": "confirmed",
+      "error": null,
+      "signatures": []
+    }
+  },
+  "network_code": "cosmos",
+  "chain_code": "testnet",
+  "created_at": "2022-10-31T22:27:24.852Z",
+  "updated_at": "2022-10-31T22:31:43.731Z"
+}
+```
+
+### Token Delegation Flow Complete
+
+Congratulations, you have successfully delegated your ATOM tokens. Your stake is now active and earning rewards.
