@@ -159,7 +159,7 @@
 						"method": "GET",
 						"header": [],
 						"url": "https://{{AVAX_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{avalancheStakingFlowId}}",
-						"description": "To get the latest status of the existing flow, use the flow ID from the previous step.\n\n### Parameters\n\n- None\n\n### Response\n\n- `id` &mdash; `string` ID of the flow.\n- `state` &mdash; `string` The current state of the flow.\n - `delegate_tx_broadcasting` — Transaction has been broadcast and is confirming.\n - `completed` — Transaction has been confirmed and stake is delegated.\n- `actions` &mdash; `array` It includes the `name` & `inputs` of all next possible actions.\n- `data` &mdash; `object` Delegation flow & transaction data."
+						"description": "To get the current state of the existing flow, send a `GET` request to `/api/v1/flows/[:flow_id]` using the flow ID from the previous step.\n### Parameters\n\n- None\n\n### Response\n\n- `id` &mdash; `string` ID of the flow.\n- `state` &mdash; `string` The current state of the flow.\n - `delegate_tx_broadcasting` — Transaction has been broadcast and is confirming.\n - `completed` — Transaction has been confirmed and stake is delegated.\n- `actions` &mdash; `array` It includes the `name` & `inputs` of all next possible actions.\n- `data` &mdash; `object` Delegation flow & transaction data."
 					},
 					"response": [
 						{
@@ -184,6 +184,176 @@
 		{
 			"name": "Cosmos",
 			"item": [
+				{
+					"name": "Create a New Staking Flow",
+					"id": "81e2a36e-63fd-4fca-a960-c187245e1a0f",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"flow\": {\n        \"network_code\": \"cosmos\",\n        \"chain_code\": \"testnet\",\n        \"operation\": \"staking\",\n        \"version\": \"v1\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://{{COSMOS_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows",
+						"description": "To initiate the staking process, create a new flow with a `POST` request to `/api/v1/flows`.\n\n### Parameters\n\n- `flow` &mdash; `object`\n  - `network_code` &mdash; `string` Network this flow operates on (ex. `cosmos`) (required).\n  - `chain_code` &mdash; `string` Chain this flow operates on (ex. `testnet`) (required).\n  - `operation` &mdash; `string` The operation to perform (ex. `staking`) (required).\n  - `version` &mdash; `string` API version to use (ex. `v1`) (optional).\n\n### Response\n\n- `id` &mdash; `string` ID of the flow.\n- `state` &mdash; `string` The current state of the flow.\n- `actions` &mdash; `array` It includes the `name` & `inputs` of all next possible actions.\n - `create_delegate_tx` &mdash; Use this action to generate a delegation transaction to stake your ATOM.\n   - `delegator_address` &mdash; The address from which ATOM will be delegated.\n   - `validator_address` &mdash; The validator address to which ATOM will be delegated.\n   - `amount` &mdash; The amount of ATOM to be delegated.\n   - `memo` &mdash; an optional message to record on-chain with your transaction.\n   - `gas_limit` &mdash; the total amount of gas you're willing to let this transaction consume.\n     - If you do not include this, we'll use a Cosmos library to select a good default for you.\n   - `gas_price` &mdash; how many ATOM you're willing to pay per unit of gas consumed by this transaction.\n     - If you do not include this, we'll use a Cosmos library to select a good default for you. \n- `data` &mdash; `object` Staking flow & transaction data."
+					},
+					"response": [
+						{
+							"id": "ad445a85-e203-4ad4-a1ef-c6d5c061fe0e",
+							"name": "Create a New Staking Flow",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"flow\": {\n        \"network_code\": \"cosmos\",\n        \"chain_code\": \"testnet\",\n        \"operation\": \"staking\",\n        \"version\": \"v1\"\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://{{COSMOS_STAKING_HOST}}/api/v1/flows"
+							},
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n  \"id\": \"2fdfccac-ca61-4b10-973b-4252567fe019\",\n  \"state\": \"initialized\",\n  \"actions\": [\n    {\n      \"name\": \"create_delegate_tx\",\n      \"inputs\": [\n        {\n          \"name\": \"delegator_address\",\n          \"display\": \"Delegator Address\",\n          \"description\": \"\",\n          \"type\": \"string\",\n          \"validations\": [\n            {\n              \"type\": \"presence\",\n              \"options\": {}\n            }\n          ]\n        },\n        {\n          \"name\": \"validator_address\",\n          \"display\": \"Validator Address\",\n          \"description\": \"\",\n          \"type\": \"string\",\n          \"validations\": [\n            {\n              \"type\": \"presence\",\n              \"options\": {}\n            },\n            {\n              \"type\": \"format\",\n              \"options\": {\n                \"with\": \"(?-mix:\\\\Acosmosvaloper.*)\",\n                \"message\": \"should start with `cosmosvaloper`\"\n              }\n            }\n          ]\n        },\n        {\n          \"name\": \"amount\",\n          \"display\": \"Amount\",\n          \"description\": \"\",\n          \"type\": \"decimal\",\n          \"validations\": [\n            {\n              \"type\": \"presence\",\n              \"options\": {}\n            },\n            {\n              \"type\": \"numericality\",\n              \"options\": {\n                \"greater_than\": 0\n              }\n            }\n          ]\n        },\n        {\n          \"name\": \"memo\",\n          \"display\": \"Memo\",\n          \"description\": \"\",\n          \"type\": \"string\",\n          \"validations\": []\n        },\n        {\n          \"name\": \"gas_price\",\n          \"display\": \"Gas Price\",\n          \"description\": \"\",\n          \"type\": \"decimal\",\n          \"validations\": []\n        },\n        {\n          \"name\": \"gas_limit\",\n          \"display\": \"Gas Limit\",\n          \"description\": \"\",\n          \"type\": \"decimal\",\n          \"validations\": []\n        }\n      ]\n    }\n  ],\n  \"data\": {\n    \"delegator_address\": null,\n    \"validator_address\": null,\n    \"amount\": null,\n    \"memo\": null,\n    \"gas_price\": null,\n    \"gas_limit\": null,\n    \"delegate_transaction\": null\n  },\n  \"network_code\": \"cosmos\",\n  \"chain_code\": \"testnet\",\n  \"created_at\": \"2022-10-31T22:27:24.852Z\",\n  \"updated_at\": \"2022-10-31T22:27:24.852Z\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Submit Delegation Data",
+					"id": "24aeb156-8439-4bc0-a73e-c885297341f7",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"create_delegate_tx\",\n    \"inputs\": {\n        \"delegator_address\": \"cosmos1vyl8vkkr68ftda8gcp7kwh8h9g7hmzv4wjt6g5\",\n        \"validator_address\": \"cosmosvaloper1tflk30mq5vgqjdly92kkhhq3raev2hnz6eete3\",\n        \"amount\": 2\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://{{COSMOS_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{cosmosStakingFlowId}}/next",
+						"description": "After collecting the required inputs, send a `PUT` request to `/api/v1/flows/[:flow_id]/next` to proceed to the next step.\n\n### Parameters\n\n- `name` &mdash; `string` Name of the action to execute (required).\n- `inputs` &mdash; `object`\n  - `delegator_address` &mdash; `string` The address from which ATOM will be delegated (required).\n  - `validator_address` &mdash; `string` The validator address to which ATOM will be delegated (required).\n  - `amount` &mdash; `number` The amount of ATOM to be delegated (required).\n  - `memo` &mdash; `string` A message to record on-chain with your transfer (optional).\n  - `gas_limit` &mdash; `number` The total amount of gas you're willing to let this transaction consume (optional).\n  - `gas_price` &mdash; `number` How many ATOM you're willing to pay per unit of gas consumed by this transaction (optional).\n\n### Response\n\n- `id` &mdash; `string` ID of the flow.\n- `state` &mdash; `string` The current state of the flow.\n- `actions` &mdash; `array` It includes the `name` & `inputs` of all next possible actions.\n  - `refresh_delegate_tx` &mdash; If you need to get a fresh version of the transaction payload (i.e., the nonce has increased).\n  - `sign_delegate_tx` &mdash; Submit a signed transaction payload ready to be broadcast to the network.\n- `data` &mdash; `object` Staking flow & transaction data."
+					},
+					"response": [
+						{
+							"id": "5c717dfa-29fc-4ff0-8821-54f1cecf0bb6",
+							"name": "Submit Delegation Data",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"create_delegate_tx\",\n    \"inputs\": {\n        \"delegator_address\": \"cosmos1vyl8vkkr68ftda8gcp7kwh8h9g7hmzv4wjt6g5\",\n        \"validator_address\": \"cosmosvaloper1tflk30mq5vgqjdly92kkhhq3raev2hnz6eete3\",\n        \"amount\": 2\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://{{COSMOS_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{cosmosStakingFlowId}}/next"
+							},
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n  \"id\": \"2fdfccac-ca61-4b10-973b-4252567fe019\",\n  \"state\": \"delegate_tx_signature\",\n  \"actions\": [\n    {\n      \"name\": \"refresh_delegate_tx\",\n      \"inputs\": []\n    },\n    {\n      \"name\": \"sign_delegate_tx\",\n      \"inputs\": [\n        {\n          \"name\": \"transaction_payload\",\n          \"display\": \"Transaction Payload\",\n          \"description\": \"\",\n          \"type\": \"signed_transaction\",\n          \"validations\": [],\n          \"signers\": [\"cosmos1vyl8vkkr68ftda8gcp7kwh8h9g7hmzv4wjt6g5\"],\n          \"transaction_payload\": \"7b226d65737361676573223a5b7b227479706555726c223a222f636f736d6f732e7374616b696e672e763162657461312e4d736744656c6567617465222c2276616c7565223a7b2264656c656761746f7241646472657373223a22636f736d6f733176796c38766b6b7236386674646138676370376b77683868396737686d7a7634776a74366735222c2276616c696461746f7241646472657373223a22636f736d6f7376616c6f7065723174666c6b33306d71357667716a646c7939326b6b686871337261657632686e7a366565746533222c22616d6f756e74223a7b2264656e6f6d223a227561746f6d222c22616d6f756e74223a2232303030303030227d7d7d5d2c22666565223a7b22616d6f756e74223a5b7b22616d6f756e74223a2233383937222c2264656e6f6d223a227561746f6d227d5d2c22676173223a22313535383630227d2c226d656d6f223a22227d\"\n        },\n        {\n          \"name\": \"signatures\",\n          \"display\": \"Signatures\",\n          \"description\": \"\",\n          \"type\": \"array_of_signatures\",\n          \"validations\": [],\n          \"signers\": [\"cosmos1vyl8vkkr68ftda8gcp7kwh8h9g7hmzv4wjt6g5\"],\n          \"transaction_payload\": \"7b226d65737361676573223a5b7b227479706555726c223a222f636f736d6f732e7374616b696e672e763162657461312e4d736744656c6567617465222c2276616c7565223a7b2264656c656761746f7241646472657373223a22636f736d6f733176796c38766b6b7236386674646138676370376b77683868396737686d7a7634776a74366735222c2276616c696461746f7241646472657373223a22636f736d6f7376616c6f7065723174666c6b33306d71357667716a646c7939326b6b686871337261657632686e7a366565746533222c22616d6f756e74223a7b2264656e6f6d223a227561746f6d222c22616d6f756e74223a2232303030303030227d7d7d5d2c22666565223a7b22616d6f756e74223a5b7b22616d6f756e74223a2233383937222c2264656e6f6d223a227561746f6d227d5d2c22676173223a22313535383630227d2c226d656d6f223a22227d\",\n          \"signing_payload\": null\n        }\n      ]\n    }\n  ],\n  \"data\": {\n    \"delegator_address\": \"cosmos1vyl8vkkr68ftda8gcp7kwh8h9g7hmzv4wjt6g5\",\n    \"validator_address\": \"cosmosvaloper1tflk30mq5vgqjdly92kkhhq3raev2hnz6eete3\",\n    \"amount\": \"2.0\",\n    \"memo\": null,\n    \"gas_price\": null,\n    \"gas_limit\": null,\n    \"delegate_transaction\": {\n      \"raw\": \"7b226d65737361676573223a5b7b227479706555726c223a222f636f736d6f732e7374616b696e672e763162657461312e4d736744656c6567617465222c2276616c7565223a7b2264656c656761746f7241646472657373223a22636f736d6f733176796c38766b6b7236386674646138676370376b77683868396737686d7a7634776a74366735222c2276616c696461746f7241646472657373223a22636f736d6f7376616c6f7065723174666c6b33306d71357667716a646c7939326b6b686871337261657632686e7a366565746533222c22616d6f756e74223a7b2264656e6f6d223a227561746f6d222c22616d6f756e74223a2232303030303030227d7d7d5d2c22666565223a7b22616d6f756e74223a5b7b22616d6f756e74223a2233383937222c2264656e6f6d223a227561746f6d227d5d2c22676173223a22313535383630227d2c226d656d6f223a22227d\",\n      \"signing_payload\": null,\n      \"signed\": null,\n      \"hash\": null,\n      \"status\": null,\n      \"error\": null,\n      \"signatures\": null\n    }\n  },\n  \"network_code\": \"cosmos\",\n  \"chain_code\": \"testnet\",\n  \"created_at\": \"2022-10-31T22:27:24.852Z\",\n  \"updated_at\": \"2022-10-31T22:28:54.950Z\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Submit Signed Delegate Transaction for Broadcast",
+					"id": "78b2a03b-d41e-466c-b0b1-c12835dcdaef",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"sign_delegate_tx\",\n    \"inputs\": {\n        \"transaction_payload\": \"0aa4010a8f010a1c2f636f736d6f732e62616e6b2e763162657461312e4d736753656e64126f0a2d636f736d6f73313738366a6a6b6835786b343376636d72633439307a6e34386668386e6c303274637572306365122d636f736d6f73313561707464716d6d376464677463726a7663356873393838726c726b7a6534306c34713068651a0f0a057561746f6d1206313030303030121054657374696e67206175746f2d67617312670a500a460a1f2f636f736d6f732e63727970746f2e736563703235366b312e5075624b657912230a210269bc2f2b61cdddb0bb2cf169d5fad0afc19326aa13d2bf967ee3092f7ade88f712040a020801181d12130a0d0a057561746f6d12043138343310d1bf041a40a987ccc429bbeca8f8e3295f3ccb800a35400944ca17801ee888cfb28f1ec6b40d654a45aedfc46f3e1f825951ace283f911258131a989d925827bd322b2b0fb\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://{{COSMOS_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{cosmosStakingFlowId}}/next",
+						"description": "Before broadcasting the transaction, you must [sign the `transaction_payload`](https://docs.figment.io/guides/staking-api/figment-signing-transactions) you received in the previous step. After signing the transaction, send a `PUT` request to `/api/v1/flows/[:flow_id]/next` and the Staking API will broadcast the transaction to the network.\n\n### Parameters\n\n- `name` &mdash; `string` Name of the action to execute (required).\n- `inputs` &mdash; `object`\n  - `transaction_payload` &mdash; Signed transaction payload from the previous step's response.\n\n### Response\n\n- `id` &mdash; `string` ID of the flow.\n- `state` &mdash; `string` The current state of the flow.\n  - `delegate_tx_broadcasting` &mdash; Transaction has been broadcast and is waiting for confirmation.\n  - `completed` &mdash; Transaction has been confirmed and the delegation is complete.\n- `actions` &mdash; `array` It includes the `name` & `inputs` of all next possible actions.\n- `data` &mdash; `object` Staking flow & transaction data."
+					},
+					"response": [
+						{
+							"id": "c770390a-fe68-4c15-8a35-127b0d819ba1",
+							"name": "Submit Signed Delegate Transaction for Broadcast",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"sign_delegate_tx\",\n    \"inputs\": {\n        \"transaction_payload\": \"0aa4010a8f010a1c2f636f736d6f732e62616e6b2e763162657461312e4d736753656e64126f0a2d636f736d6f73313738366a6a6b6835786b343376636d72633439307a6e34386668386e6c303274637572306365122d636f736d6f73313561707464716d6d376464677463726a7663356873393838726c726b7a6534306c34713068651a0f0a057561746f6d1206313030303030121054657374696e67206175746f2d67617312670a500a460a1f2f636f736d6f732e63727970746f2e736563703235366b312e5075624b657912230a210269bc2f2b61cdddb0bb2cf169d5fad0afc19326aa13d2bf967ee3092f7ade88f712040a020801181d12130a0d0a057561746f6d12043138343310d1bf041a40a987ccc429bbeca8f8e3295f3ccb800a35400944ca17801ee888cfb28f1ec6b40d654a45aedfc46f3e1f825951ace283f911258131a989d925827bd322b2b0fb\"\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://{{COSMOS_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{cosmosStakingFlowId}}/next"
+							},
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n  \"id\": \"2fdfccac-ca61-4b10-973b-4252567fe019\",\n  \"state\": \"delegate_tx_broadcasting\",\n  \"actions\": [\n    {\n      \"name\": \"wait\",\n      \"estimated_state_change_at\": \"2022-10-31T22:32:30.030Z\",\n      \"inputs\": []\n    }\n  ],\n  \"data\": {\n    \"delegator_address\": \"cosmos1vyl8vkkr68ftda8gcp7kwh8h9g7hmzv4wjt6g5\",\n    \"validator_address\": \"cosmosvaloper1tflk30mq5vgqjdly92kkhhq3raev2hnz6eete3\",\n    \"amount\": \"2.0\",\n    \"memo\": null,\n    \"gas_price\": null,\n    \"gas_limit\": null,\n    \"delegate_transaction\": {\n      \"raw\": \"7b226d65737361676573223a5b7b227479706555726c223a222f636f736d6f732e7374616b696e672e763162657461312e4d736744656c6567617465222c2276616c7565223a7b2264656c656761746f7241646472657373223a22636f736d6f733176796c38766b6b7236386674646138676370376b77683868396737686d7a7634776a74366735222c2276616c696461746f7241646472657373223a22636f736d6f7376616c6f7065723174666c6b33306d71357667716a646c7939326b6b686871337261657632686e7a366565746533222c22616d6f756e74223a7b2264656e6f6d223a227561746f6d222c22616d6f756e74223a2232303030303030227d7d7d5d2c22666565223a7b22616d6f756e74223a5b7b22616d6f756e74223a2233383937222c2264656e6f6d223a227561746f6d227d5d2c22676173223a22313535383630227d2c226d656d6f223a22227d\",\n      \"signing_payload\": null,\n      \"signed\": \"0aa1010a9e010a232f636f736d6f732e7374616b696e672e763162657461312e4d736744656c656761746512770a2d636f736d6f733176796c38766b6b7236386674646138676370376b77683868396737686d7a7634776a743667351234636f736d6f7376616c6f7065723174666c6b33306d71357667716a646c7939326b6b686871337261657632686e7a3665657465331a100a057561746f6d12073230303030303012670a500a460a1f2f636f736d6f732e63727970746f2e736563703235366b312e5075624b657912230a21037a383fc260680a8aacb38b83a905cbb3a378bd0418f33d75030c477e1c38a5a412040a020801180312130a0d0a057561746f6d12043338393710d4c1091a40f85b9b28c4b8c9d1a1542a084f2f5eb14461052deb1791b7b51f70c2d9c8842f6662fb0ae78a7e043dcaa6c0385a0b0d06809146f8653508335c3cc3f1445bcc\",\n      \"hash\": \"7011E72B9B02935F273736C66D5B47674574C9BC74C1FEED08E942123AC8BE83\",\n      \"status\": null,\n      \"error\": null,\n      \"signatures\": []\n    }\n  },\n  \"network_code\": \"cosmos\",\n  \"chain_code\": \"testnet\",\n  \"created_at\": \"2022-10-31T22:27:24.852Z\",\n  \"updated_at\": \"2022-10-31T22:31:29.733Z\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Flow Status",
+					"id": "854bd535-808a-48a3-9c86-6de463496c34",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "https://{{COSMOS_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{cosmosStakingFlowId}}",
+						"description": "To get the current state of the existing flow, send a `GET` request to `/api/v1/flows/[:flow_id]` using the flow ID from the previous step.\n\n### Parameters\n\n- None\n\n### Response\n\n- `id` &mdash; `string` ID of the flow.\n- `state` &mdash; `string` The current state of the flow.\n  - `delegate_tx_broadcasting` &mdash; Transaction has been broadcast and is waiting for confirmation.\n  - `completed` &mdash; Transaction has been confirmed and the delegation is complete.\n- `actions` &mdash; `array` It includes the `name` & `inputs` of all next possible actions.\n- `data` &mdash; `object` Staking flow & transaction data."
+					},
+					"response": [
+						{
+							"id": "4e42c1e8-c42a-4b6c-bf8e-ca3cd0f8bfaf",
+							"name": "Get Flow Status",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": "https://{{COSMOS_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{cosmosStakingFlowId}}"
+							},
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"id\": \"2fdfccac-ca61-4b10-973b-4252567fe019\",\n    \"state\": \"completed\",\n    \"actions\": [],\n    \"data\": {\n        \"delegator_address\": \"cosmos1vyl8vkkr68ftda8gcp7kwh8h9g7hmzv4wjt6g5\",\n        \"validator_address\": \"cosmosvaloper1tflk30mq5vgqjdly92kkhhq3raev2hnz6eete3\",\n        \"amount\": \"2.0\",\n        \"memo\": null,\n        \"gas_price\": null,\n        \"gas_limit\": null,\n        \"delegate_transaction\": {\n            \"raw\": \"7b226d65737361676573223a5b7b227479706555726c223a222f636f736d6f732e7374616b696e672e763162657461312e4d736744656c6567617465222c2276616c7565223a7b2264656c656761746f7241646472657373223a22636f736d6f733176796c38766b6b7236386674646138676370376b77683868396737686d7a7634776a74366735222c2276616c696461746f7241646472657373223a22636f736d6f7376616c6f7065723174666c6b33306d71357667716a646c7939326b6b686871337261657632686e7a366565746533222c22616d6f756e74223a7b2264656e6f6d223a227561746f6d222c22616d6f756e74223a2232303030303030227d7d7d5d2c22666565223a7b22616d6f756e74223a5b7b22616d6f756e74223a2233383937222c2264656e6f6d223a227561746f6d227d5d2c22676173223a22313535383630227d2c226d656d6f223a22227d\",\n            \"signing_payload\": null,\n            \"signed\": \"0aa1010a9e010a232f636f736d6f732e7374616b696e672e763162657461312e4d736744656c656761746512770a2d636f736d6f733176796c38766b6b7236386674646138676370376b77683868396737686d7a7634776a743667351234636f736d6f7376616c6f7065723174666c6b33306d71357667716a646c7939326b6b686871337261657632686e7a3665657465331a100a057561746f6d12073230303030303012670a500a460a1f2f636f736d6f732e63727970746f2e736563703235366b312e5075624b657912230a21037a383fc260680a8aacb38b83a905cbb3a378bd0418f33d75030c477e1c38a5a412040a020801180312130a0d0a057561746f6d12043338393710d4c1091a40f85b9b28c4b8c9d1a1542a084f2f5eb14461052deb1791b7b51f70c2d9c8842f6662fb0ae78a7e043dcaa6c0385a0b0d06809146f8653508335c3cc3f1445bcc\",\n            \"hash\": \"7011E72B9B02935F273736C66D5B47674574C9BC74C1FEED08E942123AC8BE83\",\n            \"status\": \"confirmed\",\n            \"error\": null,\n            \"signatures\": []\n        }\n    },\n    \"network_code\": \"cosmos\",\n    \"chain_code\": \"testnet\",\n    \"created_at\": \"2022-10-31T22:27:24.852Z\",\n    \"updated_at\": \"2022-10-31T22:31:43.731Z\"\n}"
+						}
+					]
+				},
 				{
 					"name": "Create a New Transfer Flow",
 					"id": "1f567b7d-83ef-459d-b2f0-7cf218a91504",
@@ -344,7 +514,7 @@
 							}
 						},
 						"url": "https://{{COSMOS_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{cosmosTransferFlowId}}",
-						"description": "To get the latest status of the existing flow, use the flow ID from the previous step.\n\n### Parameters\n\n- None\n\n### Response\n\n- `id` &mdash; `string` ID of the flow.\n- `state` &mdash; `string` The current state of the flow.\n - `transfer_tx_broadcasting` &mdash; Transaction has been broadcast and is waiting for confirmation.\n - `completed` &mdash; Transaction has been confirmed and the transfer is complete.\n- `actions` &mdash; `array` It includes the `name` & `inputs` of all next possible actions.\n- `data` &mdash; `object` Transfer flow & transaction data."
+						"description": "To get the current state of the existing flow, send a `GET` request to `/api/v1/flows/[:flow_id]` using the flow ID from the previous step.\n\n### Parameters\n\n- None\n\n### Response\n\n- `id` &mdash; `string` ID of the flow.\n- `state` &mdash; `string` The current state of the flow.\n - `transfer_tx_broadcasting` &mdash; Transaction has been broadcast and is waiting for confirmation.\n - `completed` &mdash; Transaction has been confirmed and the transfer is complete.\n- `actions` &mdash; `array` It includes the `name` & `inputs` of all next possible actions.\n- `data` &mdash; `object` Transfer flow & transaction data."
 					},
 					"response": [
 						{
@@ -520,7 +690,7 @@
 						"method": "GET",
 						"header": [],
 						"url": "https://{{ETH_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{ethStakingFlowId}}",
-						"description": "To get the latest status of the existing flow, use the flow ID from the previous step.\n\n### Parameters\n\n- None\n\n### Response\n\n- `id` &mdash; `string` ID of the flow.\n- `state` &mdash; `string` The current state of the flow.\n - `deposit_tx_broadcasting` &mdash; Transaction is broadcasting and not confirmed yet.\n - `deposited` &mdash; Transaction has been confirmed and stake deposited.\n- `actions` &mdash; `array` It includes the `name` & `inputs` of all next possible actions.\n- `data` &mdash; `object` Staking flow & transaction data."
+						"description": "To get the current state of the existing flow, send a `GET` request to `/api/v1/flows/[:flow_id]` using the flow ID from the previous step.\n\n### Parameters\n\n- None\n\n### Response\n\n- `id` &mdash; `string` ID of the flow.\n- `state` &mdash; `string` The current state of the flow.\n - `deposit_tx_broadcasting` &mdash; Transaction is broadcasting and not confirmed yet.\n - `deposited` &mdash; Transaction has been confirmed and stake deposited.\n- `actions` &mdash; `array` It includes the `name` & `inputs` of all next possible actions.\n- `data` &mdash; `object` Staking flow & transaction data."
 					},
 					"response": [
 						{
@@ -696,7 +866,7 @@
 						"method": "GET",
 						"header": [],
 						"url": "https://{{NEAR_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{nearStakingFlowId}}",
-						"description": "To get the latest status of the existing flow, use the flow ID from the previous step.\n\n### Parameters\n\n- None\n\n### Response\n\n- `id` &mdash; `string` ID of the flow.\n- `state` &mdash; `string` The current state of the flow.\n - `delegate_tx_broadcasting` &mdash; Transaction has been broadcast and is confirming.\n - `delegated` &mdash; Transaction has been confirmed and the delegation is active.\n- `actions` &mdash; `array` It includes the `name` & `inputs` of all next possible actions.\n- `data` &mdash; `object` Delegation flow & transaction data."
+						"description": "To get the current state of the existing flow, send a `GET` request to `/api/v1/flows/[:flow_id]` using the flow ID from the previous step.\n\n### Parameters\n\n- None\n\n### Response\n\n- `id` &mdash; `string` ID of the flow.\n- `state` &mdash; `string` The current state of the flow.\n - `delegate_tx_broadcasting` &mdash; Transaction has been broadcast and is confirming.\n - `delegated` &mdash; Transaction has been confirmed and the delegation is active.\n- `actions` &mdash; `array` It includes the `name` & `inputs` of all next possible actions.\n- `data` &mdash; `object` Delegation flow & transaction data."
 					},
 					"response": [
 						{
@@ -866,7 +1036,7 @@
 						"method": "GET",
 						"header": [],
 						"url": "https://{{NEAR_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{nearUnstakingFlowId}}",
-						"description": "To get the latest status of the existing flow, use the flow ID from the previous step.\n\n### Parameters\n\n- None\n\n### Response\n\n- `id` &mdash; `string` ID of the flow.\n- `state` &mdash; `string` The current state of the flow.\n - `undelegate_tx_broadcasting` &mdash; Transaction has been broadcast and is waiting for confirmation.\n - `cool_down` &mdash; Transaction has been confirmed and the delegation is unbonding.\n- `actions` &mdash; `array` It includes the `name` & `inputs` of all next possible actions.\n- `data` &mdash; `object` Undelegation flow & transaction data."
+						"description": "To get the current state of the existing flow, send a `GET` request to `/api/v1/flows/[:flow_id]` using the flow ID from the previous step.\n\n### Parameters\n\n- None\n\n### Response\n\n- `id` &mdash; `string` ID of the flow.\n- `state` &mdash; `string` The current state of the flow.\n - `undelegate_tx_broadcasting` &mdash; Transaction has been broadcast and is waiting for confirmation.\n - `cool_down` &mdash; Transaction has been confirmed and the delegation is unbonding.\n- `actions` &mdash; `array` It includes the `name` & `inputs` of all next possible actions.\n- `data` &mdash; `object` Undelegation flow & transaction data."
 					},
 					"response": [
 						{
@@ -989,7 +1159,7 @@
 						"method": "GET",
 						"header": [],
 						"url": "https://{{NEAR_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{nearUnstakingFlowId}}",
-						"description": "To get the latest status of the existing flow, use the flow ID from the previous step.\n\n### Parameters\n\n- None\n\n### Response\n\n- `id` &mdash; `string` ID of the flow.\n- `state` &mdash; `string` The current state of the flow.\n - `withdraw_tx_broadcasting` &mdash; Transaction has been broadcast and is waiting for confirmation.\n - `withdrawn` &mdash; Transaction has been confirmed and the withdrawal is complete.\n- `actions` &mdash; `array` It includes the `name` & `inputs` of all next possible actions.\n- `data` &mdash; `object` Undelegation flow & transaction data."
+						"description": "To get the current state of the existing flow, send a `GET` request to `/api/v1/flows/[:flow_id]` using the flow ID from the previous step.\n\n### Parameters\n\n- None\n\n### Response\n\n- `id` &mdash; `string` ID of the flow.\n- `state` &mdash; `string` The current state of the flow.\n - `withdraw_tx_broadcasting` &mdash; Transaction has been broadcast and is waiting for confirmation.\n - `withdrawn` &mdash; Transaction has been confirmed and the withdrawal is complete.\n- `actions` &mdash; `array` It includes the `name` & `inputs` of all next possible actions.\n- `data` &mdash; `object` Undelegation flow & transaction data."
 					},
 					"response": [
 						{
@@ -1159,7 +1329,7 @@
 						"method": "GET",
 						"header": [],
 						"url": "https://{{NEAR_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{nearTransferFlowId}}",
-						"description": "To get the latest status of the existing flow, use the the flow ID from the previous step.\n\n### Parameters\n\n- None\n\n### Response\n\n- `id` &mdash; `string` ID of the flow.\n- `state` &mdash; `string` The current state of the flow.\n - `transfer_tx_broadcasting` &mdash; Transaction has been broadcast and is waiting confirmation.\n - `transfered` &mdash; Transaction has been confirmed and the transfer is complete.\n- `actions` &mdash; `array` It includes the `name` & `inputs` of all next possible actions.\n- `data` &mdash; `object` Transfer flow & transaction data."
+						"description": "To get the current state of the existing flow, send a `GET` request to `/api/v1/flows/[:flow_id]` using the flow ID from the previous step.\n\n### Parameters\n\n- None\n\n### Response\n\n- `id` &mdash; `string` ID of the flow.\n- `state` &mdash; `string` The current state of the flow.\n - `transfer_tx_broadcasting` &mdash; Transaction has been broadcast and is waiting confirmation.\n - `transfered` &mdash; Transaction has been confirmed and the transfer is complete.\n- `actions` &mdash; `array` It includes the `name` & `inputs` of all next possible actions.\n- `data` &mdash; `object` Transfer flow & transaction data."
 					},
 					"response": [
 						{
@@ -1203,7 +1373,7 @@
 							}
 						},
 						"url": "https://{{POLKADOT_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows",
-						"description": "To initiate the staking process, create a new flow with a `POST` request to `/api/v1/flows`.\n\n### Parameters\n\n- `flow` &mdash; `object`\n  - `network_code` &mdash; `string` Network this flow operates on (ex. `polkadot`) (required).\n  - `chain_code` &mdash; `string` Chain this flow operates on (ex. `westend`) (required).\n  - `operation` `string` The operation to perform (ex. `staking`) (required).\n  - `version` &mdash; `string` API version to use (ex. `v1`) (optional).\n\n### Response\n\n- `id` &mdash; `string` ID of the flow.\n- `state` &mdash; `string` The current state of the flow.\n- `actions` &mdash; `array` It includes the `name` & `inputs` of all next possible actions.\n - `assign_stash_and_controller_account` &mdash; Use this action if you already have a controller account set up and wish to add bond to it.\n   - `create_bonding_tx` &mdash; Use this action if you do not have a controller account set up and would like to create a controller and bond tokens.\n   - `controller_account_address` &mdash; The wallet to which the DOT will be bonded.\n   - `controller_proxy_account_address` &mdash; A proxy account that will sign on behalf of the controller account.\n   - `stash_account_address` &mdash; Primary wallet from which DOT will be bonded.\n   - `stash_proxy_account_address` &mdash; A proxy account that will sign on behalf of the controller account.\n   - `reward_destination` &mdash; Indicates whether rewards are to be:\n     - Added to the staked balance: `Staked`.\n     - Sent to the controller account, liquid: `Controller`.\n     - Sent to the stash account, liquid: `Stash`.\n   - `amount` &mdash; The amount of DOT to be bonded to the controller. This field should be in full DOT, not in Planck (ie. if you want to stake 5 DOT, return `\"amount\": 5.0`). The Staking API will translate the amount to Plancks so you do not have to worry about the conversion factor.\n- `data` &mdash; `object` Delegation flow & transaction data."
+						"description": "To initiate the staking process, create a new flow with a `POST` request to `/api/v1/flows`.\n\n### Parameters\n\n- `flow` &mdash; `object`\n  - `network_code` &mdash; `string` Network this flow operates on (ex. `polkadot`) (required).\n  - `chain_code` &mdash; `string` Chain this flow operates on (ex. `westend`) (required).\n  - `operation` `string` The operation to perform (ex. `staking`) (required).\n  - `version` &mdash; `string` API version to use (ex. `v1`) (optional).\n\n### Response\n\n- `id` &mdash; `string` ID of the flow.\n- `state` &mdash; `string` The current state of the flow.\n- `actions` &mdash; `array` It includes the `name` & `inputs` of all next possible actions.\n - `assign_stash_and_controller_account` &mdash; Use this action if you already have a controller account set up and wish to add bond to it.\n   - `create_bonding_tx` &mdash; Use this action if you do not have a controller account set up and would like to create a controller and bond tokens.\n   - `controller_account_address` &mdash; The wallet to which the DOT will be bonded.\n   - `controller_proxy_account_address` &mdash; A proxy account that will sign on behalf of the controller account.\n   - `stash_account_address` &mdash; Primary wallet from which DOT will be bonded.\n   - `stash_proxy_account_address` &mdash; A proxy account that will sign on behalf of the stash account.\n   - `reward_destination` &mdash; Indicates whether rewards are to be:\n     - Added to the staked balance: `Staked`.\n     - Sent to the controller account, liquid: `Controller`.\n     - Sent to the stash account, liquid: `Stash`.\n   - `amount` &mdash; The amount of DOT to be bonded to the controller. This field should be in full DOT, not in Planck (ie. if you want to stake 5 DOT, return `\"amount\": 5.0`). The Staking API will translate the amount to Plancks so you do not have to worry about the conversion factor.\n- `data` &mdash; `object` Delegation flow & transaction data."
 					},
 					"response": [
 						{
@@ -1335,7 +1505,7 @@
 						"method": "GET",
 						"header": [],
 						"url": "https://{{POLKAOT_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{polkadotStakingFlowId}}",
-						"description": "To get the latest status of the existing flow, use the flow ID from the previous step.\n\n### Parameters\n\n- None\n\n### Response\n\n- `id` &mdash; `string` ID of the flow.\n- `state` &mdash; `string` The current state of the flow.\n - `bonding_tx_broadcasting` &mdash; Broadcasting transaction\n - `bonding_complete` &mdash; Transaction broadcasted & confirmed\n- `actions` &mdash; `array` It includes the `name` & `inputs` of all next possible actions.\n- `data` &mdash; `object` Delegation flow & transaction data."
+						"description": "To get the current state of the existing flow, send a `GET` request to `/api/v1/flows/[:flow_id]` using the flow ID from the previous step.\n\n### Parameters\n\n- None\n\n### Response\n\n- `id` &mdash; `string` ID of the flow.\n- `state` &mdash; `string` The current state of the flow.\n - `bonding_tx_broadcasting` &mdash; Broadcasting transaction\n - `bonding_complete` &mdash; Transaction broadcasted & confirmed\n- `actions` &mdash; `array` It includes the `name` & `inputs` of all next possible actions.\n- `data` &mdash; `object` Delegation flow & transaction data."
 					},
 					"response": [
 						{
@@ -1458,7 +1628,7 @@
 						"method": "GET",
 						"header": [],
 						"url": "https://{{POLKAOT_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{polkadotStakingFlowId}}",
-						"description": "To get the latest status of the existing flow, use the flow ID from the previous step.\n\n### Parameters\n\n- None\n\n### Response\n\n- `id` &mdash; `string` ID of the flow.\n- `state` &mdash; `string` The current state of the flow.\n - `nomination_tx_broadcasting` &mdash; The transaction has been broadcasted and is waiting for confirmation.\n - `delegated` &mdash; The transaction is complete and the nomination is active.\n- `actions` &mdash; `array` It includes the `name` & `inputs` of all next possible actions.\n- `data` &mdash; `object` Delegation flow & transaction data."
+						"description": "To get the current state of the existing flow, send a `GET` request to `/api/v1/flows/[:flow_id]` using the flow ID from the previous step.\n\n### Parameters\n\n- None\n\n### Response\n\n- `id` &mdash; `string` ID of the flow.\n- `state` &mdash; `string` The current state of the flow.\n - `nomination_tx_broadcasting` &mdash; The transaction has been broadcasted and is waiting for confirmation.\n - `delegated` &mdash; The transaction is complete and the nomination is active.\n- `actions` &mdash; `array` It includes the `name` & `inputs` of all next possible actions.\n- `data` &mdash; `object` Delegation flow & transaction data."
 					},
 					"response": [
 						{
@@ -1863,7 +2033,7 @@
 						"method": "GET",
 						"header": [],
 						"url": "https://{{POLKAOT_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{polkadotUnstakingFlowId}}",
-						"description": "To get the latest status of the existing flow, use the flow ID from the previous step.\n\n### Parameters\n\n- None\n\n### Response\n\n- `id` &mdash; `string` ID of the flow.\n- `state` &mdash; `string` The current state of the flow.\n - `withdraw_tx_broadcasting` &mdash; The transaction has been broadcast and is waiting for confirmation.\n - `done` &mdash; The transaction is complete and the stake has been withdrawn to the specified location.\n- `actions` &mdash; `array` It includes the `name` & `inputs` of all next possible actions.\n- `data` &mdash; `object` Undelegation flow & transaction data."
+						"description": "To get the current state of the existing flow, send a `GET` request to `/api/v1/flows/[:flow_id]` using the flow ID from the previous step.\n\n### Parameters\n\n- None\n\n### Response\n\n- `id` &mdash; `string` ID of the flow.\n- `state` &mdash; `string` The current state of the flow.\n - `withdraw_tx_broadcasting` &mdash; The transaction has been broadcast and is waiting for confirmation.\n - `done` &mdash; The transaction is complete and the stake has been withdrawn to the specified location.\n- `actions` &mdash; `array` It includes the `name` & `inputs` of all next possible actions.\n- `data` &mdash; `object` Undelegation flow & transaction data."
 					},
 					"response": [
 						{
@@ -2033,7 +2203,7 @@
 						"method": "GET",
 						"header": [],
 						"url": "https://{{POLKAOT_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{polkadotAddProxyFlowId}}",
-						"description": "To get the latest status of the existing flow, use the flow ID from the previous step.\n\n### Parameters\n\n- None\n\n### Response\n\n- `id` &mdash; `string` ID of the flow.\n- `state` &mdash; `string` The current state of the flow.\n - `add_proxy_tx_broadcasting` &mdash; Transaction has been broadcast and is waiting for confirmation.\n - `registered` &mdash; Transaction has been confirmed and the proxy is complete.\n- `actions` &mdash; `array` It includes the `name` & `inputs` of all next possible actions.\n- `data` &mdash; `object` Staking proxy flow & transaction data."
+						"description": "To get the current state of the existing flow, send a `GET` request to `/api/v1/flows/[:flow_id]` using the flow ID from the previous step.\n\n### Parameters\n\n- None\n\n### Response\n\n- `id` &mdash; `string` ID of the flow.\n- `state` &mdash; `string` The current state of the flow.\n - `add_proxy_tx_broadcasting` &mdash; Transaction has been broadcast and is waiting for confirmation.\n - `registered` &mdash; Transaction has been confirmed and the proxy is complete.\n- `actions` &mdash; `array` It includes the `name` & `inputs` of all next possible actions.\n- `data` &mdash; `object` Staking proxy flow & transaction data."
 					},
 					"response": [
 						{
@@ -2203,7 +2373,7 @@
 						"method": "GET",
 						"header": [],
 						"url": "https://{{POLKAOT_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{polkadotRemoveProxyFlowId}}",
-						"description": "To get the latest status of the existing flow, use the flow ID from the previous step.\n\n### Parameters\n\n- None\n\n### Response\n\n- `id` &mdash; `string` ID of the flow.\n- `state` &mdash; `string` The current state of the flow.\n - `remove_proxy_tx_broadcasting` &mdash; Transaction has been broadcast and is waiting for confirmation.\n - `removed` &mdash; Transaction has been confirmed and the proxy is revoked.\n- `actions` &mdash; `array` It includes the `name` & `inputs` of all next possible actions.\n- `data` &mdash; `object` Staking proxy flow & transaction data."
+						"description": "To get the current state of the existing flow, send a `GET` request to `/api/v1/flows/[:flow_id]` using the flow ID from the previous step.\n\n### Parameters\n\n- None\n\n### Response\n\n- `id` &mdash; `string` ID of the flow.\n- `state` &mdash; `string` The current state of the flow.\n - `remove_proxy_tx_broadcasting` &mdash; Transaction has been broadcast and is waiting for confirmation.\n - `removed` &mdash; Transaction has been confirmed and the proxy is revoked.\n- `actions` &mdash; `array` It includes the `name` & `inputs` of all next possible actions.\n- `data` &mdash; `object` Staking proxy flow & transaction data."
 					},
 					"response": [
 						{
@@ -2373,7 +2543,7 @@
 						"method": "GET",
 						"header": [],
 						"url": "https://{{POLKAOT_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{polkadotTransferFlowId}}",
-						"description": "To get the latest status of the existing flow, use the flow ID from the previous step.\n\n### Parameters\n\n- None\n\n### Response\n\n- `id` &mdash; `string` ID of the flow.\n- `state` &mdash; `string` The current state of the flow.\n - `transfer_tx_broadcasting` &mdash; Transaction has been broadcast and is waiting for confirmation.\n - `transferred` &mdash; Transaction has been confirmed and the transfer is complete.\n- `actions` &mdash; `array` It includes the `name` & `inputs` of all next possible actions.\n- `data` &mdash; `object` Transfer flow & transaction data."
+						"description": "To get the current state of the existing flow, send a `GET` request to `/api/v1/flows/[:flow_id]` using the flow ID from the previous step.\n\n### Parameters\n\n- None\n\n### Response\n\n- `id` &mdash; `string` ID of the flow.\n- `state` &mdash; `string` The current state of the flow.\n - `transfer_tx_broadcasting` &mdash; Transaction has been broadcast and is waiting for confirmation.\n - `transferred` &mdash; Transaction has been confirmed and the transfer is complete.\n- `actions` &mdash; `array` It includes the `name` & `inputs` of all next possible actions.\n- `data` &mdash; `object` Transfer flow & transaction data."
 					},
 					"response": [
 						{
@@ -2690,7 +2860,7 @@
 						"method": "GET",
 						"header": [],
 						"url": "https://{{POLYGON_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{polygonStakingFlowId}}",
-						"description": "To get the latest status of the existing flow, use the flow ID from the previous step.\n\n### Parameters\n\n- None\n\n### Response\n\n- `id` &mdash; `string` ID of the flow.\n- `state` &mdash; `string` The current state of the flow.\n - `delegate_tx_broadcasting` &mdash; The transaction has been broadcast but not confirmed.\n - `completed` &mdash; The transaction has been confirmed.\n- `actions` &mdash; `array` It includes the `name` & `inputs` of all next possible actions.\n- `data` &mdash; `object` Delegation flow & transaction data."
+						"description": "To get the current state of the existing flow, send a `GET` request to `/api/v1/flows/[:flow_id]` using the flow ID from the previous step.\n\n### Parameters\n\n- None\n\n### Response\n\n- `id` &mdash; `string` ID of the flow.\n- `state` &mdash; `string` The current state of the flow.\n - `delegate_tx_broadcasting` &mdash; The transaction has been broadcast but not confirmed.\n - `completed` &mdash; The transaction has been confirmed.\n- `actions` &mdash; `array` It includes the `name` & `inputs` of all next possible actions.\n- `data` &mdash; `object` Delegation flow & transaction data."
 					},
 					"response": [
 						{
@@ -2961,7 +3131,7 @@
 						"method": "GET",
 						"header": [],
 						"url": "https://{{POLYGON_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{polygonUnstakingFlowId}}",
-						"description": "To get the latest status of the existing flow, send a `GET` request to `/api/v1/flows/[:flow_id]` using the flow ID from the previous step.\n\n### Parameters\n\n- None\n\n### Response\n\n- `id` &mdash; `string` ID of the flow.\n- `state` &mdash; `string` The current state of the flow.\n - `claim_tx_broadcasting` &mdash; The transaction has been broadcast but not confirmed.\n - `done` &mdash; The transaction has been confirmed and the rewards have been claimed.\n- `actions` &mdash; `array` It includes the `name` & `inputs` of all next possible actions.\n- `data` &mdash; `object` Undelegation flow & transaction data."
+						"description": "To get the current state of the existing flow, send a `GET` request to `/api/v1/flows/[:flow_id]` using the flow ID from the previous step.\n\n### Parameters\n\n- None\n\n### Response\n\n- `id` &mdash; `string` ID of the flow.\n- `state` &mdash; `string` The current state of the flow.\n - `claim_tx_broadcasting` &mdash; The transaction has been broadcast but not confirmed.\n - `done` &mdash; The transaction has been confirmed and the rewards have been claimed.\n- `actions` &mdash; `array` It includes the `name` & `inputs` of all next possible actions.\n- `data` &mdash; `object` Undelegation flow & transaction data."
 					},
 					"response": [
 						{
@@ -3131,7 +3301,7 @@
 						"method": "GET",
 						"header": [],
 						"url": "https://{{POLYGON_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{polygonClaimRewardsFlowId}}",
-						"description": "To get the latest status of the existing flow we'll be using the flow ID from the previous step.\n\n### Parameters\n\n- None\n\n### Response\n\n- `id` &mdash; `string` ID of the flow.\n- `state` &mdash; `string` The current state of the flow.\n  - `claim_rewards_tx_broadcasting` &mdash; the transaction has been broadcast but not confirmed.\n - `done` &mdash; the transaction has been confirmed and the rewards are claimed.\n- `actions` &mdash; `array` It includes the `name` & `inputs` of all next possible actions.\n- `data` &mdash; `object` Transfer flow & transaction data."
+						"description": "To get the current state of the existing flow, send a `GET` request to `/api/v1/flows/[:flow_id]` using the flow ID from the previous step.\n\n### Parameters\n\n- None\n\n### Response\n\n- `id` &mdash; `string` ID of the flow.\n- `state` &mdash; `string` The current state of the flow.\n  - `claim_rewards_tx_broadcasting` &mdash; the transaction has been broadcast but not confirmed.\n - `done` &mdash; the transaction has been confirmed and the rewards are claimed.\n- `actions` &mdash; `array` It includes the `name` & `inputs` of all next possible actions.\n- `data` &mdash; `object` Transfer flow & transaction data."
 					},
 					"response": [
 						{
@@ -3307,7 +3477,7 @@
 						"method": "GET",
 						"header": [],
 						"url": "https://{{SOLANA_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{solanaStakingFlowId}}",
-						"description": "To get the latest status of the existing flow, use the flow ID from the previous step.\n\n### Parameters\n\n- None\n\n### Response\n\n- `id` &mdash; `string` ID of the flow.\n- `state` &mdash; `string` The current state of the flow.\n - `stake_account_tx_broadcasting` &mdash; Transaction has been broadcast but not confirmed.\n - `stake_account` &mdash; Transaction broadcasted and confirmed.\n- `actions` &mdash; `array` It includes the `name` & `inputs` of all next possible actions.\n- `data` &mdash; `object` flow & transaction data."
+						"description": "To get the current state of the existing flow, send a `GET` request to `/api/v1/flows/[:flow_id]` using the flow ID from the previous step.\n\n### Parameters\n\n- None\n\n### Response\n\n- `id` &mdash; `string` ID of the flow.\n- `state` &mdash; `string` The current state of the flow.\n - `stake_account_tx_broadcasting` &mdash; Transaction has been broadcast but not confirmed.\n - `stake_account` &mdash; Transaction broadcasted and confirmed.\n- `actions` &mdash; `array` It includes the `name` & `inputs` of all next possible actions.\n- `data` &mdash; `object` flow & transaction data."
 					},
 					"response": [
 						{
@@ -3430,7 +3600,7 @@
 						"method": "GET",
 						"header": [],
 						"url": "https://{{SOLANA_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{solanaStakingFlowId}}",
-						"description": "To get the latest status of the existing flow, use the flow ID from the previous step.\n\n### Parameters\n\n- None\n\n### Response\n\n- `id` &mdash; `string` ID of the flow.\n- `state` &mdash; `string` The current state of the flow.\n - `delegate_tx_broadcasting` &mdash; The delegation transaction has been broadcast but not confirmed.\n - `delegation_activating` &mdash; The delegation is progressing.\n - `delegation_active` &mdash; The delegation is active and confirmed.\n- `actions` &mdash; `array` It includes the `name` & `inputs` of all next possible actions.\n- `data` &mdash; `object` Delegation flow & transaction data."
+						"description": "To get the current state of the existing flow, send a `GET` request to `/api/v1/flows/[:flow_id]` using the flow ID from the previous step.\n\n### Parameters\n\n- None\n\n### Response\n\n- `id` &mdash; `string` ID of the flow.\n- `state` &mdash; `string` The current state of the flow.\n - `delegate_tx_broadcasting` &mdash; The delegation transaction has been broadcast but not confirmed.\n - `delegation_activating` &mdash; The delegation is progressing.\n - `delegation_active` &mdash; The delegation is active and confirmed.\n- `actions` &mdash; `array` It includes the `name` & `inputs` of all next possible actions.\n- `data` &mdash; `object` Delegation flow & transaction data."
 					},
 					"response": [
 						{
@@ -3600,7 +3770,7 @@
 						"method": "GET",
 						"header": [],
 						"url": "https://{{SOLANA_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{solanaUnstakingFlowId}}",
-						"description": "To get the latest status of the existing flow, use the flow ID from the previous step.\n\n### Parameters\n\n- None\n\n### Response\n\n- `id` &mdash; `string` ID of the flow.\n- `state` &mdash; `string` The current state of the flow.\n - `deactivate_tx_broadcasting` &mdash; Transaction has been broadcast but not confirmed.\n - `cool_down` &mdash; Transaction is under cool-down period.\n- `actions` &mdash; `array` It includes the `name` & `inputs` of all next possible actions.\n- `data` &mdash; `object` Undelegation flow & transaction data."
+						"description": "To get the current state of the existing flow, send a `GET` request to `/api/v1/flows/[:flow_id]` using the flow ID from the previous step.\n\n### Parameters\n\n- None\n\n### Response\n\n- `id` &mdash; `string` ID of the flow.\n- `state` &mdash; `string` The current state of the flow.\n - `deactivate_tx_broadcasting` &mdash; Transaction has been broadcast but not confirmed.\n - `cool_down` &mdash; Transaction is under cool-down period.\n- `actions` &mdash; `array` It includes the `name` & `inputs` of all next possible actions.\n- `data` &mdash; `object` Undelegation flow & transaction data."
 					},
 					"response": [
 						{
@@ -3723,7 +3893,7 @@
 						"method": "GET",
 						"header": [],
 						"url": "https://{{SOLANA_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{solanaUnstakingFlowId}}",
-						"description": "To get the latest status of the existing flow, use the flow ID from the previous step.\n\n### Parameters\n\n- None\n\n### Response\n\n- `id` &mdash; `string` ID of the flow.\n- `state` &mdash; `string` The current state of the flow.\n - `withdraw_tx_broadcasting` &mdash; Transaction broadcasting\n - `withdrawn` &mdash; Transaction is confirmed and tokens are withdrawn\n- `actions` &mdash; `array` It includes the `name` & `inputs` of all next possible actions.\n- `data` &mdash; `object` Undelegation flow & transaction data."
+						"description": "To get the current state of the existing flow, send a `GET` request to `/api/v1/flows/[:flow_id]` using the flow ID from the previous step.\n\n### Parameters\n\n- None\n\n### Response\n\n- `id` &mdash; `string` ID of the flow.\n- `state` &mdash; `string` The current state of the flow.\n - `withdraw_tx_broadcasting` &mdash; Transaction broadcasting\n - `withdrawn` &mdash; Transaction is confirmed and tokens are withdrawn\n- `actions` &mdash; `array` It includes the `name` & `inputs` of all next possible actions.\n- `data` &mdash; `object` Undelegation flow & transaction data."
 					},
 					"response": [
 						{
@@ -3893,7 +4063,7 @@
 						"method": "GET",
 						"header": [],
 						"url": "https://{{SOLANA_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{solanaTransferFlowId}}",
-						"description": "To get the latest status of the existing flow, use the flow ID from the previous step.\n\n### Parameters\n\n- None\n\n### Response\n\n- `id` &mdash; `string` ID of the flow.\n- `state` &mdash; `string` The current state of the flow.\n - `transfer_tx_broadcasting` &mdash; Transaction has been broadcast and is awaiting confirmation.\n - `transfered` - Transaction is confirmed and tokens are transferred.\n- `actions` &mdash; `array` It includes the `name` & `inputs` of all next possible actions.\n- `data` &mdash; `object` Transfer flow & transaction data."
+						"description": "To get the current state of the existing flow, send a `GET` request to `/api/v1/flows/[:flow_id]` using the flow ID from the previous step.\n\n### Parameters\n\n- None\n\n### Response\n\n- `id` &mdash; `string` ID of the flow.\n- `state` &mdash; `string` The current state of the flow.\n - `transfer_tx_broadcasting` &mdash; Transaction has been broadcast and is awaiting confirmation.\n - `transfered` - Transaction is confirmed and tokens are transferred.\n- `actions` &mdash; `array` It includes the `name` & `inputs` of all next possible actions.\n- `data` &mdash; `object` Transfer flow & transaction data."
 					},
 					"response": [
 						{
@@ -3909,6 +4079,176 @@
 							"cookie": [],
 							"responseTime": null,
 							"body": "{\n    \"id\": \"b45f40d1-051a-41fe-907f-a9b73a55b54e\",\n    \"state\": \"transfered\",\n    \"actions\": [],\n    \"data\": {\n        \"from_account_pubkey\": \"Hk5voGB7wh9HtXTeszbW7AFm3A4B94xWkXeeaqTYspqy\",\n        \"to_account_pubkey\": \"9c8oxENj8XrEM2EMadxUoifZgB1Vbc8GEYqKTxTfPo3i\",\n        \"amount\": \"1.0\",\n        \"funding_account_pubkey\": \"Hk5voGB7wh9HtXTeszbW7AFm3A4B94xWkXeeaqTYspqy\",\n        \"transfer_transaction\": {\n            \"raw\": \"010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000103f8c4898641adada76eeeee2de872d931bc58bfb2ce5b79734e32808cc501a5347fdda76b682402ecb38e705b77d7eee793c587b6294a461c14ad89e7e161ade50000000000000000000000000000000000000000000000000000000000000000ecf65dc056903c93ef0555d52d65d355390c99d9e57176f8cdc859a87f0dfaf401020200010c0200000000ca9a3b00000000\",\n            \"signing_payload\": \"01000103f8c4898641adada76eeeee2de872d931bc58bfb2ce5b79734e32808cc501a5347fdda76b682402ecb38e705b77d7eee793c587b6294a461c14ad89e7e161ade50000000000000000000000000000000000000000000000000000000000000000ecf65dc056903c93ef0555d52d65d355390c99d9e57176f8cdc859a87f0dfaf401020200010c0200000000ca9a3b00000000\",\n            \"signed\": \"0131a75ee59c9946c5c714a2ac67a1dfa7d6954f1f6b785f482a84215270ccc8428b112c6e0532f995d08338d6eb546b785f409a8ba9c289e378db3749e88c440601000103f8c4898641adada76eeeee2de872d931bc58bfb2ce5b79734e32808cc501a5347fdda76b682402ecb38e705b77d7eee793c587b6294a461c14ad89e7e161ade50000000000000000000000000000000000000000000000000000000000000000ecf65dc056903c93ef0555d52d65d355390c99d9e57176f8cdc859a87f0dfaf401020200010c0200000000ca9a3b00000000\",\n            \"hash\": \"zaaAQtDB4oQuX8MSW9wExZxgm8QAk64fxgsyYV6ZPskWtdHtdQYT8vmuwKdqRyoVfecm8EsAC4XQ3eczjXbzX17\",\n            \"status\": \"confirmed\",\n            \"error\": null,\n            \"signatures\": []\n        }\n    },\n    \"network_code\": \"solana\",\n    \"chain_code\": \"testnet\",\n    \"created_at\": \"2022-10-04T17:27:16.158Z\",\n    \"updated_at\": \"2022-10-04T17:35:21.643Z\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Create New Split Stake Account Flow",
+					"id": "6d56b7c7-f5a3-44fa-ae44-b79ad212d7a1",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"flow\": {\n        \"network_code\": \"solana\",\n        \"chain_code\": \"testnet\",\n        \"operation\": \"split_stake_account\",\n        \"version\": \"v1\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://{{SOLANA_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows",
+						"description": "To initiate the split stake account process with Staking API, create a new flow with a `POST` request to `/api/v1/flows`.\n\n### Parameters\n\n- `flow` &mdash; `object`\n  - `network_code` &mdash; `string` Network on which this flow operates (ex. `solana`) (required).\n  - `chain_code` &mdash; `string` Chain on which this flow operates (ex. `testnet`) (required).\n  - `operation` `string` The operation to perform (ex. `split_stake_account`) (required).\n  - `version` &mdash; `string` API version to use (ex. `v1`) (optional).\n\n### Response\n\n- `id` &mdash; `string` ID of the flow.\n- `state` &mdash; `string` The current state of the flow.\n- `actions` &mdash; `array` It includes the `name` & `inputs` of all next possible actions.\n  - `create_split_tx` &mdash; Use this Action to create a split stake account transaction.\n    - `funding_account_pubkey` &mdash; The public key of the wallet which will pay the transaction fee.\n    - `source_stake_account_pubkey` &mdash; The existing stake account from which partial SOL balance will be split.\n    - `amount` &mdash; The amount of SOL to be transferred to a newly created stake account. This field should be in full SOL, not in lamports (ie. if you want to transfer 5 SOL, return `\"amount\": 5.0`). The Staking API will translate the amount to lamports so you do not have to worry about the conversion factor. Lamports are fractional SOLs.\n- `data` &mdash; `object` Split stake flow & transaction data."
+					},
+					"response": [
+						{
+							"id": "62ad77f2-12d1-4c72-b495-0e42877170ad",
+							"name": "Create New Split Stake Account Flow",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"flow\": {\n        \"network_code\": \"solana\",\n        \"chain_code\": \"testnet\",\n        \"operation\": \"split_stake_account\",\n        \"version\": \"v1\"\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://{{SOLANA_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows"
+							},
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n  \"id\": \"730fbe4e-c4b4-480f-b3c5-4a25bfbd5cf3\",\n  \"state\": \"initialized\",\n  \"actions\": [\n    {\n      \"name\": \"create_split_tx\",\n      \"inputs\": [\n        {\n          \"name\": \"funding_account_pubkey\",\n          \"display\": \"Funding Account Pubkey\",\n          \"description\": \"\",\n          \"type\": \"string\",\n          \"validations\": [\n            {\n              \"type\": \"presence\",\n              \"options\": {}\n            }\n          ]\n        },\n        {\n          \"name\": \"source_stake_account_pubkey\",\n          \"display\": \"Source Stake Account Pubkey\",\n          \"description\": \"\",\n          \"type\": \"string\",\n          \"validations\": [\n            {\n              \"type\": \"presence\",\n              \"options\": {}\n            }\n          ]\n        },\n        {\n          \"name\": \"amount\",\n          \"display\": \"Amount\",\n          \"description\": \"\",\n          \"type\": \"decimal\",\n          \"validations\": [\n            {\n              \"type\": \"presence\",\n              \"options\": {}\n            },\n            {\n              \"type\": \"numericality\",\n              \"options\": {\n                \"greater_than\": 0\n              }\n            }\n          ]\n        }\n      ]\n    }\n  ],\n  \"data\": {\n    \"funding_account_pubkey\": null,\n    \"source_stake_account_pubkey\": null,\n    \"amount\": null,\n    \"split_transaction\": null,\n    \"source_stake_authority_pubkey\": null,\n    \"destination_stake_account_pubkey\": null\n  },\n  \"network_code\": \"solana\",\n  \"chain_code\": \"testnet\",\n  \"created_at\": \"2022-11-02T04:25:28.997Z\",\n  \"updated_at\": \"2022-11-02T04:25:28.997Z\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Submit Split Stake Account Data",
+					"id": "6aa7f464-ff4e-40c7-b61d-53d6d441b1db",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"create_split_tx\",\n    \"inputs\": {\n        \"funding_account_pubkey\": \"Hk5voGB7wh9HtXTeszbW7AFm3A4B94xWkXeeaqTYspqy\",\n        \"source_stake_account_pubkey\": \"5YofNaQJ24cgp5hzJgMKSwi16188WiBgfdbWkxbG4FWP\",\n        \"amount\": 2.0\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://{{SOLANA_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{solanaSplitStakeFlowId}}/next",
+						"description": "After collecting the required inputs, send a `PUT` request to `/api/v1/flows/[:flow_id]/next` to proceed to the next step.\n\n### Parameters\n\n- `name` &mdash; `string` Name of the action to execute (required).\n- `inputs` &mdash; `object`\n  - `funding_account_pubkey` &mdash; The public key of the wallet which will pay the transaction fee (required).\n  - `source_stake_account_pubkey` &mdash; The existing stake account from which partial SOL balance will be split (required).\n  - `amount` &mdash; The amount of SOL to be transferred to the new stake account. This field should be in full SOL, not in lamports (ie. if you want to fund the new stake account with 5 SOL, return `\"amount\": 5.0`). The Staking API will translate the amount to lamports so you do not have to worry about the conversion factor. Lamports are fractional SOLs (required).\n\n### Response\n\n- `id` &mdash; `string` ID of the flow.\n- `state` &mdash; `string` The current state of the flow.\n- `actions` &mdash; `array` It includes the `name` & `inputs` of all next possible actions.\n  - `refresh_split_tx` &mdash; If you need to get a fresh version of the transaction payload (i.e., the recent blockhash has expired).\n  - `sign_split_tx` &mdash; Submit a signed transaction payload ready to be broadcast to the network.\n- `data` &mdash; `object` Split stake flow & transaction data."
+					},
+					"response": [
+						{
+							"id": "3c23b8a4-c3dc-4726-93c7-836898cd8da6",
+							"name": "Submit Split Stake Account Data",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"create_split_tx\",\n    \"inputs\": {\n        \"funding_account_pubkey\": \"Hk5voGB7wh9HtXTeszbW7AFm3A4B94xWkXeeaqTYspqy\",\n        \"source_stake_account_pubkey\": \"5YofNaQJ24cgp5hzJgMKSwi16188WiBgfdbWkxbG4FWP\",\n        \"amount\": 2.0\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://{{SOLANA_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{solanaSplitStakeFlowId}}/next"
+							},
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n  \"id\": \"730fbe4e-c4b4-480f-b3c5-4a25bfbd5cf3\",\n  \"state\": \"split_tx_signature\",\n  \"actions\": [\n    {\n      \"name\": \"refresh_split_tx\",\n      \"inputs\": []\n    },\n    {\n      \"name\": \"sign_split_tx\",\n      \"inputs\": [\n        {\n          \"name\": \"transaction_payload\",\n          \"display\": \"Transaction Payload\",\n          \"description\": \"\",\n          \"type\": \"signed_transaction\",\n          \"validations\": [],\n          \"signers\": [\"Hk5voGB7wh9HtXTeszbW7AFm3A4B94xWkXeeaqTYspqy\"],\n          \"transaction_payload\": \"02000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000009ddddac8a30dc9fc1acf5f382053baa0361b6a17893870990d5bf737ba4b3928022f023fa9321cf5e5733f46dac33f38895033ed9b971f6dac45b888c2f0820b02000205f8c4898641adada76eeeee2de872d931bc58bfb2ce5b79734e32808cc501a5346470f21e6c4adecb9fea26af26204f59922f67ff546f4fc2a5bd3629489084b343948361c22b11cd116005a3958e080c5bfdbe055e8747af254c0756dbf8ac88000000000000000000000000000000000000000000000000000000000000000006a1d8179137542a983437bdfe2a7ab2557f535c8a78722b68a49dc0000000002c53da186ffceba53ca9a5c2797a902c5a8f9b35b1493efeaebb1189583be2ac020302000134000000000000000000000000c80000000000000006a1d8179137542a983437bdfe2a7ab2557f535c8a78722b68a49dc00000000004030201000c030000000094357700000000\"\n        },\n        {\n          \"name\": \"signatures\",\n          \"display\": \"Signatures\",\n          \"description\": \"\",\n          \"type\": \"array_of_signatures\",\n          \"validations\": [],\n          \"signers\": [\"Hk5voGB7wh9HtXTeszbW7AFm3A4B94xWkXeeaqTYspqy\"],\n          \"transaction_payload\": \"02000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000009ddddac8a30dc9fc1acf5f382053baa0361b6a17893870990d5bf737ba4b3928022f023fa9321cf5e5733f46dac33f38895033ed9b971f6dac45b888c2f0820b02000205f8c4898641adada76eeeee2de872d931bc58bfb2ce5b79734e32808cc501a5346470f21e6c4adecb9fea26af26204f59922f67ff546f4fc2a5bd3629489084b343948361c22b11cd116005a3958e080c5bfdbe055e8747af254c0756dbf8ac88000000000000000000000000000000000000000000000000000000000000000006a1d8179137542a983437bdfe2a7ab2557f535c8a78722b68a49dc0000000002c53da186ffceba53ca9a5c2797a902c5a8f9b35b1493efeaebb1189583be2ac020302000134000000000000000000000000c80000000000000006a1d8179137542a983437bdfe2a7ab2557f535c8a78722b68a49dc00000000004030201000c030000000094357700000000\",\n          \"signing_payload\": \"02000205f8c4898641adada76eeeee2de872d931bc58bfb2ce5b79734e32808cc501a5346470f21e6c4adecb9fea26af26204f59922f67ff546f4fc2a5bd3629489084b343948361c22b11cd116005a3958e080c5bfdbe055e8747af254c0756dbf8ac88000000000000000000000000000000000000000000000000000000000000000006a1d8179137542a983437bdfe2a7ab2557f535c8a78722b68a49dc0000000002c53da186ffceba53ca9a5c2797a902c5a8f9b35b1493efeaebb1189583be2ac020302000134000000000000000000000000c80000000000000006a1d8179137542a983437bdfe2a7ab2557f535c8a78722b68a49dc00000000004030201000c030000000094357700000000\"\n        }\n      ]\n    }\n  ],\n  \"data\": {\n    \"funding_account_pubkey\": \"Hk5voGB7wh9HtXTeszbW7AFm3A4B94xWkXeeaqTYspqy\",\n    \"source_stake_account_pubkey\": \"5YofNaQJ24cgp5hzJgMKSwi16188WiBgfdbWkxbG4FWP\",\n    \"amount\": \"2.0\",\n    \"split_transaction\": {\n      \"raw\": \"02000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000009ddddac8a30dc9fc1acf5f382053baa0361b6a17893870990d5bf737ba4b3928022f023fa9321cf5e5733f46dac33f38895033ed9b971f6dac45b888c2f0820b02000205f8c4898641adada76eeeee2de872d931bc58bfb2ce5b79734e32808cc501a5346470f21e6c4adecb9fea26af26204f59922f67ff546f4fc2a5bd3629489084b343948361c22b11cd116005a3958e080c5bfdbe055e8747af254c0756dbf8ac88000000000000000000000000000000000000000000000000000000000000000006a1d8179137542a983437bdfe2a7ab2557f535c8a78722b68a49dc0000000002c53da186ffceba53ca9a5c2797a902c5a8f9b35b1493efeaebb1189583be2ac020302000134000000000000000000000000c80000000000000006a1d8179137542a983437bdfe2a7ab2557f535c8a78722b68a49dc00000000004030201000c030000000094357700000000\",\n      \"signing_payload\": \"02000205f8c4898641adada76eeeee2de872d931bc58bfb2ce5b79734e32808cc501a5346470f21e6c4adecb9fea26af26204f59922f67ff546f4fc2a5bd3629489084b343948361c22b11cd116005a3958e080c5bfdbe055e8747af254c0756dbf8ac88000000000000000000000000000000000000000000000000000000000000000006a1d8179137542a983437bdfe2a7ab2557f535c8a78722b68a49dc0000000002c53da186ffceba53ca9a5c2797a902c5a8f9b35b1493efeaebb1189583be2ac020302000134000000000000000000000000c80000000000000006a1d8179137542a983437bdfe2a7ab2557f535c8a78722b68a49dc00000000004030201000c030000000094357700000000\",\n      \"signed\": null,\n      \"hash\": null,\n      \"status\": null,\n      \"error\": null,\n      \"signatures\": null\n    },\n    \"source_stake_authority_pubkey\": \"Hk5voGB7wh9HtXTeszbW7AFm3A4B94xWkXeeaqTYspqy\",\n    \"destination_stake_account_pubkey\": \"7m5fFsdZNdoifnmToR23rK14V2Yoxw3omD1V8vy21kXC\"\n  },\n  \"network_code\": \"solana\",\n  \"chain_code\": \"testnet\",\n  \"created_at\": \"2022-11-02T04:25:28.997Z\",\n  \"updated_at\": \"2022-11-02T04:26:12.019Z\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Submit a Signed Split Stake Account Transaction for Broadcast",
+					"id": "15df38a7-487b-4693-8715-7f177aa2fe69",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"sign_split_tx\",\n    \"inputs\": {\n        \"transaction_payload\": \"022bc35a0d1d2b71b8742a4a4be0035091622efabdb234a24ee962400deec1cf59b7cc77d22633aac5b7e07f3b98edf1acb6c0b71241dca96b42916508856d9d0e9ddddac8a30dc9fc1acf5f382053baa0361b6a17893870990d5bf737ba4b3928022f023fa9321cf5e5733f46dac33f38895033ed9b971f6dac45b888c2f0820b02000205f8c4898641adada76eeeee2de872d931bc58bfb2ce5b79734e32808cc501a5346470f21e6c4adecb9fea26af26204f59922f67ff546f4fc2a5bd3629489084b343948361c22b11cd116005a3958e080c5bfdbe055e8747af254c0756dbf8ac88000000000000000000000000000000000000000000000000000000000000000006a1d8179137542a983437bdfe2a7ab2557f535c8a78722b68a49dc0000000002c53da186ffceba53ca9a5c2797a902c5a8f9b35b1493efeaebb1189583be2ac020302000134000000000000000000000000c80000000000000006a1d8179137542a983437bdfe2a7ab2557f535c8a78722b68a49dc00000000004030201000c030000000094357700000000\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://{{SOLANA_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{solanaSplitStakeFlowId}}/next",
+						"description": "Before broadcasting the transaction, you must [sign the `transaction_payload`](https://docs.figment.io/guides/staking-api/figment-signing-transactions) you received in the previous step. After signing the transaction, send a `PUT` request to `/api/v1/flows/[:flow_id]/next` and the Staking API will broadcast the transaction to the network.\n\n### Parameters\n\n- `name` &mdash; `string` Name of the action to execute (required).\n- `inputs` &mdash; `object`\n  - `transaction_payload` &mdash; Signed transaction payload from the previous step's response.\n\n### Response\n\n- `id` &mdash; `string` ID of the flow.\n- `state` &mdash; `string` The current state of the flow.\n  - `split_tx_broadcasting` &mdash; Transaction has been broadcast and is awaiting confirmation.\n  - `completed` &mdash; Transaction has been confirmed and split is complete.\n- `actions` &mdash; `array` It includes the `name` & `inputs` of all next possible actions.\n- `data` &mdash; `object` Split stake flow & transaction data."
+					},
+					"response": [
+						{
+							"id": "9678faff-f468-4111-9626-3bac75505c6e",
+							"name": "Submit a Signed Split Stake Account Transaction for Broadcast",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"sign_split_tx\",\n    \"inputs\": {\n        \"transaction_payload\": \"022bc35a0d1d2b71b8742a4a4be0035091622efabdb234a24ee962400deec1cf59b7cc77d22633aac5b7e07f3b98edf1acb6c0b71241dca96b42916508856d9d0e9ddddac8a30dc9fc1acf5f382053baa0361b6a17893870990d5bf737ba4b3928022f023fa9321cf5e5733f46dac33f38895033ed9b971f6dac45b888c2f0820b02000205f8c4898641adada76eeeee2de872d931bc58bfb2ce5b79734e32808cc501a5346470f21e6c4adecb9fea26af26204f59922f67ff546f4fc2a5bd3629489084b343948361c22b11cd116005a3958e080c5bfdbe055e8747af254c0756dbf8ac88000000000000000000000000000000000000000000000000000000000000000006a1d8179137542a983437bdfe2a7ab2557f535c8a78722b68a49dc0000000002c53da186ffceba53ca9a5c2797a902c5a8f9b35b1493efeaebb1189583be2ac020302000134000000000000000000000000c80000000000000006a1d8179137542a983437bdfe2a7ab2557f535c8a78722b68a49dc00000000004030201000c030000000094357700000000\"\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://{{SOLANA_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{solanaSplitStakeFlowId}}/next"
+							},
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n  \"id\": \"730fbe4e-c4b4-480f-b3c5-4a25bfbd5cf3\",\n  \"state\": \"split_tx_broadcasting\",\n  \"actions\": [\n    {\n      \"name\": \"wait\",\n      \"estimated_state_change_at\": \"2022-11-02T04:28:09.051Z\",\n      \"inputs\": []\n    }\n  ],\n  \"data\": {\n    \"funding_account_pubkey\": \"Hk5voGB7wh9HtXTeszbW7AFm3A4B94xWkXeeaqTYspqy\",\n    \"source_stake_account_pubkey\": \"5YofNaQJ24cgp5hzJgMKSwi16188WiBgfdbWkxbG4FWP\",\n    \"amount\": \"2.0\",\n    \"split_transaction\": {\n      \"raw\": \"02000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000009ddddac8a30dc9fc1acf5f382053baa0361b6a17893870990d5bf737ba4b3928022f023fa9321cf5e5733f46dac33f38895033ed9b971f6dac45b888c2f0820b02000205f8c4898641adada76eeeee2de872d931bc58bfb2ce5b79734e32808cc501a5346470f21e6c4adecb9fea26af26204f59922f67ff546f4fc2a5bd3629489084b343948361c22b11cd116005a3958e080c5bfdbe055e8747af254c0756dbf8ac88000000000000000000000000000000000000000000000000000000000000000006a1d8179137542a983437bdfe2a7ab2557f535c8a78722b68a49dc0000000002c53da186ffceba53ca9a5c2797a902c5a8f9b35b1493efeaebb1189583be2ac020302000134000000000000000000000000c80000000000000006a1d8179137542a983437bdfe2a7ab2557f535c8a78722b68a49dc00000000004030201000c030000000094357700000000\",\n      \"signing_payload\": \"02000205f8c4898641adada76eeeee2de872d931bc58bfb2ce5b79734e32808cc501a5346470f21e6c4adecb9fea26af26204f59922f67ff546f4fc2a5bd3629489084b343948361c22b11cd116005a3958e080c5bfdbe055e8747af254c0756dbf8ac88000000000000000000000000000000000000000000000000000000000000000006a1d8179137542a983437bdfe2a7ab2557f535c8a78722b68a49dc0000000002c53da186ffceba53ca9a5c2797a902c5a8f9b35b1493efeaebb1189583be2ac020302000134000000000000000000000000c80000000000000006a1d8179137542a983437bdfe2a7ab2557f535c8a78722b68a49dc00000000004030201000c030000000094357700000000\",\n      \"signed\": \"022bc35a0d1d2b71b8742a4a4be0035091622efabdb234a24ee962400deec1cf59b7cc77d22633aac5b7e07f3b98edf1acb6c0b71241dca96b42916508856d9d0e9ddddac8a30dc9fc1acf5f382053baa0361b6a17893870990d5bf737ba4b3928022f023fa9321cf5e5733f46dac33f38895033ed9b971f6dac45b888c2f0820b02000205f8c4898641adada76eeeee2de872d931bc58bfb2ce5b79734e32808cc501a5346470f21e6c4adecb9fea26af26204f59922f67ff546f4fc2a5bd3629489084b343948361c22b11cd116005a3958e080c5bfdbe055e8747af254c0756dbf8ac88000000000000000000000000000000000000000000000000000000000000000006a1d8179137542a983437bdfe2a7ab2557f535c8a78722b68a49dc0000000002c53da186ffceba53ca9a5c2797a902c5a8f9b35b1493efeaebb1189583be2ac020302000134000000000000000000000000c80000000000000006a1d8179137542a983437bdfe2a7ab2557f535c8a78722b68a49dc00000000004030201000c030000000094357700000000\",\n      \"hash\": \"skP46dMLV4qELAyiFZmxaUUtjfLdXPpGqNNu4HWzkDMUfyEBJTr3p7pzbg7FPVRnGPvtpiMqWgNKJMZ2dw7J6h3\",\n      \"status\": null,\n      \"error\": null,\n      \"signatures\": []\n    },\n    \"source_stake_authority_pubkey\": \"Hk5voGB7wh9HtXTeszbW7AFm3A4B94xWkXeeaqTYspqy\",\n    \"destination_stake_account_pubkey\": \"7m5fFsdZNdoifnmToR23rK14V2Yoxw3omD1V8vy21kXC\"\n  },\n  \"network_code\": \"solana\",\n  \"chain_code\": \"testnet\",\n  \"created_at\": \"2022-11-02T04:25:28.997Z\",\n  \"updated_at\": \"2022-11-02T04:27:08.932Z\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Flow Status",
+					"id": "1bd6155b-ed92-4fa8-bf79-23ecc38f8b2a",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "https://{{SOLANA_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{solanaSplitStakeFlowId}}",
+						"description": "To get the current state of the existing flow, send a `GET` request to `/api/v1/flows/[:flow_id]` using the flow ID from the previous step.\n\n### Parameters\n\n- None\n\n### Response\n\n- `id` &mdash; `string` ID of the flow.\n- `state` &mdash; `string` The current state of the flow.\n  - `split_tx_broadcasting` &mdash; Transaction has been broadcast and is awaiting confirmation.\n  - `completed` &mdash; Transaction has been confirmed and split is complete.\n- `actions` &mdash; `array` It includes the `name` & `inputs` of all next possible actions.\n- `data` &mdash; `object` Split stake flow & transaction data."
+					},
+					"response": [
+						{
+							"id": "a9b761d5-cce7-48b7-b605-2923a04fb88f",
+							"name": "Get Flow Status",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": "https://{{SOLANA_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{solanaSplitStakeFlowId}}"
+							},
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n  \"id\": \"730fbe4e-c4b4-480f-b3c5-4a25bfbd5cf3\",\n  \"state\": \"completed\",\n  \"actions\": [],\n  \"data\": {\n    \"funding_account_pubkey\": \"Hk5voGB7wh9HtXTeszbW7AFm3A4B94xWkXeeaqTYspqy\",\n    \"source_stake_account_pubkey\": \"5YofNaQJ24cgp5hzJgMKSwi16188WiBgfdbWkxbG4FWP\",\n    \"amount\": \"2.0\",\n    \"split_transaction\": {\n      \"raw\": \"02000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000009ddddac8a30dc9fc1acf5f382053baa0361b6a17893870990d5bf737ba4b3928022f023fa9321cf5e5733f46dac33f38895033ed9b971f6dac45b888c2f0820b02000205f8c4898641adada76eeeee2de872d931bc58bfb2ce5b79734e32808cc501a5346470f21e6c4adecb9fea26af26204f59922f67ff546f4fc2a5bd3629489084b343948361c22b11cd116005a3958e080c5bfdbe055e8747af254c0756dbf8ac88000000000000000000000000000000000000000000000000000000000000000006a1d8179137542a983437bdfe2a7ab2557f535c8a78722b68a49dc0000000002c53da186ffceba53ca9a5c2797a902c5a8f9b35b1493efeaebb1189583be2ac020302000134000000000000000000000000c80000000000000006a1d8179137542a983437bdfe2a7ab2557f535c8a78722b68a49dc00000000004030201000c030000000094357700000000\",\n      \"signing_payload\": \"02000205f8c4898641adada76eeeee2de872d931bc58bfb2ce5b79734e32808cc501a5346470f21e6c4adecb9fea26af26204f59922f67ff546f4fc2a5bd3629489084b343948361c22b11cd116005a3958e080c5bfdbe055e8747af254c0756dbf8ac88000000000000000000000000000000000000000000000000000000000000000006a1d8179137542a983437bdfe2a7ab2557f535c8a78722b68a49dc0000000002c53da186ffceba53ca9a5c2797a902c5a8f9b35b1493efeaebb1189583be2ac020302000134000000000000000000000000c80000000000000006a1d8179137542a983437bdfe2a7ab2557f535c8a78722b68a49dc00000000004030201000c030000000094357700000000\",\n      \"signed\": \"022bc35a0d1d2b71b8742a4a4be0035091622efabdb234a24ee962400deec1cf59b7cc77d22633aac5b7e07f3b98edf1acb6c0b71241dca96b42916508856d9d0e9ddddac8a30dc9fc1acf5f382053baa0361b6a17893870990d5bf737ba4b3928022f023fa9321cf5e5733f46dac33f38895033ed9b971f6dac45b888c2f0820b02000205f8c4898641adada76eeeee2de872d931bc58bfb2ce5b79734e32808cc501a5346470f21e6c4adecb9fea26af26204f59922f67ff546f4fc2a5bd3629489084b343948361c22b11cd116005a3958e080c5bfdbe055e8747af254c0756dbf8ac88000000000000000000000000000000000000000000000000000000000000000006a1d8179137542a983437bdfe2a7ab2557f535c8a78722b68a49dc0000000002c53da186ffceba53ca9a5c2797a902c5a8f9b35b1493efeaebb1189583be2ac020302000134000000000000000000000000c80000000000000006a1d8179137542a983437bdfe2a7ab2557f535c8a78722b68a49dc00000000004030201000c030000000094357700000000\",\n      \"hash\": \"skP46dMLV4qELAyiFZmxaUUtjfLdXPpGqNNu4HWzkDMUfyEBJTr3p7pzbg7FPVRnGPvtpiMqWgNKJMZ2dw7J6h3\",\n      \"status\": \"confirmed\",\n      \"error\": null,\n      \"signatures\": []\n    },\n    \"source_stake_authority_pubkey\": \"Hk5voGB7wh9HtXTeszbW7AFm3A4B94xWkXeeaqTYspqy\",\n    \"destination_stake_account_pubkey\": \"7m5fFsdZNdoifnmToR23rK14V2Yoxw3omD1V8vy21kXC\"\n  },\n  \"network_code\": \"solana\",\n  \"chain_code\": \"testnet\",\n  \"created_at\": \"2022-11-02T04:25:28.997Z\",\n  \"updated_at\": \"2022-11-02T04:27:08.932Z\"\n}"
 						}
 					]
 				}
@@ -3940,52 +4280,44 @@
 	],
 	"variable": [
 		{
-			"id": "ce914174-e64e-4ec4-ae25-110508b91089",
+			"id": "d2928d05-4b3e-48dd-970a-a52072af0074",
 			"key": "AVAX_STAKING_HOST",
-			"value": "avalanche-slate.datahub.figment.io",
-			"type": "string"
+			"value": "avalanche-slate.datahub.figment.io"
 		},
 		{
-			"id": "ef036782-063c-4063-a807-d6ab2fa26d2e",
+			"id": "4764eae5-d72d-4a45-8123-903e780ab750",
 			"key": "COSMOS_STAKING_HOST",
-			"value": "cosmos-slate.datahub.figment.io",
-			"type": "string"
+			"value": "cosmos-slate.datahub.figment.io"
 		},
 		{
-			"id": "7c6651f3-a7ed-4fa6-95dd-3174bfb0ccd0",
+			"id": "aa088f3e-af84-46d5-8acf-21f7ff10eb99",
 			"key": "ETH_STAKING_HOST",
-			"value": "eth-slate.datahub.figment.io",
-			"type": "string"
+			"value": "eth-slate.datahub.figment.io"
 		},
 		{
-			"id": "7f5cdc21-e654-4c6e-ae52-d309e5b28b4b",
+			"id": "d72b4d2d-1ebc-4847-9392-fffc519cf4b4",
 			"key": "NEAR_STAKING_HOST",
-			"value": "near-slate.datahub.figment.io",
-			"type": "string"
+			"value": "near-slate.datahub.figment.io"
 		},
 		{
-			"id": "b184f375-e50c-4bc1-a63e-a9322917c856",
+			"id": "1320604e-b220-45e5-91a4-217f4eb2838e",
 			"key": "DOT_STAKING_HOST",
-			"value": "polkadot-slate.datahub.figment.io",
-			"type": "string"
+			"value": "polkadot-slate.datahub.figment.io"
 		},
 		{
-			"id": "4c7ed803-3eb3-4118-b6c6-88062a416e65",
-			"key": "SOL_STAKING_HOST",
-			"value": "solana-slate.datahub.figment.io",
-			"type": "string"
+			"id": "11a64b67-319e-466d-be37-37ab561f3baa",
+			"key": "SOLANA_STAKING_HOST",
+			"value": "solana-slate.datahub.figment.io"
 		},
 		{
-			"id": "e5f3d103-3fb4-4247-b3db-c391744e483d",
+			"id": "c303e0b6-1737-48fd-8440-256b30d21a19",
 			"key": "POLYGON_STAKING_HOST",
-			"value": "polygon-slate.datahub.figment.io",
-			"type": "string"
+			"value": "polygon-slate.datahub.figment.io"
 		},
 		{
-			"id": "388fc7c5-1bde-464b-8c92-93d7e3d088a3",
+			"id": "a39d5f70-f02d-43eb-b574-367b9965aa4b",
 			"key": "INTERACTIVE",
-			"value": "false",
-			"type": "string"
+			"value": "false"
 		}
 	]
 }
