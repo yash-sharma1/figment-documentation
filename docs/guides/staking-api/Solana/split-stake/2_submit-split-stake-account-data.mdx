@@ -1,0 +1,106 @@
+---
+title: Submit Split Stake Account Data
+slug: /guides/staking-api/solana/split-stake-account/submit-split-stake-account-data
+---
+
+After collecting the required inputs, send a `PUT` request to `/api/v1/flows/[:flow_id]/next` to proceed to the next step.
+
+### Parameters
+
+- `name` &mdash; `string` Name of the action to execute (required).
+- `inputs` &mdash; `object`
+  - `funding_account_pubkey` &mdash; The public key of the wallet which will pay the transaction fee (required).
+  - `source_stake_account_pubkey` &mdash; The existing stake account from which partial SOL balance will be split (required).
+  - `amount` &mdash; The amount of SOL to be transferred to the new stake account. This field should be in full SOL, not in lamports (i.e., if you want to fund the new stake account with 5 SOL, return `"amount": 5.0`). The Staking API will translate the amount to lamports so you do not have to worry about the conversion factor. Lamports are fractional SOLs (required).
+
+### Sample cURL Request
+
+```bash {5-10}
+curl -X PUT 'https://solana-slate.datahub.figment.io/api/v1/flows/730fbe4e-c4b4-480f-b3c5-4a25bfbd5cf3/next' \
+-H 'Content-Type: application/json' \
+-H 'Authorization: <api_key>' \
+-d '{
+  "name": "create_split_tx",
+    "inputs": {
+        "funding_account_pubkey": "Hk5voGB7wh9HtXTeszbW7AFm3A4B94xWkXeeaqTYspqy",
+        "source_stake_account_pubkey": "5YofNaQJ24cgp5hzJgMKSwi16188WiBgfdbWkxbG4FWP",
+        "amount": 2.0
+    }
+}'
+```
+
+### Response
+
+The response indicates two possible `actions`:
+
+- `refresh_split_tx` &mdash; If you need to get a fresh version of the transaction payload (i.e., the recent blockhash has expired).
+- `sign_split_tx` &mdash; Submit a signed transaction payload ready to be broadcast to the network.
+
+We will choose `sign_split_tx`, which indicates one input to collect:
+
+- `transaction_payload` &mdash; The signed transaction payload ready to be broadcast to the network.
+
+#### Sample Response
+
+```json {21}
+{
+  "id": "730fbe4e-c4b4-480f-b3c5-4a25bfbd5cf3",
+  "state": "split_tx_signature",
+  "actions": [
+    {
+      "name": "refresh_split_tx",
+      "inputs": []
+    },
+    {
+      "name": "sign_split_tx",
+      "inputs": [
+        {
+          "name": "transaction_payload",
+          "display": "Transaction Payload",
+          "description": "",
+          "type": "signed_transaction",
+          "validations": [],
+          "signers": ["Hk5voGB7wh9HtXTeszbW7AFm3A4B94xWkXeeaqTYspqy"],
+          "transaction_payload": "02000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000009ddddac8a30dc9fc1acf5f382053baa0361b6a17893870990d5bf737ba4b3928022f023fa9321cf5e5733f46dac33f38895033ed9b971f6dac45b888c2f0820b02000205f8c4898641adada76eeeee2de872d931bc58bfb2ce5b79734e32808cc501a5346470f21e6c4adecb9fea26af26204f59922f67ff546f4fc2a5bd3629489084b343948361c22b11cd116005a3958e080c5bfdbe055e8747af254c0756dbf8ac88000000000000000000000000000000000000000000000000000000000000000006a1d8179137542a983437bdfe2a7ab2557f535c8a78722b68a49dc0000000002c53da186ffceba53ca9a5c2797a902c5a8f9b35b1493efeaebb1189583be2ac020302000134000000000000000000000000c80000000000000006a1d8179137542a983437bdfe2a7ab2557f535c8a78722b68a49dc00000000004030201000c030000000094357700000000"
+        },
+        {
+          "name": "signatures",
+          "display": "Signatures",
+          "description": "",
+          "type": "array_of_signatures",
+          "validations": [],
+          "signers": ["Hk5voGB7wh9HtXTeszbW7AFm3A4B94xWkXeeaqTYspqy"],
+          "transaction_payload": "02000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000009ddddac8a30dc9fc1acf5f382053baa0361b6a17893870990d5bf737ba4b3928022f023fa9321cf5e5733f46dac33f38895033ed9b971f6dac45b888c2f0820b02000205f8c4898641adada76eeeee2de872d931bc58bfb2ce5b79734e32808cc501a5346470f21e6c4adecb9fea26af26204f59922f67ff546f4fc2a5bd3629489084b343948361c22b11cd116005a3958e080c5bfdbe055e8747af254c0756dbf8ac88000000000000000000000000000000000000000000000000000000000000000006a1d8179137542a983437bdfe2a7ab2557f535c8a78722b68a49dc0000000002c53da186ffceba53ca9a5c2797a902c5a8f9b35b1493efeaebb1189583be2ac020302000134000000000000000000000000c80000000000000006a1d8179137542a983437bdfe2a7ab2557f535c8a78722b68a49dc00000000004030201000c030000000094357700000000",
+          "signing_payload": "02000205f8c4898641adada76eeeee2de872d931bc58bfb2ce5b79734e32808cc501a5346470f21e6c4adecb9fea26af26204f59922f67ff546f4fc2a5bd3629489084b343948361c22b11cd116005a3958e080c5bfdbe055e8747af254c0756dbf8ac88000000000000000000000000000000000000000000000000000000000000000006a1d8179137542a983437bdfe2a7ab2557f535c8a78722b68a49dc0000000002c53da186ffceba53ca9a5c2797a902c5a8f9b35b1493efeaebb1189583be2ac020302000134000000000000000000000000c80000000000000006a1d8179137542a983437bdfe2a7ab2557f535c8a78722b68a49dc00000000004030201000c030000000094357700000000"
+        }
+      ]
+    }
+  ],
+  "data": {
+    "funding_account_pubkey": "Hk5voGB7wh9HtXTeszbW7AFm3A4B94xWkXeeaqTYspqy",
+    "source_stake_account_pubkey": "5YofNaQJ24cgp5hzJgMKSwi16188WiBgfdbWkxbG4FWP",
+    "amount": "2.0",
+    "split_transaction": {
+      "raw": "02000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000009ddddac8a30dc9fc1acf5f382053baa0361b6a17893870990d5bf737ba4b3928022f023fa9321cf5e5733f46dac33f38895033ed9b971f6dac45b888c2f0820b02000205f8c4898641adada76eeeee2de872d931bc58bfb2ce5b79734e32808cc501a5346470f21e6c4adecb9fea26af26204f59922f67ff546f4fc2a5bd3629489084b343948361c22b11cd116005a3958e080c5bfdbe055e8747af254c0756dbf8ac88000000000000000000000000000000000000000000000000000000000000000006a1d8179137542a983437bdfe2a7ab2557f535c8a78722b68a49dc0000000002c53da186ffceba53ca9a5c2797a902c5a8f9b35b1493efeaebb1189583be2ac020302000134000000000000000000000000c80000000000000006a1d8179137542a983437bdfe2a7ab2557f535c8a78722b68a49dc00000000004030201000c030000000094357700000000",
+      "signing_payload": "02000205f8c4898641adada76eeeee2de872d931bc58bfb2ce5b79734e32808cc501a5346470f21e6c4adecb9fea26af26204f59922f67ff546f4fc2a5bd3629489084b343948361c22b11cd116005a3958e080c5bfdbe055e8747af254c0756dbf8ac88000000000000000000000000000000000000000000000000000000000000000006a1d8179137542a983437bdfe2a7ab2557f535c8a78722b68a49dc0000000002c53da186ffceba53ca9a5c2797a902c5a8f9b35b1493efeaebb1189583be2ac020302000134000000000000000000000000c80000000000000006a1d8179137542a983437bdfe2a7ab2557f535c8a78722b68a49dc00000000004030201000c030000000094357700000000",
+      "signed": null,
+      "hash": null,
+      "status": null,
+      "error": null,
+      "signatures": null
+    },
+    "source_stake_authority_pubkey": "Hk5voGB7wh9HtXTeszbW7AFm3A4B94xWkXeeaqTYspqy",
+    "destination_stake_account_pubkey": "7m5fFsdZNdoifnmToR23rK14V2Yoxw3omD1V8vy21kXC"
+  },
+  "network_code": "solana",
+  "chain_code": "testnet",
+  "created_at": "2022-11-02T04:25:28.997Z",
+  "updated_at": "2022-11-02T04:26:12.019Z"
+}
+```
+
+:::info note
+
+Make sure to save the `transaction_payload` from this response, which is what needs to be signed in the next step.
+
+:::

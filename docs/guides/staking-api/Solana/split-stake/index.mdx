@@ -1,0 +1,16 @@
+---
+title: Split Stake Acccount
+slug: /guides/staking-api/solana/split-stake-account
+sidebar_position: 4
+pagination_prev: null
+---
+
+The Split Stake Account flow allows you to break the balance of a given stake account up into two separate accounts. This way, you are able to partially unbond your SOL rather than needing to unbond the full balance of the stake account.
+
+To break the balance of a stake account up into two separate accounts, you will need:
+
+- The existing stake account from which partial SOL balance will be split
+- The pubkey of the wallet which will pay the transaction fee
+- The amount of SOL tokens you want to unbond
+
+The Staking API will manage the rest.
