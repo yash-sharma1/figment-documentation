@@ -153,7 +153,7 @@ function sidebarIndexForService(service) {
       return 5;
     case "rewards-rates-api":
       return 6;
-    case "prime-api":
+    case "validator-api":
       return 7;
     default:
       return 0;
