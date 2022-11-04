@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "9c8fce8c-5160-4e02-9515-0bf07c7d8a78",
-		"name": "prime-api",
+		"name": "validator-api",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
 	"item": [
@@ -580,19 +580,19 @@
 	],
 	"variable": [
 		{
-			"id": "5e672a13-bd8c-40e2-9a76-51b727d1cc93",
+			"id": "a1ae0376-73f1-4e00-b110-3d218d7b2151",
 			"key": "ETH_HOST",
 			"value": "hubble.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "87dc430c-d0a6-4d7c-92eb-a33a36f93c0f",
+			"id": "e1ffa17a-bfdd-42a8-b2b7-e504a54844ab",
 			"key": "DOT_HOST",
 			"value": "hubble.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "f26a0c34-1bf3-4ff5-94ac-94db2a44315d",
+			"id": "1ca8f7e0-39aa-4375-a8b6-f1deccd553c5",
 			"key": "INTERACTIVE",
 			"value": "false",
 			"type": "string"
