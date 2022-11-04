@@ -1,0 +1,601 @@
+{
+	"info": {
+		"_postman_id": "9c8fce8c-5160-4e02-9515-0bf07c7d8a78",
+		"name": "validator-api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Ethereum",
+			"item": [
+				{
+					"name": "/eth2_staking/positions",
+					"id": "428dfee6-a51c-44f1-b408-254a205c3bf6",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"external_user_id\": \"user_id\",\n  \"external_user_email\": \"user@company.com\",\n  \"withdrawal_address\": \"0x01000000000000000000000003777debd25dcdbc4cdb56178906ac0ecac94019\",\n  \"validators_count\": 1,\n  \"eth2_network_name\": \"goerli\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://{{ETH_HOST}}/api/v1/prime/apikey/{{API_KEY}}/eth2_staking/positions/",
+						"description": "Request creation of new staking position with the passed attributes.\n\n### Parameters\n\n- `external_user_id` — `string` — A customer user ID.\n- `external_user_email` — `string` — A customer email address.\n- `withdrawal_address` — `string` — An Ethereum address.\n- `validators_count` — `integer` — A number of validators.\n- `eth2_network_name` — `string` — A network name, denoting testnet (`goerli`) or mainnet (`prater`).\n    \n\n### Response\n\n- `success` — `boolean` — Returns `true` if the action was successful, otherwise returns `false`.\n    \n\n### Webhook configuration\n\nUsers can be notified via webhook when a new staking position is created. Configure a webhook URL and a webhook API key under \"Prime / ETH Staking\" in the Prime Dashboard. The configured API key will be sent as an `Authorization` header."
+					},
+					"response": [
+						{
+							"id": "41eec3cd-f4be-46da-921e-3f006341c83d",
+							"name": "/api/v1/prime/eth2_staking/positions",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"external_user_id\": \"user_id\",\n  \"external_user_email\": \"user@company.com\",\n  \"withdrawal_address\": \"0x01000000000000000000000003777debd25dcdbc4cdb56178906ac0ecac94019\",\n  \"validators_count\": 1,\n  \"eth2_network_name\": \"goerli\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								}
+							},
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"success\": true\n}"
+						}
+					]
+				},
+				{
+					"name": "/eth2_staking/positions",
+					"id": "b9eb6bb9-d930-473a-8546-260443c02c94",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{ETH_HOST}}/apikey/{{API_KEY}}/api/v1/prime/eth2_staking/positions?withdrawal_address=0x542138451d0953Aa082dE659d2A1ca1e5EF452Bf&page[size]=10&page[number]=1&fundable_positions_only=false",
+							"protocol": "https",
+							"host": [
+								"{{ETH_HOST}}"
+							],
+							"path": [
+								"apikey",
+								"{{API_KEY}}",
+								"api",
+								"v1",
+								"prime",
+								"eth2_staking",
+								"positions"
+							],
+							"query": [
+								{
+									"key": "withdrawal_address",
+									"value": "0x542138451d0953Aa082dE659d2A1ca1e5EF452Bf"
+								},
+								{
+									"key": "page[size]",
+									"value": "10"
+								},
+								{
+									"key": "page[number]",
+									"value": "1"
+								},
+								{
+									"key": "fundable_positions_only",
+									"value": "false"
+								}
+							]
+						},
+						"description": "Returns a list of staking positions.\n\n### Parameters\n\n- `withdrawal_address` — `string` — A withdrawal address (required)\n- `page[size]` — `integer` — The number of results to display, used for pagination (optional).\n- `page[number]` — `integer` — The number of pages to display (optional).\n- `fundable_positions_only` — `boolean` — `true` will display only positions which can be funded (optional).\n    \n\n### Response\n\n- `data` - `array`\n    - `object` — Each response object contains the following fields:\n        - `id` — A unique identifier.\n        - `type` — The type of staking position.\n        - `attributes`\n            - `id` — A unique identifier.\n            - `name` — A name.\n            - `eth1_withdrawal_address` — An Ethereum address.\n            - `staked_amount` — The amount of staked ETH.\n            - `validators_count` — A number of validators.\n            - `created_at` — Timestamp.\n            - `updated_at` — Timestamp.\n        - `links` — `object` — Pagination links based on `page[size]` and `page[number]`."
+					},
+					"response": [
+						{
+							"id": "f232e18a-100f-46a0-883a-68551f95bfd5",
+							"name": "/api/v1/prime/eth2_staking/positions",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								]
+							},
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"data\": [\n        {\n            \"id\": \"string\",\n            \"type\": \"string\",\n            \"attributes\": {\n                \"id\": 0,\n                \"name\": \"string\",\n                \"eth1_withdrawal_address\": \"string\",\n                \"staked_amount\": 0,\n                \"validators_count\": 0,\n                \"created_at\": \"string\",\n                \"updated_at\": \"string\"\n            }\n        }\n    ],\n    \"links\": {\n        \"self\": \"string\",\n        \"current\": \"string\",\n        \"next\": \"string\",\n        \"last\": \"string\",\n        \"prev\": \"string\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "/eth2_staking/positions/{position_id}/validators",
+					"id": "7ac30f86-491e-4e8c-8e89-70b41f8f0d11",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{ETH_HOST}}/apikey/{{API_KEY}}/api/v1/prime/eth2_staking/positions/{{position_id}}/validators?page[size]=10&page[number]=1&include=position&status_history=true&status=provisioned&position_id=123456",
+							"protocol": "https",
+							"host": [
+								"{{ETH_HOST}}"
+							],
+							"path": [
+								"apikey",
+								"{{API_KEY}}",
+								"api",
+								"v1",
+								"prime",
+								"eth2_staking",
+								"positions",
+								"{{position_id}}",
+								"validators"
+							],
+							"query": [
+								{
+									"key": "page[size]",
+									"value": "10"
+								},
+								{
+									"key": "page[number]",
+									"value": "1"
+								},
+								{
+									"key": "include",
+									"value": "position"
+								},
+								{
+									"key": "status_history",
+									"value": "true"
+								},
+								{
+									"key": "status",
+									"value": "provisioned"
+								},
+								{
+									"key": "position_id",
+									"value": "123456"
+								}
+							]
+						},
+						"description": "Returns a list of validators for a given staking position.\n\n### Parameters\n\n- `position_id` — `string` — A valid staking position ID (required).\n- `include` — `string` — Accepted value: `position`\n- `status_history` - `string` — If present, status change history will be included for each validator.\n- `status` - `string` — Accepted value(s): `funding_requested`, `deposited`, `pending_initialized`, `pending_queued`, `active_ongoing`, `active_exiting`, `active_slashed`, `exited_unslashed`, `exited_slashed`, `withdrawal_possible`, `withdrawal_done`, `provisioned`.\n- `page[size]` — `integer` — The number of results to display, used for pagination (optional).\n- `page[number]` — `integer` — The page to display (optional).\n    \n\n### Response\n\n- `data` - `array`\n    - `object`\n        - `id` — `string` - A unique identifier.\n        - `type` — `string` — The type of position.\n        - `attributes` — `object`\n            - `name` — `string` — The position name.\n            - `pubkey` — `string` — A public key.\n            - `withdrawal_credentials` — `string` — Valid withdrawal credentials.\n            - `amount` — `integer` — An amount of ETH.\n            - `signature` — `string` — A valid signature.\n            - `deposit_data_root` — `string` — The deposit data.\n            - `deposit_message_root` — `string` — The deposit message.\n            - `fork_version` — `string` — A fork version.\n            - `eth2_network_name` — `string` — A network name, denoting testnet (`goerli`) or mainnet (`prater`).\n            - `status` - `string` — The positions current status.\n            - `deposit_cli_version` — `string` — The version of the CLI software used when making the deposit.\n            - `status_synced_at` — `string` — A timestamp indicating when the status was last synced,\n            - `status_history` — `array` — Details of the status history.\n                - `status` — `string` — A status.\n                - `changed_at` — `string` — A timestamp.\n        - `relationships` — `object`\n            - `position` — `object`\n                - `data` — `object`\n                    - `id` — `string` — A unique identifier.\n                    - `type` — `string` — The position type.\n        - `links` — `object` — Pagination links based on `page[size]` and `page[number]`.\n            - `self` — `string`\n            - `current` — `string`\n            - `next` — `string`\n            - `last` — `string`\n            - `prev` — `string`\n        - `included` — `array`\n            - `object`\n                - `id` — `string` — A unique identifier.\n                - `type` — `string` — The position type.\n                - `attributes` — `object`\n                    - `id` — `string` — A unique identifier.\n                    - `name` — `string` — A name.\n                    - `eth1_withdrawal_address` — `string` — An Ethereum address.\n                    - `staked_amount` — `integer` — An amount of staked ETH.\n                    - `validators_count` — `integer -` A number of validators.\n                    - `created_at` — `string` — A timestamp.\n                    - `updated_at` — `string` — A timestamp."
+					},
+					"response": [
+						{
+							"id": "f72b6b25-a809-4429-b339-af4e7e8af154",
+							"name": "/api/v1/prime/eth2_staking/positions/{position_id}/validators",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "?page[size]&page[number]&include&status_history&status&position_id",
+									"query": [
+										{
+											"key": "page[size]",
+											"value": null,
+											"type": "text"
+										},
+										{
+											"key": "page[number]",
+											"value": null,
+											"type": "text"
+										},
+										{
+											"key": "include",
+											"value": null,
+											"type": "text"
+										},
+										{
+											"key": "status_history",
+											"value": null,
+											"type": "text"
+										},
+										{
+											"key": "status",
+											"value": null,
+											"type": "text"
+										},
+										{
+											"key": "position_id",
+											"value": null,
+											"type": "text"
+										}
+									]
+								}
+							},
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"data\": [\n        {\n            \"id\": \"string\",\n            \"type\": \"string\",\n            \"attributes\": {\n                \"name\": \"string\",\n                \"pubkey\": \"string\",\n                \"withdrawal_credentials\": \"string\",\n                \"amount\": 0,\n                \"signature\": \"string\",\n                \"deposit_data_root\": \"string\",\n                \"deposit_message_root\": \"string\",\n                \"fork_version\": \"string\",\n                \"eth2_network_name\": \"string\",\n                \"status\": \"string\",\n                \"deposit_cli_version\": \"string\",\n                \"status_synced_at\": \"string\",\n                \"status_history\": [\n                    {\n                        \"status\": \"string\",\n                        \"changed_at\": \"string\"\n                    }\n                ]\n            },\n            \"relationships\": {\n                \"position\": {\n                    \"data\": {\n                        \"id\": \"string\",\n                        \"type\": \"string\"\n                    }\n                }\n            }\n        }\n    ],\n    \"links\": {\n        \"self\": \"string\",\n        \"current\": \"string\",\n        \"next\": \"string\",\n        \"last\": \"string\",\n        \"prev\": \"string\"\n    },\n    \"included\": [\n        {\n            \"id\": \"string\",\n            \"type\": \"string\",\n            \"attributes\": {\n                \"id\": 0,\n                \"name\": \"string\",\n                \"eth1_withdrawal_address\": \"string\",\n                \"staked_amount\": 0,\n                \"validators_count\": 0,\n                \"created_at\": \"string\",\n                \"updated_at\": \"string\"\n            }\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "/eth2_staking/validators",
+					"id": "a4a8e27d-a591-4506-85e0-03555d76a9d7",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{ETH_HOST}}/apikey/{{API_KEY}}/api/v1/prime/eth2_staking/validators?withdrawal_address=0x542138451d0953Aa082dE659d2A1ca1e5EF452Bf&page[size]=10&page[number]=1&include=position&status_history=true&status=provisioned",
+							"protocol": "https",
+							"host": [
+								"{{ETH_HOST}}"
+							],
+							"path": [
+								"apikey",
+								"{{API_KEY}}",
+								"api",
+								"v1",
+								"prime",
+								"eth2_staking",
+								"validators"
+							],
+							"query": [
+								{
+									"key": "withdrawal_address",
+									"value": "0x542138451d0953Aa082dE659d2A1ca1e5EF452Bf"
+								},
+								{
+									"key": "page[size]",
+									"value": "10"
+								},
+								{
+									"key": "page[number]",
+									"value": "1"
+								},
+								{
+									"key": "include",
+									"value": "position"
+								},
+								{
+									"key": "status_history",
+									"value": "true"
+								},
+								{
+									"key": "status",
+									"value": "provisioned"
+								}
+							]
+						},
+						"description": "Returns a list of validators belonging to a customer.\n\n### Parameters\n\n- `withdrawal_address` — `string` — An Ethereum address.\n- `page[size]` — `integer` — The number of results to display, used for pagination (optional).\n- `page[number]` — `integer` — The page number to display (optional).\n- `include` — `string` — Accepts the value `position`.\n- `status_history` — `string` — If present, status change history will be included for each validator.\n- `status` — `string` — Accepted value(s): `funding_requested`, `deposited`, `pending_initialized`, `pending_queued`, `active_ongoing`, `active_exiting`, `active_slashed`, `exited_unslashed`, `exited_slashed`, `withdrawal_possible`, `withdrawal_done`, `provisioned`.\n    \n\n### Response\n\n- `data` — `array`\n    - `object`\n        - `id` — `string` — A unique identifier.\n        - `type` — `string` — The type of position.\n        - `attributes` — `object`\n            - `name` — `string` — The position name.\n            - `pubkey` — `string` — A public key.\n            - `withdrawal_credentials` — `string` — Valid withdrawal credentials.\n            - `amount` — `integer` — An amount of ETH.\n            - `signature` — `string` — A valid signature.\n            - `deposit_data_root` — `string` — The deposit data.\n            - `deposit_message_root` — `string` — The deposit message.\n            - `fork_version` — `string` — A fork version.\n            - `eth2_network_name` — `string` — A network name, `testnet`, `mainnet`\n            - `status` — `string` — The positions current status.\n            - `deposit_cli_version` — `string` — The version of the CLI software used when making the deposit.\n            - `status_synced_at` — `string` — A timestamp indicating when the status was last synced,\n            - `status_history` — `array` — Details of the status history.\n                - `status` — `string` — A status.\n                - `changed_at` — `string` — A timestamp.\n        - `relationships` — `object`\n            - `position` — `object`\n                - `data` — `object`\n                    - `id` — `string` — A unique identifier.\n                    - `type` — `string` — The position type.\n        - `links` — `object` — Pagination links based on `page[size]` and `page[number]`.\n            - `self` — `string`\n            - `current` — `string`\n            - `next` — `string`\n            - `last` — `string`\n            - `prev` — `string`\n        - `included` — `array`\n            - `object`\n                - `id` — `string` — A unique identifier.\n                - `type` — `string` — The position type.\n                - `attributes` — `object`\n                    - `id` — `string` — A unique identifier.\n                    - `name` — `string` — A name.\n                    - `eth1_withdrawal_address` — `string` — An Ethereum address.\n                    - `staked_amount` — `integer` — An amount of staked ETH.\n                    - `validators_count` — `integer` — A number of validators.\n                    - `created_at` — `string` — A timestamp.\n                    - `updated_at` — `string` — A timestamp."
+					},
+					"response": [
+						{
+							"id": "74fc6094-24b0-46fc-b2b9-ccd12c7e82f2",
+							"name": "/api/v1/prime/eth2_staking/validators",
+							"originalRequest": {
+								"header": []
+							},
+							"_postman_previewlanguage": "json",
+							"header": [
+								""
+							],
+							"cookie": [
+								{
+									"expires": "Invalid Date"
+								}
+							],
+							"responseTime": null,
+							"body": "{\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"type\": \"string\",\n      \"attributes\": {\n        \"name\": \"string\",\n        \"pubkey\": \"string\",\n        \"withdrawal_credentials\": \"string\",\n        \"amount\": 0,\n        \"signature\": \"string\",\n        \"deposit_data_root\": \"string\",\n        \"deposit_message_root\": \"string\",\n        \"fork_version\": \"string\",\n        \"eth2_network_name\": \"string\",\n        \"status\": \"string\",\n        \"deposit_cli_version\": \"string\",\n        \"status_synced_at\": \"string\",\n        \"status_history\": [\n          {\n            \"status\": \"string\",\n            \"changed_at\": \"string\"\n          }\n        ]\n      },\n      \"relationships\": {\n        \"position\": {\n          \"data\": {\n            \"id\": \"string\",\n            \"type\": \"string\"\n          }\n        }\n      }\n    }\n  ],\n  \"links\": {\n    \"self\": \"string\",\n    \"current\": \"string\",\n    \"next\": \"string\",\n    \"last\": \"string\",\n    \"prev\": \"string\"\n  },\n  \"included\": [\n    {\n      \"id\": \"string\",\n      \"type\": \"string\",\n      \"attributes\": {\n        \"id\": 0,\n        \"name\": \"string\",\n        \"eth1_withdrawal_address\": \"string\",\n        \"staked_amount\": 0,\n        \"validators_count\": 0,\n        \"created_at\": \"string\",\n        \"updated_at\": \"string\"\n      }\n    }\n  ]\n}"
+						}
+					]
+				},
+				{
+					"name": "/eth2_staking/validators/{id}",
+					"id": "fe53d87e-5bd1-4d6e-bf9a-4e18fde6d6b2",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{ETH_HOST}}/apikey/{{API_KEY}}/api/v1/prime/eth2_staking/validators/?id=1234&include=position&status_history=true",
+							"protocol": "https",
+							"host": [
+								"{{ETH_HOST}}"
+							],
+							"path": [
+								"apikey",
+								"{{API_KEY}}",
+								"api",
+								"v1",
+								"prime",
+								"eth2_staking",
+								"validators",
+								""
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1234"
+								},
+								{
+									"key": "include",
+									"value": "position"
+								},
+								{
+									"key": "status_history",
+									"value": "true"
+								}
+							]
+						},
+						"description": "Returns information about a single validator.\n\n### Parameters\n\n- `id` — `string` — The validator ID.\n- `include` — `string` — Accepts the value `position`.\n- `status_history` — `string` — If present, the status change history will be included for each validator.\n    \n\n### Response\n\n- `data` — `array`\n    - `object`\n        - `id` — `string` - A unique identifier.\n        - `type` — `string` - The type of position.\n        - `attributes` — `object`\n            - `name` — `string` — The position name.\n            - `pubkey` — `string` — A public key.\n            - `withdrawal_credentials` — `string` — Valid withdrawal credentials.\n            - `amount` — `integer` — An amount of ETH.\n            - `signature` — `string` — A valid signature.\n            - `deposit_data_root` — `string` — The deposit data.\n            - `deposit_message_root` — `string` — The deposit message.\n            - `fork_version` — `string` — A fork version.\n            - `eth2_network_name` — `string` — A network name, denoting testnet (`goerli`) or mainnet (`prater`).\n            - `status` — `string` — The positions current status.\n            - `deposit_cli_version` — `string` — The version of the CLI software used when making the deposit.\n            - `status_synced_at` — `string` — A timestamp indicating when the status was last synced,\n            - `status_history` — `array` — Details of the status history.\n                - `status` — `string` — A status.\n                - `changed_at` — `string` — A timestamp.\n        - `relationships` — `object`\n            - `position` — `object`\n                - `data` — `object`\n                    - `id` — `string` — A unique identifier.\n                    - `type` — `string` — The position type.\n        - `included` — `array`\n            - `object`\n                - `id` — `string` — A unique identifier.\n                - `type` — `string` — The position type.\n                - `attributes` — `object`\n                    - `id` — `string` — A unique identifier.\n                    - `name` — `string` — A name.\n                    - `eth1_withdrawal_address` — `string` — An Ethereum address.\n                    - `staked_amount` — `integer` — An amount of staked ETH.\n                    - `validators_count` — `integer` — A number of validators.\n                    - `created_at` — `string` — A timestamp.\n                    - `updated_at` — `string` — A timestamp."
+					},
+					"response": [
+						{
+							"id": "83c98c37-5d6e-45b6-99eb-af95b84091c6",
+							"name": "/api/v1/prime/eth2_staking/validators/{id}",
+							"originalRequest": {
+								"header": []
+							},
+							"_postman_previewlanguage": "json",
+							"header": [
+								""
+							],
+							"cookie": [
+								{
+									"expires": "Invalid Date"
+								}
+							],
+							"responseTime": null,
+							"body": "{\n    \"data\": {\n        \"id\": \"string\",\n        \"type\": \"string\",\n        \"attributes\": {\n            \"name\": \"string\",\n            \"pubkey\": \"string\",\n            \"withdrawal_credentials\": \"string\",\n            \"amount\": 0,\n            \"signature\": \"string\",\n            \"deposit_data_root\": \"string\",\n            \"deposit_message_root\": \"string\",\n            \"fork_version\": \"string\",\n            \"eth2_network_name\": \"string\",\n            \"status\": \"string\",\n            \"deposit_cli_version\": \"string\",\n            \"status_synced_at\": \"string\",\n            \"status_history\": [\n                {\n                    \"status\": \"string\",\n                    \"changed_at\": \"string\"\n                }\n            ]\n        },\n        \"relationships\": {\n            \"position\": {\n                \"data\": {\n                    \"id\": \"string\",\n                    \"type\": \"string\"\n                }\n            }\n        }\n    },\n    \"included\": [\n        {\n            \"id\": \"string\",\n            \"type\": \"string\",\n            \"attributes\": {\n                \"id\": 0,\n                \"name\": \"string\",\n                \"eth1_withdrawal_address\": \"string\",\n                \"staked_amount\": 0,\n                \"validators_count\": 0,\n                \"created_at\": \"string\",\n                \"updated_at\": \"string\"\n            }\n        }\n    ]\n}"
+						}
+					]
+				}
+			],
+			"id": "69be3952-7960-44ef-8707-59b3004e5e9d"
+		},
+		{
+			"name": "Polkadot",
+			"item": [
+				{
+					"name": "/polkadot/nomination_proxy",
+					"id": "ea2a0762-d831-46a7-a3fc-584a5a41f662",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"stash_account_address\": \"5CUwmRuV8e5yV15eaktTwW4AMkBnf2anJvehKNq9ZugXBvUh\",\n    \"controller_account_address\": \"5FH7R79Ph88uC4xJaWv3UXRxVrYVfuRPcPuQiiRJ5B8zKbCd\",\n    \"proxy_account_address\": \"5CDTPiGKvMFikx83G5vZz6jQMt7EokMDpkZ5ErSvG6ea27SS\",\n    \"qtx_dot_bonded\": \"1.0\",\n    \"polkadot_network_name\": \"polkadot\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{DOT_HOST}}/api/v1/prime/apikey/{{API_KEY}}/polkadot/nomination_proxy",
+							"protocol": "https",
+							"host": [
+								"{{DOT_HOST}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"prime",
+								"apikey",
+								"{{API_KEY}}",
+								"polkadot",
+								"nomination_proxy"
+							],
+							"query": [
+								{
+									"key": "stash_account_address",
+									"value": "5CUwmRuV8e5yV15eaktTwW4AMkBnf2anJvehKNq9ZugXBvUh",
+									"disabled": true
+								},
+								{
+									"key": "controller_account_address",
+									"value": "5FH7R79Ph88uC4xJaWv3UXRxVrYVfuRPcPuQiiRJ5B8zKbCd",
+									"disabled": true
+								},
+								{
+									"key": "proxy_account_address",
+									"value": "5CDTPiGKvMFikx83G5vZz6jQMt7EokMDpkZ5ErSvG6ea27SS",
+									"disabled": true
+								},
+								{
+									"key": "qtx_dot_bonded",
+									"value": "1.0",
+									"disabled": true
+								},
+								{
+									"key": "polkadot_network_name",
+									"value": "polkadot",
+									"disabled": true
+								}
+							]
+						},
+						"description": "Request creation of new Polkadot account with passed attributes.\n\n### Parameters\n\n- `stash_account_address` — `string` — A valid Polkadot address (required).\n- `controller_account_address` — `string` — A valid Polkadot address (required).\n- `proxy_account_address` — `string` — A valid Polkadot address (required).\n- `qtx_dot_bonded` — `string` — An amount in DOT.\n- `polkadot_network_name` — `string` — Allowed value(s): `polkadot`, `westend`\n    \n\n### Response\n\n- `success` - `boolean` — Returns `true` if the action was successful, otherwise returns `false`."
+					},
+					"response": [
+						{
+							"id": "397695a9-af76-4655-956a-020810e16b9c",
+							"name": "/api/v1/prime/polkadot/nomination_proxy",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								]
+							},
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"success\": true\n}"
+						}
+					]
+				},
+				{
+					"name": "/polkadot/nomination_proxy/revoke_proxy",
+					"id": "db65462c-c1db-4fda-91e8-57c88e2a8d00",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"stash_account_address\": \"5CUwmRuV8e5yV15eaktTwW4AMkBnf2anJvehKNq9ZugXBvUh\",\n    \"controller_account_address\": \"5FH7R79Ph88uC4xJaWv3UXRxVrYVfuRPcPuQiiRJ5B8zKbCd\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{DOT_HOST}}/api/v1/prime/apikey/{{API_KEY}}/polkadot/nomination_proxy/revoke_proxy",
+							"protocol": "https",
+							"host": [
+								"{{DOT_HOST}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"prime",
+								"apikey",
+								"{{API_KEY}}",
+								"polkadot",
+								"nomination_proxy",
+								"revoke_proxy"
+							],
+							"query": [
+								{
+									"key": "stash_account_address",
+									"value": "5CUwmRuV8e5yV15eaktTwW4AMkBnf2anJvehKNq9ZugXBvUh",
+									"disabled": true
+								},
+								{
+									"key": "controller_account_address",
+									"value": "5FH7R79Ph88uC4xJaWv3UXRxVrYVfuRPcPuQiiRJ5B8zKbCd",
+									"disabled": true
+								}
+							]
+						},
+						"description": "Request to revoke Polkadot proxy account with passed attributes.\n\n### Parameters\n\n- `stash_account_address` — `string` — A valid Polkadot address (required).\n- `controller_account_address` — `string` — A valid Polkadot address (required).\n    \n\n### Response\n\n- `success` — `boolean` — Returns `true` if the action was successful, otherwise returns `false`."
+					},
+					"response": [
+						{
+							"id": "59b1aae4-5a89-4256-969c-8cc8e39b4935",
+							"name": "/api/v1/prime/polkadot/nomination_proxy/revoke_proxy",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								]
+							},
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"success\": true\n}"
+						}
+					]
+				}
+			],
+			"id": "066facec-a502-4002-88a8-ece636e49171"
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "f935650b-655a-4317-9cee-7cb160e9cae9",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "cf301865-8908-43a3-82c8-bd5308081e9d",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "bc52d339-e9da-494f-b257-6def39df3858",
+			"key": "ETH_HOST",
+			"value": "hubble.figment.io",
+			"type": "string"
+		},
+		{
+			"id": "f830f802-a55b-4501-a438-1f15465f6ab6",
+			"key": "DOT_HOST",
+			"value": "hubble.figment.io",
+			"type": "string"
+		},
+		{
+			"id": "994db72d-73df-4284-b434-4570bc3dab92",
+			"key": "INTERACTIVE",
+			"value": "false",
+			"type": "string"
+		}
+	]
+}
