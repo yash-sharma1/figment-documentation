@@ -19,7 +19,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"accounts\": [\n        \"0x8914b656ad92ffd6ad2920f8f2ad186b0502e4848ad5c5451fea01e42898a2ea07009afb5ca0fd20119da155d745a299\"\n    ], \n    \"start\": 151759,\n    \"end\": 151760\n}\n",
+							"raw": "{\n    \"network\": \"ethereum\",\n    \"accounts\": [\n        \"0x968c329ed829636a0bbbb57a25d9634ffd0d17bc1ff33adf93fd6a98920a82a83de930b9f2dddaebc4104ac90581ada0\"\n    ], \n    \"start\": 158871,\n    \"end\": 158871\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -27,7 +27,7 @@
 							}
 						},
 						"url": "https://{{ETH_REWARDS_HOST}}/v2/rewards/apikey/{{API_KEY}}",
-						"description": "Returns gross validator rewards grouped by epoch\n\n### Parameters\n\n*   `accounts` takes an array of validator's public addresses. 50 max. (required)\n*   `start` and `end` are epoch numbers (as integers) (required).\n    \n\n### Response\n\nThe response is broken down between `meta` and `data`\n\n*   `meta`\n    *   `network` is the name of the network queried\n    *   `period_unit` is the unit of the `period` field under `data` : `epoch` here\n*   `data` is an array of objects - one for each period - containing:\n    *   `validator` returns the validator that distributed the rewards\n    *   `period` is the epoch number (only present when no aggregation)\n    *   `timestamp` is the timestamp of the end of the period\n    *   `rewards` is an array of objects. The formula to compute the final rewards in the `currency` unit is `numeric x 10^(-exp)` (`text` being the string version of this). `type` is either `staking` (for consensus layer rewards) or `tips` (for execution layer rewards). `recipient` is the address of the rewards recipient\n\nThere can be multiple `type=tips` objects per period: one per proposed blocks. We don't aggregate them in one object because they could have different recipient addresses. `type=staking` only have one object: we aggregate all subtypes (block proposals, attestations, sync committees, slashing)\n\n### Limitations\n\n*   This API serves data for the last 7 days for epoch and 60 days for daily aggregation\n*   This API returns rewards for Figment validators only\n*   Data is available approximately an hour after the end of the day or epoch. When requesting daily for the current day, the data will be available but obviously partially complete as the day progresses.\n    \n\n### FAQ\n\n*   **Reward Types:** `staking` type rewards are the net aggregation of all consensus layer rewards: block proposal, attestation, sync committee and slashing. There is one staking bucket per period. `tips` type rewards are the effective amount received by the fee recipient of the proposed block on the execution layer. There can be multiple buckets per period (one per block proposed)\n*   **Negative Rewards:** In theory, there could be a negative rewards amount for a day. But slashing events are rare. Current negative amounts would more likely be caused by repeatedly missing attestations and/or sync committee votes."
+						"description": "Returns gross validator rewards grouped by epoch\n\n### Parameters\n\n- `accounts` takes an array of validator's public addresses. 50 max. (required)\n- `start` and `end` are epoch numbers (as integers) (required).\n    \n\n### Response\n\nThe response is broken down between `meta` and `data`\n\n- `meta`\n    - `network` is the name of the network queried\n    - `period_unit` is the unit of the `period` field under `data` : `epoch` here\n- `data` is an array of objects - one for each period - containing:\n    - `validator` returns the validator that distributed the rewards\n    - `period` is the epoch number (only present when no aggregation)\n    - `timestamp` is the timestamp of the end of the period\n    - `rewards` is an array of objects.\n        - The formula to compute the final rewards in the `currency` unit is `numeric x 10^(-exp)` (`text` being the string version of this).\n        - `type` is either `staking` (for consensus layer rewards) or `tips` (for execution layer rewards).\n        - `recipient` is the address of the rewards recipient\n\nWhen a reward is of type `tips` we attach extra metadata for `data.rewards`\n\n- `sender` is the \"from\" address of the tips transaction\n- **(Soon)** `tx_hash` is the transaction identifier for the tips payout\n- `slot` is the execution layer slot in which the transaction was included\n- `block` is the consensus layer block in which the transaction was included\n- `is_mev` indicates if the block was built with MEV\n- `mev_service` specifies which service built the MEV block\n    \n\nThere can be multiple `type=tips` objects per period: one per proposed blocks. We don't aggregate them in one object because they could have different recipient addresses. `type=staking` only have one object: we aggregate all subtypes (block proposals, attestations, sync committees, slashing)\n\n### Limitations\n\n- This API serves data for the last 7 days for epoch and 60 days for daily aggregation\n- This API returns rewards for Figment validators only\n- Data is available approximately an hour after the end of the day or epoch. When requesting daily for the current day, the data will be available but obviously partially complete as the day progresses.\n    \n\n### FAQ\n\n- **Reward Types:** `staking` type rewards are the net aggregation of all consensus layer rewards: block proposal, attestation, sync committee and slashing. There is one staking bucket per period. `tips` type rewards are the effective amount received by the fee recipient of the proposed block on the execution layer. There can be multiple buckets per period (one per block proposed)\n- **Negative Rewards:** In theory, there could be a negative rewards amount for a day. But slashing events are rare. Current negative amounts would more likely be caused by repeatedly missing attestations and/or sync committee votes."
 					},
 					"response": [
 						{
@@ -133,7 +133,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"accounts\": [\n        \"0xb851b31a812f7dc8c844cb7470560cde02e3a04161430c56493ac96c6e2630b38e37b0d839b8640c56a2b09f2f20e5ab\"\n    ], \n    \"start\": \"2022-09-20\",\n    \"end\": \"2022-09-21\",\n    \"aggregation\": \"daily\"\n}",
+							"raw": "{\n    \"network\": \"ethereum\",\n    \"accounts\": [\n        \"0x968c329ed829636a0bbbb57a25d9634ffd0d17bc1ff33adf93fd6a98920a82a83de930b9f2dddaebc4104ac90581ada0\"\n    ], \n    \"start\": \"2022-11-06\",\n    \"end\": \"2022-11-07\",\n    \"aggregation\": \"daily\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -141,7 +141,7 @@
 							}
 						},
 						"url": "https://{{ETH_REWARDS_HOST}}/v2/rewards/apikey/{{API_KEY}}/",
-						"description": "Returns gross validator rewards grouped by day (from midnight UTC to midnight UTC)\n\n### Parameters\n\n*   `accounts` takes in an array of validator's public addresses. 50 max (required)\n*   `aggregation`: `daily` (required)\n*   `start` and `end` are timestamps in the format \"YYYY-MM-DD\" (required)\n    \n\n### Response\n\nThe response is broken down between `meta` and `data`\n\n*   `meta`\n    *   `network` is the name of the network queried\n    *   `period_unit` is the unit of the `period` field under `data`: `daily` here\n*   `data` is an array of objects - one for each period - containing:\n    *   `validator` returns the validator that distributed the rewards\n    *   `timestamp` is the timestamp of the beginning of the day\n    *   `rewards` is an array of objects. The formula to compute the final rewards in the `currency` unit is `numeric x 10^(-exp)` (`text` being the string version of this). `type` is either `staking` (for consensus layer rewards) or `tips` (for execution layer rewards). `recipient` is the address of the rewards recipient\n\nThere can be multiple `type=tips` objects per period: one per proposed blocks. We don't aggregate them in one object because they could have different recipient addresses. `type=staking` only has one object: we aggregate all subtypes (block proposals, attestations, sync committees, slashing)\n\n### Limitations\n\n*   This API serves data for the last 7 days for epoch and 60 days for daily aggregation\n*   This API returns rewards for Figment validators only\n*   Data is available approximately an hour after the end of the day or epoch. When requesting daily for the current day, the data will be available but obviously partially complete as the day progresses.\n    \n\n### FAQ\n\n*   **Reward Types:** `staking` type rewards are the net aggregation of all consensus layer rewards: block proposal, attestation, sync committee and slashing. There is one staking bucket per period. `tips` type rewards are the effective amount received by the fee recipient of the proposed block on the execution layer. There can be multiple buckets per period (one per block proposed)\n*   **Negative Rewards:** In theory, there could be a negative rewards amount for a day. But slashing events are rare. Current negative amounts would more likely be caused by repeatedly missing attestations and/or sync committee votes."
+						"description": "Returns gross validator rewards grouped by day (from midnight UTC to midnight UTC)\n\n### Parameters\n\n- `accounts` takes in an array of validator's public addresses. 50 max (required)\n- `aggregation`: `daily` (required)\n- `start` and `end` are timestamps in the format \"YYYY-MM-DD\" (required)\n    \n\n### Response\n\nThe response is broken down between `meta` and `data`\n\n- `meta`\n    - `network` is the name of the network queried\n    - `period_unit` is the unit of the `period` field under `data`: `daily` here\n- `data` is an array of objects - one for each period - containing:\n    - `validator` returns the validator that distributed the rewards\n    - `timestamp` is the timestamp of the beginning of the day\n    - `rewards` is an array of objects.\n        - The formula to compute the final rewards in the `currency` unit is `numeric x 10^(-exp)` (`text` being the string version of this).\n        - `type` is either `staking` (for consensus layer rewards) or `tips` (for execution layer rewards).\n        - `recipient` is the address of the rewards recipient\n\nWhen a reward is of type `tips` we attach extra metadata for `data.rewards`\n\n- `sender` is the \"from\" address of the tips transaction\n- **(Soon)** `tx_hash` is the transaction identifier for the tips payout\n- `slot` is the execution layer slot in which the transaction was included\n- `block` is the consensus layer block in which the transaction was included\n- `is_mev` indicates if the block was built with MEV\n- `mev_service` specifies which service built the MEV block\n    \n\nThere can be multiple `type=tips` objects per period: one per proposed blocks. We don't aggregate them in one object because they could have different recipient addresses. `type=staking` only has one object: we aggregate all subtypes (block proposals, attestations, sync committees, slashing)\n\n### Limitations\n\n- This API serves data for the last 7 days for epoch and 60 days for daily aggregation\n- This API returns rewards for Figment validators only\n- Data is available approximately an hour after the end of the day or epoch. When requesting daily for the current day, the data will be available but obviously partially complete as the day progresses.\n    \n\n### FAQ\n\n- **Reward Types:** `staking` type rewards are the net aggregation of all consensus layer rewards: block proposal, attestation, sync committee and slashing. There is one staking bucket per period. `tips` type rewards are the effective amount received by the fee recipient of the proposed block on the execution layer. There can be multiple buckets per period (one per block proposed)\n- **Negative Rewards:** In theory, there could be a negative rewards amount for a day. But slashing events are rare. Current negative amounts would more likely be caused by repeatedly missing attestations and/or sync committee votes."
 					},
 					"response": [
 						{
@@ -1009,27 +1009,27 @@
 	],
 	"variable": [
 		{
-			"id": "e0dc6cb7-cb4a-4b2d-b125-5d032a2d7816",
+			"id": "9b610753-3d4a-4e0c-958f-8ab009683b73",
 			"key": "ETH_REWARDS_HOST",
 			"value": "eth-rewards.datahub.figment.io"
 		},
 		{
-			"id": "ee71b551-c3aa-4b0a-9ed3-a176fcb5cfe8",
+			"id": "6049c1ad-393f-4e47-90f3-26f218dae143",
 			"key": "SOL_REWARDS_HOST",
 			"value": "solana-rewards.datahub.figment.io"
 		},
 		{
-			"id": "d099a000-d353-4366-b47a-486f34472a91",
+			"id": "57362a7c-f7c9-47c4-a7d1-30e2cf393b8a",
 			"key": "DOT_REWARDS_HOST",
 			"value": "polkadot-rewards.datahub.figment.io"
 		},
 		{
-			"id": "9a95b063-67d8-4701-b523-42f23de91294",
+			"id": "6ac687e2-6d78-4164-8067-1a8fd26bc008",
 			"key": "NEAR_REWARDS_HOST",
 			"value": "near-rewards.datahub.figment.io"
 		},
 		{
-			"id": "d3f7a55a-091d-4a0b-8643-9c73754032f6",
+			"id": "5d9d0a5b-8bea-4fb6-a0c8-02bc0d627f65",
 			"key": "AVAX_REWARDS_HOST",
 			"value": "avalanche-rewards.datahub.figment.io"
 		}
