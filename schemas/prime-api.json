@@ -125,7 +125,7 @@
 							"header": null,
 							"cookie": [],
 							"responseTime": null,
-							"body": "{\n    \"data\": [\n        {\n            \"id\": \"string\",\n            \"type\": \"string\",\n            \"attributes\": {\n                \"id\": 0,\n                \"name\": \"string\",\n                \"eth1_withdrawal_address\": \"string\",\n                \"staked_amount\": 0,\n                \"validators_count\": 0,\n                \"created_at\": \"string\",\n                \"updated_at\": \"string\"\n            }\n        }\n    ],\n    \"links\": {\n        \"self\": \"string\",\n        \"current\": \"string\",\n        \"next\": \"string\",\n        \"last\": \"string\",\n        \"prev\": \"string\"\n    }\n}"
+							"body": "{\n    \"data\": [\n        {\n            \"id\": \"18\",\n            \"type\": \"position\",\n            \"attributes\": {\n                \"id\": 18,\n                \"eth1_withdrawal_address\": \"0xE40F80618324C814cD444434670a44ba4583aE38\",\n                \"staked_amount\": 320,\n                \"validators_count\": 10,\n                \"created_at\": \"2021-10-04T14:28:25.497Z\",\n                \"updated_at\": \"2022-10-17T14:40:10.589Z\",\n                \"name\": null\n            }\n        },\n        {\n            \"id\": \"20\",\n            \"type\": \"position\",\n            \"attributes\": {\n                \"id\": 20,\n                \"eth1_withdrawal_address\": \"0xE40F80618324C814cD444434670a44ba4583aE38\",\n                \"staked_amount\": 320,\n                \"validators_count\": 10,\n                \"created_at\": \"2021-10-04T14:28:25.700Z\",\n                \"updated_at\": \"2022-10-17T14:40:10.578Z\",\n                \"name\": null\n            }\n        },\n        {\n            \"id\": \"77\",\n            \"type\": \"position\",\n            \"attributes\": {\n                \"id\": 77,\n                \"eth1_withdrawal_address\": \"0xE40F80618324C814cD444434670a44ba4583aE38\",\n                \"staked_amount\": 128,\n                \"validators_count\": 4,\n                \"created_at\": \"2022-03-21T13:30:54.214Z\",\n                \"updated_at\": \"2022-10-17T14:40:10.618Z\",\n                \"name\": null\n            }\n        }\n    ],\n    \"links\": {\n        \"self\": \"https://hubble.figment.io/api/v1/prime/eth2_staking/positions\",\n        \"current\": \"https://hubble.figment.io/api/v1/prime/eth2_staking/positions?page[number]=1\"\n    }\n}"
 						}
 					]
 				},
@@ -580,19 +580,19 @@
 	],
 	"variable": [
 		{
-			"id": "bc52d339-e9da-494f-b257-6def39df3858",
+			"id": "ac7ff107-81f9-46e7-a272-759a4df25bc4",
 			"key": "ETH_HOST",
 			"value": "hubble.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "f830f802-a55b-4501-a438-1f15465f6ab6",
+			"id": "ba8dfc0c-69e4-47de-bede-16e3d689e736",
 			"key": "DOT_HOST",
 			"value": "hubble.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "994db72d-73df-4284-b434-4570bc3dab92",
+			"id": "c93c2bd8-ae36-4978-a547-816c5df35219",
 			"key": "INTERACTIVE",
 			"value": "false",
 			"type": "string"
