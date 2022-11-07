@@ -1,0 +1,48 @@
+---
+title: Create New Deposit Flow
+slug: /guides/staking-api/liquid-collective/deposit/create-new-flow
+---
+
+To initiate the deposit process with the Staking API, create a new flow with a `POST` request to `/api/v1/flows`.
+
+### Parameters
+
+- `flow` &mdash; `object`
+  - `network_code` &mdash; `string` Network on which this flow operates (ex. `alluvial`).
+  - `chain_code` &mdash; `string` Chain on which this flow operates (ex. `goerli`).
+  - `operation` `string` The operation to perform (ex. `depositing`).
+  - `version` &mdash; `string` API version to use (ex. `v1`).
+
+#### Sample cURL Request
+
+```bash {5-10}
+// TBA
+```
+
+### Response
+
+- `id` &mdash; `string` ID of the newly created flow.
+- `state` &mdash; `string` The current state of the flow.
+
+The response indicates one possible `action`:
+
+- `create_deposit_tx` &mdash; Provide the address the deposit will come from, and amount of ETH to be staked. Staking API will check if your address has permission from the Allowlist to deposit into Liquid Collective.
+
+The `create_deposit_tx` action indicates four fields for data collection:
+
+- `depositor_address` &mdash; The main wallet ETH will be originating from
+- `amount` &mdash; The number of ETH to be staked, in Ether
+- `gas_limit` &mdash; The maximum number of gwei you're willing to pay as a fee for this transaction
+- `gas_price` &mdash; The current required gas for sending a transaction on Ethereum
+
+#### Sample Response
+
+```json {2-3,6}
+// TBA
+```
+
+:::info
+
+Learn more about gas limit, gas price and gwei here: https://ethereum.org/en/developers/docs/gas/
+
+:::

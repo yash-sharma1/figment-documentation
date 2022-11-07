@@ -1,0 +1,13 @@
+---
+title: Deposit
+slug: /guides/staking-api/liquid-collective/deposit
+sidebar_position: 4
+pagination_prev: null
+---
+
+Depositing ETH into Liquid Collective requires interacting with the on-chain Liquid Collective contracts. Our interaction will consist of two calls:
+
+1. A call to the Liquid Collective contract, to determine if your depositor address has the necessary permissions to deposit.
+2. A call to the Deposit contract that will send ETH, stake it, and give you back a liquid staking asset, LsETH.
+
+Both interactions are handled by Staking API in one flow. Next steps illustrate how to supply the necessary parameters for Staking API to execute these two calls.

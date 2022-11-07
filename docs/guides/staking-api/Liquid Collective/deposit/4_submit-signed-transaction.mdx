@@ -1,0 +1,32 @@
+---
+title: Submit a Signed Deposit Transaction for Broadcast
+slug: /guides/staking-api/liquid-collective/deposit/submit-signed-deposit-transaction
+---
+
+After signing the transaction, send a `PUT` request to `/api/v1/flows/[:flow_id]/next` with the signed payload.
+The Staking API will broadcast the transaction to the Ethereum network.
+
+### Parameters
+
+- `name` &mdash; `string` Name of the action to execute (required).
+- `inputs` &mdash; `object`
+  - `transaction_payload` &mdash; Signed transaction payload from the previous step's response.
+
+#### Sample cURL Request
+
+```bash {5-8}
+// TBA
+```
+
+### Response
+
+With the signed transaction provided, the Staking API will broadcast it to the network. As the transaction progresses towards confirmation, the returned state will be either:
+
+- `deposit_tx_broadcasting` &mdash; Transaction has been broadcast and is awaiting confirmation.
+- `completed` &mdash; Transaction has been confirmed and deposit is complete.
+
+#### Sample Response
+
+```json {3}
+// TBA
+```

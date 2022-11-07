@@ -1,0 +1,37 @@
+---
+title: Get Flow Status
+slug: /guides/staking-api/liquid-collective/deposit/get-flow-status-deposit-lc
+pagination_next: null
+---
+
+To get the current state of the existing flow, send a `GET` request to `/api/v1/flows/[:flow_id]` using the flow ID from the previous step.
+
+### Parameters
+
+- None
+
+#### Sample cURL Request
+
+```bash
+// TBA
+```
+
+### Response
+
+- `state` &mdash; `string` The current state of the flow.
+
+:::info note
+
+The `state` field will update from `deposit_tx_broadcasting` to `completed`.
+
+:::
+
+#### Sample Response
+
+```json {3}
+// TBA
+```
+
+### Deposit Flow Complete
+
+Congratulations, your stake is now active and earning rewards! You should see an LsETH balance on your `depositor_address`.
