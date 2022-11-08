@@ -18,7 +18,7 @@
 						"method": "GET",
 						"header": [],
 						"url": "https://{{ETH_REWARDS_HOST}}/rates/apikey/{{API_KEY}}/",
-						"description": "This API returns a time series of daily network-wide annualized staking reward rates, in %.\n\n### Methodology\n\nWe first compute daily rates by aggregating all rewards (on both consensus and execution layers) received by all validators within a 24h period (from midnight UTC to midnight UTC) and divide this by the aggregated balances of all validators at the beginning of this 24h period. We then annualize this rate without compounding.\n\n### Parameters\n\n- `figment` _(optional)_: if `true` is passed we will return the reward rate for Figment validators only. If omitted or any other value is passed we will return the reward rate of the network as a whole.\n    \n\n### Response\n\nAn array of following objects:\n\n- `date`: timestamp for the day in fornat \"YYYY-MM-DD\"\n- `value`: the total annualized reward rate for that day - in %\n- `staking`: the piece due to consensus layer rewards (inflation) - in %\n- `tips`: the piece due to execution layer rewards (transaction fees) - in %"
+						"description": "This API returns a time series of daily network-wide annualized staking reward rates, in %.\n\n### Methodology\n\nWe first compute daily rates by aggregating all rewards (on both consensus and execution layers) received by all validators within a 24h period (from midnight UTC to midnight UTC) and divide this by the aggregated balances of all validators at the beginning of this 24h period. We then annualize this rate without compounding.\n\n### Parameters\n\n- `figment` _(optional)_: if `true` is passed we will return the reward rate for Figment validators only. If omitted or any other value is passed we will return the reward rate of the network as a whole.\n    \n\n### Response\n\nAn array of following objects:\n\n- `date`: timestamp for the day in format \"YYYY-MM-DD\"\n- `value`: the total annualized reward rate for that day - in %\n- `staking`: the piece due to consensus layer rewards (inflation) - in %\n- `tips`: the piece due to execution layer rewards (transaction fees) - in %"
 					},
 					"response": [
 						{
@@ -234,12 +234,12 @@
 	],
 	"variable": [
 		{
-			"id": "43a8a691-b7de-4fda-a261-43e6b0f84d5e",
+			"id": "da24ac23-fa3a-4f96-9098-17b45001869b",
 			"key": "ETH_REWARDS_HOST",
 			"value": "eth-rewards.datahub.figment.io"
 		},
 		{
-			"id": "886b3164-eda2-45b3-9b1c-e7029f14a237",
+			"id": "23669d4f-2b04-482e-8671-f5669e3bf0c7",
 			"key": "SOL_REWARDS_HOST",
 			"value": "solana-rewards.datahub.figment.io"
 		}
