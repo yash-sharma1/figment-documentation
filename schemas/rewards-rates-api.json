@@ -100,7 +100,7 @@
 							],
 							"cookie": [],
 							"responseTime": null,
-							"body": "[\n    {\n        \"date\": \"2022-09-22\",\n        \"value\": \"5.6274\"\n    },\n    {\n        \"date\": \"2022-09-21\",\n        \"value\": \"6.249326\"\n    },\n    {\n        \"date\": \"2022-09-20\",\n        \"value\": \"5.712024\"\n    }\n]"
+							"body": "[\n    {\n        \"date\": \"2022-11-08\",\n        \"value\": \"5.726611\",\n        \"staking\": \"3.410072\",\n        \"tips\": \"2.316538\"\n    },\n    {\n        \"date\": \"2022-11-07\",\n        \"value\": \"5.361810\",\n        \"staking\": \"4.198922\",\n        \"tips\": \"1.162887\"\n    },\n    {\n        \"date\": \"2022-11-06\",\n        \"value\": \"5.172277\",\n        \"staking\": \"4.202448\",\n        \"tips\": \"0.969829\"\n    },\n    {\n        \"date\": \"2022-11-05\",\n        \"value\": \"5.071560\",\n        \"staking\": \"4.184485\",\n        \"tips\": \"0.887075\"\n    }\n]"
 						}
 					]
 				}
@@ -234,12 +234,12 @@
 	],
 	"variable": [
 		{
-			"id": "2b195ac3-97c9-4351-b3e8-e2710779f5ee",
+			"id": "43a8a691-b7de-4fda-a261-43e6b0f84d5e",
 			"key": "ETH_REWARDS_HOST",
 			"value": "eth-rewards.datahub.figment.io"
 		},
 		{
-			"id": "d9b32105-f673-4277-b415-beab67b9c541",
+			"id": "886b3164-eda2-45b3-9b1c-e7029f14a237",
 			"key": "SOL_REWARDS_HOST",
 			"value": "solana-rewards.datahub.figment.io"
 		}
