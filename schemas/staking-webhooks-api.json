@@ -14,14 +14,14 @@
 						{
 							"listen": "test",
 							"script": {
+								"id": "9cf0307b-e146-479d-b87a-0f632ab85354",
 								"exec": [
 									"var jsonData = pm.response.json();",
 									"",
 									"pm.environment.set(\"webhookEndpointId\", jsonData.id);",
 									""
 								],
-								"type": "text/javascript",
-								"id": "9cf0307b-e146-479d-b87a-0f632ab85354"
+								"type": "text/javascript"
 							}
 						}
 					],
@@ -41,7 +41,7 @@
 								}
 							}
 						},
-						"url": "https://{{AVAX_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/webhook_endpoints",
+						"url": "https://{{AVAX_STAKING_HOST}}/api/v1/webhook_endpoints/apikey/{{API_KEY}}",
 						"description": "Create a new webhook endpoint with the specified parameters.\n\n### Parameters\n\n*   `webhook_endpoint` - `object`\n    *   `target_url` - `string` The target URL to send the webhook to.\n    *   `event_types` - `string` Can be a specific event type, or use an asterisk as a catchall: `['*']`\n    *   `enabled` - `boolean` true / false\n\n### Response\n\n*   `id` - `number` Id of the newly created webhook endpoint.\n*   `event_types` - `string` Event type you have passed in the request parameter.\n*   `target_url` - `string` The target URL to send the webhook to.\n*   `enabled` - `boolean` true / false\n*   `object` - `string` webhook_endpoint\n*   `created` - `string` Timestamp when webhook endpoint was created.\n*   `secret` - `string` Unique authentication string for your webhook endpoint.\n    \n\n#### Note\n\n*   Each webhook is identified by a sequential number.\n*   Currently when a webhook ID has been deleted it cannot be reused.\n*   You will only be provided with the secret when you first create a webhook. Remember to capture this data!"
 					},
 					"response": [
@@ -858,14 +858,14 @@
 						{
 							"listen": "test",
 							"script": {
+								"id": "93a7d95c-111d-4a45-8220-9873969de723",
 								"exec": [
 									"var jsonData = pm.response.json();",
 									"",
 									"pm.environment.set(\"webhookEndpointId\", jsonData.id);",
 									""
 								],
-								"type": "text/javascript",
-								"id": "93a7d95c-111d-4a45-8220-9873969de723"
+								"type": "text/javascript"
 							}
 						}
 					],
@@ -885,7 +885,7 @@
 								}
 							}
 						},
-						"url": "https://{{ETH_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/webhook_endpoints",
+						"url": "https://{{ETH_STAKING_HOST}}/api/v1/webhook_endpoints/apikey/{{API_KEY}}",
 						"description": "Create a new webhook endpoint with the specified parameters\n\n### Parameters\n\n- `webhook_endpoint` - `object`\n - `target_url` - `string` The target URL to send the webhook to.\n - `event_types` - `string` Can be a specific event type, or use an asterisk as a catchall: `['*']`\n - `enabled` - `boolean` true / false\n\n### Response\n\n- `id` - `number` Id of the newly created webhook endpoint.\n- `event_types` - `string` Event type you have passed in the request parameter.\n- `target_url` - `string` The target URL to send the webhook to.\n- `enabled` - `boolean` true / false\n- `object` - `string` webhook_endpoint\n- `created` - `string` Timestamp when webhook endpoint was created.\n- `secret` - `string` Unique string for your webhook endpoint.\n\n#### Note\n\n- Each webhook is identified by a sequential number. \n- Currently when a webhook ID has been deleted it cannot be reused.\n- You will only be provided with the secret when you first create a webhook. Remember to capture this data!"
 					},
 					"response": [
@@ -1729,7 +1729,7 @@
 								}
 							}
 						},
-						"url": "https://{{NEAR_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/webhook_endpoints",
+						"url": "https://{{NEAR_STAKING_HOST}}/api/v1/webhook_endpoints/apikey/{{API_KEY}}",
 						"description": "Create a new webhook endpoint with the specified parameters\n\n### Parameters\n\n- `webhook_endpoint` - `object`\n - `target_url` - `string` The target URL to send the webhook to.\n - `event_types` - `string` Can be a specific event type, or use an asterisk as a catchall: `['*']`\n - `enabled` - `boolean` true / false\n\n### Response\n\n- `id` - `number` Id of the newly created webhook endpoint.\n- `event_types` - `string` Event type you have passed in the request parameter.\n- `target_url` - `string` The target URL to send the webhook to.\n- `enabled` - `boolean` true / false\n- `object` - `string` webhook_endpoint\n- `created` - `string` Timestamp when webhook endpoint was created.\n- `secret` - `string` Unique string for your webhook endpoint.\n\n#### Note\n\n- Each webhook is identified by a sequential number. \n- Currently when a webhook ID has been deleted it cannot be reused.\n- You will only be provided with the secret when you first create a webhook. Remember to capture this data!"
 					},
 					"response": [
@@ -2546,14 +2546,14 @@
 						{
 							"listen": "test",
 							"script": {
+								"id": "11336e06-f46b-4733-b80a-73f62a68e0fa",
 								"exec": [
 									"var jsonData = pm.response.json();",
 									"",
 									"pm.environment.set(\"webhookEndpointId\", jsonData.id);",
 									""
 								],
-								"type": "text/javascript",
-								"id": "11336e06-f46b-4733-b80a-73f62a68e0fa"
+								"type": "text/javascript"
 							}
 						}
 					],
@@ -2573,7 +2573,7 @@
 								}
 							}
 						},
-						"url": "https://{{SOL_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/webhook_endpoints",
+						"url": "https://{{SOL_STAKING_HOST}}/api/v1/webhook_endpoints/apikey/{{API_KEY}}",
 						"description": "Create a new webhook endpoint with the specified parameters\n\n### Parameters\n\n- `webhook_endpoint` - `object`\n - `target_url` - `string` The target URL to send the webhook to.\n - `event_types` - `string` Can be a specific event type, or use an asterisk as a catchall: `['*']`\n - `enabled` - `boolean` true / false\n\n### Response\n\n- `id` - `number` Id of the newly created webhook endpoint.\n- `event_types` - `string` Event type you have passed in the request parameter.\n- `target_url` - `string` The target URL to send the webhook to.\n- `enabled` - `boolean` true / false\n- `object` - `string` webhook_endpoint\n- `created` - `string` Timestamp when webhook endpoint was created.\n- `secret` - `string` Unique string for your webhook endpoint.\n\n#### Note\n\n- Each webhook is identified by a sequential number. \n- Currently when a webhook ID has been deleted it cannot be reused.\n- You will only be provided with the secret when you first create a webhook. Remember to capture this data!"
 					},
 					"response": [
@@ -3390,14 +3390,14 @@
 						{
 							"listen": "test",
 							"script": {
+								"id": "ad51d748-a3ac-48f0-beae-ec8a7e09e2c6",
 								"exec": [
 									"var jsonData = pm.response.json();",
 									"",
 									"pm.environment.set(\"webhookEndpointId\", jsonData.id);",
 									""
 								],
-								"type": "text/javascript",
-								"id": "ad51d748-a3ac-48f0-beae-ec8a7e09e2c6"
+								"type": "text/javascript"
 							}
 						}
 					],
@@ -3417,7 +3417,7 @@
 								}
 							}
 						},
-						"url": "https://{{DOT_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/webhook_endpoints",
+						"url": "https://{{DOT_STAKING_HOST}}/api/v1/webhook_endpoints/apikey/{{API_KEY}}",
 						"description": "Create a new webhook endpoint with the specified parameters\n\n### Parameters\n\n- `webhook_endpoint` - `object`\n - `target_url` - `string` The target URL to send the webhook to.\n - `event_types` - `string` Can be a specific event type, or use an asterisk as a catchall: `['*']`\n - `enabled` - `boolean` true / false\n\n### Response\n\n- `id` - `number` Id of the newly created webhook endpoint.\n- `event_types` - `string` Event type you have passed in the request parameter.\n- `target_url` - `string` The target URL to send the webhook to.\n- `enabled` - `boolean` true / false\n- `object` - `string` webhook_endpoint\n- `created` - `string` Timestamp when webhook endpoint was created.\n- `secret` - `string` Unique string for your webhook endpoint.\n\n#### Note\n\n- Each webhook is identified by a sequential number. \n- Currently when a webhook ID has been deleted it cannot be reused.\n- You will only be provided with the secret when you first create a webhook. Remember to capture this data!"
 					},
 					"response": [
@@ -4250,43 +4250,43 @@
 	],
 	"variable": [
 		{
-			"id": "4419ae4d-1300-47c4-8571-028e207f9667",
+			"id": "31c18161-191e-483a-8299-62259bc88d78",
 			"key": "AVAX_STAKING_HOST",
 			"value": "avalanche-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "ba7045df-20fc-48fd-aa2f-5608818adbaf",
+			"id": "f6f4c2b3-1d7e-4c57-ac13-6e5abadd3645",
 			"key": "ETH_STAKING_HOST",
 			"value": "eth-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "343decd1-1c46-42c4-bef0-c098e1acb792",
+			"id": "247654bf-ec99-4a2b-abe3-eaf0882cc30f",
 			"key": "NEAR_STAKING_HOST",
 			"value": "near-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "d24c1929-f458-45a0-a63b-d36494e4ea7f",
+			"id": "f8efbf21-57a2-42b8-b0e2-24495d428d93",
 			"key": "DOT_STAKING_HOST",
 			"value": "polkadot-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "cc8c781f-cf05-432a-8270-8297e4d76e9a",
+			"id": "06f41007-47d9-4319-8411-b39fa49fe43a",
 			"key": "SOL_STAKING_HOST",
 			"value": "solana-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "a722adef-f3cb-4140-8508-007adc62b99f",
+			"id": "7e5cdc3c-265f-4242-826f-341240a2ad9d",
 			"key": "MATIC_STAKING_HOST",
 			"value": "polygon-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "d7c5eb4d-0a9f-43e7-b89b-e4bc414ad806",
+			"id": "c1e04026-4551-4fa2-b641-cf47f43be435",
 			"key": "INTERACTIVE",
 			"value": "false",
 			"type": "string"
