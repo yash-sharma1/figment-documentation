@@ -270,7 +270,7 @@
 							}
 						},
 						"url": "https://{{ETH_HOST}}/apikey/{{API_KEY}}/api/v1/prime/eth2_staking/provision",
-						"description": "Provision a new validator with passed attributes.\n\n### Parameters\n\n- `external_user_id` — `string` — A customer user ID.\n- `external_user_email` — `string` — A customer email address.\n- `withdrawal_address` — `string` — An Ethereum address.\n- `validators_count` — `integer` — A number of validators.\n- `eth2_network_name` — `string` — A network name, denoting `testnet`, `mainnet`.\n\n### Response\n\n- `staked_eth_amount` - `integer` — An amount of staked ETH.\n- `eth1_withdrawal_address` - `string` — An Ethereum address.\n- `eth2_network_name` - `string` — A network name, denoting `testnet` or `mainnet`\n\n### Webhook configuration\n\nUser can be notified once a new staking position is created by configuring webhook url and webhook API key under Prime / ETH Staking in Prime Dashboard. Configured API key will be sent in `Authorization` header.\n\n**Note** &mdash; Validator API webhooks can only be configured from the Prime dashboard."
+						"description": "Provision a new validator with passed attributes.\n\n### Parameters\n\n- `external_user_id` — `string` — A customer user ID.\n- `external_user_email` — `string` — A customer email address.\n- `withdrawal_address` — `string` — An Ethereum address.\n- `validators_count` — `integer` — A number of validators.\n- `eth2_network_name` — `string` — A network name, denoting `testnet`, `mainnet`.\n\n### Response\n\n- `staked_eth_amount` - `integer` — An amount of staked ETH.\n- `eth1_withdrawal_address` - `string` — An Ethereum address.\n- `eth2_network_name` - `string` — A network name, denoting `testnet` or `mainnet`\n\n### Webhook configuration\n\nUser can be notified once a new staking position is created by configuring webhook url and webhook API key under Prime / ETH Staking in Prime Dashboard. Configured API key will be sent in `Authorization` header.\n\n#### Note\n\nValidator API webhooks can only be configured from the Prime dashboard."
 					},
 					"response": [
 						{
@@ -627,19 +627,19 @@
 	],
 	"variable": [
 		{
-			"id": "b6fe5b66-c328-404f-8dd2-c9811ca8c467",
+			"id": "1ee967a3-142a-4c2f-bdd0-0f6cdeb31b0f",
 			"key": "ETH_HOST",
 			"value": "hubble.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "b3ae2f8e-e0b4-486d-86b6-a729bbaac8bd",
+			"id": "edd51c4a-307f-4a06-afad-4c485bd7a96f",
 			"key": "DOT_HOST",
 			"value": "hubble.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "0466e392-8843-44a0-934f-23061c2c660c",
+			"id": "02615d21-25b9-42b3-adeb-8f4aaf9abb37",
 			"key": "INTERACTIVE",
 			"value": "false",
 			"type": "string"
