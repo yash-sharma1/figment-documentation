@@ -27,7 +27,7 @@
 							}
 						},
 						"url": "https://{{ETH_HOST}}/api/v1/prime/apikey/{{API_KEY}}/eth2_staking/positions/",
-						"description": "Request creation of new staking position with the passed attributes.\n\n### Parameters\n\n- `external_user_id` — `string` — A customer user ID.\n- `external_user_email` — `string` — A customer email address.\n- `withdrawal_address` — `string` — An Ethereum address.\n- `validators_count` — `integer` — A number of validators.\n- `eth2_network_name` — `string` — A network name, denoting testnet (`goerli`) or mainnet (`prater`).\n    \n\n### Response\n\n- `success` — `boolean` — Returns `true` if the action was successful, otherwise returns `false`.\n    \n\n### Webhook configuration\n\nUsers can be notified via webhook when a new staking position is created. Configure a webhook URL and a webhook API key under \"Prime / ETH Staking\" in the Prime Dashboard. The configured API key will be sent as an `Authorization` header. \n\n**Note** &mdash; Validator API webhooks can only be configured from the Prime dashboard."
+						"description": "Request creation of new staking position with the passed attributes.\n\n### Parameters\n\n- `external_user_id` — `string` — A customer user ID.\n- `external_user_email` — `string` — A customer email address.\n- `withdrawal_address` — `string` — An Ethereum address.\n- `validators_count` — `integer` — A number of validators.\n- `eth2_network_name` — `string` — A network name, denoting testnet (`goerli`) or mainnet (`prater`).\n    \n\n### Response\n\n- `success` — `boolean` — Returns `true` if the action was successful, otherwise returns `false`.\n    \n\n### Webhook configuration\n\nUsers can be notified via webhook when a new staking position is created. Configure a webhook URL and a webhook API key under \"Prime / ETH Staking\" in the Prime Dashboard. The configured API key will be sent as an `Authorization` header. \n\n#### Note\n\nValidator API webhooks can only be configured from the Prime dashboard."
 					},
 					"response": [
 						{
@@ -627,19 +627,19 @@
 	],
 	"variable": [
 		{
-			"id": "3db769ed-3c1c-4a84-9005-e187f08d49c6",
+			"id": "b6fe5b66-c328-404f-8dd2-c9811ca8c467",
 			"key": "ETH_HOST",
 			"value": "hubble.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "64ff0cb2-67d2-489e-b614-f8d280dd5ea4",
+			"id": "b3ae2f8e-e0b4-486d-86b6-a729bbaac8bd",
 			"key": "DOT_HOST",
 			"value": "hubble.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "e935d7ef-4701-4246-baf5-90a3614a97a2",
+			"id": "0466e392-8843-44a0-934f-23061c2c660c",
 			"key": "INTERACTIVE",
 			"value": "false",
 			"type": "string"
