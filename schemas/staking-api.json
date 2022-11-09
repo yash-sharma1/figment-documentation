@@ -3344,7 +3344,7 @@
 								}
 							}
 						},
-						"url": "https://{{SOLANA_STAKING_HOST}}/api/v1/flows/apikey/{{API_KEY}}",
+						"url": "https://{{SOL_STAKING_HOST}}/api/v1/flows/apikey/{{API_KEY}}",
 						"description": "To initiate the staking process, create a new flow with a `POST` request to `/api/v1/flows`.\n\n### Parameters\n\n- `flow` &mdash; `object`\n  - `network_code` &mdash; `string` Network this flow operates on (ex. `solana`) (required).\n  - `chain_code` &mdash; `string` Chain this flow operates on (ex. `testnet`) (required).\n  - `operation` `string` The operation to perform (ex. `staking`) (required).\n  - `version` &mdash; `string` API version to use (ex. `v1`) (optional).\n\n### Response\n\n- `id` &mdash; `string` ID of the flow.\n- `state` &mdash; `string` The current state of the flow.\n- `actions` &mdash; `array` It includes the `name` & `inputs` of all next possible actions.\n - `assign_stake_account` &mdash; Use this action if you already have an inactive stake account you want to activate.\n - `create_new_stake_account` &mdash; Use this action if you do not have an inactive stake account and want to create a new one.\n   - `funding_account_pubkey` &mdash; The main wallet your SOL will be originating from.\n   - `stake_authority_pubkey` &mdash; Grants authority to sign certain staking relation transactions to the provided address. Defaults to `funding_account_pubkey`.\n   - `withdraw_authority_pubkey` &mdash; Grants authority to sign certain withdrawal related transactions to the provided address. Defaults to `funding_account_pubkey`.\n   - `amount` &mdash; The amount of SOL to be sent to the stake account. This field should be in full SOL, not in lamports (i.e. if you want to stake 5 SOL, return `\"amount\": 5.0`). The Staking API will translate the amount to lamports so you do not have to worry about the conversion factor. Lamports are fractional SOLs.\n- `data` &mdash; `object` Delegation flow & transaction data."
 					},
 					"response": [
@@ -3391,7 +3391,7 @@
 								}
 							}
 						},
-						"url": "https://{{SOLANA_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{solanaStakingFlowId}}/next",
+						"url": "https://{{SOL_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{solanaStakingFlowId}}/next",
 						"description": "After collecting the required inputs as mentioned below, send a `PUT` request to `/api/v1/flows/[:flow_id]/next` to proceed to the next step.\nIf you already have a staking account, proceed to the step \"Submit Staking Account Data\"\n\n### Parameters\n\n- `name` &mdash; `string` Name of the action to execute (required).\n- `inputs` &mdash; `object`\n  - `funding_account_pubkey` &mdash; The main wallet your SOL will be originating from (required).\n  - `stake_authority_pubkey` &mdash; Grants authority to sign certain staking relation transactions to the provided address. Defaults to `funding_account_pubkey` (optional).\n  - `withdraw_authority_pubkey` &mdash; Grants authority to sign certain withdrawal related transactions to the provided address. Defaults to `funding_account_pubkey` (optional).\n  - `amount` &mdash; The amount of SOL to be sent to the Stake Account. This field should be in full SOL, not in lamports (i.e. if you want to stake 5 SOL, return `\"amount\": 5.0`). The Staking API will translate the amount to lamports so you do not have to worry about the conversion factor (required).\n\n### Response\n\n- `id` &mdash; `string` ID of the flow.\n- `state` &mdash; `string` The current state of the flow.\n- `actions` &mdash; `array` It includes the `name` & `inputs` of all next possible actions.\n - `refresh_stake_account_tx` &mdash; If you need to get a fresh version of the transaction payload (i.e., the recent blockhash has expired).\n - `sign_stake_account_tx` &mdash; Submit a signed transaction payload ready to be broadcast to the network.\n- `data` &mdash; `object` Delegation flow & transaction data."
 					},
 					"response": [
@@ -3438,7 +3438,7 @@
 								}
 							}
 						},
-						"url": "https://{{SOLANA_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{solanaStakingFlowId}}/next",
+						"url": "https://{{SOL_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{solanaStakingFlowId}}/next",
 						"description": "Before broadcasting the transaction, you must [sign the `transaction_payload`](https://docs.figment.io/guides/staking-api/figment-signing-transactions) you received in the previous step. After signing the transaction, send a PUT request to `/api/v1/flows/[:flow_id]/next` with the signed payload. The Staking API will broadcast the transaction to the Solana network.\n\n### Parameters\n\n- `name` &mdash; `string` Name of the action to execute (required).\n- `inputs` &mdash; `object`\n  - `transaction_payload` &mdash; Signed transaction payload from the previous step's response.\n\n### Response\n\n- `id` &mdash; `string` ID of the flow.\n- `state` &mdash; `string` The current state of the flow.\n - `stake_account_tx_broadcasting` &mdash; Transaction has been broadcast but not confirmed.\n - `stake_account` &mdash; Transaction broadcasted and confirmed.\n- `actions` &mdash; `array` It includes the `name` & `inputs` of all next possible actions.\n- `data` &mdash; `object` Delegation flow & transaction data."
 					},
 					"response": [
@@ -3476,7 +3476,7 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "https://{{SOLANA_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{solanaStakingFlowId}}",
+						"url": "https://{{SOL_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{solanaStakingFlowId}}",
 						"description": "To get the current state of the existing flow, send a `GET` request to `/api/v1/flows/[:flow_id]` using the flow ID from the previous step.\n\n### Parameters\n\n- None\n\n### Response\n\n- `id` &mdash; `string` ID of the flow.\n- `state` &mdash; `string` The current state of the flow.\n - `stake_account_tx_broadcasting` &mdash; Transaction has been broadcast but not confirmed.\n - `stake_account` &mdash; Transaction broadcasted and confirmed.\n- `actions` &mdash; `array` It includes the `name` & `inputs` of all next possible actions.\n- `data` &mdash; `object` flow & transaction data."
 					},
 					"response": [
@@ -3514,7 +3514,7 @@
 								}
 							}
 						},
-						"url": "https://{{SOLANA_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{solanaStakingFlowId}}/next",
+						"url": "https://{{SOL_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{solanaStakingFlowId}}/next",
 						"description": "Now that the stake account is created, submit a delegation transaction to activate the stake.\n\nThe previous response indicates one required input: `validator_address`.\n\n### Parameters\n\n- `validator_address` &mdash; The vote address of the validator to which the SOL will be delegated (required).\n\n### Response\n\n- `id` &mdash; `string` ID of the flow.\n- `state` &mdash; `string` The current state of the flow.\n- `actions` &mdash; `array` It includes the `name` & `inputs` of all next possible actions.\n - `refresh_delegate_tx` &mdash; If you need to get a fresh version of the transaction payload.\n - `sign_delegate_tx` &mdash; Submit a signed transaction payload ready to be broadcast to the network.\n- `data` &mdash; `object` Delegation flow & transaction data."
 					},
 					"response": [
@@ -3561,7 +3561,7 @@
 								}
 							}
 						},
-						"url": "https://{{SOLANA_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{solanaStakingFlowId}}/next",
+						"url": "https://{{SOL_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{solanaStakingFlowId}}/next",
 						"description": "Before broadcasting the transaction, you must [sign the `transaction_payload`](https://docs.figment.io/guides/staking-api/figment-signing-transactions) you received in the previous step. After signing the transaction, send a `PUT` request to `/api/v1/flows/[:flow_id]/next` and the Staking API will broadcast the transaction to the Solana network.\n\n### Parameters\n\n- `name` &mdash; `string` Name of the action to execute (required).\n- `inputs` &mdash; `object`\n  - `transaction_payload` &mdash; Signed transaction payload from the previous step's response.\n\n\n### Response\n\n- `id` &mdash; `string` ID of the flow.\n- `state` &mdash; `string` The current state of the flow.\n - `delegate_tx_broadcasting` &mdash; The delegation transaction has been broadcast but not confirmed.\n - `delegation_activating` &mdash; The delegation is progressing.\n - `delegation_active` &mdash; The delegation is active and confirmed.\n- `actions` &mdash; `array` It includes the `name` & `inputs` of all next possible actions.\n- `data` &mdash; `object` Delegation flow & transaction data."
 					},
 					"response": [
@@ -3599,7 +3599,7 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "https://{{SOLANA_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{solanaStakingFlowId}}",
+						"url": "https://{{SOL_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{solanaStakingFlowId}}",
 						"description": "To get the current state of the existing flow, send a `GET` request to `/api/v1/flows/[:flow_id]` using the flow ID from the previous step.\n\n### Parameters\n\n- None\n\n### Response\n\n- `id` &mdash; `string` ID of the flow.\n- `state` &mdash; `string` The current state of the flow.\n - `delegate_tx_broadcasting` &mdash; The delegation transaction has been broadcast but not confirmed.\n - `delegation_activating` &mdash; The delegation is progressing.\n - `delegation_active` &mdash; The delegation is active and confirmed.\n- `actions` &mdash; `array` It includes the `name` & `inputs` of all next possible actions.\n- `data` &mdash; `object` Delegation flow & transaction data."
 					},
 					"response": [
@@ -3637,7 +3637,7 @@
 								}
 							}
 						},
-						"url": "https://{{SOLANA_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows",
+						"url": "https://{{SOL_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows",
 						"description": "To initiate the undelegation process, create a new flow with a `POST` request to `/api/v1/flows`.\n\n### Parameters\n\n- `flow` &mdash; `object`\n  - `network_code` &mdash; `string` Network on which this flow operates (ex. `solana`) (required).\n  - `chain_code` &mdash; `string` Chain on which this flow operates (ex. `mainnet`, `testnet`) (required).\n  - `operation` `string` The operation to perform (ex. `unstaking`) (required).\n  - `version` &mdash; `string` API version to use (ex. `v1`) (optional).\n\n### Response\n\n- `id` &mdash; `string` ID of the flow.\n- `state` &mdash; `string` The current state of the flow.\n- `actions` &mdash; `array` It includes the `name` & `inputs` of all next possible actions.\n - `create_deactivate_tx` &mdash; Collect the data needed to build a stake deactivation transaction and submit back to the Staking API.\n   - `stake_account_pubkey` &mdash; The address of the stake account to be deactivated.\n   - `funding_account_pubkey` &mdash; The address of the wallet with signing rights to deactivate the stake account.\n- `data` &mdash; `object` Undelegation flow & transaction data."
 					},
 					"response": [
@@ -3684,7 +3684,7 @@
 								}
 							}
 						},
-						"url": "https://{{SOLANA_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{solanaUnstakingFlowId}}/next",
+						"url": "https://{{SOL_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{solanaUnstakingFlowId}}/next",
 						"description": "After collecting the required inputs, send a `PUT` request to `/api/v1/flows/[:flow_id]/next` to proceed to the next step.\n\n### Parameters\n\n- `name` &mdash; `string` Name of the action to execute (required).\n- `inputs` &mdash; `object`\n  - `funding_account_pubkey` &mdash; `string` The address of the stake account to be deactivated (required).\n  - `stake_account_pubkey` &mdash; `string` The address of the wallet with signing rights to deactivate the stake account (required).\n\n### Response\n\n- `id` &mdash; `string` ID of the flow.\n- `state` &mdash; `string` The current state of the flow.\n- `actions` &mdash; `array` It includes the `name` & `inputs` of all next possible actions.\n - `refresh_deactivate_tx` &mdash; If you need to get a fresh version of the transaction payload (i.e., the recent blockhash has expired).\n - `sign_deactivate_tx` &mdash; Submit a signed transaction payload ready to be broadcast to the network.\n- `data` &mdash; `object` Undelegation flow & transaction data."
 					},
 					"response": [
@@ -3731,7 +3731,7 @@
 								}
 							}
 						},
-						"url": "https://{{SOLANA_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{solanaUnstakingFlowId}}/next",
+						"url": "https://{{SOL_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{solanaUnstakingFlowId}}/next",
 						"description": "Before broadcasting the transaction, you must [sign the `transaction_payload`](https://docs.figment.io/guides/staking-api/figment-signing-transactions) you received in the previous step. After signing the transaction, send a `PUT` request to `/api/v1/flows/[:flow_id]/next` and the Staking API will broadcast the transaction to the Solana network.\n\n### Parameters\n\n- `name` &mdash; `string` Name of the action to execute (required).\n- `inputs` &mdash; `object`\n  - `transaction_payload` &mdash; Signed transaction payload from the previous step's response.\n\n### Response\n\n- `id` &mdash; `string` ID of the flow.\n- `state` &mdash; `string` The current state of the flow.\n - `deactivate_tx_broadcasting` &mdash; Transaction has been broadcast but not confirmed.\n - `cool_down` &mdash; Transaction is under cool-down period.\n- `actions` &mdash; `array` It includes the `name` & `inputs` of all next possible actions.\n- `data` &mdash; `object` Undelegation flow & transaction data."
 					},
 					"response": [
@@ -3769,7 +3769,7 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "https://{{SOLANA_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{solanaUnstakingFlowId}}",
+						"url": "https://{{SOL_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{solanaUnstakingFlowId}}",
 						"description": "To get the current state of the existing flow, send a `GET` request to `/api/v1/flows/[:flow_id]` using the flow ID from the previous step.\n\n### Parameters\n\n- None\n\n### Response\n\n- `id` &mdash; `string` ID of the flow.\n- `state` &mdash; `string` The current state of the flow.\n - `deactivate_tx_broadcasting` &mdash; Transaction has been broadcast but not confirmed.\n - `cool_down` &mdash; Transaction is under cool-down period.\n- `actions` &mdash; `array` It includes the `name` & `inputs` of all next possible actions.\n- `data` &mdash; `object` Undelegation flow & transaction data."
 					},
 					"response": [
@@ -3807,7 +3807,7 @@
 								}
 							}
 						},
-						"url": "https://{{SOLANA_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{solanaUnstakingFlowId}}/next",
+						"url": "https://{{SOL_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{solanaUnstakingFlowId}}/next",
 						"description": "After deactivation, there is one action — `create_withdraw_tx` &mdash; and three required fields for data collection:\n\n- `amount` &mdash; The number of SOL to be withdrawn. Partial withdrawal is possible.\n- `funding_account_pubkey` &mdash; The address of the account that will pay the transaction fee.\n- `recipient_pubkey` &mdash; The address of the wallet to which the withdrawn SOL will be sent.\n\nNote that the recipient of the withdrawal is _not_ the originating address by default!\n\nOnce this data has been collected, submit it to the Staking API:\n`PUT /api/v1/flows/[:flow_id]/next`.\n\n### Parameters\n\n- `name` &mdash; `string` Name of the action to execute (required).\n- `inputs` &mdash; `object`\n  - `amount` &mdash; `string` The number of SOL to be withdrawn. Partial withdrawal is possible (required).\n  - `funding_account_pubkey` &mdash; `string` The address of the account that will pay the transaction fee (required).\n  - `recipient_pubkey` &mdash; `string` the number of SOL to be withdrawn. Partial withdrawal is possible (required).\n\n### Response\n\n- `id` &mdash; `string` ID of the flow.\n- `state` &mdash; `string` The current state of the flow.\n- `actions` &mdash; `array` It includes the `name` & `inputs` of all next possible actions.\n - `refresh_withdraw_tx` &mdash; If you need to get a fresh version of the transaction payload (i.e., the recent blockhash has expired)\n - `sign_withdraw_tx` &mdash; Submit a signed transaction payload ready to be broadcast to the network.\n- `data` &mdash; `object` Undelegation flow & transaction data."
 					},
 					"response": [
@@ -3854,7 +3854,7 @@
 								}
 							}
 						},
-						"url": "https://{{SOLANA_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{solanaUnstakingFlowId}}/next",
+						"url": "https://{{SOL_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{solanaUnstakingFlowId}}/next",
 						"description": "Before broadcasting the transaction, you must [sign the `transaction_payload`](https://docs.figment.io/guides/staking-api/figment-signing-transactions) you received in the previous step. After signing the transaction, send a `PUT` request to `/api/v1/flows/[:flow_id]/next` and the Staking API will broadcast the transaction to the Solana network.\n\n### Parameters\n\n- `name` &mdash; `string` Name of the action to execute (required).\n- `inputs` &mdash; `object`\n  - `transaction_payload` &mdash; Signed transaction payload from the previous step's response.\n\n### Response\n\n- `id` &mdash; `string` ID of the flow.\n- `state` &mdash; `string` The current state of the flow.\n - `withdraw_tx_broadcasting` &mdash; Transaction broadcasting\n - `withdrawn` &mdash; Transaction is confirmed and tokens are withdrawn\n- `actions` &mdash; `array` It includes the `name` & `inputs` of all next possible actions.\n- `data` &mdash; `object` Undelegation flow & transaction data."
 					},
 					"response": [
@@ -3892,7 +3892,7 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "https://{{SOLANA_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{solanaUnstakingFlowId}}",
+						"url": "https://{{SOL_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{solanaUnstakingFlowId}}",
 						"description": "To get the current state of the existing flow, send a `GET` request to `/api/v1/flows/[:flow_id]` using the flow ID from the previous step.\n\n### Parameters\n\n- None\n\n### Response\n\n- `id` &mdash; `string` ID of the flow.\n- `state` &mdash; `string` The current state of the flow.\n - `withdraw_tx_broadcasting` &mdash; Transaction broadcasting\n - `withdrawn` &mdash; Transaction is confirmed and tokens are withdrawn\n- `actions` &mdash; `array` It includes the `name` & `inputs` of all next possible actions.\n- `data` &mdash; `object` Undelegation flow & transaction data."
 					},
 					"response": [
@@ -3930,7 +3930,7 @@
 								}
 							}
 						},
-						"url": "https://{{SOLANA_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows",
+						"url": "https://{{SOL_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows",
 						"description": "To initiate the transfer process with Staking API, create a new flow with `POST /api/v1/flows`.\n\n### Parameters\n\n- `flow` &mdash; `object`\n  - `network_code` &mdash; `string` Network on which this flow operates (ex. `solana`) (required).\n  - `chain_code` &mdash; `string` Chain on which this flow operates (ex. `mainnet` , `testnet`) (required).\n  - `operation` `string` The operation to perform (ex. `transfer`) (required).\n  - `version` &mdash; `string` API version to use (ex. `v1`) (optional).\n\n### Response\n\n- `id` &mdash; `string` ID of the flow.\n- `state` &mdash; `string` The current state of the flow.\n- `actions` &mdash; `array` It includes the `name` & `inputs` of all next possible actions.\n - `create_transfer_tx` &mdash; Use this action to generate a transfer transaction to move SOL between accounts.\n   - `funding_account_pubkey` &mdash; The public key of the wallet which will pay the transaction fee.\n   - `from_account_pubkey` &mdash; The wallet that SOL will be originating from.\n   - `to_account_pubkey` &mdash; The withdrawal address for the given validator.\n   - `amount` &mdash; The amount of SOL to be transferred to the account. This field should be in full SOL, not in lamports (ie. if you want to transfer 5 SOL, return `\"amount\": 5.0`). The Staking API will translate the amount to lamports so you do not have to worry about the conversion factor. Lamports are fractional SOLs.\n- `data` &mdash; `object` Transfer flow & transaction data."
 					},
 					"response": [
@@ -3977,7 +3977,7 @@
 								}
 							}
 						},
-						"url": "https://{{SOLANA_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{solanaTransferFlowId}}/next",
+						"url": "https://{{SOL_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{solanaTransferFlowId}}/next",
 						"description": "After creating the new transfer flow, we need to submit the transfer data.\n\nAfter collecting the required inputs as mentioned below, send a `PUT` request to `/api/v1/flows/[:flow_id]/next` to proceed to the next step.\n\n### Parameters\n\n- `name` &mdash; `string` Name of the action to execute, such as `create_transfer_tx`\n- `inputs` &mdash; `object`\n  - `funding_account_pubkey` &mdash; `string` Pubkey of the wallet which will pay the transaction fee. (optional).\n  - `from_account_pubkey` &mdash; `string` The address of the sender's account.\n  - `to_account_pubkey` &mdash; `string` The address of the wallet to which SOL will be transferred (required).\n  - `amount` &mdash; `number` &mdash; The amount of the tokens you want to transfer (required).\n\n### Response\n\n- `id` &mdash; `string` ID of the flow.\n- `state` &mdash; `string` The current state of the flow.\n- `actions` &mdash; `array` It includes the `name` & `inputs` of all next possible actions.\n - `refresh_transfer_tx` &mdash; If you need to get a fresh version of the transaction payload (i.e., the recent blockhash has expired).\n - `sign_transfer_tx` &mdash; Submit a signed transaction payload ready to be broadcast to the network.\n- `data` &mdash; `object` Transfer flow & transaction data."
 					},
 					"response": [
@@ -4024,7 +4024,7 @@
 								}
 							}
 						},
-						"url": "https://{{SOLANA_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{solanaTransferFlowId}}/next",
+						"url": "https://{{SOL_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{solanaTransferFlowId}}/next",
 						"description": "Before broadcasting the transaction, you must [sign the `transaction_payload`](https://docs.figment.io/guides/staking-api/figment-signing-transactions) you received in the previous step. After signing the transaction, send a `PUT` request to `/api/v1/flows/[:flow_id]/next` and the Staking API will broadcast the transaction to the network.\n\n### Parameters\n\n- `name` &mdash; `string` Name of the action to execute (required).\n- `inputs` &mdash; `object`\n  - `transaction_payload` &mdash; Signed transaction payload from the previous step's response.\n\n### Response\n\n- `id` &mdash; `string` ID of the flow.\n- `state` &mdash; `string` The current state of the flow.\n - `transfer_tx_broadcasting` &mdash; Transaction has been broadcast and is awaiting confirmation.\n - `transfered` - Transaction is confirmed and tokens are transferred.\n- `actions` &mdash; `array` It includes the `name` & `inputs` of all next possible actions.\n- `data` &mdash; `object` Transfer flow & transaction data."
 					},
 					"response": [
@@ -4062,7 +4062,7 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "https://{{SOLANA_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{solanaTransferFlowId}}",
+						"url": "https://{{SOL_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{solanaTransferFlowId}}",
 						"description": "To get the current state of the existing flow, send a `GET` request to `/api/v1/flows/[:flow_id]` using the flow ID from the previous step.\n\n### Parameters\n\n- None\n\n### Response\n\n- `id` &mdash; `string` ID of the flow.\n- `state` &mdash; `string` The current state of the flow.\n - `transfer_tx_broadcasting` &mdash; Transaction has been broadcast and is awaiting confirmation.\n - `transfered` - Transaction is confirmed and tokens are transferred.\n- `actions` &mdash; `array` It includes the `name` & `inputs` of all next possible actions.\n- `data` &mdash; `object` Transfer flow & transaction data."
 					},
 					"response": [
@@ -4100,7 +4100,7 @@
 								}
 							}
 						},
-						"url": "https://{{SOLANA_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows",
+						"url": "https://{{SOL_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows",
 						"description": "To initiate the split stake account process with Staking API, create a new flow with a `POST` request to `/api/v1/flows`.\n\n### Parameters\n\n- `flow` &mdash; `object`\n  - `network_code` &mdash; `string` Network on which this flow operates (ex. `solana`) (required).\n  - `chain_code` &mdash; `string` Chain on which this flow operates (ex. `testnet`) (required).\n  - `operation` `string` The operation to perform (ex. `split_stake_account`) (required).\n  - `version` &mdash; `string` API version to use (ex. `v1`) (optional).\n\n### Response\n\n- `id` &mdash; `string` ID of the flow.\n- `state` &mdash; `string` The current state of the flow.\n- `actions` &mdash; `array` It includes the `name` & `inputs` of all next possible actions.\n  - `create_split_tx` &mdash; Use this Action to create a split stake account transaction.\n    - `funding_account_pubkey` &mdash; The public key of the wallet which will pay the transaction fee.\n    - `source_stake_account_pubkey` &mdash; The existing stake account from which partial SOL balance will be split.\n    - `amount` &mdash; The amount of SOL to be transferred to a newly created stake account. This field should be in full SOL, not in lamports (ie. if you want to transfer 5 SOL, return `\"amount\": 5.0`). The Staking API will translate the amount to lamports so you do not have to worry about the conversion factor. Lamports are fractional SOLs.\n- `data` &mdash; `object` Split stake flow & transaction data."
 					},
 					"response": [
@@ -4147,7 +4147,7 @@
 								}
 							}
 						},
-						"url": "https://{{SOLANA_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{solanaSplitStakeFlowId}}/next",
+						"url": "https://{{SOL_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{solanaSplitStakeFlowId}}/next",
 						"description": "After collecting the required inputs, send a `PUT` request to `/api/v1/flows/[:flow_id]/next` to proceed to the next step.\n\n### Parameters\n\n- `name` &mdash; `string` Name of the action to execute (required).\n- `inputs` &mdash; `object`\n  - `funding_account_pubkey` &mdash; The public key of the wallet which will pay the transaction fee (required).\n  - `source_stake_account_pubkey` &mdash; The existing stake account from which partial SOL balance will be split (required).\n  - `amount` &mdash; The amount of SOL to be transferred to the new stake account. This field should be in full SOL, not in lamports (ie. if you want to fund the new stake account with 5 SOL, return `\"amount\": 5.0`). The Staking API will translate the amount to lamports so you do not have to worry about the conversion factor. Lamports are fractional SOLs (required).\n\n### Response\n\n- `id` &mdash; `string` ID of the flow.\n- `state` &mdash; `string` The current state of the flow.\n- `actions` &mdash; `array` It includes the `name` & `inputs` of all next possible actions.\n  - `refresh_split_tx` &mdash; If you need to get a fresh version of the transaction payload (i.e., the recent blockhash has expired).\n  - `sign_split_tx` &mdash; Submit a signed transaction payload ready to be broadcast to the network.\n- `data` &mdash; `object` Split stake flow & transaction data."
 					},
 					"response": [
@@ -4194,7 +4194,7 @@
 								}
 							}
 						},
-						"url": "https://{{SOLANA_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{solanaSplitStakeFlowId}}/next",
+						"url": "https://{{SOL_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{solanaSplitStakeFlowId}}/next",
 						"description": "Before broadcasting the transaction, you must [sign the `transaction_payload`](https://docs.figment.io/guides/staking-api/figment-signing-transactions) you received in the previous step. After signing the transaction, send a `PUT` request to `/api/v1/flows/[:flow_id]/next` and the Staking API will broadcast the transaction to the network.\n\n### Parameters\n\n- `name` &mdash; `string` Name of the action to execute (required).\n- `inputs` &mdash; `object`\n  - `transaction_payload` &mdash; Signed transaction payload from the previous step's response.\n\n### Response\n\n- `id` &mdash; `string` ID of the flow.\n- `state` &mdash; `string` The current state of the flow.\n  - `split_tx_broadcasting` &mdash; Transaction has been broadcast and is awaiting confirmation.\n  - `completed` &mdash; Transaction has been confirmed and split is complete.\n- `actions` &mdash; `array` It includes the `name` & `inputs` of all next possible actions.\n- `data` &mdash; `object` Split stake flow & transaction data."
 					},
 					"response": [
@@ -4232,7 +4232,7 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "https://{{SOLANA_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{solanaSplitStakeFlowId}}",
+						"url": "https://{{SOL_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{solanaSplitStakeFlowId}}",
 						"description": "To get the current state of the existing flow, send a `GET` request to `/api/v1/flows/[:flow_id]` using the flow ID from the previous step.\n\n### Parameters\n\n- None\n\n### Response\n\n- `id` &mdash; `string` ID of the flow.\n- `state` &mdash; `string` The current state of the flow.\n  - `split_tx_broadcasting` &mdash; Transaction has been broadcast and is awaiting confirmation.\n  - `completed` &mdash; Transaction has been confirmed and split is complete.\n- `actions` &mdash; `array` It includes the `name` & `inputs` of all next possible actions.\n- `data` &mdash; `object` Split stake flow & transaction data."
 					},
 					"response": [
@@ -4280,42 +4280,42 @@
 	],
 	"variable": [
 		{
-			"id": "4c8aac13-4310-4430-adb6-fe810cb06871",
+			"id": "936edabb-ff03-4454-9a18-68a17b7e1656",
 			"key": "AVAX_STAKING_HOST",
 			"value": "avalanche-slate.datahub.figment.io"
 		},
 		{
-			"id": "740d8569-89c9-4080-873a-48db646c72e8",
+			"id": "1aa43081-7fb9-44e9-bd9c-4a87ae3ec9b8",
 			"key": "COSMOS_STAKING_HOST",
 			"value": "cosmos-slate.datahub.figment.io"
 		},
 		{
-			"id": "6645a47c-873a-4710-af67-06c831020884",
+			"id": "ca45aa88-9afa-471b-8677-ccce02f1c5b2",
 			"key": "ETH_STAKING_HOST",
 			"value": "eth-slate.datahub.figment.io"
 		},
 		{
-			"id": "b0afa1f8-7681-4217-844d-d724353a71ad",
+			"id": "63e63629-db4a-45ad-856d-6f463cf78e10",
 			"key": "NEAR_STAKING_HOST",
 			"value": "near-slate.datahub.figment.io"
 		},
 		{
-			"id": "8c97bc7b-d658-47a9-8c92-b552fb8ce4bf",
+			"id": "bd3305e8-42eb-433b-8533-6335ba889e1d",
 			"key": "DOT_STAKING_HOST",
 			"value": "polkadot-slate.datahub.figment.io"
 		},
 		{
-			"id": "9a6cc92a-14d8-4491-b841-6625b3f8d199",
-			"key": "SOLANA_STAKING_HOST",
+			"id": "066ad365-850e-4e74-bfd8-8d1db4fbc1cd",
+			"key": "SOL_STAKING_HOST",
 			"value": "solana-slate.datahub.figment.io"
 		},
 		{
-			"id": "3a802f15-b175-44b5-84ef-78cbf706ee83",
+			"id": "13a3ae9c-c09e-4935-9c51-0a4e8b585031",
 			"key": "POLYGON_STAKING_HOST",
 			"value": "polygon-slate.datahub.figment.io"
 		},
 		{
-			"id": "4e2dba64-9423-4874-963e-50910e06bd6f",
+			"id": "2026880a-fc46-464a-b1ed-99f2f7931b77",
 			"key": "INTERACTIVE",
 			"value": "false"
 		}
