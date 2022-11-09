@@ -2546,14 +2546,14 @@
 						{
 							"listen": "test",
 							"script": {
+								"id": "11336e06-f46b-4733-b80a-73f62a68e0fa",
 								"exec": [
 									"var jsonData = pm.response.json();",
 									"",
 									"pm.environment.set(\"webhookEndpointId\", jsonData.id);",
 									""
 								],
-								"type": "text/javascript",
-								"id": "11336e06-f46b-4733-b80a-73f62a68e0fa"
+								"type": "text/javascript"
 							}
 						}
 					],
@@ -2573,7 +2573,7 @@
 								}
 							}
 						},
-						"url": "https://{{SOL_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/webhook_endpoints",
+						"url": "https://{{SOL_STAKING_HOST}}/api/v1/webhook_endpoints/apikey/{{API_KEY}}",
 						"description": "Create a new webhook endpoint with the specified parameters\n\n### Parameters\n\n- `webhook_endpoint` - `object`\n - `target_url` - `string` The target URL to send the webhook to.\n - `event_types` - `string` Can be a specific event type, or use an asterisk as a catchall: `['*']`\n - `enabled` - `boolean` true / false\n\n### Response\n\n- `id` - `number` Id of the newly created webhook endpoint.\n- `event_types` - `string` Event type you have passed in the request parameter.\n- `target_url` - `string` The target URL to send the webhook to.\n- `enabled` - `boolean` true / false\n- `object` - `string` webhook_endpoint\n- `created` - `string` Timestamp when webhook endpoint was created.\n- `secret` - `string` Unique string for your webhook endpoint.\n\n#### Note\n\n- Each webhook is identified by a sequential number. \n- Currently when a webhook ID has been deleted it cannot be reused.\n- You will only be provided with the secret when you first create a webhook. Remember to capture this data!"
 					},
 					"response": [
@@ -4250,43 +4250,43 @@
 	],
 	"variable": [
 		{
-			"id": "0d8877a0-125b-4e2b-906d-6bb1db8663de",
+			"id": "1eae27e3-d215-413d-8af4-b98f1829aaa6",
 			"key": "AVAX_STAKING_HOST",
 			"value": "avalanche-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "cf2fdc2c-0044-453c-9088-cb3ce9a77f35",
+			"id": "46683042-bc99-40ea-bacf-6693119848d5",
 			"key": "ETH_STAKING_HOST",
 			"value": "eth-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "ed15fdae-7332-4186-8687-b4fc44c3c347",
+			"id": "8fe7f8fb-4453-4763-af05-30266cff57d4",
 			"key": "NEAR_STAKING_HOST",
 			"value": "near-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "16c61017-b48e-4f67-aec5-9dbb851f9bf5",
+			"id": "8e6a9c8f-e42c-4e49-bd9c-6f633e81fd5e",
 			"key": "DOT_STAKING_HOST",
 			"value": "polkadot-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "1e83295e-b7b4-4393-bdb2-d75a62e0e554",
+			"id": "531045fc-4e75-428c-bdcd-53d413700013",
 			"key": "SOL_STAKING_HOST",
 			"value": "solana-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "75e56468-d782-4bfb-9113-a30981538d84",
+			"id": "05f9952b-b50d-479e-a0e3-0d96dae8b3fd",
 			"key": "MATIC_STAKING_HOST",
 			"value": "polygon-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "1435ff06-3dde-4828-badf-d184dd1248e2",
+			"id": "3ef5a55c-daa9-437f-bdab-7dc882f503f9",
 			"key": "INTERACTIVE",
 			"value": "false",
 			"type": "string"
