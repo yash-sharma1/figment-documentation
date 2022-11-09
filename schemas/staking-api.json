@@ -1372,7 +1372,7 @@
 								}
 							}
 						},
-						"url": "https://{{POLKADOT_STAKING_HOST}}/api/v1/flows/apikey/{{API_KEY}}",
+						"url": "https://{{DOT_STAKING_HOST}}/api/v1/flows/apikey/{{API_KEY}}",
 						"description": "To initiate the staking process, create a new flow with a `POST` request to `/api/v1/flows`.\n\n### Parameters\n\n- `flow` &mdash; `object`\n  - `network_code` &mdash; `string` Network this flow operates on (ex. `polkadot`) (required).\n  - `chain_code` &mdash; `string` Chain this flow operates on (ex. `westend`) (required).\n  - `operation` `string` The operation to perform (ex. `staking`) (required).\n  - `version` &mdash; `string` API version to use (ex. `v1`) (optional).\n\n### Response\n\n- `id` &mdash; `string` ID of the flow.\n- `state` &mdash; `string` The current state of the flow.\n- `actions` &mdash; `array` It includes the `name` & `inputs` of all next possible actions.\n - `assign_stash_and_controller_account` &mdash; Use this action if you already have a controller account set up and wish to add bond to it.\n   - `create_bonding_tx` &mdash; Use this action if you do not have a controller account set up and would like to create a controller and bond tokens.\n   - `controller_account_address` &mdash; The wallet to which the DOT will be bonded.\n   - `controller_proxy_account_address` &mdash; A proxy account that will sign on behalf of the controller account.\n   - `stash_account_address` &mdash; Primary wallet from which DOT will be bonded.\n   - `stash_proxy_account_address` &mdash; A proxy account that will sign on behalf of the stash account.\n   - `reward_destination` &mdash; Indicates whether rewards are to be:\n     - Added to the staked balance: `Staked`.\n     - Sent to the controller account, liquid: `Controller`.\n     - Sent to the stash account, liquid: `Stash`.\n   - `amount` &mdash; The amount of DOT to be bonded to the controller. This field should be in full DOT, not in Planck (ie. if you want to stake 5 DOT, return `\"amount\": 5.0`). The Staking API will translate the amount to Plancks so you do not have to worry about the conversion factor.\n- `data` &mdash; `object` Delegation flow & transaction data."
 					},
 					"response": [
@@ -1419,7 +1419,7 @@
 								}
 							}
 						},
-						"url": "https://{{POLKAOT_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{polkadotStakingFlowId}}/next",
+						"url": "https://{{DOT_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{polkadotStakingFlowId}}/next",
 						"description": "After creating a new staking flow, submit the staking account data. Collect the required inputs. Send a `PUT` request to `/api/v1/flows/[:flow_id]/next` to proceed to the next step.\n\n### Parameters\n\n- `name` &mdash; `string` Name of the action to execute (required).\n- `inputs` &mdash; `object`\n  - `controller_account_address` &mdash; `string` Address of the wallet to which the DOT will be bonded (required).\n  - `controller_proxy_account_address` &mdash; `string` A proxy account that will sign on behalf of the controller account (optional).\n  - `stash_account_address` &mdash; `string` Primary wallet from which DOT will be bonded. Cannot have a zero balance (required).\n  - `stash_proxy_account_address` &mdash; `string` A proxy account that will sign on behalf of the controller account (optional).\n  - `reward_destination` &mdash; `string` Reward destination (required). Indicates whether rewards are to be:\n    - `Staked` Added to the staked balance.\n    - `Controller` Sent to the controller account, liquid.\n    - `Stash` Sent to the stash account, liquid. Providing the `stash_account_address` is equivalent to using `Stash`.\n  - `amount` &mdash; `number` &mdash; The amount of DOT to be bonded to the controller. Minimum of `1.0`. This field should be in full DOT, not in Planck (ie. if you want to stake 5 DOT, return `\"amount\": 5.0`). Staking API will translate the amount to Plancks so you do not have to worry about the conversion factor (required).\n\n### Response\n\n- `id` &mdash; `string` ID of the flow.\n- `state` &mdash; `string` The current state of the flow.\n- `actions` &mdash; `array` It includes the `name` & `inputs` of all next possible actions.\n - `refresh_bonding_tx` &mdash; If you need to get a fresh version of the transaction payload (i.e., the nonce has increased).\n - `sign_bonding_tx` &mdash; Submit a signed transaction payload ready to be broadcast to the network.\n- `data` &mdash; `object` Delegation flow & transaction data."
 					},
 					"response": [
@@ -1466,7 +1466,7 @@
 								}
 							}
 						},
-						"url": "https://{{POLKAOT_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{polkadotStakingFlowId}}/next",
+						"url": "https://{{DOT_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{polkadotStakingFlowId}}/next",
 						"description": "Before broadcasting the transaction, you must [sign the `transaction_payload`](https://docs.figment.io/guides/staking-api/figment-signing-transactions) you received in the previous step. After signing the transaction, send a `PUT` request to `/api/v1/flows/[:flow_id]/next` with the signed payload. The Staking API will broadcast the transaction to the Polkadot network.\n\n### Parameters\n\n- `name` &mdash; `string` Name of the action to execute (required).\n- `inputs` &mdash; `object`\n  - `transaction_payload` &mdash; Signed transaction payload from the previous step's response.\n\n### Response\n\n- `id` &mdash; `string` ID of the flow.\n- `state` &mdash; `string` The current state of the flow.\n - `bonding_tx_broadcasting` &mdash; Broadcasting transaction\n - `bonding_complete` &mdash; Transaction broadcasted & confirmed\n- `actions` &mdash; `array` It includes the `name` & `inputs` of all next possible actions.\n- `data` &mdash; `object` Delegation flow & transaction data."
 					},
 					"response": [
@@ -1504,7 +1504,7 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "https://{{POLKAOT_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{polkadotStakingFlowId}}",
+						"url": "https://{{DOT_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{polkadotStakingFlowId}}",
 						"description": "To get the current state of the existing flow, send a `GET` request to `/api/v1/flows/[:flow_id]` using the flow ID from the previous step.\n\n### Parameters\n\n- None\n\n### Response\n\n- `id` &mdash; `string` ID of the flow.\n- `state` &mdash; `string` The current state of the flow.\n - `bonding_tx_broadcasting` &mdash; Broadcasting transaction\n - `bonding_complete` &mdash; Transaction broadcasted & confirmed\n- `actions` &mdash; `array` It includes the `name` & `inputs` of all next possible actions.\n- `data` &mdash; `object` Delegation flow & transaction data."
 					},
 					"response": [
@@ -1542,7 +1542,7 @@
 								}
 							}
 						},
-						"url": "https://{{POLKAOT_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{polkadotStakingFlowId}}/next",
+						"url": "https://{{DOT_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{polkadotStakingFlowId}}/next",
 						"description": "Now that the bond is created, submit a nomination transaction to activate the stake. The previous response indicates one required input: `validator_addresses`.\nAfter collecting the required inputs, send a `PUT` request to `/api/v1/flows/[:flow_id]/next` to proceed to the next step.\n\n### Parameters\n\n- `name` &mdash; `string` Name of the action to execute (required).\n- `inputs` &mdash; `object`\n  - `validator_addresses` &mdash; `array` An array containing the addresses of the validators to which the DOT will be delegated (required).\n\n### Response\n\n- `id` &mdash; `string` ID of the flow.\n- `state` &mdash; `string` The current state of the flow.\n- `actions` &mdash; `array` It includes the `name` & `inputs` of all next possible actions.\n - `refresh_nomination_tx` &mdash; If you need to get a fresh version of the transaction payload.\n - `sign_nomination_tx` &mdash; Submit a signed transaction payload ready to be broadcast to the network.\n- `data` &mdash; `object` delegation flow & transaction data."
 					},
 					"response": [
@@ -1589,7 +1589,7 @@
 								}
 							}
 						},
-						"url": "https://{{POLKAOT_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{polkadotStakingFlowId}}/next",
+						"url": "https://{{DOT_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{polkadotStakingFlowId}}/next",
 						"description": "Before broadcasting the transaction, you must [sign the `transaction_payload`](https://docs.figment.io/guides/staking-api/figment-signing-transactions) you received in the previous step. After signing the transaction, you will `PUT /api/v1/flows/[:flow_id]/next` and the Staking API will broadcast the transaction to the Polkadot network.\n\n### Parameters\n\n- `name` &mdash; `string` Name of the action to execute (required).\n- `inputs` &mdash; `object`\n  - `transaction_payload` &mdash; Signed transaction payload from the previous step's response.\n\n### Response\n\n- `id` &mdash; `string` ID of the flow.\n- `state` &mdash; `string` The current state of the flow.\n - `nomination_tx_broadcasting` &mdash; The transaction has been broadcasted and is waiting for confirmation.\n - `delegated` &mdash; The transaction is complete and the nomination is active.\n- `actions` &mdash; `array` It includes the `name` & `inputs` of all next possible actions.\n- `data` &mdash; `object` Delegation flow & transaction data."
 					},
 					"response": [
@@ -1627,7 +1627,7 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "https://{{POLKAOT_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{polkadotStakingFlowId}}",
+						"url": "https://{{DOT_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{polkadotStakingFlowId}}",
 						"description": "To get the current state of the existing flow, send a `GET` request to `/api/v1/flows/[:flow_id]` using the flow ID from the previous step.\n\n### Parameters\n\n- None\n\n### Response\n\n- `id` &mdash; `string` ID of the flow.\n- `state` &mdash; `string` The current state of the flow.\n - `nomination_tx_broadcasting` &mdash; The transaction has been broadcasted and is waiting for confirmation.\n - `delegated` &mdash; The transaction is complete and the nomination is active.\n- `actions` &mdash; `array` It includes the `name` & `inputs` of all next possible actions.\n- `data` &mdash; `object` Delegation flow & transaction data."
 					},
 					"response": [
@@ -1665,7 +1665,7 @@
 								}
 							}
 						},
-						"url": "https://{{POLKAOT_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows",
+						"url": "https://{{DOT_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows",
 						"description": "To initiate the undelegation process, create a new flow with a `POST` request to `/api/v1/flows`.\n\n- **If chilling is required** before unbonding, the Staking API will indicate that you must create a chill transaction. Proceed to [Create Chill Transaction](/guides/staking-api/polkadot/undelegate/create-unbond-transaction).\n\n- **If no chilling is required**, you will be presented with an action to create the unbond transaction. Proceed to [Create Unbond Transaction](/guides/staking-api/polkadot/undelegate/create-unbond-transaction).\n\n- If you want to skip the unbonding process as well, proceed to [Create Withdrawal Transaction](/guides/staking-api/polkadot/undelegate/create-withdraw-transaction).\n\nFrom a newly initialized flow you can either jump right to `create_withdraw_tx` or perform `assign_unstaking_data`.\n\nIf you assign the unstaking data, you may need to create, sign, and broadcast a chill transaction, followed by an unbonding transaction.\n\nAfter unbonding, you can either be done with the flow, or if there is a balance to withdraw, you can create, sign, and broadcast the withdraw transaction.\n\n### Parameters\n\n- `flow` &mdash; `object`\n  - `network_code` &mdash; `string` Network this flow operates on (ex. `polkadot`) (required).\n  - `chain_code` &mdash; `string` Chain this flow operates on (ex. `westend`) (required).\n  - `operation` `string` The operation to perform (ex. `unstaking`) (required).\n  - `version` &mdash; `string` API version to use (ex. `v1`) (optional).\n\n### Response\n\n- `id` &mdash; `string` ID of the flow.\n- `state` &mdash; `string` The current state of the flow.\n- `actions` &mdash; `array` It includes the `name` & `inputs` of all next possible actions.\n - `assign_unstaking_data` &mdash; Use this action if you want to unbond. Chill first if needed. Optionally used to withdraw.\n   - `stash_account_address` &mdash; The wallet DOT is bonded to.\n   - `controller_account_address` &mdash; The account that controls the staking/unstaking actions. This is the account that will sign transactions.\n   - `controller_proxy_account_address` (optional) — A proxy account that can sign on behalf of the controller account.\n   - `amount` &mdash; The amount of DOT to be unbonded from the controller. This field should be in full DOT, not in Planck (i.e., if you want to stake 5 DOT, return `\"amount\": 5.0`). The Staking API will translate the amount to Plancks so you do not have to worry about the conversion factor.\n   - `maximum` &mdash; This boolean indicates if all bonded funds should be unbonded.\n - `create_withdraw_tx` &mdash; Use this action if you want to withdraw _without_ unbonding.\n- `data` &mdash; `object` Undelegation flow & transaction data."
 					},
 					"response": [
@@ -1712,7 +1712,7 @@
 								}
 							}
 						},
-						"url": "https://{{POLKAOT_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{polkadotUnstakingFlowId}}/next",
+						"url": "https://{{DOT_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{polkadotUnstakingFlowId}}/next",
 						"description": "After collecting the required Inputs, we `PUT /api/v1/flows/[:flow_id]/next` to move on to the next step.\n\n### Parameters\n\n- `name` &mdash; `string` Name of the action to execute (required).\n- `inputs` &mdash; `object`\n  - `controller_account_address` &mdash; `string` Address of the wallet DOT will be bonded to (required).\n  - `controller_proxy_account_address` &mdash; `string` A proxy account that will sign on behalf of the controller account (optional).\n  - `stash_account_address` &mdash; `string` Primary wallet from which DOT will be bonded (required).\n  - `amount` &mdash; `number` &mdash; The amount of DOT to be bonded to the controller. This field should be in full DOT, not in Planck (ie. if you want to stake 5 DOT, return \"amount\": 5.0). Staking API will translate the amount to Plancks so you do not have to worry about the conversion factor (required).\n  - `maximum` &mdash; `boolean` &mdash; `true` if you want to unbond the maximum number of tokens, else `false`.\n\n### Response\n\n- `id` &mdash; `string` ID of the flow.\n- `state` &mdash; `string` The current state of the flow.\n- `actions` &mdash; `array` It includes the `name` & `inputs` of all next possible actions.\n- `data` &mdash; `object` Undelegation flow & transaction data."
 					},
 					"response": [
@@ -1759,7 +1759,7 @@
 								}
 							}
 						},
-						"url": "https://{{POLKAOT_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{polkadotUnstakingFlowId}}/next",
+						"url": "https://{{DOT_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{polkadotUnstakingFlowId}}/next",
 						"description": "After collecting the required inputs, send a `PUT` request to `/api/v1/flows/[:flow_id]/next` to proceed to the next step.\n\n### Parameters\n\nAll data is already input so the `inputs` object is empty: `{}`\n\n### Response\n\n- `id` &mdash; `string` ID of the flow.\n- `state` &mdash; `string` The current state of the flow.\n- `actions` &mdash; `array` It includes the `name` & `inputs` of all next possible actions.\n - `refresh_chill_tx` &mdash; If you need to get a fresh version of the transaction payload (i.e., the nonce needs to be updated).\n - `sign_chill_tx` &mdash; Submit a signed transaction payload ready to be broadcast to the network.\n- `data` &mdash; `object` delegation flow & transaction data."
 					},
 					"response": [
@@ -1806,7 +1806,7 @@
 								}
 							}
 						},
-						"url": "https://{{POLKAOT_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{polkadotUnstakingFlowId}}/next",
+						"url": "https://{{DOT_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{polkadotUnstakingFlowId}}/next",
 						"description": "Before broadcasting the transaction, you must [sign the `transaction_payload`](https://docs.figment.io/guides/staking-api/figment-signing-transactions) you received in the previous step. After signing the transaction, send a `PUT` request to `/api/v1/flows/[:flow_id]/next` and the Staking API will broadcast the transaction to the Polkadot network.\n\n### Parameters\n\n- `name` &mdash; `string` Name of the action to execute (required).\n- `inputs` &mdash; `object`\n  - `validator_addresses` &mdash; `array` An array containing the address(es) of the validator(s) to which the DOT will be delegated (required).\n\n### Response\n\n- `id` &mdash; `string` ID of the flow.\n- `state` &mdash; `string` The current state of the flow.\n - `chill_tx_broadcasting` - The chill transaction has been broadcast and is awaiting confirmation.\n- `actions` &mdash; `array` It includes the `name` & `inputs` of all next possible actions.\n- `data` &mdash; `object` Undelegation flow & transaction data."
 					},
 					"response": [
@@ -1853,7 +1853,7 @@
 								}
 							}
 						},
-						"url": "https://{{POLKAOT_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{polkadotUnstakingFlowId}}/next",
+						"url": "https://{{DOT_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{polkadotUnstakingFlowId}}/next",
 						"description": "Now that the account is chilled, submit an unbond transaction to unbond from the stake.\nOnce again, there are no required inputs for this action.\n\n### Parameters\n\n- `name` &mdash; `string` Name of the action to execute (required).\n\n### Response\n\n- `id` &mdash; `string` ID of the flow.\n- `state` &mdash; `string` The current state of the flow.\n- `actions` &mdash; `array` It includes the `name` & `inputs` of all next possible actions.\n - `refresh_unbond_tx` &mdash; If you need to get a fresh version of the transaction payload (ie. the nonce needs to be updated)\n - `sign_unbond_tx` &mdash; Submit a signed transaction payload ready to be broadcast to the network\n- `data` &mdash; `object` Undelegation flow & transaction data."
 					},
 					"response": [
@@ -1900,7 +1900,7 @@
 								}
 							}
 						},
-						"url": "https://{{POLKAOT_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{polkadotUnstakingFlowId}}/next",
+						"url": "https://{{DOT_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{polkadotUnstakingFlowId}}/next",
 						"description": "Before broadcasting the transaction, you must [sign the `transaction_payload`](https://docs.figment.io/guides/staking-api/figment-signing-transactions) you received in the previous step. After signing the transaction, you will `PUT /api/v1/flows/[:flow_id]/next` and the Staking API will broadcast the transaction to the Polkadot network.\n\n### Parameters\n\n- `name` &mdash; `string` Name of the action to execute (required).\n- `inputs` &mdash; `object`\n  - `transaction_payload` &mdash; Signed transaction payload from the previous step's response.\n\n### Response\n\n- `id` &mdash; `string` ID of the flow.\n- `state` &mdash; `string` The current state of the flow.\n- `actions` &mdash; `array` It includes the `name` & `inputs` of all next possible actions.\n  - `create_withdraw_tx` &mdash; This proceeds with withdrawing from the account.\n  - `complete` &mdash; This will end the flow if we do not want to withdraw funds.\n- `data` &mdash; `object` Undelegation flow & transaction data."
 					},
 					"response": [
@@ -1947,7 +1947,7 @@
 								}
 							}
 						},
-						"url": "https://{{POLKAOT_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{polkadotUnstakingFlowId}}/next",
+						"url": "https://{{DOT_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{polkadotUnstakingFlowId}}/next",
 						"description": "This transaction be created directly from initializing _or_ after the unbonding flow.\n\nWhen creating this transaction directly after initializing, the inputs will be required for the stash account address, controller account address, and an optional controller proxy account address.\nOtherwise, `inputs` will not be required.\n\nIf the information **has not** been collected:\n\nAfter collecting the required inputs, send a `PUT` request to `/api/v1/flows/[:flow_id]/next` to proceed to the next step.\n\n### Parameters\n\n- `name` &mdash; `string` Name of the action to execute (required).\n- `inputs` &mdash; `object`\n- `controller_account_address` &mdash; `string` Address of the wallet DOT will be bonded to (required).\n- `controller_proxy_account_address` &mdash; `string` A proxy account that will sign on behalf of the controller account (optional).\n- `stash_account_address` &mdash; `string` Primary wallet from which DOT will be bonded (required).\n- `amount` &mdash; `number` The amount of DOT to be bonded to the controller. This field should be in full DOT, not in Planck (i.e., if you want to stake 5 DOT, return \"amount\": 5.0). Staking API will translate the amount to Plancks so you do not have to worry about the conversion factor (required).\n- `maximum` &mdash; `boolean` Set this to `true` if you want to unbond the maximum amount of tokens (optional).\n\n### Response\n\n- `id` &mdash; `string` ID of the flow.\n- `state` &mdash; `string` The current state of the flow.\n- `actions` &mdash; `array` It includes the `name` & `inputs` of all next possible actions.\n - `refresh_withdraw_tx` &mdash; If you need to get a fresh version of the transaction payload (i.e., the nonce needs to be updated).\n - `sign_withdraw_tx` &mdash; Submit a signed transaction payload ready to be broadcast to the network.\n- `data` &mdash; `object` Undelegation flow & transaction data."
 					},
 					"response": [
@@ -1994,7 +1994,7 @@
 								}
 							}
 						},
-						"url": "https://{{POLKAOT_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{polkadotUnstakingFlowId}}/next",
+						"url": "https://{{DOT_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{polkadotUnstakingFlowId}}/next",
 						"description": "Before broadcasting the transaction, you must [sign the `transaction_payload`](https://docs.figment.io/guides/staking-api/figment-signing-transactions) you received in the previous step. AAfter signing the transaction, send a `PUT` request to `/api/v1/flows/[:flow_id]/next` and the Staking API will broadcast the transaction to the Polkadot network.\n\n### Parameters\n\n- `name` &mdash; `string` Name of the action to execute (required).\n- `inputs` &mdash; `object`\n  - `transaction_payload` &mdash; Signed transaction payload from the previous step's response.\n\n### Response\n\n- `id` &mdash; `string` ID of the flow.\n- `state` &mdash; `string` The current state of the flow.\n - `withdraw_tx_broadcasting` &mdash; The transaction has been broadcast and is waiting for confirmation.\n - `done` &mdash; The transaction is complete and the stake has been withdrawn to the specified location.\n- `actions` &mdash; `array` It includes the `name` & `inputs` of all next possible actions.\n- `data` &mdash; `object` Undelegation flow & transaction data."
 					},
 					"response": [
@@ -2032,7 +2032,7 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "https://{{POLKAOT_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{polkadotUnstakingFlowId}}",
+						"url": "https://{{DOT_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{polkadotUnstakingFlowId}}",
 						"description": "To get the current state of the existing flow, send a `GET` request to `/api/v1/flows/[:flow_id]` using the flow ID from the previous step.\n\n### Parameters\n\n- None\n\n### Response\n\n- `id` &mdash; `string` ID of the flow.\n- `state` &mdash; `string` The current state of the flow.\n - `withdraw_tx_broadcasting` &mdash; The transaction has been broadcast and is waiting for confirmation.\n - `done` &mdash; The transaction is complete and the stake has been withdrawn to the specified location.\n- `actions` &mdash; `array` It includes the `name` & `inputs` of all next possible actions.\n- `data` &mdash; `object` Undelegation flow & transaction data."
 					},
 					"response": [
@@ -2070,7 +2070,7 @@
 								}
 							}
 						},
-						"url": "https://{{POLKAOT_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows",
+						"url": "https://{{DOT_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows",
 						"description": "To add a staking proxy, create a new flow with a `POST` request to `/api/v1/flows`.\n\n### Parameters\n\n- `flow` &mdash; `object`\n  - `network_code` &mdash; `string` Network this flow operates on (ex. `polkadot`) (required).\n  - `chain_code` &mdash; `string` Chain this flow operates on (ex. `westend`) (required).\n  - `operation` `string` The operation to perform (ex. `add_proxy`) (required).\n  - `version` &mdash; `string` API version to use (ex. `v1`) (optional).\n\n### Response\n\n- `id` &mdash; `string` ID of the flow.\n- `state` &mdash; `string` The current state of the flow.\n- `actions` &mdash; `array` It includes the `name` & `inputs` of all next possible actions.\n - `create_add_proxy_tx` &mdash; Use this action to generate an add proxy transaction.\n   - `proxy_account_address` &mdash; The address to which you want to grant proxy rights.\n   - `proxied_account_address` &mdash; The account whose rights will be proxied.\n- `data` &mdash; `object` Staking proxy flow & transaction data."
 					},
 					"response": [
@@ -2117,7 +2117,7 @@
 								}
 							}
 						},
-						"url": "https://{{POLKAOT_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{polkadotAddProxyFlowId}}/next",
+						"url": "https://{{DOT_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{polkadotAddProxyFlowId}}/next",
 						"description": "After collecting the required inputs, send a `PUT` request to `/api/v1/flows/[:flow_id]/next` to proceed to the next step.\n\n### Parameters\n\n- `name` &mdash; `string` Name of the action to execute (required).\n- `inputs` &mdash; `object`\n  - `proxy_account_address` &mdash; `string` The address to which you want to add proxy rights (required).\n  - `proxied_account_address` &mdash; `string` The account whose rights will be proxied (required).\n\n### Response\n\n- `id` &mdash; `string` ID of the flow.\n- `state` &mdash; `string` The current state of the flow.\n- `actions` &mdash; `array` It includes the `name` & `inputs` of all next possible actions.\n - `refresh_add_proxy_tx` &mdash; If you need to get a fresh version of the transaction payload (i.e., the nonce has increased).\n - `sign_add_proxy_tx` &mdash; Submit a signed transaction payload ready to be broadcast to the network.\n- `data` &mdash; `object` Staking proxy flow & transaction data."
 					},
 					"response": [
@@ -2164,7 +2164,7 @@
 								}
 							}
 						},
-						"url": "https://{{POLKAOT_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{polkadotAddProxyFlowId}}/next",
+						"url": "https://{{DOT_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{polkadotAddProxyFlowId}}/next",
 						"description": "Before broadcasting the transaction, you must [sign the `transaction_payload`](https://docs.figment.io/guides/staking-api/figment-signing-transactions) you received in the previous step. After signing the transaction, you will `PUT /api/v1/flows/[:flow_id]/next` (as always!) and the Staking API will broadcast the transaction to the Polkadot network.\n\n### Parameters\n\n- `name` &mdash; `string` Name of the action to execute (required).\n- `inputs` &mdash; `object`\n  - `transaction_payload` &mdash; Signed transaction payload from the previous step's response.\n\n### Response\n\n- `id` &mdash; `string` ID of the flow.\n- `state` &mdash; `string` The current state of the flow.\n - `add_proxy_tx_broadcasting` &mdash; Transaction has been broadcast and is waiting confirmation.\n - `registered` &mdash; Transaction has been confirmed and the proxy is complete.\n- `actions` &mdash; `array` It includes the `name` & `inputs` of all next possible actions.\n- `data` &mdash; `object` Staking proxy flow & transaction data."
 					},
 					"response": [
@@ -2202,7 +2202,7 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "https://{{POLKAOT_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{polkadotAddProxyFlowId}}",
+						"url": "https://{{DOT_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{polkadotAddProxyFlowId}}",
 						"description": "To get the current state of the existing flow, send a `GET` request to `/api/v1/flows/[:flow_id]` using the flow ID from the previous step.\n\n### Parameters\n\n- None\n\n### Response\n\n- `id` &mdash; `string` ID of the flow.\n- `state` &mdash; `string` The current state of the flow.\n - `add_proxy_tx_broadcasting` &mdash; Transaction has been broadcast and is waiting for confirmation.\n - `registered` &mdash; Transaction has been confirmed and the proxy is complete.\n- `actions` &mdash; `array` It includes the `name` & `inputs` of all next possible actions.\n- `data` &mdash; `object` Staking proxy flow & transaction data."
 					},
 					"response": [
@@ -2240,7 +2240,7 @@
 								}
 							}
 						},
-						"url": "https://{{POLKAOT_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows",
+						"url": "https://{{DOT_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows",
 						"description": "To remove a staking proxy, create a new flow with a `POST` request to `/api/v1/flows`.\n\n### Parameters\n\n- `flow` &mdash; `object`\n  - `network_code` &mdash; `string` Network this flow operates on (ex. `polkadot`) (required).\n  - `chain_code` &mdash; `string` Chain this flow operates on (ex. `westend`) (required).\n  - `operation` `string` The operation to perform (ex. `remove_proxy`) (required).\n  - `version` &mdash; `string` API version to use (ex. `v1`) (optional).\n\n### Response\n\n- `id` &mdash; `string` ID of the flow.\n- `state` &mdash; `string` The current state of the flow.\n- `actions` &mdash; `array` It includes the `name` & `inputs` of all next possible actions.\n - `create_remove_proxy_tx` &mdash; Use this action to generate a proxy removal transaction.\n   - `proxy_account_address` &mdash; The address from which you want to remove proxy rights.\n   - `proxied_account_address` &mdash; The account whose rights were being proxied.\n- `data` &mdash; `object` Staking proxy flow & transaction data."
 					},
 					"response": [
@@ -2287,7 +2287,7 @@
 								}
 							}
 						},
-						"url": "https://{{POLKAOT_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{polkadotRemoveProxyFlowId}}/next",
+						"url": "https://{{DOT_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{polkadotRemoveProxyFlowId}}/next",
 						"description": "After collecting the required inputs, send a `PUT` request to `/api/v1/flows/[:flow_id]/next` to proceed to the next step.\n\n### Parameters\n\n- `name` &mdash; `string` Name of the action to execute (required).\n- `inputs` &mdash; `object`\n  - `proxy_account_address` &mdash; `string` The address to which you want to remove proxy rights (required).\n  - `proxied_account_address` &mdash; `string` The account whose rights will be proxied (required).\n\n### Response\n\n- `id` &mdash; `string` ID of the flow.\n- `state` &mdash; `string` The current state of the flow.\n- `actions` &mdash; `array` It includes the `name` & `inputs` of all next possible actions.\n - `refresh_remove_proxy_tx` &mdash; If you need to get a fresh version of the transaction payload (i.e., the nonce has increased).\n - `sign_remove_proxy_tx` &mdash; Submit a signed transaction payload ready to be broadcast to the network.\n- `data` &mdash; `object` Staking proxy flow & transaction data."
 					},
 					"response": [
@@ -2334,7 +2334,7 @@
 								}
 							}
 						},
-						"url": "https://{{POLKAOT_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{polkadotRemoveProxyFlowId}}/next",
+						"url": "https://{{DOT_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{polkadotRemoveProxyFlowId}}/next",
 						"description": "Before broadcasting the transaction, you must [sign the `transaction_payload`](https://docs.figment.io/guides/staking-api/figment-signing-transactions) you received in the previous step. After signing the transaction, send a `PUT` request to `/api/v1/flows/[:flow_id]/next` to proceed to the next step. The Staking API will broadcast the transaction to the Polkadot network\n\n### Parameters\n\n- `name` &mdash; `string` Name of the action to execute (required).\n- `inputs` &mdash; `object`\n  - `transaction_payload` &mdash; Signed transaction payload from the previous step's response.\n\n### Response\n\n- `id` &mdash; `string` ID of the flow.\n- `state` &mdash; `string` The current state of the flow.\n - `remove_proxy_tx_broadcasting` &mdash; Transaction has been broadcast and is waiting for confirmation.\n - `removed` &mdash; Transaction has been confirmed and the proxy is revoked.\n- `actions` &mdash; `array` It includes the `name` & `inputs` of all next possible actions.\n- `data` &mdash; `object` Staking proxy flow & transaction data."
 					},
 					"response": [
@@ -2372,7 +2372,7 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "https://{{POLKAOT_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{polkadotRemoveProxyFlowId}}",
+						"url": "https://{{DOT_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{polkadotRemoveProxyFlowId}}",
 						"description": "To get the current state of the existing flow, send a `GET` request to `/api/v1/flows/[:flow_id]` using the flow ID from the previous step.\n\n### Parameters\n\n- None\n\n### Response\n\n- `id` &mdash; `string` ID of the flow.\n- `state` &mdash; `string` The current state of the flow.\n - `remove_proxy_tx_broadcasting` &mdash; Transaction has been broadcast and is waiting for confirmation.\n - `removed` &mdash; Transaction has been confirmed and the proxy is revoked.\n- `actions` &mdash; `array` It includes the `name` & `inputs` of all next possible actions.\n- `data` &mdash; `object` Staking proxy flow & transaction data."
 					},
 					"response": [
@@ -2410,7 +2410,7 @@
 								}
 							}
 						},
-						"url": "https://{{POLKAOT_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows",
+						"url": "https://{{DOT_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows",
 						"description": "To initiate the transfer process, create a new flow with a `POST` request to `/api/v1/flows`.\n\n### Parameters\n\n- `flow` &mdash; `object`\n  - `network_code` &mdash; `string` Network this flow operates on (ex. `polkadot`) (required).\n  - `chain_code` &mdash; `string` Chain this flow operates on (ex. `westend`) (required).\n  - `operation` `string` The operation to perform (ex. `transfer`) (required).\n  - `version` &mdash; `string` API version to use (ex. `v1`) (optional).\n\n### Response\n\n- `id` &mdash; `string` ID of the flow.\n- `state` &mdash; `string` The current state of the flow.\n- `actions` &mdash; `array` It includes the `name` & `inputs` of all next possible actions.\n - `create_transfer_tx` &mdash; Use this action to create a transfer transaction to send DOT between accounts.\n   - `from_account_address` &mdash; The address from which DOT will be transferred.\n   - `to_account_address` &mdash; The address to which DOT will be transferred.\n   - `amount` &mdash; The amount of DOT to be transferred.\n- `data` &mdash; `object` Transfer flow & transaction data."
 					},
 					"response": [
@@ -2457,7 +2457,7 @@
 								}
 							}
 						},
-						"url": "https://{{POLKAOT_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{polkadotTransferFlowId}}/next",
+						"url": "https://{{DOT_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{polkadotTransferFlowId}}/next",
 						"description": "After collecting the required inputs, send a `PUT` request to `/api/v1/flows/[:flow_id]/next` to proceed to the next step.\n\n### Parameters\n\n- `name` &mdash; `string` Name of the action to execute (ex. `create_transfer_tx`)\n- `inputs` &mdash; `object`\n  - `from_account_address` &mdash; `string` the address from which DOT will be transferred (required).\n  - `to_account_address` &mdash; `string` The address to which DOT will be transferred (required).\n  - `amount` &mdash; `number` The amount of DOT to be transferred (required).\n\n### Response\n\n- `id` &mdash; `string` ID of the flow.\n- `state` &mdash; `string` The current state of the flow.\n- `actions` &mdash; `array` It includes the `name` & `inputs` of all next possible actions.\n - `refresh_transfer_tx` &mdash; If you need to get a fresh version of the transaction payload (i.e., the nonce has increased).\n - `sign_transfer_tx` &mdash; Submit a signed transaction payload ready to be broadcast to the network.\n- `data` &mdash; `object` Transfer flow & transaction data."
 					},
 					"response": [
@@ -2504,7 +2504,7 @@
 								}
 							}
 						},
-						"url": "https://{{POLKAOT_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{polkadotTransferFlowId}}/next",
+						"url": "https://{{DOT_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{polkadotTransferFlowId}}/next",
 						"description": "Before broadcasting the transaction, you must [sign the `transaction_payload`](https://docs.figment.io/guides/staking-api/figment-signing-transactions) you received in the previous step. After signing the transaction, send a `PUT` request to `/api/v1/flows/[:flow_id]/next` with the signed payload. The Staking API will broadcast the transaction to the Polkadot network.\n\n### Parameters\n\n- `name` &mdash; `string` Name of the action to execute (required).\n- `inputs` &mdash; `object`\n  - `transaction_payload` &mdash; Signed transaction payload from the previous step's response.\n\n### Response\n\n- `id` &mdash; `string` ID of the flow.\n- `state` &mdash; `string` The current state of the flow.\n - `transfer_tx_broadcasting` &mdash; Transaction has been broadcast and is waiting for confirmation.\n - `transferred` &mdash; Transaction has been confirmed and the transfer is complete.\n- `actions` &mdash; `array` It includes the `name` & `inputs` of all next possible actions.\n- `data` &mdash; `object` Transfer flow & transaction data."
 					},
 					"response": [
@@ -2542,7 +2542,7 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "https://{{POLKAOT_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{polkadotTransferFlowId}}",
+						"url": "https://{{DOT_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{polkadotTransferFlowId}}",
 						"description": "To get the current state of the existing flow, send a `GET` request to `/api/v1/flows/[:flow_id]` using the flow ID from the previous step.\n\n### Parameters\n\n- None\n\n### Response\n\n- `id` &mdash; `string` ID of the flow.\n- `state` &mdash; `string` The current state of the flow.\n - `transfer_tx_broadcasting` &mdash; Transaction has been broadcast and is waiting for confirmation.\n - `transferred` &mdash; Transaction has been confirmed and the transfer is complete.\n- `actions` &mdash; `array` It includes the `name` & `inputs` of all next possible actions.\n- `data` &mdash; `object` Transfer flow & transaction data."
 					},
 					"response": [
@@ -4280,42 +4280,42 @@
 	],
 	"variable": [
 		{
-			"id": "202f56d1-05a4-473d-a560-bf17354f7990",
+			"id": "4c8aac13-4310-4430-adb6-fe810cb06871",
 			"key": "AVAX_STAKING_HOST",
 			"value": "avalanche-slate.datahub.figment.io"
 		},
 		{
-			"id": "4106d69d-eb01-45cb-8a80-70ca209b1894",
+			"id": "740d8569-89c9-4080-873a-48db646c72e8",
 			"key": "COSMOS_STAKING_HOST",
 			"value": "cosmos-slate.datahub.figment.io"
 		},
 		{
-			"id": "13caad65-0a6b-4f60-9924-4afb454ad267",
+			"id": "6645a47c-873a-4710-af67-06c831020884",
 			"key": "ETH_STAKING_HOST",
 			"value": "eth-slate.datahub.figment.io"
 		},
 		{
-			"id": "b1ae827b-8945-4953-ae8a-cfc7bd11052f",
+			"id": "b0afa1f8-7681-4217-844d-d724353a71ad",
 			"key": "NEAR_STAKING_HOST",
 			"value": "near-slate.datahub.figment.io"
 		},
 		{
-			"id": "533777d6-08e4-4f6c-b0f6-7d34191f0667",
+			"id": "8c97bc7b-d658-47a9-8c92-b552fb8ce4bf",
 			"key": "DOT_STAKING_HOST",
 			"value": "polkadot-slate.datahub.figment.io"
 		},
 		{
-			"id": "0c1a6e35-e79c-41f5-bdc0-ae889fd4b956",
+			"id": "9a6cc92a-14d8-4491-b841-6625b3f8d199",
 			"key": "SOLANA_STAKING_HOST",
 			"value": "solana-slate.datahub.figment.io"
 		},
 		{
-			"id": "b5d20c83-1ab3-4d1e-89f9-3b50a116b640",
+			"id": "3a802f15-b175-44b5-84ef-78cbf706ee83",
 			"key": "POLYGON_STAKING_HOST",
 			"value": "polygon-slate.datahub.figment.io"
 		},
 		{
-			"id": "9be66c93-8644-47da-90dc-860d79dbbc2d",
+			"id": "4e2dba64-9423-4874-963e-50910e06bd6f",
 			"key": "INTERACTIVE",
 			"value": "false"
 		}
