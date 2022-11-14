@@ -18,9 +18,6 @@
 
 .navbar-sidebar__close svg g {
   stroke: var(--top-nav-font-color);
-}
-
-.navbar-sidebar__close svg g {
   color: var(--top-nav-font-color) !important;
   text-decoration: none;
 }

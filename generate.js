@@ -2,6 +2,8 @@ require("dotenv").config();
 const fs = require("fs-extra");
 const SCHEMAS_DIR = "schemas";
 
+const cliArgs = process.argv.slice(2);
+
 function toDashCase(str) {
   return str?.toLowerCase().replace(/\s+/g, "-");
 }
@@ -54,22 +56,26 @@ function processMethod(method, vars) {
   query = url.split("{{API_KEY}}")[1];
   query = query ? query.replace(/^\/+/, "") : query;
   url = url.split("{{API_KEY}}")[0] + "{{API_KEY}}" + "/";
-  url = url.replace(/apikey\/{{API_KEY}}\/{0,1}/, "");
+  url = url.replace(/apikey\/{{API_KEY}}\/?/, "");
   for (let key in vars) {
     url = url.replace(`{{${key}}}`, vars[key]);
   }
   url = url.replace(/\/+$/, "");
+
+  // Prevents nested ternary operator
+  let request_body;
+  if (request.body?.mode === "graphql") {
+    request_body = request.body.graphql.query;
+  } else {
+    request_body = processJSON(request.body?.raw);
+  }
 
   return {
     name: name,
     content: description,
     request: {
       ...request,
-      body: request.body
-        ? request.body.mode === "graphql"
-          ? request.body.graphql.query
-          : processJSON(request.body.raw)
-        : undefined,
+      body: request_body,
       headers: process.env.DEVELOPMENT
         ? {
             Authorization: process.env.API_KEY,
@@ -176,7 +182,7 @@ function referenceTable(_services, variables) {
   let markdown = "";
   let editedProtocolList = "";
 
-  // TODO: Determine if this can be sorted alphabetically
+  // Determine if this can be sorted alphabetically
   const services = [
     _services.find((s) => s.service === "node-api"),
     _services.find((s) => s.service === "transaction-search-api"),
@@ -224,7 +230,7 @@ function referenceTable(_services, variables) {
         ),
       ];
 
-      // TODO: Remove need to manually check for outliers
+      // Remove need to manually check for outliers
       // Add any protocols that don't belong to a service
       // .. or protocols that don't have a Node API
       editedProtocolList = editedProtocolList.sort();
@@ -321,7 +327,7 @@ function referenceTable(_services, variables) {
     }
     markdown = makeRow(i) + "|\n";
   }
-
+  let outputTable;
   return (outputTable = frontMatterTemplate({
     title: "API Reference",
     desc: "API Reference supported protocols table",
@@ -473,7 +479,7 @@ function generateCORSTests(services) {
         const apiCall = apiCalls[index];
         console.clear();
         const progress = index + 1;
-        console.log(((progress/apiCalls.length)*100).toFixed(2) + "%")
+        // console.log(((progress/apiCalls.length)*100).toFixed(2) + "%")
         const passed = await testEndpoint(apiCall);
         if (!passed) failedCalls.push(apiCall);
       }
@@ -483,7 +489,7 @@ function generateCORSTests(services) {
     process()
   `;
 
-  fs.writeFileSync("tests.js", testScript, "utf-8");
+  fs.writeFileSync("corstests.js", testScript, "utf-8");
 }
 
 (function process() {
@@ -491,6 +497,14 @@ function generateCORSTests(services) {
   const variables = getEnvironmentVariables(schemas);
   const services = processServices(schemas, variables);
   createMarkdown(services, variables);
-  //generateCORSTests(services);
+  switch (cliArgs[0]) {
+    case "corstests":
+      generateCORSTests(services);
+      break;
+    case "tests":
+      break;
+    default:
+      break;
+  }
   process.exit?.();
 })();
