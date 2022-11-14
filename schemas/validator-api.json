@@ -26,7 +26,7 @@
 								}
 							}
 						},
-						"url": "https://{{ETH_HOST}}/api/v1/prime/apikey/{{API_KEY}}/eth2_staking/positions/ ",
+						"url": "https://{{ETH_HOST}}/api/v1/prime/apikey/{{API_KEY}}/eth2_staking/positions/",
 						"description": "Request creation of new staking position with the passed attributes.\n\n### Parameters\n\n- `external_user_id` — `string` — A customer user ID.\n- `external_user_email` — `string` — A customer email address.\n- `withdrawal_address` — `string` — An Ethereum address.\n- `validators_count` — `integer` — A number of validators.\n- `eth2_network_name` — `string` — A network name, denoting testnet (`goerli`) or mainnet (`prater`).\n    \n\n### Response\n\n- `success` — `boolean` — Returns `true` if the action was successful, otherwise returns `false`.\n    \n\n### Webhook configuration\n\nUsers can be notified via webhook when a new staking position is created. Configure a webhook URL and a webhook API key under \"Prime / ETH Staking\" in the Prime Dashboard. The configured API key will be sent as an `Authorization` header. \n\n#### Note\n\nValidator API webhooks can only be configured from the Prime dashboard."
 					},
 					"response": [
@@ -627,19 +627,19 @@
 	],
 	"variable": [
 		{
-			"id": "3eb0e327-6f84-4263-adf2-efe358a6482b",
+			"id": "f0082b4b-e0cf-4ce3-9ed0-89859f8b594b",
 			"key": "ETH_HOST",
 			"value": "hubble.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "9ef6e2b2-634c-486b-bdf5-f5e397a185ec",
+			"id": "3bb88ad8-8ca1-4ece-a261-4ae672363f16",
 			"key": "DOT_HOST",
 			"value": "hubble.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "fb3671de-d63b-47e4-9bc0-a5e68122deb0",
+			"id": "240fcc39-d915-4405-bf68-f461613f0227",
 			"key": "INTERACTIVE",
 			"value": "false",
 			"type": "string"
