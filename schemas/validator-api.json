@@ -627,19 +627,19 @@
 	],
 	"variable": [
 		{
-			"id": "f0082b4b-e0cf-4ce3-9ed0-89859f8b594b",
+			"id": "971b4edc-b2ba-404d-b618-c3d74fd3fc6f",
 			"key": "ETH_HOST",
 			"value": "hubble.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "3bb88ad8-8ca1-4ece-a261-4ae672363f16",
+			"id": "f67ce5aa-06c4-4fd6-a1bc-23b06947aa83",
 			"key": "DOT_HOST",
 			"value": "hubble.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "240fcc39-d915-4405-bf68-f461613f0227",
+			"id": "3200da1b-4a91-4141-ae29-c58d0364d7c6",
 			"key": "INTERACTIVE",
 			"value": "false",
 			"type": "string"
