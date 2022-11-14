@@ -6,6 +6,7 @@
     "docusaurus": "docusaurus",
     "start": "node generate.js && docusaurus start",
     "build": "node generate.js && docusaurus build",
+    "corstests": "node generate.js tests && ( sleep 1 && node corstests.js > cors_failed.txt )",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
     "clear": "docusaurus clear",

@@ -15,3 +15,7 @@ docs/api-reference/*
 build
 partials/transaction-search-parameters
 .env
+
+# CORS test files created by generate.js
+corstests.js
+cors_failed.txt
