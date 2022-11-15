@@ -17,7 +17,7 @@ The Staking API will broadcast the transaction to the Polygon network.
 ```bash {5-8}
 curl -X PUT 'https://polygon-slate.datahub.figment.io/api/v1/flows/e6dc662e-f77c-4235-9b28-7141d90c8ab8/next' \
 -H 'Content-Type: application/json' \
--H 'Authorization: 6b311c8d22b94e206b0b342315e04fd2' \
+-H 'Authorization: <api_key>' \
 -d '{
   "name": "sign_delegate_tx",
 	"inputs": {
