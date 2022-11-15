@@ -64,10 +64,12 @@ function processMethod(method, vars) {
 
   // Prevents nested ternary operator
   let request_body;
-  if (request.body?.mode === "graphql") {
-    request_body = request.body.graphql.query;
-  } else {
-    request_body = processJSON(request.body?.raw);
+  if (request.method !== "GET") {
+    if (request.body?.mode === "graphql") {
+      request_body = request.body.graphql.query;
+    } else {
+      request_body = processJSON(request.body?.raw);
+    }
   }
 
   return {
