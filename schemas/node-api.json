@@ -53108,7 +53108,7 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "https://{{OSMO_LCD_HOST}}/apikey/{{API_KEY}}//osmosis/incentives/v1beta1/active_gauges",
+						"url": "https://{{OSMO_LCD_HOST}}/apikey/{{API_KEY}}/osmosis/incentives/v1beta1/active_gauges",
 						"description": "Returns active gauges\n\n### Parameters\n\n- `pagination.key` string($byte) (query) key is a value returned in PageResponse.next_key to begin querying the next page most efficiently. Only one of offset or key should be set.\n\n- `pagination.offset` string($uint64) (query) offset is a numeric offset that can be used when key is unavailable. It is less efficient than using key. Only one of offset or key should be set.\n\n- `pagination.limit` string($uint64) (query) limit is the total number of results to be returned in the result page. If left empty it will default to a value to be set by each app.\n\n- `pagination.count_total` boolean (query) count_total is set to true to indicate that the result set should include a count of the total number of items available for pagination in UIs. count_total is only respected when offset is used. It is ignored when key is set.\n\n### Response\n\n- Return active gauges `data` with `id`, `is_perpetual`, `distribute_to`, `coins`, `start_time`, `num_epochs_paid_over`, `filled_epochs` and `distributed_coins`."
 					},
 					"response": [
@@ -74422,119 +74422,119 @@
 	],
 	"variable": [
 		{
-			"id": "3b243993-9ffe-4b48-9381-95e667dff14b",
+			"id": "5660dfd6-3b1d-46b8-9820-0e2f46978024",
 			"key": "ARBI_HOST",
 			"value": "arbitrum-mainnet-rpc-archive-dbgtxn.datahub.figment.io"
 		},
 		{
-			"id": "caac2c2d-7144-4e9f-839d-5ab79956f93f",
+			"id": "d2fb4e15-6569-4aca-b4f9-1f703e11f2d6",
 			"key": "AVAX_HOST",
 			"value": "avalanche--mainnet--rpc.datahub.figment.io"
 		},
 		{
-			"id": "af67be5b-1b18-4968-af71-bac1dbc13c3a",
+			"id": "04131b0a-2008-47f0-a72a-d5960063fd1b",
 			"key": "BNB_HOST",
 			"value": "bsc--mainnet--rpc-archive-dbgtxn.datahub.figment.io"
 		},
 		{
-			"id": "2f7dabac-2d16-49d5-a222-bc3d45be3ed8",
+			"id": "387f52d4-1afb-4554-ac42-3112529454bb",
 			"key": "CELO_HOST",
 			"value": "celo-mainnet--rpc.datahub.figment.io"
 		},
 		{
-			"id": "9054609d-48f1-4699-b6a7-0c316ac0eadc",
+			"id": "9996cb9e-bcb0-418a-8121-c0655ba97431",
 			"key": "COSMOS_LCD_HOST",
 			"value": "cosmoshub-4--lcd--archive.datahub.figment.io"
 		},
 		{
-			"id": "758c0348-040a-4a0a-be19-44f5f5ec8dd7",
+			"id": "d84d430d-f1e5-4ac9-b030-ffe04354526c",
 			"key": "COSMOS_RPC_HOST",
 			"value": "cosmoshub-4--rpc--archive.datahub.figment.io"
 		},
 		{
-			"id": "4853a6d2-688f-41bd-aafa-c7e1a47e68c8",
+			"id": "87a4e2fd-e4d8-4c7f-919b-1474e51c2267",
 			"key": "ETH_HOST",
 			"value": "erigon-mainnet--rpc-dbgtxn.datahub.figment.io"
 		},
 		{
-			"id": "41b15c0d-c155-4a2e-af48-65c328ca37f0",
+			"id": "37ae2824-3f3d-4f21-b013-5f7bb90f1144",
 			"key": "FTM_HOST",
 			"value": "ftm--mainnet--rpc-archive-dbgtxn.datahub.figment.io"
 		},
 		{
-			"id": "33071dbd-3b04-4d12-a0c3-cf174c8c9fea",
+			"id": "d22b380f-1334-476e-89d7-825047840cf7",
 			"key": "KSM_SIDECAR_HOST",
 			"value": "polkadot-kusama--sidecar.datahub.figment.io"
 		},
 		{
-			"id": "9c492125-091b-4dea-bb69-4d5358ad499b",
+			"id": "f29abe75-5cae-414f-aee6-60c4ab946e2b",
 			"key": "MINA_HOST",
 			"value": "mina-mainnet--graphql.datahub.figment.io"
 		},
 		{
-			"id": "d1213e33-42a6-48d1-8338-4e791ab03e90",
+			"id": "922b3ae7-d3ad-469e-8f1d-dfaa176c85d1",
 			"key": "NEAR_HOST",
 			"value": "near-mainnet--rpc--archive.datahub.figment.io"
 		},
 		{
-			"id": "667199af-2d4b-46a6-9366-44318c7fd04b",
+			"id": "f98d480f-113f-4e27-8f76-952df7a62a5c",
 			"key": "OPTIMISM_HOST",
 			"value": "optimism-mainnet-rpc-archive.datahub.figment.io"
 		},
 		{
-			"id": "d28d7b7b-4109-4762-9cc4-376b03d4b142",
+			"id": "abc47068-0083-4b45-b53b-9f0f5c0cad6d",
 			"key": "OSMO_LCD_HOST",
 			"value": "osmosis-1--lcd--archive.datahub.figment.io"
 		},
 		{
-			"id": "6b825c7a-3b01-49e8-bf06-f1d9cbf96cf0",
+			"id": "2f95af37-d9b8-481b-a960-abd789e7f788",
 			"key": "OSMO_RPC_HOST",
 			"value": "osmosis-1--rpc--archive.datahub.figment.io"
 		},
 		{
-			"id": "1d1ccbd7-896d-4979-8933-615a3764ff68",
+			"id": "8bacc6ef-2e7f-4334-a47f-3996c9bec7ef",
 			"key": "POLKADOT_HOST",
 			"value": "polkadot--rpc.datahub.figment.io"
 		},
 		{
-			"id": "76e4ba8e-057f-41bc-a6ba-5416ec1763ef",
+			"id": "bcaa5d64-fe56-42d2-bfca-2e23ec0cb115",
 			"key": "POLKADOT_SIDECAR_HOST",
 			"value": "polkadot--sidecar.datahub.figment.io"
 		},
 		{
-			"id": "7ea0b113-b870-474a-92f8-55a4c3b36de8",
+			"id": "f35d8c66-8c57-4ee6-8f89-97e9dc457428",
 			"key": "POLYGON_HOST",
 			"value": "matic-mainnet--jsonrpc-archive-dbgtxn.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "95211863-b153-4713-ae6a-63dd0dccbfdf",
+			"id": "cd4f90d2-1f8e-4892-b218-96578ff58b19",
 			"key": "SOL_HOST",
 			"value": "solana--mainnet.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "a8f288d5-2044-4153-bce7-cca005511388",
+			"id": "3153229d-f489-4952-bf72-63272b5923c8",
 			"key": "WEBSOCKETS",
 			"value": "arbitrum, bnb, celo, centrifuge, cosmos, ethereum, fantom, kusama, optimism, polkadot, polygon, solana"
 		},
 		{
-			"id": "c6e2ea72-65d1-4693-952c-cf3f01ed60a4",
+			"id": "cd3ee30a-567e-4c5e-9c8c-15de0e5a26fb",
 			"key": "TESTNETS",
 			"value": "avalanche, celo, ethereum, mina, near, polkadot, polygon"
 		},
 		{
-			"id": "e88bdc6f-b990-4dd6-bbd1-343cfc104a04",
+			"id": "950c95ec-ad3d-4aea-ae67-08be576c1856",
 			"key": "DEVNETS",
 			"value": "solana"
 		},
 		{
-			"id": "1edba5b0-9bd4-42da-a80e-b9a17ba2cb4c",
+			"id": "ae4d006a-86d1-433f-bafb-793dd82a0e2d",
 			"key": "ARCHIVENODES",
 			"value": "arbitrum, avalanche, bnb, celo, cosmos, ethereum, fantom, kusama, mina, near, optimism, osmosis, polkadot, polygon, solana"
 		},
 		{
-			"id": "935a4d53-eb28-41ec-a187-ce439bd5803f",
+			"id": "b7bd18d2-84dd-4966-a2ad-9a07e47be1b3",
 			"key": "FULLNODES",
 			"value": "arbitrum, bnb, centrifuge, cosmos, ethereum, fantom, kusama, mina, near, optimism, osmosis, polkadot, polygon, solana"
 		}
