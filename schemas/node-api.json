@@ -27,7 +27,7 @@
 							}
 						},
 						"url": "https://{{ARBI_HOST}}/apikey/{{API_KEY}}/",
-						"description": "Returns information about a block by hash.\n\n### Parameters\n\n1. `DATA`, 32 Bytes - Hash of a block.\n2. `Boolean` - If `true` it returns the full transaction objects, if `false` only the hashes of the transactions.  \n\n### Response\n\n`Object` - A block object, or `null` when no block was found:\n\n- `number`: `QUANTITY` - the block number. `null` when its pending block.\n- `hash`: `DATA`, 32 Bytes - hash of the block. `null` when its pending block.\n- `parentHash`: `DATA`, 32 Bytes - hash of the parent block.\n- `nonce`: `DATA`, 8 Bytes - hash of the generated proof-of-work. `null` when its pending block.\n- `sha3Uncles`: `DATA`, 32 Bytes - SHA3 of the uncles data in the block.\n- `logsBloom`: `DATA`, 256 Bytes - the bloom filter for the logs of the block. `null` when its pending block.\n- `transactionsRoot`: `DATA`, 32 Bytes - the root of the transaction trie of the block.\n- `stateRoot`: `DATA`, 32 Bytes - the root of the final state trie of the block.\n- `receiptsRoot`: `DATA`, 32 Bytes - the root of the receipts trie of the block.\n- `miner`: `DATA`, 20 Bytes - the address of the beneficiary to whom the mining rewards were given.\n- `difficulty`: `QUANTITY` - integer of the difficulty for this block.\n- `totalDifficulty`: `QUANTITY` - integer of the total difficulty of the chain until this block.\n- `extraData`: `DATA` - the \"extra data\" field of this block.\n- `size`: `QUANTITY` - integer the size of this block in bytes.\n- `gasLimit`: `QUANTITY` - the maximum gas allowed in this block.\n- `gasUsed`: `QUANTITY` - the total used gas by all transactions in this block.\n- `timestamp`: `QUANTITY` - the unix timestamp for when the block was collated.\n- `transactions`: `Array` - Array of transaction objects, or 32 Bytes transaction hashes depending on the last given parameter.\n- `uncles`: `Array` - Array of uncle hashes."
+						"description": "Returns information about a block by hash.\n\n### Parameters\n\n- `DATA` &mdash; 32 Bytes, Hash of a block.\n- `Boolean` &mdash; If `true` it returns the full transaction objects, if `false` only the hashes of the transactions.  \n\n### Response\n\n`Object` &mdash; A block object, or `null` when no block was found:\n\n- `number` &mdash; `QUANTITY` The block number, `null` when it's pending block.\n- `hash` &mdash; `DATA` 32 Bytes, Hash of the block. `null` when its pending block.\n- `parentHash` &mdash; `DATA` 32 Bytes, Hash of the parent block.\n- `nonce` &mdash; `DATA` 8 Bytes, Hash of the generated proof-of-work. `null` when its pending block.\n- `sha3Uncles` &mdash; `DATA` 32 Bytes, SHA3 of the uncles data in the block.\n- `logsBloom` &mdash; `DATA` 256 Bytes, The bloom filter for the logs of the block. `null` when it's pending block.\n- `transactionsRoot` &mdash; `DATA` 32 Bytes, The root of the transaction trie of the block.\n- `stateRoot` &mdash; `DATA` 32 Bytes, The root of the final state trie of the block.\n- `receiptsRoot` &mdash; `DATA` 32 Bytes, The root of the receipts trie of the block.\n- `miner` &mdash; `DATA` 20 Bytes, The address of the beneficiary to whom the mining rewards were given.\n- `difficulty` &mdash; `QUANTITY` Integer of the difficulty for this block.\n- `totalDifficulty` &mdash; `QUANTITY` Integer of the total difficulty of the chain until this block.\n- `extraData` &mdash; `DATA` The \"extra data\" field of this block.\n- `size` &mdash; `QUANTITY` Integer the size of this block in bytes.\n- `gasLimit` &mdash; `QUANTITY` The maximum gas allowed in this block.\n- `gasUsed` &mdash; `QUANTITY` The total used gas by all transactions in this block.\n- `timestamp` &mdash; `QUANTITY` The UNIX timestamp for when the block was collated.\n- `transactions` &mdash; `Array` Array of transaction objects, or 32 Bytes transaction hashes depending on the last given parameter.\n- `uncles` &mdash; `Array` Array of uncle hashes."
 					},
 					"response": [
 						{
@@ -121,7 +121,7 @@
 							}
 						},
 						"url": "https://{{ARBI_HOST}}/apikey/{{API_KEY}}/",
-						"description": "Returns information about a block by block number.\n\n### Parameters\n\n1. `QUANTITY|TAG` - integer of a block number, or the string `\"earliest\"`, `\"latest\"` or `\"pending\"`, as in the default block parameter\n2. `Boolean` - If `true` it returns the full transaction objects, if `false` only the hashes of the transactions.\n\n### Response\n\n`Object` - A block object, or `null` when no block was found:\n\n- `number`: `QUANTITY` - the block number. `null` when its pending block.\n- `hash`: `DATA`, 32 Bytes - hash of the block. `null` when its pending block.\n- `parentHash`: `DATA`, 32 Bytes - hash of the parent block.\n- `nonce`: `DATA`, 8 Bytes - hash of the generated proof-of-work. `null` when its pending block.\n- `sha3Uncles`: `DATA`, 32 Bytes - SHA3 of the uncles data in the block.\n- `logsBloom`: `DATA`, 256 Bytes - the bloom filter for the logs of the block. `null` when its pending block.\n- `transactionsRoot`: `DATA`, 32 Bytes - the root of the transaction trie of the block.\n- `stateRoot`: `DATA`, 32 Bytes - the root of the final state trie of the block.\n- `receiptsRoot`: `DATA`, 32 Bytes - the root of the receipts trie of the block.\n- `miner`: `DATA`, 20 Bytes - the address of the beneficiary to whom the mining rewards were given.\n- `difficulty`: `QUANTITY` - integer of the difficulty for this block.\n- `totalDifficulty`: `QUANTITY` - integer of the total difficulty of the chain until this block.\n- `extraData`: `DATA` - the \"extra data\" field of this block.\n- `size`: `QUANTITY` - integer the size of this block in bytes.\n- `gasLimit`: `QUANTITY` - the maximum gas allowed in this block.\n- `gasUsed`: `QUANTITY` - the total used gas by all transactions in this block.\n- `timestamp`: `QUANTITY` - the unix timestamp for when the block was collated.\n- `transactions`: `Array` - Array of transaction objects, or 32 Bytes transaction hashes depending on the last given parameter.\n- `uncles`: `Array` - Array of uncle hashes."
+						"description": "Returns information about a block by block number.\n\n### Parameters\n\n- `QUANTITY|TAG` &mdash; Integer of a block number, or the string `\"earliest\"`, `\"latest\"` or `\"pending\"`, as in the default block parameter\n- `Boolean` &mdash; If `true` it returns the full transaction objects, if `false` only the hashes of the transactions.\n\n### Response\n\n`Object` &mdash; A block object, or `null` when no block was found:\n\n- `number` &mdash; `QUANTITY` The block number, `null` when its pending block.\n- `hash` &mdash; `DATA` 32 Bytes, Hash of the block. `null` when its pending block.\n- `parentHash` &mdash; `DATA` 32 Bytes, Hash of the parent block.\n- `nonce` &mdash; `DATA` 8 Bytes, Hash of the generated proof-of-work. `null` when its pending block.\n- `sha3Uncles` &mdash; `DATA` 32 Bytes, SHA3 of the uncles data in the block.\n- `logsBloom` &mdash; `DATA` 256 Bytes, The bloom filter for the logs of the block. `null` when it's pending block.\n- `transactionsRoot` &mdash; `DATA` 32 Bytes, The root of the transaction trie of the block.\n- `stateRoot` &mdash; `DATA` 32 Bytes, The root of the final state trie of the block.\n- `receiptsRoot` &mdash; `DATA` 32 Bytes, The root of the receipts trie of the block.\n- `miner` &mdash; `DATA` 20 Bytes, The address of the beneficiary to whom the mining rewards were given.\n- `difficulty` &mdash; `QUANTITY` Integer of the difficulty for this block.\n- `totalDifficulty` &mdash; `QUANTITY` Integer of the total difficulty of the chain until this block.\n- `extraData` &mdash; `DATA` The \"extra data\" field of this block.\n- `size` &mdash; `QUANTITY` Integer the size of this block in bytes.\n- `gasLimit` &mdash; `QUANTITY` The maximum gas allowed in this block.\n- `gasUsed` &mdash; `QUANTITY` The total used gas by all transactions in this block.\n- `timestamp` &mdash; `QUANTITY` The UNIX timestamp for when the block was collated.\n- `transactions`: &mdash; `Array` Array of transaction objects, or 32 Bytes transaction hashes depending on the last given parameter.\n- `uncles` &mdash; `Array` Array of uncle hashes."
 					},
 					"response": [
 						{
@@ -215,7 +215,7 @@
 							}
 						},
 						"url": "https://{{ARBI_HOST}}/apikey/{{API_KEY}}/",
-						"description": "Returns the number of transactions in a block from a block matching the given block hash.\n\n### Parameters\n\n1. `DATA`, 32 Bytes - hash of a block\n\n### Response\n\n`QUANTITY` - integer of the number of transactions in this block."
+						"description": "Returns the number of transactions in a block from a block matching the given block hash.\n\n### Parameters\n\n- `DATA` &mdash; 32 Bytes, Hash of a block\n\n### Response\n\n- `QUANTITY` &mdash; Integer of the number of transactions in this block."
 					},
 					"response": [
 						{
@@ -309,7 +309,7 @@
 							}
 						},
 						"url": "https://{{ARBI_HOST}}/apikey/{{API_KEY}}/",
-						"description": "Returns the number of transactions in a block matching the given block number.\n\n### Parameters\n\n1. `QUANTITY|TAG` - integer of a block number, or the string `\"earliest\"`, `\"latest\"` or `\"pending\"`, as in the [default block parameter](/developers/docs/apis/json-rpc/#default-block-parameter).\n\n### Response\n\n`QUANTITY` - integer of the number of transactions in this block."
+						"description": "Returns the number of transactions in a block matching the given block number.\n\n### Parameters\n\n- `QUANTITY|TAG` &mdash; Integer of a block number, or the string `\"earliest\"`, `\"latest\"` or `\"pending\"`, as in the [default block parameter](/developers/docs/apis/json-rpc/#default-block-parameter).\n\n### Response\n\n- `QUANTITY` &mdash; Integer of the number of transactions in this block."
 					},
 					"response": [
 						{
@@ -403,7 +403,7 @@
 							}
 						},
 						"url": "https://{{ARBI_HOST}}/apikey/{{API_KEY}}/",
-						"description": "Returns the chain ID of the current network.\n\n### Parameters\n\nnone\n\n### Response\n\n`quantity` - EIP155 Chain ID."
+						"description": "Returns the chain ID of the current network.\n\n### Parameters\n\nNone\n\n### Response\n\n- `QUANTITY` &mdash; EIP155 Chain ID."
 					},
 					"response": [
 						{
@@ -497,7 +497,7 @@
 							}
 						},
 						"url": "https://{{ARBI_HOST}}/apikey/{{API_KEY}}/",
-						"description": "Returns the number of most recent block.\n\n### Parameters\n\nNone\n\n### Response\n\n`QUANTITY` - integer of the current block number the client is on."
+						"description": "Returns the number of the most recent block.\n\n### Parameters\n\nNone\n\n### Response\n\n- `QUANTITY` &mdash; Integer of the current block number the client is on."
 					},
 					"response": [
 						{
@@ -591,7 +591,7 @@
 							}
 						},
 						"url": "https://{{ARBI_HOST}}/apikey/{{API_KEY}}/",
-						"description": "Executes a new message call immediately without creating a transaction on the block chain.\n\n### Parameters\n\n1. `Object` - The transaction call object\n\n- `from`: `DATA`, 20 Bytes - (optional) The address the transaction is sent from.\n- `to`: `DATA`, 20 Bytes - The address the transaction is directed to.\n- `gas`: `QUANTITY` - (optional) Integer of the gas provided for the transaction execution. eth_call consumes zero gas, but this parameter may be needed by some executions.\n- `gasPrice`: `QUANTITY` - (optional) Integer of the gasPrice used for each paid gas\n- `value`: `QUANTITY` - (optional) Integer of the value sent with this transaction\n- `data`: `DATA` - (optional) Hash of the method signature and encoded parameters. For details see [Ethereum Contract ABI in the Solidity documentation](https://docs.soliditylang.org/en/latest/abi-spec.html)\n\n2. `QUANTITY|TAG` - integer block number, or the string `\"latest\"`, `\"earliest\"` or `\"pending\"`, see the default block parameter\n\n### Response\n\n`DATA` - the return value of executed contract."
+						"description": "Executes a new message call immediately without creating a transaction on the block chain.\n\n### Parameters\n\n- `Object` &mdash; The transaction call object\n - `from` &mdash; `DATA` 20 Bytes, The address the transaction is sent from (optional).\n - `to` &mdash; `DATA` 20 Bytes, The address the transaction is directed to.\n - `gas` &mdash; `QUANTITY` Integer of the gas provided for the transaction execution (optional). eth_call consumes zero gas, but this parameter may be needed by some executions.\n - `gasPrice` &mdash; `QUANTITY` Integer of the gasPrice used for each paid gas (optional).\n - `value` &mdash; `QUANTITY` Integer of the value sent with this transaction (optional).\n - `data` &mdash; `DATA` Hash of the method signature and encoded parameters. For details see [Ethereum Contract ABI in the Solidity documentation](https://docs.soliditylang.org/en/latest/abi-spec.html)\n\n- `QUANTITY|TAG` &mdash; Integer block number, or the string `\"latest\"`, `\"earliest\"` or `\"pending\"`, see the default block parameter\n\n### Response\n\n- `DATA` &mdash; The return value of the executed contract."
 					},
 					"response": [
 						{
@@ -685,7 +685,7 @@
 							}
 						},
 						"url": "https://{{ARBI_HOST}}/apikey/{{API_KEY}}/",
-						"description": "Generates and returns an estimate of how much gas is necessary to allow the transaction to complete. The transaction will not be added to the blockchain. Note that the estimate may be significantly more than the amount of gas actually used by the transaction, for a variety of reasons including EVM mechanics and node performance.\n\n### Parameters\n\nSee [eth_call](#eth_call) parameters, expect that all properties are optional. If no gas limit is specified geth uses the block gas limit from the pending block as an upper bound. As a result the returned estimate might not be enough to executed the call/transaction when the amount of gas is higher than the pending block gas limit.\n\n### Response\n\n`QUANTITY` - the amount of gas used."
+						"description": "Generates and returns an estimate of how much gas is necessary to allow the transaction to complete. The transaction will not be added to the blockchain. Note that the estimate may be significantly more than the amount of gas actually used by the transaction, for a variety of reasons including EVM mechanics and node performance.\n\n### Parameters\n\nSee [eth_call](#eth_call) parameters, expect that all properties are optional. If no gas limit is specified geth uses the block gas limit from the pending block as an upper bound. As a result the returned estimate might not be enough to executed the call/transaction when the amount of gas is higher than the pending block gas limit.\n\n### Response\n\n- `QUANTITY` &mdash; The amount of gas used."
 					},
 					"response": [
 						{
@@ -779,7 +779,7 @@
 							}
 						},
 						"url": "https://{{ARBI_HOST}}/apikey/{{API_KEY}}/",
-						"description": "Returns the current price per gas in wei.\n\n### Parameters\n\nNone\n\n### Response\n\n`QUANTITY` - integer of the current gas price in wei."
+						"description": "Returns the current price per gas in wei.\n\n### Parameters\n\nNone\n\n### Response\n\n- `QUANTITY` &mdash; Integer of the current gas price in wei."
 					},
 					"response": [
 						{
@@ -873,7 +873,7 @@
 							}
 						},
 						"url": "https://{{ARBI_HOST}}/apikey/{{API_KEY}}/",
-						"description": "Creates a filter object, based on filter options, to notify when the state changes (logs).\nTo check if the state has changed, call [eth_getFilterChanges](#eth_getfilterchanges).\n\n**A note on specifying topic filters:**\nTopics are order-dependent. A transaction with a log with topics [A, B] will be matched by the following topic filters:\n\n- `[]` \"anything\"\n- `[A]` \"A in first position (and anything after)\"\n- `[null, B]` \"anything in first position AND B in second position (and anything after)\"\n- `[A, B]` \"A in first position AND B in second position (and anything after)\"\n- `[[A, B], [A, B]]` \"(A OR B) in first position AND (A OR B) in second position (and anything after)\"\n- ### Parameters\n\n1. `Object` - The filter options:\n\n- `fromBlock`: `QUANTITY|TAG` - (optional, default: `\"latest\"`) Integer block number, or `\"latest\"` for the last mined block or `\"pending\"`, `\"earliest\"` for not yet mined transactions.\n- `toBlock`: `QUANTITY|TAG` - (optional, default: `\"latest\"`) Integer block number, or `\"latest\"` for the last mined block or `\"pending\"`, `\"earliest\"` for not yet mined transactions.\n- `address`: `DATA|Array`, 20 Bytes - (optional) Contract address or a list of addresses from which logs should originate.\n- `topics`: `Array of DATA`, - (optional) Array of 32 Bytes `DATA` topics. Topics are order-dependent. Each topic can also be an array of DATA with \"or\" options.\n\n### Response\n\n`QUANTITY` - A filter id."
+						"description": "Creates a filter object, based on filter options, to notify when the state changes (logs).\nTo check if the state has changed, call [eth_getFilterChanges](#eth_getfilterchanges).\n\n**A note on specifying topic filters:**\nTopics are order-dependent. A transaction with a log with topics [A, B] will be matched by the following topic filters:\n\n- `[]` \"anything\"\n- `[A]` \"A in first position (and anything after)\"\n- `[null, B]` \"anything in first position AND B in second position (and anything after)\"\n- `[A, B]` \"A in first position AND B in second position (and anything after)\"\n- `[[A, B], [A, B]]` \"(A OR B) in first position AND (A OR B) in second position (and anything after)\"\n\n### Parameters\n\n- `Object` &mdash; The filter options:\n - `fromBlock` &mdash; `QUANTITY|TAG` (default: `\"latest\"`) Integer block number, or `\"latest\"` for the last mined block or `\"pending\"`, `\"earliest\"` for not yet mined transactions (optional).\n - `toBlock` &mdash; `QUANTITY|TAG` (default: `\"latest\"`) Integer block number, or `\"latest\"` for the last mined block or `\"pending\"`, `\"earliest\"` for not yet mined transactions (optional).\n - `address` &mdash; `DATA|Array` 20 Bytes, Contract address or a list of addresses from which logs should originate (optional).\n- `topics`: `Array of DATA` Array of 32 Bytes `DATA` topics. Topics are order-dependent. Each topic can also be an array of DATA with \"or\" options (optional).\n\n### Response\n\n- `QUANTITY` &mdash; A filter id."
 					},
 					"response": [
 						{
@@ -967,7 +967,7 @@
 							}
 						},
 						"url": "https://{{ARBI_HOST}}/apikey/{{API_KEY}}/",
-						"description": "Creates a filter in the node, to notify when a new block arrives.\nTo check if the state has changed, call [eth_getFilterChanges](#eth_getfilterchanges).\n\n### Parameters\nNone\n\n### Response\n\n`QUANTITY` - A filter id."
+						"description": "Creates a filter in the node, to notify when a new block arrives.\nTo check if the state has changed, call [eth_getFilterChanges](#eth_getfilterchanges).\n\n### Parameters\n\nNone\n\n### Response\n\n- `QUANTITY` &mdash; A filter id."
 					},
 					"response": [
 						{
@@ -1061,7 +1061,7 @@
 							}
 						},
 						"url": "https://{{ARBI_HOST}}/apikey/{{API_KEY}}/",
-						"description": "Creates a filter in the node, to notify when new pending transactions arrive.\nTo check if the state has changed, call [eth_getFilterChanges](#eth_getfilterchanges).\n\n### Parameters\nNone\n\n### Response\n\n`QUANTITY` - A filter id."
+						"description": "Creates a filter in the node, to notify when new pending transactions arrive.\nTo check if the state has changed, call [eth_getFilterChanges](#eth_getfilterchanges).\n\n### Parameters\n\nNone\n\n### Response\n\n- `QUANTITY` &mdash; A filter id."
 					},
 					"response": [
 						{
@@ -1155,7 +1155,7 @@
 							}
 						},
 						"url": "https://{{ARBI_HOST}}/apikey/{{API_KEY}}/",
-						"description": "Uninstalls a filter with given id. Should always be called when watch is no longer needed. Additionally Filters timeout when they aren't requested with [eth_getFilterChanges](#eth_getfilterchanges) for a period of time.\n\n### Parameters\n\n1. `QUANTITY` - The filter id.\n\n### Response\n\n`Boolean` - `true` if the filter was successfully uninstalled, otherwise `false`."
+						"description": "Uninstalls a filter with given id. Should always be called when watch is no longer needed. Additionally Filters timeout when they aren't requested with [eth_getFilterChanges](#eth_getfilterchanges) for a period of time.\n\n### Parameters\n\n- `QUANTITY` &mdash; The filter id.\n\n### Response\n\n- `Boolean` &mdash; `true` If the filter was successfully uninstalled, otherwise `false`."
 					},
 					"response": [
 						{
@@ -1249,7 +1249,7 @@
 							}
 						},
 						"url": "https://{{ARBI_HOST}}/apikey/{{API_KEY}}/",
-						"description": "Polling method for a filter, which returns an array of logs which occurred since last poll.\n\n### Parameters\n\n1. `QUANTITY` - the filter id.\n\n### Response\n\n`Array` - Array of log objects, or an empty array if nothing has changed since last poll.\n\n- For filters created with `eth_newBlockFilter` the return are block hashes (`DATA`, 32 Bytes), e.g. `[\"0x3454645634534...\"]`.\n- For filters created with `eth_newPendingTransactionFilter ` the return are transaction hashes (`DATA`, 32 Bytes), e.g. `[\"0x6345343454645...\"]`.\n- For filters created with `eth_newFilter` logs are objects with following params:\n  - `removed`: `TAG` - `true` when the log was removed, due to a chain reorganization. `false` if its a valid log.\n  - `logIndex`: `QUANTITY` - integer of the log index position in the block. `null` when its pending log.\n  - `transactionIndex`: `QUANTITY` - integer of the transactions index position log was created from. `null` when its pending log.\n  - `transactionHash`: `DATA`, 32 Bytes - hash of the transactions this log was created from. `null` when its pending log.\n  - `blockHash`: `DATA`, 32 Bytes - hash of the block where this log was in. `null` when its pending. `null` when its pending log.\n  - `blockNumber`: `QUANTITY` - the block number where this log was in. `null` when its pending. `null` when its pending log.\n  - `address`: `DATA`, 20 Bytes - address from which this log originated.\n  - `data`: `DATA` - contains one or more 32 Bytes non-indexed arguments of the log.\n  - `topics`: `Array of DATA` - Array of 0 to 4 32 Bytes `DATA` of indexed log arguments. (In _solidity_: The first topic is the _hash_ of the signature of the event (e.g. `Deposit(address,bytes32,uint256)`), except you declared the event with the `anonymous` specifier.)"
+						"description": "Polling method for a filter, which returns an array of logs that occurred since the last poll.\n\n### Parameters\n\n- `QUANTITY` &mdash; The filter id.\n\n### Response\n\n`Array` &mdash; Array of log objects, or an empty array if nothing has changed since the last poll.\n\n- For filters created with `eth_newBlockFilter` the return are block hashes (`DATA`, 32 Bytes), e.g. `[\"0x3454645634534...\"]`.\n- For filters created with `eth_newPendingTransactionFilter ` the return are transaction hashes (`DATA`, 32 Bytes), e.g. `[\"0x6345343454645...\"]`.\n- For filters created with `eth_newFilter` logs are objects with following params:\n  - `removed` &mdash; `TAG` `true` When the log was removed, due to a chain reorganization. `false` if its a valid log.\n  - `logIndex` &mdash; `QUANTITY` Integer of the log index position in the block. `null` when its pending log.\n  - `transactionIndex` &mdash; `QUANTITY` Integer of the transactions index position log was created from. `null` when its pending log.\n  - `transactionHash` &mdash; `DATA` 32 Bytes, Hash of the transactions this log was created from. `null` when its pending log.\n  - `blockHash` &mdash; `DATA` 32 Bytes, Hash of the block where this log was in. `null` when its pending. `null` when its pending log.\n  - `blockNumber` &mdash; `QUANTITY` The block number where this log was in. `null` when its pending. `null` when its pending log.\n  - `address` &mdash; `DATA` 20 Bytes, Address from which this log originated.\n  - `data` &mdash; `DATA` Contains one or more 32 Bytes non-indexed arguments of the log.\n  - `topics` &mdash; `Array of DATA` Array of 0 to 4 32 Bytes `DATA` of indexed log arguments. (In _solidity_: The first topic is the _hash_ of the signature of the event (e.g. `Deposit(address,bytes32,uint256)`), except you declared the event with the `anonymous` specifier.)"
 					},
 					"response": [
 						{
@@ -1343,7 +1343,7 @@
 							}
 						},
 						"url": "https://{{ARBI_HOST}}/apikey/{{API_KEY}}/",
-						"description": "Returns an array of all logs matching filter with given id.\n\n### Parameters\n\n1. `QUANTITY` - The filter `id`.\n\n### Response\n\n`Array` - Array of log objects, or an empty array if nothing has changed since last poll.\n\n- For filters created with `eth_newBlockFilter` the return are block hashes (`DATA`, 32 Bytes), e.g. `[\"0x3454645634534...\"]`.\n- For filters created with `eth_newPendingTransactionFilter ` the return are transaction hashes (`DATA`, 32 Bytes), e.g. `[\"0x6345343454645...\"]`.\n- For filters created with `eth_newFilter` logs are objects with following params:\n  - `removed`: `TAG` - `true` when the log was removed, due to a chain reorganization. `false` if its a valid log.\n  - `logIndex`: `QUANTITY` - integer of the log index position in the block. `null` when its pending log.\n  - `transactionIndex`: `QUANTITY` - integer of the transactions index position log was created from. `null` when its pending log.\n  - `transactionHash`: `DATA`, 32 Bytes - hash of the transactions this log was created from. `null` when its pending log.\n  - `blockHash`: `DATA`, 32 Bytes - hash of the block where this log was in. `null` when its pending. `null` when its pending log.\n  - `blockNumber`: `QUANTITY` - the block number where this log was in. `null` when its pending. `null` when its pending log.\n  - `address`: `DATA`, 20 Bytes - address from which this log originated.\n  - `data`: `DATA` - contains one or more 32 Bytes non-indexed arguments of the log.\n  - `topics`: `Array of DATA` - Array of 0 to 4 32 Bytes `DATA` of indexed log arguments. (In _solidity_: The first topic is the _hash_ of the signature of the event (e.g. `Deposit(address,bytes32,uint256)`), except you declared the event with the `anonymous` specifier.)"
+						"description": "Returns an array of all logs matching filter with given id.\n\n### Parameters\n\n- `QUANTITY` &mdash; The filter `id`.\n\n### Response\n\n`Array` &mdash; Array of log objects, or an empty array if nothing has changed since last poll.\n\n- For filters created with `eth_newBlockFilter` the return are block hashes (`DATA`, 32 Bytes), e.g. `[\"0x3454645634534...\"]`.\n- For filters created with `eth_newPendingTransactionFilter ` the return are transaction hashes (`DATA`, 32 Bytes), e.g. `[\"0x6345343454645...\"]`.\n- For filters created with `eth_newFilter` logs are objects with the following params:\n  - `removed` &mdash; `TAG` `true` When the log was removed, due to a chain reorganization. `false` if its a valid log.\n  - `logIndex` &mdash; `QUANTITY` Integer of the log index position in the block. `null` when its pending log.\n  - `transactionIndex` &mdash; `QUANTITY` Integer of the transactions index position log was created from. `null` when its pending log.\n  - `transactionHash` &mdash; `DATA` 32 Bytes, Hash of the transactions this log was created from. `null` when its pending log.\n  - `blockHash` &mdash; `DATA` 32 Bytes, Hash of the block where this log was in. `null` when its pending. `null` when its pending log.\n  - `blockNumber` &mdash; `QUANTITY` The block number where this log was in. `null` when its pending. `null` when its pending log.\n  - `address` &mdash; `DATA` 20 Bytes, Address from which this log originated.\n  - `data` &mdash; `DATA` Contains one or more 32 Bytes non-indexed arguments of the log.\n  - `topics` &mdash; `Array of DATA` Array of 0 to 4 32 Bytes `DATA` of indexed log arguments. (In _solidity_: The first topic is the _hash_ of the signature of the event (e.g. `Deposit(address,bytes32,uint256)`), except you declared the event with the `anonymous` specifier.)"
 					},
 					"response": [
 						{
@@ -1390,7 +1390,7 @@
 							}
 						},
 						"url": "https://{{ARBI_HOST}}/apikey/{{API_KEY}}/",
-						"description": "Returns an array of all logs matching a given filter object.\n\n### Parameters\n\n1. `Object` - The filter options:\n\n- `fromBlock`: `QUANTITY|TAG` - (optional, default: `\"latest\"`) Integer block number, or `\"latest\"` for the last mined block or `\"pending\"`, `\"earliest\"` for not yet mined transactions.\n- `toBlock`: `QUANTITY|TAG` - (optional, default: `\"latest\"`) Integer block number, or `\"latest\"` for the last mined block or `\"pending\"`, `\"earliest\"` for not yet mined transactions.\n- `address`: `DATA|Array`, 20 Bytes - (optional) Contract address or a list of addresses from which logs should originate.\n- `topics`: `Array of DATA`, - (optional) Array of 32 Bytes `DATA` topics. Topics are order-dependent. Each topic can also be an array of DATA with \"or\" options.\n- `blockhash`: `DATA`, 32 Bytes - (optional, **future**) With the addition of EIP-234, `blockHash` will be a new filter option which restricts the logs returned to the single block with the 32-byte hash `blockHash`. Using `blockHash` is equivalent to `fromBlock` = `toBlock` = the block number with hash `blockHash`. If `blockHash` is present in in the filter criteria, then neither `fromBlock` nor `toBlock` are allowed.\n\n### Response\n\n`Array` - Array of log objects, or an empty array if nothing has changed since last poll.\n\n- For filters created with `eth_newBlockFilter` the return are block hashes (`DATA`, 32 Bytes), e.g. `[\"0x3454645634534...\"]`.\n- For filters created with `eth_newPendingTransactionFilter ` the return are transaction hashes (`DATA`, 32 Bytes), e.g. `[\"0x6345343454645...\"]`.\n- For filters created with `eth_newFilter` logs are objects with following params:\n  - `removed`: `TAG` - `true` when the log was removed, due to a chain reorganization. `false` if its a valid log.\n  - `logIndex`: `QUANTITY` - integer of the log index position in the block. `null` when its pending log.\n  - `transactionIndex`: `QUANTITY` - integer of the transactions index position log was created from. `null` when its pending log.\n  - `transactionHash`: `DATA`, 32 Bytes - hash of the transactions this log was created from. `null` when its pending log.\n  - `blockHash`: `DATA`, 32 Bytes - hash of the block where this log was in. `null` when its pending. `null` when its pending log.\n  - `blockNumber`: `QUANTITY` - the block number where this log was in. `null` when its pending. `null` when its pending log.\n  - `address`: `DATA`, 20 Bytes - address from which this log originated.\n  - `data`: `DATA` - contains one or more 32 Bytes non-indexed arguments of the log.\n  - `topics`: `Array of DATA` - Array of 0 to 4 32 Bytes `DATA` of indexed log arguments. (In _solidity_: The first topic is the _hash_ of the signature of the event (e.g. `Deposit(address,bytes32,uint256)`), except you declared the event with the `anonymous` specifier.)"
+						"description": "Returns an array of all logs matching a given filter object.\n\n### Parameters\n\n- `Object` &mdash; The filter options:\n - `fromBlock` &mdash; `QUANTITY|TAG` (optional, default: `\"latest\"`) Integer block number, or `\"latest\"` for the last mined block or `\"pending\"`, `\"earliest\"` for not yet mined transactions.\n - `toBlock` &mdash; `QUANTITY|TAG` (optional, default: `\"latest\"`) Integer block number, or `\"latest\"` for the last mined block or `\"pending\"`, `\"earliest\"` for not yet mined transactions.\n - `address` &mdash; `DATA|Array` 20 Bytes (optional) Contract address or a list of addresses from which logs should originate.\n - `topics` &mdash; `Array of DATA` (optional) Array of 32 Bytes `DATA` topics. Topics are order-dependent. Each topic can also be an array of DATA with \"or\" options.\n - `blockhash` &mdash; `DATA` 32 Bytes (optional, **future**) With the addition of EIP-234, `blockHash` will be a new filter option which restricts the logs returned to the single block with the 32-byte hash `blockHash`. Using `blockHash` is equivalent to `fromBlock` = `toBlock` = the block number with hash `blockHash`. If `blockHash` is present in in the filter criteria, then neither `fromBlock` nor `toBlock` are allowed.\n\n### Response\n\n`Array` &mdash; Array of log objects, or an empty array if nothing has changed since last poll.\n- For filters created with `eth_newBlockFilter` the return are block hashes (`DATA`, 32 Bytes), e.g. `[\"0x3454645634534...\"]`.\n- For filters created with `eth_newPendingTransactionFilter ` the return are transaction hashes (`DATA`, 32 Bytes), e.g. `[\"0x6345343454645...\"]`.\n- For filters created with `eth_newFilter` logs are objects with following params:\n  - `removed` &mdash; `TAG` `true` When the log was removed, due to a chain reorganization. `false` if its a valid log.\n  - `logIndex` &mdash; `QUANTITY` Integer of the log index position in the block. `null` when its pending log.\n  - `transactionIndex` &mdash; `QUANTITY` Integer of the transactions index position log was created from. `null` when its pending log.\n  - `transactionHash` &mdash; `DATA` 32 Bytes, Hash of the transactions this log was created from. `null` when its pending log.\n  - `blockHash` &mdash; `DATA` 32 Bytes, Hash of the block where this log was in. `null` when its pending. `null` when its pending log.\n  - `blockNumber` &mdash; `QUANTITY` The block number where this log was in. `null` when its pending. `null` when its pending log.\n  - `address` &mdash; `DATA` 20 Bytes, Address from which this log originated.\n  - `data` &mdash; `DATA` Contains one or more 32 Bytes non-indexed arguments of the log.\n  - `topics` &mdash; `Array of DATA` Array of 0 to 4 32 Bytes `DATA` of indexed log arguments. (In _solidity_: The first topic is the _hash_ of the signature of the event (e.g. `Deposit(address,bytes32,uint256)`), except you declared the event with the `anonymous` specifier.)"
 					},
 					"response": [
 						{
@@ -1484,7 +1484,7 @@
 							}
 						},
 						"url": "https://{{ARBI_HOST}}/apikey/{{API_KEY}}/",
-						"description": "Returns the balance of the account of given address.\n\n### Parameters\n\n1. `DATA`, 20 Bytes - address to check for balance.\n2. `QUANTITY|TAG` - integer block number, or the string `\"latest\"`, `\"earliest\"` or `\"pending\"`, see the default block parameter\n\n### Response\n\n`QUANTITY` - integer of the current balance in wei."
+						"description": "Returns the balance of the account of given address.\n\n### Parameters\n\n- `DATA` &mdash; 20 Bytes, Address to check for balance.\n- `QUANTITY|TAG` &mdash; Integer block number, or the string `\"latest\"`, `\"earliest\"` or `\"pending\"`, see the default block parameter\n\n### Response\n\n- `QUANTITY` &mdash; Integer of the current balance in wei."
 					},
 					"response": [
 						{
@@ -1578,7 +1578,7 @@
 							}
 						},
 						"url": "https://{{ARBI_HOST}}/apikey/{{API_KEY}}/",
-						"description": "Returns the value from a storage position at a given address.\n\n### Parameters\n\n1. `DATA`, 20 Bytes - address of the storage.\n2. `QUANTITY` - integer of the position in the storage.\n3. `QUANTITY|TAG` - integer block number, or the string `\"latest\"`, `\"earliest\"` or `\"pending\"`\n\n### Response\n\n`DATA` - the value at this storage position."
+						"description": "Returns the value from a storage position at a given address.\n\n### Parameters\n\n- `DATA` &mdash; 20 Bytes, Address of the storage.\n- `QUANTITY` &mdash; Integer of the position in the storage.\n- `QUANTITY|TAG` &mdash; Integer block number, or the string `\"latest\"`, `\"earliest\"` or `\"pending\"`\n\n### Response\n\n- `DATA` &mdash; The value at this storage position."
 					},
 					"response": [
 						{
@@ -1672,7 +1672,7 @@
 							}
 						},
 						"url": "https://{{ARBI_HOST}}/apikey/{{API_KEY}}/",
-						"description": "Returns the number of transactions _sent_ from an address.\n\n### Parameters\n\n1. `DATA`, 20 Bytes - address.\n2. `QUANTITY|TAG` - integer block number, or the string `\"latest\"`, `\"earliest\"` or `\"pending\"`\n\n### Response\n\n`QUANTITY` - integer of the number of transactions send from this address."
+						"description": "Returns the number of transactions _sent_ from an address.\n\n### Parameters\n\n- `DATA` &mdash; 20 Bytes, Address.\n- `QUANTITY|TAG` &mdash; Integer block number, or the string `\"latest\"`, `\"earliest\"` or `\"pending\"`\n\n### Response\n\n- `QUANTITY` &mdash; Integer of the number of transactions send from this address."
 					},
 					"response": [
 						{
@@ -1766,7 +1766,7 @@
 							}
 						},
 						"url": "https://{{ARBI_HOST}}/apikey/{{API_KEY}}/",
-						"description": "Returns code at a given address.\n\n### Parameters\n\n1. `DATA`, 20 Bytes - address\n2. `QUANTITY|TAG` - integer block number, or the string `\"latest\"`, `\"earliest\"` or `\"pending\"`, see the [default block parameter](/developers/docs/apis/json-rpc/#default-block-parameter)\n\n### Response\n\n`DATA` - the code from the given address."
+						"description": "Returns code at a given address.\n\n### Parameters\n\n- `DATA` &mdash; 20 Bytes, Address\n- `QUANTITY|TAG` &mdash; Integer block number, or the string `\"latest\"`, `\"earliest\"` or `\"pending\"`, see the [default block parameter](/developers/docs/apis/json-rpc/#default-block-parameter)\n\n### Response\n\n- `DATA` &mdash; The code from the given address."
 					},
 					"response": [
 						{
@@ -1860,7 +1860,7 @@
 							}
 						},
 						"url": "https://{{ARBI_HOST}}/apikey/{{API_KEY}}/",
-						"description": "Creates new message call transaction or a contract creation for signed transactions.\n\n### Parameters\n\n1. `DATA`, The signed transaction data.\n\n### Response\n\n`DATA`, 32 Bytes - the transaction hash, or the zero hash if the transaction is not yet available.\n\nUse [eth_getTransactionReceipt](#eth_gettransactionreceipt) to get the contract address, after the transaction was mined, when you created a contract."
+						"description": "Creates new message call transactions or a contract creation for signed transactions.\n\n### Parameters\n\n- `DATA` &mdash; The signed transaction data.\n\n### Response\n\n- `DATA` &mdash; 32 Bytes, The transaction hash, or the zero hash if the transaction is not yet available.\n\nUse [eth_getTransactionReceipt](#eth_gettransactionreceipt) to get the contract address, after the transaction was mined, when you created a contract."
 					},
 					"response": [
 						{
@@ -1907,7 +1907,7 @@
 							}
 						},
 						"url": "https://{{ARBI_HOST}}/apikey/{{API_KEY}}/",
-						"description": "Returns the information about a transaction requested by transaction hash.\n\n### Parameters\n\n1. `DATA`, 32 Bytes - hash of a transaction\n\n### Response\n\n`Object` - A transaction object, or `null` when no transaction was found:\n\n- `blockHash`: `DATA`, 32 Bytes - hash of the block where this transaction was in. `null` when its pending.\n- `blockNumber`: `QUANTITY` - block number where this transaction was in. `null` when its pending.\n- `from`: `DATA`, 20 Bytes - address of the sender.\n- `gas`: `QUANTITY` - gas provided by the sender.\n- `gasPrice`: `QUANTITY` - gas price provided by the sender in Wei.\n- `hash`: `DATA`, 32 Bytes - hash of the transaction.\n- `input`: `DATA` - the data send along with the transaction.\n- `nonce`: `QUANTITY` - the number of transactions made by the sender prior to this one.\n- `to`: `DATA`, 20 Bytes - address of the receiver. `null` when its a contract creation transaction.\n- `transactionIndex`: `QUANTITY` - integer of the transactions index position in the block. `null` when its pending.\n- `value`: `QUANTITY` - value transferred in Wei.\n- `v`: `QUANTITY` - ECDSA recovery id\n- `r`: `QUANTITY` - ECDSA signature r\n- `s`: `QUANTITY` - ECDSA signature s"
+						"description": "Returns the information about a transaction requested by transaction hash.\n\n### Parameters\n\n- `DATA` &mdash; 32 Bytes, Hash of a transaction\n\n### Response\n\n`Object` - A transaction object, or `null` when no transaction was found:\n\n- `blockHash` &mdash; `DATA` 32 Bytes, Hash of the block where this transaction was in. `null` when its pending.\n- `blockNumber` &mdash; `QUANTITY`, Block number where this transaction was in. `null` when its pending.\n- `from` &mdash; `DATA` 20 Bytes, Address of the sender.\n- `gas` &mdash; `QUANTITY` Gas provided by the sender.\n- `gasPrice` &mdash; `QUANTITY` Gas price provided by the sender in Wei.\n- `hash` &mdash; `DATA` 32 Bytes, Hash of the transaction.\n- `input` &mdash; `DATA` The data send along with the transaction.\n- `nonce` &mdash; `QUANTITY` The number of transactions made by the sender prior to this one.\n- `to` &mdash; `DATA` 20 Bytes, Address of the receiver. `null` when its a contract creation transaction.\n- `transactionIndex` &mdash; `QUANTITY` Integer of the transactions index position in the block. `null` when its pending.\n- `value` &mdash; `QUANTITY` Value transferred in Wei.\n- `v` &mdash; `QUANTITY` ECDSA recovery id\n- `r` &mdash; `QUANTITY` ECDSA signature r\n- `s` &mdash; `QUANTITY` ECDSA signature s"
 					},
 					"response": [
 						{
@@ -2001,7 +2001,7 @@
 							}
 						},
 						"url": "https://{{ARBI_HOST}}/apikey/{{API_KEY}}/",
-						"description": "Returns information about a transaction by block hash and transaction index position.\n\n### Parameters\n\n1. `DATA`, 32 Bytes - hash of a block.\n2. `QUANTITY` - integer of the transaction index position.\n\n### Response\n\n`Object` - A transaction object, or `null` when no transaction was found:\n\n- `blockHash`: `DATA`, 32 Bytes - hash of the block where this transaction was in. `null` when its pending.\n- `blockNumber`: `QUANTITY` - block number where this transaction was in. `null` when its pending.\n- `from`: `DATA`, 20 Bytes - address of the sender.\n- `gas`: `QUANTITY` - gas provided by the sender.\n- `gasPrice`: `QUANTITY` - gas price provided by the sender in Wei.\n- `hash`: `DATA`, 32 Bytes - hash of the transaction.\n- `input`: `DATA` - the data send along with the transaction.\n- `nonce`: `QUANTITY` - the number of transactions made by the sender prior to this one.\n- `to`: `DATA`, 20 Bytes - address of the receiver. `null` when its a contract creation transaction.\n- `transactionIndex`: `QUANTITY` - integer of the transactions index position in the block. `null` when its pending.\n- `value`: `QUANTITY` - value transferred in Wei.\n- `v`: `QUANTITY` - ECDSA recovery id\n- `r`: `QUANTITY` - ECDSA signature r\n- `s`: `QUANTITY` - ECDSA signature s"
+						"description": "Returns information about a transaction by block hash and transaction index position.\n\n### Parameters\n\n- `DATA` &mdash; 32 Bytes, Hash of a block.\n- `QUANTITY` &mdash; Integer of the transaction index position.\n\n### Response\n\n`Object` - A transaction object, or `null` when no transaction was found:\n\n- `blockHash` &mdash; `DATA` 32 Bytes, Hash of the block where this transaction was in. `null` when its pending.\n- `blockNumber` &mdash; `QUANTITY` Block number where this transaction was in. `null` when its pending.\n- `from` &mdash; `DATA` 20 Bytes, Address of the sender.\n- `gas` &mdash; `QUANTITY` Gas provided by the sender.\n- `gasPrice` &mdash; `QUANTITY` Gas price provided by the sender in Wei.\n- `hash` &mdash; `DATA` 32 Bytes, Hash of the transaction.\n- `input` &mdash; `DATA` The data send along with the transaction.\n- `nonce` &mdash; `QUANTITY` The number of transactions made by the sender prior to this one.\n- `to` &mdash; `DATA` 20 Bytes, Address of the receiver. `null` when its a contract creation transaction.\n- `transactionIndex` &mdash; `QUANTITY` Integer of the transactions index position in the block. `null` when its pending.\n- `value` &mdash; `QUANTITY` Value transferred in Wei.\n- `v` &mdash; `QUANTITY` ECDSA recovery id\n- `r` &mdash; `QUANTITY` ECDSA signature r\n- `s` &mdash; `QUANTITY` ECDSA signature s"
 					},
 					"response": [
 						{
@@ -2095,7 +2095,7 @@
 							}
 						},
 						"url": "https://{{ARBI_HOST}}/apikey/{{API_KEY}}/",
-						"description": "Returns information about a transaction by block number and transaction index position.\n\n### Parameters\n\n1. `QUANTITY|TAG` - a block number, or the string `\"earliest\"`, `\"latest\"` or `\"pending\"`, as in the default block parameter\n2. `QUANTITY` - the transaction index position.\n\n### Response\n\n`Object` - A transaction object, or `null` when no transaction was found:\n\n- `blockHash`: `DATA`, 32 Bytes - hash of the block where this transaction was in. `null` when its pending.\n- `blockNumber`: `QUANTITY` - block number where this transaction was in. `null` when its pending.\n- `from`: `DATA`, 20 Bytes - address of the sender.\n- `gas`: `QUANTITY` - gas provided by the sender.\n- `gasPrice`: `QUANTITY` - gas price provided by the sender in Wei.\n- `hash`: `DATA`, 32 Bytes - hash of the transaction.\n- `input`: `DATA` - the data send along with the transaction.\n- `nonce`: `QUANTITY` - the number of transactions made by the sender prior to this one.\n- `to`: `DATA`, 20 Bytes - address of the receiver. `null` when its a contract creation transaction.\n- `transactionIndex`: `QUANTITY` - integer of the transactions index position in the block. `null` when its pending.\n- `value`: `QUANTITY` - value transferred in Wei.\n- `v`: `QUANTITY` - ECDSA recovery id\n- `r`: `QUANTITY` - ECDSA signature r\n- `s`: `QUANTITY` - ECDSA signature s"
+						"description": "Returns information about a transaction by block number and transaction index position.\n\n### Parameters\n\n- `QUANTITY|TAG` &mdash; A block number, or the string `\"earliest\"`, `\"latest\"` or `\"pending\"`, as in the default block parameter\n- `QUANTITY` &mdash; The transaction index position.\n\n### Response\n\n`Object` &mdash; A transaction object, or `null` when no transaction was found:\n\n- `blockHash` &mdash; `DATA` 32 Bytes, Hash of the block where this transaction was in. `null` when its pending.\n- `blockNumber` &mdash; `QUANTITY` Block number where this transaction was in. `null` when its pending.\n- `from` &mdash; `DATA` 20 Bytes, Address of the sender.\n- `gas` &mdash; `QUANTITY` Gas provided by the sender.\n- `gasPrice` &mdash; `QUANTITY` Gas price provided by the sender in Wei.\n- `hash` &mdash; `DATA` 32 Bytes, Hash of the transaction.\n- `input` &mdash; `DATA` The data send along with the transaction.\n- `nonce` &mdash; `QUANTITY` The number of transactions made by the sender prior to this one.\n- `to` &mdash; `DATA` 20 Bytes, Address of the receiver. `null` when its a contract creation transaction.\n- `transactionIndex` &mdash; `QUANTITY` Integer of the transactions index position in the block. `null` when its pending.\n- `value` &mdash; `QUANTITY` Value transferred in Wei.\n- `v` &mdash; `QUANTITY` ECDSA recovery id\n- `r` &mdash; `QUANTITY` ECDSA signature r\n- `s` &mdash; `QUANTITY` ECDSA signature s"
 					},
 					"response": [
 						{
@@ -2189,7 +2189,7 @@
 							}
 						},
 						"url": "https://{{ARBI_HOST}}/apikey/{{API_KEY}}/",
-						"description": "Returns the receipt of a transaction by transaction hash.\n\n**Note** That the receipt is not available for pending transactions.\n\n### Parameters\n\n1. `DATA`, 32 Bytes - hash of a transaction\n\n### Response\n\n`Object` - A transaction receipt object, or `null` when no receipt was found:\n\n- `transactionHash `: `DATA`, 32 Bytes - hash of the transaction.\n- `transactionIndex`: `QUANTITY` - integer of the transactions index position in the block.\n- `blockHash`: `DATA`, 32 Bytes - hash of the block where this transaction was in.\n- `blockNumber`: `QUANTITY` - block number where this transaction was in.\n- `from`: `DATA`, 20 Bytes - address of the sender.\n- `to`: `DATA`, 20 Bytes - address of the receiver. null when its a contract creation transaction.\n- `cumulativeGasUsed `: `QUANTITY ` - The total amount of gas used when this transaction was executed in the block.\n- `gasUsed `: `QUANTITY ` - The amount of gas used by this specific transaction alone.\n- `contractAddress `: `DATA`, 20 Bytes - The contract address created, if the transaction was a contract creation, otherwise `null`.\n- `logs`: `Array` - Array of log objects, which this transaction generated.\n- `logsBloom`: `DATA`, 256 Bytes - Bloom filter for light clients to quickly retrieve related logs.\n  It also returns _either_ :\n- `root` : `DATA` 32 bytes of post-transaction stateroot (pre Byzantium)\n- `status`: `QUANTITY` either `1` (success) or `0` (failure)"
+						"description": "Returns the receipt of a transaction by transaction hash.\n\n**Note** That the receipt is not available for pending transactions.\n\n### Parameters\n\n- `DATA` &mdash; 32 Bytes, Hash of a transaction\n\n### Response\n\n`Object` - A transaction receipt object, or `null` when no receipt was found:\n\n- `transactionHash ` &mdash; `DATA` 32 Bytes, Hash of the transaction.\n- `transactionIndex` &mdash; `QUANTITY` Integer of the transactions index position in the block.\n- `blockHash` &mdash; `DATA` 32 Bytes, Hash of the block where this transaction was in.\n- `blockNumber` &mdash; `QUANTITY` Block number where this transaction was in.\n- `from` &mdash; `DATA` 20 Bytes, Address of the sender.\n- `to` &mdash; `DATA` 20 Bytes, Address of the receiver. null when its a contract creation transaction.\n- `cumulativeGasUsed` &mdash; `QUANTITY` The total amount of gas used when this transaction was executed in the block.\n- `gasUsed` &mdash; `QUANTITY` The amount of gas used by this specific transaction alone.\n- `contractAddress` &mdash; `DATA` 20 Bytes, The contract address created, if the transaction was a contract creation, otherwise `null`.\n- `logs` &mdash; `Array` Array of log objects, which this transaction generated.\n- `logsBloom` &mdash; `DATA` 256 Bytes, Bloom filter for light clients to quickly retrieve related logs.\n  It also returns _either_ &mdash;\n- `root` &mdash; `DATA` 32 bytes of post-transaction stateroot (pre Byzantium)\n- `status` &mdash; `QUANTITY` either `1` (success) or `0` (failure)"
 					},
 					"response": [
 						{
@@ -2283,7 +2283,7 @@
 							}
 						},
 						"url": "https://{{ARBI_HOST}}/apikey/{{API_KEY}}/",
-						"description": "Returns the current client version.\n\n### Parameters\n\nNone\n\n### Response\n\n`String` - The current client version"
+						"description": "Returns the current client version.\n\n### Parameters\n\nNone\n\n### Response\n\n- `String` &mdash; The current client version"
 					},
 					"response": [
 						{
@@ -2377,7 +2377,7 @@
 							}
 						},
 						"url": "https://{{ARBI_HOST}}/apikey/{{API_KEY}}/",
-						"description": "Returns Keccak-256 (_not_ the standardized SHA3-256) of the given data.\n\n### Parameters\n\n1. `DATA` - the data to convert into a SHA3 hash\n\n### Response\n\n`DATA` - The SHA3 result of the given string."
+						"description": "Returns Keccak-256 (_not_ the standardized SHA3-256) of the given data.\n\n### Parameters\n\n- `DATA` &mdash; The data to convert into a SHA3 hash\n\n### Response\n\n- `DATA` &mdash; The SHA3 result of the given string."
 					},
 					"response": [
 						{
@@ -2471,7 +2471,7 @@
 							}
 						},
 						"url": "https://{{ARBI_HOST}}/apikey/{{API_KEY}}/",
-						"description": "Returns the current network id.\n\n### Parameters\n\nNone\n\n### Response\n\n`String` - The current network id.\n\nThe full list of current network IDs is available at [chainlist.org](https://chainlist.org). Sopme common ones are:\n`1`: Ethereum Mainnet\n`2`: Morden testnet (now deprecated)\n`3`: Ropsten testnet\n`4`: Rinkeby testnet\n`5`: Goerli testnet"
+						"description": "Returns the current network id.\n\n### Parameters\n\nNone\n\n### Response\n\n- `String` - The current network id.\n\nThe full list of current network IDs is available at [chainlist.org](https://chainlist.org). Sopme common ones are:\n`1` &mdash; Ethereum Mainnet\n`2` &mdash; Morden testnet (now deprecated)\n`3` &mdash; Ropsten testnet\n`4` &mdash; Rinkeby testnet\n`5` &mdash; Goerli testnet"
 					},
 					"response": [
 						{
@@ -2565,7 +2565,7 @@
 							}
 						},
 						"url": "https://{{ARBI_HOST}}/apikey/{{API_KEY}}/",
-						"description": "Returns traces created at given block.\n\n### Parameters\n\n`Quantity or Tag` - Integer of a block number, or the string 'earliest', 'latest' or 'pending'.\n\n### Response\n\n`Array` - Block traces."
+						"description": "Returns traces created at the given block.\n\n### Parameters\n\n- `Quantity or Tag` &mdash; Integer of a block number, or the string 'earliest', 'latest' or 'pending'.\n\n### Response\n\n- `Array` &mdash; Block traces."
 					},
 					"response": [
 						{
@@ -2659,7 +2659,7 @@
 							}
 						},
 						"url": "https://{{ARBI_HOST}}/apikey/{{API_KEY}}/",
-						"description": "Executes the given call and returns a number of possible traces for it.\n\n### Parameters\n\n- `Object` - Transaction object where from field is optional and nonce field is ommited.\n- `Array` - Type of trace, one or more of: \"vmTrace\", \"trace\", \"stateDiff\".\n- `Quantity` or `Tag` - (optional) Integer of a block number, or the string `'earliest'`, `'latest'` or `'pending'`.\n\n### Response\n\n`Array` - Block traces."
+						"description": "Executes the given call and returns a number of possible traces for it.\n\n### Parameters\n\n- `Object` &mdash; Transaction object where from the field is optional and nonce field is omitted.\n- `Array` &mdash; Type of trace, one or more of: \"vmTrace\", \"trace\", \"stateDiff\".\n- `Quantity` or `Tag` &mdash; Integer of a block number, or the string `'earliest'`, `'latest'` or `'pending'` (optional).\n\n### Response\n\n- `Array` &mdash; Block traces."
 					},
 					"response": [
 						{
@@ -2753,7 +2753,7 @@
 							}
 						},
 						"url": "https://{{ARBI_HOST}}/apikey/{{API_KEY}}/",
-						"description": "Performs multiple call traces on top of the same block. i.e. transaction `n` will be executed on top of a pending block with all `n-1` transactions applied (traced) first. Allows to trace dependent transactions.\n\n### Parameters\n\n- `Array` - List of trace calls with the type of trace, one or more of: `\"vmTrace\"`, `\"trace\"`, `\"stateDiff\"`.\n- `Quantity` or `Tag` - (optional) Integer of a block number, or the string `'earliest'`, `'latest'` or `'pending'`.\n\n### Response\n\n`Array` - Array of the given transactions’ traces"
+						"description": "Performs multiple call traces on top of the same block. i.e. transaction `n` will be executed on top of a pending block with all `n-1` transactions applied (traced) first. Allows to trace dependent transactions.\n\n### Parameters\n\n- `Array` &mdash; List of trace calls with the type of trace, one or more of: `\"vmTrace\"`, `\"trace\"`, `\"stateDiff\"`.\n- `Quantity` or `Tag` &mdash; Integer of a block number, or the string `'earliest'`, `'latest'` or `'pending'` (optional).\n\n### Response\n\n- `Array` &mdash; Array of the given transactions’ traces"
 					},
 					"response": [
 						{
@@ -2847,7 +2847,7 @@
 							}
 						},
 						"url": "https://{{ARBI_HOST}}/apikey/{{API_KEY}}/",
-						"description": "Return all traces of the given filter\n\n### Parameters\n\n- `Object` - The filter object\n - `fromBlock`: `Quantity` or `Tag` - (optional) From this block.\n - `toBlock`: `Quantity` or `Tag` - (optional) To this block.\n - `fromAddress`: `Array` - (optional) Sent from these addresses.\n - `toAddress`: `Address` - (optional) Sent to these addresses.\n - `after`: `Quantity` - (optional) The offset trace number\n - `count`: `Quantity` - (optional) Integer number of traces to display in a batch.\n\n### Response\n\n`Array` - Traces matching given filter"
+						"description": "Return all traces of the given filter\n\n### Parameters\n\n- `Object` &mdash; The filter object\n - `fromBlock` &mdash; `Quantity` or `Tag` From this block (optional).\n - `toBlock` &mdash; `Quantity` or `Tag` To this block (optional).\n - `fromAddress` &mdash; `Array` Sent from these addresses (optional).\n - `toAddress` &mdash; `Address` Sent to these addresses (optional).\n - `after` &mdash; `Quantity` The offset trace number (optional).\n - `count` &mdash; `Quantity` Integer number of traces to display in a batch (optional).\n\n### Response\n\n- `Array` &mdash; Traces matching given filter"
 					},
 					"response": [
 						{
@@ -2941,7 +2941,7 @@
 							}
 						},
 						"url": "https://{{ARBI_HOST}}/apikey/{{API_KEY}}/",
-						"description": "Replays all transactions in a block returning the requested traces for each transaction.\n\n### Parameters\n\n- `Quantity` or `Tag` - Integer of a block number, or the string `'earliest'`, `'latest'` or `'pending'`.\n- `Array` - Type of trace, one or more of: `\"vmTrace\"`, `\"trace\"`, `\"stateDiff\"`.\n\n### Response\n\n`Array` - Block transactions traces."
+						"description": "Replays all transactions in a block returning the requested traces for each transaction.\n\n### Parameters\n\n- `Quantity` or `Tag` &mdash; Integer of a block number, or the string `'earliest'`, `'latest'` or `'pending'`.\n- `Array` &mdash; Type of trace, one or more of: `\"vmTrace\"`, `\"trace\"`, `\"stateDiff\"`.\n\n### Response\n\n- `Array` &mdash; Block transactions traces."
 					},
 					"response": [
 						{
@@ -3035,7 +3035,7 @@
 							}
 						},
 						"url": "https://{{ARBI_HOST}}/apikey/{{API_KEY}}/",
-						"description": "Replays a transaction, returning the traces.\n\n### Parameters\n\n- `Hash` - Transaction hash\n- `Array` - Type of trace, one or more of: `\"vmTrace\"`, `\"trace\"`, `\"stateDiff\"`\n\n### Response\n\n`Object` - Block traces"
+						"description": "Replays a transaction, returning the traces.\n\n### Parameters\n\n- `Hash` &mdash; Transaction hash\n- `Array` &mdash; Type of trace, one or more of: `\"vmTrace\"`, `\"trace\"`, `\"stateDiff\"`\n\n### Response\n\n- `Object` &mdash; Block traces"
 					},
 					"response": [
 						{
@@ -3129,7 +3129,7 @@
 							}
 						},
 						"url": "https://{{ARBI_HOST}}/apikey/{{API_KEY}}/",
-						"description": "Returns all traces of given transaction.\n\n### Parameters\n\n- `Hash` - Transaction hash\n\n### Response\n\n`Array` - Traces of given transaction"
+						"description": "Returns all traces of given transaction.\n\n### Parameters\n\n- `Hash` &mdash; Transaction hash\n\n### Response\n\n- `Array` &mdash; Traces of given transaction"
 					},
 					"response": [
 						{
@@ -25289,7 +25289,7 @@
 								}
 							]
 						},
-						"description": "Queries all validators that match the given status.\n\n### Parameters\n\n\\*   `status` string (query) (required) status enables to query for validators matching a given status.\n\\*   `pagination.key` string ($byte) (query) Key is a value returned in PageResponse.next_key to begin querying the next page most efficiently. Only one offset or key should be set.\n\\*   `pagination.offset` string ($uint64 (query) offset is a numeric offset that can be used when key is unavailable. It is less efficient than using key. Only one of offset or key should be set.\n\\*   `pagination.limit` string ($uint64) (query) limit is the total number of Response to be returned in the result page. If left empty it will default to a value to be set by each app.\n\\*   `pagination.count_total` boolean($boolean) (query) count_total is set to true to indicate that the result set should include a count of the total number of items available for pagination in UIs. count_total is only respected when offset is used. It is ignored when key is set.\n\\*   `pagination.reverse` boolean ($boolean (query) reverse is set to true if Response are to be returned in the descending order.\n    \n\n### Response\n\n\\*   Returns the `validators` info including the `operator_address` (validator), `consensus_pukey`, `jailed` status, bond `status`, no. of `tokens` delegated, `delagator_shares` and validator's `description`."
+						"description": "Qqueries all validators that match the given status.\n\n### Parameters\n\n- `status` string (query) (required) status enables to query for validators matching a given status.\n\n- `pagination.key` string ($byte) (query) Key is a value returned in PageResponse.next_key to begin querying the next page most efficiently. Only one offset or key should be set.\n\n- `pagination.offset` string ($uint64 (query)\toffset is a numeric offset that can be used when key is unavailable. It is less efficient than using key. Only one of offset or key should be set.\n\n- `pagination.limit` string ($uint64) (query) limit is the total number of Response to be returned in the result page. If left empty it will default to a value to be set by each app.\n\n- `pagination.count_total` boolean($boolean) (query) count_total is set to true to indicate that the result set should include a count of the total number of items available for pagination in UIs. count_total is only respected when offset is used. It is ignored when key is set.\n\n- `pagination.reverse` boolean ($boolean (query) reverse is set to true if Response are to be returned in the descending order.\n\n### Response\n\n- Returns the `validators` info including the `operator_address` (validator), `consensus_pukey`, `jailed` status, bond `status`, no. of `tokens` delegated, `delagator_shares` and validator's `description`."
 					},
 					"response": [
 						{
@@ -25397,7 +25397,7 @@
 						"method": "GET",
 						"header": [],
 						"url": "https://{{COSMOS_LCD_HOST}}/apikey/{{API_KEY}}/cosmos/staking/v1beta1/validators/cosmosvaloper1hjct6q7npsspsg3dgvzk3sdf89spmlpfdn6m9d",
-						"description": "Queries validator info for given validator address.\n\n### Parameters\n\n\\*   `validator_addr` string (path) (required) validator_addr defines the validator address to query for.\n    \n\n### Response\n\n\\*   Returns the `validator` info for the given `validator_addr`, info contains the `operator_address` (validator), `consensus_pukey`, `jailed` status, bond `status`, no. of `tokens` delegated, `delagator_shares` and validator's `description`."
+						"description": "Qqueries validator info for given validator address.\n\n### Parameters\n\n- `validator_addr` string (path) (required) validator_addr defines the validator address to query for.\n\n### Response\n\n- Returns the `validator` info for the given `validator_addr`, info contains the `operator_address` (validator), `consensus_pukey`, `jailed` status, bond `status`, no. of `tokens` delegated, `delagator_shares` and validator's `description`."
 					},
 					"response": [
 						{
@@ -52756,7 +52756,7 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "https://{{OSMO_LCD_HOST}}/apikey/{{API_KEY}}/osmosis/lockup/v1beta1/account_unlocking_coins/osmo16ch9yae5g46uvp6jz24ylukw4q53jz5letcszh",
+						"url": "https://{{OSMO_LCD_HOST}}/apikey/{{API_KEY}}//osmosis/lockup/v1beta1/account_unlocking_coins/osmo16ch9yae5g46uvp6jz24ylukw4q53jz5letcszh",
 						"description": "Returns unlocking coins\n\n### Parameters\n\n- `owner` string (path) (required) \n\n### Response\n\n- Return unlocking `coins` with `denom` and `amount`."
 					},
 					"response": [
@@ -53108,7 +53108,7 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "https://{{OSMO_LCD_HOST}}/apikey/{{API_KEY}}/osmosis/incentives/v1beta1/active_gauges",
+						"url": "https://{{OSMO_LCD_HOST}}/apikey/{{API_KEY}}//osmosis/incentives/v1beta1/active_gauges",
 						"description": "Returns active gauges\n\n### Parameters\n\n- `pagination.key` string($byte) (query) key is a value returned in PageResponse.next_key to begin querying the next page most efficiently. Only one of offset or key should be set.\n\n- `pagination.offset` string($uint64) (query) offset is a numeric offset that can be used when key is unavailable. It is less efficient than using key. Only one of offset or key should be set.\n\n- `pagination.limit` string($uint64) (query) limit is the total number of results to be returned in the result page. If left empty it will default to a value to be set by each app.\n\n- `pagination.count_total` boolean (query) count_total is set to true to indicate that the result set should include a count of the total number of items available for pagination in UIs. count_total is only respected when offset is used. It is ignored when key is set.\n\n### Response\n\n- Return active gauges `data` with `id`, `is_perpetual`, `distribute_to`, `coins`, `start_time`, `num_epochs_paid_over`, `filled_epochs` and `distributed_coins`."
 					},
 					"response": [
@@ -53247,7 +53247,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "https://{{OSMO_LCD_HOST}}/apikey/{{API_KEY}}/osmosis/incentives/v1beta1/gauges?pagination.limit=1",
+							"raw": "https://{{OSMO_LCD_HOST}}/apikey/{{API_KEY}}//osmosis/incentives/v1beta1/gauges?pagination.limit=1",
 							"protocol": "https",
 							"host": [
 								"{{OSMO_LCD_HOST}}"
@@ -53255,6 +53255,7 @@
 							"path": [
 								"apikey",
 								"{{API_KEY}}",
+								"",
 								"osmosis",
 								"incentives",
 								"v1beta1",
@@ -74421,119 +74422,119 @@
 	],
 	"variable": [
 		{
-			"id": "dfc0bb59-bb7b-4a02-b097-9e506340b529",
+			"id": "236a29db-c672-4cd7-bd97-51e105477796",
 			"key": "ARBI_HOST",
 			"value": "arbitrum-mainnet-rpc-archive-dbgtxn.datahub.figment.io"
 		},
 		{
-			"id": "cbd6f8e3-12f2-4f4b-8ac7-6365b785865f",
+			"id": "7a69f103-49fa-4afe-9804-18ca1e6c2cb3",
 			"key": "AVAX_HOST",
 			"value": "avalanche--mainnet--rpc.datahub.figment.io"
 		},
 		{
-			"id": "f62bef57-436c-471a-acb2-46d99de47c05",
+			"id": "436b8edc-17fc-4fc1-8d88-fe85f5006fa3",
 			"key": "BNB_HOST",
 			"value": "bsc--mainnet--rpc-archive-dbgtxn.datahub.figment.io"
 		},
 		{
-			"id": "3879aca9-55e4-4426-b422-bf66a78ed256",
+			"id": "06651240-46b9-41d2-bfa3-09c27339b3c6",
 			"key": "CELO_HOST",
 			"value": "celo-mainnet--rpc.datahub.figment.io"
 		},
 		{
-			"id": "ee2980ed-0cce-4994-91db-2dba51436195",
+			"id": "b3b7ee7b-8396-4074-93ae-0b2df24b1940",
 			"key": "COSMOS_LCD_HOST",
 			"value": "cosmoshub-4--lcd--archive.datahub.figment.io"
 		},
 		{
-			"id": "1851412b-97ab-43f1-93d7-546707f8b385",
+			"id": "3ee99eb9-6fad-4c4e-a094-3ed4147e58a6",
 			"key": "COSMOS_RPC_HOST",
 			"value": "cosmoshub-4--rpc--archive.datahub.figment.io"
 		},
 		{
-			"id": "ded706c6-e3d6-4613-ab77-efd827bff2bc",
+			"id": "71e81f90-4d3e-42a2-a8b4-f3e264466592",
 			"key": "ETH_HOST",
 			"value": "erigon-mainnet--rpc-dbgtxn.datahub.figment.io"
 		},
 		{
-			"id": "ddb928c4-29fa-48ff-a911-53cfaf5a3856",
+			"id": "cbaf8145-3819-45ef-b6f2-7345ff7f94be",
 			"key": "FTM_HOST",
 			"value": "ftm--mainnet--rpc-archive-dbgtxn.datahub.figment.io"
 		},
 		{
-			"id": "66e77acc-12aa-41f5-ab91-30b0215f4d00",
+			"id": "9ec0cd57-e102-432d-9c4b-2c0fe038ffed",
 			"key": "KSM_SIDECAR_HOST",
 			"value": "polkadot-kusama--sidecar.datahub.figment.io"
 		},
 		{
-			"id": "fa265c5d-4111-4472-993c-a2bfe94b560a",
+			"id": "4d24ff6a-6ee4-4f4e-b2a4-51bcfce27ec9",
 			"key": "MINA_HOST",
 			"value": "mina-mainnet--graphql.datahub.figment.io"
 		},
 		{
-			"id": "6064273e-7918-45fd-a69b-04180e030110",
+			"id": "63bc2407-b16f-4e47-b8c2-2c84e575dc6d",
 			"key": "NEAR_HOST",
 			"value": "near-mainnet--rpc--archive.datahub.figment.io"
 		},
 		{
-			"id": "e4ab5a1d-5af6-4b4e-b9ac-a6701be38261",
+			"id": "7d9ad1e8-ed21-42c4-bc0a-84d123e7d2ef",
 			"key": "OPTIMISM_HOST",
 			"value": "optimism-mainnet-rpc-archive.datahub.figment.io"
 		},
 		{
-			"id": "0b3f4ff3-f9aa-483e-9af3-2f3bff1dd9c0",
+			"id": "2e9ed6c6-dce8-4f12-834d-d9c787052193",
 			"key": "OSMO_LCD_HOST",
 			"value": "osmosis-1--lcd--archive.datahub.figment.io"
 		},
 		{
-			"id": "2ae8a3c4-2825-43d0-92e8-3b28b6bb0659",
+			"id": "88829ee5-c72d-434d-ad3b-d5061de15f3d",
 			"key": "OSMO_RPC_HOST",
 			"value": "osmosis-1--rpc--archive.datahub.figment.io"
 		},
 		{
-			"id": "caa53513-e737-4a38-b72b-24357f7a70c5",
+			"id": "042d7210-189f-4326-b7bc-9f56c91b928c",
 			"key": "POLKADOT_HOST",
 			"value": "polkadot--rpc.datahub.figment.io"
 		},
 		{
-			"id": "0c2a5ff5-4490-482f-8bd1-e50e0827490e",
+			"id": "cac9db3a-e98b-40c0-9f74-83c88a974511",
 			"key": "POLKADOT_SIDECAR_HOST",
 			"value": "polkadot--sidecar.datahub.figment.io"
 		},
 		{
-			"id": "00261d61-4e34-49fc-8126-884cad42153f",
+			"id": "0fa2b941-77e4-41cf-8324-8e71bc82f0e0",
 			"key": "POLYGON_HOST",
 			"value": "matic-mainnet--jsonrpc-archive-dbgtxn.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "22a94d7b-bab4-4b89-8998-ef077d12264f",
+			"id": "978d0f6b-7c35-49ab-8507-2d251a4239f2",
 			"key": "SOL_HOST",
 			"value": "solana--mainnet.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "da82b053-5a49-48c9-88fd-59f736796f2d",
+			"id": "36d02658-2ee6-4c0b-879e-981dcf3d1296",
 			"key": "WEBSOCKETS",
 			"value": "arbitrum, bnb, celo, centrifuge, cosmos, ethereum, fantom, kusama, optimism, polkadot, polygon, solana"
 		},
 		{
-			"id": "6ecedec3-0a6f-45ec-b6c8-643827fb8a49",
+			"id": "91394f80-abd0-41e9-8f6c-1ece6e631870",
 			"key": "TESTNETS",
 			"value": "avalanche, celo, ethereum, mina, near, polkadot, polygon"
 		},
 		{
-			"id": "a70c6ced-ce71-42b0-a297-188a3f498c30",
+			"id": "b0542e1d-5f47-4c1b-9eef-f990afc00bfd",
 			"key": "DEVNETS",
 			"value": "solana"
 		},
 		{
-			"id": "ce104465-1af6-4a84-bfbd-3d808eb90545",
+			"id": "24e149d3-8d08-4818-a632-4f02f4a1a532",
 			"key": "ARCHIVENODES",
 			"value": "arbitrum, avalanche, bnb, celo, cosmos, ethereum, fantom, kusama, mina, near, optimism, osmosis, polkadot, polygon, solana"
 		},
 		{
-			"id": "e7a2f706-cb7f-4561-ad17-b8bde0bf8cf3",
+			"id": "0282c6d8-40ad-4836-8466-4e9a93e359b0",
 			"key": "FULLNODES",
 			"value": "arbitrum, bnb, centrifuge, cosmos, ethereum, fantom, kusama, mina, near, optimism, osmosis, polkadot, polygon, solana"
 		}
