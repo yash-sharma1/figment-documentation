@@ -9,7 +9,7 @@ To initiate the staking process, create a new flow with a `POST` request to `/ap
 
 - `flow` &mdash; `object`
   - `network_code` &mdash; `string` Network on which this flow operates (ex. `ethereum`) (required).
-  - `chain_code` &mdash; `string` Chain on which this flow operates (ex. `goerli-prater`) (required).
+  - `chain_code` &mdash; `string` Chain on which this flow operates (ex. `goerli`) (required).
   - `operation` &mdash; `string` The operation to perform (ex. `staking`) (required).
   - `version` &mdash; `string` API version to use (ex. `v1`) (optional).
 
@@ -22,7 +22,7 @@ curl -X POST 'https://eth-slate.datahub.figment.io/api/v1/flows' \
 -d '{
   "flow": {
     "network_code": "ethereum",
-    "chain_code": "goerli-prater",
+    "chain_code": "goerli",
     "operation": "staking",
     "version": "v1"
   }
@@ -184,7 +184,7 @@ The `create_deposit_transaction` action indicates seven fields for data collecti
     "deposit_transaction": null
   },
   "network_code": "ethereum",
-  "chain_code": "goerli-prater",
+  "chain_code": "goerli",
   "created_at": "2022-10-05T23:06:17.913Z",
   "updated_at": "2022-10-05T23:06:17.913Z"
 }
