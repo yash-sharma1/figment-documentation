@@ -578,11 +578,11 @@
 								},
 								"url": "https://{{ETH_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows"
 							},
-							"_postman_previewlanguage": "Text",
+							"_postman_previewlanguage": "json",
 							"header": null,
 							"cookie": [],
 							"responseTime": null,
-							"body": "{\n  \"id\": \"a84f725a-bd16-4515-96a0-5b6ff2824c55\",\n  \"state\": \"initialized\",\n  \"actions\": [\n    {\n      \"name\": \"create_deposit_tx\",\n      \"inputs\": [\n        {\n          \"name\": \"funding_account_address\",\n          \"display\": \"Funding Account Address\",\n          \"description\": \"\",\n          \"type\": \"string\",\n          \"validations\": [\n            {\n              \"type\": \"presence\",\n              \"options\": {}\n            },\n            {\n              \"type\": \"hex\",\n              \"options\": {}\n            }\n          ]\n        },\n        {\n          \"name\": \"validator_pub_key\",\n          \"display\": \"Validator Pub Key\",\n          \"description\": \"\",\n          \"type\": \"string\",\n          \"validations\": [\n            {\n              \"type\": \"presence\",\n              \"options\": {}\n            },\n            {\n              \"type\": \"hex\",\n              \"options\": {}\n            }\n          ]\n        },\n        {\n          \"name\": \"withdrawal_credentials\",\n          \"display\": \"Withdrawal Credentials\",\n          \"description\": \"\",\n          \"type\": \"string\",\n          \"validations\": [\n            {\n              \"type\": \"presence\",\n              \"options\": {}\n            },\n            {\n              \"type\": \"hex\",\n              \"options\": {}\n            }\n          ]\n        },\n        {\n          \"name\": \"signature\",\n          \"display\": \"Signature\",\n          \"description\": \"\",\n          \"type\": \"string\",\n          \"validations\": [\n            {\n              \"type\": \"presence\",\n              \"options\": {}\n            },\n            {\n              \"type\": \"hex\",\n              \"options\": {}\n            }\n          ]\n        },\n        {\n          \"name\": \"deposit_data_root\",\n          \"display\": \"Deposit Data Root\",\n          \"description\": \"\",\n          \"type\": \"string\",\n          \"validations\": [\n            {\n              \"type\": \"presence\",\n              \"options\": {}\n            },\n            {\n              \"type\": \"hex\",\n              \"options\": {}\n            }\n          ]\n        },\n        {\n          \"name\": \"gas_limit\",\n          \"display\": \"Gas Limit\",\n          \"description\": \"\",\n          \"type\": \"string\",\n          \"validations\": [\n            {\n              \"type\": \"numericality\",\n              \"options\": {\n                \"allow_nil\": true,\n                \"only_integer\": true,\n                \"greater_than\": 0\n              }\n            }\n          ]\n        },\n        {\n          \"name\": \"gas_price\",\n          \"display\": \"Gas Price\",\n          \"description\": \"\",\n          \"type\": \"string\",\n          \"validations\": [\n            {\n              \"type\": \"numericality\",\n              \"options\": {\n                \"allow_nil\": true,\n                \"greater_than\": 0\n              }\n            }\n          ]\n        }\n      ]\n    }\n  ],\n  \"data\": {\n    \"funding_account_address\": null,\n    \"validator_pub_key\": null,\n    \"withdrawal_credentials\": null,\n    \"signature\": null,\n    \"deposit_data_root\": null,\n    \"amount\": \"32.0\",\n    \"gas_price\": null,\n    \"gas_limit\": null,\n    \"deposit_transaction\": null\n  },\n  \"network_code\": \"ethereum\",\n  \"chain_code\": \"goerli\",\n  \"created_at\": \"2022-10-05T23:06:17.913Z\",\n  \"updated_at\": \"2022-10-05T23:06:17.913Z\"\n}"
+							"body": "{\n    \"id\": \"a84f725a-bd16-4515-96a0-5b6ff2824c55\",\n    \"state\": \"initialized\",\n    \"actions\": [\n        {\n            \"name\": \"create_deposit_tx\",\n            \"inputs\": [\n                {\n                    \"name\": \"funding_account_address\",\n                    \"display\": \"Funding Account Address\",\n                    \"description\": \"\",\n                    \"type\": \"string\",\n                    \"validations\": [\n                        {\n                            \"type\": \"presence\",\n                            \"options\": {}\n                        },\n                        {\n                            \"type\": \"hex\",\n                            \"options\": {}\n                        }\n                    ]\n                },\n                {\n                    \"name\": \"validator_pub_key\",\n                    \"display\": \"Validator Pub Key\",\n                    \"description\": \"\",\n                    \"type\": \"string\",\n                    \"validations\": [\n                        {\n                            \"type\": \"presence\",\n                            \"options\": {}\n                        },\n                        {\n                            \"type\": \"hex\",\n                            \"options\": {}\n                        }\n                    ]\n                },\n                {\n                    \"name\": \"withdrawal_credentials\",\n                    \"display\": \"Withdrawal Credentials\",\n                    \"description\": \"\",\n                    \"type\": \"string\",\n                    \"validations\": [\n                        {\n                            \"type\": \"presence\",\n                            \"options\": {}\n                        },\n                        {\n                            \"type\": \"hex\",\n                            \"options\": {}\n                        }\n                    ]\n                },\n                {\n                    \"name\": \"signature\",\n                    \"display\": \"Signature\",\n                    \"description\": \"\",\n                    \"type\": \"string\",\n                    \"validations\": [\n                        {\n                            \"type\": \"presence\",\n                            \"options\": {}\n                        },\n                        {\n                            \"type\": \"hex\",\n                            \"options\": {}\n                        }\n                    ]\n                },\n                {\n                    \"name\": \"deposit_data_root\",\n                    \"display\": \"Deposit Data Root\",\n                    \"description\": \"\",\n                    \"type\": \"string\",\n                    \"validations\": [\n                        {\n                            \"type\": \"presence\",\n                            \"options\": {}\n                        },\n                        {\n                            \"type\": \"hex\",\n                            \"options\": {}\n                        }\n                    ]\n                },\n                {\n                    \"name\": \"gas_limit\",\n                    \"display\": \"Gas Limit\",\n                    \"description\": \"\",\n                    \"type\": \"string\",\n                    \"validations\": [\n                        {\n                            \"type\": \"numericality\",\n                            \"options\": {\n                                \"allow_nil\": true,\n                                \"only_integer\": true,\n                                \"greater_than\": 0\n                            }\n                        }\n                    ]\n                },\n                {\n                    \"name\": \"gas_price\",\n                    \"display\": \"Gas Price\",\n                    \"description\": \"\",\n                    \"type\": \"string\",\n                    \"validations\": [\n                        {\n                            \"type\": \"numericality\",\n                            \"options\": {\n                                \"allow_nil\": true,\n                                \"greater_than\": 0\n                            }\n                        }\n                    ]\n                }\n            ]\n        }\n    ],\n    \"data\": {\n        \"funding_account_address\": null,\n        \"validator_pub_key\": null,\n        \"withdrawal_credentials\": null,\n        \"signature\": null,\n        \"deposit_data_root\": null,\n        \"amount\": \"32.0\",\n        \"gas_price\": null,\n        \"gas_limit\": null,\n        \"deposit_transaction\": null\n    },\n    \"network_code\": \"ethereum\",\n    \"chain_code\": \"goerli\",\n    \"created_at\": \"2022-10-05T23:06:17.913Z\",\n    \"updated_at\": \"2022-10-05T23:06:17.913Z\"\n}"
 						}
 					]
 				},
@@ -4280,42 +4280,42 @@
 	],
 	"variable": [
 		{
-			"id": "4a88811d-cd3e-45c9-ab3e-d4a43dd3f145",
+			"id": "3b7c6da0-a8f5-402e-970d-ecbfca2c825f",
 			"key": "AVAX_STAKING_HOST",
 			"value": "avalanche-slate.datahub.figment.io"
 		},
 		{
-			"id": "13079444-aa4c-4a43-828d-60836f4718ec",
+			"id": "220fc9f9-476a-4bd4-97cc-af1949389223",
 			"key": "COSMOS_STAKING_HOST",
 			"value": "cosmos-slate.datahub.figment.io"
 		},
 		{
-			"id": "9dcdc574-f66c-48e3-9c1e-da8bd94c03cf",
+			"id": "825a7848-a4fd-46f9-bf1c-f6d88b504041",
 			"key": "ETH_STAKING_HOST",
 			"value": "eth-slate.datahub.figment.io"
 		},
 		{
-			"id": "cb083657-6432-4d30-8dfc-0aaaaadb7ebe",
+			"id": "0ca6598e-a91d-42be-93d7-0e1a9e8a6723",
 			"key": "NEAR_STAKING_HOST",
 			"value": "near-slate.datahub.figment.io"
 		},
 		{
-			"id": "af74d7ee-bbef-4a2f-8ce5-7fb70421beb8",
+			"id": "0bd1ea6e-ed3e-4f18-8a02-5a8f7bb9b443",
 			"key": "DOT_STAKING_HOST",
 			"value": "polkadot-slate.datahub.figment.io"
 		},
 		{
-			"id": "2df07fb9-f4b3-40f9-95cb-8e8e84d4e617",
+			"id": "e32f1a7d-7977-4b22-b9c9-6d24a7c8a6d7",
 			"key": "SOL_STAKING_HOST",
 			"value": "solana-slate.datahub.figment.io"
 		},
 		{
-			"id": "58ae3a1f-e56f-4d18-ae41-d391876e9d0e",
+			"id": "db212745-1ecf-44a1-8c52-9ee12ecee317",
 			"key": "POLYGON_STAKING_HOST",
 			"value": "polygon-slate.datahub.figment.io"
 		},
 		{
-			"id": "12697193-558b-4cd4-85ad-3868e006fc77",
+			"id": "cf89376d-cf87-49ca-8b7a-1a9273cefbd6",
 			"key": "INTERACTIVE",
 			"value": "false"
 		}
