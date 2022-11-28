@@ -1,12 +1,8 @@
-import { useHistory, useLocation } from "@docusaurus/router";
-import React, { useEffect } from "react";
+import React from "react";
+import { Redirect } from "@docusaurus/router";
 
 export default function APIHomeRoute({ service, network }) {
-  const history = useHistory();
-  const location = useLocation();
-
-  useEffect(() => {
-    history.push(`${location.pathname}/${network}`.replace("//", "/"));
-  }, [service, network]);
-  return <></>;
+  return (
+    <Redirect to={`/api-reference/${service}/${network}`.replace("//", "/")} />
+  );
 }

@@ -1,0 +1,36 @@
+---
+title: Sign Split Stake Account Transaction
+slug: /guides/staking-api/solana/split-stake-account/sign-split-stake-account-transaction
+---
+
+:::warning important
+
+The transaction signing window on Solana is sometimes less than 90 seconds.
+
+If you encounter an error `"Transaction simulation failed: Blockhash not found"`, refresh the transaction, sign the payload again and submit it in < 90 seconds.
+
+:::
+
+Sign the split stake account transaction using the `transaction_payload` you received in response to submitting the split stake account data.
+
+Locate the `transaction_payload` in the response from the previous step. It will look something like this:
+
+```json
+"transaction_payload": "02000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000009ddddac8a30dc9fc1acf5f382053baa0361b6a17893870990d5bf737ba4b3928022f023fa9321cf5e5733f46dac33f38895033ed9b971f6dac45b888c2f0820b02000205f8c4898641adada76eeeee2de872d931bc58bfb2ce5b79734e32808cc501a5346470f21e6c4adecb9fea26af26204f59922f67ff546f4fc2a5bd3629489084b343948361c22b11cd116005a3958e080c5bfdbe055e8747af254c0756dbf8ac88000000000000000000000000000000000000000000000000000000000000000006a1d8179137542a983437bdfe2a7ab2557f535c8a78722b68a49dc0000000002c53da186ffceba53ca9a5c2797a902c5a8f9b35b1493efeaebb1189583be2ac020302000134000000000000000000000000c80000000000000006a1d8179137542a983437bdfe2a7ab2557f535c8a78722b68a49dc00000000004030201000c030000000094357700000000"
+```
+
+:::caution important
+
+Always confirm the details of the transaction before signing the payload.
+
+Figment has a tool for signing and decoding Staking API payloads, see the guide [Signing Transactions with Figment's NPM Package](/guides/staking-api/figment-signing-transactions) to continue.
+
+:::
+
+Transactions can also be signed using the [Solana CLI](https://docs.solana.com/offline-signing#:~:text=Typically%20a%20Solana%20transaction%20must,the%20extra%20time%20you%20need) or [Fireblocks](/guides/staking-api/fireblocks-signing-transactions).
+
+Sign the transaction and move on to the next step. A signed transaction payload for Solana will look something like this:
+
+```text
+022bc35a0d1d2b71b8742a4a4be0035091622efabdb234a24ee962400deec1cf59b7cc77d22633aac5b7e07f3b98edf1acb6c0b71241dca96b42916508856d9d0e9ddddac8a30dc9fc1acf5f382053baa0361b6a17893870990d5bf737ba4b3928022f023fa9321cf5e5733f46dac33f38895033ed9b971f6dac45b888c2f0820b02000205f8c4898641adada76eeeee2de872d931bc58bfb2ce5b79734e32808cc501a5346470f21e6c4adecb9fea26af26204f59922f67ff546f4fc2a5bd3629489084b343948361c22b11cd116005a3958e080c5bfdbe055e8747af254c0756dbf8ac88000000000000000000000000000000000000000000000000000000000000000006a1d8179137542a983437bdfe2a7ab2557f535c8a78722b68a49dc0000000002c53da186ffceba53ca9a5c2797a902c5a8f9b35b1493efeaebb1189583be2ac020302000134000000000000000000000000c80000000000000006a1d8179137542a983437bdfe2a7ab2557f535c8a78722b68a49dc00000000004030201000c030000000094357700000000
+```

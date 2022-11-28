@@ -2,6 +2,8 @@ require("dotenv").config();
 const fs = require("fs-extra");
 const SCHEMAS_DIR = "schemas";
 
+const cliArgs = process.argv.slice(2);
+
 function toDashCase(str) {
   return str?.toLowerCase().replace(/\s+/g, "-");
 }
@@ -54,22 +56,28 @@ function processMethod(method, vars) {
   query = url.split("{{API_KEY}}")[1];
   query = query ? query.replace(/^\/+/, "") : query;
   url = url.split("{{API_KEY}}")[0] + "{{API_KEY}}" + "/";
-  url = url.replace(/apikey\/{{API_KEY}}\/{0,1}/, "");
+  url = url.replace(/apikey\/{{API_KEY}}\/?/, "");
   for (let key in vars) {
     url = url.replace(`{{${key}}}`, vars[key]);
   }
   url = url.replace(/\/+$/, "");
+
+  // Prevents nested ternary operator
+  let request_body;
+  if (request.method !== "GET") {
+    if (request.body?.mode === "graphql") {
+      request_body = request.body.graphql.query;
+    } else {
+      request_body = processJSON(request.body?.raw);
+    }
+  }
 
   return {
     name: name,
     content: description,
     request: {
       ...request,
-      body: request.body
-        ? request.body.mode === "graphql"
-          ? request.body.graphql.query
-          : processJSON(request.body.raw)
-        : undefined,
+      body: request_body,
       headers: process.env.DEVELOPMENT
         ? {
             Authorization: process.env.API_KEY,
@@ -93,18 +101,20 @@ function processServices(services, variables) {
     const vars = variables[service.info.name] || {};
     return {
       service: service.info.name,
-      networks: service.item.map((network) => {
-        return {
-          network: network.name,
-          parameters: network.description,
-          service: service.info.name,
-          methods: Array.isArray(network.item)
-            ? network.item.map((n) => processMethod(n, vars))
-            : !!network.item
-            ? [processMethod(network.item, vars)]
-            : [],
-        };
-      }),
+      networks: service.item
+        .map((network) => {
+          return {
+            network: network.name,
+            parameters: network.description,
+            service: service.info.name,
+            methods: Array.isArray(network.item)
+              ? network.item.map((n) => processMethod(n, vars))
+              : !!network.item
+              ? [processMethod(network.item, vars)]
+              : [],
+          };
+        })
+        .sort((a, b) => (a.network < b.network ? -1 : 1)),
     };
   });
 }
@@ -118,6 +128,7 @@ function frontMatterTemplate({
   prev = "null",
   next = "null",
   slug,
+  hide_toc,
   body = "",
 }) {
   return `---
@@ -127,6 +138,7 @@ pagination_prev: ${prev}
 pagination_next: ${next}
 collapsed: true
 collapsible: true
+${hide_toc ? `hide_table_of_contents: ${hide_toc}` : ""}
 ${desc ? `description: ${desc}` : ""}
 ${image ? `image: ${image}` : ""}
 ${keywords ? `keywords: ${keywords}` : ""}
@@ -149,6 +161,8 @@ function sidebarIndexForService(service) {
       return 5;
     case "rewards-rates-api":
       return 6;
+    case "validator-api":
+      return 7;
     default:
       return 0;
   }
@@ -170,7 +184,7 @@ function referenceTable(_services, variables) {
   let markdown = "";
   let editedProtocolList = "";
 
-  // TODO: Determine if this can be sorted alphabetically
+  // Determine if this can be sorted alphabetically
   const services = [
     _services.find((s) => s.service === "node-api"),
     _services.find((s) => s.service === "transaction-search-api"),
@@ -218,7 +232,7 @@ function referenceTable(_services, variables) {
         ),
       ];
 
-      // TODO: Remove need to manually check for outliers
+      // Remove need to manually check for outliers
       // Add any protocols that don't belong to a service
       // .. or protocols that don't have a Node API
       editedProtocolList = editedProtocolList.sort();
@@ -315,7 +329,7 @@ function referenceTable(_services, variables) {
     }
     markdown = makeRow(i) + "|\n";
   }
-
+  let outputTable;
   return (outputTable = frontMatterTemplate({
     title: "API Reference",
     desc: "API Reference supported protocols table",
@@ -325,6 +339,7 @@ function referenceTable(_services, variables) {
     prev: "null",
     next: "null",
     slug: "/api-reference",
+    hide_toc: true,
     body: comment + content + markdown,
   }));
 }
@@ -359,7 +374,7 @@ function createMarkdown(services, variables) {
       value: toDashCase(n.network),
     }));
 
-    networks.forEach(({ network, methods, parameters }) => {
+    networks.forEach(({ network, methods, parameters }, index) => {
       fs.writeFileSync(
         `docs/api-reference/${toDashCase(service)}/${toDashCase(network)}.mdx`,
         frontMatterTemplate({
@@ -370,8 +385,16 @@ function createMarkdown(services, variables) {
           body:
             `import {APIMethods} from '@site/src/components'\n` +
             `import ApiReferenceNav from '@site/src/components/ApiReferenceNav'\n` +
+            `import FixBreadCrumbs from '@site/src/components/FixBreadCrumbs'\n` +
             `import MakingCalls from '@site/partials/api-reference/making-calls.mdx'\n\n` +
-            `# ${toTitleCase(service)}\n\n` +
+            `# ${toTitleCase(service)} - ${network}\n\n` +
+            `${
+              index === 0
+                ? `<FixBreadCrumbs network='${network}' service={{ link: '/api-reference/${toDashCase(
+                    service
+                  )}', label: '${toTitleCase(service)}' }} />`
+                : ""
+            }\n\n` +
             `<ApiReferenceNav service="${toDashCase(
               service
             )}" methods={${JSON.stringify(
@@ -458,7 +481,7 @@ function generateCORSTests(services) {
         const apiCall = apiCalls[index];
         console.clear();
         const progress = index + 1;
-        console.log(((progress/apiCalls.length)*100).toFixed(2) + "%")
+        // console.log(((progress/apiCalls.length)*100).toFixed(2) + "%")
         const passed = await testEndpoint(apiCall);
         if (!passed) failedCalls.push(apiCall);
       }
@@ -468,7 +491,7 @@ function generateCORSTests(services) {
     process()
   `;
 
-  fs.writeFileSync("tests.js", testScript, "utf-8");
+  fs.writeFileSync("corstests.js", testScript, "utf-8");
 }
 
 (function process() {
@@ -476,6 +499,14 @@ function generateCORSTests(services) {
   const variables = getEnvironmentVariables(schemas);
   const services = processServices(schemas, variables);
   createMarkdown(services, variables);
-  //generateCORSTests(services);
+  switch (cliArgs[0]) {
+    case "corstests":
+      generateCORSTests(services);
+      break;
+    case "tests":
+      break;
+    default:
+      break;
+  }
   process.exit?.();
 })();

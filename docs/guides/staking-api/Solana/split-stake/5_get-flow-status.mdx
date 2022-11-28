@@ -1,0 +1,62 @@
+---
+title: Get Flow Status
+slug: /guides/staking-api/solana/split-stake-account/get-flow-status-split-stake-account
+pagination_next: null
+---
+
+To get the current state of the existing flow, send a `GET` request to `/api/v1/flows/[:flow_id]` using the flow ID from the previous step.
+
+### Parameters
+
+- None
+
+#### Sample cURL Request
+
+```bash
+curl -X GET 'https://solana-slate.datahub.figment.io/api/v1/flows/730fbe4e-c4b4-480f-b3c5-4a25bfbd5cf3' \
+-H 'Authorization: <api_key>'
+```
+
+### Response
+
+- `state` &mdash; `string` The current state of the flow.
+
+:::info note
+
+The `state` field will update from `split_tx_broadcasting` to `completed`.
+
+:::
+
+#### Sample Response
+
+```json {3}
+{
+  "id": "730fbe4e-c4b4-480f-b3c5-4a25bfbd5cf3",
+  "state": "completed",
+  "actions": [],
+  "data": {
+    "funding_account_pubkey": "Hk5voGB7wh9HtXTeszbW7AFm3A4B94xWkXeeaqTYspqy",
+    "source_stake_account_pubkey": "5YofNaQJ24cgp5hzJgMKSwi16188WiBgfdbWkxbG4FWP",
+    "amount": "2.0",
+    "split_transaction": {
+      "raw": "02000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000009ddddac8a30dc9fc1acf5f382053baa0361b6a17893870990d5bf737ba4b3928022f023fa9321cf5e5733f46dac33f38895033ed9b971f6dac45b888c2f0820b02000205f8c4898641adada76eeeee2de872d931bc58bfb2ce5b79734e32808cc501a5346470f21e6c4adecb9fea26af26204f59922f67ff546f4fc2a5bd3629489084b343948361c22b11cd116005a3958e080c5bfdbe055e8747af254c0756dbf8ac88000000000000000000000000000000000000000000000000000000000000000006a1d8179137542a983437bdfe2a7ab2557f535c8a78722b68a49dc0000000002c53da186ffceba53ca9a5c2797a902c5a8f9b35b1493efeaebb1189583be2ac020302000134000000000000000000000000c80000000000000006a1d8179137542a983437bdfe2a7ab2557f535c8a78722b68a49dc00000000004030201000c030000000094357700000000",
+      "signing_payload": "02000205f8c4898641adada76eeeee2de872d931bc58bfb2ce5b79734e32808cc501a5346470f21e6c4adecb9fea26af26204f59922f67ff546f4fc2a5bd3629489084b343948361c22b11cd116005a3958e080c5bfdbe055e8747af254c0756dbf8ac88000000000000000000000000000000000000000000000000000000000000000006a1d8179137542a983437bdfe2a7ab2557f535c8a78722b68a49dc0000000002c53da186ffceba53ca9a5c2797a902c5a8f9b35b1493efeaebb1189583be2ac020302000134000000000000000000000000c80000000000000006a1d8179137542a983437bdfe2a7ab2557f535c8a78722b68a49dc00000000004030201000c030000000094357700000000",
+      "signed": "022bc35a0d1d2b71b8742a4a4be0035091622efabdb234a24ee962400deec1cf59b7cc77d22633aac5b7e07f3b98edf1acb6c0b71241dca96b42916508856d9d0e9ddddac8a30dc9fc1acf5f382053baa0361b6a17893870990d5bf737ba4b3928022f023fa9321cf5e5733f46dac33f38895033ed9b971f6dac45b888c2f0820b02000205f8c4898641adada76eeeee2de872d931bc58bfb2ce5b79734e32808cc501a5346470f21e6c4adecb9fea26af26204f59922f67ff546f4fc2a5bd3629489084b343948361c22b11cd116005a3958e080c5bfdbe055e8747af254c0756dbf8ac88000000000000000000000000000000000000000000000000000000000000000006a1d8179137542a983437bdfe2a7ab2557f535c8a78722b68a49dc0000000002c53da186ffceba53ca9a5c2797a902c5a8f9b35b1493efeaebb1189583be2ac020302000134000000000000000000000000c80000000000000006a1d8179137542a983437bdfe2a7ab2557f535c8a78722b68a49dc00000000004030201000c030000000094357700000000",
+      "hash": "skP46dMLV4qELAyiFZmxaUUtjfLdXPpGqNNu4HWzkDMUfyEBJTr3p7pzbg7FPVRnGPvtpiMqWgNKJMZ2dw7J6h3",
+      "status": "confirmed",
+      "error": null,
+      "signatures": []
+    },
+    "source_stake_authority_pubkey": "Hk5voGB7wh9HtXTeszbW7AFm3A4B94xWkXeeaqTYspqy",
+    "destination_stake_account_pubkey": "7m5fFsdZNdoifnmToR23rK14V2Yoxw3omD1V8vy21kXC"
+  },
+  "network_code": "solana",
+  "chain_code": "testnet",
+  "created_at": "2022-11-02T04:25:28.997Z",
+  "updated_at": "2022-11-02T04:27:08.932Z"
+}
+```
+
+### Split Stake Account Flow Complete
+
+Congratulations, you have successfully split your tokens into two separate accounts!
