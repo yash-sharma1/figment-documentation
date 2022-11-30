@@ -17,7 +17,7 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "https://{{ETH_REWARDS_HOST}}/rates/apikey/{{API_KEY}}/",
+						"url": "https://{{ETH_REWARDS_HOST}}/apikey/{{API_KEY}}/rates",
 						"description": "This API returns a time series of daily network-wide annualized staking reward rates, in %.\n\n### Methodology\n\nWe first compute daily rates by aggregating all rewards (on both consensus and execution layers) received by all validators within a 24h period (from midnight UTC to midnight UTC) and divide this by the aggregated balances of all validators at the beginning of this 24h period. We then annualize this rate without compounding.\n\n### Parameters\n\n- `figment` _(optional)_: if `true` is passed we will return the reward rate for Figment validators only. If omitted or any other value is passed we will return the reward rate of the network as a whole.\n    \n\n### Response\n\nAn array of following objects:\n\n- `date`: timestamp for the day in format \"YYYY-MM-DD\"\n- `value`: the total annualized reward rate for that day - in %\n- `staking`: the piece due to consensus layer rewards (inflation) - in %\n- `tips`: the piece due to execution layer rewards (transaction fees) - in %"
 					},
 					"response": [
@@ -119,7 +119,7 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "https://{{SOL_REWARDS_HOST}}/rates/apikey/{{API_KEY}}/",
+						"url": "https://{{SOL_REWARDS_HOST}}/apikey/{{API_KEY}}/rates",
 						"description": "This API returns a time series of daily network-wide annualized staking reward rates, in %.\n\nWe aggregate all rewards received by all validators and divide this by the aggregated balances of all validators at the beginning of the period.\n\nIt includes all rewards, on both consensus and execution layers.\n\n### Parameters\n\n- None\n\n### Response\n\n- `date` - Specific date associated with `value` (staking reward rates).  \n- `value` - Staking reward rates, in %."
 					},
 					"response": [
@@ -234,12 +234,12 @@
 	],
 	"variable": [
 		{
-			"id": "da24ac23-fa3a-4f96-9098-17b45001869b",
+			"id": "ab95fb95-24d2-442d-ada6-d740890f5eca",
 			"key": "ETH_REWARDS_HOST",
 			"value": "eth-rewards.datahub.figment.io"
 		},
 		{
-			"id": "23669d4f-2b04-482e-8671-f5669e3bf0c7",
+			"id": "07be640c-8363-4add-aa2c-8140c3a33264",
 			"key": "SOL_REWARDS_HOST",
 			"value": "solana-rewards.datahub.figment.io"
 		}
