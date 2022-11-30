@@ -119,7 +119,7 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "https://{{SOL_REWARDS_HOST}}/apikey/{{API_KEY}}/rates",
+						"url": "https://{{SOL_REWARDS_HOST}}/rates/apikey/{{API_KEY}}/",
 						"description": "This API returns a time series of daily network-wide annualized staking reward rates, in %.\n\nWe aggregate all rewards received by all validators and divide this by the aggregated balances of all validators at the beginning of the period.\n\nIt includes all rewards, on both consensus and execution layers.\n\n### Parameters\n\n- None\n\n### Response\n\n- `date` - Specific date associated with `value` (staking reward rates).  \n- `value` - Staking reward rates, in %."
 					},
 					"response": [
@@ -234,12 +234,12 @@
 	],
 	"variable": [
 		{
-			"id": "efbaf38f-0f0b-4a16-bb9a-4408c4e6c03d",
+			"id": "4407e1f1-2e4f-435d-8530-2ef71b0001a2",
 			"key": "ETH_REWARDS_HOST",
 			"value": "eth-rewards.datahub.figment.io"
 		},
 		{
-			"id": "7c2102c4-72a9-462d-af60-044b82e6eca7",
+			"id": "87a90286-a192-45be-9e46-90e169adbad4",
 			"key": "SOL_REWARDS_HOST",
 			"value": "solana-rewards.datahub.figment.io"
 		}
