@@ -19,7 +19,7 @@ Here's some boilerplate to get you started.{" "}
 <Tabs>
   <TabItem value="js-header" label="Fetch with Header">
     <CodeBlock language="js">
-      {`fetch("${props.url}", {
+      {`fetch("${props.url}${props.route}", {
     method: 'POST', // can also be 'GET', 'PUT' or any appropriate method
     headers: {
         "Authorization" : "<api_key>",
@@ -33,7 +33,7 @@ Here's some boilerplate to get you started.{" "}
   </TabItem>
   <TabItem value="js-parameter" label="Fetch with Parameter">
     <CodeBlock language="js">
-      {`fetch("${props.url}", {
+      {`fetch("${props.url}/apikey/{{apikey}}${props.route}", {
     method: 'POST', // can also be 'GET', 'PUT' or any appropriate method
     headers: {
         "Content-Type": "application/json" // if method is 'POST'
@@ -46,7 +46,7 @@ Here's some boilerplate to get you started.{" "}
   </TabItem>
   <TabItem value="curl-header" label="CURL with Header">
     <CodeBlock language="bash">
-      {`curl -X POST '${props.url}' \\
+      {`curl -X POST '${props.url}${props.route}' \\
 --header 'Content-Type: application/json' \\
 --header 'Authorization: <api_key>' \\
 --data '{
@@ -56,7 +56,7 @@ Here's some boilerplate to get you started.{" "}
   </TabItem>
   <TabItem value="curl-parameter" label="CURL with Parameter">
     <CodeBlock language="bash">
-      {`curl -X POST '${props.url}' \\
+      {`curl -X POST '${props.url}/apikey/{{apikey}}${props.route}' \\
 --header 'Content-Type: application/json' \\
 --data '{
   // JSON Payload

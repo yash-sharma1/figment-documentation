@@ -51,12 +51,18 @@ function processMethod(method, vars) {
   request = exampleRequest || request;
 
   let url = request.url.raw !== undefined ? request.url.raw : request.url;
+  url = url.replace(/\/$/g, "");
 
   let query;
   query = url.split("{{API_KEY}}")[1];
   query = query ? query.replace(/^\/+/, "") : query;
+  query = query.replace(/\/$/g, "");
+  query = query.replace(/v2\/rewards$/, "");
+  query = query.replace(/rates$/, "");
+
   url = url.split("{{API_KEY}}")[0] + "{{API_KEY}}" + "/";
   url = url.replace(/apikey\/{{API_KEY}}\/?/, "");
+
   for (let key in vars) {
     url = url.replace(`{{${key}}}`, vars[key]);
   }
@@ -375,6 +381,12 @@ function createMarkdown(services, variables) {
     }));
 
     networks.forEach(({ network, methods, parameters }, index) => {
+      let routeEndpoint = methods[0].request.query
+        ? "/" + methods[0].request.query.split("?")[0]
+        : "";
+      if (service === "rewards-api") routeEndpoint = "/v2/rewards";
+      if (service === "rewards-rates-api") routeEndpoint = "/rates";
+
       fs.writeFileSync(
         `docs/api-reference/${toDashCase(service)}/${toDashCase(network)}.mdx`,
         frontMatterTemplate({
@@ -406,7 +418,9 @@ function createMarkdown(services, variables) {
               methods[0].request.url
             }" network="${toTitleCase(network)}" service="${toTitleCase(
               service
-            )}" />\n\n` +
+            )}" 
+              route="${routeEndpoint}"
+            />\n\n` +
             `<APIMethods methods={${JSON.stringify(
               methods
             )}} service="${toDashCase(service)}" networks={${JSON.stringify(
