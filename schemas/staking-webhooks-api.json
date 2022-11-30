@@ -2573,7 +2573,7 @@
 								}
 							}
 						},
-						"url": "https://{{SOL_STAKING_HOST}}/api/v1/webhook_endpoints/apikey/{{API_KEY}}",
+						"url": "https://{{SOL_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/webhook_endpoints",
 						"description": "Create a new webhook endpoint with the specified parameters\n\n### Parameters\n\n- `webhook_endpoint` - `object`\n - `target_url` - `string` The target URL to send the webhook to.\n - `event_types` - `string` Can be a specific event type, or use an asterisk as a catchall: `['*']`\n - `enabled` - `boolean` true / false\n\n### Response\n\n- `id` - `number` Id of the newly created webhook endpoint.\n- `event_types` - `string` Event type you have passed in the request parameter.\n- `target_url` - `string` The target URL to send the webhook to.\n- `enabled` - `boolean` true / false\n- `object` - `string` webhook_endpoint\n- `created` - `string` Timestamp when webhook endpoint was created.\n- `secret` - `string` Unique string for your webhook endpoint.\n\n#### Note\n\n- Each webhook is identified by a sequential number. \n- Currently when a webhook ID has been deleted it cannot be reused.\n- You will only be provided with the secret when you first create a webhook. Remember to capture this data!"
 					},
 					"response": [
@@ -4250,43 +4250,43 @@
 	],
 	"variable": [
 		{
-			"id": "ca141be4-3f35-426d-9b46-cc65b88f9127",
+			"id": "8ea620c6-935c-43a5-a643-ff14228489e2",
 			"key": "AVAX_STAKING_HOST",
 			"value": "avalanche-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "9c654920-9081-44f2-914d-97ee82111bbc",
+			"id": "286e2723-eeaa-4698-978e-e64282483df2",
 			"key": "ETH_STAKING_HOST",
 			"value": "eth-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "07bc5d28-57ae-450d-8e4a-04cce454f532",
+			"id": "bab31618-a258-420d-b6bb-a27916c5b792",
 			"key": "NEAR_STAKING_HOST",
 			"value": "near-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "f10252cd-832b-4ab8-ae52-d3cc193832c0",
+			"id": "05c3f034-0e81-4ac3-8d41-187cb622dae0",
 			"key": "DOT_STAKING_HOST",
 			"value": "polkadot-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "8782cfa7-95ad-4600-ad3d-4fc696dbb44c",
+			"id": "a7b4c26f-b9e0-48f3-8b1e-ddf0dd98adb7",
 			"key": "SOL_STAKING_HOST",
 			"value": "solana-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "2fb7004b-3a7c-44af-a240-1d3e0bc54576",
+			"id": "e7e363ce-756c-423f-ae11-176c84ab76ae",
 			"key": "MATIC_STAKING_HOST",
 			"value": "polygon-slate.datahub.figment.io",
 			"type": "string"
 		},
 		{
-			"id": "790d86b7-8ec6-45f8-b7ed-8de5e9715b3d",
+			"id": "5c6e530b-a0b1-47ae-96cb-c1d268780d1c",
 			"key": "INTERACTIVE",
 			"value": "false",
 			"type": "string"
