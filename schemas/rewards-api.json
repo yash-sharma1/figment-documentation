@@ -1009,27 +1009,27 @@
 	],
 	"variable": [
 		{
-			"id": "5cd66241-3a4f-468c-8fc1-3e1a3a355be1",
+			"id": "87a61dbb-e61b-44f3-8efc-978e2083086d",
 			"key": "ETH_REWARDS_HOST",
 			"value": "eth-rewards.datahub.figment.io"
 		},
 		{
-			"id": "a54f7034-0900-42e0-b1b4-42ec69a16697",
+			"id": "ea05ed82-06c3-42fd-9c9e-a1394d52f840",
 			"key": "SOL_REWARDS_HOST",
 			"value": "solana-rewards.datahub.figment.io"
 		},
 		{
-			"id": "98b86f4a-0534-4612-b31d-9db79f80a35e",
+			"id": "e8312540-6d2e-46d9-a7c3-07bea84480fd",
 			"key": "DOT_REWARDS_HOST",
 			"value": "polkadot-rewards.datahub.figment.io"
 		},
 		{
-			"id": "3c815374-a581-4cbf-a360-d11ab7b5ca5b",
+			"id": "f20c0e37-f1ab-4067-8c0f-061d01ae057f",
 			"key": "NEAR_REWARDS_HOST",
 			"value": "near-rewards.datahub.figment.io"
 		},
 		{
-			"id": "015917f5-e061-44e6-9fd9-be9b4130f37f",
+			"id": "447a107c-9801-4c97-8bb9-7271a2031a74",
 			"key": "AVAX_REWARDS_HOST",
 			"value": "avalanche-rewards.datahub.figment.io"
 		}
