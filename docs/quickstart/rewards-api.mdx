@@ -18,31 +18,27 @@ You can send an HTTP `GET` request to the endpoint to fetch rewards data.
 
 The JSON payload must include the following parameters:
 
-- `network`: The network (Ethereum or Solana)
-- `chain_id`: The chain identifier (`mainnet` or `testnet`)
-- `accounts`: An array containing one or more PoSETH Validator addresses
-- `start_time`: The start time for collecting rewards data (format is `YYYY-MM-DD`)
-- `end_time`: The end time for collecting rewards data (format is `YYYY-MM-DD`)
-- `grouping`: Either `epoch` or `daily`
+- `accounts`: An array containing one or more accounts addresses
+- `start`: The start of epcoh/time for collecting rewards data, epoch should be in integer format (Rewards by Epoch) and timestamp in YYYY-MM-DD format (Rewards by Day).
+- `end`: The end of epoch/time for collecting rewards data, epoch should in integer format (Rewards by Epoch) and timestamp in YYYY-MM-DD format (Rewards by Day).
+- `aggregation`: `daily` (only for Reward by Day)
 
 ```json title="Example JSON for a Rewards API query"
 {
-  "network": "ethereum",
-  "chain_id": "mainnet",
   "accounts": [
-    "0x8aa7939a2d3d9f2f88f5b3a61cf603603e7a3c28be36aa7f7312c8d0452e81486fcd24208ae8f6a44701267cf4365942"
+    "0x968c329ed829636a0bbbb57a25d9634ffd0d17bc1ff33adf93fd6a98920a82a83de930b9f2dddaebc4104ac90581ada0"
   ],
-  "start_time": "2022-07-23",
-  "end_time": "2022-07-26",
-  "grouping": "epoch"
+  "start": "2022-11-06",
+  "end": "2022-11-07",
+  "aggregation": "daily"
 }
 ```
 
 :::info
 
-If you have selected `epoch`, make sure that your `start_time` and `end_time` align with that epoch&mdash;otherwise you may get an empty response.
+If you want to fetch rewards by `epoch`, make sure that `start` and `end` align with that epoch&mdash;otherwise you may get an empty response.
 
-If you have selected `daily`, keep the `start_time` and `end_time` reasonably close together (within five days). Large ranges will cause latency in the response.
+If you want to fetch rewards by `day`, keep the `start` and `end` reasonably close together (within five days). Large ranges will cause latency in the response.
 
 :::
 
@@ -63,14 +59,12 @@ curl -X GET https://eth-rewards.datahub.figment.io/rewards \
 -H 'Authorization: API-KEY' \
 -d '{
   // highlight-start
-  "network": "ethereum",
-  "chain_id": "mainnet",
   "accounts": [
-    "0x8aa7939a2d3d9f2f88f5b3a61cf603603e7a3c28be36aa7f7312c8d0452e81486fcd24208ae8f6a44701267cf4365942"
+    "0x968c329ed829636a0bbbb57a25d9634ffd0d17bc1ff33adf93fd6a98920a82a83de930b9f2dddaebc4104ac90581ada0"
   ],
-  "start_time": "2022-07-23",
-  "end_time": "2022-07-26",
-  "grouping": "epoch"
+  "start": "2022-11-06",
+  "end": "2022-11-07",
+  "aggregation": "daily"
   // highlight-end
 }'
 ```
@@ -87,14 +81,12 @@ myHeaders.append("Authorization", API_KEY);
 
 var raw = JSON.stringify({
   // highlight-start
-  network: "ethereum",
-  chain_id: "mainnet",
   accounts: [
-    "0x93257a7d4f1e6998f019483f149a4dbe3bfc8b89358411be769aeedd943de907f178da1773aea9016d1ac2bdfe3794ba",
+    "0x968c329ed829636a0bbbb57a25d9634ffd0d17bc1ff33adf93fd6a98920a82a83de930b9f2dddaebc4104ac90581ada0",
   ],
-  start_time: "2022-07-27",
-  end_time: "2022-07-28",
-  grouping: "daily",
+  start_time: "2022-11-06",
+  end_time: "2022-11-07",
+  aggregation: "daily",
   // highlight-end
 });
 
@@ -117,25 +109,63 @@ fetch(`https://eth-rewards.datahub.figment.io/rewards`, requestOptions)
 <details><summary>Click to view example response</summary>
 
 ```json title="Example Rewards API JSON response"
-[
-  {
-    "accounts": [
-      "0x93257a7d4f1e6998f019483f149a4dbe3bfc8b89358411be769aeedd943de907f178da1773aea9016d1ac2bdfe3794ba"
-    ],
-    "chain_id": "mainnet",
-    "rewards": [
-      {
-        "text": "0.00335099 ETH",
-        "currency": "ETH",
-        "numeric": 3350990,
-        "exp": 9
-      }
-    ],
+{
+  "data": [
+    {
+      "accounts": [
+        "0x968c329ed829636a0bbbb57a25d9634ffd0d17bc1ff33adf93fd6a98920a82a83de930b9f2dddaebc4104ac90581ada0"
+      ],
+      "chain_id": "mainnet",
+      "rewards": [
+        {
+          "text": "0.003154426 ETH",
+          "currency": "ETH",
+          "numeric": 3154426000000000,
+          "exp": 18,
+          "type": "staking",
+          "recipient": "0x968c329ed829636a0bbbb57a25d9634ffd0d17bc1ff33adf93fd6a98920a82a83de930b9f2dddaebc4104ac90581ada0"
+        }
+      ],
+      "validator": "0x968c329ed829636a0bbbb57a25d9634ffd0d17bc1ff33adf93fd6a98920a82a83de930b9f2dddaebc4104ac90581ada0",
+      "timestamp": "2022-11-06T00:00:00Z"
+    },
+    {
+      "accounts": [
+        "0x968c329ed829636a0bbbb57a25d9634ffd0d17bc1ff33adf93fd6a98920a82a83de930b9f2dddaebc4104ac90581ada0"
+      ],
+      "chain_id": "mainnet",
+      "rewards": [
+        {
+          "text": "0.033305945 ETH",
+          "currency": "ETH",
+          "numeric": 33305945000000000,
+          "exp": 18,
+          "type": "staking",
+          "recipient": "0x968c329ed829636a0bbbb57a25d9634ffd0d17bc1ff33adf93fd6a98920a82a83de930b9f2dddaebc4104ac90581ada0"
+        },
+        {
+          "text": "0.182060023767382816 ETH",
+          "currency": "ETH",
+          "numeric": 182060023767382820,
+          "exp": 18,
+          "type": "tips",
+          "recipient": "0x1cedc0f3af8f9841b0a1f5c1a4ddc6e1a1629074",
+          "sender": "0xdafea492d9c6733ae3d56b7ed1adb60692c98bc5",
+          "slot": 5083891,
+          "block": 15918695,
+          "is_mev": true,
+          "mev_service": "Flashbots"
+        }
+      ],
+      "validator": "0x968c329ed829636a0bbbb57a25d9634ffd0d17bc1ff33adf93fd6a98920a82a83de930b9f2dddaebc4104ac90581ada0",
+      "timestamp": "2022-11-07T00:00:00Z"
+    }
+  ],
+  "meta": {
     "network": "ethereum",
-    "validator": "0x93257a7d4f1e6998f019483f149a4dbe3bfc8b89358411be769aeedd943de907f178da1773aea9016d1ac2bdfe3794ba",
-    "time": "2022-07-27T00:00:00Z"
+    "period_unit": "daily"
   }
-]
+}
 ```
 
 </details>
