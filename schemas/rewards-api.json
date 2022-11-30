@@ -26,7 +26,7 @@
 								}
 							}
 						},
-						"url": "https://{{ETH_REWARDS_HOST}}/v2/rewards/apikey/{{API_KEY}}",
+						"url": "https://{{ETH_REWARDS_HOST}}/apikey/{{API_KEY}}/v2/rewards/",
 						"description": "Returns gross validator rewards grouped by epoch\n\n### Parameters\n\n- `accounts` takes an array of validator's public addresses. 50 max. (required)\n- `start` and `end` are epoch numbers (as integers) (required).\n    \n\n### Response\n\nThe response is broken down between `meta` and `data`\n\n- `meta`\n    - `network` is the name of the network queried\n    - `period_unit` is the unit of the `period` field under `data` : `epoch` here\n- `data` is an array of objects - one for each period - containing:\n    - `validator` returns the validator that distributed the rewards\n    - `period` is the epoch number (only present when no aggregation)\n    - `timestamp` is the timestamp of the end of the period\n    - `rewards` is an array of objects.\n        - The formula to compute the final rewards in the `currency` unit is `numeric x 10^(-exp)` (`text` being the string version of this).\n        - `type` is either `staking` (for consensus layer rewards) or `tips` (for execution layer rewards).\n        - `recipient` is the address of the rewards recipient.\n\n#### MEV fields\n\nWhen a reward is of type `tips` we attach extra metadata for `data.rewards`\n\n- `sender` is the \"from\" address of the tips transaction\n- **(Soon)** `tx_hash` is the transaction identifier for the tips payout\n- `slot` is the consensus layer slot at which the block proposal occurred\n- `block` is the execution layer block in which the transaction was included\n- `is_mev` indicates if the block was built with MEV\n- `mev_service` specifies which service built the MEV block\n    \n\nThere can be multiple `type=tips` objects per period: one per proposed blocks. We don't aggregate them in one object because they could have different recipient addresses. `type=staking` only have one object: we aggregate all subtypes (block proposals, attestations, sync committees, slashing)\n\n### Limitations\n\n- This API serves data for the last 7 days for epoch and 60 days for daily aggregation\n- This API returns rewards for Figment validators only\n- Data is available approximately an hour after the end of the day or epoch. When requesting daily for the current day, the data will be available but obviously partially complete as the day progresses.\n    \n\n### FAQ\n\n- **Reward Types:** `staking` type rewards are the net aggregation of all consensus layer rewards: block proposal, attestation, sync committee and slashing. There is one staking bucket per period. `tips` type rewards are the effective amount received by the fee recipient of the proposed block on the execution layer. There can be multiple buckets per period (one per block proposed)\n- **Negative Rewards:** In theory, there could be a negative rewards amount for a day. But slashing events are rare. Current negative amounts would more likely be caused by repeatedly missing attestations and/or sync committee votes."
 					},
 					"response": [
@@ -1009,27 +1009,27 @@
 	],
 	"variable": [
 		{
-			"id": "9c708ea1-5241-4e8c-99c2-cdc55da090ad",
+			"id": "5cd66241-3a4f-468c-8fc1-3e1a3a355be1",
 			"key": "ETH_REWARDS_HOST",
 			"value": "eth-rewards.datahub.figment.io"
 		},
 		{
-			"id": "50901650-6511-46f6-b258-aa51f9576766",
+			"id": "a54f7034-0900-42e0-b1b4-42ec69a16697",
 			"key": "SOL_REWARDS_HOST",
 			"value": "solana-rewards.datahub.figment.io"
 		},
 		{
-			"id": "93453174-21d4-4cf2-b7d3-24f4a3f1aa98",
+			"id": "98b86f4a-0534-4612-b31d-9db79f80a35e",
 			"key": "DOT_REWARDS_HOST",
 			"value": "polkadot-rewards.datahub.figment.io"
 		},
 		{
-			"id": "7661d72e-8989-4449-8489-25086a249553",
+			"id": "3c815374-a581-4cbf-a360-d11ab7b5ca5b",
 			"key": "NEAR_REWARDS_HOST",
 			"value": "near-rewards.datahub.figment.io"
 		},
 		{
-			"id": "c7f5ad50-25bf-4e58-809a-0720f129a277",
+			"id": "015917f5-e061-44e6-9fd9-be9b4130f37f",
 			"key": "AVAX_REWARDS_HOST",
 			"value": "avalanche-rewards.datahub.figment.io"
 		}
