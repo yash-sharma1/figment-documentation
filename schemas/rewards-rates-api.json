@@ -234,12 +234,12 @@
 	],
 	"variable": [
 		{
-			"id": "ab95fb95-24d2-442d-ada6-d740890f5eca",
+			"id": "b23dd743-882f-4781-8d2a-69a75b5e5506",
 			"key": "ETH_REWARDS_HOST",
 			"value": "eth-rewards.datahub.figment.io"
 		},
 		{
-			"id": "07be640c-8363-4add-aa2c-8140c3a33264",
+			"id": "35a4d341-9580-4afb-b1d1-b5551c70a7d8",
 			"key": "SOL_REWARDS_HOST",
 			"value": "solana-rewards.datahub.figment.io"
 		}
