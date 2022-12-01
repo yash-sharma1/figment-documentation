@@ -9,7 +9,7 @@
 			"name": "Ethereum",
 			"item": [
 				{
-					"name": "Rewards by epoch",
+					"name": "[ETH] Rewards by epoch",
 					"id": "0fac7278-6e28-4af9-9af2-f7ca29b4abf0",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
@@ -123,7 +123,7 @@
 					]
 				},
 				{
-					"name": "Rewards  by day",
+					"name": "[ETH] Rewards  by day",
 					"id": "bd90e4a8-c6be-4020-b25b-d6314eedac20",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
@@ -333,7 +333,7 @@
 			"name": "Solana",
 			"item": [
 				{
-					"name": "Rewards by epoch",
+					"name": "[SOL] Rewards by epoch",
 					"id": "8c0f2da9-05df-4d16-bb5e-a2b6da83fff1",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
@@ -453,7 +453,7 @@
 			"name": "NEAR",
 			"item": [
 				{
-					"name": "Rewards by epoch",
+					"name": "[NEAR] Rewards by epoch",
 					"event": [
 						{
 							"listen": "test",
@@ -659,7 +659,7 @@
 			"name": "Polkadot",
 			"item": [
 				{
-					"name": "Rewards by era",
+					"name": "[DOT] Rewards by era",
 					"event": [
 						{
 							"listen": "test",
@@ -865,7 +865,7 @@
 			"name": "Avalanche",
 			"item": [
 				{
-					"name": "Rewards by day",
+					"name": "[AVAX] Rewards by day",
 					"id": "3687b3ec-a458-4382-863b-262e21d64e82",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
@@ -1009,27 +1009,27 @@
 	],
 	"variable": [
 		{
-			"id": "751b2f93-7fac-41a8-b976-6acb84e78c30",
+			"id": "052d152a-0429-4d25-9d9b-352c8770875e",
 			"key": "ETH_REWARDS_HOST",
 			"value": "eth-rewards.datahub.figment.io"
 		},
 		{
-			"id": "e533606b-f454-4afb-86f7-f7623bb164dd",
+			"id": "96212b2f-c8e0-43ed-ac6e-b708751d9a08",
 			"key": "SOL_REWARDS_HOST",
 			"value": "solana-rewards.datahub.figment.io"
 		},
 		{
-			"id": "dcffefc7-ae3b-4b09-8292-41d7759dc768",
+			"id": "79387a44-0707-4c31-bc84-37c6d6546da5",
 			"key": "DOT_REWARDS_HOST",
 			"value": "polkadot-rewards.datahub.figment.io"
 		},
 		{
-			"id": "9cc9a2fc-c142-4621-bdc2-23e18d4ece9e",
+			"id": "5ed9c7f7-c913-492c-8b88-ff12a258d803",
 			"key": "NEAR_REWARDS_HOST",
 			"value": "near-rewards.datahub.figment.io"
 		},
 		{
-			"id": "6789b462-e562-44b7-8bed-35f8f199be25",
+			"id": "8bf44fbe-2074-4fc1-a654-6d0ef0cc3420",
 			"key": "AVAX_REWARDS_HOST",
 			"value": "avalanche-rewards.datahub.figment.io"
 		}
