@@ -63,4 +63,52 @@ Figment has also published an NPM package for decoding and signing Staking API t
 
 Learn how to use it with the guide <Link to="/guides/staking-api/figment-signing-transactions">Signing Transactions with Figment's NPM Package</Link>
 
+### Mainnet Validators
+
+While the Staking API allows you to provide any validator address you wish for staking flows, we provide Figment's mainnet validators here for your convenience.
+
+| Network       | Validator Address                                                                                                                                                       |
+| :------------ | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Avalanche     | <Link to="https://subnets.avax.network/validators/NodeID-GW7CvXwkPFDsfFHrix1SA148NHF5ZnSXs">`NodeID-GW7CvXwkPFDsfFHrix1SA148NHF5ZnSXs`</Link>                           |
+| Cosmos        | <Link to="https://www.mintscan.io/cosmos/validators/cosmosvaloper1hjct6q7npsspsg3dgvzk3sdf89spmlpfdn6m9d">`cosmosvaloper1hjct6q7npsspsg3dgvzk3sdf89spmlpfdn6m9d`</Link> |
+| Ethereum      | N/A (direct delegation - no public validators possible)                                                                                                                 |
+| NEAR          | <Link to="https://explorer.near.org/accounts/figment.poolv1.near">`figment.poolv1.near`</Link>                                                                          |
+| Polkadot \*\* | <Link to="https://polkadot.subscan.io/account/148TcjWBiBQT4oYE6EGY4Q94242sFnaG4g1gogJhe2Yhiz8N">`148TcjWBiBQT4oYE6EGY4Q94242sFnaG4g1gogJhe2Yhiz8N`</Link>               |
+| Polygon       | <Link to="https://staking.polygon.technology/validators/87">`0x6ae6c540c7b110d5c01cb9bc23297a013f9f4982`</Link>                                                         |
+| Solana        | <Link to="https://explorer.solana.com/address/CcaHc2L43ZWjwCHART3oZoJvHLAe9hzT2DJNUpBzoTN1">`CcaHc2L43ZWjwCHART3oZoJvHLAe9hzT2DJNUpBzoTN1`</Link>                       |
+
+:::info
+
+\*\* Due to the way nominations are managed by the Polkadot protocol, we recommend proxying nomination rights to Figment and allowing us to manage nominations on your behalf. Please review the guide <Link to="/guides/staking-api/polkadot/nomination-proxy">Setup a Staking Nomination Proxy</Link>, or <Link to="mailto:staking@figment.io">contact us directly</Link> in order to discuss this option.
+
+:::
+
+### Testnet Explorers
+
+We generally can not guarantee consistent availability of testnet validators, so we provide links to a block explorer's testnet validator index when possible.
+
+| Network   | Link to Testnet Validators                                                                                                      |
+| :-------- | :------------------------------------------------------------------------------------------------------------------------------ |
+| Avalanche | <Link to="https://explorer-xp.avax-test.network/validators">https://explorer-xp.avax-test.network/validators</Link>             |
+| Cosmos    | <Link to="https://explorer.theta-testnet.polypore.xyz/validators">https://explorer.theta-testnet.polypore.xyz/validators</Link> |
+| Ethereum  | <Link to="https://prater.beaconcha.in/validators">https://prater.beaconcha.in/validators</Link>                                 |
+| NEAR      | <Link to="https://explorer.testnet.near.org/nodes/validators">https://explorer.testnet.near.org/nodes/validators</Link>         |
+| Polkadot  | <Link to="https://westend.subscan.io/validator">https://westend.subscan.io/validator</Link>                                     |
+| Polygon   | <Link to="https://staking.polygon.technology/validators">https://staking.polygon.technology/validators</Link>                   |
+| Solana    | <Link to="https://explorer.solana.com/?cluster=testnet">https://explorer.solana.com/?cluster=testnet</Link>                     |
+
+### Testnet Faucets
+
+For your convenience we provide the links to the supported protocols testnet faucets so you can get some testnet tokens and test the Staking API.
+
+| Network   | Testnet Faucet                                                                                                                                                                                                                    |
+| :-------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Avalanche | <Link to="https://faucet.avax.network">https://faucet.avax.network</Link>                                                                                                                                                         |
+| Cosmos    | The faucet is located on Comsos <Link to="https://discord.gg/cosmosnetwork">Discord server.</Link> In the **testnet-faucet** channel, you need to type `$request <COSMOS_TESTNET_ADDRESS> theta` to get your testnet ATOM tokens. |
+| Ethereum  | <Link to="https://goerli-faucet.mudit.blog">https://goerli-faucet.mudit.blog</Link>                                                                                                                                               |
+| NEAR      | NEAR gives you 200 NEAR testnet tokens when you create a new testnet account.                                                                                                                                                     |
+| Polkadot  | The faucet is located at <Link to="https://matrix.to/#/#westend_faucet:matrix.org">Matrix.org messaging app.</Link> In the chat interface, you need to type `!drip <WESTEND_ADDRESS>` to get your WND tokens.                     |
+| Polygon   | <Link to="https://faucet.polygon.technology">https://faucet.polygon.technology</Link>                                                                                                                                             |
+| Solana    | <Link to="https://solfaucet.com">https://solfaucet.com</Link>                                                                                                                                                                     |
+
 ---

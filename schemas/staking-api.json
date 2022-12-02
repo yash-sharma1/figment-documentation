@@ -26,7 +26,7 @@
 								}
 							}
 						},
-						"url": "https://{{AVAX_STAKING_HOST}}/api/v1/flows/apikey/{{API_KEY}}",
+						"url": "https://{{AVAX_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows",
 						"description": "To initiate the staking process, create a new flow with a `POST` request to `/api/v1/flows`.\n\n### Parameters\n\n- `flow` &mdash; `object`\n  - `network_code` &mdash; `string` Network this flow operates on (ex. `avalanche`) (required).\n  - `chain_code` &mdash; `string` Chain this flow operates on (ex. `testnet`) (required).\n  - `operation` &mdash; `string` The operation to perform (ex. `staking`) (required).\n  - `version` &mdash; `string` API version to use (ex. `v1`) (optional).\n\n### Response\n\n- `id` &mdash; `string` ID of the flow.\n- `state` &mdash; `string` The current state of the flow.\n- `actions` &mdash; `array` It includes the `name` & `inputs` of all next possible actions.\n - `create_delegate_tx` &mdash; Use this action to generate a delegation transaction to stake AVAX.\n   - `delegator_address` &mdash; The delegating address, where AVAX is being staked from. This must be a P-chain address.\n   - `validator_address` &mdash; Figment's validator address.\n   - `amount` &mdash; The amount of AVAX to be delegated.\n   - `start_time` &mdash; Optional timestamp for when the delegation will be active.\n   - `end_time` &mdash; Optional timestamp for when the delegation will end.\n   - `memo` &mdash; A plaintext memo to identify the transaction.\n- `data` &mdash; `object` Delegation flow & transaction data."
 					},
 					"response": [
@@ -202,7 +202,7 @@
 								}
 							}
 						},
-						"url": "https://{{COSMOS_STAKING_HOST}}/api/v1/flows/apikey/{{API_KEY}}",
+						"url": "https://{{COSMOS_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows",
 						"description": "To initiate the staking process, create a new flow with a `POST` request to `/api/v1/flows`.\n\n### Parameters\n\n- `flow` &mdash; `object`\n  - `network_code` &mdash; `string` Network this flow operates on (ex. `cosmos`) (required).\n  - `chain_code` &mdash; `string` Chain this flow operates on (ex. `testnet`) (required).\n  - `operation` &mdash; `string` The operation to perform (ex. `staking`) (required).\n  - `version` &mdash; `string` API version to use (ex. `v1`) (optional).\n\n### Response\n\n- `id` &mdash; `string` ID of the flow.\n- `state` &mdash; `string` The current state of the flow.\n- `actions` &mdash; `array` It includes the `name` & `inputs` of all next possible actions.\n - `create_delegate_tx` &mdash; Use this action to generate a delegation transaction to stake your ATOM.\n   - `delegator_address` &mdash; The address from which ATOM will be delegated.\n   - `validator_address` &mdash; The validator address to which ATOM will be delegated.\n   - `amount` &mdash; The amount of ATOM to be delegated.\n   - `memo` &mdash; an optional message to record on-chain with your transaction.\n   - `gas_limit` &mdash; the total amount of gas you're willing to let this transaction consume.\n     - If you do not include this, we'll use a Cosmos library to select a good default for you.\n   - `gas_price` &mdash; how many ATOM you're willing to pay per unit of gas consumed by this transaction.\n     - If you do not include this, we'll use a Cosmos library to select a good default for you. \n   - `pubkey` &mdash; Pubkey value will be retrieved from the chain but if you're using a fresh account (that does not have any outgoing activity) then this information is not available and it requires the user to pass it.\n- `data` &mdash; `object` Staking flow & transaction data."
 					},
 					"response": [
@@ -557,7 +557,7 @@
 								}
 							}
 						},
-						"url": "https://{{ETH_STAKING_HOST}}/api/v1/flows/apikey/{{API_KEY}}",
+						"url": "https://{{ETH_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows",
 						"description": "To initiate the staking process, create a new flow with a `POST` request to `/api/v1/flows`.\n\n### Parameters\n\n- `flow` &mdash; `object`\n  - `network_code` &mdash; `string` Network this flow operates on (ex. `ethereum`) (required).\n  - `chain_code` &mdash; `string` Chain this flow operates on (ex. `goerli`) (required).\n  - `operation` &mdash; `string` The operation to perform (ex. `staking`) (required).\n  - `version` &mdash; `string` API version to use (ex. `v1`) (optional).\n\n### Response\n\n- `id` &mdash; `string` ID of the flow.\n- `state` &mdash; `string` The current state of the flow.\n- `actions` &mdash; `array` It includes the `name` & `inputs` of all next possible actions.\n - `create_deposit_transaction` &mdash; Use this action to generate a deposit transaction to stake your ETH.\n   - `funding_account_address` &mdash; The wallet ETH will be originating from.\n   - `validator_pub_key` -The public key of the validator that the ETH is to be deposited to.\n   - `withdraw_credentials` &mdash; The withdrawal address for the given validator.\n   - `signature` &mdash; A BLS proof of possession, i.e. a proof that the private key corresponding to the `validator_pub_key` is known by the signer.\n   - `deposit_data_root` &mdash; Uniquely identifies the set of deposits made so far.\n   - `gas_limit` &mdash; Adjust the gas limit.\n   - `gas_price` &mdash; Adjust the gas price.\n- `data` &mdash; `object` Staking flow & transaction data."
 					},
 					"response": [
@@ -578,7 +578,7 @@
 								},
 								"url": "https://{{ETH_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows"
 							},
-							"_postman_previewlanguage": "json",
+							"_postman_previewlanguage": "Text",
 							"header": null,
 							"cookie": [],
 							"responseTime": null,
@@ -625,7 +625,7 @@
 								},
 								"url": "https://{{ETH_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{ethStakingFlowId}}/next"
 							},
-							"_postman_previewlanguage": "json",
+							"_postman_previewlanguage": "Text",
 							"header": null,
 							"cookie": [],
 							"responseTime": null,
@@ -672,7 +672,7 @@
 								},
 								"url": "https://{{ETH_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{ethStakingFlowId}}/next"
 							},
-							"_postman_previewlanguage": "json",
+							"_postman_previewlanguage": "Text",
 							"header": null,
 							"cookie": [],
 							"responseTime": null,
@@ -701,7 +701,7 @@
 								"header": [],
 								"url": "https://{{ETH_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{ethStakingFlowId}}"
 							},
-							"_postman_previewlanguage": "json",
+							"_postman_previewlanguage": "Text",
 							"header": null,
 							"cookie": [],
 							"responseTime": null,
@@ -733,7 +733,7 @@
 								}
 							}
 						},
-						"url": "https://{{NEAR_STAKING_HOST}}/api/v1/flows/apikey/{{API_KEY}}",
+						"url": "https://{{NEAR_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows",
 						"description": "To initiate the staking process, create a new flow with a `POST` request to `/api/v1/flows`.\n\n### Parameters\n\n- `flow` &mdash; `object`\n  - `network_code` &mdash; `string` Network this flow operates on (ex. `near`) (required).\n  - `chain_code` &mdash; `string` Chain this flow operates on (ex. `mainnet`) (required).\n  - `operation` &mdash; `string` The operation to perform (ex. `staking`) (required).\n  - `version` &mdash; `string` API version to use (ex. `v1`) (optional).\n\n### Response\n\n- `id` &mdash; `string` ID of the flow.\n- `state` &mdash; `string` The current state of the flow.\n- `actions` &mdash; `array` It includes the `name` & `inputs` of all next possible actions.\n  - `create_delegate_tx` &mdash; Use this action to generate a delegation transaction to stake NEAR.\n   - `validator_address` &mdash; Figment validator address.\n   - `delegator_address` &mdash; The delegating address.\n   - `delegator_pubkey` &mdash; The public key of the signing account. Must start with `ed25519:`.\n   - `amount` &mdash; The amount of NEAR to be delegated.\n   - `max_gas` &mdash; Adjust if you wish to limit the possible transaction fee.\n- `data` &mdash; `object` Delegation flow & transaction data."
 					},
 					"response": [
@@ -1372,7 +1372,7 @@
 								}
 							}
 						},
-						"url": "https://{{DOT_STAKING_HOST}}/api/v1/flows/apikey/{{API_KEY}}",
+						"url": "https://{{DOT_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows",
 						"description": "To initiate the staking process, create a new flow with a `POST` request to `/api/v1/flows`.\n\n### Parameters\n\n- `flow` &mdash; `object`\n  - `network_code` &mdash; `string` Network this flow operates on (ex. `polkadot`) (required).\n  - `chain_code` &mdash; `string` Chain this flow operates on (ex. `westend`) (required).\n  - `operation` `string` The operation to perform (ex. `staking`) (required).\n  - `version` &mdash; `string` API version to use (ex. `v1`) (optional).\n\n### Response\n\n- `id` &mdash; `string` ID of the flow.\n- `state` &mdash; `string` The current state of the flow.\n- `actions` &mdash; `array` It includes the `name` & `inputs` of all next possible actions.\n - `assign_stash_and_controller_account` &mdash; Use this action if you already have a controller account set up and wish to add bond to it.\n   - `create_bonding_tx` &mdash; Use this action if you do not have a controller account set up and would like to create a controller and bond tokens.\n   - `controller_account_address` &mdash; The wallet to which the DOT will be bonded.\n   - `controller_proxy_account_address` &mdash; A proxy account that will sign on behalf of the controller account.\n   - `stash_account_address` &mdash; Primary wallet from which DOT will be bonded.\n   - `stash_proxy_account_address` &mdash; A proxy account that will sign on behalf of the stash account.\n   - `reward_destination` &mdash; Indicates whether rewards are to be:\n     - Added to the staked balance: `Staked`.\n     - Sent to the controller account, liquid: `Controller`.\n     - Sent to the stash account, liquid: `Stash`.\n   - `amount` &mdash; The amount of DOT to be bonded to the controller. This field should be in full DOT, not in Planck (ie. if you want to stake 5 DOT, return `\"amount\": 5.0`). The Staking API will translate the amount to Plancks so you do not have to worry about the conversion factor.\n- `data` &mdash; `object` Delegation flow & transaction data."
 					},
 					"response": [
@@ -2586,7 +2586,7 @@
 								}
 							}
 						},
-						"url": "https://{{POLYGON_STAKING_HOST}}/api/v1/flows/apikey/{{API_KEY}}",
+						"url": "https://{{POLYGON_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows",
 						"description": "To initiate the delegation process, create a new flow with a `POST` request to `/api/v1/flows`.\n\n### Parameters\n\n- `flow` &mdash; `object`\n  - `network_code` &mdash; `string` Network on which this flow operates (ex. `polygon`) (required).\n  - `chain_code` &mdash; `string` Chain on which this flow operates (ex. `mainnet` , `testnet`) (required).\n  - `operation` `string` The operation to perform (ex. `staking`) (required).\n  - `version` &mdash; `string` API version to use (ex. `v1`) (optional).\n\n### Response\n\n- `id` &mdash; `string` ID of the flow.\n- `state` &mdash; `string` The current state of the flow.\n- `actions` &mdash; `array` It includes the `name` & `inputs` of all next possible actions.\n - `assign_staking_data` &mdash; provide the funding address, validator contract address, and amount of tokens to be staked. The Staking API will check on-chain to determine if an allowance transaction is needed.\n   - `delegator_address` &mdash; The main wallet from which MATIC will originate.\n   - `validator_address` &mdash; The validator smart contract address for delegation.\n   - `amount` &mdash; The number of MATIC tokens to be delegated.\n   - `minimum_shares_to_mint` &mdash; The minimum number of shares of the delegation pool to be minted. If the exchange rate results in fewer shares being minted, the transaction will fail.\n   - `max_slippage_percentage` &mdash; The maximum slippage you are willing to accept.\n- `data` &mdash; `object` Delegation flow & transaction data."
 					},
 					"response": [
@@ -3344,7 +3344,7 @@
 								}
 							}
 						},
-						"url": "https://{{SOL_STAKING_HOST}}/api/v1/flows/apikey/{{API_KEY}}",
+						"url": "https://{{SOL_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows",
 						"description": "To initiate the staking process, create a new flow with a `POST` request to `/api/v1/flows`.\n\n### Parameters\n\n- `flow` &mdash; `object`\n  - `network_code` &mdash; `string` Network this flow operates on (ex. `solana`) (required).\n  - `chain_code` &mdash; `string` Chain this flow operates on (ex. `testnet`) (required).\n  - `operation` `string` The operation to perform (ex. `staking`) (required).\n  - `version` &mdash; `string` API version to use (ex. `v1`) (optional).\n\n### Response\n\n- `id` &mdash; `string` ID of the flow.\n- `state` &mdash; `string` The current state of the flow.\n- `actions` &mdash; `array` It includes the `name` & `inputs` of all next possible actions.\n - `assign_stake_account` &mdash; Use this action if you already have an inactive stake account you want to activate.\n - `create_new_stake_account` &mdash; Use this action if you do not have an inactive stake account and want to create a new one.\n   - `funding_account_pubkey` &mdash; The main wallet your SOL will be originating from.\n   - `stake_authority_pubkey` &mdash; Grants authority to sign certain staking relation transactions to the provided address. Defaults to `funding_account_pubkey`.\n   - `withdraw_authority_pubkey` &mdash; Grants authority to sign certain withdrawal related transactions to the provided address. Defaults to `funding_account_pubkey`.\n   - `amount` &mdash; The amount of SOL to be sent to the stake account. This field should be in full SOL, not in lamports (i.e. if you want to stake 5 SOL, return `\"amount\": 5.0`). The Staking API will translate the amount to lamports so you do not have to worry about the conversion factor. Lamports are fractional SOLs.\n- `data` &mdash; `object` Delegation flow & transaction data."
 					},
 					"response": [
@@ -4280,42 +4280,42 @@
 	],
 	"variable": [
 		{
-			"id": "2d493211-832a-4d32-9be6-cb18c2abe979",
+			"id": "ef2d1987-da17-4be5-818d-514f33555f80",
 			"key": "AVAX_STAKING_HOST",
 			"value": "avalanche-slate.datahub.figment.io"
 		},
 		{
-			"id": "e85ad5e4-a61f-4ef5-b4a7-87e2a86714cd",
+			"id": "c08d4530-8403-451f-92dc-9cefda64e682",
 			"key": "COSMOS_STAKING_HOST",
 			"value": "cosmos-slate.datahub.figment.io"
 		},
 		{
-			"id": "47468da0-aa91-447f-910b-ec7dcdbe6364",
+			"id": "523a2f91-1ccb-4cc4-91ff-032b116a5f6d",
 			"key": "ETH_STAKING_HOST",
 			"value": "eth-slate.datahub.figment.io"
 		},
 		{
-			"id": "8022c073-d670-420c-8368-020994e386c8",
+			"id": "5a983465-70b7-4929-8f4b-c795f017f0b1",
 			"key": "NEAR_STAKING_HOST",
 			"value": "near-slate.datahub.figment.io"
 		},
 		{
-			"id": "ce919f7c-3cb5-4d47-be3a-ce131059e79b",
+			"id": "736a8bfb-1246-498d-bdbf-7a6e45028a16",
 			"key": "DOT_STAKING_HOST",
 			"value": "polkadot-slate.datahub.figment.io"
 		},
 		{
-			"id": "487d6c4b-b4a1-486d-bfcf-f2e3e528f2b2",
+			"id": "09b2ac6c-7bbb-434f-a972-9bcd76731bc3",
 			"key": "SOL_STAKING_HOST",
 			"value": "solana-slate.datahub.figment.io"
 		},
 		{
-			"id": "6f6dc7f2-986a-460a-a990-775305ab0d46",
+			"id": "577e6262-55c3-4beb-b314-6db2cdb29884",
 			"key": "POLYGON_STAKING_HOST",
 			"value": "polygon-slate.datahub.figment.io"
 		},
 		{
-			"id": "1833924f-35c2-4487-b5ce-4ed08c219d30",
+			"id": "22185fee-7531-4ce7-9a1e-4df588fc02b8",
 			"key": "INTERACTIVE",
 			"value": "false"
 		}

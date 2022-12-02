@@ -123,10 +123,27 @@ Example:
 - `staking`
   - `delegateTransaction`
 
+</TabItem><TabItem value="atom" label="Cosmos" default>
+
+- `staking`
+  - `delegateTransaction`
+- `transfer`
+  - `transferTransaction`
+
 </TabItem><TabItem value="eth" label="Ethereum">
 
 - `staking`
   - `depositTransaction`
+
+</TabItem><TabItem value="near" label="NEAR">
+
+- `staking`
+  - `delegateTransaction`
+- `unstaking`
+  - `undelegateTransaction`
+  - `withdrawTransaction`
+- `transfer`
+  - `transferTransaction`
 
 </TabItem><TabItem value="dot" label="Polkadot">
 
@@ -153,16 +170,8 @@ Example:
   - `chillTransaction`
   - `unbondTransaction`
   - `withdrawTransaction`
-
-</TabItem><TabItem value="near" label="NEAR">
-
-- `staking`
-  - `delegateTransaction`
-- `unstaking`
-  - `undelegateTransaction`
-  - `withdrawTransaction`
-- `transfer`
-  - `transferTransaction`
+- `claimRewards`
+  - `claimRewardsTransaction`
 
 </TabItem><TabItem value="sol" label="Solana">
 
@@ -174,5 +183,7 @@ Example:
   - `withdrawTransaction`
 - `transfer`
   - `transferTransaction`
+- `splitStakeAccount`
+  - `splitStakeAccountTransaction`
 
 </TabItem></Tabs>
