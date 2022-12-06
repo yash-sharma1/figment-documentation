@@ -551,7 +551,7 @@
 					]
 				},
 				{
-					"name": "[SOL] Rewards for system account (epoch)",
+					"name": "Rewards for system account (epoch)",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -1331,42 +1331,42 @@
 	],
 	"variable": [
 		{
-			"id": "2f7a6247-8378-4386-8612-01c803d38809",
+			"id": "01e1e376-09a4-4a88-9ec0-6931a18ca094",
 			"key": "ETH_REWARDS_HOST",
 			"value": "eth-rewards.datahub.figment.io"
 		},
 		{
-			"id": "1eea0213-4e18-4c9a-97a6-8d247789d932",
+			"id": "e36583c0-9b23-4ac2-8cf1-8134e58ca97b",
 			"key": "SOL_REWARDS_HOST",
 			"value": "solana-rewards.datahub.figment.io"
 		},
 		{
-			"id": "cd658f28-de5c-4d8a-b4ea-e4449e4ecc3f",
+			"id": "498484ac-4f94-40bb-b36d-63bdc769acab",
 			"key": "DOT_REWARDS_HOST",
 			"value": "polkadot-rewards.datahub.figment.io"
 		},
 		{
-			"id": "0e8049ba-4376-46b4-b0f5-0a630b772418",
+			"id": "1dda85f4-3821-4483-a276-8901798b9e71",
 			"key": "NEAR_REWARDS_HOST",
 			"value": "near-rewards.datahub.figment.io"
 		},
 		{
-			"id": "8c4005c6-94de-4a97-9613-27898bd0c709",
+			"id": "54ba235f-0263-4623-8bf1-168565eb32a9",
 			"key": "AVAX_REWARDS_HOST",
 			"value": "avalanche-rewards.datahub.figment.io"
 		},
 		{
-			"id": "1124a2ef-5ec8-43b8-bc36-d7387c6be07d",
+			"id": "d25a36ea-f626-408d-bf60-4fd055d5fe85",
 			"key": "sol-start-epoch",
 			"value": ""
 		},
 		{
-			"id": "a3c52751-b693-41f2-aaec-efd3dc4bc7ef",
+			"id": "5ca90b08-0771-4582-9e50-c333b251a9bf",
 			"key": "sol-end-epoch",
 			"value": ""
 		},
 		{
-			"id": "e87f9722-c56d-4a50-98cd-29165e1b0df1",
+			"id": "e2f1b34b-fdde-4700-9eb7-196444768edb",
 			"key": "verified-epoch",
 			"value": ""
 		}
