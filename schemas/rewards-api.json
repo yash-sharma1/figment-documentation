@@ -455,7 +455,7 @@
 							}
 						},
 						"url": "https://{{SOL_REWARDS_HOST}}/apikey/{{API_KEY}}/v2/rewards",
-						"description": "solana stake account  \nReturns rewards (and balances) for all **stake accounts**. The response payload is broken down by epoch and by stake account and the rewards are \"net\", aka after the on-chain validator commission.\n\n### Parameters\n\n- `accounts` is an array of **stake account** addresses _(required)_\n- `start` and `end` can be either epochs (numbers) or timestamps (strings formatted like \"YYYY-MM-DD\") _(required)_\n    \n\n### Response\n\nThe response is broken down between `meta` and `data`\n\n- `meta`\n    - `network` is the name of the network queried\n    - `period_unit` is the unit of the `period` field under `data`: here it will be `epoch`\n- `data` is an array of objects - one for each epoch - containing:\n    - `validator` returns the validator that distributed the rewards\n    - `system_account` returns the system account that stake account was created from\n    - `period` is the epoch number\n    - `timestamp` is the timestamp at the end of the epoch\n    - `rewards` is an array of objects containing `numeric`, `exp`, `currency`, and `text`. The formula to compute the rewards in the `currency` unit is `numeric x 10^(-exp)`(`text` is the string version of this)\n    - `balances` is an array of objects containing `numeric`, `exp`, `currency`, and `text`.\n\n### Limitations\n\n- The API returns rewards for Figment validators only.\n- Data is available approximately an hour after the end of the day or epoch. When requesting daily for the current day, the data will be available but obviously partially complete as the day progresses.\n    \n\n### FAQ\n\n- Read more about [stake accounts](https://docs.solana.com/staking/stake-accounts) on the Solana Docs."
+						"description": "solana stake account  \nReturns rewards (and balances) for all **stake accounts**. The response payload is broken down by epoch and by stake account. The **net rewards** are shown, meaning after the on-chain validator commission has been subtracted.\n\n### Parameters\n\n- `accounts` is an array of **stake account** addresses _(required)_\n- `start` and `end` can be either epochs (numbers) or timestamps (strings formatted like \"YYYY-MM-DD\") _(required)_\n    \n\n### Response\n\nThe response is broken down between `meta` and `data`\n\n- `meta`\n    - `network` is the name of the network queried\n    - `period_unit` is the unit of the `period` field under `data`: here it will be `epoch`\n- `data` is an array of objects - one for each epoch - containing:\n    - `validator` returns the validator that distributed the rewards\n    - `system_account` returns the system account that stake account was created from\n    - `period` is the epoch number\n    - `timestamp` is the timestamp at the end of the epoch\n    - `rewards` is an array of objects containing `numeric`, `exp`, `currency`, and `text`. The formula to compute the rewards in the `currency` unit is `numeric x 10^(-exp)`(`text` is the string version of this)\n    - `balances` is an array of objects containing `numeric`, `exp`, `currency`, and `text`.\n\n### Limitations\n\n- The API returns rewards for Figment validators only.\n- Data is available approximately an hour after the end of the day or epoch. When requesting daily for the current day, the data will be available but obviously partially complete as the day progresses.\n    \n\n### FAQ\n\n- Read more about [stake accounts](https://docs.solana.com/staking/stake-accounts) on the Solana Docs."
 					},
 					"response": [
 						{
@@ -1331,42 +1331,42 @@
 	],
 	"variable": [
 		{
-			"id": "6b9b6d9b-e494-4430-9b00-718732fe04f6",
+			"id": "f88db6cb-e911-4d69-bab0-03528a50292c",
 			"key": "ETH_REWARDS_HOST",
 			"value": "eth-rewards.datahub.figment.io"
 		},
 		{
-			"id": "0e590d97-ad3b-4090-a02b-2806618e1468",
+			"id": "3f00bc45-7e2e-4d1d-a416-4957239ec084",
 			"key": "SOL_REWARDS_HOST",
 			"value": "solana-rewards.datahub.figment.io"
 		},
 		{
-			"id": "dd5d6bab-5b75-44d7-88d6-cf353e857782",
+			"id": "d8cbea98-2fdb-4766-bea0-eb4f02e79330",
 			"key": "DOT_REWARDS_HOST",
 			"value": "polkadot-rewards.datahub.figment.io"
 		},
 		{
-			"id": "4856ebdc-1e08-41e9-b986-977cc4de6cd2",
+			"id": "67f7c964-ba03-4abe-ae1d-44da1d076090",
 			"key": "NEAR_REWARDS_HOST",
 			"value": "near-rewards.datahub.figment.io"
 		},
 		{
-			"id": "735ea71f-7c4c-4f05-bcc6-3b397423b24a",
+			"id": "aa9c1415-32b8-4759-a936-7eac2a2267f7",
 			"key": "AVAX_REWARDS_HOST",
 			"value": "avalanche-rewards.datahub.figment.io"
 		},
 		{
-			"id": "cc53b94e-d73f-4b35-86cd-b635b40326f7",
+			"id": "20080a4b-d3b7-4ef2-aeb2-1d7942c9b6ac",
 			"key": "sol-start-epoch",
 			"value": ""
 		},
 		{
-			"id": "b2a2502a-7a79-4fa3-957d-34efaeb90709",
+			"id": "46e14444-f532-42c1-b2f4-04a8d2adf237",
 			"key": "sol-end-epoch",
 			"value": ""
 		},
 		{
-			"id": "d7784c17-65e6-45e3-87c9-3b632cc43183",
+			"id": "7db612ad-78f4-4e09-a03f-83618afcc21a",
 			"key": "verified-epoch",
 			"value": ""
 		}
