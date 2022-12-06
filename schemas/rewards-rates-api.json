@@ -33843,7 +33843,7 @@
 									"",
 									"// add a template string of the front-end view we want to render",
 									"let template = `",
-									"    <script src=\"https://cdn.jsdelivr.net/npm/chart.js@2.8.0\"></script>",
+									"    <script src=\"https://cdn.jsdelivr.net/npm/chart.js@4.0.1\"></script>",
 									"    <canvas id=\"myChart\" height=\"80%\"></canvas>",
 									"    <script>",
 									"        pm.getData( function (error, data) {",
@@ -33854,18 +33854,18 @@
 									"                type: 'bar',",
 									"            ",
 									"                // The data for our dataset",
-									"                data: {",
-									"                    labels: data.labels,",
-									"                    datasets: [{",
-									"                        label: 'Rewards per epoch',",
-									"                        backgroundColor: 'black',",
-									"                        borderColor: '#fff29b',",
-									"                        data: data.values,",
-									"                    }]",
-									"                },",
+									"                data: data,",
 									"            ",
-									"                // Configuration options go here",
-									"                options: {}",
+									"                options: {",
+									"                    scales: {",
+									"                        x: {",
+									"                            stacked: true,",
+									"                        },",
+									"                        y: {",
+									"                            stacked: true",
+									"                        }",
+									"                    }",
+									"                }",
 									"            });",
 									"        });",
 									"    </script>",
@@ -33874,8 +33874,19 @@
 									"const response = pm.response.json()",
 									"",
 									"pm.visualizer.set(template, {",
-									"    values: response.map(el => el.value).reverse(),",
-									"    labels: response.map(el => el.date).reverse(),",
+									"    labels: response.map(el => el.date).slice(0, 300).reverse(),",
+									"    datasets: [",
+									"        {",
+									"            label: 'Staking',",
+									"            data: response.map(el => el.staking).slice(0, 300).reverse(),",
+									"            backgroundColor: '#000'",
+									"        },",
+									"        {",
+									"            label: 'Tips',",
+									"            data: response.map(el => el.tips).slice(0, 300).reverse(),",
+									"            backgroundColor: '#ffde00'",
+									"        }",
+									"    ]",
 									"});"
 								],
 								"type": "text/javascript"
@@ -33903,8 +33914,7 @@
 							"query": [
 								{
 									"key": "figment",
-									"value": "true",
-									"type": "text"
+									"value": "true"
 								}
 							]
 						},
@@ -43785,12 +43795,12 @@
 	],
 	"variable": [
 		{
-			"id": "6f0fbc25-8bfd-496f-b4f0-15bcadf2316a",
+			"id": "dca9436e-f712-479d-9ef9-a8af88a443f4",
 			"key": "ETH_REWARDS_HOST",
 			"value": "eth-rewards.datahub.figment.io"
 		},
 		{
-			"id": "ef4c3b43-e739-4bca-a1e9-ce8097e0caa0",
+			"id": "d4865863-54fc-486d-98bc-ae62f2e77287",
 			"key": "SOL_REWARDS_HOST",
 			"value": "solana-rewards.datahub.figment.io"
 		}
