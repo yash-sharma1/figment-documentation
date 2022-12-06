@@ -1,0 +1,152 @@
+---
+title: Submit Merge Stake Account Data
+slug: /guides/staking-api/solana/merge-stake-account/submit-merge-stake-account-data
+---
+
+After collecting the required inputs, send a `PUT` request to `/api/v1/flows/[:flow_id]/next` to proceed to the next step.
+
+### Parameters
+
+- `name` &mdash; `string` Name of the action to execute (required).
+- `inputs` &mdash; `object`
+  - `destination_stake_account_pubkey` - Public key of the stake account in which you want to merge the another stake account (required).
+  - `source_stake_account_pubkey` - Public key of the stake account which you want to merge with the another stake account (required).
+  - `funding_account_pubkey` - The pubkey of the account which will pay the transaction fee (required).
+
+### Sample cURL Request
+
+```bash {5-10}
+curl -X PUT 'https://solana-slate.datahub.figment.io/api/v1/flows/09162adc-e9c0-40ee-bc3d-59c2df7f50a7/next' \
+-H 'Content-Type: application/json' \
+-H 'Authorization: <api_key>' \
+-d '{
+  "name": "create_merge_tx",
+    "inputs": {
+          "destination_stake_account_pubkey": "FTaF4QGit4W71p9goN9XTbA48LHfCE9PSY7RvLXemVxc",
+          "source_stake_account_pubkey": "7XSFYEJLBnpXfwQLHcErUJhmYJAFZ2rQU4jiuMzzyQNX",
+          "funding_account_pubkey": "Hk5voGB7wh9HtXTeszbW7AFm3A4B94xWkXeeaqTYspqy"
+    }
+}'
+```
+
+### Response
+
+The response indicates two possible `actions`:
+
+- `refresh_merge_tx` &mdash; If you need to get a fresh version of the transaction payload (i.e., the recent blockhash has expired).
+- `sign_merge_tx` &mdash; Submit a signed transaction payload ready to be broadcast to the network.
+
+We will choose `sign_merge_tx`, which indicates one input to collect:
+
+- `transaction_payload` &mdash; The signed transaction payload ready to be broadcast to the network.
+
+#### Sample Response
+
+```json {19}
+{
+  "id": "09162adc-e9c0-40ee-bc3d-59c2df7f50a7",
+  "state": "merge_tx_signature",
+  "actions": [
+    {
+      "name": "refresh_merge_tx",
+      "inputs": []
+    },
+    {
+      "name": "sign_merge_tx",
+      "inputs": [
+        {
+          "name": "transaction_payload",
+          "display": "Transaction Payload",
+          "description": "",
+          "type": "signed_transaction",
+          "validations": [
+            {
+              "type": "sign_payload",
+              "options": {}
+            }
+          ],
+          "array": false,
+          "default_value": null,
+          "signers": ["Hk5voGB7wh9HtXTeszbW7AFm3A4B94xWkXeeaqTYspqy"],
+          "transaction_payload": "010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000306f8c4898641adada76eeeee2de872d931bc58bfb2ce5b79734e32808cc501a53460f218cae11552195805ed94592195f3ccc032f1446caea202e50721d63b450cd6d24e27d8c36d52caa6bf3493165189b683f4a82ba689f4452e74a2f8d2c2b906a1d8179137542a983437bdfe2a7ab2557f535c8a78722b68a49dc00000000006a7d51718c774c928566398691d5eb68b5eb8a39b4b6d5c73555b210000000006a7d517193584d0feed9bb3431d13206be544281b57b8566cc5375ff400000050c8b3b8ddd875db89b1b79dd1205aad592fa4930c6a4b55a5872f958690e5f901030502010405000407000000"
+        },
+        {
+          "name": "signatures",
+          "display": "Signatures",
+          "description": "",
+          "type": "array_of_signatures",
+          "validations": [],
+          "array": true,
+          "default_value": null,
+          "element_type": "signature_data",
+          "signers": ["Hk5voGB7wh9HtXTeszbW7AFm3A4B94xWkXeeaqTYspqy"],
+          "transaction_payload": "010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000306f8c4898641adada76eeeee2de872d931bc58bfb2ce5b79734e32808cc501a53460f218cae11552195805ed94592195f3ccc032f1446caea202e50721d63b450cd6d24e27d8c36d52caa6bf3493165189b683f4a82ba689f4452e74a2f8d2c2b906a1d8179137542a983437bdfe2a7ab2557f535c8a78722b68a49dc00000000006a7d51718c774c928566398691d5eb68b5eb8a39b4b6d5c73555b210000000006a7d517193584d0feed9bb3431d13206be544281b57b8566cc5375ff400000050c8b3b8ddd875db89b1b79dd1205aad592fa4930c6a4b55a5872f958690e5f901030502010405000407000000",
+          "signing_payload": "01000306f8c4898641adada76eeeee2de872d931bc58bfb2ce5b79734e32808cc501a53460f218cae11552195805ed94592195f3ccc032f1446caea202e50721d63b450cd6d24e27d8c36d52caa6bf3493165189b683f4a82ba689f4452e74a2f8d2c2b906a1d8179137542a983437bdfe2a7ab2557f535c8a78722b68a49dc00000000006a7d51718c774c928566398691d5eb68b5eb8a39b4b6d5c73555b210000000006a7d517193584d0feed9bb3431d13206be544281b57b8566cc5375ff400000050c8b3b8ddd875db89b1b79dd1205aad592fa4930c6a4b55a5872f958690e5f901030502010405000407000000",
+          "inputs": {
+            "input_klass": "Workflows::Signature",
+            "input_instance": {
+              "account_address": null,
+              "signature": null
+            },
+            "flow": {
+              "id": 140522,
+              "customer_id": 7,
+              "chain_id": 1,
+              "workflow_state": "merge_tx_signature",
+              "data": {
+                "destination_stake_account_pubkey": "FTaF4QGit4W71p9goN9XTbA48LHfCE9PSY7RvLXemVxc",
+                "source_stake_account_pubkey": "7XSFYEJLBnpXfwQLHcErUJhmYJAFZ2rQU4jiuMzzyQNX",
+                "stake_authority_pubkey": "Hk5voGB7wh9HtXTeszbW7AFm3A4B94xWkXeeaqTYspqy",
+                "funding_account_pubkey": "Hk5voGB7wh9HtXTeszbW7AFm3A4B94xWkXeeaqTYspqy",
+                "merge_transaction": {
+                  "raw": "010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000306f8c4898641adada76eeeee2de872d931bc58bfb2ce5b79734e32808cc501a53460f218cae11552195805ed94592195f3ccc032f1446caea202e50721d63b450cd6d24e27d8c36d52caa6bf3493165189b683f4a82ba689f4452e74a2f8d2c2b906a1d8179137542a983437bdfe2a7ab2557f535c8a78722b68a49dc00000000006a7d51718c774c928566398691d5eb68b5eb8a39b4b6d5c73555b210000000006a7d517193584d0feed9bb3431d13206be544281b57b8566cc5375ff400000050c8b3b8ddd875db89b1b79dd1205aad592fa4930c6a4b55a5872f958690e5f901030502010405000407000000",
+                  "signing_payload": "01000306f8c4898641adada76eeeee2de872d931bc58bfb2ce5b79734e32808cc501a53460f218cae11552195805ed94592195f3ccc032f1446caea202e50721d63b450cd6d24e27d8c36d52caa6bf3493165189b683f4a82ba689f4452e74a2f8d2c2b906a1d8179137542a983437bdfe2a7ab2557f535c8a78722b68a49dc00000000006a7d51718c774c928566398691d5eb68b5eb8a39b4b6d5c73555b210000000006a7d517193584d0feed9bb3431d13206be544281b57b8566cc5375ff400000050c8b3b8ddd875db89b1b79dd1205aad592fa4930c6a4b55a5872f958690e5f901030502010405000407000000",
+                  "signed": null,
+                  "hash": null,
+                  "status": null,
+                  "error": null,
+                  "signatures": null
+                }
+              },
+              "created_at": "2022-12-05T12:29:17.030Z",
+              "updated_at": "2022-12-05T12:31:05.444Z",
+              "id_public": "09162adc-e9c0-40ee-bc3d-59c2df7f50a7",
+              "supported_operation_id": 37
+            },
+            "flow_attributes": {},
+            "empty_input": {
+              "account_address": null,
+              "signature": null
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "data": {
+    "destination_stake_account_pubkey": "FTaF4QGit4W71p9goN9XTbA48LHfCE9PSY7RvLXemVxc",
+    "source_stake_account_pubkey": "7XSFYEJLBnpXfwQLHcErUJhmYJAFZ2rQU4jiuMzzyQNX",
+    "stake_authority_pubkey": "Hk5voGB7wh9HtXTeszbW7AFm3A4B94xWkXeeaqTYspqy",
+    "funding_account_pubkey": "Hk5voGB7wh9HtXTeszbW7AFm3A4B94xWkXeeaqTYspqy",
+    "merge_transaction": {
+      "raw": "010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000306f8c4898641adada76eeeee2de872d931bc58bfb2ce5b79734e32808cc501a53460f218cae11552195805ed94592195f3ccc032f1446caea202e50721d63b450cd6d24e27d8c36d52caa6bf3493165189b683f4a82ba689f4452e74a2f8d2c2b906a1d8179137542a983437bdfe2a7ab2557f535c8a78722b68a49dc00000000006a7d51718c774c928566398691d5eb68b5eb8a39b4b6d5c73555b210000000006a7d517193584d0feed9bb3431d13206be544281b57b8566cc5375ff400000050c8b3b8ddd875db89b1b79dd1205aad592fa4930c6a4b55a5872f958690e5f901030502010405000407000000",
+      "signing_payload": "01000306f8c4898641adada76eeeee2de872d931bc58bfb2ce5b79734e32808cc501a53460f218cae11552195805ed94592195f3ccc032f1446caea202e50721d63b450cd6d24e27d8c36d52caa6bf3493165189b683f4a82ba689f4452e74a2f8d2c2b906a1d8179137542a983437bdfe2a7ab2557f535c8a78722b68a49dc00000000006a7d51718c774c928566398691d5eb68b5eb8a39b4b6d5c73555b210000000006a7d517193584d0feed9bb3431d13206be544281b57b8566cc5375ff400000050c8b3b8ddd875db89b1b79dd1205aad592fa4930c6a4b55a5872f958690e5f901030502010405000407000000",
+      "signed": null,
+      "hash": null,
+      "status": null,
+      "error": null,
+      "signatures": null
+    }
+  },
+  "network_code": "solana",
+  "chain_code": "devnet",
+  "created_at": "2022-12-05T12:29:17.030Z",
+  "updated_at": "2022-12-05T12:31:05.444Z"
+}
+```
+
+:::info note
+
+Make sure to save the `transaction_payload` from this response, which is what needs to be signed in the next step.
+
+:::

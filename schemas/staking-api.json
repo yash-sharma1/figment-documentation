@@ -4251,6 +4251,184 @@
 							"body": "{\n  \"id\": \"730fbe4e-c4b4-480f-b3c5-4a25bfbd5cf3\",\n  \"state\": \"completed\",\n  \"actions\": [],\n  \"data\": {\n    \"funding_account_pubkey\": \"Hk5voGB7wh9HtXTeszbW7AFm3A4B94xWkXeeaqTYspqy\",\n    \"source_stake_account_pubkey\": \"5YofNaQJ24cgp5hzJgMKSwi16188WiBgfdbWkxbG4FWP\",\n    \"amount\": \"2.0\",\n    \"split_transaction\": {\n      \"raw\": \"02000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000009ddddac8a30dc9fc1acf5f382053baa0361b6a17893870990d5bf737ba4b3928022f023fa9321cf5e5733f46dac33f38895033ed9b971f6dac45b888c2f0820b02000205f8c4898641adada76eeeee2de872d931bc58bfb2ce5b79734e32808cc501a5346470f21e6c4adecb9fea26af26204f59922f67ff546f4fc2a5bd3629489084b343948361c22b11cd116005a3958e080c5bfdbe055e8747af254c0756dbf8ac88000000000000000000000000000000000000000000000000000000000000000006a1d8179137542a983437bdfe2a7ab2557f535c8a78722b68a49dc0000000002c53da186ffceba53ca9a5c2797a902c5a8f9b35b1493efeaebb1189583be2ac020302000134000000000000000000000000c80000000000000006a1d8179137542a983437bdfe2a7ab2557f535c8a78722b68a49dc00000000004030201000c030000000094357700000000\",\n      \"signing_payload\": \"02000205f8c4898641adada76eeeee2de872d931bc58bfb2ce5b79734e32808cc501a5346470f21e6c4adecb9fea26af26204f59922f67ff546f4fc2a5bd3629489084b343948361c22b11cd116005a3958e080c5bfdbe055e8747af254c0756dbf8ac88000000000000000000000000000000000000000000000000000000000000000006a1d8179137542a983437bdfe2a7ab2557f535c8a78722b68a49dc0000000002c53da186ffceba53ca9a5c2797a902c5a8f9b35b1493efeaebb1189583be2ac020302000134000000000000000000000000c80000000000000006a1d8179137542a983437bdfe2a7ab2557f535c8a78722b68a49dc00000000004030201000c030000000094357700000000\",\n      \"signed\": \"022bc35a0d1d2b71b8742a4a4be0035091622efabdb234a24ee962400deec1cf59b7cc77d22633aac5b7e07f3b98edf1acb6c0b71241dca96b42916508856d9d0e9ddddac8a30dc9fc1acf5f382053baa0361b6a17893870990d5bf737ba4b3928022f023fa9321cf5e5733f46dac33f38895033ed9b971f6dac45b888c2f0820b02000205f8c4898641adada76eeeee2de872d931bc58bfb2ce5b79734e32808cc501a5346470f21e6c4adecb9fea26af26204f59922f67ff546f4fc2a5bd3629489084b343948361c22b11cd116005a3958e080c5bfdbe055e8747af254c0756dbf8ac88000000000000000000000000000000000000000000000000000000000000000006a1d8179137542a983437bdfe2a7ab2557f535c8a78722b68a49dc0000000002c53da186ffceba53ca9a5c2797a902c5a8f9b35b1493efeaebb1189583be2ac020302000134000000000000000000000000c80000000000000006a1d8179137542a983437bdfe2a7ab2557f535c8a78722b68a49dc00000000004030201000c030000000094357700000000\",\n      \"hash\": \"skP46dMLV4qELAyiFZmxaUUtjfLdXPpGqNNu4HWzkDMUfyEBJTr3p7pzbg7FPVRnGPvtpiMqWgNKJMZ2dw7J6h3\",\n      \"status\": \"confirmed\",\n      \"error\": null,\n      \"signatures\": []\n    },\n    \"source_stake_authority_pubkey\": \"Hk5voGB7wh9HtXTeszbW7AFm3A4B94xWkXeeaqTYspqy\",\n    \"destination_stake_account_pubkey\": \"7m5fFsdZNdoifnmToR23rK14V2Yoxw3omD1V8vy21kXC\"\n  },\n  \"network_code\": \"solana\",\n  \"chain_code\": \"testnet\",\n  \"created_at\": \"2022-11-02T04:25:28.997Z\",\n  \"updated_at\": \"2022-11-02T04:27:08.932Z\"\n}"
 						}
 					]
+				},
+				{
+					"name": "Create New Merge Stake Account Flow",
+					"id": "6d7a4703-6221-41bf-aac4-101640a71239",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"flow\": {\n        \"network_code\": \"solana\",\n        \"chain_code\": \"devnet\",\n        \"operation\": \"merge_stake_account\",\n        \"version\": \"v1\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://{{SOL_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows",
+						"description": "To initiate the merge stake account process with Staking API, create a new flow with a `POST` request to `/api/v1/flows`.\n\n### Parameters\n\n- `flow` &mdash; `object`\n  - `network_code` &mdash; `string` Network on which this flow operates (ex. `solana`) (required).\n  - `chain_code` &mdash; `string` Chain on which this flow operates (ex. `devnet`) (required).\n  - `operation` `string` The operation to perform (ex. `merge_stake_account`) (required).\n  - `version` &mdash; `string` API version to use (ex. `v1`) (optional).\n\n### Response\n\n- `id` &mdash; `string` ID of the flow.\n- `state` &mdash; `string` The current state of the flow.\n- `actions` &mdash; `array` It includes the `name` & `inputs` of all next possible actions.\n  - `create_merge_tx` &mdash; Use this Action to create a merge stake account transaction.\n    - `destination_stake_account_pubkey` - Public key of the stake account in which you want to merge the another stake account.\n    - `source_stake_account_pubkey` - Public key of the stake account which you want to merge with the another stake account.\n    - `funding_account_pubkey` - The pubkey of the account which will pay the transaction fee.\n- `data` &mdash; `object` Merge stake flow & transaction data."
+					},
+					"response": [
+						{
+							"id": "f72897c7-57b3-42f2-b70f-1d1fccd4da16",
+							"name": "Create New Merge Stake Account Flow",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"flow\": {\n        \"network_code\": \"solana\",\n        \"chain_code\": \"devnet\",\n        \"operation\": \"merge_stake_account\",\n        \"version\": \"v1\"\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://{{SOL_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows"
+							},
+							"_postman_previewlanguage": "json",
+							"header": [
+								""
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n  \"id\": \"09162adc-e9c0-40ee-bc3d-59c2df7f50a7\",\n  \"state\": \"initialized\",\n  \"actions\": [\n    {\n      \"name\": \"create_merge_tx\",\n      \"inputs\": [\n        {\n          \"name\": \"destination_stake_account_pubkey\",\n          \"display\": \"Destination Stake Account Pubkey\",\n          \"description\": \"\",\n          \"type\": \"string\",\n          \"validations\": [\n            {\n              \"type\": \"presence\",\n              \"options\": {}\n            }\n          ],\n          \"array\": false,\n          \"default_value\": null\n        },\n        {\n          \"name\": \"source_stake_account_pubkey\",\n          \"display\": \"Source Stake Account Pubkey\",\n          \"description\": \"\",\n          \"type\": \"string\",\n          \"validations\": [\n            {\n              \"type\": \"presence\",\n              \"options\": {}\n            }\n          ],\n          \"array\": false,\n          \"default_value\": null\n        },\n        {\n          \"name\": \"funding_account_pubkey\",\n          \"display\": \"Funding Account Pubkey\",\n          \"description\": \"\",\n          \"type\": \"string\",\n          \"validations\": [\n            {\n              \"type\": \"presence\",\n              \"options\": {}\n            }\n          ],\n          \"array\": false,\n          \"default_value\": null\n        }\n      ]\n    }\n  ],\n  \"data\": {\n    \"destination_stake_account_pubkey\": null,\n    \"source_stake_account_pubkey\": null,\n    \"stake_authority_pubkey\": null,\n    \"funding_account_pubkey\": null,\n    \"merge_transaction\": null\n  },\n  \"network_code\": \"solana\",\n  \"chain_code\": \"devnet\",\n  \"created_at\": \"2022-12-05T12:29:17.030Z\",\n  \"updated_at\": \"2022-12-05T12:29:17.030Z\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Submit Merge Stake Account Data",
+					"id": "45acfc00-2784-47e5-99fc-196928604593",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"create_merge_tx\",\n    \"inputs\": {\n        \"destination_stake_account_pubkey\": \"FTaF4QGit4W71p9goN9XTbA48LHfCE9PSY7RvLXemVxc\",\n        \"source_stake_account_pubkey\": \"7XSFYEJLBnpXfwQLHcErUJhmYJAFZ2rQU4jiuMzzyQNX\",\n        \"funding_account_pubkey\": \"Hk5voGB7wh9HtXTeszbW7AFm3A4B94xWkXeeaqTYspqy\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://{{SOL_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{solanaMergeStakeFlowId}}/next",
+						"description": "After collecting the required inputs, send a `PUT` request to `/api/v1/flows/[:flow_id]/next` to proceed to the next step.\n\n### Parameters\n\n- `name` &mdash; `string` Name of the action to execute (required).\n- `inputs` &mdash; `object`\n  - `destination_stake_account_pubkey` - Public key of the stake account in which you want to merge the another stake account (required).\n  - `source_stake_account_pubkey` - Public key of the stake account which you want to merge with the another stake account (required).\n  - `funding_account_pubkey` - The pubkey of the account which will pay the transaction fee (required).\n\n### Response\n\n- `id` &mdash; `string` ID of the flow.\n- `state` &mdash; `string` The current state of the flow.\n- `actions` &mdash; `array` It includes the `name` & `inputs` of all next possible actions.\n  - `refresh_merge_tx` &mdash; If you need to get a fresh version of the transaction payload (i.e., the recent blockhash has expired).\n  - `sign_merge_tx` &mdash; Submit a signed transaction payload ready to be broadcast to the network.\n- `data` &mdash; `object` Merge stake flow & transaction data."
+					},
+					"response": [
+						{
+							"id": "81e55458-7251-40df-a52d-a1b911b6cdfa",
+							"name": "Submit Merge Stake Account Data",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"create_merge_tx\",\n    \"inputs\": {\n        \"destination_stake_account_pubkey\": \"FTaF4QGit4W71p9goN9XTbA48LHfCE9PSY7RvLXemVxc\",\n        \"source_stake_account_pubkey\": \"7XSFYEJLBnpXfwQLHcErUJhmYJAFZ2rQU4jiuMzzyQNX\",\n        \"funding_account_pubkey\": \"Hk5voGB7wh9HtXTeszbW7AFm3A4B94xWkXeeaqTYspqy\"\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://{{SOL_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{solanaMergeStakeFlowId}}/next"
+							},
+							"_postman_previewlanguage": "json",
+							"header": [
+								""
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n  \"id\": \"09162adc-e9c0-40ee-bc3d-59c2df7f50a7\",\n  \"state\": \"merge_tx_signature\",\n  \"actions\": [\n    {\n      \"name\": \"refresh_merge_tx\",\n      \"inputs\": []\n    },\n    {\n      \"name\": \"sign_merge_tx\",\n      \"inputs\": [\n        {\n          \"name\": \"transaction_payload\",\n          \"display\": \"Transaction Payload\",\n          \"description\": \"\",\n          \"type\": \"signed_transaction\",\n          \"validations\": [\n            {\n              \"type\": \"sign_payload\",\n              \"options\": {}\n            }\n          ],\n          \"array\": false,\n          \"default_value\": null,\n          \"signers\": [\"Hk5voGB7wh9HtXTeszbW7AFm3A4B94xWkXeeaqTYspqy\"],\n          \"transaction_payload\": \"010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000306f8c4898641adada76eeeee2de872d931bc58bfb2ce5b79734e32808cc501a53460f218cae11552195805ed94592195f3ccc032f1446caea202e50721d63b450cd6d24e27d8c36d52caa6bf3493165189b683f4a82ba689f4452e74a2f8d2c2b906a1d8179137542a983437bdfe2a7ab2557f535c8a78722b68a49dc00000000006a7d51718c774c928566398691d5eb68b5eb8a39b4b6d5c73555b210000000006a7d517193584d0feed9bb3431d13206be544281b57b8566cc5375ff400000050c8b3b8ddd875db89b1b79dd1205aad592fa4930c6a4b55a5872f958690e5f901030502010405000407000000\"\n        },\n        {\n          \"name\": \"signatures\",\n          \"display\": \"Signatures\",\n          \"description\": \"\",\n          \"type\": \"array_of_signatures\",\n          \"validations\": [],\n          \"array\": true,\n          \"default_value\": null,\n          \"element_type\": \"signature_data\",\n          \"signers\": [\"Hk5voGB7wh9HtXTeszbW7AFm3A4B94xWkXeeaqTYspqy\"],\n          \"transaction_payload\": \"010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000306f8c4898641adada76eeeee2de872d931bc58bfb2ce5b79734e32808cc501a53460f218cae11552195805ed94592195f3ccc032f1446caea202e50721d63b450cd6d24e27d8c36d52caa6bf3493165189b683f4a82ba689f4452e74a2f8d2c2b906a1d8179137542a983437bdfe2a7ab2557f535c8a78722b68a49dc00000000006a7d51718c774c928566398691d5eb68b5eb8a39b4b6d5c73555b210000000006a7d517193584d0feed9bb3431d13206be544281b57b8566cc5375ff400000050c8b3b8ddd875db89b1b79dd1205aad592fa4930c6a4b55a5872f958690e5f901030502010405000407000000\",\n          \"signing_payload\": \"01000306f8c4898641adada76eeeee2de872d931bc58bfb2ce5b79734e32808cc501a53460f218cae11552195805ed94592195f3ccc032f1446caea202e50721d63b450cd6d24e27d8c36d52caa6bf3493165189b683f4a82ba689f4452e74a2f8d2c2b906a1d8179137542a983437bdfe2a7ab2557f535c8a78722b68a49dc00000000006a7d51718c774c928566398691d5eb68b5eb8a39b4b6d5c73555b210000000006a7d517193584d0feed9bb3431d13206be544281b57b8566cc5375ff400000050c8b3b8ddd875db89b1b79dd1205aad592fa4930c6a4b55a5872f958690e5f901030502010405000407000000\",\n          \"inputs\": {\n            \"input_klass\": \"Workflows::Signature\",\n            \"input_instance\": {\n              \"account_address\": null,\n              \"signature\": null\n            },\n            \"flow\": {\n              \"id\": 140522,\n              \"customer_id\": 7,\n              \"chain_id\": 1,\n              \"workflow_state\": \"merge_tx_signature\",\n              \"data\": {\n                \"destination_stake_account_pubkey\": \"FTaF4QGit4W71p9goN9XTbA48LHfCE9PSY7RvLXemVxc\",\n                \"source_stake_account_pubkey\": \"7XSFYEJLBnpXfwQLHcErUJhmYJAFZ2rQU4jiuMzzyQNX\",\n                \"stake_authority_pubkey\": \"Hk5voGB7wh9HtXTeszbW7AFm3A4B94xWkXeeaqTYspqy\",\n                \"funding_account_pubkey\": \"Hk5voGB7wh9HtXTeszbW7AFm3A4B94xWkXeeaqTYspqy\",\n                \"merge_transaction\": {\n                  \"raw\": \"010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000306f8c4898641adada76eeeee2de872d931bc58bfb2ce5b79734e32808cc501a53460f218cae11552195805ed94592195f3ccc032f1446caea202e50721d63b450cd6d24e27d8c36d52caa6bf3493165189b683f4a82ba689f4452e74a2f8d2c2b906a1d8179137542a983437bdfe2a7ab2557f535c8a78722b68a49dc00000000006a7d51718c774c928566398691d5eb68b5eb8a39b4b6d5c73555b210000000006a7d517193584d0feed9bb3431d13206be544281b57b8566cc5375ff400000050c8b3b8ddd875db89b1b79dd1205aad592fa4930c6a4b55a5872f958690e5f901030502010405000407000000\",\n                  \"signing_payload\": \"01000306f8c4898641adada76eeeee2de872d931bc58bfb2ce5b79734e32808cc501a53460f218cae11552195805ed94592195f3ccc032f1446caea202e50721d63b450cd6d24e27d8c36d52caa6bf3493165189b683f4a82ba689f4452e74a2f8d2c2b906a1d8179137542a983437bdfe2a7ab2557f535c8a78722b68a49dc00000000006a7d51718c774c928566398691d5eb68b5eb8a39b4b6d5c73555b210000000006a7d517193584d0feed9bb3431d13206be544281b57b8566cc5375ff400000050c8b3b8ddd875db89b1b79dd1205aad592fa4930c6a4b55a5872f958690e5f901030502010405000407000000\",\n                  \"signed\": null,\n                  \"hash\": null,\n                  \"status\": null,\n                  \"error\": null,\n                  \"signatures\": null\n                }\n              },\n              \"created_at\": \"2022-12-05T12:29:17.030Z\",\n              \"updated_at\": \"2022-12-05T12:31:05.444Z\",\n              \"id_public\": \"09162adc-e9c0-40ee-bc3d-59c2df7f50a7\",\n              \"supported_operation_id\": 37\n            },\n            \"flow_attributes\": {},\n            \"empty_input\": {\n              \"account_address\": null,\n              \"signature\": null\n            }\n          }\n        }\n      ]\n    }\n  ],\n  \"data\": {\n    \"destination_stake_account_pubkey\": \"FTaF4QGit4W71p9goN9XTbA48LHfCE9PSY7RvLXemVxc\",\n    \"source_stake_account_pubkey\": \"7XSFYEJLBnpXfwQLHcErUJhmYJAFZ2rQU4jiuMzzyQNX\",\n    \"stake_authority_pubkey\": \"Hk5voGB7wh9HtXTeszbW7AFm3A4B94xWkXeeaqTYspqy\",\n    \"funding_account_pubkey\": \"Hk5voGB7wh9HtXTeszbW7AFm3A4B94xWkXeeaqTYspqy\",\n    \"merge_transaction\": {\n      \"raw\": \"010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000306f8c4898641adada76eeeee2de872d931bc58bfb2ce5b79734e32808cc501a53460f218cae11552195805ed94592195f3ccc032f1446caea202e50721d63b450cd6d24e27d8c36d52caa6bf3493165189b683f4a82ba689f4452e74a2f8d2c2b906a1d8179137542a983437bdfe2a7ab2557f535c8a78722b68a49dc00000000006a7d51718c774c928566398691d5eb68b5eb8a39b4b6d5c73555b210000000006a7d517193584d0feed9bb3431d13206be544281b57b8566cc5375ff400000050c8b3b8ddd875db89b1b79dd1205aad592fa4930c6a4b55a5872f958690e5f901030502010405000407000000\",\n      \"signing_payload\": \"01000306f8c4898641adada76eeeee2de872d931bc58bfb2ce5b79734e32808cc501a53460f218cae11552195805ed94592195f3ccc032f1446caea202e50721d63b450cd6d24e27d8c36d52caa6bf3493165189b683f4a82ba689f4452e74a2f8d2c2b906a1d8179137542a983437bdfe2a7ab2557f535c8a78722b68a49dc00000000006a7d51718c774c928566398691d5eb68b5eb8a39b4b6d5c73555b210000000006a7d517193584d0feed9bb3431d13206be544281b57b8566cc5375ff400000050c8b3b8ddd875db89b1b79dd1205aad592fa4930c6a4b55a5872f958690e5f901030502010405000407000000\",\n      \"signed\": null,\n      \"hash\": null,\n      \"status\": null,\n      \"error\": null,\n      \"signatures\": null\n    }\n  },\n  \"network_code\": \"solana\",\n  \"chain_code\": \"devnet\",\n  \"created_at\": \"2022-12-05T12:29:17.030Z\",\n  \"updated_at\": \"2022-12-05T12:31:05.444Z\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Submit a Signed Merge Stake Account Transaction for Broadcast",
+					"id": "7e604763-6e57-4a22-b31b-3a373f82f285",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"sign_merge_tx\",\n    \"inputs\": {\n        \"transaction_payload\": \"01d1bceae14a308e0a2866550214f132992873b531321bc6eba891eada3a9873c06d6432b8ffd58893ec554c820bc7fa60032954c3f877dacf377dffd1edf1440401000306f8c4898641adada76eeeee2de872d931bc58bfb2ce5b79734e32808cc501a53460f218cae11552195805ed94592195f3ccc032f1446caea202e50721d63b450cd6d24e27d8c36d52caa6bf3493165189b683f4a82ba689f4452e74a2f8d2c2b906a1d8179137542a983437bdfe2a7ab2557f535c8a78722b68a49dc00000000006a7d51718c774c928566398691d5eb68b5eb8a39b4b6d5c73555b210000000006a7d517193584d0feed9bb3431d13206be544281b57b8566cc5375ff400000050c8b3b8ddd875db89b1b79dd1205aad592fa4930c6a4b55a5872f958690e5f901030502010405000407000000\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://{{SOL_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{solanaMergeStakeFlowId}}/next",
+						"description": "Before broadcasting the transaction, you must [sign the `transaction_payload`](https://docs.figment.io/guides/staking-api/figment-signing-transactions) you received in the previous step. After signing the transaction, send a `PUT` request to `/api/v1/flows/[:flow_id]/next` and the Staking API will broadcast the transaction to the network.\n\n### Parameters\n\n- `name` &mdash; `string` Name of the action to execute (required).\n- `inputs` &mdash; `object`\n  - `transaction_payload` &mdash; Signed transaction payload from the previous step's response.\n\n### Response\n\n- `id` &mdash; `string` ID of the flow.\n- `state` &mdash; `string` The current state of the flow.\n  - `merge_tx_broadcasting` &mdash; Transaction has been broadcast and is awaiting confirmation.\n  - `completed` &mdash; Transaction has been confirmed and the merge is complete.\n- `actions` &mdash; `array` It includes the `name` & `inputs` of all next possible actions.\n- `data` &mdash; `object` Merge stake flow & transaction data."
+					},
+					"response": [
+						{
+							"id": "0b2b7649-8d95-4db8-8e76-4a7d28d3918f",
+							"name": "Submit a Signed Merge Stake Account Transaction for Broadcast",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"sign_merge_tx\",\n    \"inputs\": {\n        \"transaction_payload\": \"01d1bceae14a308e0a2866550214f132992873b531321bc6eba891eada3a9873c06d6432b8ffd58893ec554c820bc7fa60032954c3f877dacf377dffd1edf1440401000306f8c4898641adada76eeeee2de872d931bc58bfb2ce5b79734e32808cc501a53460f218cae11552195805ed94592195f3ccc032f1446caea202e50721d63b450cd6d24e27d8c36d52caa6bf3493165189b683f4a82ba689f4452e74a2f8d2c2b906a1d8179137542a983437bdfe2a7ab2557f535c8a78722b68a49dc00000000006a7d51718c774c928566398691d5eb68b5eb8a39b4b6d5c73555b210000000006a7d517193584d0feed9bb3431d13206be544281b57b8566cc5375ff400000050c8b3b8ddd875db89b1b79dd1205aad592fa4930c6a4b55a5872f958690e5f901030502010405000407000000\"\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://{{SOL_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{solanaMergeStakeFlowId}}/next"
+							},
+							"_postman_previewlanguage": "json",
+							"header": [
+								""
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n  \"id\": \"09162adc-e9c0-40ee-bc3d-59c2df7f50a7\",\n  \"state\": \"merge_tx_broadcasting\",\n  \"actions\": [\n    {\n      \"name\": \"wait\",\n      \"estimated_state_change_at\": \"2022-12-05T12:32:48.277Z\",\n      \"inputs\": []\n    }\n  ],\n  \"data\": {\n    \"destination_stake_account_pubkey\": \"FTaF4QGit4W71p9goN9XTbA48LHfCE9PSY7RvLXemVxc\",\n    \"source_stake_account_pubkey\": \"7XSFYEJLBnpXfwQLHcErUJhmYJAFZ2rQU4jiuMzzyQNX\",\n    \"stake_authority_pubkey\": \"Hk5voGB7wh9HtXTeszbW7AFm3A4B94xWkXeeaqTYspqy\",\n    \"funding_account_pubkey\": \"Hk5voGB7wh9HtXTeszbW7AFm3A4B94xWkXeeaqTYspqy\",\n    \"merge_transaction\": {\n      \"raw\": \"010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000306f8c4898641adada76eeeee2de872d931bc58bfb2ce5b79734e32808cc501a53460f218cae11552195805ed94592195f3ccc032f1446caea202e50721d63b450cd6d24e27d8c36d52caa6bf3493165189b683f4a82ba689f4452e74a2f8d2c2b906a1d8179137542a983437bdfe2a7ab2557f535c8a78722b68a49dc00000000006a7d51718c774c928566398691d5eb68b5eb8a39b4b6d5c73555b210000000006a7d517193584d0feed9bb3431d13206be544281b57b8566cc5375ff400000050c8b3b8ddd875db89b1b79dd1205aad592fa4930c6a4b55a5872f958690e5f901030502010405000407000000\",\n      \"signing_payload\": \"01000306f8c4898641adada76eeeee2de872d931bc58bfb2ce5b79734e32808cc501a53460f218cae11552195805ed94592195f3ccc032f1446caea202e50721d63b450cd6d24e27d8c36d52caa6bf3493165189b683f4a82ba689f4452e74a2f8d2c2b906a1d8179137542a983437bdfe2a7ab2557f535c8a78722b68a49dc00000000006a7d51718c774c928566398691d5eb68b5eb8a39b4b6d5c73555b210000000006a7d517193584d0feed9bb3431d13206be544281b57b8566cc5375ff400000050c8b3b8ddd875db89b1b79dd1205aad592fa4930c6a4b55a5872f958690e5f901030502010405000407000000\",\n      \"signed\": \"01d1bceae14a308e0a2866550214f132992873b531321bc6eba891eada3a9873c06d6432b8ffd58893ec554c820bc7fa60032954c3f877dacf377dffd1edf1440401000306f8c4898641adada76eeeee2de872d931bc58bfb2ce5b79734e32808cc501a53460f218cae11552195805ed94592195f3ccc032f1446caea202e50721d63b450cd6d24e27d8c36d52caa6bf3493165189b683f4a82ba689f4452e74a2f8d2c2b906a1d8179137542a983437bdfe2a7ab2557f535c8a78722b68a49dc00000000006a7d51718c774c928566398691d5eb68b5eb8a39b4b6d5c73555b210000000006a7d517193584d0feed9bb3431d13206be544281b57b8566cc5375ff400000050c8b3b8ddd875db89b1b79dd1205aad592fa4930c6a4b55a5872f958690e5f901030502010405000407000000\",\n      \"hash\": \"5CDNhhvLeWBhofTGktGqb3fU6Znb6tgL3KrZbUBuAJR1b6H6h484DWDuSwZrMLs3eWw5PtxxVu2RsaqwSr5PQQGj\",\n      \"status\": null,\n      \"error\": null,\n      \"signatures\": [\n        {\n          \"account_address\": \"Hk5voGB7wh9HtXTeszbW7AFm3A4B94xWkXeeaqTYspqy\",\n          \"signature\": \"\"\n        }\n      ]\n    }\n  },\n  \"network_code\": \"solana\",\n  \"chain_code\": \"devnet\",\n  \"created_at\": \"2022-12-05T12:29:17.030Z\",\n  \"updated_at\": \"2022-12-05T12:31:47.699Z\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Flow Status",
+					"id": "dacc2f6b-a67f-4c23-a154-4ff1c6bbda64",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "https://{{SOL_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{solanaMergeStakeFlowId}}",
+						"description": "To get the current state of the existing flow, send a `GET` request to `/api/v1/flows/[:flow_id]` using the flow ID from the previous step.\n\n### Parameters\n\n- None\n\n### Response\n\n- `id` &mdash; `string` ID of the flow.\n- `state` &mdash; `string` The current state of the flow.\n  - `merge_tx_broadcasting` &mdash; Transaction has been broadcast and is awaiting confirmation.\n  - `completed` &mdash; Transaction has been confirmed and the merge is complete.\n- `actions` &mdash; `array` It includes the `name` & `inputs` of all next possible actions.\n- `data` &mdash; `object` Merge stake flow & transaction data."
+					},
+					"response": [
+						{
+							"id": "e2565196-9165-4f2f-82dc-70cedbdd0caa",
+							"name": "Get Flow Status",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": "https://{{SOL_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{solanaMergeStakeFlowId}}"
+							},
+							"_postman_previewlanguage": "json",
+							"header": [
+								""
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n  \"id\": \"09162adc-e9c0-40ee-bc3d-59c2df7f50a7\",\n  \"state\": \"completed\",\n  \"actions\": [],\n  \"data\": {\n    \"destination_stake_account_pubkey\": \"FTaF4QGit4W71p9goN9XTbA48LHfCE9PSY7RvLXemVxc\",\n    \"source_stake_account_pubkey\": \"7XSFYEJLBnpXfwQLHcErUJhmYJAFZ2rQU4jiuMzzyQNX\",\n    \"stake_authority_pubkey\": \"Hk5voGB7wh9HtXTeszbW7AFm3A4B94xWkXeeaqTYspqy\",\n    \"funding_account_pubkey\": \"Hk5voGB7wh9HtXTeszbW7AFm3A4B94xWkXeeaqTYspqy\",\n    \"merge_transaction\": {\n      \"raw\": \"010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000306f8c4898641adada76eeeee2de872d931bc58bfb2ce5b79734e32808cc501a53460f218cae11552195805ed94592195f3ccc032f1446caea202e50721d63b450cd6d24e27d8c36d52caa6bf3493165189b683f4a82ba689f4452e74a2f8d2c2b906a1d8179137542a983437bdfe2a7ab2557f535c8a78722b68a49dc00000000006a7d51718c774c928566398691d5eb68b5eb8a39b4b6d5c73555b210000000006a7d517193584d0feed9bb3431d13206be544281b57b8566cc5375ff400000050c8b3b8ddd875db89b1b79dd1205aad592fa4930c6a4b55a5872f958690e5f901030502010405000407000000\",\n      \"signing_payload\": \"01000306f8c4898641adada76eeeee2de872d931bc58bfb2ce5b79734e32808cc501a53460f218cae11552195805ed94592195f3ccc032f1446caea202e50721d63b450cd6d24e27d8c36d52caa6bf3493165189b683f4a82ba689f4452e74a2f8d2c2b906a1d8179137542a983437bdfe2a7ab2557f535c8a78722b68a49dc00000000006a7d51718c774c928566398691d5eb68b5eb8a39b4b6d5c73555b210000000006a7d517193584d0feed9bb3431d13206be544281b57b8566cc5375ff400000050c8b3b8ddd875db89b1b79dd1205aad592fa4930c6a4b55a5872f958690e5f901030502010405000407000000\",\n      \"signed\": \"01d1bceae14a308e0a2866550214f132992873b531321bc6eba891eada3a9873c06d6432b8ffd58893ec554c820bc7fa60032954c3f877dacf377dffd1edf1440401000306f8c4898641adada76eeeee2de872d931bc58bfb2ce5b79734e32808cc501a53460f218cae11552195805ed94592195f3ccc032f1446caea202e50721d63b450cd6d24e27d8c36d52caa6bf3493165189b683f4a82ba689f4452e74a2f8d2c2b906a1d8179137542a983437bdfe2a7ab2557f535c8a78722b68a49dc00000000006a7d51718c774c928566398691d5eb68b5eb8a39b4b6d5c73555b210000000006a7d517193584d0feed9bb3431d13206be544281b57b8566cc5375ff400000050c8b3b8ddd875db89b1b79dd1205aad592fa4930c6a4b55a5872f958690e5f901030502010405000407000000\",\n      \"hash\": \"5CDNhhvLeWBhofTGktGqb3fU6Znb6tgL3KrZbUBuAJR1b6H6h484DWDuSwZrMLs3eWw5PtxxVu2RsaqwSr5PQQGj\",\n      \"status\": \"confirmed\",\n      \"error\": null,\n      \"signatures\": [\n        {\n          \"account_address\": \"Hk5voGB7wh9HtXTeszbW7AFm3A4B94xWkXeeaqTYspqy\",\n          \"signature\": \"\"\n        }\n      ]\n    }\n  },\n  \"network_code\": \"solana\",\n  \"chain_code\": \"devnet\",\n  \"created_at\": \"2022-12-05T12:29:17.030Z\",\n  \"updated_at\": \"2022-12-05T12:32:09.216Z\"\n}"
+						}
+					]
 				}
 			],
 			"id": "90136350-c096-496b-abd8-91cce9bd3f59"
@@ -4280,42 +4458,42 @@
 	],
 	"variable": [
 		{
-			"id": "ef2d1987-da17-4be5-818d-514f33555f80",
+			"id": "90d2a3dd-0b4b-4209-a6cb-cacf6dd445ad",
 			"key": "AVAX_STAKING_HOST",
 			"value": "avalanche-slate.datahub.figment.io"
 		},
 		{
-			"id": "c08d4530-8403-451f-92dc-9cefda64e682",
+			"id": "35889450-8fd6-417f-8cbd-16f3d5e23ac4",
 			"key": "COSMOS_STAKING_HOST",
 			"value": "cosmos-slate.datahub.figment.io"
 		},
 		{
-			"id": "523a2f91-1ccb-4cc4-91ff-032b116a5f6d",
+			"id": "081fc526-ad97-45ab-8480-0d1e12cc2d35",
 			"key": "ETH_STAKING_HOST",
 			"value": "eth-slate.datahub.figment.io"
 		},
 		{
-			"id": "5a983465-70b7-4929-8f4b-c795f017f0b1",
+			"id": "8fe3776a-58e6-46e8-92f5-e3a3950a238e",
 			"key": "NEAR_STAKING_HOST",
 			"value": "near-slate.datahub.figment.io"
 		},
 		{
-			"id": "736a8bfb-1246-498d-bdbf-7a6e45028a16",
+			"id": "2c3ac226-4605-4a18-91fa-9f391936244f",
 			"key": "DOT_STAKING_HOST",
 			"value": "polkadot-slate.datahub.figment.io"
 		},
 		{
-			"id": "09b2ac6c-7bbb-434f-a972-9bcd76731bc3",
+			"id": "c2a009f8-b60a-4703-8d7d-2fe31ee65e01",
 			"key": "SOL_STAKING_HOST",
 			"value": "solana-slate.datahub.figment.io"
 		},
 		{
-			"id": "577e6262-55c3-4beb-b314-6db2cdb29884",
+			"id": "a7e214e3-c90e-4ef2-98d0-f37f1316cc19",
 			"key": "POLYGON_STAKING_HOST",
 			"value": "polygon-slate.datahub.figment.io"
 		},
 		{
-			"id": "22185fee-7531-4ce7-9a1e-4df588fc02b8",
+			"id": "fbf9a08b-e5e0-4437-8937-02513e30758e",
 			"key": "INTERACTIVE",
 			"value": "false"
 		}
