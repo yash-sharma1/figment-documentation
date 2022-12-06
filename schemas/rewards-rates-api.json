@@ -33901,7 +33901,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "https://{{ETH_REWARDS_HOST}}/apikey/{{API_KEY}}/rates?figment=true",
+							"raw": "https://{{ETH_REWARDS_HOST}}/apikey/{{API_KEY}}/rates",
 							"protocol": "https",
 							"host": [
 								"{{ETH_REWARDS_HOST}}"
@@ -33914,7 +33914,8 @@
 							"query": [
 								{
 									"key": "figment",
-									"value": "true"
+									"value": "true",
+									"disabled": true
 								}
 							]
 						},
@@ -43795,12 +43796,12 @@
 	],
 	"variable": [
 		{
-			"id": "d0c6866f-981e-4cb5-8474-0489678fcd6c",
+			"id": "bc00775c-2ba1-4879-865e-6c0119f3346a",
 			"key": "ETH_REWARDS_HOST",
 			"value": "eth-rewards.datahub.figment.io"
 		},
 		{
-			"id": "4f1779ff-ee68-43fd-b83c-5e832fb93af4",
+			"id": "61fb00ca-0e9a-45b8-bb74-3723f06e6058",
 			"key": "SOL_REWARDS_HOST",
 			"value": "solana-rewards.datahub.figment.io"
 		}
