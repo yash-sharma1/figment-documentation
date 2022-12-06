@@ -16902,8 +16902,26 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "https://{{ETH_REWARDS_HOST}}/apikey/{{API_KEY}}/rates",
-						"description": "This API returns a time series of daily network-wide annualized staking reward rates, in %.\n\n### Methodology\n\nWe first compute daily rates by aggregating all rewards (on both consensus and execution layers) received by all validators within a 24h period (from midnight UTC to midnight UTC) and divide this by the aggregated balances of all validators at the beginning of this 24h period. We then annualize this rate without compounding.\n\n### Parameters\n\n- `figment` _(optional)_: if `true` is passed we will return the reward rate for Figment validators only. If omitted or any other value is passed we will return the reward rate of the network as a whole.\n    \n\n### Response\n\nAn array of following objects:\n\n- `date`: timestamp for the day in format \"YYYY-MM-DD\"\n- `value`: the total annualized reward rate for that day - in %\n- `staking`: the piece due to consensus layer rewards (inflation) - in %\n- `tips`: the piece due to execution layer rewards (transaction fees) - in %"
+						"url": {
+							"raw": "https://{{ETH_REWARDS_HOST}}/apikey/{{API_KEY}}/rates",
+							"protocol": "https",
+							"host": [
+								"{{ETH_REWARDS_HOST}}"
+							],
+							"path": [
+								"apikey",
+								"{{API_KEY}}",
+								"rates"
+							],
+							"query": [
+								{
+									"key": "figment",
+									"value": "true",
+									"disabled": true
+								}
+							]
+						},
+						"description": "This API returns a time series of daily network-wide annualized staking reward rates, in %.\n\n### Methodology\n\nWe first compute daily rates by aggregating all rewards (on both consensus and execution layers) received by all validators within a 24h period (from midnight UTC to midnight UTC) and divide this by the aggregated balances of all validators at the beginning of this 24h period. We then annualize this rate without compounding.\n\n### Parameters\n\n- `figment` _(optional)_: if `true` is passed we will return the reward rate for Figment validators only. If omitted or any other value is passed we will return the reward rate of the network as a whole.\n- **Note**: Add the string `?figment=true` to the Request Query and run the query above.\n    \n\n### Response\n\nAn array of following objects:\n\n- `date`: timestamp for the day in format \"YYYY-MM-DD\"\n- `value`: the total annualized reward rate for that day - in %\n- `staking`: the piece due to consensus layer rewards (inflation) - in %\n- `tips`: the piece due to execution layer rewards (transaction fees) - in %"
 					},
 					"response": [
 						{
@@ -16912,7 +16930,7 @@
 							"originalRequest": {
 								"method": "GET",
 								"header": [],
-								"url": "https://{{ETH_REWARDS_HOST}}/rates/apikey/{{API_KEY}}/"
+								"url": "https://{{ETH_REWARDS_HOST}}/apikey/{{API_KEY}}/rates"
 							},
 							"status": "OK",
 							"code": 200,
@@ -33826,7 +33844,7 @@
 									"",
 									"// add a template string of the front-end view we want to render",
 									"let template = `",
-									"    <script src=\"https://cdn.jsdelivr.net/npm/chart.js@2.8.0\"></script>",
+									"    <script src=\"https://cdn.jsdelivr.net/npm/chart.js@4.0.1\"></script>",
 									"    <canvas id=\"myChart\" height=\"80%\"></canvas>",
 									"    <script>",
 									"        pm.getData( function (error, data) {",
@@ -33837,18 +33855,18 @@
 									"                type: 'bar',",
 									"            ",
 									"                // The data for our dataset",
-									"                data: {",
-									"                    labels: data.labels,",
-									"                    datasets: [{",
-									"                        label: 'Rewards per epoch',",
-									"                        backgroundColor: 'black',",
-									"                        borderColor: '#fff29b',",
-									"                        data: data.values,",
-									"                    }]",
-									"                },",
+									"                data: data,",
 									"            ",
-									"                // Configuration options go here",
-									"                options: {}",
+									"                options: {",
+									"                    scales: {",
+									"                        x: {",
+									"                            stacked: true,",
+									"                        },",
+									"                        y: {",
+									"                            stacked: true",
+									"                        }",
+									"                    }",
+									"                }",
 									"            });",
 									"        });",
 									"    </script>",
@@ -33857,8 +33875,19 @@
 									"const response = pm.response.json()",
 									"",
 									"pm.visualizer.set(template, {",
-									"    values: response.map(el => el.value).reverse(),",
-									"    labels: response.map(el => el.date).reverse(),",
+									"    labels: response.map(el => el.date).slice(0, 300).reverse(),",
+									"    datasets: [",
+									"        {",
+									"            label: 'Staking',",
+									"            data: response.map(el => el.staking).slice(0, 300).reverse(),",
+									"            backgroundColor: '#000'",
+									"        },",
+									"        {",
+									"            label: 'Tips',",
+									"            data: response.map(el => el.tips).slice(0, 300).reverse(),",
+									"            backgroundColor: '#ffde00'",
+									"        }",
+									"    ]",
 									"});"
 								],
 								"type": "text/javascript"
@@ -33873,7 +33902,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "https://{{ETH_REWARDS_HOST}}/apikey/{{API_KEY}}/rates?figment=true",
+							"raw": "https://{{ETH_REWARDS_HOST}}/apikey/{{API_KEY}}/rates",
 							"protocol": "https",
 							"host": [
 								"{{ETH_REWARDS_HOST}}"
@@ -33886,11 +33915,12 @@
 							"query": [
 								{
 									"key": "figment",
-									"value": "true"
+									"value": "true",
+									"disabled": true
 								}
 							]
 						},
-						"description": "This API returns a time series of daily network-wide annualized staking reward rates, in %.\n\n### Methodology\n\nWe first compute daily rates by aggregating all rewards (on both consensus and execution layers) received by all validators within a 24h period (from midnight UTC to midnight UTC) and divide this by the aggregated balances of all validators at the beginning of this 24h period. We then annualize this rate without compounding.\n\n### Parameters\n\n- `figment` _(optional)_: if `true` is passed we will return the reward rate for Figment validators only. If omitted or any other value is passed we will return the reward rate of the network as a whole.\n    \n\n### Response\n\nAn array of following objects:\n\n- `date`: timestamp for the day in format \"YYYY-MM-DD\"\n- `value`: the total annualized reward rate for that day - in %\n- `staking`: the piece due to consensus layer rewards (inflation) - in %\n- `tips`: the piece due to execution layer rewards (transaction fees) - in %"
+						"description": "This API returns a time series of daily network-wide annualized staking reward rates, in %.\n\n### Methodology\n\nWe first compute daily rates by aggregating all rewards (on both consensus and execution layers) received by all validators within a 24h period (from midnight UTC to midnight UTC) and divide this by the aggregated balances of all validators at the beginning of this 24h period. We then annualize this rate without compounding.\n\n### Parameters\n\n- `figment` _(optional)_: if `true` is passed we will return the reward rate for Figment validators only. If omitted or any other value is passed we will return the reward rate of the network as a whole.\n- **Note**: Add the string `?figment=true` to the Request Query and run the query above.\n    \n\n### Response\n\nAn array of following objects:\n\n- `date`: timestamp for the day in format \"YYYY-MM-DD\"\n- `value`: the total annualized reward rate for that day - in %\n- `staking`: the piece due to consensus layer rewards (inflation) - in %\n- `tips`: the piece due to execution layer rewards (transaction fees) - in %"
 					},
 					"response": [
 						{
@@ -43767,12 +43797,12 @@
 	],
 	"variable": [
 		{
-			"id": "d0ce0da4-ebda-40fa-a36c-a3298c5b9276",
+			"id": "c1fb79b8-8310-4dfd-9a11-b6b4f447cd8e",
 			"key": "ETH_REWARDS_HOST",
 			"value": "eth-rewards.datahub.figment.io"
 		},
 		{
-			"id": "dd71a184-903a-45c7-bb01-2affd50a0f24",
+			"id": "eb379246-0354-42c4-8ed6-f3aaa5d81a4c",
 			"key": "SOL_REWARDS_HOST",
 			"value": "solana-rewards.datahub.figment.io"
 		}
