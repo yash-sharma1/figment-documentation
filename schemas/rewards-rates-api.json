@@ -16902,7 +16902,24 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "https://{{ETH_REWARDS_HOST}}/apikey/{{API_KEY}}/rates",
+						"url": {
+							"raw": "https://{{ETH_REWARDS_HOST}}/rates/apikey/{{API_KEY}}?figment=true",
+							"protocol": "https",
+							"host": [
+								"{{ETH_REWARDS_HOST}}"
+							],
+							"path": [
+								"rates",
+								"apikey",
+								"{{API_KEY}}"
+							],
+							"query": [
+								{
+									"key": "figment",
+									"value": "true"
+								}
+							]
+						},
 						"description": "This API returns a time series of daily network-wide annualized staking reward rates, in %.\n\n### Methodology\n\nWe first compute daily rates by aggregating all rewards (on both consensus and execution layers) received by all validators within a 24h period (from midnight UTC to midnight UTC) and divide this by the aggregated balances of all validators at the beginning of this 24h period. We then annualize this rate without compounding.\n\n### Parameters\n\n- `figment` _(optional)_: if `true` is passed we will return the reward rate for Figment validators only. If omitted or any other value is passed we will return the reward rate of the network as a whole.\n- **Note**: Add the string `?figment=true` to the Request Query and run the query above.\n    \n\n### Response\n\nAn array of following objects:\n\n- `date`: timestamp for the day in format \"YYYY-MM-DD\"\n- `value`: the total annualized reward rate for that day - in %\n- `staking`: the piece due to consensus layer rewards (inflation) - in %\n- `tips`: the piece due to execution layer rewards (transaction fees) - in %"
 					},
 					"response": [
@@ -43768,12 +43785,12 @@
 	],
 	"variable": [
 		{
-			"id": "7f6f7cf6-2d2a-4940-80b3-294c0dce73ee",
+			"id": "6f0fbc25-8bfd-496f-b4f0-15bcadf2316a",
 			"key": "ETH_REWARDS_HOST",
 			"value": "eth-rewards.datahub.figment.io"
 		},
 		{
-			"id": "693182cf-5743-485f-b732-d5e235d986fb",
+			"id": "ef4c3b43-e739-4bca-a1e9-ce8097e0caa0",
 			"key": "SOL_REWARDS_HOST",
 			"value": "solana-rewards.datahub.figment.io"
 		}
