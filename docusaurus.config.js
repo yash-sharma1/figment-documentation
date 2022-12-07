@@ -200,7 +200,7 @@ const config = {
               },
               {
                 label: "Support",
-                to: "https://bit.ly/datahub-support-ticket",
+                to: "https://docs.figment.io/support",
               },
               {
                 label: "Blog",
