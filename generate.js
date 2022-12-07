@@ -157,18 +157,16 @@ function sidebarIndexForService(service) {
   switch (service) {
     case "node-api":
       return 1;
-    case "transaction-search-api":
-      return 2;
     case "staking-api":
-      return 3;
+      return 2;
     case "staking-api-webhooks":
-      return 4;
+      return 3;
     case "rewards-api":
-      return 5;
+      return 4;
     case "rewards-rates-api":
-      return 6;
+      return 5;
     case "validator-api":
-      return 7;
+      return 6;
     default:
       return 0;
   }
@@ -193,7 +191,6 @@ function referenceTable(_services, variables) {
   // Determine if this can be sorted alphabetically
   const services = [
     _services.find((s) => s.service === "node-api"),
-    _services.find((s) => s.service === "transaction-search-api"),
     _services.find((s) => s.service === "staking-api"),
     _services.find((s) => s.service === "staking-api-webhooks"),
     _services.find((s) => s.service === "rewards-api"),
@@ -202,7 +199,6 @@ function referenceTable(_services, variables) {
       (s) =>
         [
           "node-api",
-          "transaction-search-api",
           "staking-api",
           "staking-api-webhooks",
           "rewards-api",
@@ -357,7 +353,6 @@ function createMarkdown(services, variables) {
     referenceTable(services, variables),
     "utf-8"
   );
-  fs.emptyDirSync(`partials/transaction-search-parameters`);
 
   services.forEach(({ service, networks }) => {
     fs.ensureDirSync(`docs/api-reference/${toDashCase(service)}`);
