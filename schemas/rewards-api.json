@@ -124,6 +124,19 @@
 				},
 				{
 					"name": "ETH Rewards by withdrawal address",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "66c6eab0-1110-40a6-8d33-92edd28f8338",
+								"exec": [
+									"const jsonData = pm.response.json();",
+									"console.log(jsonData.data.map(r => r.accounts[0]))"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"id": "3014009b-007c-48a8-9d3a-dde085ff9f01",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
@@ -1241,47 +1254,47 @@
 	],
 	"variable": [
 		{
-			"id": "9dfb7c07-1d3d-4f5b-a388-ba841ca220fa",
+			"id": "85f51e3f-2efa-483b-8ca3-31d1b613b567",
 			"key": "ETH_REWARDS_HOST",
 			"value": "eth-rewards.datahub.figment.io"
 		},
 		{
-			"id": "0237b8a0-7438-459b-ae54-9707b5c3e41b",
+			"id": "eb4af031-6056-486b-afd1-0a96b2e3d37b",
 			"key": "SOL_REWARDS_HOST",
 			"value": "solana-rewards.datahub.figment.io"
 		},
 		{
-			"id": "a0917b39-0e2e-45bf-895c-c42a4144d53d",
+			"id": "324ee353-27c7-4cd7-bea4-98ff268a0b5c",
 			"key": "DOT_REWARDS_HOST",
 			"value": "polkadot-rewards.datahub.figment.io"
 		},
 		{
-			"id": "36766b58-1929-45be-9340-3bac076cd13a",
+			"id": "c78eb9aa-82ef-4c81-90fc-3c9d8bf8a75a",
 			"key": "NEAR_REWARDS_HOST",
 			"value": "near-rewards.datahub.figment.io"
 		},
 		{
-			"id": "299232ac-b697-4974-9739-4b3cc5a409e7",
+			"id": "0f9558b2-59dc-4aaf-a980-05940609535b",
 			"key": "AVAX_REWARDS_HOST",
 			"value": "avalanche-rewards.datahub.figment.io"
 		},
 		{
-			"id": "317ee6f4-da1b-4f5c-a8ba-e7d97d65fded",
+			"id": "bbddeaea-9245-47de-9a95-b9f059d4975b",
 			"key": "sol-start-epoch",
 			"value": ""
 		},
 		{
-			"id": "6e207885-da57-4b2c-a18f-35ed62b6f14a",
+			"id": "53afbc7e-900d-483e-aa11-c4160658b4d4",
 			"key": "sol-end-epoch",
 			"value": ""
 		},
 		{
-			"id": "f2bfd83c-625a-4eb4-85fb-b27b832f3f7d",
+			"id": "88a5e1e4-5f6b-41e2-9b8a-76956f9613f2",
 			"key": "verified-epoch",
 			"value": ""
 		},
 		{
-			"id": "697963ca-4bbc-4e2b-82fe-c6a6374132dd",
+			"id": "afe91f69-5513-4573-b99d-989129451b69",
 			"key": "epoch-start-date",
 			"value": ""
 		}
