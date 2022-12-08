@@ -22,7 +22,6 @@ Click each heading below for a quick overview of what each directory contains:
 - `rewards-api` - Rewards rates schema.
 - `staking-api` - Staking API schema.
 - `staking-webhooks-api` - Staking Webhooks API schema.
-- `tx-search-api` - Transaction Search schema.
 
 </details>
 

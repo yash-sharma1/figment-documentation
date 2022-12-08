@@ -99,19 +99,6 @@ function HomepageHeader() {
                 rewards rates.
               </p>
             </div>
-            <div
-              className={styles.product}
-              onClick={() =>
-                history.push("api-reference/transaction-search-api/avalanche")
-              }
-            >
-              <h3>Transaction</h3>
-              {/* we should add an image here -- keeping up with our Plaid-theme */}
-              <p>
-                Retrieve historical transactions without having to query the
-                blockchain directly.
-              </p>
-            </div>
           </div>
         </div>
       </header>
