@@ -1,0 +1,298 @@
+---
+title: Staking API Webhooks
+sidebar_position: 3
+---
+
+import Link from "@docusaurus/Link";
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+## Motivation
+
+A webhook is an HTTP request which triggers by an event in a source system (ex. Figment's Staking API) and sent to a destination system (ex. Cloudflare Worker) with a payload of data. In general, webhooks are a way to send automated messages between systems whenever a new event takes place.
+
+The Staking API uses webhooks to send notifications about events related to the various Staking API flows. For example, when an undelegation flow is completed, a webhook can be sent to the server of your choosing.
+
+There are some security considerations when dealing with webhooks.
+This guide provides all the information needed to successfully manage webhooks in the context of Figment's Staking API.
+
+We will examine how serverless functions (Cloudflare Workers) can be beneficial to this process, and provide example code which can be used as the basis for your own solution.
+
+:::note
+
+If your particular language and server implementation specifies a character encoding, ensure that you handle the payload as UTF-8.
+JSON is encoded as UTF-8 by default.
+
+:::
+
+## HMAC
+
+HMAC (**Hash-based Message Authentication Code**) is a cryptographic authentication technique which uses a shared secret and a hash function such as SHA-256.
+
+When you create a webhook endpoint with the Staking API, the response will include a `secret` which begins with `whsec_`.
+This is the shared secret you will use to verify future payloads sent to that webhook endpoint.
+Refer to the Staking API Endpoints guide, <Link to="/guides/staking-api/staking-api-endpoints#create-a-new-webhook-endpoint">Create a New Webhook Endpoint</Link> section for details.
+
+:::info note
+
+Learn more about the specifics of HMAC in the <Link to="#references">References</Link> section.
+
+:::
+
+Here are some code examples for verifying the HMAC signatures
+
+:::caution important
+
+Code examples provided as samples only and should not be used in production out of the box. Use at your own risk.
+ 
+:::
+
+<Tabs><TabItem value="js" label="JavaScript">
+
+```js
+const crypto = require("crypto").webcrypto;
+const TOLERANCE = 300;
+const WH_SECRET = "<your webhook secret>";
+
+export default async function verifySignature(header, body) {
+  // get the time from the header
+  const timestamp = header.match(/t=([^,\s*]+)/)[1];
+
+  // get all signatures in Unit8Array format
+  const signatures = [...header.matchAll(/v\d+=([^,\s*]+)/g)].map((match) => {
+    return new Uint8Array(Math.ceil(match[1].length / 2)).map((v, i) =>
+      parseInt(match[1].substr(i * 2, 2), 16)
+    );
+  });
+
+  // init text encoder
+  const encoder = new TextEncoder();
+
+  // construct the cyptographic key
+  const key = await crypto.subtle.importKey(
+    "raw",
+    encoder.encode(WH_SECRET),
+    { name: "HMAC", hash: "SHA-256" },
+    false,
+    ["verify"]
+  );
+
+  // verify that at least one signature is valid
+  const verified = (
+    await Promise.all(
+      signatures.map(async (signature) => {
+        return await crypto.subtle.verify(
+          "HMAC",
+          key,
+          signature,
+          encoder.encode(`${timestamp}.${body}`)
+        );
+      })
+    )
+  ).includes(true);
+
+  // check if elapsed timestamp is within tolerance
+  const elapsed = Math.floor(Date.now() / 1000) - Number(timestamp);
+  const withinTolerance = !(TOLERANCE && elapsed > TOLERANCE);
+
+  // return validity
+  return verified && withinTolerance;
+}
+```
+
+</TabItem><TabItem value="python" label="Python">
+
+```python
+import re
+import hmac
+import binascii
+import hashlib
+import math
+import time
+
+TOLERANCE = 300
+WH_SECRET = "<your webhook secret>"
+
+def verifySignature(header, body):
+    timestamp = re.findall(r"t=([^,\s*]+)", header)
+
+    if not timestamp:
+        return False
+
+    timestamp = timestamp[0]
+
+    signatures = re.findall("v\d+=([^,\s*]+)", header)
+
+    verified_signatures = []
+
+    for signature in signatures:
+        shared_secret_signature = hmac.new(str.encode(WH_SECRET), str.encode(f"{timestamp}.{body}"), digestmod=hashlib.sha256)
+        verified_signatures.append(hmac.compare_digest(shared_secret_signature.hexdigest(), signature))
+
+    if verified_signatures.count(True) == 0:
+        return False
+
+    elapsed = math.floor(time.time()) - int(timestamp)
+
+    if elapsed > TOLERANCE:
+        return False
+
+    return True
+```
+
+</TabItem></Tabs>
+
+## Signatures
+
+Webhooks from the Staking API are sent with the `Slate-Signature` header, which you can use to verify the payload.
+The value of that header will look like this:
+
+```text
+t=1666214090,v1=f790a584722ff6c0ebf4e9b59835ba5b93ee824ae0a7164feba30953d6b52cee
+```
+
+- `t` is a UNIX Epoch timestamp.
+- `v1` is the signature. Each additional signature will increment the value of `v` &mdash; `v2`, `v3`, etc.
+
+## Cloudflare Worker Setup
+
+Cloudflare Workers provide flexibility and scalability when handling webhooks.
+We can use a Cloudflare Worker to capture, inspect, and manage a webhook response payload from the Staking API.
+Refer to the steps outlined in the guide <Link to="/guides/proxy-requests#create-a-cloudflare-service-worker">Proxy Requests to Figment APIs</Link> if you need to create a new Cloudflare Service Worker.
+
+You will need to set up two environment variables in the Cloudflare dashboard:
+
+- `WH_SECRET`, set the value to the `secret` provided when you created a webhook endpoint.
+- `TOLERANCE`, a number of seconds (a value of 300 is recommended). An inbound signature is considered stale if older than the tolerance.
+
+## Usage
+
+Use the example code we've provided here to implement your own solution.
+
+The `verifySignature` function uses the <Link to="https://developers.cloudflare.com/workers/runtime-apis/web-crypto/">Web Crypto API</Link> to verify that the incoming webhook payload was signed by the Staking API.
+
+<details><summary>Click here to view the complete Worker code.</summary>
+
+```js
+"use strict";
+
+addEventListener("fetch", function (event) {
+  event.respondWith(handleRequest(event));
+});
+
+async function verifySignature(header, body) {
+  // Get the time from the header
+  const timestamp = header.match(/t=([^,\s*]+)/)[1];
+
+  // Get all signatures in Uint8Array format
+  const signatures = [...header.matchAll(/v\d+=([^,\s*]+)/g)].map((match) => {
+    return new Uint8Array(Math.ceil(match[1].length / 2)).map((v, i) =>
+      parseInt(match[1].substr(i * 2, 2), 16)
+    );
+  });
+
+  // Instantiate a TextEncoder
+  // Takes a string as input, returns a Uint8Array containing UTF-8 encoded text.
+  const encoder = new TextEncoder();
+
+  // Construct the key using the Web Crypto API
+  // WH_SECRET must be set as a Cloudflare environment variable
+  const key = await crypto.subtle.importKey(
+    "raw",
+    encoder.encode(WH_SECRET),
+    { name: "HMAC", hash: "SHA-256" },
+    false,
+    ["verify"]
+  );
+
+  // Verify that at least one signature is valid
+  const verified = (
+    await Promise.all(
+      signatures.map(async (signature) => {
+        return await crypto.subtle.verify(
+          "HMAC",
+          key,
+          signature,
+          encoder.encode(`${timestamp}.${body}`)
+        );
+      })
+    )
+  ).includes(true);
+
+  // Check if elapsed timestamp is within tolerance
+  const elapsed = Math.floor(Date.now() / 1000) - Number(timestamp);
+  const withinTolerance = !(TOLERANCE && elapsed > TOLERANCE);
+
+  // Return validity
+  return verified && withinTolerance;
+}
+
+async function handleRequest(event) {
+  // Verify the inbound webhook payload
+  const header = event.request.headers.get("Slate-Signature");
+  const body = await event.request.text();
+  const verified = await verifySignature(header, body);
+
+  // If not verified, exit early with a red herring 200 response
+  if (!verified) {
+    console.log("signature failed");
+    return new Response("", { status: 200 });
+  }
+
+  // Do your work, handle side-effects/events here
+  const data = JSON.parse(body);
+  console.log("signature verified");
+  console.log(data);
+
+  // Exit gracefully
+  return new Response("", { status: 200 });
+}
+//# sourceMappingURL=index.js.map
+```
+
+</details>
+
+:::caution important
+
+When you create a webhook endpoint with the Staking API, provide the URL where you have deployed this Worker as the `target_url`.
+
+:::
+
+The fields which are common to all Staking API webhook payloads are `flow_id` and `event_type`. All other fields will be relevant to the action and flow.
+
+```bash title="Sample Staking API Webhook Payload"
+{
+  amount: '10.0',
+  status: 'success',
+  flow_id: '49a1bab1-e3e6-4f77-8212-ee254e1ab9a3',
+  event_type: 'near.transfer.transfer_tx.confirmed',
+  transaction_hash: '2a9fnT6j5M9Fy6TFNbX2bA1Ncjh6aXK9Ky8oPBUuJwtS',
+  to_account_address: 'pizza.testnet',
+  from_account_pubkey: 'ed25519:5QA46X6NkNmsFdu9xWVBaLNowh9gGeF1c5r9u6NcxaLY',
+  from_account_address: 'slate-demo.testnet'
+}
+```
+
+## References
+
+Learn more about webhook fundamentals in these excellent articles from HookDeck:
+
+- <Link to="https://hookdeck.com/webhooks/guides/what-are-webhooks-how-they-work">
+    What Are Webhooks And How They Work
+  </Link>
+- <Link to="https://hookdeck.com/webhooks/guides/complete-guide-to-webhook-security">
+    Complete Guide to Webhook Security
+  </Link>
+- <Link to="https://hookdeck.com/webhooks/guides/webhooks-security-checklist">
+    How to Secure Webhooks &mdash; 5-step Checklist
+  </Link>
+- <Link to="https://hookdeck.com/webhooks/guides/how-to-implement-sha256-webhook-signature-verification">
+    How to Implement SHA256 Webhook Signature Verification
+  </Link>
+
+Useful articles from other sources:
+
+- <Link to="https://cjav.dev/posts/webhook-trip-hazards/">
+    Webhook Trip Hazards
+  </Link>
+- <Link to="https://www.okta.com/identity-101/hmac/">How HMAC Works</Link>
