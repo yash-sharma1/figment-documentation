@@ -1123,7 +1123,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"accounts\": [\n        \"avax1na8x8j4yk5cwad3kgy6c9t2h2tpj2p2jljk92u\"\n    ], \n    \"start\": \"2022-10-01\",\n    \"end\": \"2022-10-08\"\n}\n\n",
+							"raw": "{\n    \"accounts\": [\n        \"avax19zfygxaf59stehzedhxjesads0p5jdvfeedal0\"\n    ], \n    \"start\": \"2022-12-01\",\n    \"end\": \"2022-12-08\"\n}\n\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1254,47 +1254,47 @@
 	],
 	"variable": [
 		{
-			"id": "85f51e3f-2efa-483b-8ca3-31d1b613b567",
+			"id": "19a087ea-0497-4395-9f88-679de853e9ed",
 			"key": "ETH_REWARDS_HOST",
 			"value": "eth-rewards.datahub.figment.io"
 		},
 		{
-			"id": "eb4af031-6056-486b-afd1-0a96b2e3d37b",
+			"id": "22b4f5ee-3f5e-43ed-b49e-ddccaf70e392",
 			"key": "SOL_REWARDS_HOST",
 			"value": "solana-rewards.datahub.figment.io"
 		},
 		{
-			"id": "324ee353-27c7-4cd7-bea4-98ff268a0b5c",
+			"id": "3921a914-e302-4d52-9abc-14bac867996f",
 			"key": "DOT_REWARDS_HOST",
 			"value": "polkadot-rewards.datahub.figment.io"
 		},
 		{
-			"id": "c78eb9aa-82ef-4c81-90fc-3c9d8bf8a75a",
+			"id": "475292b3-4ee4-44a7-8705-8e2c3cc30c83",
 			"key": "NEAR_REWARDS_HOST",
 			"value": "near-rewards.datahub.figment.io"
 		},
 		{
-			"id": "0f9558b2-59dc-4aaf-a980-05940609535b",
+			"id": "b3b4cbe6-9724-43f8-8e6b-247fcee53b82",
 			"key": "AVAX_REWARDS_HOST",
 			"value": "avalanche-rewards.datahub.figment.io"
 		},
 		{
-			"id": "bbddeaea-9245-47de-9a95-b9f059d4975b",
+			"id": "2f4e2d10-0036-4032-8c5e-2beceec2f676",
 			"key": "sol-start-epoch",
 			"value": ""
 		},
 		{
-			"id": "53afbc7e-900d-483e-aa11-c4160658b4d4",
+			"id": "3efd93b9-906d-46d9-a1ce-2844ca64aba4",
 			"key": "sol-end-epoch",
 			"value": ""
 		},
 		{
-			"id": "88a5e1e4-5f6b-41e2-9b8a-76956f9613f2",
+			"id": "1011171a-592e-4037-8fe4-94276bf66bc8",
 			"key": "verified-epoch",
 			"value": ""
 		},
 		{
-			"id": "afe91f69-5513-4573-b99d-989129451b69",
+			"id": "ee0a1bc6-2677-4f23-a78e-289cf8a7950e",
 			"key": "epoch-start-date",
 			"value": ""
 		}
