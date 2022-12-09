@@ -42,7 +42,7 @@ export default {
   },
   near() {
     const REFRENCE_BLOCK_HEIGHT = 76953090;
-    const BLOCKS_IN_SEC = 1.27;
+    const BLOCKS_IN_SEC = 1.276;
     const BLOCKS_IN_DAY = BLOCKS_IN_SEC * 60 * 60 * 25;
     const BLOCKS_IN_7_DAYS = Math.ceil(BLOCKS_IN_DAY * 7); // NEAR Epoch table only has 7 days of data
     const REFRENCE_DATE = moment("2022-10-25", "YYYY-MM-DD");
@@ -53,9 +53,16 @@ export default {
       REFRENCE_BLOCK_HEIGHT + Math.ceil(daysPast * BLOCKS_IN_DAY);
     const block7DaysAgoEst = latestBlockEst - BLOCKS_IN_7_DAYS;
 
+    const start = block7DaysAgoEst - Math.ceil(100 * BLOCKS_IN_DAY); // With a Margin of 100 days worth of blocks prior to 7 days ago
+    const end = latestBlockEst + Math.ceil(100 * BLOCKS_IN_DAY); // Add a Margin of 100 days worth of blocks into the future
+
+    // To query by date range
+    // const start = moment().subtract(7, "days").format("YYYY-MM-DD");
+    // const end = moment().add(1, "days").format("YYYY-MM-DD");
+
     return {
-      start: block7DaysAgoEst,
-      end: latestBlockEst,
+      start,
+      end,
     };
   },
 };
