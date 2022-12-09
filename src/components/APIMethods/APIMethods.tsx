@@ -1,6 +1,7 @@
 import React from "react";
 import ReactMarkdown from "react-markdown";
 import BackToTopButton from "@theme/BackToTopButton";
+import rewardRanges from "../../utilities/reward-ranges";
 
 import { RequestObject, ResponseObject } from "@site/types/src";
 import { CodeExample } from "./components";
@@ -11,6 +12,7 @@ import MDDetails from "./MDDetails.mdx";
 interface Props {
   name: string;
   content: string;
+  network: string;
   accordionOpen: boolean;
   interactive: boolean;
   request: RequestObject;
@@ -22,20 +24,33 @@ function APIMethod({
   name,
   content = "",
   interactive,
+  network,
   request,
   accordionOpen = false,
   response,
   endpoint,
 }: Props) {
-  if (["Rewards (by epoch)", "Rewards (daily)"].includes(name)) {
+  const isRewards = endpoint.includes("rewards-api");
+  const isByDay = ["by day", "account", "address"].find((n) =>
+    name.includes(n)
+  );
+  const isByEpoch =
+    ["by epoch", "by era"].find((n) => name.includes(n)) ||
+    name.startsWith("SOL");
+
+  if (isRewards && isByEpoch) {
+    const { start, end } = rewardRanges[network]();
     request.body = {
       ...(request.body as object),
-      start_time: new Date(
-        Date.now() - (name === "Rewards (by epoch)" ? 172800000 : 86400000)
-      )
-        .toISOString()
-        .split("T")[0],
-      end_time: new Date().toISOString().split("T")[0],
+      start,
+      end,
+    };
+  } else if (isRewards && isByDay) {
+    const { start, end } = rewardRanges.days();
+    request.body = {
+      ...(request.body as object),
+      start,
+      end,
     };
   }
 
@@ -76,6 +91,7 @@ export default function APIMethods({ network, methods, service, proxy }) {
         <APIMethod
           key={network + index}
           {...method}
+          network={network}
           endpoint={`${proxy}/${service}/${network}`}
           accordionOpen={service !== "node-api"}
         />

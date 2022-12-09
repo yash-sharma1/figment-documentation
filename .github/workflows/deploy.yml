@@ -8,7 +8,7 @@ permissions:
   contents: write
 
 env:
-  PROXY_HOST: "https://api-service-proxy.paulpomerleau.workers.dev"
+  PROXY_HOST: "https://api-service-proxy.figment-secops.workers.dev"
 
 jobs:
   deploy:
