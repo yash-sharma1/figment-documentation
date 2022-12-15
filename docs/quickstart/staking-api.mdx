@@ -88,26 +88,24 @@ In example requests, the text `API-KEY` must be replaced with your actual creden
 <Tabs>
   <TabItem value="curl" label="curl" default>
 
-```text title="Example curl request"
+```text {5-10} title="Example curl request"
 curl -X POST https://near-slate.datahub.figment.io/api/v1/flows \
 -H 'Content-Type: application/json' \
 -H 'Authorization: API-KEY' \
 -d '{
-  // highlight-start
   "flow": {
     "network_code": "near",
     "chain_code": "testnet",
     "operation": "staking",
     "version": "v1"
   }
-  // highlight-end
 }'
 ```
 
   </TabItem>
   <TabItem value="js" label="JavaScript">
 
-```javascript title="Example JavaScript Fetch request"
+```javascript {8-13} title="Example JavaScript Fetch request"
 const API_KEY = "YOUR API KEY";
 
 var myHeaders = new Headers();
@@ -115,14 +113,12 @@ myHeaders.append("Content-Type", "application/json");
 myHeaders.append("Authorization", API_KEY);
 
 var raw = JSON.stringify({
-  // highlight-start
   flow: {
     network_code: "near",
     chain_code: "testnet",
     operation: "staking",
     version: "v1",
   },
-  // highlight-end
 });
 
 var requestOptions = {
@@ -260,22 +256,18 @@ Using the flow ID from the above response to illustrate, we would then need to s
 <Tabs>
   <TabItem value="curl" label="curl" default>
 
-```text title="Example curl request to continue a NEAR staking flow"
-// highlight-next-line
+```text {1,5,7-11,27} title="Example curl request to continue a NEAR staking flow"
 curl -X POST https://near-slate.figment.io/api/v1/flows/e4c08fa4-6e4e-4f00-934d-6cd23c7f2c26/next \
 -H 'Content-Type: application/json' \
 -H 'Authorization: API-KEY' \
 -d '{
-    // highlight-next-line
     "name": "create_delegate_tx",
     "inputs": {
-        // highlight-start
         "delegator_address": "slate-demo.testnet",
         "delegator_pubkey": "ed25519:5QA46X6NkNmsFdu9xWVBaLNowh9gGeF1c5r9u6NcxaLY",
         "validator_address": "01node.pool.f863973.m0",
         "amount": "25",
         "max_gas": null,
-        // highlight-end
     }
 }'
 ```
@@ -283,9 +275,8 @@ curl -X POST https://near-slate.figment.io/api/v1/flows/e4c08fa4-6e4e-4f00-934d-
   </TabItem>
   <TabItem value="js" label="JavaScript">
 
-```javascript title="Example JavaScript Fetch request"
+```javascript {2,9,11-15} title="Example JavaScript Fetch request"
 const API_KEY = "YOUR API KEY";
-// highlight-next-line
 const FLOW_ID = "e4c08fa4-6e4e-4f00-934d-6cd23c7f2c26";
 
 var myHeaders = new Headers();
@@ -293,16 +284,13 @@ myHeaders.append("Content-Type", "application/json");
 myHeaders.append("Authorization", API_KEY);
 
 var raw = JSON.stringify({
-  // highlight-next-line
   name: "create_delegate_tx",
   inputs: {
-    // highlight-start
     delegator_address: "slate-demo.testnet",
     delegator_pubkey: "ed25519:5QA46X6NkNmsFdu9xWVBaLNowh9gGeF1c5r9u6NcxaLY",
     validator_address: "01node.pool.f863973.m0",
     amount: "25",
     max_gas: null,
-    // highlight-end
   },
 });
 
@@ -314,7 +302,6 @@ var requestOptions = {
 };
 
 fetch(
-  // highlight-next-line
   `https://near-slate.datahub.figment.io/api/v1/flows/${FLOW_ID}/next`,
   requestOptions
 )
@@ -426,25 +413,23 @@ Remember to capture this data!
 <Tabs>
   <TabItem value="curl" label="curl" default>
 
-```text title="Example curl request POST /webhook_endpoints"
+```text {5-9} title="Example curl request POST /webhook_endpoints"
 curl -X POST 'https://eth-slate.datahub.figment.io/api/v1/webhook_endpoints' \
 -H 'Authorization: API-KEY' \
 -H 'Content-Type: application/json' \
 -d '{
-  // highlight-start
     "webhook_endpoint": {
         "target_url": "https://example.com/my/endpoint",
         "event_types": ["*"],
         "enabled": "false"
     }
-    // highlight-end
 }'
 ```
 
   </TabItem>
   <TabItem value="js" label="JavaScript">
 
-```javascript title="Example JavaScript Fetch request"
+```javascript {8-12} title="Example JavaScript Fetch request"
 const API_KEY = "YOUR API KEY";
 
 var myHeaders = new Headers();
@@ -452,13 +437,11 @@ myHeaders.append("Content-Type", "application/json");
 myHeaders.append("Authorization", API_KEY);
 
 var raw = JSON.stringify({
-  // highlight-start
   webhook_endpoint: {
     target_url: "https://example.com/my/endpoint",
     event_types: ["*"],
     enabled: "false",
   },
-  // highlight-end
 });
 
 var requestOptions = {
@@ -480,7 +463,7 @@ fetch(
   </TabItem>
 </Tabs>
 
-```json title="Example JSON response"
+```json {8} title="Example JSON response"
 {
   "id": 16,
   "event_types": [],
@@ -488,7 +471,6 @@ fetch(
   "enabled": true,
   "object": "webhook_endpoint",
   "created": "2022-07-26T19:27:12.647Z",
-  // highlight-next-line
   "secret": "whsec_B8sidV4Bm8NnstMuP3a9TSGYov... [REDACTED]"
 }
 ```
@@ -582,9 +564,8 @@ curl -X GET 'https://eth-slate.datahub.figment.io/api/v1/webhook_endpoints/15' \
   </TabItem>
   <TabItem value="js" label="JavaScript">
 
-```javascript title="Example JavaScript Fetch request"
+```javascript {2,14} title="Example JavaScript Fetch request"
 const API_KEY = "YOUR API KEY";
-// highlight-next-line
 const WEBHOOK_ID = "YOUR ENDPOINT ID";
 
 var myHeaders = new Headers();
@@ -597,7 +578,6 @@ var requestOptions = {
 };
 
 fetch(
-  // highlight-next-line
   `https://eth-slate.datahub.staging.figment.io/api/v1/webhook_endpoints/${WEBHOOK_ID}`,
   requestOptions
 )
@@ -636,16 +616,14 @@ You can send a `PUT` request to update details for an existing webhook endpoint.
 <Tabs>
   <TabItem value="curl" label="curl" default>
 
-```text title="Example curl request PUT /webhook_endpoints/[:webhook_endpoint_id]"
+```text {6,8} title="Example curl request PUT /webhook_endpoints/[:webhook_endpoint_id]"
 curl -X PUT 'https://eth-slate.datahub.figment.io/api/v1/webhook_endpoints/15' \
 -H 'Authorization: API-KEY' \
 -H 'Content-Type: application/json' \
 --data '{
     "webhook_endpoint": {
-        // highlight-next-line
         "target_url": "https://example.com/my/new/endpoint",
         "event_types": ["*"],
-        // highlight-next-line
         "enabled": "true"
     }
 }'
@@ -654,9 +632,8 @@ curl -X PUT 'https://eth-slate.datahub.figment.io/api/v1/webhook_endpoints/15' \
   </TabItem>
   <TabItem value="js" label="JavaScript">
 
-```javascript title="Example JavaScript Fetch request"
+```javascript {2, 10, 11, 24} title="Example JavaScript Fetch request"
 const API_KEY = "YOUR API KEY";
-// highlight-next-line
 const WEBHOOK_ID = "YOUR WEBHOOK ID";
 
 var myHeaders = new Headers();
@@ -665,10 +642,8 @@ myHeaders.append("Content-Type", "application/json");
 
 var raw = JSON.stringify({
   webhook_endpoint: {
-    // highlight-next-line
     target_url: "https://example.com/my/new/endpoint",
     event_types: ["*"],
-    // highlight-next-line
     enabled: "true",
   },
 });
@@ -681,7 +656,6 @@ var requestOptions = {
 };
 
 fetch(
-  // highlight-next-line
   `https://eth-slate.datahub.staging.figment.io/api/v1/webhook_endpoints/${WEBHOOK_ID}`,
   requestOptions
 )
@@ -693,13 +667,11 @@ fetch(
   </TabItem>
 </Tabs>
 
-```json title="Example JSON response"
+```json {4} title="Example JSON response"
 {
   "id": 15,
   "event_types": ["*"],
-  // highlight-next-line
   "target_url": "https://example.com/my/new/endpoint",
-  // highlight-next-line
   "enabled": true,
   "object": "webhook_endpoint",
   "created": "2022-07-26T19:27:12.647Z"
