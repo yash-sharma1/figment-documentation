@@ -1,0 +1,20 @@
+---
+title: Redelegate
+slug: /guides/staking-api/cosmos/redelegate
+sidebar_position: 2
+---
+
+The Cosmos Redelegate flow allows you to immediately redelegate the ATOM tokens from Validator X to Validator Y.
+This way, you don't need to wait for 21 days to unbond the ATOM tokens and then delegate that stake to another validator.
+
+To redelegate ATOM tokens, you will need:
+
+- The `delegator_address` from which ATOM is being redelegated, which will sign the transaction.
+- The `source_validator_address` from which ATOM is being redelegated (Validator X).
+- The `destination_validator_address` to which ATOM will be redelegated (Validator Y).
+- The `amount` of ATOM to be redelegated.
+- An optional `memo`.
+- An optional `gas_limit` and `gas_price` in ATOM.
+- The `pubkey` (public key) of the `delegator_address`.
+
+Follow the steps in this section for the details on this process.

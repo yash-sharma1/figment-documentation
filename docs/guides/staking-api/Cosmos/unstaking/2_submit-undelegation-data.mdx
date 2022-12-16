@@ -1,0 +1,167 @@
+---
+title: Submit Undelegation Data
+slug: /guides/staking-api/cosmos/unstaking/submit-undelegation-data
+---
+
+After collecting the required inputs, send a `PUT` request to `/api/v1/flows/[:flow_id]/next` to proceed to the next step.
+
+### Parameters
+
+- `name` &mdash; `string` Name of the action to execute (required).
+- `inputs` &mdash; `object`
+  - `delegator_address` &mdash; `string` The address from which ATOM was delegated (required).
+  - `validator_address` &mdash; `string` The validator address from which ATOM will be undelegated (required).
+  - `amount` &mdash; `number` The amount of ATOM to be undelegated (required).
+  - `memo` &mdash; `string` A message to record on-chain with your transfer (optional).
+  - `gas_limit` &mdash; `number` The total amount of gas you're willing to let this transaction consume (optional).
+  - `gas_price` &mdash; `number` How many ATOM you're willing to pay per unit of gas consumed by this transaction (optional).
+  - `pubkey` &mdash; `string` Required only if you're using a fresh account (that does not have any outgoing activity) else optional.
+
+#### Sample cURL Request
+
+```bash {5-10}
+curl -X PUT 'https://cosmos-slate.datahub.figment.io/api/v1/flows/34a3e428-2cad-4205-bd17-ea3ba2fc8c2e/next' \
+-H 'Content-Type: application/json' \
+-H 'Authorization: <api_key>' \
+-d '{
+  "name": "create_undelegate_tx",
+  "inputs": {
+    "delegator_address": "cosmos1u85upk2v7pr65g0wv2976zleu6v8qjl9qprvzl",
+    "validator_address": "cosmosvaloper1t8dv80kdq3t2g88kn8vtyeldvnf8xq5c4sklmx",
+    "amount": 0.099998,
+    "pubkey": "0a2102db66d27dd215f1a61e5f4gga098b5293cc1da6f5c3557974ad5f39a2ec0fe125"
+  }
+}'
+```
+
+### Response
+
+The response indicates two possible `actions`:
+
+- `refresh_undelegate_tx` &mdash; If you need to get a fresh version of the transaction payload (i.e., the nonce has increased).
+- `sign_undelegate_tx` &mdash; Submit a signed transaction payload ready to be broadcast to the network.
+
+We will choose `sign_undelegate_tx`, which indicates one input to collect:
+
+- `transaction_payload` &mdash; The signed transaction payload ready to be broadcast to the network.
+
+#### Sample Response
+
+```json {3}
+{
+  "id": "34a3e428-2cad-4205-bd17-ea3ba2fc8c2e",
+  "state": "undelegate_tx_signature",
+  "actions": [
+    {
+      "name": "refresh_undelegate_tx",
+      "inputs": []
+    },
+    {
+      "name": "sign_undelegate_tx",
+      "inputs": [
+        {
+          "name": "transaction_payload",
+          "display": "Transaction Payload",
+          "description": "",
+          "type": "signed_transaction",
+          "validations": [
+            {
+              "type": "sign_payload",
+              "options": {}
+            }
+          ],
+          "array": false,
+          "default_value": null,
+          "signers": ["cosmos1u85upk2v7pr65g0wv2976zleu6v8qjl9qprvzl"],
+          "transaction_payload": "7b226d65737361676573223a5b7b227479706555726c223a222f636f736d6f732e7374616b696e672e763162657461312e4d7367556e64656c6567617465222c2276616c7565223a7b2264656c656761746f7241646472657373223a22636f736d6f733175383575706b3276377072363567307776323937367a6c6575367638716a6c39717072767a6c222c2276616c696461746f7241646472657373223a22636f736d6f7376616c6f706572317438647638306b64713374326738386b6e38767479656c64766e66387871356334736b6c6d78222c22616d6f756e74223a7b2264656e6f6d223a227561746f6d222c22616d6f756e74223a223939393938227d7d7d5d2c22666565223a7b22616d6f756e74223a5b7b22616d6f756e74223a2235363934222c2264656e6f6d223a227561746f6d227d5d2c22676173223a22323237373436227d2c226d656d6f223a22227d"
+        },
+        {
+          "name": "signatures",
+          "display": "Signatures",
+          "description": "",
+          "type": "array_of_signatures",
+          "validations": [],
+          "array": true,
+          "default_value": null,
+          "element_type": "signature_data",
+          "signers": ["cosmos1u85upk2v7pr65g0wv2976zleu6v8qjl9qprvzl"],
+          "transaction_payload": "7b226d65737361676573223a5b7b227479706555726c223a222f636f736d6f732e7374616b696e672e763162657461312e4d7367556e64656c6567617465222c2276616c7565223a7b2264656c656761746f7241646472657373223a22636f736d6f733175383575706b3276377072363567307776323937367a6c6575367638716a6c39717072767a6c222c2276616c696461746f7241646472657373223a22636f736d6f7376616c6f706572317438647638306b64713374326738386b6e38767479656c64766e66387871356334736b6c6d78222c22616d6f756e74223a7b2264656e6f6d223a227561746f6d222c22616d6f756e74223a223939393938227d7d7d5d2c22666565223a7b22616d6f756e74223a5b7b22616d6f756e74223a2235363934222c2264656e6f6d223a227561746f6d227d5d2c22676173223a22323237373436227d2c226d656d6f223a22227d",
+          "signing_payload": "61558c76f2c70104bf4643e1bd91890a0c7897472178435bd345135297177acd",
+          "inputs": {
+            "input_klass": "Workflows::Signature",
+            "input_instance": {
+              "account_address": null,
+              "signature": null
+            },
+            "flow": {
+              "id": 140563,
+              "customer_id": 7,
+              "chain_id": 10,
+              "workflow_state": "undelegate_tx_signature",
+              "data": {
+                "delegator_address": "cosmos1u85upk2v7pr65g0wv2976zleu6v8qjl9qprvzl",
+                "validator_address": "cosmosvaloper1t8dv80kdq3t2g88kn8vtyeldvnf8xq5c4sklmx",
+                "amount": "0.099998",
+                "memo": null,
+                "gas_price": null,
+                "gas_limit": null,
+                "undelegate_transaction": {
+                  "raw": "7b226d65737361676573223a5b7b227479706555726c223a222f636f736d6f732e7374616b696e672e763162657461312e4d7367556e64656c6567617465222c2276616c7565223a7b2264656c656761746f7241646472657373223a22636f736d6f733175383575706b3276377072363567307776323937367a6c6575367638716a6c39717072767a6c222c2276616c696461746f7241646472657373223a22636f736d6f7376616c6f706572317438647638306b64713374326738386b6e38767479656c64766e66387871356334736b6c6d78222c22616d6f756e74223a7b2264656e6f6d223a227561746f6d222c22616d6f756e74223a223939393938227d7d7d5d2c22666565223a7b22616d6f756e74223a5b7b22616d6f756e74223a2235363934222c2264656e6f6d223a227561746f6d227d5d2c22676173223a22323237373436227d2c226d656d6f223a22227d",
+                  "signing_payload": "61558c76f2c70104bf4643e1bd91890a0c7897472178435bd345135297177acd",
+                  "signed": null,
+                  "hash": null,
+                  "status": null,
+                  "error": null,
+                  "signatures": null,
+                  "block_number": null
+                },
+                "estimated_unbonded_at": null,
+                "pubkey": "0a2102db66d27dd215f1a61e5f4gga098b5293cc1da6f5c3557974ad5f39a2ec0fe125"
+              },
+              "created_at": "2022-12-15T10:37:31.604Z",
+              "updated_at": "2022-12-15T10:40:22.559Z",
+              "id_public": "34a3e428-2cad-4205-bd17-ea3ba2fc8c2e",
+              "supported_operation_id": 32
+            },
+            "flow_attributes": {},
+            "empty_input": {
+              "account_address": null,
+              "signature": null
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "data": {
+    "delegator_address": "cosmos1u85upk2v7pr65g0wv2976zleu6v8qjl9qprvzl",
+    "validator_address": "cosmosvaloper1t8dv80kdq3t2g88kn8vtyeldvnf8xq5c4sklmx",
+    "amount": "0.099998",
+    "memo": null,
+    "gas_price": null,
+    "gas_limit": null,
+    "undelegate_transaction": {
+      "raw": "7b226d65737361676573223a5b7b227479706555726c223a222f636f736d6f732e7374616b696e672e763162657461312e4d7367556e64656c6567617465222c2276616c7565223a7b2264656c656761746f7241646472657373223a22636f736d6f733175383575706b3276377072363567307776323937367a6c6575367638716a6c39717072767a6c222c2276616c696461746f7241646472657373223a22636f736d6f7376616c6f706572317438647638306b64713374326738386b6e38767479656c64766e66387871356334736b6c6d78222c22616d6f756e74223a7b2264656e6f6d223a227561746f6d222c22616d6f756e74223a223939393938227d7d7d5d2c22666565223a7b22616d6f756e74223a5b7b22616d6f756e74223a2235363934222c2264656e6f6d223a227561746f6d227d5d2c22676173223a22323237373436227d2c226d656d6f223a22227d",
+      "signing_payload": "61558c76f2c70104bf4643e1bd91890a0c7897472178435bd345135297177acd",
+      "signed": null,
+      "hash": null,
+      "status": null,
+      "error": null,
+      "signatures": null,
+      "block_number": null
+    },
+    "estimated_unbonded_at": null,
+    "pubkey": "0a2102db66d27dd215f1a61e5f4gga098b5293cc1da6f5c3557974ad5f39a2ec0fe125"
+  },
+  "network_code": "cosmos",
+  "chain_code": "testnet",
+  "created_at": "2022-12-15T10:37:31.604Z",
+  "updated_at": "2022-12-15T10:40:22.559Z"
+}
+```
+
+:::info note
+
+Make sure to save the `transaction_payload` from this response, which is what needs to be signed in the next step.
+
+:::
