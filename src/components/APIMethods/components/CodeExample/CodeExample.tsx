@@ -60,8 +60,9 @@ export default function CodeExample({
 
   const handleOnValueChange = (value: string) => {
     if (!interactive) return;
-    if (req.method === "GET") setQueryString(value);
-    else if (req.method === "POST") setReqBody(value);
+    if (["GET", "DELETE"].indexOf(req.method) > -1) {
+      setQueryString(value);
+    } else if (req.method === "POST") setReqBody(value);
   };
 
   const actions = [
@@ -104,7 +105,7 @@ export default function CodeExample({
     <>
       <CodeEditor
         header={
-          req.method === "GET"
+          ["GET", "DELETE"].indexOf(req.method) > -1
             ? `Request Query ${interactive ? "(try it)" : ""}`
             : `Request Body ${interactive ? "(try it)" : ""}`
         }
@@ -112,7 +113,7 @@ export default function CodeExample({
         disabled={!interactive}
         onValueChange={handleOnValueChange}
       >
-        {req.method === "GET" ? queryString : reqBody}
+        {["GET", "DELETE"].indexOf(req.method) > -1 ? queryString : reqBody}
       </CodeEditor>
 
       <CodeBlock

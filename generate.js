@@ -70,7 +70,7 @@ function processMethod(method, vars) {
 
   // Prevents nested ternary operator
   let request_body;
-  if (request.method !== "GET") {
+  if (["GET", "DELETE"].indexOf(request.method) < 0) {
     if (request.body?.mode === "graphql") {
       request_body = request.body.graphql.query;
     } else {
@@ -456,9 +456,11 @@ function generateCORSTests(services) {
           )}/${toDashCase(network.network)}/${method.request.query || ""}`,
           method: method.request.method,
           body:
-            method.request.method === "GET" ? undefined : method.request.body,
+            ["GET", "DELETE"].indexOf(request.method) > -1
+              ? undefined
+              : method.request.body,
           headers:
-            method.request.method === "GET"
+            ["GET", "DELETE"].indexOf(request.method) > -1
               ? {}
               : {
                   "content-type": "application/json",
