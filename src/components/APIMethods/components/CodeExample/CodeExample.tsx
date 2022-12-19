@@ -71,6 +71,13 @@ export default function CodeExample({
           title: "Run request",
           onClick: async () => {
             const apiData = await fetchData(queryString, { body: reqBody });
+            if (
+              endpoint.includes("rewards") &&
+              apiData.data &&
+              apiData.data.length > 10
+            ) {
+              apiData.data = apiData.data.slice(0, 10);
+            }
             if (apiData) setResBody(formatResult(apiData));
           },
           Component: (
@@ -101,6 +108,10 @@ export default function CodeExample({
       : null,
   ].filter((action) => !!action);
 
+  const responseTitle = endpoint.includes("rewards")
+    ? "Sample Reponse"
+    : "Response";
+
   return (
     <>
       <CodeEditor
@@ -117,7 +128,7 @@ export default function CodeExample({
       </CodeEditor>
 
       <CodeBlock
-        title={status ? "Response" : "Example Response"}
+        title={status ? responseTitle : "Example Response"}
         language="json"
       >
         {error ? `${error}` : resBody}
