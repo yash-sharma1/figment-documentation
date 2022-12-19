@@ -532,6 +532,578 @@
 							"body": "{\n    \"id\": \"87c3dd5f-bcbe-7934-92bd-1da47d5aca7e\",\n    \"state\": \"completed\",\n    \"actions\": [],\n    \"data\": {\n        \"from_account_address\": \"cosmos1u89ikp2v7pr95g0wv2687zleu6v8qjl9qprvzl\",\n        \"to_account_address\": \"cosmos1vxhllask0nynh20htyfkpkfthy7k3395kz9c4y\",\n        \"amount\": \"1.0\",\n        \"gas_price\": null,\n        \"gas_limit\": null,\n        \"memo\": null,\n        \"transfer_transaction\": {\n            \"raw\": \"7b226d65737361676573223a5b7b227479706555726c223a222f636f736d6f732e62616e6b2e763162657461312e4d736753656e64222c2276616c7565223a7b2266726f6d41646472657373223a22636f736d6f733175383575706b3276377072363567307776323937367a6c6575367638716a6c39717072767a6c222c22746f41646472657373223a22636f736d6f73317678686c6c61736b306e796e683230687479666b706b66746879376b333339356b7a38793363222c22616d6f756e74223a5b7b2264656e6f6d223a227561746f6d222c22616d6f756e74223a2231303030303030227d5d7d7d5d2c22666565223a7b22616d6f756e74223a5b7b22616d6f756e74223a2231383333222c2264656e6f6d223a227561746f6d227d5d2c22676173223a223733323839227d2c226d656d6f223a22227d\",\n            \"signing_payload\": \"2e69cd5b307af260091f58dee7fe63cbc66da049596ec2fb32234caa8e8e3a98\",\n            \"signed\": \"0a93010a90010a1c2f636f736d6f732e62616e6b2e763162657461312e4d736753656e6412700a2d636f736d6f733175383575706b3276377072363567307776323937367a6c6575367638716a6c39717072767a6c122d636f736d6f73317678686c6c61736b306e796e683230687479666b706b66746879376b333339356b7a387933631a100a057561746f6d12073130303030303012670a500a460a1f2f636f736d6f732e63727970746f2e736563703235366b312e5075624b657912230a2104db33d72ee215f1a61e5f4ffa098b7425cc1da6f5c3627994ad0f21a5ec6fe23512040a020801180112130a0d0a057561746f6d12043138333310c9bc041a40549391fc956e81101ba0b815b6a4297ac537ed633522a676f18c06666c1da2020e8a655c0bc8281022b4831f82c8a8b40a2a4a2736c54c3beae4fb2a0a44135e\",\n            \"hash\": \"175BF846FBCBD0B59E0DCE77D793A4C38453688B39BDDEA81C14F221892FF071\",\n            \"status\": \"confirmed\",\n            \"error\": null,\n            \"signatures\": []\n        },\n        \"account_number\": 721346,\n        \"sequence\": 1,\n        \"pubkey\": \"0a2104db33d72ee215f1a61e5f4ffa098b7425cc1da6f5c3627994ad0f21a5ec6fe235\"\n    },\n    \"network_code\": \"cosmos\",\n    \"chain_code\": \"testnet\",\n    \"created_at\": \"2022-11-16T07:08:33.793Z\",\n    \"updated_at\": \"2022-11-16T07:54:31.594Z\"\n}"
 						}
 					]
+				},
+				{
+					"name": "Create a New Redelegate Flow",
+					"id": "97b343e7-2213-43b5-82c1-7b670c002ecc",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"flow\": {\n        \"network_code\": \"cosmos\",\n        \"chain_code\": \"testnet\",\n        \"operation\": \"redelegate\",\n        \"version\": \"v1\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://{{COSMOS_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows",
+						"description": "To initiate the redelegate process with Staking API, create a new flow with `POST /api/v1/flows`.\n\n### Parameters\n\n- `flow` &mdash; `object`\n  - `network_code` &mdash; `string` Network this flow operates on (ex. `cosmos`) (required).\n  - `chain_code` &mdash; `string` Chain this flow operates on (ex. `testnet`) (required).\n  - `operation` &mdash; `string` The operation to perform (ex. `redelegate`) (required).\n  - `version` &mdash; `string` API version to use (ex. `v1`) (optional).\n\n### Response\n\n- `id` &mdash; `string` ID of the flow.\n- `state` &mdash; `string` The current state of the flow.\n- `actions` &mdash; `array` It includes the `name` & `inputs` of all next possible actions.\n - `create_redelegate_tx` &mdash; Use this action to generate a redelegation transaction to stake your ATOM.\n   - `delegator_address` &mdash; The address from which ATOM will be redelegated.\n   - `source_validator_address` &mdash; The validator address from which ATOM will be redelegated.\n   - `destination_validator_address` &mdash; The validator address to which ATOM will be redelegated.\n   - `amount` &mdash; The amount of ATOM to be redelegated.\n   - `memo` &mdash; an optional message to record on-chain with your transaction.\n   - `gas_limit` &mdash; the total amount of gas you're willing to let this transaction consume.\n     - If you do not include this, we'll use a Cosmos library to select a good default for you.\n   - `gas_price` &mdash; how many ATOM you're willing to pay per unit of gas consumed by this transaction.\n     - If you do not include this, we'll use a Cosmos library to select a good default for you.\n   - `pubkey` &mdash; Pubkey value will be retrieved from the chain but if you're using a fresh account (that does not have any outgoing activity) then this information is not available and it requires the user to pass it.\n- `data` &mdash; `object` Redelegate flow & transaction data."
+					},
+					"response": [
+						{
+							"id": "448cbff3-49c1-4575-bda6-761127396068",
+							"name": "Create a New Redelegate Flow",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"flow\": {\n        \"network_code\": \"cosmos\",\n        \"chain_code\": \"testnet\",\n        \"operation\": \"redelegate\",\n        \"version\": \"v1\"\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://{{COSMOS_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows"
+							},
+							"_postman_previewlanguage": "json",
+							"header": [
+								""
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n  \"id\": \"00fbd7bd-054c-4138-99a8-2fe238cdc947\",\n  \"state\": \"initialized\",\n  \"actions\": [\n    {\n      \"name\": \"create_redelegate_tx\",\n      \"inputs\": [\n        {\n          \"name\": \"delegator_address\",\n          \"display\": \"Delegator Address\",\n          \"description\": \"\",\n          \"type\": \"string\",\n          \"validations\": [\n            {\n              \"type\": \"presence\",\n              \"options\": {}\n            }\n          ],\n          \"array\": false,\n          \"default_value\": null\n        },\n        {\n          \"name\": \"source_validator_address\",\n          \"display\": \"Source Validator Address\",\n          \"description\": \"\",\n          \"type\": \"string\",\n          \"validations\": [\n            {\n              \"type\": \"presence\",\n              \"options\": {}\n            },\n            {\n              \"type\": \"presence\",\n              \"options\": {}\n            },\n            {\n              \"type\": \"format\",\n              \"options\": {\n                \"with\": \"(?-mix:\\\\Acosmosvaloper.*)\",\n                \"message\": \"should start with `cosmosvaloper`\"\n              }\n            }\n          ],\n          \"array\": false,\n          \"default_value\": null\n        },\n        {\n          \"name\": \"destination_validator_address\",\n          \"display\": \"Destination Validator Address\",\n          \"description\": \"\",\n          \"type\": \"string\",\n          \"validations\": [\n            {\n              \"type\": \"presence\",\n              \"options\": {}\n            },\n            {\n              \"type\": \"presence\",\n              \"options\": {}\n            },\n            {\n              \"type\": \"format\",\n              \"options\": {\n                \"with\": \"(?-mix:\\\\Acosmosvaloper.*)\",\n                \"message\": \"should start with `cosmosvaloper`\"\n              }\n            }\n          ],\n          \"array\": false,\n          \"default_value\": null\n        },\n        {\n          \"name\": \"amount\",\n          \"display\": \"Amount\",\n          \"description\": \"\",\n          \"type\": \"decimal\",\n          \"validations\": [],\n          \"array\": false,\n          \"default_value\": null\n        },\n        {\n          \"name\": \"memo\",\n          \"display\": \"Memo\",\n          \"description\": \"\",\n          \"type\": \"string\",\n          \"validations\": [],\n          \"array\": false,\n          \"default_value\": null\n        },\n        {\n          \"name\": \"gas_price\",\n          \"display\": \"Gas Price\",\n          \"description\": \"\",\n          \"type\": \"decimal\",\n          \"validations\": [],\n          \"array\": false,\n          \"default_value\": null\n        },\n        {\n          \"name\": \"gas_limit\",\n          \"display\": \"Gas Limit\",\n          \"description\": \"\",\n          \"type\": \"decimal\",\n          \"validations\": [],\n          \"array\": false,\n          \"default_value\": null\n        },\n        {\n          \"name\": \"pubkey\",\n          \"display\": \"Pubkey\",\n          \"description\": \"Value will be retrieved from the chain if available\",\n          \"type\": \"string\",\n          \"validations\": [\n            {\n              \"type\": \"presence\",\n              \"options\": {}\n            }\n          ],\n          \"array\": false,\n          \"default_value\": null\n        }\n      ]\n    }\n  ],\n  \"data\": {\n    \"delegator_address\": null,\n    \"source_validator_address\": null,\n    \"destination_validator_address\": null,\n    \"amount\": null,\n    \"memo\": null,\n    \"gas_price\": null,\n    \"gas_limit\": null,\n    \"redelegate_transaction\": null,\n    \"pubkey\": null\n  },\n  \"network_code\": \"cosmos\",\n  \"chain_code\": \"testnet\",\n  \"created_at\": \"2022-12-15T10:11:12.773Z\",\n  \"updated_at\": \"2022-12-15T10:11:12.773Z\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Submit Redelegate Data",
+					"id": "e5c96980-b26b-4182-b463-3cec319e958b",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"create_redelegate_tx\",\n    \"inputs\": {\n        \"delegator_address\": \"cosmos1u85upk2v7pr65g0wv2976zleu6v8qjl9qprvzl\",\n        \"source_validator_address\": \"cosmosvaloper1tflk30mq5vgqjdly92kkhhq3raev2hnz6eete3\",\n        \"destination_validator_address\": \"cosmosvaloper1t8dv80kdq3t2g88kn8vtyeldvnf8xq5c4sklmx\",\n        \"amount\": \"0.1\",\n        \"pubkey\": \"0a2102db66d27dd215f1a61e5f4gga098b5293cc1da6f5c3557974ad5f39a2ec0fe125\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://{{COSMOS_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{cosmosRedelegateFlowId}}/next",
+						"description": "After creating the new redelegate flow, we need to submit the redelegate data.\n\nAfter collecting the required inputs as mentioned below, send a `PUT` request to `/api/v1/flows/[:flow_id]/next` to proceed to the next step.\n\n### Parameters\n\n- `name` &mdash; `string` Name of the action to execute - `create_redelegate_tx`.\n- `inputs` &mdash; `object`\n  - `delegator_address` &mdash; The address from which ATOM will be redelegated (required).\n  - `source_validator_address` &mdash; The validator address from which ATOM will be redelegated (required).\n  - `destination_validator_address` &mdash; The validator address to which ATOM will be redelegated (required).\n  - `amount` &mdash; The amount of ATOM to be redelegated (required).\n  - `memo` &mdash; `string` A message to record on-chain with your transfer (optional).\n  - `gas_limit` &mdash; `number` The total amount of gas you're willing to let this transaction consume (optional).\n  - `gas_price` &mdash; `number` How many ATOM you're willing to pay per unit of gas consumed by this transaction (optional).\n  - `pubkey` &mdash; `string` Required only if you're using a fresh account (that does not have any outgoing activity) else optional.\n\n### Response\n\n- `id` &mdash; `string` ID of the flow.\n- `state` &mdash; `string` The current state of the flow.\n- `actions` &mdash; `array` It includes the `name` & `inputs` of all next possible actions.\n - `refresh_redelegate_tx` &mdash; If you need to get a fresh version of the transaction payload (i.e., the nonce has increased).\n - `sign_redelegate_tx` &mdash; Submit a signed transaction payload ready to be broadcast to the network.\n- `data` &mdash; `object` Redelegate flow & transaction data."
+					},
+					"response": [
+						{
+							"id": "ddce7a72-eb51-414d-9f6b-c495e35258db",
+							"name": "Submit Redelegate Data",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"create_redelegate_tx\",\n    \"inputs\": {\n        \"delegator_address\": \"cosmos1u85upk2v7pr65g0wv2976zleu6v8qjl9qprvzl\",\n        \"source_validator_address\": \"cosmosvaloper1tflk30mq5vgqjdly92kkhhq3raev2hnz6eete3\",\n        \"destination_validator_address\": \"cosmosvaloper1t8dv80kdq3t2g88kn8vtyeldvnf8xq5c4sklmx\",\n        \"amount\": \"0.1\",\n        \"pubkey\": \"0a2102db66d27dd215f1a61e5f4gga098b5293cc1da6f5c3557974ad5f39a2ec0fe125\"\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://{{COSMOS_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{cosmosRedelegateFlowId}}/next"
+							},
+							"_postman_previewlanguage": "json",
+							"header": [
+								""
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n  \"id\": \"00fbd7bd-054c-4138-99a8-2fe238cdc947\",\n  \"state\": \"redelegate_tx_signature\",\n  \"actions\": [\n    {\n      \"name\": \"refresh_redelegate_tx\",\n      \"inputs\": []\n    },\n    {\n      \"name\": \"sign_redelegate_tx\",\n      \"inputs\": [\n        {\n          \"name\": \"transaction_payload\",\n          \"display\": \"Transaction Payload\",\n          \"description\": \"\",\n          \"type\": \"signed_transaction\",\n          \"validations\": [\n            {\n              \"type\": \"sign_payload\",\n              \"options\": {}\n            }\n          ],\n          \"array\": false,\n          \"default_value\": null,\n          \"signers\": [\"cosmos1u85upk2v7pr65g0wv2976zleu6v8qjl9qprvzl\"],\n          \"transaction_payload\": \"7b226d65737361676573223a5b7b227479706555726c223a222f636f736d6f732e7374616b696e672e763162657461312e4d7367426567696e526564656c6567617465222c2276616c7565223a7b2264656c656761746f7241646472657373223a22636f736d6f733175383575706b3276377072363567307776323937367a6c6575367638716a6c39717072767a6c222c2276616c696461746f7253726341646472657373223a22636f736d6f7376616c6f7065723174666c6b33306d71357667716a646c7939326b6b686871337261657632686e7a366565746533222c2276616c696461746f7244737441646472657373223a22636f736d6f7376616c6f706572317438647638306b64713374326738386b6e38767479656c64766e66387871356334736b6c6d78222c22616d6f756e74223a7b2264656e6f6d223a227561746f6d222c22616d6f756e74223a22313030303030227d7d7d5d2c22666565223a7b22616d6f756e74223a5b7b22616d6f756e74223a2237363437222c2264656e6f6d223a227561746f6d227d5d2c22676173223a22333035383535227d2c226d656d6f223a22227d\"\n        },\n        {\n          \"name\": \"signatures\",\n          \"display\": \"Signatures\",\n          \"description\": \"\",\n          \"type\": \"array_of_signatures\",\n          \"validations\": [],\n          \"array\": true,\n          \"default_value\": null,\n          \"element_type\": \"signature_data\",\n          \"signers\": [\"cosmos1u85upk2v7pr65g0wv2976zleu6v8qjl9qprvzl\"],\n          \"transaction_payload\": \"7b226d65737361676573223a5b7b227479706555726c223a222f636f736d6f732e7374616b696e672e763162657461312e4d7367426567696e526564656c6567617465222c2276616c7565223a7b2264656c656761746f7241646472657373223a22636f736d6f733175383575706b3276377072363567307776323937367a6c6575367638716a6c39717072767a6c222c2276616c696461746f7253726341646472657373223a22636f736d6f7376616c6f7065723174666c6b33306d71357667716a646c7939326b6b686871337261657632686e7a366565746533222c2276616c696461746f7244737441646472657373223a22636f736d6f7376616c6f706572317438647638306b64713374326738386b6e38767479656c64766e66387871356334736b6c6d78222c22616d6f756e74223a7b2264656e6f6d223a227561746f6d222c22616d6f756e74223a22313030303030227d7d7d5d2c22666565223a7b22616d6f756e74223a5b7b22616d6f756e74223a2237363437222c2264656e6f6d223a227561746f6d227d5d2c22676173223a22333035383535227d2c226d656d6f223a22227d\",\n          \"signing_payload\": \"a91be5146aba3e90b8be70a055e4ec6d4115969d424a57a0e6fe89a08ee9f436\",\n          \"inputs\": {\n            \"input_klass\": \"Workflows::Signature\",\n            \"input_instance\": {\n              \"account_address\": null,\n              \"signature\": null\n            },\n            \"flow\": {\n              \"id\": 140561,\n              \"customer_id\": 7,\n              \"chain_id\": 10,\n              \"workflow_state\": \"redelegate_tx_signature\",\n              \"data\": {\n                \"delegator_address\": \"cosmos1u85upk2v7pr65g0wv2976zleu6v8qjl9qprvzl\",\n                \"source_validator_address\": \"cosmosvaloper1tflk30mq5vgqjdly92kkhhq3raev2hnz6eete3\",\n                \"destination_validator_address\": \"cosmosvaloper1t8dv80kdq3t2g88kn8vtyeldvnf8xq5c4sklmx\",\n                \"amount\": \"0.1\",\n                \"memo\": null,\n                \"gas_price\": null,\n                \"gas_limit\": null,\n                \"redelegate_transaction\": {\n                  \"raw\": \"7b226d65737361676573223a5b7b227479706555726c223a222f636f736d6f732e7374616b696e672e763162657461312e4d7367426567696e526564656c6567617465222c2276616c7565223a7b2264656c656761746f7241646472657373223a22636f736d6f733175383575706b3276377072363567307776323937367a6c6575367638716a6c39717072767a6c222c2276616c696461746f7253726341646472657373223a22636f736d6f7376616c6f7065723174666c6b33306d71357667716a646c7939326b6b686871337261657632686e7a366565746533222c2276616c696461746f7244737441646472657373223a22636f736d6f7376616c6f706572317438647638306b64713374326738386b6e38767479656c64766e66387871356334736b6c6d78222c22616d6f756e74223a7b2264656e6f6d223a227561746f6d222c22616d6f756e74223a22313030303030227d7d7d5d2c22666565223a7b22616d6f756e74223a5b7b22616d6f756e74223a2237363437222c2264656e6f6d223a227561746f6d227d5d2c22676173223a22333035383535227d2c226d656d6f223a22227d\",\n                  \"signing_payload\": \"a91be5146aba3e90b8be70a055e4ec6d4115969d424a57a0e6fe89a08ee9f436\",\n                  \"signed\": null,\n                  \"hash\": null,\n                  \"status\": null,\n                  \"error\": null,\n                  \"signatures\": null\n                },\n                \"pubkey\": \"0a2102db66d27dd215f1a61e5f4gga098b5293cc1da6f5c3557974ad5f39a2ec0fe125\"\n              },\n              \"created_at\": \"2022-12-15T10:11:12.773Z\",\n              \"updated_at\": \"2022-12-15T10:23:27.507Z\",\n              \"id_public\": \"00fbd7bd-054c-4138-99a8-2fe238cdc947\",\n              \"supported_operation_id\": 33\n            },\n            \"flow_attributes\": {},\n            \"empty_input\": {\n              \"account_address\": null,\n              \"signature\": null\n            }\n          }\n        }\n      ]\n    }\n  ],\n  \"data\": {\n    \"delegator_address\": \"cosmos1u85upk2v7pr65g0wv2976zleu6v8qjl9qprvzl\",\n    \"source_validator_address\": \"cosmosvaloper1tflk30mq5vgqjdly92kkhhq3raev2hnz6eete3\",\n    \"destination_validator_address\": \"cosmosvaloper1t8dv80kdq3t2g88kn8vtyeldvnf8xq5c4sklmx\",\n    \"amount\": \"0.1\",\n    \"memo\": null,\n    \"gas_price\": null,\n    \"gas_limit\": null,\n    \"redelegate_transaction\": {\n      \"raw\": \"7b226d65737361676573223a5b7b227479706555726c223a222f636f736d6f732e7374616b696e672e763162657461312e4d7367426567696e526564656c6567617465222c2276616c7565223a7b2264656c656761746f7241646472657373223a22636f736d6f733175383575706b3276377072363567307776323937367a6c6575367638716a6c39717072767a6c222c2276616c696461746f7253726341646472657373223a22636f736d6f7376616c6f7065723174666c6b33306d71357667716a646c7939326b6b686871337261657632686e7a366565746533222c2276616c696461746f7244737441646472657373223a22636f736d6f7376616c6f706572317438647638306b64713374326738386b6e38767479656c64766e66387871356334736b6c6d78222c22616d6f756e74223a7b2264656e6f6d223a227561746f6d222c22616d6f756e74223a22313030303030227d7d7d5d2c22666565223a7b22616d6f756e74223a5b7b22616d6f756e74223a2237363437222c2264656e6f6d223a227561746f6d227d5d2c22676173223a22333035383535227d2c226d656d6f223a22227d\",\n      \"signing_payload\": \"a91be5146aba3e90b8be70a055e4ec6d4115969d424a57a0e6fe89a08ee9f436\",\n      \"signed\": null,\n      \"hash\": null,\n      \"status\": null,\n      \"error\": null,\n      \"signatures\": null\n    },\n    \"pubkey\": \"0a2102db66d27dd215f1a61e5f4gga098b5293cc1da6f5c3557974ad5f39a2ec0fe125\"\n  },\n  \"network_code\": \"cosmos\",\n  \"chain_code\": \"testnet\",\n  \"created_at\": \"2022-12-15T10:11:12.773Z\",\n  \"updated_at\": \"2022-12-15T10:23:27.507Z\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Submit Signed Redelegate Transaction for Broadcast",
+					"id": "a23b636b-176e-4fb7-a47a-7ff7b755d202",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"sign_redelegate_tx\",\n    \"inputs\": {\n        \"transaction_payload\": \"0ade010adb010a2a2f636f736d6f732e7374616b696e672e763162657461312e4d7367426567696e526564656c656761746512ac010a2d636f736d6f733175383575706b3276377072363567307776323937367a6c6575367638716a6c39717072767a6c1234636f736d6f7376616c6f7065723174666c6b33306d71357667716a646c7939326b6b686871337261657632686e7a3665657465331a34636f736d6f7376616c6f706572317438647638306b64713374326738386b6e38767479656c64766e66387871356334736b6c6d78220f0a057561746f6d120631303030303012670a500a460a1f2f636f736d6f732e63727970746f2e736563703235366b312e5075624b657912230a2102db33d72ee215f1a61e5f4ffa098b9325cc1da6f5c3557974ad0f21a5ec9fe23512040a020801180312130a0d0a057561746f6d12043736343710bfd5121a40a734a6fc19579c4837ce1af6e2c70c37b9e23b7dbf3bc6e807d87f8cfd86f4f34a0a83f98ad885b17ca00f7fe07c19ad7aed8b1f24dc074b043da2f61e02d864\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://{{COSMOS_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{cosmosRedelegateFlowId}}/next",
+						"description": "Before broadcasting the transaction, you must [sign the `transaction_payload`](https://docs.figment.io/guides/staking-api/figment-signing-transactions) you received in the previous step. After signing the transaction, send a `PUT` request to `/api/v1/flows/[:flow_id]/next` and the Staking API will broadcast the transaction to the network.\n\n### Parameters\n\n- `name` &mdash; `string` Name of the action to execute (required).\n- `inputs` &mdash; `object`\n  - `transaction_payload` &mdash; Signed transaction payload from the previous step's response.\n\n### Response\n\n- `id` &mdash; `string` ID of the flow.\n- `state` &mdash; `string` The current state of the flow.\n - `redelegate_tx_broadcasting` &mdash; Transaction has been broadcast and is waiting for confirmation.\n - `completed` &mdash; Transaction has been confirmed and the redelegation is complete.\n- `actions` &mdash; `array` It includes the `name` & `inputs` of all next possible actions.\n- `data` &mdash; `object` Redelegate flow & transaction data."
+					},
+					"response": [
+						{
+							"id": "e9bd2df0-8f05-441f-97e0-ec75eab72f8e",
+							"name": "Submit Signed Redelegate Transaction for Broadcast",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"sign_redelegate_tx\",\n    \"inputs\": {\n        \"transaction_payload\": \"0ade010adb010a2a2f636f736d6f732e7374616b696e672e763162657461312e4d7367426567696e526564656c656761746512ac010a2d636f736d6f733175383575706b3276377072363567307776323937367a6c6575367638716a6c39717072767a6c1234636f736d6f7376616c6f7065723174666c6b33306d71357667716a646c7939326b6b686871337261657632686e7a3665657465331a34636f736d6f7376616c6f706572317438647638306b64713374326738386b6e38767479656c64766e66387871356334736b6c6d78220f0a057561746f6d120631303030303012670a500a460a1f2f636f736d6f732e63727970746f2e736563703235366b312e5075624b657912230a2102db33d72ee215f1a61e5f4ffa098b9325cc1da6f5c3557974ad0f21a5ec9fe23512040a020801180312130a0d0a057561746f6d12043736343710bfd5121a40a734a6fc19579c4837ce1af6e2c70c37b9e23b7dbf3bc6e807d87f8cfd86f4f34a0a83f98ad885b17ca00f7fe07c19ad7aed8b1f24dc074b043da2f61e02d864\"\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://{{COSMOS_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{cosmosRedelegateFlowId}}/next"
+							},
+							"_postman_previewlanguage": "json",
+							"header": [
+								""
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n  \"id\": \"00fbd7bd-054c-4138-99a8-2fe238cdc947\",\n  \"state\": \"redelegate_tx_broadcasting\",\n  \"actions\": [\n    {\n      \"name\": \"wait\",\n      \"estimated_state_change_at\": \"2022-12-15T10:25:52.063Z\",\n      \"inputs\": []\n    }\n  ],\n  \"data\": {\n    \"delegator_address\": \"cosmos1u85upk2v7pr65g0wv2976zleu6v8qjl9qprvzl\",\n    \"source_validator_address\": \"cosmosvaloper1tflk30mq5vgqjdly92kkhhq3raev2hnz6eete3\",\n    \"destination_validator_address\": \"cosmosvaloper1t8dv80kdq3t2g88kn8vtyeldvnf8xq5c4sklmx\",\n    \"amount\": \"0.1\",\n    \"memo\": null,\n    \"gas_price\": null,\n    \"gas_limit\": null,\n    \"redelegate_transaction\": {\n      \"raw\": \"7b226d65737361676573223a5b7b227479706555726c223a222f636f736d6f732e7374616b696e672e763162657461312e4d7367426567696e526564656c6567617465222c2276616c7565223a7b2264656c656761746f7241646472657373223a22636f736d6f733175383575706b3276377072363567307776323937367a6c6575367638716a6c39717072767a6c222c2276616c696461746f7253726341646472657373223a22636f736d6f7376616c6f7065723174666c6b33306d71357667716a646c7939326b6b686871337261657632686e7a366565746533222c2276616c696461746f7244737441646472657373223a22636f736d6f7376616c6f706572317438647638306b64713374326738386b6e38767479656c64766e66387871356334736b6c6d78222c22616d6f756e74223a7b2264656e6f6d223a227561746f6d222c22616d6f756e74223a22313030303030227d7d7d5d2c22666565223a7b22616d6f756e74223a5b7b22616d6f756e74223a2237363437222c2264656e6f6d223a227561746f6d227d5d2c22676173223a22333035383535227d2c226d656d6f223a22227d\",\n      \"signing_payload\": \"a91be5146aba3e90b8be70a055e4ec6d4115969d424a57a0e6fe89a08ee9f436\",\n      \"signed\": \"0ade010adb010a2a2f636f736d6f732e7374616b696e672e763162657461312e4d7367426567696e526564656c656761746512ac010a2d636f736d6f733175383575706b3276377072363567307776323937367a6c6575367638716a6c39717072767a6c1234636f736d6f7376616c6f7065723174666c6b33306d71357667716a646c7939326b6b686871337261657632686e7a3665657465331a34636f736d6f7376616c6f706572317438647638306b64713374326738386b6e38767479656c64766e66387871356334736b6c6d78220f0a057561746f6d120631303030303012670a500a460a1f2f636f736d6f732e63727970746f2e736563703235366b312e5075624b657912230a2102db33d72ee215f1a61e5f4ffa098b9325cc1da6f5c3557974ad0f21a5ec9fe23512040a020801180312130a0d0a057561746f6d12043736343710bfd5121a40a734a6fc19579c4837ce1af6e2c70c37b9e23b7dbf3bc6e807d87f8cfd86f4f34a0a83f98ad885b17ca00f7fe07c19ad7aed8b1f24dc074b043da2f61e02d864\",\n      \"hash\": \"06B3E21DEA1E00ABFB99D833F3DD491EFC5DF09470E2A5663ACEEFB8EC646D78\",\n      \"status\": null,\n      \"error\": null,\n      \"signatures\": [\n        {\n          \"account_address\": \"cosmos1u85upk2v7pr65g0wv2976zleu6v8qjl9qprvzl\",\n          \"signature\": \"\"\n        }\n      ]\n    },\n    \"pubkey\": \"0a2102db66d27dd215f1a61e5f4gga098b5293cc1da6f5c3557974ad5f39a2ec0fe125\"\n  },\n  \"network_code\": \"cosmos\",\n  \"chain_code\": \"testnet\",\n  \"created_at\": \"2022-12-15T10:11:12.773Z\",\n  \"updated_at\": \"2022-12-15T10:24:51.363Z\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Flow Status",
+					"id": "739b5d06-c13e-4888-aaf7-4f5687124ae3",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://{{COSMOS_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{cosmosRedelegateFlowId}}",
+						"description": "To get the current state of the existing flow, send a `GET` request to `/api/v1/flows/[:flow_id]` using the flow ID from the previous step.\n\n### Parameters\n\n- None\n\n### Response\n\n- `id` &mdash; `string` ID of the flow.\n- `state` &mdash; `string` The current state of the flow.\n - `redelegate_tx_broadcasting` &mdash; Transaction has been broadcast and is waiting for confirmation.\n - `completed` &mdash; Transaction has been confirmed and the redelegation is complete.\n- `actions` &mdash; `array` It includes the `name` & `inputs` of all next possible actions.\n- `data` &mdash; `object` Redelegate flow & transaction data."
+					},
+					"response": [
+						{
+							"id": "d8442516-d389-433d-a5eb-d7081c952895",
+							"name": "Get Flow Status",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://{{COSMOS_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{cosmosRedelegateFlowId}}"
+							},
+							"_postman_previewlanguage": "json",
+							"header": [
+								""
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n  \"id\": \"00fbd7bd-054c-4138-99a8-2fe238cdc947\",\n  \"state\": \"completed\",\n  \"actions\": [],\n  \"data\": {\n    \"delegator_address\": \"cosmos1u85upk2v7pr65g0wv2976zleu6v8qjl9qprvzl\",\n    \"source_validator_address\": \"cosmosvaloper1tflk30mq5vgqjdly92kkhhq3raev2hnz6eete3\",\n    \"destination_validator_address\": \"cosmosvaloper1t8dv80kdq3t2g88kn8vtyeldvnf8xq5c4sklmx\",\n    \"amount\": \"0.1\",\n    \"memo\": null,\n    \"gas_price\": null,\n    \"gas_limit\": null,\n    \"redelegate_transaction\": {\n      \"raw\": \"7b226d65737361676573223a5b7b227479706555726c223a222f636f736d6f732e7374616b696e672e763162657461312e4d7367426567696e526564656c6567617465222c2276616c7565223a7b2264656c656761746f7241646472657373223a22636f736d6f733175383575706b3276377072363567307776323937367a6c6575367638716a6c39717072767a6c222c2276616c696461746f7253726341646472657373223a22636f736d6f7376616c6f7065723174666c6b33306d71357667716a646c7939326b6b686871337261657632686e7a366565746533222c2276616c696461746f7244737441646472657373223a22636f736d6f7376616c6f706572317438647638306b64713374326738386b6e38767479656c64766e66387871356334736b6c6d78222c22616d6f756e74223a7b2264656e6f6d223a227561746f6d222c22616d6f756e74223a22313030303030227d7d7d5d2c22666565223a7b22616d6f756e74223a5b7b22616d6f756e74223a2237363437222c2264656e6f6d223a227561746f6d227d5d2c22676173223a22333035383535227d2c226d656d6f223a22227d\",\n      \"signing_payload\": \"a91be5146aba3e90b8be70a055e4ec6d4115969d424a57a0e6fe89a08ee9f436\",\n      \"signed\": \"0ade010adb010a2a2f636f736d6f732e7374616b696e672e763162657461312e4d7367426567696e526564656c656761746512ac010a2d636f736d6f733175383575706b3276377072363567307776323937367a6c6575367638716a6c39717072767a6c1234636f736d6f7376616c6f7065723174666c6b33306d71357667716a646c7939326b6b686871337261657632686e7a3665657465331a34636f736d6f7376616c6f706572317438647638306b64713374326738386b6e38767479656c64766e66387871356334736b6c6d78220f0a057561746f6d120631303030303012670a500a460a1f2f636f736d6f732e63727970746f2e736563703235366b312e5075624b657912230a2102db33d72ee215f1a61e5f4ffa098b9325cc1da6f5c3557974ad0f21a5ec9fe23512040a020801180312130a0d0a057561746f6d12043736343710bfd5121a40a734a6fc19579c4837ce1af6e2c70c37b9e23b7dbf3bc6e807d87f8cfd86f4f34a0a83f98ad885b17ca00f7fe07c19ad7aed8b1f24dc074b043da2f61e02d864\",\n      \"hash\": \"06B3E21DEA1E00ABFB99D833F3DD491EFC5DF09470E2A5663ACEEFB8EC646D78\",\n      \"status\": \"confirmed\",\n      \"error\": null,\n      \"signatures\": [\n        {\n          \"account_address\": \"cosmos1u85upk2v7pr65g0wv2976zleu6v8qjl9qprvzl\",\n          \"signature\": \"\"\n        }\n      ]\n    },\n    \"pubkey\": \"0a2102db66d27dd215f1a61e5f4gga098b5293cc1da6f5c3557974ad5f39a2ec0fe125\"\n  },\n  \"network_code\": \"cosmos\",\n  \"chain_code\": \"testnet\",\n  \"created_at\": \"2022-12-15T10:11:12.773Z\",\n  \"updated_at\": \"2022-12-15T10:25:02.217Z\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Create a New Undelegate Flow",
+					"id": "3a65f2d5-99fd-4c88-a27a-af2afaeaeddd",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"flow\": {\n        \"network_code\": \"cosmos\",\n        \"chain_code\": \"testnet\",\n        \"operation\": \"unstaking\",\n        \"version\": \"v1\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://{{COSMOS_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows",
+						"description": "To initiate the unstaking process with Staking API, create a new flow with `POST /api/v1/flows`.\n\n### Parameters\n\n- `flow` &mdash; `object`\n  - `network_code` &mdash; `string` Network this flow operates on (ex. `cosmos`) (required).\n  - `chain_code` &mdash; `string` Chain this flow operates on (ex. `testnet`) (required).\n  - `operation` &mdash; `string` The operation to perform (ex. `unstaking`) (required).\n  - `version` &mdash; `string` API version to use (ex. `v1`) (optional).\n\n### Response\n\n- `id` &mdash; `string` ID of the flow.\n- `state` &mdash; `string` The current state of the flow.\n- `actions` &mdash; `array` It includes the `name` & `inputs` of all next possible actions.\n - `create_undelegate_tx` &mdash; Use this action to generate an undelegation transaction to unstake your ATOM.\n   - `delegator_address` &mdash; The address from which ATOM was delegated.\n   - `validator_address` &mdash; The validator address from which ATOM will be undelegated.\n   - `amount` &mdash; The amount of ATOM to be undelegated.\n   - `memo` &mdash; an optional message to record on-chain with your transaction.\n   - `gas_limit` &mdash; the total amount of gas you're willing to let this transaction consume.\n     - If you do not include this, we'll use a Cosmos library to select a good default for you.\n   - `gas_price` &mdash; how many ATOM you're willing to pay per unit of gas consumed by this transaction.\n     - If you do not include this, we'll use a Cosmos library to select a good default for you.\n   - `pubkey` &mdash; Pubkey value will be retrieved from the chain but if you're using a fresh account (that does not have any outgoing activity) then this information is not available and it requires the user to pass it.\n- `data` &mdash; `object` Undelegate flow & transaction data."
+					},
+					"response": [
+						{
+							"id": "08a6e063-58c4-452f-932c-a13293790aa0",
+							"name": "Create a New Undelegate Flow",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"flow\": {\n        \"network_code\": \"cosmos\",\n        \"chain_code\": \"testnet\",\n        \"operation\": \"unstaking\",\n        \"version\": \"v1\"\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://{{COSMOS_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows"
+							},
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n  \"id\": \"34a3e428-2cad-4205-bd17-ea3ba2fc8c2e\",\n  \"state\": \"initialized\",\n  \"actions\": [\n    {\n      \"name\": \"create_undelegate_tx\",\n      \"inputs\": [\n        {\n          \"name\": \"delegator_address\",\n          \"display\": \"Delegator Address\",\n          \"description\": \"\",\n          \"type\": \"string\",\n          \"validations\": [\n            {\n              \"type\": \"presence\",\n              \"options\": {}\n            }\n          ],\n          \"array\": false,\n          \"default_value\": null\n        },\n        {\n          \"name\": \"validator_address\",\n          \"display\": \"Validator Address\",\n          \"description\": \"\",\n          \"type\": \"string\",\n          \"validations\": [\n            {\n              \"type\": \"presence\",\n              \"options\": {}\n            },\n            {\n              \"type\": \"presence\",\n              \"options\": {}\n            },\n            {\n              \"type\": \"format\",\n              \"options\": {\n                \"with\": \"(?-mix:\\\\Acosmosvaloper.*)\",\n                \"message\": \"should start with `cosmosvaloper`\"\n              }\n            }\n          ],\n          \"array\": false,\n          \"default_value\": null\n        },\n        {\n          \"name\": \"amount\",\n          \"display\": \"Amount\",\n          \"description\": \"\",\n          \"type\": \"decimal\",\n          \"validations\": [],\n          \"array\": false,\n          \"default_value\": null\n        },\n        {\n          \"name\": \"memo\",\n          \"display\": \"Memo\",\n          \"description\": \"\",\n          \"type\": \"string\",\n          \"validations\": [],\n          \"array\": false,\n          \"default_value\": null\n        },\n        {\n          \"name\": \"gas_price\",\n          \"display\": \"Gas Price\",\n          \"description\": \"\",\n          \"type\": \"decimal\",\n          \"validations\": [],\n          \"array\": false,\n          \"default_value\": null\n        },\n        {\n          \"name\": \"gas_limit\",\n          \"display\": \"Gas Limit\",\n          \"description\": \"\",\n          \"type\": \"decimal\",\n          \"validations\": [],\n          \"array\": false,\n          \"default_value\": null\n        },\n        {\n          \"name\": \"pubkey\",\n          \"display\": \"Pubkey\",\n          \"description\": \"Value will be retrieved from the chain if available\",\n          \"type\": \"string\",\n          \"validations\": [\n            {\n              \"type\": \"presence\",\n              \"options\": {}\n            }\n          ],\n          \"array\": false,\n          \"default_value\": null\n        }\n      ]\n    }\n  ],\n  \"data\": {\n    \"delegator_address\": null,\n    \"validator_address\": null,\n    \"amount\": null,\n    \"memo\": null,\n    \"gas_price\": null,\n    \"gas_limit\": null,\n    \"undelegate_transaction\": null,\n    \"estimated_unbonded_at\": null,\n    \"pubkey\": null\n  },\n  \"network_code\": \"cosmos\",\n  \"chain_code\": \"testnet\",\n  \"created_at\": \"2022-12-15T10:37:31.604Z\",\n  \"updated_at\": \"2022-12-15T10:37:31.604Z\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Submit Undelegate Data",
+					"id": "2cef9302-5364-4abd-8b2c-26333d9f3ce3",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"create_undelegate_tx\",\n    \"inputs\": {\n        \"delegator_address\": \"cosmos1u85upk2v7pr65g0wv2976zleu6v8qjl9qprvzl\",\n        \"validator_address\": \"cosmosvaloper1t8dv80kdq3t2g88kn8vtyeldvnf8xq5c4sklmx\",\n        \"amount\": 0.099998,\n        \"pubkey\": \"0a2102db66d27dd215f1a61e5f4gga098b5293cc1da6f5c3557974ad5f39a2ec0fe125\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://{{COSMOS_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{cosmosUndelegateFlowId}}/next",
+						"description": "After creating the new undelegation flow, we need to submit the undelegate data.\n\nAfter collecting the required inputs as mentioned below, send a `PUT` request to `/api/v1/flows/[:flow_id]/next` to proceed to the next step.\n\n### Parameters\n\n- `name` &mdash; `string` Name of the action to execute - `create_undelegate_tx`.\n- `inputs` &mdash; `object`\n    - `delegator_address` &mdash; `string` The address from which ATOM was delegated (required).\n    - `validator_address` &mdash; `string` The validator address from which ATOM will be undelegated (required).\n    - `amount` &mdash; `number` The amount of ATOM to be undelegated (required).\n    - `memo` &mdash; `string` A message to record on-chain with your transfer (optional).\n    - `gas_limit` &mdash; `number` The total amount of gas you're willing to let this transaction consume (optional).\n    - `gas_price` &mdash; `number` How many ATOM you're willing to pay per unit of gas consumed by this transaction (optional).\n    - `pubkey` &mdash; `string` Required only if you're using a fresh account (that does not have any outgoing activity) else optional.\n\n### Response\n\n- `id` &mdash; `string` ID of the flow.\n- `state` &mdash; `string` The current state of the flow.\n- `actions` &mdash; `array` It includes the `name` & `inputs` of all next possible actions.\n - `refresh_undelegate_tx` &mdash; If you need to get a fresh version of the transaction payload (i.e., the nonce has increased).\n - `sign_undelegate_tx` &mdash; Submit a signed transaction payload ready to be broadcast to the network.\n- `data` &mdash; `object` Undelegate flow & transaction data."
+					},
+					"response": [
+						{
+							"id": "1b8455ea-b647-4921-a66d-8e9dff0689f1",
+							"name": "Submit Undelegate Data",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"create_undelegate_tx\",\n    \"inputs\": {\n        \"delegator_address\": \"cosmos1u85upk2v7pr65g0wv2976zleu6v8qjl9qprvzl\",\n        \"validator_address\": \"cosmosvaloper1t8dv80kdq3t2g88kn8vtyeldvnf8xq5c4sklmx\",\n        \"amount\": 0.099998,\n        \"pubkey\": \"0a2102db66d27dd215f1a61e5f4gga098b5293cc1da6f5c3557974ad5f39a2ec0fe125\"\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://{{COSMOS_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{cosmosUndelegateFlowId}}/next"
+							},
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n  \"id\": \"34a3e428-2cad-4205-bd17-ea3ba2fc8c2e\",\n  \"state\": \"undelegate_tx_signature\",\n  \"actions\": [\n    {\n      \"name\": \"refresh_undelegate_tx\",\n      \"inputs\": []\n    },\n    {\n      \"name\": \"sign_undelegate_tx\",\n      \"inputs\": [\n        {\n          \"name\": \"transaction_payload\",\n          \"display\": \"Transaction Payload\",\n          \"description\": \"\",\n          \"type\": \"signed_transaction\",\n          \"validations\": [\n            {\n              \"type\": \"sign_payload\",\n              \"options\": {}\n            }\n          ],\n          \"array\": false,\n          \"default_value\": null,\n          \"signers\": [\"cosmos1u85upk2v7pr65g0wv2976zleu6v8qjl9qprvzl\"],\n          \"transaction_payload\": \"7b226d65737361676573223a5b7b227479706555726c223a222f636f736d6f732e7374616b696e672e763162657461312e4d7367556e64656c6567617465222c2276616c7565223a7b2264656c656761746f7241646472657373223a22636f736d6f733175383575706b3276377072363567307776323937367a6c6575367638716a6c39717072767a6c222c2276616c696461746f7241646472657373223a22636f736d6f7376616c6f706572317438647638306b64713374326738386b6e38767479656c64766e66387871356334736b6c6d78222c22616d6f756e74223a7b2264656e6f6d223a227561746f6d222c22616d6f756e74223a223939393938227d7d7d5d2c22666565223a7b22616d6f756e74223a5b7b22616d6f756e74223a2235363934222c2264656e6f6d223a227561746f6d227d5d2c22676173223a22323237373436227d2c226d656d6f223a22227d\"\n        },\n        {\n          \"name\": \"signatures\",\n          \"display\": \"Signatures\",\n          \"description\": \"\",\n          \"type\": \"array_of_signatures\",\n          \"validations\": [],\n          \"array\": true,\n          \"default_value\": null,\n          \"element_type\": \"signature_data\",\n          \"signers\": [\"cosmos1u85upk2v7pr65g0wv2976zleu6v8qjl9qprvzl\"],\n          \"transaction_payload\": \"7b226d65737361676573223a5b7b227479706555726c223a222f636f736d6f732e7374616b696e672e763162657461312e4d7367556e64656c6567617465222c2276616c7565223a7b2264656c656761746f7241646472657373223a22636f736d6f733175383575706b3276377072363567307776323937367a6c6575367638716a6c39717072767a6c222c2276616c696461746f7241646472657373223a22636f736d6f7376616c6f706572317438647638306b64713374326738386b6e38767479656c64766e66387871356334736b6c6d78222c22616d6f756e74223a7b2264656e6f6d223a227561746f6d222c22616d6f756e74223a223939393938227d7d7d5d2c22666565223a7b22616d6f756e74223a5b7b22616d6f756e74223a2235363934222c2264656e6f6d223a227561746f6d227d5d2c22676173223a22323237373436227d2c226d656d6f223a22227d\",\n          \"signing_payload\": \"61558c76f2c70104bf4643e1bd91890a0c7897472178435bd345135297177acd\",\n          \"inputs\": {\n            \"input_klass\": \"Workflows::Signature\",\n            \"input_instance\": {\n              \"account_address\": null,\n              \"signature\": null\n            },\n            \"flow\": {\n              \"id\": 140563,\n              \"customer_id\": 7,\n              \"chain_id\": 10,\n              \"workflow_state\": \"undelegate_tx_signature\",\n              \"data\": {\n                \"delegator_address\": \"cosmos1u85upk2v7pr65g0wv2976zleu6v8qjl9qprvzl\",\n                \"validator_address\": \"cosmosvaloper1t8dv80kdq3t2g88kn8vtyeldvnf8xq5c4sklmx\",\n                \"amount\": \"0.099998\",\n                \"memo\": null,\n                \"gas_price\": null,\n                \"gas_limit\": null,\n                \"undelegate_transaction\": {\n                  \"raw\": \"7b226d65737361676573223a5b7b227479706555726c223a222f636f736d6f732e7374616b696e672e763162657461312e4d7367556e64656c6567617465222c2276616c7565223a7b2264656c656761746f7241646472657373223a22636f736d6f733175383575706b3276377072363567307776323937367a6c6575367638716a6c39717072767a6c222c2276616c696461746f7241646472657373223a22636f736d6f7376616c6f706572317438647638306b64713374326738386b6e38767479656c64766e66387871356334736b6c6d78222c22616d6f756e74223a7b2264656e6f6d223a227561746f6d222c22616d6f756e74223a223939393938227d7d7d5d2c22666565223a7b22616d6f756e74223a5b7b22616d6f756e74223a2235363934222c2264656e6f6d223a227561746f6d227d5d2c22676173223a22323237373436227d2c226d656d6f223a22227d\",\n                  \"signing_payload\": \"61558c76f2c70104bf4643e1bd91890a0c7897472178435bd345135297177acd\",\n                  \"signed\": null,\n                  \"hash\": null,\n                  \"status\": null,\n                  \"error\": null,\n                  \"signatures\": null,\n                  \"block_number\": null\n                },\n                \"estimated_unbonded_at\": null,\n                \"pubkey\": \"0a2102db66d27dd215f1a61e5f4gga098b5293cc1da6f5c3557974ad5f39a2ec0fe125\"\n              },\n              \"created_at\": \"2022-12-15T10:37:31.604Z\",\n              \"updated_at\": \"2022-12-15T10:40:22.559Z\",\n              \"id_public\": \"34a3e428-2cad-4205-bd17-ea3ba2fc8c2e\",\n              \"supported_operation_id\": 32\n            },\n            \"flow_attributes\": {},\n            \"empty_input\": {\n              \"account_address\": null,\n              \"signature\": null\n            }\n          }\n        }\n      ]\n    }\n  ],\n  \"data\": {\n    \"delegator_address\": \"cosmos1u85upk2v7pr65g0wv2976zleu6v8qjl9qprvzl\",\n    \"validator_address\": \"cosmosvaloper1t8dv80kdq3t2g88kn8vtyeldvnf8xq5c4sklmx\",\n    \"amount\": \"0.099998\",\n    \"memo\": null,\n    \"gas_price\": null,\n    \"gas_limit\": null,\n    \"undelegate_transaction\": {\n      \"raw\": \"7b226d65737361676573223a5b7b227479706555726c223a222f636f736d6f732e7374616b696e672e763162657461312e4d7367556e64656c6567617465222c2276616c7565223a7b2264656c656761746f7241646472657373223a22636f736d6f733175383575706b3276377072363567307776323937367a6c6575367638716a6c39717072767a6c222c2276616c696461746f7241646472657373223a22636f736d6f7376616c6f706572317438647638306b64713374326738386b6e38767479656c64766e66387871356334736b6c6d78222c22616d6f756e74223a7b2264656e6f6d223a227561746f6d222c22616d6f756e74223a223939393938227d7d7d5d2c22666565223a7b22616d6f756e74223a5b7b22616d6f756e74223a2235363934222c2264656e6f6d223a227561746f6d227d5d2c22676173223a22323237373436227d2c226d656d6f223a22227d\",\n      \"signing_payload\": \"61558c76f2c70104bf4643e1bd91890a0c7897472178435bd345135297177acd\",\n      \"signed\": null,\n      \"hash\": null,\n      \"status\": null,\n      \"error\": null,\n      \"signatures\": null,\n      \"block_number\": null\n    },\n    \"estimated_unbonded_at\": null,\n    \"pubkey\": \"0a2102db66d27dd215f1a61e5f4gga098b5293cc1da6f5c3557974ad5f39a2ec0fe125\"\n  },\n  \"network_code\": \"cosmos\",\n  \"chain_code\": \"testnet\",\n  \"created_at\": \"2022-12-15T10:37:31.604Z\",\n  \"updated_at\": \"2022-12-15T10:40:22.559Z\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Submit Signed Undelegate Transaction for Broadcast",
+					"id": "1587885b-a48f-4c32-a3b3-40caf3066660",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"sign_undelegate_tx\",\n    \"inputs\": {\n        \"transaction_payload\": \"0aa1010a9e010a252f636f736d6f732e7374616b696e672e763162657461312e4d7367556e64656c656761746512750a2d636f736d6f733175383575706b3276377072363567307776323937367a6c6575367638716a6c39717072767a6c1234636f736d6f7376616c6f706572317438647638306b64713374326738386b6e38767479656c64766e66387871356334736b6c6d781a0e0a057561746f6d1205393939393812670a500a460a1f2f636f736d6f732e63727970746f2e736563703235366b312e5075624b657912230a2102db33d72ee215f1a61e5f4ffa098b9325cc1da6f5c3557974ad0f21a5ec9fe23512040a020801180512130a0d0a057561746f6d12043536393410a2f30d1a408afadf9e65ae2a5662b59694bc9f3bc0ba6a8f038a5138bfd11acc921561d37b7c6b88c8363fd47b1abaf4ac2de505100714b62427b52b53258c9477aa7c844d\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://{{COSMOS_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{cosmosUndelegateFlowId}}/next",
+						"description": "Before broadcasting the transaction, you must [sign the `transaction_payload`](https://docs.figment.io/guides/staking-api/figment-signing-transactions) you received in the previous step. After signing the transaction, send a `PUT` request to `/api/v1/flows/[:flow_id]/next` and the Staking API will broadcast the transaction to the network.\n\n### Parameters\n\n- `name` &mdash; `string` Name of the action to execute (required).\n- `inputs` &mdash; `object`\n  - `transaction_payload` &mdash; Signed transaction payload from the previous step's response.\n\n### Response\n\n- `id` &mdash; `string` ID of the flow.\n- `state` &mdash; `string` The current state of the flow.\n - `undelegate_tx_broadcasting` &mdash; Transaction broadcasting and waiting for confirmation.\n - `unbonding` &mdash; Transaction successfully broadcasted and stake is under unbonding period.\n - `completed` &mdash; Unbonding period is over and tokens are successfully unstake.\n- `actions` &mdash; `array` It includes the `name` & `inputs` of all next possible actions.\n- `data` &mdash; `object` Undelegate flow & transaction data."
+					},
+					"response": [
+						{
+							"id": "5139e5d2-c9ec-46b7-9043-58d3af8f1052",
+							"name": "Submit Signed Undelegate Transaction for Broadcast",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"sign_undelegate_tx\",\n    \"inputs\": {\n        \"transaction_payload\": \"0aa1010a9e010a252f636f736d6f732e7374616b696e672e763162657461312e4d7367556e64656c656761746512750a2d636f736d6f733175383575706b3276377072363567307776323937367a6c6575367638716a6c39717072767a6c1234636f736d6f7376616c6f706572317438647638306b64713374326738386b6e38767479656c64766e66387871356334736b6c6d781a0e0a057561746f6d1205393939393812670a500a460a1f2f636f736d6f732e63727970746f2e736563703235366b312e5075624b657912230a2102db33d72ee215f1a61e5f4ffa098b9325cc1da6f5c3557974ad0f21a5ec9fe23512040a020801180512130a0d0a057561746f6d12043536393410a2f30d1a408afadf9e65ae2a5662b59694bc9f3bc0ba6a8f038a5138bfd11acc921561d37b7c6b88c8363fd47b1abaf4ac2de505100714b62427b52b53258c9477aa7c844d\"\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://{{COSMOS_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{cosmosUndelegateFlowId}}/next"
+							},
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n  \"id\": \"34a3e428-2cad-4205-bd17-ea3ba2fc8c2e\",\n  \"state\": \"undelegate_tx_broadcasting\",\n  \"actions\": [\n    {\n      \"name\": \"wait\",\n      \"estimated_state_change_at\": \"2022-12-15T10:42:29.399Z\",\n      \"inputs\": []\n    }\n  ],\n  \"data\": {\n    \"delegator_address\": \"cosmos1u85upk2v7pr65g0wv2976zleu6v8qjl9qprvzl\",\n    \"validator_address\": \"cosmosvaloper1t8dv80kdq3t2g88kn8vtyeldvnf8xq5c4sklmx\",\n    \"amount\": \"0.099998\",\n    \"memo\": null,\n    \"gas_price\": null,\n    \"gas_limit\": null,\n    \"undelegate_transaction\": {\n      \"raw\": \"7b226d65737361676573223a5b7b227479706555726c223a222f636f736d6f732e7374616b696e672e763162657461312e4d7367556e64656c6567617465222c2276616c7565223a7b2264656c656761746f7241646472657373223a22636f736d6f733175383575706b3276377072363567307776323937367a6c6575367638716a6c39717072767a6c222c2276616c696461746f7241646472657373223a22636f736d6f7376616c6f706572317438647638306b64713374326738386b6e38767479656c64766e66387871356334736b6c6d78222c22616d6f756e74223a7b2264656e6f6d223a227561746f6d222c22616d6f756e74223a223939393938227d7d7d5d2c22666565223a7b22616d6f756e74223a5b7b22616d6f756e74223a2235363934222c2264656e6f6d223a227561746f6d227d5d2c22676173223a22323237373436227d2c226d656d6f223a22227d\",\n      \"signing_payload\": \"61558c76f2c70104bf4643e1bd91890a0c7897472178435bd345135297177acd\",\n      \"signed\": \"0aa1010a9e010a252f636f736d6f732e7374616b696e672e763162657461312e4d7367556e64656c656761746512750a2d636f736d6f733175383575706b3276377072363567307776323937367a6c6575367638716a6c39717072767a6c1234636f736d6f7376616c6f706572317438647638306b64713374326738386b6e38767479656c64766e66387871356334736b6c6d781a0e0a057561746f6d1205393939393812670a500a460a1f2f636f736d6f732e63727970746f2e736563703235366b312e5075624b657912230a2102db33d72ee215f1a61e5f4ffa098b9325cc1da6f5c3557974ad0f21a5ec9fe23512040a020801180512130a0d0a057561746f6d12043536393410a2f30d1a408afadf9e65ae2a5662b59694bc9f3bc0ba6a8f038a5138bfd11acc921561d37b7c6b88c8363fd47b1abaf4ac2de505100714b62427b52b53258c9477aa7c844d\",\n      \"hash\": \"40AE86E9E30C398BBDA1823108BA2725356250ACF0AB701ABCBE2C41E0C66703\",\n      \"status\": null,\n      \"error\": null,\n      \"signatures\": [\n        {\n          \"account_address\": \"cosmos1u85upk2v7pr65g0wv2976zleu6v8qjl9qprvzl\",\n          \"signature\": \"\"\n        }\n      ],\n      \"block_number\": null\n    },\n    \"estimated_unbonded_at\": null,\n    \"pubkey\": \"0a2102db66d27dd215f1a61e5f4gga098b5293cc1da6f5c3557974ad5f39a2ec0fe125\"\n  },\n  \"network_code\": \"cosmos\",\n  \"chain_code\": \"testnet\",\n  \"created_at\": \"2022-12-15T10:37:31.604Z\",\n  \"updated_at\": \"2022-12-15T10:41:28.729Z\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Flow Status",
+					"id": "9ba10188-4c62-48b0-aa29-4ffe5c197041",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://{{COSMOS_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{cosmosUndelegateFlowId}}",
+						"description": "To get the current state of the existing flow, send a `GET` request to `/api/v1/flows/[:flow_id]` using the flow ID from the previous step.\n\n### Parameters\n\n- None\n\n### Response\n\n- `id` &mdash; `string` ID of the flow.\n- `state` &mdash; `string` The current state of the flow.\n - `undelegate_tx_broadcasting` &mdash; Transaction broadcasting and waiting for confirmation.\n - `unbonding` &mdash; Transaction successfully broadcasted and stake is under unbonding period.\n - `completed` &mdash; Unbonding period is over and tokens are successfully unstake.\n- `actions` &mdash; `array` It includes the `name` & `inputs` of all next possible actions.\n- `data` &mdash; `object` Transfer flow & transaction data."
+					},
+					"response": [
+						{
+							"id": "bbc9359d-ac41-472e-b72f-682c32745028",
+							"name": "Get Flow Status",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://{{COSMOS_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{cosmosUndelegateFlowId}}"
+							},
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n  \"id\": \"34a3e428-2cad-4205-bd17-ea3ba2fc8c2e\",\n  \"state\": \"completed\",\n  \"actions\": [\n\n  ],\n  \"data\": {\n    \"delegator_address\": \"cosmos1u85upk2v7pr65g0wv2976zleu6v8qjl9qprvzl\",\n    \"validator_address\": \"cosmosvaloper1t8dv80kdq3t2g88kn8vtyeldvnf8xq5c4sklmx\",\n    \"amount\": \"0.099998\",\n    \"memo\": null,\n    \"gas_price\": null,\n    \"gas_limit\": null,\n    \"undelegate_transaction\": {\n      \"raw\": \"7b226d65737361676573223a5b7b227479706555726c223a222f636f736d6f732e7374616b696e672e763162657461312e4d7367556e64656c6567617465222c2276616c7565223a7b2264656c656761746f7241646472657373223a22636f736d6f733175383575706b3276377072363567307776323937367a6c6575367638716a6c39717072767a6c222c2276616c696461746f7241646472657373223a22636f736d6f7376616c6f706572317438647638306b64713374326738386b6e38767479656c64766e66387871356334736b6c6d78222c22616d6f756e74223a7b2264656e6f6d223a227561746f6d222c22616d6f756e74223a223939393938227d7d7d5d2c22666565223a7b22616d6f756e74223a5b7b22616d6f756e74223a2235363934222c2264656e6f6d223a227561746f6d227d5d2c22676173223a22323237373436227d2c226d656d6f223a22227d\",\n      \"signing_payload\": \"61558c76f2c70104bf4643e1bd91890a0c7897472178435bd345135297177acd\",\n      \"signed\": \"0aa1010a9e010a252f636f736d6f732e7374616b696e672e763162657461312e4d7367556e64656c656761746512750a2d636f736d6f733175383575706b3276377072363567307776323937367a6c6575367638716a6c39717072767a6c1234636f736d6f7376616c6f706572317438647638306b64713374326738386b6e38767479656c64766e66387871356334736b6c6d781a0e0a057561746f6d1205393939393812670a500a460a1f2f636f736d6f732e63727970746f2e736563703235366b312e5075624b657912230a2102db33d72ee215f1a61e5f4ffa098b9325cc1da6f5c3557974ad0f21a5ec9fe23512040a020801180512130a0d0a057561746f6d12043536393410a2f30d1a408afadf9e65ae2a5662b59694bc9f3bc0ba6a8f038a5138bfd11acc921561d37b7c6b88c8363fd47b1abaf4ac2de505100714b62427b52b53258c9477aa7c844d\",\n      \"hash\": \"40AE86E9E30C398BBDA1823108BA2725356250ACF0AB701ABCBE2C41E0C66703\",\n      \"status\": \"confirmed\",\n      \"error\": null,\n      \"signatures\": [\n        {\n          \"account_address\": \"cosmos1u85upk2v7pr65g0wv2976zleu6v8qjl9qprvzl\",\n          \"signature\": \"\"\n        }\n      ],\n      \"block_number\": 13608945\n    },\n    \"estimated_unbonded_at\": \"2022-12-17T10:41:26.000Z\",\n    \"pubkey\": \"0a2102db77d72ee215f1a61e5f4ffa098b9325cc1da6f5c3557974ad5f21a2ec9fe625\"\n  },\n  \"network_code\": \"cosmos\",\n  \"chain_code\": \"testnet\",\n  \"created_at\": \"2022-12-15T10:37:31.604Z\",\n  \"updated_at\": \"2022-12-15T10:41:40.615Z\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Create a New Claim Rewards Flow",
+					"id": "15b8109f-5beb-47f5-928d-8883fd70ccdf",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"flow\": {\n        \"network_code\": \"cosmos\",\n        \"chain_code\": \"testnet\",\n        \"operation\": \"claim_rewards\",\n        \"version\": \"v1\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://{{COSMOS_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows",
+						"description": "To initiate the rewards claim process, create a new flow with a `POST` request to `/api/v1/flows`.\n\n### Parameters\n\n- `flow` &mdash; `object`\n  - `network_code` &mdash; `string` Network this flow operates on (ex. `cosmos`) (required).\n  - `chain_code` &mdash; `string` Chain this flow operates on (ex. `testnet`) (required).\n  - `operation` &mdash; `string` The operation to perform (ex. `claim_rewards`) (required).\n  - `version` &mdash; `string` API version to use (ex. `v1`) (optional).\n\n### Response\n\n- `id` &mdash; `string` ID of the flow.\n- `state` &mdash; `string` The current state of the flow.\n- `actions` &mdash; `array` It includes the `name` & `inputs` of all next possible actions.\n - `create_withdraw_tx` &mdash; Use this action to transfer ATOM.\n   - `delegator_address` &mdash; The address from which ATOM was delegated.\n   - `validator_addresses` &mdash; Validator addresses from which staking rewards to be withdrawn.\n   - `memo` &mdash; an optional message to record on-chain with your transaction.\n   - `gas_limit` &mdash; the total amount of gas you're willing to let this transaction consume.\n     - If you do not include this, we'll use a Cosmos library to select a good default for you.\n   - `gas_price` &mdash; how many ATOM you're willing to pay per unit of gas consumed by this transaction.\n     - If you do not include this, we'll use a Cosmos library to select a good default for you.\n   - `pubkey` &mdash; Pubkey value will be retrieved from the chain but if you're using a fresh account (that does not have any outgoing activity) then this information is not available and it requires the user to pass it.\n- `data` &mdash; `object` Claim rewards flow & transaction data."
+					},
+					"response": [
+						{
+							"id": "56abb84e-86ff-4229-8a64-4742b137b8fc",
+							"name": "Create a New Claim Rewards Flow",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"flow\": {\n        \"network_code\": \"cosmos\",\n        \"chain_code\": \"testnet\",\n        \"operation\": \"claim_rewards\",\n        \"version\": \"v1\"\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://{{COSMOS_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows"
+							},
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n  \"id\": \"836cc1d2-2f1b-484d-b6ec-903c04e5013d\",\n  \"state\": \"initialized\",\n  \"actions\": [\n    {\n      \"name\": \"create_withdraw_tx\",\n      \"inputs\": [\n        {\n          \"name\": \"delegator_address\",\n          \"display\": \"Delegator Address\",\n          \"description\": \"\",\n          \"type\": \"string\",\n          \"validations\": [\n            {\n              \"type\": \"presence\",\n              \"options\": {}\n            }\n          ],\n          \"array\": false,\n          \"default_value\": null\n        },\n        {\n          \"name\": \"validator_addresses\",\n          \"display\": \"Validator Addresses\",\n          \"description\": \"\",\n          \"type\": \"array_of_strings\",\n          \"validations\": [\n            {\n              \"type\": \"array\",\n              \"options\": {\n                \"allow_empty\": true,\n                \"allow_duplicates\": false\n              }\n            }\n          ],\n          \"array\": false,\n          \"default_value\": null\n        },\n        {\n          \"name\": \"memo\",\n          \"display\": \"Memo\",\n          \"description\": \"\",\n          \"type\": \"string\",\n          \"validations\": [],\n          \"array\": false,\n          \"default_value\": null\n        },\n        {\n          \"name\": \"gas_price\",\n          \"display\": \"Gas Price\",\n          \"description\": \"\",\n          \"type\": \"decimal\",\n          \"validations\": [],\n          \"array\": false,\n          \"default_value\": null\n        },\n        {\n          \"name\": \"gas_limit\",\n          \"display\": \"Gas Limit\",\n          \"description\": \"\",\n          \"type\": \"decimal\",\n          \"validations\": [],\n          \"array\": false,\n          \"default_value\": null\n        },\n        {\n          \"name\": \"account_number\",\n          \"display\": \"Account Number\",\n          \"description\": \"\",\n          \"type\": \"integer\",\n          \"validations\": [],\n          \"array\": false,\n          \"default_value\": null\n        },\n        {\n          \"name\": \"pubkey\",\n          \"display\": \"Pubkey\",\n          \"description\": \"\",\n          \"type\": \"string\",\n          \"validations\": [\n            {\n              \"type\": \"presence\",\n              \"options\": {}\n            }\n          ],\n          \"array\": false,\n          \"default_value\": null\n        }\n      ]\n    }\n  ],\n  \"data\": {\n    \"delegator_address\": null,\n    \"validator_addresses\": null,\n    \"memo\": null,\n    \"gas_price\": null,\n    \"gas_limit\": null,\n    \"pubkey\": null,\n    \"withdraw_transaction\": null\n  },\n  \"network_code\": \"cosmos\",\n  \"chain_code\": \"testnet\",\n  \"created_at\": \"2022-12-15T10:28:37.690Z\",\n  \"updated_at\": \"2022-12-15T10:28:37.690Z\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Submit Claim Rewards Data",
+					"id": "f64baf0d-50c1-45ca-bb72-237e9e06cff5",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"create_withdraw_tx\",\n    \"inputs\": {\n        \"delegator_address\": \"cosmos1u85upk2v7pr65g0wv2976zleu6v8qjl9qprvzl\",\n        \"validator_addresses\": [\n            \"cosmosvaloper1tflk30mq5vgqjdly92kkhhq3raev2hnz6eete3\"\n        ],\n        \"pubkey\": \"0a2102db66d27dd215f1a61e5f4gga098b5293cc1da6f5c3557974ad5f39a2ec0fe125\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://{{COSMOS_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{cosmosClaimRewardsFlowId}}/next",
+						"description": "After creating the new claim rewards flow, we need to submit the claim rewards data.\n\nAfter collecting the required inputs as mentioned below, send a `PUT` request to `/api/v1/flows/[:flow_id]/next` to proceed to the next step.\n\n### Parameters\n\n- `name` &mdash; `string` Name of the action to execute - `create_withdraw_tx`.\n- `inputs` &mdash; `object`\n  - `delegator_address` &mdash; The address from which ATOM was delegated (required).\n  - `validator_addresses` &mdash; Validator addresses from which staking rewards to be withdrawn (required).\n  - `memo` &mdash; `string` A message to record on-chain with your transfer (optional).\n  - `gas_limit` &mdash; `number` The total amount of gas you're willing to let this transaction consume (optional).\n  - `gas_price` &mdash; `number` How many ATOM you're willing to pay per unit of gas consumed by this transaction (optional).\n  - `pubkey` &mdash; `string` Required only if you're using a fresh account (that does not have any outgoing activity) else optional.\n\n### Response\n\n- `id` &mdash; `string` ID of the flow.\n- `state` &mdash; `string` The current state of the flow.\n- `actions` &mdash; `array` It includes the `name` & `inputs` of all next possible actions.\n - `refresh_withdraw_tx` &mdash; If you need to get a fresh version of the transaction payload (i.e., the nonce has increased).\n - `sign_withdraw_tx` &mdash; Submit a signed transaction payload ready to be broadcast to the network.\n- `data` &mdash; `object` Claim rewards flow & transaction data."
+					},
+					"response": [
+						{
+							"id": "55a73dfd-a807-44aa-ad80-841481953379",
+							"name": "Submit Claim Rewards Data",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"create_withdraw_tx\",\n    \"inputs\": {\n        \"delegator_address\": \"cosmos1u85upk2v7pr65g0wv2976zleu6v8qjl9qprvzl\",\n        \"validator_addresses\": [\n            \"cosmosvaloper1tflk30mq5vgqjdly92kkhhq3raev2hnz6eete3\"\n        ],\n        \"pubkey\": \"0a2102db66d27dd215f1a61e5f4gga098b5293cc1da6f5c3557974ad5f39a2ec0fe125\"\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://{{COSMOS_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{cosmosClaimRewardsFlowId}}/next"
+							},
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n  \"id\": \"836cc1d2-2f1b-484d-b6ec-903c04e5013d\",\n  \"state\": \"withdraw_tx_signature\",\n  \"actions\": [\n    {\n      \"name\": \"refresh_withdraw_tx\",\n      \"inputs\": []\n    },\n    {\n      \"name\": \"sign_withdraw_tx\",\n      \"inputs\": [\n        {\n          \"name\": \"transaction_payload\",\n          \"display\": \"Transaction Payload\",\n          \"description\": \"\",\n          \"type\": \"signed_transaction\",\n          \"validations\": [\n            {\n              \"type\": \"sign_payload\",\n              \"options\": {}\n            }\n          ],\n          \"array\": false,\n          \"default_value\": null,\n          \"signers\": [\"cosmos1u85upk2v7pr65g0wv2976zleu6v8qjl9qprvzl\"],\n          \"transaction_payload\": \"7b226d65737361676573223a5b7b227479706555726c223a222f636f736d6f732e646973747269627574696f6e2e763162657461312e4d7367576974686472617744656c656761746f72526577617264222c2276616c7565223a7b2264656c656761746f7241646472657373223a22636f736d6f733175383575706b3276377072363567307776323937367a6c6575367638716a6c39717072767a6c222c2276616c696461746f7241646472657373223a22636f736d6f7376616c6f7065723174666c6b33306d71357667716a646c7939326b6b686871337261657632686e7a366565746533227d7d5d2c22666565223a7b22616d6f756e74223a5b7b22616d6f756e74223a2233343535222c2264656e6f6d223a227561746f6d227d5d2c22676173223a22313338313631227d2c226d656d6f223a22227d\"\n        },\n        {\n          \"name\": \"signatures\",\n          \"display\": \"Signatures\",\n          \"description\": \"\",\n          \"type\": \"array_of_signatures\",\n          \"validations\": [],\n          \"array\": true,\n          \"default_value\": null,\n          \"element_type\": \"signature_data\",\n          \"signers\": [\"cosmos1u85upk2v7pr65g0wv2976zleu6v8qjl9qprvzl\"],\n          \"transaction_payload\": \"7b226d65737361676573223a5b7b227479706555726c223a222f636f736d6f732e646973747269627574696f6e2e763162657461312e4d7367576974686472617744656c656761746f72526577617264222c2276616c7565223a7b2264656c656761746f7241646472657373223a22636f736d6f733175383575706b3276377072363567307776323937367a6c6575367638716a6c39717072767a6c222c2276616c696461746f7241646472657373223a22636f736d6f7376616c6f7065723174666c6b33306d71357667716a646c7939326b6b686871337261657632686e7a366565746533227d7d5d2c22666565223a7b22616d6f756e74223a5b7b22616d6f756e74223a2233343535222c2264656e6f6d223a227561746f6d227d5d2c22676173223a22313338313631227d2c226d656d6f223a22227d\",\n          \"signing_payload\": \"ab4f1ab8c23c94c4d7e56cf41a65eddca54927a146c3b45d680b6909a05e659d\",\n          \"inputs\": {\n            \"input_klass\": \"Workflows::Signature\",\n            \"input_instance\": {\n              \"account_address\": null,\n              \"signature\": null\n            },\n            \"flow\": {\n              \"id\": 140562,\n              \"customer_id\": 7,\n              \"chain_id\": 10,\n              \"workflow_state\": \"withdraw_tx_signature\",\n              \"data\": {\n                \"delegator_address\": \"cosmos1u85upk2v7pr65g0wv2976zleu6v8qjl9qprvzl\",\n                \"validator_addresses\": [\n                  \"cosmosvaloper1tflk30mq5vgqjdly92kkhhq3raev2hnz6eete3\"\n                ],\n                \"memo\": null,\n                \"gas_price\": null,\n                \"gas_limit\": null,\n                \"pubkey\": \"0a2102db66d27dd215f1a61e5f4gga098b5293cc1da6f5c3557974ad5f39a2ec0fe125\",\n                \"withdraw_transaction\": {\n                  \"raw\": \"7b226d65737361676573223a5b7b227479706555726c223a222f636f736d6f732e646973747269627574696f6e2e763162657461312e4d7367576974686472617744656c656761746f72526577617264222c2276616c7565223a7b2264656c656761746f7241646472657373223a22636f736d6f733175383575706b3276377072363567307776323937367a6c6575367638716a6c39717072767a6c222c2276616c696461746f7241646472657373223a22636f736d6f7376616c6f7065723174666c6b33306d71357667716a646c7939326b6b686871337261657632686e7a366565746533227d7d5d2c22666565223a7b22616d6f756e74223a5b7b22616d6f756e74223a2233343535222c2264656e6f6d223a227561746f6d227d5d2c22676173223a22313338313631227d2c226d656d6f223a22227d\",\n                  \"signing_payload\": \"ab4f1ab8c23c94c4d7e56cf41a65eddca54927a146c3b45d680b6909a05e659d\",\n                  \"signed\": null,\n                  \"hash\": null,\n                  \"status\": null,\n                  \"error\": null,\n                  \"signatures\": null\n                }\n              },\n              \"created_at\": \"2022-12-15T10:28:37.690Z\",\n              \"updated_at\": \"2022-12-15T10:32:13.670Z\",\n              \"id_public\": \"836cc1d2-2f1b-484d-b6ec-903c04e5013d\",\n              \"supported_operation_id\": 34\n            },\n            \"flow_attributes\": {},\n            \"empty_input\": {\n              \"account_address\": null,\n              \"signature\": null\n            }\n          }\n        }\n      ]\n    }\n  ],\n  \"data\": {\n    \"delegator_address\": \"cosmos1u85upk2v7pr65g0wv2976zleu6v8qjl9qprvzl\",\n    \"validator_addresses\": [\n      \"cosmosvaloper1tflk30mq5vgqjdly92kkhhq3raev2hnz6eete3\"\n    ],\n    \"memo\": null,\n    \"gas_price\": null,\n    \"gas_limit\": null,\n    \"pubkey\": \"0a2102db66d27dd215f1a61e5f4gga098b5293cc1da6f5c3557974ad5f39a2ec0fe125\",\n    \"withdraw_transaction\": {\n      \"raw\": \"7b226d65737361676573223a5b7b227479706555726c223a222f636f736d6f732e646973747269627574696f6e2e763162657461312e4d7367576974686472617744656c656761746f72526577617264222c2276616c7565223a7b2264656c656761746f7241646472657373223a22636f736d6f733175383575706b3276377072363567307776323937367a6c6575367638716a6c39717072767a6c222c2276616c696461746f7241646472657373223a22636f736d6f7376616c6f7065723174666c6b33306d71357667716a646c7939326b6b686871337261657632686e7a366565746533227d7d5d2c22666565223a7b22616d6f756e74223a5b7b22616d6f756e74223a2233343535222c2264656e6f6d223a227561746f6d227d5d2c22676173223a22313338313631227d2c226d656d6f223a22227d\",\n      \"signing_payload\": \"ab4f1ab8c23c94c4d7e56cf41a65eddca54927a146c3b45d680b6909a05e659d\",\n      \"signed\": null,\n      \"hash\": null,\n      \"status\": null,\n      \"error\": null,\n      \"signatures\": null\n    }\n  },\n  \"network_code\": \"cosmos\",\n  \"chain_code\": \"testnet\",\n  \"created_at\": \"2022-12-15T10:28:37.690Z\",\n  \"updated_at\": \"2022-12-15T10:32:13.670Z\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Submit Signed Claim Rewards Transaction for Broadcast",
+					"id": "e678df58-114d-4619-9d80-6384af7be0c8",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"sign_withdraw_tx\",\n    \"inputs\": {\n        \"transaction_payload\": \"0aa3010aa0010a372f636f736d6f732e646973747269627574696f6e2e763162657461312e4d7367576974686472617744656c656761746f7252657761726412650a2d636f736d6f733175383575706b3276377072363567307776323937367a6c6575367638716a6c39717072767a6c1234636f736d6f7376616c6f7065723174666c6b33306d71357667716a646c7939326b6b686871337261657632686e7a36656574653312670a500a460a1f2f636f736d6f732e63727970746f2e736563703235366b312e5075624b657912230a2102db33d72ee215f1a61e5f4ffa098b9325cc1da6f5c3557974ad0f21a5ec9fe23512040a020801180412130a0d0a057561746f6d12043334353510b1b7081a40788c48916bf8063b9eb55a17cf1afb373afd27bc0c100c4e492a5273c2a6f36e32c35ee585bb37ab30a5e99d33962d14ba88d1afe1a33289a6107abf13567a8f\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://{{COSMOS_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{cosmosClaimRewardsFlowId}}/next",
+						"description": "Before broadcasting the transaction, you must [sign the `transaction_payload`](https://docs.figment.io/guides/staking-api/figment-signing-transactions) you received in the previous step. After signing the transaction, send a `PUT` request to `/api/v1/flows/[:flow_id]/next` and the Staking API will broadcast the transaction to the network.\n\n### Parameters\n\n- `name` &mdash; `string` Name of the action to execute (required).\n- `inputs` &mdash; `object`\n  - `transaction_payload` &mdash; Signed transaction payload from the previous step's response.\n\n### Response\n\n- `id` &mdash; `string` ID of the flow.\n- `state` &mdash; `string` The current state of the flow.\n - `withdraw_tx_broadcasting` &mdash; Transaction has been broadcast and is waiting for confirmation.\n - `completed` &mdash; Transaction has been confirmed and rewards claimed successfully.\n- `actions` &mdash; `array` It includes the `name` & `inputs` of all next possible actions.\n- `data` &mdash; `object` Claim rewards flow & transaction data."
+					},
+					"response": [
+						{
+							"id": "d1ac390f-ba8a-4d4f-ac83-558310513be6",
+							"name": "Submit Signed Claim Rewards Transaction for Broadcast",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"sign_withdraw_tx\",\n    \"inputs\": {\n        \"transaction_payload\": \"0aa3010aa0010a372f636f736d6f732e646973747269627574696f6e2e763162657461312e4d7367576974686472617744656c656761746f7252657761726412650a2d636f736d6f733175383575706b3276377072363567307776323937367a6c6575367638716a6c39717072767a6c1234636f736d6f7376616c6f7065723174666c6b33306d71357667716a646c7939326b6b686871337261657632686e7a36656574653312670a500a460a1f2f636f736d6f732e63727970746f2e736563703235366b312e5075624b657912230a2102db33d72ee215f1a61e5f4ffa098b9325cc1da6f5c3557974ad0f21a5ec9fe23512040a020801180412130a0d0a057561746f6d12043334353510b1b7081a40788c48916bf8063b9eb55a17cf1afb373afd27bc0c100c4e492a5273c2a6f36e32c35ee585bb37ab30a5e99d33962d14ba88d1afe1a33289a6107abf13567a8f\"\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://{{COSMOS_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{cosmosClaimRewardsFlowId}}/next"
+							},
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n  \"id\": \"836cc1d2-2f1b-484d-b6ec-903c04e5013d\",\n  \"state\": \"withdraw_tx_broadcasting\",\n  \"actions\": [\n    {\n      \"name\": \"wait\",\n      \"estimated_state_change_at\": \"2022-12-15T10:36:25.207Z\",\n      \"inputs\": []\n    }\n  ],\n  \"data\": {\n    \"delegator_address\": \"cosmos1u85upk2v7pr65g0wv2976zleu6v8qjl9qprvzl\",\n    \"validator_addresses\": [\n      \"cosmosvaloper1tflk30mq5vgqjdly92kkhhq3raev2hnz6eete3\"\n    ],\n    \"memo\": null,\n    \"gas_price\": null,\n    \"gas_limit\": null,\n    \"pubkey\": \"0a2102db66d27dd215f1a61e5f4gga098b5293cc1da6f5c3557974ad5f39a2ec0fe125\",\n    \"withdraw_transaction\": {\n      \"raw\": \"7b226d65737361676573223a5b7b227479706555726c223a222f636f736d6f732e646973747269627574696f6e2e763162657461312e4d7367576974686472617744656c656761746f72526577617264222c2276616c7565223a7b2264656c656761746f7241646472657373223a22636f736d6f733175383575706b3276377072363567307776323937367a6c6575367638716a6c39717072767a6c222c2276616c696461746f7241646472657373223a22636f736d6f7376616c6f7065723174666c6b33306d71357667716a646c7939326b6b686871337261657632686e7a366565746533227d7d5d2c22666565223a7b22616d6f756e74223a5b7b22616d6f756e74223a2233343535222c2264656e6f6d223a227561746f6d227d5d2c22676173223a22313338313631227d2c226d656d6f223a22227d\",\n      \"signing_payload\": \"ab4f1ab8c23c94c4d7e56cf41a65eddca54927a146c3b45d680b6909a05e659d\",\n      \"signed\": \"0aa3010aa0010a372f636f736d6f732e646973747269627574696f6e2e763162657461312e4d7367576974686472617744656c656761746f7252657761726412650a2d636f736d6f733175383575706b3276377072363567307776323937367a6c6575367638716a6c39717072767a6c1234636f736d6f7376616c6f7065723174666c6b33306d71357667716a646c7939326b6b686871337261657632686e7a36656574653312670a500a460a1f2f636f736d6f732e63727970746f2e736563703235366b312e5075624b657912230a2102db33d72ee215f1a61e5f4ffa098b9325cc1da6f5c3557974ad0f21a5ec9fe23512040a020801180412130a0d0a057561746f6d12043334353510b1b7081a40788c48916bf8063b9eb55a17cf1afb373afd27bc0c100c4e492a5273c2a6f36e32c35ee585bb37ab30a5e99d33962d14ba88d1afe1a33289a6107abf13567a8f\",\n      \"hash\": \"52FDE97A89E3B50F8E222E7E82C819E679AAF4F68C2D36A4FEC0CB1E767E5B05\",\n      \"status\": null,\n      \"error\": null,\n      \"signatures\": [\n        {\n          \"account_address\": \"cosmos1u85upk2v7pr65g0wv2976zleu6v8qjl9qprvzl\",\n          \"signature\": \"\"\n        }\n      ]\n    }\n  },\n  \"network_code\": \"cosmos\",\n  \"chain_code\": \"testnet\",\n  \"created_at\": \"2022-12-15T10:28:37.690Z\",\n  \"updated_at\": \"2022-12-15T10:35:24.516Z\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Flow Status",
+					"id": "f66a304e-2d53-47c2-bca9-b76a2761bb00",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://{{COSMOS_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{cosmosClaimRewardsFlowId}}",
+						"description": "To get the current state of the existing flow, send a `GET` request to `/api/v1/flows/[:flow_id]` using the flow ID from the previous step.\n\n### Parameters\n\n- None\n\n### Response\n\n- `id` &mdash; `string` ID of the flow.\n- `state` &mdash; `string` The current state of the flow.\n - `withdraw_tx_broadcasting` &mdash; Transaction has been broadcast and is waiting for confirmation.\n - `completed` &mdash; Transaction has been confirmed and rewards claimed successfully.\n- `actions` &mdash; `array` It includes the `name` & `inputs` of all next possible actions.\n- `data` &mdash; `object` Claim rewards flow & transaction data."
+					},
+					"response": [
+						{
+							"id": "4da17a3c-653e-4b85-93ba-6669ae301823",
+							"name": "Get Flow Status",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://{{COSMOS_STAKING_HOST}}/apikey/{{API_KEY}}/api/v1/flows/{{cosmosClaimRewardsFlowId}}"
+							},
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n  \"id\": \"836cc1d2-2f1b-484d-b6ec-903c04e5013d\",\n  \"state\": \"completed\",\n  \"actions\": [],\n  \"data\": {\n    \"delegator_address\": \"cosmos1u85upk2v7pr65g0wv2976zleu6v8qjl9qprvzl\",\n    \"validator_addresses\": [\n      \"cosmosvaloper1tflk30mq5vgqjdly92kkhhq3raev2hnz6eete3\"\n    ],\n    \"memo\": null,\n    \"gas_price\": null,\n    \"gas_limit\": null,\n    \"pubkey\": \"0a2102db66d27dd215f1a61e5f4gga098b5293cc1da6f5c3557974ad5f39a2ec0fe125\",\n    \"withdraw_transaction\": {\n      \"raw\": \"7b226d65737361676573223a5b7b227479706555726c223a222f636f736d6f732e646973747269627574696f6e2e763162657461312e4d7367576974686472617744656c656761746f72526577617264222c2276616c7565223a7b2264656c656761746f7241646472657373223a22636f736d6f733175383575706b3276377072363567307776323937367a6c6575367638716a6c39717072767a6c222c2276616c696461746f7241646472657373223a22636f736d6f7376616c6f7065723174666c6b33306d71357667716a646c7939326b6b686871337261657632686e7a366565746533227d7d5d2c22666565223a7b22616d6f756e74223a5b7b22616d6f756e74223a2233343535222c2264656e6f6d223a227561746f6d227d5d2c22676173223a22313338313631227d2c226d656d6f223a22227d\",\n      \"signing_payload\": \"ab4f1ab8c23c94c4d7e56cf41a65eddca54927a146c3b45d680b6909a05e659d\",\n      \"signed\": \"0aa3010aa0010a372f636f736d6f732e646973747269627574696f6e2e763162657461312e4d7367576974686472617744656c656761746f7252657761726412650a2d636f736d6f733175383575706b3276377072363567307776323937367a6c6575367638716a6c39717072767a6c1234636f736d6f7376616c6f7065723174666c6b33306d71357667716a646c7939326b6b686871337261657632686e7a36656574653312670a500a460a1f2f636f736d6f732e63727970746f2e736563703235366b312e5075624b657912230a2102db33d72ee215f1a61e5f4ffa098b9325cc1da6f5c3557974ad0f21a5ec9fe23512040a020801180412130a0d0a057561746f6d12043334353510b1b7081a40788c48916bf8063b9eb55a17cf1afb373afd27bc0c100c4e492a5273c2a6f36e32c35ee585bb37ab30a5e99d33962d14ba88d1afe1a33289a6107abf13567a8f\",\n      \"hash\": \"52FDE97A89E3B50F8E222E7E82C819E679AAF4F68C2D36A4FEC0CB1E767E5B05\",\n      \"status\": \"confirmed\",\n      \"error\": null,\n      \"signatures\": [\n        {\n          \"account_address\": \"cosmos1u85upk2v7pr65g0wv2976zleu6v8qjl9qprvzl\",\n          \"signature\": \"\"\n        }\n      ]\n    }\n  },\n  \"network_code\": \"cosmos\",\n  \"chain_code\": \"testnet\",\n  \"created_at\": \"2022-12-15T10:28:37.690Z\",\n  \"updated_at\": \"2022-12-15T10:35:34.610Z\"\n}"
+						}
+					]
 				}
 			],
 			"id": "57112712-6a85-45ea-a401-7a58b4a9be6c"
@@ -4458,42 +5030,42 @@
 	],
 	"variable": [
 		{
-			"id": "90d2a3dd-0b4b-4209-a6cb-cacf6dd445ad",
+			"id": "bdac32eb-12e6-4b87-90d7-572a33632213",
 			"key": "AVAX_STAKING_HOST",
 			"value": "avalanche-slate.datahub.figment.io"
 		},
 		{
-			"id": "35889450-8fd6-417f-8cbd-16f3d5e23ac4",
+			"id": "0e8a6288-6b20-4d46-a0b4-4cc3d818df22",
 			"key": "COSMOS_STAKING_HOST",
 			"value": "cosmos-slate.datahub.figment.io"
 		},
 		{
-			"id": "081fc526-ad97-45ab-8480-0d1e12cc2d35",
+			"id": "8a44cd87-16d5-40e2-87a3-f594eb4ed19a",
 			"key": "ETH_STAKING_HOST",
 			"value": "eth-slate.datahub.figment.io"
 		},
 		{
-			"id": "8fe3776a-58e6-46e8-92f5-e3a3950a238e",
+			"id": "9e85769b-bb44-497a-aaa5-df23454f2fff",
 			"key": "NEAR_STAKING_HOST",
 			"value": "near-slate.datahub.figment.io"
 		},
 		{
-			"id": "2c3ac226-4605-4a18-91fa-9f391936244f",
+			"id": "1a9753e6-0816-4008-892b-7dae1eeb3ea7",
 			"key": "DOT_STAKING_HOST",
 			"value": "polkadot-slate.datahub.figment.io"
 		},
 		{
-			"id": "c2a009f8-b60a-4703-8d7d-2fe31ee65e01",
+			"id": "dc3903bd-58c4-41cb-b154-461554e9af53",
 			"key": "SOL_STAKING_HOST",
 			"value": "solana-slate.datahub.figment.io"
 		},
 		{
-			"id": "a7e214e3-c90e-4ef2-98d0-f37f1316cc19",
+			"id": "344dbe16-95f6-443f-841e-1d1f103596b2",
 			"key": "POLYGON_STAKING_HOST",
 			"value": "polygon-slate.datahub.figment.io"
 		},
 		{
-			"id": "fbf9a08b-e5e0-4437-8937-02513e30758e",
+			"id": "ffb3fff1-3cfa-4456-a9d2-9a7d49b362ca",
 			"key": "INTERACTIVE",
 			"value": "false"
 		}
