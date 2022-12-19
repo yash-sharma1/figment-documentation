@@ -16895,7 +16895,7 @@
 							}
 						}
 					],
-					"id": "5248b9c6-a802-422c-8d89-2a3aa1792fd4",
+					"_postman_id": "5248b9c6-a802-422c-8d89-2a3aa1792fd4",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -17008,7 +17008,7 @@
 					]
 				}
 			],
-			"id": "154d5b0d-bf51-41c7-ac4c-9d181a35243b"
+			"_postman_id": "154d5b0d-bf51-41c7-ac4c-9d181a35243b"
 		},
 		{
 			"name": "Solana",
@@ -26676,7 +26676,7 @@
 							}
 						}
 					],
-					"id": "c708c71a-e4d2-451b-9f3e-c146e09c20b3",
+					"_postman_id": "c708c71a-e4d2-451b-9f3e-c146e09c20b3",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -26771,7 +26771,7 @@
 					]
 				}
 			],
-			"id": "3d168579-dd2d-4bac-a109-6a1eb28ad764"
+			"_postman_id": "3d168579-dd2d-4bac-a109-6a1eb28ad764"
 		}
 	],
 	"event": [
@@ -26798,14 +26798,16 @@
 	],
 	"variable": [
 		{
-			"id": "2b36544f-ac4b-4b15-be44-f77e6388547d",
+			"id": "abd9ec40-b51b-4563-9ca2-215f0eb30b81",
 			"key": "ETH_REWARDS_HOST",
-			"value": "eth-rewards.datahub.figment.io"
+			"value": "eth-rewards.datahub.figment.io",
+			"type": "string"
 		},
 		{
-			"id": "7a456de3-3325-4f77-bcb0-7b00e53feaa3",
+			"id": "1ff1efc0-d0d3-4a21-abc4-858a535ee4d8",
 			"key": "SOL_REWARDS_HOST",
-			"value": "solana-rewards.datahub.figment.io"
+			"value": "solana-rewards.datahub.figment.io",
+			"type": "string"
 		}
 	]
 }
