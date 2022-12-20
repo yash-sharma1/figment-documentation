@@ -31,7 +31,7 @@ curl -X PUT 'https://cosmos-slate.datahub.figment.io/api/v1/flows/00fbd7bd-054c-
 With the signed transaction provided, the Staking API will broadcast it to the network. As the transaction progresses towards confirmation, the returned state will be either:
 
 - `redelegate_tx_broadcasting` &mdash; Transaction has been broadcast and is waiting for confirmation.
-- `completed` &mdash; Transaction has been confirmed and the transfer is complete.
+- `completed` &mdash; Transaction has been confirmed and the redelegation is complete.
 
 #### Sample Response
 

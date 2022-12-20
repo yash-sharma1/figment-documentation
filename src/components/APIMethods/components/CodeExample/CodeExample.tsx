@@ -31,6 +31,8 @@ export default function CodeExample({
   const [reqBody, setReqBody] = useState<string>(formatRequest(req.body));
   const [queryString, setQueryString] = useState<string>(req.query);
   const [resBody, setResBody] = useState<string>(formatResult(res.body));
+  const [isPartial, setIsPartial] = useState<boolean>(false);
+
   const graphql =
     typeof req.body === "string" && req.body.indexOf("query") == 0;
 
@@ -71,6 +73,18 @@ export default function CodeExample({
           title: "Run request",
           onClick: async () => {
             const apiData = await fetchData(queryString, { body: reqBody });
+            setIsPartial(false);
+            if (
+              endpoint.includes("rewards") &&
+              apiData.data &&
+              apiData.data.length > 10
+            ) {
+              console.clear();
+              console.log(apiData.data);
+              setIsPartial(true);
+              const data = apiData.data.slice(0, 10);
+              apiData.data = [...data];
+            }
             if (apiData) setResBody(formatResult(apiData));
           },
           Component: (
@@ -101,6 +115,10 @@ export default function CodeExample({
       : null,
   ].filter((action) => !!action);
 
+  const responseTitle = isPartial
+    ? "Partial Reponse (see console for full response)"
+    : "Response";
+
   return (
     <>
       <CodeEditor
@@ -117,7 +135,7 @@ export default function CodeExample({
       </CodeEditor>
 
       <CodeBlock
-        title={status ? "Response" : "Example Response"}
+        title={status ? responseTitle : "Example Response"}
         language="json"
       >
         {error ? `${error}` : resBody}
