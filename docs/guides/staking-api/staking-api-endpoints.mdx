@@ -3,6 +3,7 @@ title: Staking API Endpoints
 sidebar_position: 2
 ---
 
+import Link from "@docusaurus/Link";
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 
@@ -516,7 +517,11 @@ You can send a `POST` request to create a new webhook endpoint.
 Each webhook is identified by a sequential number.
 Currently when a webhook ID has been deleted it cannot be reused.
 
-You will be provided with the `secret` when you first create a webhook. Remember to capture this data.
+:::caution important
+
+You will be provided with the HMAC `secret` when you first create a webhook. Remember to capture this data. Read more about authenticating webhook payloads in the <Link to="/guides/staking-api/staking-api-webhooks">Staking API Webhooks</Link> guide.
+
+:::
 
 ```bash title="Sample request POST /webhook_endpoints"
 curl -X POST 'https://eth-slate.figment.io/api/v1/webhook_endpoints' \
@@ -531,7 +536,7 @@ curl -X POST 'https://eth-slate.figment.io/api/v1/webhook_endpoints' \
 }'
 ```
 
-```json title="Sample Response"
+```json {8} title="Sample Response"
 {
   "id": 16,
   "event_types": [],
@@ -539,7 +544,6 @@ curl -X POST 'https://eth-slate.figment.io/api/v1/webhook_endpoints' \
   "enabled": true,
   "object": "webhook_endpoint",
   "created": "2022-07-26T19:27:12.647Z",
-  // highlight-next-line
   "secret": "whsec_B8sidV4Bm8NnstMuP3a9TSGYov... [REDACTED]"
 }
 ```
@@ -575,7 +579,7 @@ curl -X GET 'https://eth-slate.figment.io/api/v1/webhook_endpoints/15' \
 
 You can send a `PUT` request to update details for an existing webhook endpoint.
 
-```bash title="PUT /webhook_endpoints/[:webhook_endpoint_id]"
+```bash {8} title="PUT /webhook_endpoints/[:webhook_endpoint_id]"
 curl -X PUT 'https://eth-slate.figment.io/api/v1/webhook_endpoints/15' \
 -H 'Authorization: API-KEY' \
 -H 'Content-Type: application/json' \
@@ -583,18 +587,16 @@ curl -X PUT 'https://eth-slate.figment.io/api/v1/webhook_endpoints/15' \
     "webhook_endpoint": {
         "target_url": "https://example.com/my/new/endpoint",
         "event_types": ["*"],
-        // highlight-next-line
         "enabled": "true"
     }
 }'
 ```
 
-```json title="Sample Response"
+```json {5} title="Sample Response"
 {
   "id": 15,
   "event_types": ["*"],
   "target_url": "https://example.com/my/new/endpoint",
-  // highlight-next-line
   "enabled": true,
   "object": "webhook_endpoint",
   "created": "2022-07-26T19:27:12.647Z"

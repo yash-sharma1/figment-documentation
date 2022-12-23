@@ -178,10 +178,6 @@ const config = {
             title: "Community",
             items: [
               {
-                label: "Discord",
-                href: "https://figment.io/devchat/",
-              },
-              {
                 label: "Twitter",
                 href: "https://twitter.com/Figment_io",
               },

@@ -11,41 +11,125 @@ import TabItem from "@theme/TabItem";
 
 A webhook is an HTTP request which triggers by an event in a source system (ex. Figment's Staking API) and sent to a destination system (ex. Cloudflare Worker) with a payload of data. In general, webhooks are a way to send automated messages between systems whenever a new event takes place.
 
-The Staking API uses webhooks to send notifications about events related to the various Staking API flows. For example, when an undelegation flow is completed, a webhook can be sent to the server of your choosing.
+The Staking API uses webhooks to send notifications about events related to the various Staking API flows.
+For example, when an undelegation flow is completed, a webhook can be sent to the server of your choosing. Read more about the different [event types](#event-types) below.
 
 There are some security considerations when dealing with webhooks.
 This guide provides all the information needed to successfully manage webhooks in the context of Figment's Staking API.
 
 We will examine how serverless functions (Cloudflare Workers) can be beneficial to this process, and provide example code which can be used as the basis for your own solution.
 
-:::note
+## Event Types
 
-If your particular language and server implementation specifies a character encoding, ensure that you handle the payload as UTF-8.
-JSON is encoded as UTF-8 by default.
+Staking API Webhook events can be categorized by type, specific to a network code and operation.
+The event type format follows the pattern **`<network_code>.<operation>.<action>.<specifier>`**.
 
-:::
+Event types are standardized in that:
+
+- When a transaction is confirmed on-chain, there will be a `.confirmed` event &mdash; ex. `near.staking.delegation.confirmed`
+
+- If a transaction fails on-chain, there will be an `.error` event &mdash; ex. `near.staking.delegation.error`
+
+- For staking flows, whenever there is a waiting period involved the Staking API will send a `delegation.activating` event &mdash; ex. `near.staking.delegation.activating`
+
+- When the waiting period is finished, the Staking API will send a `delegation.active` event &mdash; ex. `near.staking.delegation.active`
+
+- Similarly, for unstaking flows the Staking API sends the `delegation.deactivating` event, followed by `delegation.inactive`
+
+- If there is a withdrawal action required after unstaking, the Staking API also sends a `delegation.ready_for_withdrawal` event
+
+### Usage
+
+Consumers of Staking API webhooks can subscribe to events with wildcards (`*`), or by specifying a complete event type without a wildcard:
+
+- `"event_types": ["*"]` subscribes to all webhook events, regardless of network
+- `"event_types": ["near.*"]` subscribes to all webhook events for NEAR flows
+- `"event_types": ["near.staking.*"]` subscribes to all webhook events for NEAR `staking` flows
+- `"event_types": ["near.staking.delegation.confirmed"]` subscribes to confirmation events for NEAR `staking` flows
+
+<Tabs><TabItem value="curl_wh" label="curl">
+
+```bash {7} title="Example POST /webhook_endpoints"
+curl -X POST 'https://near-slate.figment.io/api/v1/webhook_endpoints' \
+-H 'Authorization: API-KEY' \
+-H 'Content-Type: application/json' \
+-d '{
+    "webhook_endpoint": {
+        "target_url": "https://example.com/my/endpoint",
+        "event_types": ["near.transfer.*"],
+        "enabled": "true"
+    }
+}'
+```
+
+</TabItem><TabItem value="js_wh" label="JavaScript">
+
+```js {10} title="Example POST /webhook_endpoints"
+fetch("https://near-slate.figment.io/api/v1/webhook_endpoints", {
+  method: 'POST',
+  headers: {
+    "Authorization" : "<API_KEY>",
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify({
+    "webhook_endpoint": {
+      "target_url": "https://example.com/my/endpoint",
+      "event_types": ["near.transfer.*"],
+      "enabled": "true"
+    }
+  });
+});
+```
+
+</TabItem></Tabs>
+
+```json {3} title="Example response from /webhook_endpoints"
+{
+  "id": 16,
+  "event_types": ["near.transfer.*"],
+  "target_url": "https://example.com/my/endpoint",
+  "enabled": true,
+  "object": "webhook_endpoint",
+  "created": "2022-07-26T19:27:12.647Z",
+  "secret": "whsec_B8sidV4Bm8NnstMuP3a9TSGYov..."
+}
+```
+
+The above example webhook ID number 16 would send a payload to the `target_url` for any NEAR transfer flow event, provided that `enabled` is set to true.
+
+Verify the contents of webhook payloads using the HMAC signature that is sent as a response header from the Staking API. This is illustrated in the following section.
+
+The fields which are common to all Staking API webhook payloads are `flow_id` and `event_type`. All other fields will be relevant to the action and flow.
+
+```bash {4-5} title="Example Staking API Webhook Payload"
+{
+  amount: '10.0',
+  status: 'success',
+  flow_id: '49a1bab1-e3e6-4f77-8212-ee254e1ab9a3',
+  event_type: 'near.transfer.transfer_tx.confirmed',
+  transaction_hash: '2a9fnT6j5M9Fy6TFNbX2bA1Ncjh6aXK9Ky8oPBUuJwtS',
+  to_account_address: 'pizza.testnet',
+  from_account_pubkey: 'ed25519:5QA46X6NkNmsFdu9xWVBaLNowh9gGeF1c5r9u6NcxaLY',
+  from_account_address: 'staking-api-demo.testnet'
+}
+```
 
 ## HMAC
 
 HMAC (**Hash-based Message Authentication Code**) is a cryptographic authentication technique which uses a shared secret and a hash function such as SHA-256.
 
-When you create a webhook endpoint with the Staking API, the response will include a `secret` which begins with `whsec_`.
+When you create a webhook endpoint with the Staking API, the response will include a `secret` beginning with `whsec_`.
 This is the shared secret you will use to verify future payloads sent to that webhook endpoint.
-Refer to the Staking API Endpoints guide, <Link to="/guides/staking-api/staking-api-endpoints#create-a-new-webhook-endpoint">Create a New Webhook Endpoint</Link> section for details.
-
-:::info note
 
 Learn more about the specifics of HMAC in the <Link to="#references">References</Link> section.
 
-:::
-
-Here are some code examples for verifying the HMAC signatures
-
 :::caution important
 
-Code examples provided as samples only and should not be used in production out of the box. Use at your own risk.
- 
+Code examples are provided as samples only and should not be used in production out of the box. **Use at your own risk.**
+
 :::
+
+Here are some code examples for verifying the HMAC signatures:
 
 <Tabs><TabItem value="js" label="JavaScript">
 
@@ -165,11 +249,14 @@ You will need to set up two environment variables in the Cloudflare dashboard:
 - `WH_SECRET`, set the value to the `secret` provided when you created a webhook endpoint.
 - `TOLERANCE`, a number of seconds (a value of 300 is recommended). An inbound signature is considered stale if older than the tolerance.
 
-## Usage
+### Usage
 
 Use the example code we've provided here to implement your own solution.
 
 The `verifySignature` function uses the <Link to="https://developers.cloudflare.com/workers/runtime-apis/web-crypto/">Web Crypto API</Link> to verify that the incoming webhook payload was signed by the Staking API.
+
+If your particular language and server implementation specifies a character encoding, ensure that you handle the payload as a UTF-8 encoded string.
+JSON is encoded as UTF-8 by default.
 
 <details><summary>Click here to view the complete Worker code.</summary>
 
@@ -254,24 +341,9 @@ async function handleRequest(event) {
 
 :::caution important
 
-When you create a webhook endpoint with the Staking API, provide the URL where you have deployed this Worker as the `target_url`.
+When you create a webhook endpoint with the Staking API, the `target_url` should point to a URL which can handle incoming webhooks, whether that is a Service Worker as outlined above, or a custom solution.
 
 :::
-
-The fields which are common to all Staking API webhook payloads are `flow_id` and `event_type`. All other fields will be relevant to the action and flow.
-
-```bash title="Sample Staking API Webhook Payload"
-{
-  amount: '10.0',
-  status: 'success',
-  flow_id: '49a1bab1-e3e6-4f77-8212-ee254e1ab9a3',
-  event_type: 'near.transfer.transfer_tx.confirmed',
-  transaction_hash: '2a9fnT6j5M9Fy6TFNbX2bA1Ncjh6aXK9Ky8oPBUuJwtS',
-  to_account_address: 'pizza.testnet',
-  from_account_pubkey: 'ed25519:5QA46X6NkNmsFdu9xWVBaLNowh9gGeF1c5r9u6NcxaLY',
-  from_account_address: 'slate-demo.testnet'
-}
-```
 
 ## References
 
