@@ -40,7 +40,7 @@ Event types are standardized in that:
 
 ### Usage
 
-Consumers of Staking API webhooks can subscribe to events with wildcards (`*`), or by specifying a complete event type without a wildcard:
+Consumers of Staking API webhooks can subscribe to events with wildcards (`*`), or by specifying a valid event type without a wildcard:
 
 - `"event_types": ["*"]` subscribes to all webhook events, regardless of network
 - `"event_types": ["near.*"]` subscribes to all webhook events for NEAR flows
@@ -113,6 +113,286 @@ The fields which are common to all Staking API webhook payloads are `flow_id` an
   from_account_address: 'staking-api-demo.testnet'
 }
 ```
+
+### Event Type List
+
+The event type format follows the pattern **`<network_code>.<operation>.<action>.<specifier>`**.
+
+<Tabs><TabItem value="avalanche" label="Avalanche">
+
+<details>
+<summary>Staking</summary>
+
+- `avalanche.staking.*` &mdash; Wildcard for all staking events
+
+- `avalanche.staking.delegation.activating` &rarr; `avalanche.staking.delegation.active` &rarr; `avalanche.staking.delegation.ready_for_withdrawal`
+
+- `avalanche.staking.delegate_tx.confirmed`
+
+</details>
+
+</TabItem><TabItem value="cosmos" label="Cosmos">
+
+<details>
+<summary>Staking</summary>
+
+- `cosmos.staking.*` &mdash; Wildcard for all staking events
+
+- `cosmos.staking.delegation.activating` &rarr; `cosmos.staking.delegation.active`
+
+- `cosmos.staking.delegate_tx.confirmed`
+
+</details>
+
+<details>
+<summary>Unstaking</summary>
+
+- `cosmos.unstaking.*` &mdash; Wildcard for all unstaking events
+
+- `cosmos.unstaking.undelegation.deactivating` &rarr; `cosmos.unstaking.undelegation.inactive`
+
+- `cosmos.unstaking.undelegate_tx.confirmed`
+
+</details>
+
+<details>
+<summary>Redelegate</summary>
+
+- `cosmos.redelegate.*` &mdash; Wildcard for all redelegate events
+
+- `cosmos.redelegate.redelegation.activating` &rarr; `cosmos.staking.redelegation.active`
+
+- `cosmos.redelegate.redelegate_tx.confirmed`
+
+</details>
+
+<details>
+<summary>Transfer</summary>
+
+- `cosmos.transfer.*` &mdash; Wildcard for all transfer events
+
+- `cosmos.transfer.transfer_tx.confirmed`
+
+</details>
+
+<details>
+<summary>Claim Rewards</summary>
+
+- `cosmos.claim_rewards.*` &mdash; Wildcard for all claim rewards events
+
+- `cosmos.claim_rewards.withdraw_tx.confirmed`
+
+</details>
+
+</TabItem><TabItem value="ethereum" label="Ethereum">
+
+<details>
+<summary>Staking</summary>
+
+- `ethereum.staking.*` &mdash; Wildcard for all staking events
+
+- `ethereum.staking.delegation.activating` &rarr; `cosmos.staking.delegation.active`
+
+- `ethereum.staking.deposit_tx.confirmed`
+
+</details>
+
+<details>
+<summary>Aggregated Staking</summary>
+
+- `ethereum.aggregated_staking.*` &mdash; Wildcard for all aggregated staking events
+
+- `ethereum.aggregated_staking.delegation.activating` &rarr; `cosmos.staking.delegation.active`
+
+- `ethereum.aggregated_staking.aggregated_deposit_tx.confirmed`
+
+</details>
+
+</TabItem><TabItem value="near" label="NEAR">
+
+<details>
+<summary>Staking</summary>
+
+- `near.staking.*` &mdash; Wildcard for all staking events
+
+- `near.staking.delegation.activating` &rarr; `near.staking.delegation.active`
+
+- `near.staking.delegate_tx.confirmed`
+
+</details>
+
+<details>
+<summary>Unstaking</summary>
+
+- `near.unstaking.*` &mdash; Wildcard for all unstaking events
+
+- `near.unstaking.undelegation.deactivating` &rarr; `near.unstaking.undelegation.inactive`
+
+- `near.unstaking.undelegate_tx.confirmed`
+
+- `near.unstaking.withdraw_tx.confirmed`
+
+</details>
+
+<details>
+<summary>Transfer</summary>
+
+- `near.transfer.*` &mdash; Wildcard for all transfer events
+
+- `near.transfer.transfer_tx.confirmed`
+
+</details>
+
+</TabItem><TabItem value="polkadot" label="Polkadot">
+
+<details>
+<summary>Staking</summary>
+
+- `polkadot.staking.*` &mdash; Wildcard for all staking events
+
+- `polkadot.staking.delegation.activating` &rarr; `polkadot.staking.delegation.active`
+
+- `polkadot.staking.bonding_tx.confirmed`
+
+- `polkadot.staking.nomination_tx.confirmed`
+
+</details>
+
+<details>
+<summary>Unstaking</summary>
+
+- `polkadot.unstaking.*` &mdash; Wildcard for all unstaking events
+
+- `polkadot.unstaking.delegation.deactivating`
+
+- `polkadot.unstaking.chill_tx.confirmed`
+
+- `polkadot.unstaking.unbond_tx.confirmed`
+
+- `polkadot.unstaking.withdraw_tx.confirmed`
+
+</details>
+
+<details>
+<summary>Add Staking Proxy</summary>
+
+- `polkadot.add_proxy.*` &mdash; Wildcard for all add staking proxy events
+
+- `polkadot.add_proxy.add_proxy_tx.confirmed`
+
+</details>
+
+<details>
+<summary>Remove Staking Proxy</summary>
+
+- `polkadot.remove_proxy.*` &mdash; Wildcard for all remove staking proxy events
+
+- `polkadot.remove_proxy.remove_proxy_tx.confirmed`
+
+</details>
+
+<details>
+<summary>Transfer</summary>
+
+- `polkadot.transfer.*` &mdash; Wildcard for all transfer events
+
+- `polkadot.transfer.transfer_tx.confirmed`
+
+</details>
+
+</TabItem><TabItem value="polygon" label="Polygon">
+
+<details>
+<summary>Staking</summary>
+
+- `polygon.staking.*` &mdash; Wildcard for all staking events
+
+- `polygon.staking.delegation.activating` &rarr; `polygon.staking.delegation.active`
+
+- `polygon.staking.delegate_tx.confirmed`
+
+</details>
+
+<details>
+<summary>Unstaking</summary>
+
+- `polygon.unstaking.*` &mdash; Wildcard for all unstaking events
+
+- `polygon.unstaking.delegation.deactivating` &rarr; `polygon.unstaking.delegation.inactive`
+
+- `polygon.unstaking.unbond_tx.confirmed`
+
+</details>
+
+<details>
+<summary>Claim Rewards</summary>
+
+- `polygon.claim_rewards.*` &mdash; Wildcard for all claim rewards events
+
+- `polygon.claim_rewards.delegation.activating` &rarr; `polygon.claim_rewards.delegation.active`
+
+- `polygon.claim_rewards.claim_rewards_tx.confirmed`
+
+</details>
+
+</TabItem><TabItem value="solana" label="Solana">
+
+<details>
+<summary>Staking</summary>
+
+- `solana.staking.*` &mdash; Wildcard for all staking events
+
+- `solana.staking.create_stake_account_tx.confirmed`
+
+- `solana.staking.delegation.activating` &rarr; `solana.staking.delegation.active`
+
+- `solana.staking.delegate_tx.confirmed`
+
+- `solana.staking.delegation.error`
+
+</details>
+
+<details>
+<summary>Unstaking</summary>
+
+- `solana.unstaking.*` &mdash; Wildcard for all staking events
+
+- `solana.unstaking.delegation.deactivating` &rarr; `solana.unstaking.delegation.inactive` &rarr; `solana.unstaking.delegation.ready_for_withdrawal`
+
+- `solana.unstaking.deactivate_tx.confirmed`
+
+- `solana.unstaking.withdraw_tx.confirmed`
+
+</details>
+
+<details>
+<summary>Transfer</summary>
+
+- `solana.transfer.*` &mdash; Wildcard for all staking events
+
+- `solana.transfer.transfer_tx.confirmed`
+
+</details>
+
+<details>
+<summary>Split Stake Account</summary>
+
+- `solana.split_stake_account.*` &mdash; Wildcard for all split stake account events
+
+- `solana.split_stake_account.split_tx.confirmed`
+
+</details>
+
+<details>
+<summary>Merge Stake Account</summary>
+
+- `solana.merge_stake_account.*` &mdash; Wildcard for all merge stake account events
+
+- `solana.merge_stake_account.merge_tx.confirmed`
+
+</details>
+
+</TabItem></Tabs>
 
 ## HMAC
 

@@ -12,11 +12,13 @@ import CodeBlock from "@theme/CodeBlock";
 
 <div>
   API calls require authentication with API key via <code>Authorization</code>{" "}
-  request header or <code>URL</code> property. Calls are made to the{" "}
+  request header or <code>URL</code> property. Calls are made to one of the{" "}
   <strong>
     {props.network} {props.service}
   </strong>{" "}
-  endpoint, hosted at <code>{props.url}</code>
+  endpoints found in your app's dashboard. <br />
+  <br />
+  For example: <code>{props.url.replace("-dbgtxn", "")}</code>
   <br />
   <br />
 </div>
@@ -25,7 +27,7 @@ Here's some boilerplate to get you started.{" "}
 <Tabs>
   <TabItem value="js-header" label="Fetch with Header">
     <CodeBlock language="js">
-      {`fetch("${props.url}${props.route}", {
+      {`fetch("${props.url.replace("-dbgtxn", "")}${props.route}", {
     method: 'POST', // can also be 'GET', 'PUT' or any appropriate method
     headers: {
         "Authorization" : "<api_key>",
@@ -39,7 +41,9 @@ Here's some boilerplate to get you started.{" "}
   </TabItem>
   <TabItem value="js-parameter" label="Fetch with Parameter">
     <CodeBlock language="js">
-      {`fetch("${props.url}/apikey/{{apikey}}${props.route}", {
+      {`fetch("${props.url.replace("-dbgtxn", "")}/apikey/{{apikey}}${
+        props.route
+      }", {
     method: 'POST', // can also be 'GET', 'PUT' or any appropriate method
     headers: {
         "Content-Type": "application/json" // if method is 'POST'
@@ -52,7 +56,7 @@ Here's some boilerplate to get you started.{" "}
   </TabItem>
   <TabItem value="curl-header" label="CURL with Header">
     <CodeBlock language="bash">
-      {`curl -X POST '${props.url}${props.route}' \\
+      {`curl -X POST '${props.url.replace("-dbgtxn", "")}${props.route}' \\
 --header 'Content-Type: application/json' \\
 --header 'Authorization: <api_key>' \\
 --data '{
@@ -62,7 +66,9 @@ Here's some boilerplate to get you started.{" "}
   </TabItem>
   <TabItem value="curl-parameter" label="CURL with Parameter">
     <CodeBlock language="bash">
-      {`curl -X POST '${props.url}/apikey/{{apikey}}${props.route}' \\
+      {`curl -X POST '${props.url.replace("-dbgtxn", "")}/apikey/{{apikey}}${
+        props.route
+      }' \\
 --header 'Content-Type: application/json' \\
 --data '{
   // JSON Payload
